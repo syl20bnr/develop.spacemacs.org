@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-03-28 Mon 18:18 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mu4e layer</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+                 href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script type="text/javascript"
+                  src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
+          <script type="text/javascript"
+                  src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script>
+           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+               Date();a=s.createElement(o),
+               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+          </script>
+<link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
+<h1 class="title">Mu4e layer</h1>
+<div id="table-of-contents">
+<h2>Table of Contents<a href="#">Close</a></h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. Install</a></li>
+<li><a href="#orgheadline5">2. Commands</a>
+<ul>
+<li><a href="#orgheadline2">2.1. Global bindings</a></li>
+<li><a href="#orgheadline3">2.2. Headers mode</a></li>
+<li><a href="#orgheadline4">2.3. View mode</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline12">3. Configuration</a>
+<ul>
+<li><a href="#orgheadline6">3.1. Maildirs extension</a></li>
+<li><a href="#orgheadline7">3.2. Multiple Accounts</a></li>
+<li><a href="#orgheadline8">3.3. Example configuration</a></li>
+<li><a href="#orgheadline11">3.4. Notifications</a>
+<ul>
+<li><a href="#orgheadline9">3.4.1. OS notifications</a></li>
+<li><a href="#orgheadline10">3.4.2. Mode-line notifications</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline13">4. See also</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> Install</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+In order to use this layer you must install mu and mu4e separately. Typically
+mu4e will be bundled with mu (this is the case on many Linux distributions).
+</p>
+
+<p>
+If the installation directory of mu4e is not in Emacs’ load path, you can set
+the layer variable <code>mu4e-installation-path</code>, for example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-3">setq-default</span> <span class="ATTRLIST-2">dotspacemacs-configuration-layers</span>
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-1">mu4e</span> <span class="org-builtin">:variables</span>
+                      <span class="ATTRLIST">mu4e-installation-path</span> <span class="org-string">"/usr/share/emacs/site-lisp"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Then add this layer to your <code>~/.spacemacs</code>. You will need to add <code>mu4e</code> to the
+existing <code>dotspacemacs-configuration-layers</code> list in this file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5"><span class="section-number-2">2</span> Commands</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">2.1</span> Global bindings</h3>
+<div class="outline-text-3" id="text-2-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keybinding</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">SPC a M</td>
+<td class="org-left">Start mu4e</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3"><span class="section-number-3">2.2</span> Headers mode</h3>
+<div class="outline-text-3" id="text-2-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keybinding</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">J</td>
+<td class="org-left">Go to next unread thread marking other mail read on the way</td>
+</tr>
+
+<tr>
+<td class="org-left">C-j</td>
+<td class="org-left">Next header</td>
+</tr>
+
+<tr>
+<td class="org-left">C-k</td>
+<td class="org-left">Previous header</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4"><span class="section-number-3">2.3</span> View mode</h3>
+<div class="outline-text-3" id="text-2-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keybinding</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">J</td>
+<td class="org-left">Go to next unread thread marking other mail read on the way</td>
+</tr>
+
+<tr>
+<td class="org-left">C-j</td>
+<td class="org-left">Next header</td>
+</tr>
+
+<tr>
+<td class="org-left">C-k</td>
+<td class="org-left">Previous header</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-2">
+<h2 id="orgheadline12"><span class="section-number-2">3</span> Configuration</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Configuration varies too much to give precise instructions.  What follows is one
+example configuration.  Refer to mu4e's manual for more detailed configuration
+instructions.
+</p>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><span class="section-number-3">3.1</span> Maildirs extension</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+The maildirs extension adds a list of all your maildirs to the main mu4e view
+that by default shows the unread and total mail counts for all your mail under
+your base mail directory.
+</p>
+
+<p>
+This extension is enabled by default, you can deactivate (and uninstall) it by
+adding the package <code>= to your dotfile variable =dotspacemacs-excluded-packages</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><span class="section-number-3">3.2</span> Multiple Accounts</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+This layer includes support for multiple sending accounts.
+If you have only one account you do not need to define this variable.
+If you have multiple accounts, configure the <code>mu4e-account-alist</code> variable:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-8">setq</span> <span class="ATTRLIST-7">mu4e-account-alist</span>
+      '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"gmail"</span>
+         <span class="org-comment-delimiter">;; </span><span class="org-comment">Under each account, set the account-specific variables you want.</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-6">mu4e-sent-messages-behavior</span> <span class="ATTRLIST-5">delete</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-4">mu4e-sent-folder</span> <span class="org-string">"/gmail/[Gmail]/.Sent Mail"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-3">mu4e-drafts-folder</span> <span class="org-string">"/gmail/[Gmail]/.Drafts"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-2">user-mail-address</span> <span class="org-string">"billy@gmail.com"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-1">user-full-name</span> <span class="org-string">"Billy"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"college"</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-6">mu4e-sent-messages-behavior</span> <span class="ATTRLIST">sent</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-4">mu4e-sent-folder</span> <span class="org-string">"/college/Sent Items"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-3">mu4e-drafts-folder</span> <span class="org-string">"/college/Drafts"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-2">user-mail-address</span> <span class="org-string">"bb15@college.edu"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-1">user-full-name</span> <span class="org-string">"Billy Bob 15"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">mu4e/mail-account-reset</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+The first account listed will be the default account, so variables like
+<code>user-full-name</code>, which is used by other parts of Emacs, will have their value
+reset for the default account after sending each email.
+</p>
+
+<p>
+Note that the mu4e layer expects <code>mu4e-account-alist</code> to be defined before the
+layer is loaded. For example, you can set <code>mu4e-account-alist</code> to a dummy
+setting in <code>dotspacemacs/layers</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">mu4e</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">mu4e-account-alist</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+and then actually set <code>mu4e-account-alist</code> later in <code>dotspacemacs/user-config</code>.
+</p>
+
+<p>
+Make sure you call <code>mu4e/mail-account-reset</code> afterward, which will initialize
+the given account variables.
+</p>
+
+<p>
+If you have mu 0.9.16 or later, you can use mu4e's built-in contexts feature
+instead (see <a href="http://www.djcbsoftware.nl/code/mu/mu4e/Contexts.html#Contexts">mu4e's manual</a>).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">3.3</span> Example configuration</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Set up some common mu4e variables</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-19">setq</span> <span class="ATTRLIST-18">mu4e-maildir</span> <span class="org-string">"~/.mail"</span>
+      <span class="ATTRLIST-17">mu4e-trash-folder</span> <span class="org-string">"/Trash"</span>
+      <span class="ATTRLIST-16">mu4e-refile-folder</span> <span class="org-string">"/Archive"</span>
+      <span class="ATTRLIST-15">mu4e-get-mail-command</span> <span class="org-string">"mbsync -a"</span>
+      <span class="ATTRLIST-14">mu4e-update-interval</span> <span class="ATTRLIST-13">nil</span>
+      <span class="ATTRLIST-16">mu4e-compose-signature-auto-include</span> <span class="ATTRLIST-13">nil</span>
+      <span class="ATTRLIST-16">mu4e-view-show-images</span> <span class="ATTRLIST-12">t</span>
+      <span class="ATTRLIST-11">mu4e-view-show-addresses</span> <span class="ATTRLIST-12">t</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">Mail directory shortcuts</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-19">setq</span> <span class="ATTRLIST-16">mu4e-maildir-shortcuts</span>
+      '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"/gmail/INBOX"</span> <span class="ATTRLIST-16">.</span> <span class="ATTRLIST-10">?g</span><span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"/college/INBOX"</span> <span class="ATTRLIST-16">.</span> <span class="ATTRLIST-9">?c</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">Bookmarks</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-19">setq</span> <span class="ATTRLIST-16">mu4e-bookmarks</span>
+      `<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"flag:unread AND NOT flag:trashed"</span> <span class="org-string">"Unread messages"</span> <span class="ATTRLIST-8">?u</span><span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"date:today..now"</span> <span class="org-string">"Today's messages"</span> <span class="ATTRLIST-7">?t</span><span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"date:7d..now"</span> <span class="org-string">"Last 7 days"</span> <span class="ATTRLIST-6">?w</span><span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"mime:image/*"</span> <span class="org-string">"Messages with images"</span> <span class="ATTRLIST-5">?p</span><span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span>,<span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-4">mapconcat</span> '<span class="ATTRLIST-16">identity</span>
+                     <span class="org-rainbow-delimiters-depth-5">(</span><span class="ATTRLIST-3">mapcar</span>
+                      <span class="org-rainbow-delimiters-depth-6">(</span><span class="org-keyword"><span class="ATTRLIST-16">lambda</span></span> <span class="org-rainbow-delimiters-depth-7">(</span><span class="ATTRLIST-2">maildir</span><span class="org-rainbow-delimiters-depth-7">)</span>
+                        <span class="org-rainbow-delimiters-depth-7">(</span><span class="ATTRLIST-16">concat</span> <span class="org-string">"maildir:"</span> <span class="org-rainbow-delimiters-depth-8">(</span><span class="ATTRLIST-1">car</span> <span class="ATTRLIST-2">maildir</span><span class="org-rainbow-delimiters-depth-8">)</span><span class="org-rainbow-delimiters-depth-7">)</span><span class="org-rainbow-delimiters-depth-6">)</span>
+                      <span class="ATTRLIST-16">mu4e-maildir-shortcuts</span><span class="org-rainbow-delimiters-depth-5">)</span> <span class="org-string">" OR "</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-string">"All inboxes"</span> <span class="ATTRLIST">?i</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11"><span class="section-number-3">3.4</span> Notifications</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+<code>mu4e-alert</code> is an extension that provides desktop notifications and adds the
+count of unread messages to the modeline.
+</p>
+
+
+<div class="figure">
+<p><img src="https://raw.githubusercontent.com/iqbalansari/mu4e-alert/master/screenshots/mu4e-alert-in-action.png" alt="mu4e-alert-in-action.png" />
+</p>
+</div>
+
+<p>
+For an extended documentation of the available customizations please refer to
+<a href="https://github.com/iqbalansari/mu4e-alert#customizations">mu4e-alert's documentation</a>
+</p>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9"><span class="section-number-4">3.4.1</span> OS notifications</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<p>
+To enable notifications about new messages, add the following line to your
+<code>dotspacemacs/user-config</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">setq</span> <span class="ATTRLIST-1">mu4e-enable-notifications</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+or use layer variables when you add the layer to
+<code>dotspacemacs-configuration-layers</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">mu4e</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">mu4e-enable-notifications</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+By default, notifications will be shown in the <code>*Messages*</code> buffer. To enable
+desktop notifications about new messages, add the following lines to
+your <code>dotspacemacs/user-config</code>, according to your operating system and the
+installed libraries:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-3">with-eval-after-load</span></span> '<span class="ATTRLIST-2">mu4e-alert</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">Enable Desktop notifications</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-1">mu4e-alert-set-default-style</span> '<span class="ATTRLIST">notifications</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">For linux</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">(mu4e-alert-set-default-style 'libnotify))  ; Alternative for linux</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">(mu4e-alert-set-default-style 'notifier))   ; For Mac OSX (through the</span>
+                                                 <span class="org-comment-delimiter">; </span><span class="org-comment">terminal notifier app)</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">(mu4e-alert-set-default-style 'growl))      ; Alternative for Mac OSX</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10"><span class="section-number-4">3.4.2</span> Mode-line notifications</h4>
+<div class="outline-text-4" id="text-3-4-2">
+<p>
+To enable mode-line display about new messages, add the following line to
+your <code>dotspacemacs/user-config</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">setq</span> <span class="ATTRLIST-1">mu4e-enable-mode-line</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+or use layer variables when you add the layer to
+<code>dotspacemacs-configuration-layers</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">mu4e</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">mu4e-enable-mode-line</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="orgheadline13"><span class="section-number-2">4</span> See also</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Refer to the official mu and mu4e documentation for additional info.
+</p>
+
+<ul class="org-ul">
+<li><a href="http://www.djcbsoftware.nl/code/mu/mu4e/index.html">mu4e Manual</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-03-28 Mon 18:18</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
