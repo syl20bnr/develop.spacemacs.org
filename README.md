@@ -8,6 +8,6 @@ the documentation files are exported from the develop branch of
 
 It is served on [develop.spacemacs.org][dev_website].
 
-[website]: spacemacs.org
-[dev_website]: develop.spacemacs.org
+[website]: http://spacemacs.org
+[dev_website]: http://develop.spacemacs.org
 [syl20bnr/spacemacs]: https://github.com/syl20bnr/spacemacs
