@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-28 Mon 18:17 -->
+<!-- 2016-03-30 Wed 23:04 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Scala layer</title>
@@ -99,8 +99,6 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script type="text/javascript"
-                  src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
-          <script type="text/javascript"
                   src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -167,33 +165,33 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. Description</a></li>
-<li><a href="#orgheadline2">2. Layer Installation</a></li>
-<li><a href="#orgheadline5">3. Ensime</a>
+<li><a href="#description">1. Description</a></li>
+<li><a href="#layer-installation">2. Layer Installation</a></li>
+<li><a href="#ensime">3. Ensime</a>
 <ul>
-<li><a href="#orgheadline3">3.1. Installation</a></li>
-<li><a href="#orgheadline4">3.2. Usage</a></li>
+<li><a href="#installation">3.1. Installation</a></li>
+<li><a href="#usage">3.2. Usage</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline6">4. Scalastyle</a></li>
-<li><a href="#orgheadline7">5. Automatically show the type of the symbol under the cursor</a></li>
-<li><a href="#orgheadline8">6. Automatically insert asterisk in multiline comments</a></li>
-<li><a href="#orgheadline9">7. Automatically replace arrows with unicode ones</a></li>
-<li><a href="#orgheadline22">8. Key bindings</a>
+<li><a href="#scalastyle">4. Scalastyle</a></li>
+<li><a href="#automatically-show-the-type-of-the-symbol-under-the-cursor">5. Automatically show the type of the symbol under the cursor</a></li>
+<li><a href="#automatically-insert-asterisk-in-multiline-comments">6. Automatically insert asterisk in multiline comments</a></li>
+<li><a href="#automatically-replace-arrows-with-unicode-ones">7. Automatically replace arrows with unicode ones</a></li>
+<li><a href="#key-bindings">8. Key bindings</a>
 <ul>
-<li><a href="#orgheadline21">8.1. Ensime key bindings</a>
+<li><a href="#ensime-key-bindings">8.1. Ensime key bindings</a>
 <ul>
-<li><a href="#orgheadline10">8.1.1. Search</a></li>
-<li><a href="#orgheadline11">8.1.2. sbt</a></li>
-<li><a href="#orgheadline12">8.1.3. Typecheck</a></li>
-<li><a href="#orgheadline13">8.1.4. Debug</a></li>
-<li><a href="#orgheadline14">8.1.5. Errors</a></li>
-<li><a href="#orgheadline15">8.1.6. Goto</a></li>
-<li><a href="#orgheadline16">8.1.7. Documentation, Inspect</a></li>
-<li><a href="#orgheadline17">8.1.8. Server</a></li>
-<li><a href="#orgheadline18">8.1.9. Refactoring</a></li>
-<li><a href="#orgheadline19">8.1.10. Tests</a></li>
-<li><a href="#orgheadline20">8.1.11. REPL</a></li>
+<li><a href="#search">8.1.1. Search</a></li>
+<li><a href="#sbt">8.1.2. sbt</a></li>
+<li><a href="#typecheck">8.1.3. Typecheck</a></li>
+<li><a href="#debug">8.1.4. Debug</a></li>
+<li><a href="#errors">8.1.5. Errors</a></li>
+<li><a href="#goto">8.1.6. Goto</a></li>
+<li><a href="#documentation-inspect">8.1.7. Documentation, Inspect</a></li>
+<li><a href="#server">8.1.8. Server</a></li>
+<li><a href="#refactoring">8.1.9. Refactoring</a></li>
+<li><a href="#tests">8.1.10. Tests</a></li>
+<li><a href="#repl">8.1.11. REPL</a></li>
 </ul>
 </li>
 </ul>
@@ -206,8 +204,8 @@ for the JavaScript code in this tag.
 </p>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Description</h2>
-<div class="outline-text-2" id="text-1">
+<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for the Scala language using the excellent <a href="https://github.com/ensime">ENSIME</a>
 client/server.
@@ -216,8 +214,8 @@ client/server.
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> Layer Installation</h2>
-<div class="outline-text-2" id="text-2">
+<h2 id="layer-installation"><a id="orgheadline2"></a><span class="section-number-2">2</span> Layer Installation</h2>
+<div class="outline-text-2" id="text-layer-installation">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>scala</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
@@ -227,8 +225,8 @@ file.
 </div>
 
 <div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5"><span class="section-number-2">3</span> Ensime</h2>
-<div class="outline-text-2" id="text-3">
+<h2 id="ensime"><a id="orgheadline5"></a><span class="section-number-2">3</span> Ensime</h2>
+<div class="outline-text-2" id="text-ensime">
 <p>
 <a href="https://github.com/ensime">ENSIME</a> provides IDE-like features, such as refactoring, incremental
 compilation and project-wide type-checking.
@@ -241,8 +239,8 @@ provides an SBT plugin to generate these files.
 </div>
 
 <div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3"><span class="section-number-3">3.1</span> Installation</h3>
-<div class="outline-text-3" id="text-3-1">
+<h3 id="installation"><a id="orgheadline3"></a><span class="section-number-3">3.1</span> Installation</h3>
+<div class="outline-text-3" id="text-installation">
 <p>
 Configure the ENSIME sbt plugin by adding the following to
 <code>~/.sbt/0.13/plugins/plugins.sbt</code>:
@@ -270,8 +268,8 @@ Please note your projects' <code>project/build.properties</code> need to use a v
 </div>
 
 <div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">3.2</span> Usage</h3>
-<div class="outline-text-3" id="text-3-2">
+<h3 id="usage"><a id="orgheadline4"></a><span class="section-number-3">3.2</span> Usage</h3>
+<div class="outline-text-3" id="text-usage">
 <ol class="org-ol">
 <li>Create a <code>.ensime</code> file at the root of your Scala project using <code>sbt
    gen-ensime</code> at the shell.</li>
@@ -289,8 +287,8 @@ will automatically use ENSIME for the remainder of your editing session.
 </div>
 
 <div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">4</span> Scalastyle</h2>
-<div class="outline-text-2" id="text-4">
+<h2 id="scalastyle"><a id="orgheadline6"></a><span class="section-number-2">4</span> Scalastyle</h2>
+<div class="outline-text-2" id="text-scalastyle">
 <p>
 <a href="http://flycheck.readthedocs.org/en/latest/guide/languages.html#el.flycheck-checker.scala-scalastyle">Scalastyle</a> provides style-checking and linting. The Emacs functionality is
 provided by Flycheck.
@@ -312,8 +310,8 @@ See the <a href="http://flycheck.readthedocs.org/en/latest/guide/languages.html#
 </div>
 </div>
 <div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7"><span class="section-number-2">5</span> Automatically show the type of the symbol under the cursor</h2>
-<div class="outline-text-2" id="text-5">
+<h2 id="automatically-show-the-type-of-the-symbol-under-the-cursor"><a id="orgheadline7"></a><span class="section-number-2">5</span> Automatically show the type of the symbol under the cursor</h2>
+<div class="outline-text-2" id="text-automatically-show-the-type-of-the-symbol-under-the-cursor">
 <p>
 To enable the feature <code>ensime-print-type-at-point</code> when cursor moves, set the variable <code>scala-enable-eldoc-mode</code> to <code>t</code>.
 </p>
@@ -332,8 +330,8 @@ Enabling this option can cause slow editor performance.
 </div>
 
 <div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8"><span class="section-number-2">6</span> Automatically insert asterisk in multiline comments</h2>
-<div class="outline-text-2" id="text-6">
+<h2 id="automatically-insert-asterisk-in-multiline-comments"><a id="orgheadline8"></a><span class="section-number-2">6</span> Automatically insert asterisk in multiline comments</h2>
+<div class="outline-text-2" id="text-automatically-insert-asterisk-in-multiline-comments">
 <p>
 To insert a leading asterisk in multiline comments automatically, set the variable <code>scala-auto-insert-asterisk-in-comments</code> to <code>t</code>.
 </p>
@@ -348,8 +346,8 @@ To insert a leading asterisk in multiline comments automatically, set the variab
 </div>
 
 <div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="orgheadline9"><span class="section-number-2">7</span> Automatically replace arrows with unicode ones</h2>
-<div class="outline-text-2" id="text-7">
+<h2 id="automatically-replace-arrows-with-unicode-ones"><a id="orgheadline9"></a><span class="section-number-2">7</span> Automatically replace arrows with unicode ones</h2>
+<div class="outline-text-2" id="text-automatically-replace-arrows-with-unicode-ones">
 <p>
 To replace <code>=&gt;</code>, <code>-&gt;</code> and <code>&lt;-</code> with unicode arrows <code>⇒</code>, <code>→</code> and <code>←</code>, set the
 variable <code>scala-use-unicode-arrows</code> to <code>t</code>.
@@ -371,14 +369,20 @@ the ascii arrows back.
 </div>
 
 <div id="outline-container-orgheadline22" class="outline-2">
-<h2 id="orgheadline22"><span class="section-number-2">8</span> Key bindings</h2>
-<div class="outline-text-2" id="text-8">
-</div><div id="outline-container-orgheadline21" class="outline-3">
-<h3 id="orgheadline21"><span class="section-number-3">8.1</span> Ensime key bindings</h3>
-<div class="outline-text-3" id="text-8-1">
-</div><div id="outline-container-orgheadline10" class="outline-4">
-<h4 id="orgheadline10"><span class="section-number-4">8.1.1</span> Search</h4>
-<div class="outline-text-4" id="text-8-1-1">
+<h2 id="key-bindings"><a id="orgheadline22"></a><span class="section-number-2">8</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+</div>
+
+
+<div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="ensime-key-bindings"><a id="orgheadline21"></a><span class="section-number-3">8.1</span> Ensime key bindings</h3>
+<div class="outline-text-3" id="text-ensime-key-bindings">
+</div>
+
+
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="search"><a id="orgheadline10"></a><span class="section-number-4">8.1.1</span> Search</h4>
+<div class="outline-text-4" id="text-search">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -409,8 +413,8 @@ the ascii arrows back.
 </div>
 
 <div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="orgheadline11"><span class="section-number-4">8.1.2</span> sbt</h4>
-<div class="outline-text-4" id="text-8-1-2">
+<h4 id="sbt"><a id="orgheadline11"></a><span class="section-number-4">8.1.2</span> sbt</h4>
+<div class="outline-text-4" id="text-sbt">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -456,8 +460,8 @@ the ascii arrows back.
 </div>
 
 <div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="orgheadline12"><span class="section-number-4">8.1.3</span> Typecheck</h4>
-<div class="outline-text-4" id="text-8-1-3">
+<h4 id="typecheck"><a id="orgheadline12"></a><span class="section-number-4">8.1.3</span> Typecheck</h4>
+<div class="outline-text-4" id="text-typecheck">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -488,8 +492,8 @@ the ascii arrows back.
 </div>
 
 <div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="orgheadline13"><span class="section-number-4">8.1.4</span> Debug</h4>
-<div class="outline-text-4" id="text-8-1-4">
+<h4 id="debug"><a id="orgheadline13"></a><span class="section-number-4">8.1.4</span> Debug</h4>
+<div class="outline-text-4" id="text-debug">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -584,8 +588,8 @@ the ascii arrows back.
 </div>
 
 <div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="orgheadline14"><span class="section-number-4">8.1.5</span> Errors</h4>
-<div class="outline-text-4" id="text-8-1-5">
+<h4 id="errors"><a id="orgheadline14"></a><span class="section-number-4">8.1.5</span> Errors</h4>
+<div class="outline-text-4" id="text-errors">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -621,8 +625,8 @@ the ascii arrows back.
 </div>
 
 <div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="orgheadline15"><span class="section-number-4">8.1.6</span> Goto</h4>
-<div class="outline-text-4" id="text-8-1-6">
+<h4 id="goto"><a id="orgheadline15"></a><span class="section-number-4">8.1.6</span> Goto</h4>
+<div class="outline-text-4" id="text-goto">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -658,8 +662,8 @@ the ascii arrows back.
 </div>
 
 <div id="outline-container-orgheadline16" class="outline-4">
-<h4 id="orgheadline16"><span class="section-number-4">8.1.7</span> Documentation, Inspect</h4>
-<div class="outline-text-4" id="text-8-1-7">
+<h4 id="documentation-inspect"><a id="orgheadline16"></a><span class="section-number-4">8.1.7</span> Documentation, Inspect</h4>
+<div class="outline-text-4" id="text-documentation-inspect">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -710,8 +714,8 @@ the ascii arrows back.
 </div>
 
 <div id="outline-container-orgheadline17" class="outline-4">
-<h4 id="orgheadline17"><span class="section-number-4">8.1.8</span> Server</h4>
-<div class="outline-text-4" id="text-8-1-8">
+<h4 id="server"><a id="orgheadline17"></a><span class="section-number-4">8.1.8</span> Server</h4>
+<div class="outline-text-4" id="text-server">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -747,8 +751,8 @@ the ascii arrows back.
 </div>
 
 <div id="outline-container-orgheadline18" class="outline-4">
-<h4 id="orgheadline18"><span class="section-number-4">8.1.9</span> Refactoring</h4>
-<div class="outline-text-4" id="text-8-1-9">
+<h4 id="refactoring"><a id="orgheadline18"></a><span class="section-number-4">8.1.9</span> Refactoring</h4>
+<div class="outline-text-4" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -814,8 +818,8 @@ the ascii arrows back.
 </div>
 
 <div id="outline-container-orgheadline19" class="outline-4">
-<h4 id="orgheadline19"><span class="section-number-4">8.1.10</span> Tests</h4>
-<div class="outline-text-4" id="text-8-1-10">
+<h4 id="tests"><a id="orgheadline19"></a><span class="section-number-4">8.1.10</span> Tests</h4>
+<div class="outline-text-4" id="text-tests">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -851,8 +855,8 @@ the ascii arrows back.
 </div>
 
 <div id="outline-container-orgheadline20" class="outline-4">
-<h4 id="orgheadline20"><span class="section-number-4">8.1.11</span> REPL</h4>
-<div class="outline-text-4" id="text-8-1-11">
+<h4 id="repl"><a id="orgheadline20"></a><span class="section-number-4">8.1.11</span> REPL</h4>
+<div class="outline-text-4" id="text-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -906,7 +910,7 @@ the ascii arrows back.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-28 Mon 18:17</p>
+<p class="date">Created: 2016-03-30 Wed 23:04</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
