@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-30 Wed 23:04 -->
+<!-- 2016-10-03 Mon 00:55 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>Github layer</title>
+<title>GitHub layer</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
@@ -160,7 +160,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Github layer</h1>
+<h1 class="title">GitHub layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -173,6 +173,7 @@ for the JavaScript code in this tag.
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#git-configuration">2.2. Git configuration</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key Bindings</a>
@@ -196,7 +197,7 @@ for the JavaScript code in this tag.
 <h2 id="description"><a id="orgheadline2"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layers adds support for <a href="http://github.com/">Github</a>.
+This layers adds support for <a href="http://github.com/">GitHub</a>.
 </p>
 </div>
 
@@ -204,18 +205,18 @@ This layers adds support for <a href="http://github.com/">Github</a>.
 <h3 id="features"><a id="orgheadline1"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li><a href="https://github.com/sigma/magit-gh-pulls">magit-gh-pulls</a>: handy <code>magit</code> add-on to manage Github pull requests.</li>
-<li><a href="https://github.com/defunkt/gist.el">gist.el</a>: full-featured mode to browse and post Github gists.</li>
-<li><a href="https://github.com/osener/github-browse-file">github-browse-file</a> and <a href="https://github.com/sshaw/git-link">git-link</a>: quickly browse github URL in your
+<li><a href="https://github.com/sigma/magit-gh-pulls">magit-gh-pulls</a>: handy <code>magit</code> add-on to manage GitHub pull requests.</li>
+<li><a href="https://github.com/defunkt/gist.el">gist.el</a>: full-featured mode to browse and post GitHub gists.</li>
+<li><a href="https://github.com/osener/github-browse-file">github-browse-file</a> and <a href="https://github.com/sshaw/git-link">git-link</a>: quickly browse GitHub URL in your
 browser.</li>
-<li><a href="https://github.com/dgtized/github-clone.el">Github clone</a> allows for easy cloning and forking of repositories.</li>
+<li><a href="https://github.com/dgtized/github-clone.el">github-clone</a> allows for easy cloning and forking of repositories.</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="install"><a id="orgheadline4"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="install"><a id="orgheadline5"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
@@ -229,16 +230,32 @@ file.
 </p>
 </div>
 </div>
+
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="git-configuration"><a id="orgheadline4"></a><span class="section-number-3">2.2</span> Git configuration</h3>
+<div class="outline-text-3" id="text-git-configuration">
+<p>
+You will need to generate a <a href="https://github.com/settings/tokens">personal access token</a> on GitHub. This token should
+have the <code>gist</code> and <code>repo</code> permissions. Once this token is created, it needs to
+be added to your <code>~/.gitconfig</code>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git config --global github.oauth-token &lt;token&gt;
+</pre>
+</div>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline9"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="key-bindings"><a id="orgheadline10"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="magit-gh-pulls"><a id="orgheadline5"></a><span class="section-number-3">3.1</span> magit-gh-pulls</h3>
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="magit-gh-pulls"><a id="orgheadline6"></a><span class="section-number-3">3.1</span> magit-gh-pulls</h3>
 <div class="outline-text-3" id="text-magit-gh-pulls">
 <p>
 In a <code>magit status</code> buffer (<code>SPC g s</code>):
@@ -266,22 +283,32 @@ In a <code>magit status</code> buffer (<code>SPC g s</code>):
 
 <tr>
 <td class="org-left"><code># g</code></td>
-<td class="org-left">get a list of all PRs in the current repository</td>
+<td class="org-left">get a list of (or reload) all PRs in the current repository</td>
 </tr>
 
 <tr>
 <td class="org-left"><code># f</code></td>
-<td class="org-left">fetch the commits associated to the current PR</td>
+<td class="org-left">fetch the commits associated with the current PR at point</td>
 </tr>
 
 <tr>
 <td class="org-left"><code># b</code></td>
-<td class="org-left">create a branch for the current PR</td>
+<td class="org-left">create a branch for the current PR at point</td>
 </tr>
 
 <tr>
 <td class="org-left"><code># m</code></td>
-<td class="org-left">merge the PR with current branch</td>
+<td class="org-left">merge the PR with current branch at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code># d</code></td>
+<td class="org-left">show a diff of the current pull request at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code># o</code></td>
+<td class="org-left">open PR at point in browser</td>
 </tr>
 </tbody>
 </table>
@@ -293,8 +320,8 @@ possible.
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="gistel"><a id="orgheadline6"></a><span class="section-number-3">3.2</span> gist.el</h3>
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="gistel"><a id="orgheadline7"></a><span class="section-number-3">3.2</span> gist.el</h3>
 <div class="outline-text-3" id="text-gistel">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -441,8 +468,8 @@ In the gist list buffer:
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="clone-repositories"><a id="orgheadline7"></a><span class="section-number-3">3.3</span> Clone repositories</h3>
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="clone-repositories"><a id="orgheadline8"></a><span class="section-number-3">3.3</span> Clone repositories</h3>
 <div class="outline-text-3" id="text-clone-repositories">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -460,16 +487,36 @@ In the gist list buffer:
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC g h C-c</code></td>
+<td class="org-left"><code>SPC g h c /</code></td>
+<td class="org-left">search for a repository to clone it</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g h c c</code></td>
 <td class="org-left">clone and optionally fork repository</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g h c r</code></td>
+<td class="org-left">add a remote that is an existing fork of selected remote</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g h c f</code></td>
+<td class="org-left">fork remote in current user namespace</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g h c u</code></td>
+<td class="org-left">add upstream as remote</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="browse-files"><a id="orgheadline8"></a><span class="section-number-3">3.4</span> Browse files</h3>
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="browse-files"><a id="orgheadline9"></a><span class="section-number-3">3.4</span> Browse files</h3>
 <div class="outline-text-3" id="text-browse-files">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -487,49 +534,18 @@ In the gist list buffer:
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC g h c</code></td>
-<td class="org-left">browse to file on github/bitbucket/etc (on current line at commit)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g h C</code></td>
-<td class="org-left">only copy the generated link on the kill ring</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g h l</code></td>
-<td class="org-left">browse to file on github/bitbucket/etc (on current line position)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g h L</code></td>
-<td class="org-left">only copy the generated link on the kill ring</td>
-</tr>
-
-<tr>
 <td class="org-left"><code>SPC g h o</code></td>
-<td class="org-left">browse to file on github</td>
+<td class="org-left">browse to file on GitHub</td>
 </tr>
 </tbody>
 </table>
-
-<p>
-<b>Notes:</b>
-</p>
-<ul class="org-ul">
-<li>You can use the universal argument <code>SPC u</code> to select a remote repository.</li>
-<li>You can use <code>git-link</code> on a region.</li>
-<li>When the link is opened, the URL is also copied in the kill ring, you can
-override this behavior by setting the variable <code>git-link-open-in-browser</code> to
-<code>nil</code>.</li>
-</ul>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-30 Wed 23:04</p>
+<p class="date">Created: 2016-10-03 Mon 00:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

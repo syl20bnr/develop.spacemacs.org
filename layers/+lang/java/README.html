@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-30 Wed 23:05 -->
+<!-- 2016-10-03 Mon 00:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Java layer</title>
@@ -182,12 +182,13 @@ for the JavaScript code in this tag.
 <li><a href="#java-mode">3.1. Java-mode</a>
 <ul>
 <li><a href="#project-management">3.1.1. Project management</a></li>
-<li><a href="#maven">3.1.2. Maven</a></li>
-<li><a href="#goto">3.1.3. Goto</a></li>
-<li><a href="#refactoring">3.1.4. Refactoring</a></li>
-<li><a href="#documentation-find">3.1.5. Documentation, Find</a></li>
-<li><a href="#problems">3.1.6. Problems</a></li>
-<li><a href="#tests">3.1.7. Tests</a></li>
+<li><a href="#eclimd">3.1.2. Eclimd</a></li>
+<li><a href="#maven">3.1.3. Maven</a></li>
+<li><a href="#goto">3.1.4. Goto</a></li>
+<li><a href="#refactoring">3.1.5. Refactoring</a></li>
+<li><a href="#documentation-find">3.1.6. Documentation, Find</a></li>
+<li><a href="#problems">3.1.7. Problems</a></li>
+<li><a href="#tests">3.1.8. Tests</a></li>
 </ul>
 </li>
 <li><a href="#problems-buffer">3.2. Problems buffer</a></li>
@@ -251,8 +252,24 @@ for instance:
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">setq</span> <span class="ATTRLIST-1">eclim-eclipse-dirs</span> <span class="org-string">"~/opt/eclipse"</span>
-      <span class="ATTRLIST">eclim-executable</span> <span class="org-string">"~/opt/eclipse/eclim"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq eclim-eclipse-dirs <span class="org-string">"~/opt/eclipse"</span>
+      eclim-executable <span class="org-string">"~/opt/eclipse/eclim"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+You can also configure other options, as shown below:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq
+ <span class="org-comment-delimiter">;; </span><span class="org-comment">Use another eclimd executable</span>
+ eclimd-executable <span class="org-string">"/path/to/another/executable"</span>
+ <span class="org-comment-delimiter">;; </span><span class="org-comment">Specify the workspace to use by default</span>
+ eclimd-default-workspace <span class="org-string">"/path/to/default/eclipse/workspace"</span>
+ <span class="org-comment-delimiter">;; </span><span class="org-comment">Whether or not to block emacs until eclimd is ready</span>
+ eclimd-wait-for-process t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -262,22 +279,21 @@ for instance:
 <h4 id="usage"><a id="orgheadline4"></a><span class="section-number-4">2.2.2</span> Usage</h4>
 <div class="outline-text-4" id="text-usage">
 <p>
-Currently you have to have <code>eclimd</code> already started.
-This layer doesn't try to control <code>eclimd</code> in no way although there's that
-option in <code>emacs-eclim</code> itself.
+Start the eclim daemon with <code>SPC m d s</code> and stop it with <code>SPC m d k</code>. (See
+below.)
 </p>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline17"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-orgheadline18" class="outline-2">
+<h2 id="key-bindings"><a id="orgheadline18"></a><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="java-mode"><a id="orgheadline14"></a><span class="section-number-3">3.1</span> Java-mode</h3>
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="java-mode"><a id="orgheadline15"></a><span class="section-number-3">3.1</span> Java-mode</h3>
 <div class="outline-text-3" id="text-java-mode">
 </div>
 
@@ -354,7 +370,39 @@ option in <code>emacs-eclim</code> itself.
 </div>
 
 <div id="outline-container-orgheadline8" class="outline-4">
-<h4 id="maven"><a id="orgheadline8"></a><span class="section-number-4">3.1.2</span> Maven</h4>
+<h4 id="eclimd"><a id="orgheadline8"></a><span class="section-number-4">3.1.2</span> Eclimd</h4>
+<div class="outline-text-4" id="text-eclimd">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d s</code></td>
+<td class="org-left">Start daemon</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d k</code></td>
+<td class="org-left">Stop daemon</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="maven"><a id="orgheadline9"></a><span class="section-number-4">3.1.3</span> Maven</h4>
 <div class="outline-text-4" id="text-maven">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -405,8 +453,8 @@ option in <code>emacs-eclim</code> itself.
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-4">
-<h4 id="goto"><a id="orgheadline9"></a><span class="section-number-4">3.1.3</span> Goto</h4>
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="goto"><a id="orgheadline10"></a><span class="section-number-4">3.1.4</span> Goto</h4>
 <div class="outline-text-4" id="text-goto">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -442,8 +490,8 @@ option in <code>emacs-eclim</code> itself.
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-4">
-<h4 id="refactoring"><a id="orgheadline10"></a><span class="section-number-4">3.1.4</span> Refactoring</h4>
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="refactoring"><a id="orgheadline11"></a><span class="section-number-4">3.1.5</span> Refactoring</h4>
 <div class="outline-text-4" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -479,8 +527,8 @@ option in <code>emacs-eclim</code> itself.
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="documentation-find"><a id="orgheadline11"></a><span class="section-number-4">3.1.5</span> Documentation, Find</h4>
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="documentation-find"><a id="orgheadline12"></a><span class="section-number-4">3.1.6</span> Documentation, Find</h4>
 <div class="outline-text-4" id="text-documentation-find">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -516,8 +564,8 @@ option in <code>emacs-eclim</code> itself.
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="problems"><a id="orgheadline12"></a><span class="section-number-4">3.1.6</span> Problems</h4>
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="problems"><a id="orgheadline13"></a><span class="section-number-4">3.1.7</span> Problems</h4>
 <div class="outline-text-4" id="text-problems">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -583,8 +631,8 @@ option in <code>emacs-eclim</code> itself.
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="tests"><a id="orgheadline13"></a><span class="section-number-4">3.1.7</span> Tests</h4>
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="tests"><a id="orgheadline14"></a><span class="section-number-4">3.1.8</span> Tests</h4>
 <div class="outline-text-4" id="text-tests">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -611,9 +659,8 @@ option in <code>emacs-eclim</code> itself.
 </div>
 </div>
 
-
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="problems-buffer"><a id="orgheadline15"></a><span class="section-number-3">3.2</span> Problems buffer</h3>
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="problems-buffer"><a id="orgheadline16"></a><span class="section-number-3">3.2</span> Problems buffer</h3>
 <div class="outline-text-3" id="text-problems-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -669,8 +716,8 @@ option in <code>emacs-eclim</code> itself.
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="projects-buffer"><a id="orgheadline16"></a><span class="section-number-3">3.3</span> Projects buffer</h3>
+<div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="projects-buffer"><a id="orgheadline17"></a><span class="section-number-3">3.3</span> Projects buffer</h3>
 <div class="outline-text-3" id="text-projects-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -769,7 +816,7 @@ option in <code>emacs-eclim</code> itself.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-30 Wed 23:05</p>
+<p class="date">Created: 2016-10-03 Mon 00:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

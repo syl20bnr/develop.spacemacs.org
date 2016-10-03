@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-30 Wed 23:05 -->
+<!-- 2016-10-03 Mon 00:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spell Checking layer</title>
@@ -172,6 +172,7 @@ for the JavaScript code in this tag.
 <li><a href="#spell-checker-configuration">2.2. Spell Checker Configuration</a></li>
 <li><a href="#disabling-by-default">2.3. Disabling by default</a></li>
 <li><a href="#enabling-auto-dictionary-mode">2.4. Enabling auto-dictionary-mode</a></li>
+<li><a href="#enable-auto-completion-popup">2.5. Enable auto-completion popup</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key Bindings</a></li>
@@ -183,13 +184,13 @@ for the JavaScript code in this tag.
 <h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer provides spell checking using <a href="http://www-sop.inria.fr/members/Manuel.Serrano/flyspell/flyspell.html">Flyspell</a> and <code>[[https://github.com/nschum/auto-dictionary-mode][auto-dictionary-mode]]</code>.
+This layer provides spell checking using <a href="http://www-sop.inria.fr/members/Manuel.Serrano/flyspell/flyspell.html">Flyspell</a> and <a href="https://github.com/nschum/auto-dictionary-mode">auto-dictionary-mode</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="install"><a id="orgheadline6"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="install"><a id="orgheadline7"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
@@ -230,8 +231,8 @@ toggled off with <code>SPC t S</code>. You can default this to off by setting th
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">spell-checking</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">spell-checking-enable-by-default</span> <span class="ATTRLIST">nil</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>spell-checking <span class="org-builtin">:variables</span> spell-checking-enable-by-default nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -249,8 +250,8 @@ the variable <code>spell-checking-enable-auto-dictionary</code> to something oth
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">spell-checking</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">spell-checking-enable-auto-dictionary</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>spell-checking <span class="org-builtin">:variables</span> spell-checking-enable-auto-dictionary t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -354,10 +355,27 @@ currently supported language:
 </table>
 </div>
 </div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="enable-auto-completion-popup"><a id="orgheadline6"></a><span class="section-number-3">2.5</span> Enable auto-completion popup</h3>
+<div class="outline-text-3" id="text-enable-auto-completion-popup">
+<p>
+To enable auto-completion popup when the point is idle on a misspelled word
+set the layer variable <code>enable-flyspell-auto-completion</code> to t:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>spell-checking <span class="org-builtin">:variables</span> =enable-flyspell-auto-completion= t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline7"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="key-bindings"><a id="orgheadline8"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -405,7 +423,7 @@ currently supported language:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-30 Wed 23:05</p>
+<p class="date">Created: 2016-10-03 Mon 00:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

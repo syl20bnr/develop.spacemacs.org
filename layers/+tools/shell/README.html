@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-30 Wed 23:04 -->
+<!-- 2016-10-03 Mon 00:55 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shell layer</title>
@@ -166,21 +166,23 @@ for the JavaScript code in this tag.
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#description">1. Description</a></li>
-<li><a href="#install">2. Install</a>
+<li><a href="#install">2. Install</a></li>
+<li><a href="#configuration">3. Configuration</a>
 <ul>
-<li><a href="#layer">2.1. Layer</a></li>
-<li><a href="#default-shell">2.2. Default shell</a></li>
-<li><a href="#default-shell-position-and-height">2.3. Default shell position and height</a></li>
-<li><a href="#set-shell-for-term-and-ansi-term">2.4. Set shell for term and ansi-term</a></li>
-<li><a href="#enable-em-smart-in-eshell">2.5. Enable em-smart in Eshell</a></li>
-<li><a href="#protect-your-eshell-prompt">2.6. Protect your Eshell prompt</a></li>
+<li><a href="#default-shell">3.1. Default shell</a></li>
+<li><a href="#default-shell-position-and-height">3.2. Default shell position and height</a></li>
+<li><a href="#set-shell-for-term-and-ansi-term">3.3. Set shell for term and ansi-term</a></li>
+<li><a href="#width-of-the-shell-popup-buffers">3.4. Width of the shell popup buffers</a></li>
+<li><a href="#enable-em-smart-in-eshell">3.5. Enable em-smart in Eshell</a></li>
+<li><a href="#protect-your-eshell-prompt">3.6. Protect your Eshell prompt</a></li>
+<li><a href="#fish-shell-and-ansi-term">3.7. Fish shell and ansi-term</a></li>
 </ul>
 </li>
-<li><a href="#eshell">3. Eshell</a></li>
-<li><a href="#key-bindings">4. Key bindings</a>
+<li><a href="#eshell">4. Eshell</a></li>
+<li><a href="#key-bindings">5. Key bindings</a>
 <ul>
-<li><a href="#multi-term">4.1. Multi-term</a></li>
-<li><a href="#eshell">4.2. Eshell</a></li>
+<li><a href="#multi-term">5.1. Multi-term</a></li>
+<li><a href="#eshell">5.2. Eshell</a></li>
 </ul>
 </li>
 </ul>
@@ -201,14 +203,9 @@ This layer configures the various shells available in Emacs.
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="install"><a id="orgheadline8"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="install"><a id="orgheadline2"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
-</div>
-
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="layer"><a id="orgheadline2"></a><span class="section-number-3">2.1</span> Layer</h3>
-<div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>shell</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
@@ -217,8 +214,13 @@ file.
 </div>
 </div>
 
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="configuration"><a id="orgheadline10"></a><span class="section-number-2">3</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+</div>
+
 <div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="default-shell"><a id="orgheadline3"></a><span class="section-number-3">2.2</span> Default shell</h3>
+<h3 id="default-shell"><a id="orgheadline3"></a><span class="section-number-3">3.1</span> Default shell</h3>
 <div class="outline-text-3" id="text-default-shell">
 <p>
 Emacs supports three types of shell:
@@ -248,8 +250,8 @@ to the following variables:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-2">shell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">shell-default-shell</span> '<span class="ATTRLIST">eshell</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> shell-default-shell 'eshell<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -260,7 +262,7 @@ The default shell is quickly accessible via a the default shortcut key <code>SPC
 </div>
 
 <div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="default-shell-position-and-height"><a id="orgheadline4"></a><span class="section-number-3">2.3</span> Default shell position and height</h3>
+<h3 id="default-shell-position-and-height"><a id="orgheadline4"></a><span class="section-number-3">3.2</span> Default shell position and height</h3>
 <div class="outline-text-3" id="text-default-shell-position-and-height">
 <p>
 It is possible to choose where the shell should pop up by setting the variable
@@ -271,17 +273,17 @@ percents with the variable <code>shell-default-height</code>. Default value is <
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-5">setq-default</span> <span class="ATTRLIST-4">dotspacemacs-configuration-layers</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-3">shell</span> <span class="org-builtin">:variables</span>
-          <span class="ATTRLIST-2">shell-default-position</span> '<span class="ATTRLIST-1">bottom</span>
-          <span class="ATTRLIST">shell-default-height</span> <span class="org-highlight-numbers-number">30</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span>
+           shell-default-position 'bottom
+           shell-default-height <span class="org-highlight-numbers-number">30</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
 <div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="set-shell-for-term-and-ansi-term"><a id="orgheadline5"></a><span class="section-number-3">2.4</span> Set shell for term and ansi-term</h3>
+<h3 id="set-shell-for-term-and-ansi-term"><a id="orgheadline5"></a><span class="section-number-3">3.3</span> Set shell for term and ansi-term</h3>
 <div class="outline-text-3" id="text-set-shell-for-term-and-ansi-term">
 <p>
 The default shell can be set by setting the variable <code>shell-default-term-shell</code>.
@@ -290,15 +292,33 @@ Default value is <code>/bin/bash</code>.
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-3">setq-default</span> <span class="ATTRLIST-2">dotspacemacs-configuration-layers</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-1">shell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST">shell-default-term-shell</span> <span class="org-string">"/bin/bash"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> shell-default-term-shell <span class="org-string">"/bin/bash"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
 <div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="enable-em-smart-in-eshell"><a id="orgheadline6"></a><span class="section-number-3">2.5</span> Enable em-smart in Eshell</h3>
+<h3 id="width-of-the-shell-popup-buffers"><a id="orgheadline6"></a><span class="section-number-3">3.4</span> Width of the shell popup buffers</h3>
+<div class="outline-text-3" id="text-width-of-the-shell-popup-buffers">
+<p>
+By default the popup buffer spans the full width of the current frame, if
+you prefer to spans only the width of the current window then set the
+layer variable <code>shell-default-full-span</code> to nil.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> shell-default-full-span nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="enable-em-smart-in-eshell"><a id="orgheadline7"></a><span class="section-number-3">3.5</span> Enable em-smart in Eshell</h3>
 <div class="outline-text-3" id="text-enable-em-smart-in-eshell">
 <p>
 From the <code>em-smart</code> documentation:
@@ -327,15 +347,15 @@ To enable <code>em-smart</code> put the following layer variable to non-nil:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-2">shell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">shell-enable-smart-eshell</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> shell-enable-smart-eshell t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="protect-your-eshell-prompt"><a id="orgheadline7"></a><span class="section-number-3">2.6</span> Protect your Eshell prompt</h3>
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="protect-your-eshell-prompt"><a id="orgheadline8"></a><span class="section-number-3">3.6</span> Protect your Eshell prompt</h3>
 <div class="outline-text-3" id="text-protect-your-eshell-prompt">
 <p>
 Comint mode (Shell mode) has good support for Evil mode as it inhibits movement
@@ -346,23 +366,82 @@ command. In Eshell you also kill the prompt, which is often unintended.
 </p>
 
 <p>
-By default this layer also protects the <code>ehsell</code> prompt. If you want to
+By default this layer also protects the <code>eshell</code> prompt. If you want to
 disable this protection you can set the variable <code>shell-protect-eshell-prompt</code>
 to nil.
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-2">shell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">shell-protect-eshell-prompt</span> <span class="ATTRLIST">nil</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> shell-protect-eshell-prompt nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="fish-shell-and-ansi-term"><a id="orgheadline9"></a><span class="section-number-3">3.7</span> Fish shell and ansi-term</h3>
+<div class="outline-text-3" id="text-fish-shell-and-ansi-term">
+<p>
+Making <code>fish</code> shell to work with <code>ansi-term</code> may be a challenge, here are
+some pointers to save you time to setup your environment correctly.
+</p>
+
+<p>
+First be sure <code>~/.terminfo</code> is setup correctly by running:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-fish"><span class="org-builtin">tic</span> -o ~/.terminfo <span class="org-string">$</span><span class="org-variable-name">TERMINFO/e/eterm-color</span>.ti
+</pre>
+</div>
+
+<p>
+You can locate the <code>eterm-colors.ti</code> file with:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-fish"><span class="org-builtin">locate</span> eterm-color.ti
+</pre>
+</div>
+
+<p>
+Then setup your fish configuration file (usually at <code>~/.config/fish/config.fish</code>)
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-fish"><span class="org-comment-delimiter"># </span><span class="org-comment">emacs ansi-term support</span>
+<span class="org-keyword">if</span> <span class="org-keyword">test</span> -n <span class="org-string">"$EMACS"</span>
+  <span class="org-keyword">set</span> <span class="org-negation-char">-x</span> <span class="org-variable-name">TERM</span> eterm-color
+<span class="org-keyword">end</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">this function may be required</span>
+<span class="org-keyword">function</span> <span class="org-function-name">fish_title</span>
+  <span class="org-builtin">true</span>
+<span class="org-keyword">end</span>
+</pre>
+</div>
+
+<p>
+Finally you may need to toggle truncated lines for some prompts to work
+correctly, in the function <code>dotspacemacs/user-config</code> of your dotfile add:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'term-mode-hook 'toggle-truncate-lines<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="eshell"><a id="orgheadline9"></a><span class="section-number-2">3</span> Eshell</h2>
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="eshell"><a id="orgheadline11"></a><span class="section-number-2">4</span> Eshell</h2>
 <div class="outline-text-2" id="text-eshell">
 <p>
 Some advanced configuration is setup for <code>eshell</code> in this layer:
@@ -387,8 +466,8 @@ installed)</li>
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline12"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-orgheadline14" class="outline-2">
+<h2 id="key-bindings"><a id="orgheadline14"></a><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -462,10 +541,15 @@ installed)</li>
 for instance pressing <code>2 SPC '​</code> will a second default shell, the
 number of shell is indicated on the mode-line.
 </p>
+
+<p>
+<b>Note:</b> Use the universal prefix argument <code>SPC u SPC '​</code> to open the shell
+in the current buffer instead of a popup.
+</p>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="multi-term"><a id="orgheadline10"></a><span class="section-number-3">4.1</span> Multi-term</h3>
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="multi-term"><a id="orgheadline12"></a><span class="section-number-3">5.1</span> Multi-term</h3>
 <div class="outline-text-3" id="text-multi-term">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -506,8 +590,8 @@ number of shell is indicated on the mode-line.
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="eshell"><a id="orgheadline11"></a><span class="section-number-3">4.2</span> Eshell</h3>
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="eshell"><a id="orgheadline13"></a><span class="section-number-3">5.2</span> Eshell</h3>
 <div class="outline-text-3" id="text-eshell">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -536,7 +620,7 @@ number of shell is indicated on the mode-line.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-30 Wed 23:04</p>
+<p class="date">Created: 2016-10-03 Mon 00:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

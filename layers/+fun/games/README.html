@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-30 Wed 23:05 -->
+<!-- 2016-10-03 Mon 00:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Games layer</title>
@@ -167,11 +167,16 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#description">1. Description</a></li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#key-bindings">3. Key bindings</a>
+<li><a href="#games-instructions">3. Games instructions</a>
 <ul>
 <li><a href="#2048">3.1. 2048</a></li>
 <li><a href="#pacmacs">3.2. Pacmacs</a></li>
 <li><a href="#tetris">3.3. Tetris</a></li>
+<li><a href="#typit">3.4. Typit</a>
+<ul>
+<li><a href="#create-a-new-dictionary">3.4.1. Create a new dictionary</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -197,6 +202,7 @@ The games available now are:
 <li>2048-game</li>
 <li>Pacmacs (Pacman for Emacs)</li>
 <li>Tetris</li>
+<li>Typit</li>
 </ul>
 </div>
 </div>
@@ -212,9 +218,9 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline6"></a><span class="section-number-2">3</span> Key bindings</h2>
-<div class="outline-text-2" id="text-key-bindings">
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="games-instructions"><a id="orgheadline8"></a><span class="section-number-2">3</span> Games instructions</h2>
+<div class="outline-text-2" id="text-games-instructions">
 <p>
 To run a game:
 </p>
@@ -339,6 +345,7 @@ Possible helm actions:
 </table>
 </div>
 </div>
+
 <div id="outline-container-orgheadline5" class="outline-3">
 <h3 id="tetris"><a id="orgheadline5"></a><span class="section-number-3">3.3</span> Tetris</h3>
 <div class="outline-text-3" id="text-tetris">
@@ -400,11 +407,86 @@ Possible helm actions:
 </table>
 </div>
 </div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="typit"><a id="orgheadline7"></a><span class="section-number-3">3.4</span> Typit</h3>
+<div class="outline-text-3" id="text-typit">
+<p>
+There is no specific key bindings for this game, just launch it and begin
+typing. Use <code>C-g</code> to exit the game at any time.
+</p>
+
+<p>
+There are two difficulties:
+</p>
+<ul class="org-ul">
+<li>beginner: use 200 most common words</li>
+<li>expert: use 1000 most common words</li>
+</ul>
+
+<p>
+By default a game duration is one minute.
+</p>
+
+<p>
+The game can be customized with the following variables:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Vsariable</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>typit-dict</code></td>
+<td class="org-left">Language dictionary to use (default is <code>english.txt</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>typit-dict-dir</code></td>
+<td class="org-left">A directory path where to find dictionaries</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>typit-line-length</code></td>
+<td class="org-left">Length of generated lines (default 80)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>typit-test-time</code></td>
+<td class="org-left">Duration of a game in seconds (default 60)</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="create-a-new-dictionary"><a id="orgheadline6"></a><span class="section-number-4">3.4.1</span> Create a new dictionary</h4>
+<div class="outline-text-4" id="text-create-a-new-dictionary">
+<p>
+To add a new dictionary, you need to create a text file named your-language.txt
+and put it under the dict directory. That file should contain 1000 most common
+words from the language, a word per line. Please make sure that it uses
+Unix-style (that is, LF) end-of-line sequence and the file ends with a newline.
+</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-30 Wed 23:05</p>
+<p class="date">Created: 2016-10-03 Mon 00:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

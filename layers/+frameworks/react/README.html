@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-30 Wed 23:05 -->
+<!-- 2016-10-03 Mon 00:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>React layer</title>
@@ -174,16 +174,12 @@ for the JavaScript code in this tag.
 <li><a href="#optional-configuration">3. Optional Configuration</a></li>
 <li><a href="#key-bindings">4. Key Bindings</a>
 <ul>
-<li><a href="#js2-mode">4.1. js2-mode</a></li>
-<li><a href="#folding-js2-mode">4.2. Folding (js2-mode)</a></li>
-<li><a href="#refactoring-js2-refactor">4.3. Refactoring (js2-refactor)</a></li>
-<li><a href="#formatting-web-beautify">4.4. Formatting (web-beautify)</a>
+<li><a href="#formatting-web-beautify">4.1. Formatting (web-beautify)</a>
 <ul>
-<li><a href="#documentation-js-doc">4.4.1. Documentation (js-doc)</a></li>
+<li><a href="#documentation-js-doc">4.1.1. Documentation (js-doc)</a></li>
 </ul>
 </li>
-<li><a href="#auto-complete-and-documentation-tern">4.5. Auto-complete and documentation (tern)</a></li>
-<li><a href="#json">4.6. JSON</a></li>
+<li><a href="#auto-complete-and-documentation-tern">4.2. Auto-complete and documentation (tern)</a></li>
 </ul>
 </li>
 </ul>
@@ -238,7 +234,7 @@ documentation features:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">$ <span class="ATTRLIST-2">npm</span> <span class="ATTRLIST-3">install</span> <span class="ATTRLIST-1">-g</span> <span class="ATTRLIST">tern</span>
+<pre class="src src-sh">$ npm install -g tern
 </pre>
 </div>
 
@@ -247,7 +243,7 @@ To use the on-the-fly syntax checking, install <code>eslint</code> with babel an
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">$ <span class="ATTRLIST-4">npm</span> <span class="ATTRLIST-5">install</span> <span class="ATTRLIST-3">-g</span> <span class="ATTRLIST-2">eslint</span> <span class="ATTRLIST-1">babel-eslint</span> <span class="ATTRLIST">eslint-plugin-react</span>
+<pre class="src src-sh">$ npm install -g eslint babel-eslint eslint-plugin-react
 </pre>
 </div>
 
@@ -261,7 +257,7 @@ In order to use automatic code formatting you need to install <code>js-beautify<
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">$ <span class="ATTRLIST-2">npm</span> <span class="ATTRLIST-3">install</span> <span class="ATTRLIST-1">-g</span> <span class="ATTRLIST">js-beautify</span>
+<pre class="src src-sh">$ npm install -g js-beautify
 </pre>
 </div>
 
@@ -270,29 +266,29 @@ Be sure to have the <code>e4x</code> option set to <code>true</code> on your <co
 </p>
 <div class="org-src-container">
 
-<pre class="src src-json"><span class="org-rainbow-delimiters-depth-1">{</span>
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-14">indent_size</span></span><span class="org-keyword">"</span>: <span class="org-highlight-numbers-number">2</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-13">indent_char</span></span><span class="org-keyword">"</span>: <span class="org-string">" "</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-13">eol</span></span><span class="org-keyword">"</span>: <span class="org-string">"\n"</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-13">indent_level</span></span><span class="org-keyword">"</span>: <span class="org-highlight-numbers-number">0</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-13">indent_with_tabs</span></span><span class="org-keyword">"</span>: <span class="org-constant">false</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-12">preserve_newlines</span></span><span class="org-keyword">"</span>: <span class="org-constant">true</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-13">max_preserve_newlines</span></span><span class="org-keyword">"</span>: <span class="org-highlight-numbers-number">2</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-11">jslint_happy</span></span><span class="org-keyword">"</span>: <span class="org-constant">false</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-10">space_after_anon_function</span></span><span class="org-keyword">"</span>: <span class="org-constant">false</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-9">brace_style</span></span><span class="org-keyword">"</span>: <span class="org-string">"collapse"</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-8">keep_array_indentation</span></span><span class="org-keyword">"</span>: <span class="org-constant">false</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-13">keep_function_indentation</span></span><span class="org-keyword">"</span>: <span class="org-constant">false</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-7">space_before_conditional</span></span><span class="org-keyword">"</span>: <span class="org-constant">true</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-6">break_chained_methods</span></span><span class="org-keyword">"</span>: <span class="org-constant">true</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-5">eval_code</span></span><span class="org-keyword">"</span>: <span class="org-constant">false</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-4">unescape_strings</span></span><span class="org-keyword">"</span>: <span class="org-constant">false</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-3">wrap_line_length</span></span><span class="org-keyword">"</span>: <span class="org-highlight-numbers-number">80</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-13">wrap_attributes</span></span><span class="org-keyword">"</span>: <span class="org-string">"auto"</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-2">wrap_attributes_indent_size</span></span><span class="org-keyword">"</span>: <span class="org-highlight-numbers-number">2</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST-1">e4x</span></span><span class="org-keyword">"</span>: <span class="org-constant">true</span>,
-  <span class="org-keyword">"</span><span class="org-keyword"><span class="ATTRLIST">end_with_newline</span></span><span class="org-keyword">"</span>: <span class="org-constant">true</span>
-<span class="org-rainbow-delimiters-depth-1">}</span>
+<pre class="src src-json">{
+  "indent_size": 2,
+  "indent_char": " ",
+  "eol": "\n",
+  "indent_level": 0,
+  "indent_with_tabs": false,
+  "preserve_newlines": true,
+  "max_preserve_newlines": 2,
+  "jslint_happy": false,
+  "space_after_anon_function": false,
+  "brace_style": "collapse",
+  "keep_array_indentation": false,
+  "keep_function_indentation": false,
+  "space_before_conditional": true,
+  "break_chained_methods": true,
+  "eval_code": false,
+  "unescape_strings": false,
+  "wrap_line_length": 80,
+  "wrap_attributes": "auto",
+  "wrap_attributes_indent_size": 2,
+  "e4x": true,
+  "end_with_newline": true
+}
 </pre>
 </div>
 </div>
@@ -311,15 +307,15 @@ For example to have a consistent 2 spaces indenting both on <code>js</code> and 
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-6">setq-default</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default
  <span class="org-comment-delimiter">;; </span><span class="org-comment">js2-mode</span>
- <span class="ATTRLIST-5">js2-basic-offset</span> <span class="org-highlight-numbers-number">2</span>
+ js2-basic-offset <span class="org-highlight-numbers-number">2</span>
  <span class="org-comment-delimiter">;; </span><span class="org-comment">web-mode</span>
- <span class="ATTRLIST-4">css-indent-offset</span> <span class="org-highlight-numbers-number">2</span>
- <span class="ATTRLIST-3">web-mode-markup-indent-offset</span> <span class="org-highlight-numbers-number">2</span>
- <span class="ATTRLIST-2">web-mode-css-indent-offset</span> <span class="org-highlight-numbers-number">2</span>
- <span class="ATTRLIST-1">web-mode-code-indent-offset</span> <span class="org-highlight-numbers-number">2</span>
- <span class="ATTRLIST">web-mode-attr-indent-offset</span> <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ css-indent-offset <span class="org-highlight-numbers-number">2</span>
+ web-mode-markup-indent-offset <span class="org-highlight-numbers-number">2</span>
+ web-mode-css-indent-offset <span class="org-highlight-numbers-number">2</span>
+ web-mode-code-indent-offset <span class="org-highlight-numbers-number">2</span>
+ web-mode-attr-indent-offset <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -328,279 +324,23 @@ And if you want to have 2 space indent also for element's attributes, concatenat
 </p>
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-5">with-eval-after-load</span></span> '<span class="ATTRLIST-4">web-mode</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-3">add-to-list</span> '<span class="ATTRLIST-2">web-mode-indentation-params</span> '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-args"</span> <span class="ATTRLIST-1">.</span> <span class="ATTRLIST">nil</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-3">add-to-list</span> '<span class="ATTRLIST-2">web-mode-indentation-params</span> '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-concats"</span> <span class="ATTRLIST-1">.</span> <span class="ATTRLIST">nil</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-3">add-to-list</span> '<span class="ATTRLIST-2">web-mode-indentation-params</span> '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-calls"</span> <span class="ATTRLIST-1">.</span> <span class="ATTRLIST">nil</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'web-mode
+  <span class="org-rainbow-delimiters-depth-2">(</span>add-to-list 'web-mode-indentation-params '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-args"</span> . nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>add-to-list 'web-mode-indentation-params '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-concats"</span> . nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>add-to-list 'web-mode-indentation-params '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-calls"</span> . nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-
-<div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline12"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="key-bindings"><a id="orgheadline8"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="js2-mode"><a id="orgheadline5"></a><span class="section-number-3">4.1</span> js2-mode</h3>
-<div class="outline-text-3" id="text-js2-mode">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m w</code></td>
-<td class="org-left">toggle js2-mode warnings and errors</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
 <div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="folding-js2-mode"><a id="orgheadline6"></a><span class="section-number-3">4.2</span> Folding (js2-mode)</h3>
-<div class="outline-text-3" id="text-folding-js2-mode">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m z c</code></td>
-<td class="org-left">hide element</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m z o</code></td>
-<td class="org-left">show element</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m z r</code></td>
-<td class="org-left">show all element</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m z e</code></td>
-<td class="org-left">toggle hide/show element</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m z F</code></td>
-<td class="org-left">toggle hide functions</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m z C</code></td>
-<td class="org-left">toggle hide comments</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="refactoring-js2-refactor"><a id="orgheadline7"></a><span class="section-number-3">4.3</span> Refactoring (js2-refactor)</h3>
-<div class="outline-text-3" id="text-refactoring-js2-refactor">
-<p>
-Bindings should match the plain emacs assignments.
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC x m j</code></td>
-<td class="org-left">move line down, while keeping commas correctly placed</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC x m k</code></td>
-<td class="org-left">move line up, while keeping commas correctly placed</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m k</code></td>
-<td class="org-left">deletes to the end of the line, but does not cross semantic boundaries</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r 3 i</code></td>
-<td class="org-left">converts ternary operator to if-statement</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r a g</code></td>
-<td class="org-left">creates a <code>/* global */</code> annotation if it is missing, and adds var to point to it</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r a o</code></td>
-<td class="org-left">replaces arguments to a function call with an object literal of named arguments</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r b a</code></td>
-<td class="org-left">moves the last child out of current function, if-statement, for-loop or while-loop</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r c a</code></td>
-<td class="org-left">converts a multiline array to one line</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r c o</code></td>
-<td class="org-left">converts a multiline object literal to one line</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r c u</code></td>
-<td class="org-left">converts a multiline function to one line (expecting semicolons as statement delimiters)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r e a</code></td>
-<td class="org-left">converts a one line array to multiline</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r e f</code></td>
-<td class="org-left">extracts the marked expressions into a new named function</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r e m</code></td>
-<td class="org-left">extracts the marked expressions out into a new method in an object literal</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r e o</code></td>
-<td class="org-left">converts a one line object literal to multiline</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r e u</code></td>
-<td class="org-left">converts a one line function to multiline (expecting semicolons as statement delimiters)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r e v</code></td>
-<td class="org-left">takes a marked expression and replaces it with a var</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r i g</code></td>
-<td class="org-left">creates a shortcut for a marked global by injecting it in the wrapping immediately invoked function expression</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r i p</code></td>
-<td class="org-left">changes the marked expression to a parameter in a local function</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r i v</code></td>
-<td class="org-left">replaces all instances of a variable with its initial value</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r l p</code></td>
-<td class="org-left">changes a parameter to a local var in a local function</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r l t</code></td>
-<td class="org-left">adds a console.log statement for what is at point (or region)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r r v</code></td>
-<td class="org-left">renames the variable on point and all occurrences in its lexical scope</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r s l</code></td>
-<td class="org-left">moves the next statement into current function, if-statement, for-loop, while-loop</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r s s</code></td>
-<td class="org-left">splits a <code>String</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r s v</code></td>
-<td class="org-left">splits a <code>var</code> with multiple vars declared into several <code>var</code> statements</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r t f</code></td>
-<td class="org-left">toggle between function declaration and function expression</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r u w</code></td>
-<td class="org-left">replaces the parent statement with the selected region</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r v t</code></td>
-<td class="org-left">changes local <code>var a</code> to be <code>this.a</code> instead</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r w i</code></td>
-<td class="org-left">wraps the entire buffer in an immediately invoked function expression</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r w l</code></td>
-<td class="org-left">wraps the region in a for-loop</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="formatting-web-beautify"><a id="orgheadline9"></a><span class="section-number-3">4.4</span> Formatting (web-beautify)</h3>
+<h3 id="formatting-web-beautify"><a id="orgheadline6"></a><span class="section-number-3">4.1</span> Formatting (web-beautify)</h3>
 <div class="outline-text-3" id="text-formatting-web-beautify">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -625,8 +365,8 @@ Bindings should match the plain emacs assignments.
 </table>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-4">
-<h4 id="documentation-js-doc"><a id="orgheadline8"></a><span class="section-number-4">4.4.1</span> Documentation (js-doc)</h4>
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="documentation-js-doc"><a id="orgheadline5"></a><span class="section-number-4">4.1.1</span> Documentation (js-doc)</h4>
 <div class="outline-text-4" id="text-documentation-js-doc">
 <p>
 You can check more <a href="https://github.com/mooz/js-doc/">here</a>
@@ -672,8 +412,8 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="auto-complete-and-documentation-tern"><a id="orgheadline10"></a><span class="section-number-3">4.5</span> Auto-complete and documentation (tern)</h3>
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="auto-complete-and-documentation-tern"><a id="orgheadline7"></a><span class="section-number-3">4.2</span> Auto-complete and documentation (tern)</h3>
 <div class="outline-text-3" id="text-auto-complete-and-documentation-tern">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -723,38 +463,11 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </table>
 </div>
 </div>
-
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="json"><a id="orgheadline11"></a><span class="section-number-3">4.6</span> JSON</h3>
-<div class="outline-text-3" id="text-json">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m h p</code></td>
-<td class="org-left">Get the path of the value at point</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-30 Wed 23:05</p>
+<p class="date">Created: 2016-10-03 Mon 00:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

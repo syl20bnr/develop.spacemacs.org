@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-30 Wed 23:04 -->
+<!-- 2016-10-03 Mon 00:55 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Chrome layer</title>
@@ -247,11 +247,11 @@ function based on <code>edit-server-url</code>, or fall back to
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-2">defun</span></span> <span class="org-function-name"><span class="ATTRLIST-1">dotspacemacs/user-config</span></span> <span class="org-rainbow-delimiters-depth-2">()</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Open github text areas as org buffers</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">currently they are opened as markdown</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST">setq</span> <span class="ATTRLIST-1">edit-server-url-major-mode-alist</span>
-      '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">"github\\.com"</span> <span class="ATTRLIST-1">.</span> <span class="ATTRLIST-1">org-mode</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>setq edit-server-url-major-mode-alist
+      '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">"github\\.com"</span> . org-mode<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -261,20 +261,20 @@ To change frame defaults (width, height, etc. use <code>edit-server-new-frame-al
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-3">add-to-list</span> '<span class="ATTRLIST-2">edit-server-new-frame-alist</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-1">width</span>  <span class="ATTRLIST">.</span> <span class="org-highlight-numbers-number">140</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-3">add-to-list</span> '<span class="ATTRLIST-2">edit-server-new-frame-alist</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST">height</span> <span class="ATTRLIST">.</span> <span class="org-highlight-numbers-number">60</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'edit-server-new-frame-alist '<span class="org-rainbow-delimiters-depth-2">(</span>width  . <span class="org-highlight-numbers-number">140</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'edit-server-new-frame-alist '<span class="org-rainbow-delimiters-depth-2">(</span>height . <span class="org-highlight-numbers-number">60</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
 If you want Emacs to switch focus to Chrome after done editing, you can utilize <code>edit-server-done-hook</code>.
 Emacs cannot control focus of windows for external apps, so you need to use some sort of command line window manager like <code>wmctrl</code>.
-The following example works on OS X:  
+The following example works on OS X:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">add-hook</span> '<span class="ATTRLIST-1">edit-server-done-hook</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword"><span class="ATTRLIST-1">lambda</span></span> <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST">shell-command</span> <span class="org-string">"open -a \"Google Chrome\""</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'edit-server-done-hook <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>shell-command <span class="org-string">"open -a \"Google Chrome\""</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -282,7 +282,7 @@ The following example works on OS X:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-30 Wed 23:04</p>
+<p class="date">Created: 2016-10-03 Mon 00:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

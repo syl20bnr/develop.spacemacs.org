@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-30 Wed 23:05 -->
+<!-- 2016-10-03 Mon 00:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gnus layer</title>
@@ -218,13 +218,13 @@ following:
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Get email, and store in nnml</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-3">setq</span> <span class="ATTRLIST-2">gnus-secondary-select-methods</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>setq gnus-secondary-select-methods
   '<span class="org-rainbow-delimiters-depth-2">(</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-1">nntp</span> <span class="org-string">"gmane"</span>
-           <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST">nntp-address</span> <span class="org-string">"news.gmane.org"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-1">nntp</span> <span class="org-string">"news.eternal-september.org"</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-1">nntp</span> <span class="org-string">"nntp.aioe.org"</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-1">nntp</span> <span class="org-string">"news.gwene.org"</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>nntp <span class="org-string">"gmane"</span>
+           <span class="org-rainbow-delimiters-depth-4">(</span>nntp-address <span class="org-string">"news.gmane.org"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>nntp <span class="org-string">"news.eternal-september.org"</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>nntp <span class="org-string">"nntp.aioe.org"</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>nntp <span class="org-string">"news.gwene.org"</span><span class="org-rainbow-delimiters-depth-3">)</span>
     <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -240,39 +240,39 @@ For adding RSS Feeds please see the <a href="#keybindings">keybindings section</
 <div class="outline-text-2" id="text-configuring-gmail">
 <p>
 To configure Gnus with gmail support you can add the following to your
-<code>.spacemacs</code> file. 
+<code>.spacemacs</code> file.
 </p>
 
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Get email, and store in nnml</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-12">setq</span> <span class="ATTRLIST-11">gnus-secondary-select-methods</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>setq gnus-secondary-select-methods
 '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-10">nnimap</span> <span class="org-string">"gmail"</span>
-           <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-9">nnimap-address</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>nnimap <span class="org-string">"gmail"</span>
+           <span class="org-rainbow-delimiters-depth-4">(</span>nnimap-address
             <span class="org-string">"imap.gmail.com"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-           <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-8">nnimap-server-port</span> <span class="org-highlight-numbers-number">993</span><span class="org-rainbow-delimiters-depth-4">)</span>
-           <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-7">nnimap-stream</span> <span class="ATTRLIST-8">ssl</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+           <span class="org-rainbow-delimiters-depth-4">(</span>nnimap-server-port <span class="org-highlight-numbers-number">993</span><span class="org-rainbow-delimiters-depth-4">)</span>
+           <span class="org-rainbow-delimiters-depth-4">(</span>nnimap-stream ssl<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
   <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Send email via Gmail:</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-12">setq</span> <span class="ATTRLIST-8">message-send-mail-function</span> '<span class="ATTRLIST-6">smtpmail-send-it</span>
-  <span class="ATTRLIST-5">smtpmail-default-smtp-server</span> <span class="org-string">"smtp.gmail.com"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>setq message-send-mail-function 'smtpmail-send-it
+  smtpmail-default-smtp-server <span class="org-string">"smtp.gmail.com"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Archive outgoing email in Sent folder on imap.gmail.com:</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-12">setq</span> <span class="ATTRLIST-4">gnus-message-archive-method</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-10">nnimap</span> <span class="org-string">"imap.gmail.com"</span><span class="org-rainbow-delimiters-depth-2">)</span>
-    <span class="ATTRLIST-3">gnus-message-archive-group</span> <span class="org-string">"[Gmail]/Sent Mail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>setq gnus-message-archive-method '<span class="org-rainbow-delimiters-depth-2">(</span>nnimap <span class="org-string">"imap.gmail.com"</span><span class="org-rainbow-delimiters-depth-2">)</span>
+    gnus-message-archive-group <span class="org-string">"[Gmail]/Sent Mail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">set return email address based on incoming email address</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-12">setq</span> <span class="ATTRLIST-8">gnus-posting-styles</span>
-    '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-2">header</span> <span class="org-string">"to"</span> <span class="org-string">"address@outlook.com"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-       <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-8">address</span> <span class="org-string">"address@outlook.com"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-2">header</span> <span class="org-string">"to"</span> <span class="org-string">"address@gmail.com"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-     <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-8">address</span> <span class="org-string">"address@gmail.com"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>setq gnus-posting-styles
+    '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>header <span class="org-string">"to"</span> <span class="org-string">"address@outlook.com"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+       <span class="org-rainbow-delimiters-depth-4">(</span>address <span class="org-string">"address@outlook.com"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>header <span class="org-string">"to"</span> <span class="org-string">"address@gmail.com"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+     <span class="org-rainbow-delimiters-depth-4">(</span>address <span class="org-string">"address@gmail.com"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">store email in ~/gmail directory</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-12">setq</span> <span class="ATTRLIST-1">nnml-directory</span> <span class="org-string">"~/gmail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-12">setq</span> <span class="ATTRLIST">message-directory</span> <span class="org-string">"~/gmail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>setq nnml-directory <span class="org-string">"~/gmail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>setq message-directory <span class="org-string">"~/gmail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -391,7 +391,7 @@ Basic and Spacemacs specific keybindings can be found in the following table.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-30 Wed 23:05</p>
+<p class="date">Created: 2016-10-03 Mon 00:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

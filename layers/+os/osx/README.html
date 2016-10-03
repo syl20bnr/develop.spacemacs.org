@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-30 Wed 23:04 -->
+<!-- 2016-10-03 Mon 00:55 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>OSX layer</title>
@@ -172,6 +172,7 @@ for the JavaScript code in this tag.
 <li><a href="#layer">3.1. Layer</a>
 <ul>
 <li><a href="#use-with-non-us-keyboard-layouts">3.1.1. Use with non-US keyboard layouts</a></li>
+<li><a href="#define-words-using-os-x-dictionary">3.1.2. Define words using OS X Dictionary</a></li>
 </ul>
 </li>
 <li><a href="#coreutils">3.2. Coreutils</a></li>
@@ -192,10 +193,9 @@ for the JavaScript code in this tag.
 <h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-Spacemacs is not just emacs+vim. It can have OSX keybindings too!
-This layer globally defines common OSX keybindings. <code>⌘</code> is set to
-<code>super</code> and <code>⌥</code> is set to <code>meta</code>. Aside from that, there's nothing
-much, really.
+Spacemacs is not just emacs+vim. It can have OSX keybindings too! This layer
+globally defines common OSX keybindings. <code>⌘</code> is set to <code>super</code> and <code>⌥</code> is set to
+<code>meta</code>. Aside from that, there's nothing much, really.
 </p>
 
 <p>
@@ -208,25 +208,24 @@ While in <code>dired</code> this layer will try to use <code>gls</code> instead 
 <h2 id="philosophy"><a id="orgheadline2"></a><span class="section-number-2">2</span> Philosophy</h2>
 <div class="outline-text-2" id="text-philosophy">
 <p>
-While this layer enables common OSX bindings, it does not implement
-OSX navigation keybindings. Spacemacs is meant to be used with evil,
-and we encourage you to do so :)
+While this layer enables common OSX bindings, it does not implement OSX
+navigation keybindings. Spacemacs is meant to be used with evil, and we
+encourage you to do so :)
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="install"><a id="orgheadline6"></a><span class="section-number-2">3</span> Install</h2>
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="install"><a id="orgheadline7"></a><span class="section-number-2">3</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="layer"><a id="orgheadline4"></a><span class="section-number-3">3.1</span> Layer</h3>
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="layer"><a id="orgheadline5"></a><span class="section-number-3">3.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>osx</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
-file.
+add <code>osx</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </p>
 </div>
 
@@ -241,8 +240,8 @@ for e.g. Finnish and Swedish keyboard layouts, you'll probably want to leave the
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span> '<span class="org-rainbow-delimiters-depth-2">(</span>
-   <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">osx</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">osx-use-option-as-meta</span> <span class="ATTRLIST">nil</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+   <span class="org-rainbow-delimiters-depth-3">(</span>osx <span class="org-builtin">:variables</span> osx-use-option-as-meta nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -255,15 +254,49 @@ key.
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">setq-default</span> <span class="ATTRLIST-1">mac-right-option-modifier</span> <span class="ATTRLIST">nil</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default mac-right-option-modifier nil<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="define-words-using-os-x-dictionary"><a id="orgheadline4"></a><span class="section-number-4">3.1.2</span> Define words using OS X Dictionary</h4>
+<div class="outline-text-4" id="text-define-words-using-os-x-dictionary">
+<p>
+This layer by default enables defining words under point <code>SPC x w d</code> using OS X
+Dictionary. In some cases you might want to manually setup dictionary to use.
+For example,
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+   <span class="org-rainbow-delimiters-depth-3">(</span>osx <span class="org-builtin">:variables</span> osx-dictionary-dictionary-choice <span class="org-string">"English"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+To get the list of available dictionaries call <code>osx/list-available-dictionaries</code>
+function.
+</p>
+
+<p>
+You can disable it by setting <code>osx-use-dictionary-app</code> variable to <code>nil</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+   <span class="org-rainbow-delimiters-depth-3">(</span>osx <span class="org-builtin">:variables</span> osx-use-dictionary-app nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="coreutils"><a id="orgheadline5"></a><span class="section-number-3">3.2</span> Coreutils</h3>
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="coreutils"><a id="orgheadline6"></a><span class="section-number-3">3.2</span> Coreutils</h3>
 <div class="outline-text-3" id="text-coreutils">
 <p>
 To get <code>gls</code> install coreutils homebrew:
@@ -271,15 +304,15 @@ To get <code>gls</code> install coreutils homebrew:
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span class="ATTRLIST-1">brew</span> <span class="ATTRLIST-2">install</span> <span class="ATTRLIST">coreutils</span>
+<pre class="src src-sh">brew install coreutils
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline7"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="key-bindings"><a id="orgheadline8"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -360,13 +393,18 @@ To get <code>gls</code> install coreutils homebrew:
 <td class="org-left"><code>⌃ ⌘ f</code></td>
 <td class="org-left">Toggle fullscreen</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>SPC x w d</code></td>
+<td class="org-left">Define word under the point</td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="future-work"><a id="orgheadline8"></a><span class="section-number-2">5</span> Future Work</h2>
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="future-work"><a id="orgheadline9"></a><span class="section-number-2">5</span> Future Work</h2>
 <div class="outline-text-2" id="text-future-work">
 <ul class="org-ul">
 <li>Allow user to choose from either <code>hyper</code> or <code>super</code> as <code>⌘</code>. This is an option
@@ -378,7 +416,7 @@ that is supported cross-platform.</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-30 Wed 23:04</p>
+<p class="date">Created: 2016-10-03 Mon 00:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

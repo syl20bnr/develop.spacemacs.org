@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-30 Wed 23:05 -->
+<!-- 2016-10-03 Mon 00:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Org layer</title>
@@ -168,7 +168,8 @@ for the JavaScript code in this tag.
 <li><a href="#description">1. Description</a>
 <ul>
 <li><a href="#features">1.1. Features:</a></li>
-<li><a href="#important-note">1.2. Important Note</a></li>
+<li><a href="#bibtex">1.2. BibTeX</a></li>
+<li><a href="#important-note">1.3. Important Note</a></li>
 </ul>
 </li>
 <li><a href="#install">2. Install</a>
@@ -176,7 +177,9 @@ for the JavaScript code in this tag.
 <li><a href="#layer">2.1. Layer</a></li>
 <li><a href="#github-support">2.2. Github support</a></li>
 <li><a href="#gnuplot-support">2.3. Gnuplot support</a></li>
-<li><a href="#different-bullets">2.4. Different bullets</a></li>
+<li><a href="#revealjs-support">2.4. Reveal.js support</a></li>
+<li><a href="#different-bullets">2.5. Different bullets</a></li>
+<li><a href="#project-support">2.6. Project support</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key bindings</a>
@@ -185,7 +188,7 @@ for the JavaScript code in this tag.
 <li><a href="#org-with-evil-org-mode">3.2. Org with evil-org-mode</a>
 <ul>
 <li><a href="#tables">3.2.1. Tables</a></li>
-<li><a href="#tree-">3.2.2. Tree</a></li>
+<li><a href="#tree">3.2.2. Tree</a></li>
 <li><a href="#element-insertion">3.2.3. Element insertion</a></li>
 <li><a href="#links">3.2.4. Links</a></li>
 <li><a href="#emphasis">3.2.5. Emphasis</a></li>
@@ -202,8 +205,9 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#pomodoro">3.5. Pomodoro</a></li>
 <li><a href="#presentation">3.6. Presentation</a></li>
-<li><a href="#org-repo-todo">3.7. Org-repo-todo</a></li>
-<li><a href="#org-mime">3.8. Org-MIME</a></li>
+<li><a href="#org-mime">3.7. Org-MIME</a></li>
+<li><a href="#org-download">3.8. Org-download</a></li>
+<li><a href="#org-projectile">3.9. Org-projectile</a></li>
 </ul>
 </li>
 </ul>
@@ -215,11 +219,11 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="description"><a id="orgheadline3"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="description"><a id="orgheadline4"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer enables  <a href="http://orgmode.org/">org mode</a> for Spacemacs.
+This layer enables <a href="http://orgmode.org/">org mode</a> for Spacemacs.
 </p>
 </div>
 
@@ -230,14 +234,25 @@ This layer enables  <a href="http://orgmode.org/">org mode</a> for Spacemacs.
 <li>Vim inspired key bindings are provided by <a href="https://github.com/edwtjo/evil-org-mode">evil-org-mode</a></li>
 <li>Nicer bullet via <a href="https://github.com/sabof/org-bullets">org-bullets</a></li>
 <li>A <a href="http://pomodorotechnique.com/">pomodoro method</a> integration via <a href="https://github.com/lolownia/org-pomodoro">org-pomodoro</a></li>
-<li>TODO capture via <a href="https://github.com/waymondo/org-repo-todo">org-repo-todo</a></li>
-<li>presentation mode via <a href="https://github.com/rlister/org-present">org-present</a></li>
+<li>Presentation mode via <a href="https://github.com/rlister/org-present">org-present</a></li>
+<li>Insertion of images via <a href="https://github.com/abo-abo/org-download">org-download</a></li>
+<li>Project-specific TODOs via <a href="https://github.com/IvanMalison/org-projectile">org-projectile</a></li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="important-note"><a id="orgheadline2"></a><span class="section-number-3">1.2</span> Important Note</h3>
+<h3 id="bibtex"><a id="orgheadline2"></a><span class="section-number-3">1.2</span> BibTeX</h3>
+<div class="outline-text-3" id="text-bibtex">
+<p>
+For more extensive support of references through BibTeX files, have a look at
+the <a href="../+lang/bibtex">BibTeX layer</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="important-note"><a id="orgheadline3"></a><span class="section-number-3">1.3</span> Important Note</h3>
 <div class="outline-text-3" id="text-important-note">
 <p>
 Since version 0.104, spacemacs uses the <code>org</code> version from the org ELPA
@@ -248,14 +263,14 @@ will be loaded and will conflict.
 
 <p>
 Because of autoloading, calling to <code>org</code> functions will trigger the loading up
-of the <code>org</code> shipped with emacs wich will induce conflicts.
+of the <code>org</code> shipped with emacs which will induce conflicts.
 One way to avoid conflict is to wrap your <code>org</code> config code in a
 <code>with-eval-after-load</code> block like this:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-1">with-eval-after-load</span></span> '<span class="ATTRLIST">org</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'org
   <span class="org-comment-delimiter">;; </span><span class="org-comment">here goes your Org config :)</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">....</span>
   <span class="org-rainbow-delimiters-depth-1">)</span>
@@ -265,13 +280,13 @@ One way to avoid conflict is to wrap your <code>org</code> config code in a
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="install"><a id="orgheadline8"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="install"><a id="orgheadline11"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="layer"><a id="orgheadline4"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="layer"><a id="orgheadline5"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -281,8 +296,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="github-support"><a id="orgheadline5"></a><span class="section-number-3">2.2</span> Github support</h3>
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="github-support"><a id="orgheadline6"></a><span class="section-number-3">2.2</span> Github support</h3>
 <div class="outline-text-3" id="text-github-support">
 <p>
 To install Github related extensions like <a href="https://github.com/larstvei/ox-gfm">ox-gfm</a> to export to Github
@@ -291,16 +306,15 @@ flavored markdown set the variable <code>org-enable-github-support</code> to <co
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span> '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">org</span> <span class="org-builtin">:variables</span>
-       <span class="ATTRLIST-1">org-enable-github-support</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-github-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="gnuplot-support"><a id="orgheadline6"></a><span class="section-number-3">2.3</span> Gnuplot support</h3>
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="gnuplot-support"><a id="orgheadline7"></a><span class="section-number-3">2.3</span> Gnuplot support</h3>
 <div class="outline-text-3" id="text-gnuplot-support">
 <p>
 Org-mode support the plotting of data within tables through <a href="http://www.gnuplot.info/">Gnuplot</a> as
@@ -312,8 +326,37 @@ variable.
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="different-bullets"><a id="orgheadline7"></a><span class="section-number-3">2.4</span> Different bullets</h3>
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="revealjs-support"><a id="orgheadline8"></a><span class="section-number-3">2.4</span> Reveal.js support</h3>
+<div class="outline-text-3" id="text-revealjs-support">
+<p>
+To enable the export of your org file as a <a href="http://lab.hakim.se/reveal-js/">reveal.js</a> presentation, set the
+variable <code>org-enable-reveal-js-support</code> to <code>t</code>. This will install the <a href="https://github.com/yjwen/org-reveal/">org-reveal</a>
+extension.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+ '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-reveal-js-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+In order to be able to use org-reveal, download <code>reveal.js</code> from its
+<a href="http://lab.hakim.se/reveal-js/#/">homepage</a> and set <code>org-reveal-js</code> to the
+download path, as described in the <a href="https://github.com/yjwen/org-reveal#obtain-revealjs">manual</a>. Alternatively, add the following line
+to each <code>.org</code> file you want to process:
+</p>
+
+<pre class="example">
+#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/3.0.0/
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="different-bullets"><a id="orgheadline9"></a><span class="section-number-3">2.5</span> Different bullets</h3>
 <div class="outline-text-3" id="text-different-bullets">
 <p>
 You can tweak the bullets displayed in the org buffer in the function
@@ -323,20 +366,53 @@ You can tweak the bullets displayed in the org buffer in the function
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq</span> <span class="ATTRLIST">org-bullets-bullet-list</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"&#9632;"</span> <span class="org-string">"&#9670;"</span> <span class="org-string">"&#9650;"</span> <span class="org-string">"&#9654;"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq org-bullets-bullet-list '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"&#9632;"</span> <span class="org-string">"&#9670;"</span> <span class="org-string">"&#9650;"</span> <span class="org-string">"&#9654;"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="project-support"><a id="orgheadline10"></a><span class="section-number-3">2.6</span> Project support</h3>
+<div class="outline-text-3" id="text-project-support">
+<p>
+Set the layer variable <code>org-projectile-file</code> to the filename where you want to
+store project-specific TODOs. If this is an absolute path, all todos will be
+stored in the same file (organized by project), whereas if it is just a single
+filename, todos will be stored in each project root.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-projectile-file <span class="org-string">"TODOs.org"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+The TODO files are not added to the agenda automatically. You can do this with
+the following snippet. Note that this may have unintended consequences until
+<a href="https://github.com/IvanMalison/org-projectile/issues/10">this bug</a> is fixed.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'org-agenda
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">require</span> '<span class="org-constant">org-projectile</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>push <span class="org-rainbow-delimiters-depth-3">(</span>org-projectile:todo-files<span class="org-rainbow-delimiters-depth-3">)</span> org-agenda-files<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline26" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline26"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-orgheadline30" class="outline-2">
+<h2 id="key-bindings"><a id="orgheadline30"></a><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="org"><a id="orgheadline9"></a><span class="section-number-3">3.1</span> Org</h3>
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="org"><a id="orgheadline12"></a><span class="section-number-3">3.1</span> Org</h3>
 <div class="outline-text-3" id="text-org">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -412,23 +488,13 @@ You can tweak the bullets displayed in the org buffer in the function
 <td class="org-left"><code>SPC C c</code></td>
 <td class="org-left">org-capture</td>
 </tr>
-
-<tr>
-<td class="org-left"><code>SPC C t</code></td>
-<td class="org-left">ort/capture-todo</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC C T</code></td>
-<td class="org-left">ort/capture-checkitem</td>
-</tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="org-with-evil-org-mode"><a id="orgheadline17"></a><span class="section-number-3">3.2</span> Org with evil-org-mode</h3>
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="org-with-evil-org-mode"><a id="orgheadline20"></a><span class="section-number-3">3.2</span> Org with evil-org-mode</h3>
 <div class="outline-text-3" id="text-org-with-evil-org-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -633,8 +699,8 @@ You can tweak the bullets displayed in the org buffer in the function
 </table>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-4">
-<h4 id="tables"><a id="orgheadline10"></a><span class="section-number-4">3.2.1</span> Tables</h4>
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="tables"><a id="orgheadline13"></a><span class="section-number-4">3.2.1</span> Tables</h4>
 <div class="outline-text-4" id="text-tables">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -790,9 +856,9 @@ You can tweak the bullets displayed in the org buffer in the function
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="tree-"><a id="orgheadline11"></a><span class="section-number-4">3.2.2</span> Tree</h4>
-<div class="outline-text-4" id="text-tree-">
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="tree"><a id="orgheadline14"></a><span class="section-number-4">3.2.2</span> Tree</h4>
+<div class="outline-text-4" id="text-tree">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -991,8 +1057,8 @@ You can tweak the bullets displayed in the org buffer in the function
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="element-insertion"><a id="orgheadline12"></a><span class="section-number-4">3.2.3</span> Element insertion</h4>
+<div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="element-insertion"><a id="orgheadline15"></a><span class="section-number-4">3.2.3</span> Element insertion</h4>
 <div class="outline-text-4" id="text-element-insertion">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1020,6 +1086,11 @@ You can tweak the bullets displayed in the org buffer in the function
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC m h s</code></td>
+<td class="org-left">org-insert-subheading</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m i f</code></td>
 <td class="org-left">org-insert-footnote</td>
 </tr>
@@ -1033,8 +1104,8 @@ You can tweak the bullets displayed in the org buffer in the function
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="links"><a id="orgheadline13"></a><span class="section-number-4">3.2.4</span> Links</h4>
+<div id="outline-container-orgheadline16" class="outline-4">
+<h4 id="links"><a id="orgheadline16"></a><span class="section-number-4">3.2.4</span> Links</h4>
 <div class="outline-text-4" id="text-links">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1060,8 +1131,8 @@ You can tweak the bullets displayed in the org buffer in the function
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="emphasis"><a id="orgheadline14"></a><span class="section-number-4">3.2.5</span> Emphasis</h4>
+<div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="emphasis"><a id="orgheadline17"></a><span class="section-number-4">3.2.5</span> Emphasis</h4>
 <div class="outline-text-4" id="text-emphasis">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1117,8 +1188,8 @@ You can tweak the bullets displayed in the org buffer in the function
 </div>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="tagging"><a id="orgheadline15"></a><span class="section-number-4">3.2.6</span> Tagging</h4>
+<div id="outline-container-orgheadline18" class="outline-4">
+<h4 id="tagging"><a id="orgheadline18"></a><span class="section-number-4">3.2.6</span> Tagging</h4>
 <div class="outline-text-4" id="text-tagging">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1144,8 +1215,8 @@ You can tweak the bullets displayed in the org buffer in the function
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-4">
-<h4 id="navigating-in-calendar"><a id="orgheadline16"></a><span class="section-number-4">3.2.7</span> Navigating in calendar</h4>
+<div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="navigating-in-calendar"><a id="orgheadline19"></a><span class="section-number-4">3.2.7</span> Navigating in calendar</h4>
 <div class="outline-text-4" id="text-navigating-in-calendar">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1207,8 +1278,8 @@ You can tweak the bullets displayed in the org buffer in the function
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-3">
-<h3 id="capture-buffers-and-src-blocks"><a id="orgheadline18"></a><span class="section-number-3">3.3</span> Capture buffers and src blocks</h3>
+<div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="capture-buffers-and-src-blocks"><a id="orgheadline21"></a><span class="section-number-3">3.3</span> Capture buffers and src blocks</h3>
 <div class="outline-text-3" id="text-capture-buffers-and-src-blocks">
 <p>
 <code>org-capture-mode</code> and <code>org-src-mode</code> both support the confirm and abort
@@ -1264,14 +1335,14 @@ conventions.
 </div>
 </div>
 
-<div id="outline-container-orgheadline21" class="outline-3">
-<h3 id="org-agenda"><a id="orgheadline21"></a><span class="section-number-3">3.4</span> Org agenda</h3>
+<div id="outline-container-orgheadline24" class="outline-3">
+<h3 id="org-agenda"><a id="orgheadline24"></a><span class="section-number-3">3.4</span> Org agenda</h3>
 <div class="outline-text-3" id="text-org-agenda">
 </div>
 
 
-<div id="outline-container-orgheadline19" class="outline-4">
-<h4 id="keybindings"><a id="orgheadline19"></a><span class="section-number-4">3.4.1</span> Keybindings</h4>
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="keybindings"><a id="orgheadline22"></a><span class="section-number-4">3.4.1</span> Keybindings</h4>
 <div class="outline-text-4" id="text-keybindings">
 <p>
 The evilified org agenda supports the following bindings:
@@ -1325,6 +1396,11 @@ The evilified org agenda supports the following bindings:
 <tr>
 <td class="org-left"><code>SPC m O</code></td>
 <td class="org-left">org-agenda-clock-out</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m p</code></td>
+<td class="org-left">org-pomodoro (if package is used)</td>
 </tr>
 
 <tr>
@@ -1396,8 +1472,8 @@ The evilified org agenda supports the following bindings:
 </div>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-4">
-<h4 id="org-agenda-transient-state"><a id="orgheadline20"></a><span class="section-number-4">3.4.2</span> Org agenda transient state</h4>
+<div id="outline-container-orgheadline23" class="outline-4">
+<h4 id="org-agenda-transient-state"><a id="orgheadline23"></a><span class="section-number-4">3.4.2</span> Org agenda transient state</h4>
 <div class="outline-text-4" id="text-org-agenda-transient-state">
 <p>
 Use <code>M-SPC</code> or <code>s-M-SPC</code> in an org agenda buffer to activate its transient state.
@@ -1738,8 +1814,8 @@ are listed bellow.
 </div>
 </div>
 
-<div id="outline-container-orgheadline22" class="outline-3">
-<h3 id="pomodoro"><a id="orgheadline22"></a><span class="section-number-3">3.5</span> Pomodoro</h3>
+<div id="outline-container-orgheadline25" class="outline-3">
+<h3 id="pomodoro"><a id="orgheadline25"></a><span class="section-number-3">3.5</span> Pomodoro</h3>
 <div class="outline-text-3" id="text-pomodoro">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1765,8 +1841,8 @@ are listed bellow.
 </div>
 </div>
 
-<div id="outline-container-orgheadline23" class="outline-3">
-<h3 id="presentation"><a id="orgheadline23"></a><span class="section-number-3">3.6</span> Presentation</h3>
+<div id="outline-container-orgheadline26" class="outline-3">
+<h3 id="presentation"><a id="orgheadline26"></a><span class="section-number-3">3.6</span> Presentation</h3>
 <div class="outline-text-3" id="text-presentation">
 <p>
 org-present must be activated explicitly by typing: <code>SPC SPC org-present</code>
@@ -1806,35 +1882,8 @@ org-present must be activated explicitly by typing: <code>SPC SPC org-present</c
 </div>
 </div>
 
-<div id="outline-container-orgheadline24" class="outline-3">
-<h3 id="org-repo-todo"><a id="orgheadline24"></a><span class="section-number-3">3.7</span> Org-repo-todo</h3>
-<div class="outline-text-3" id="text-org-repo-todo">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m g t</code></td>
-<td class="org-left">ort/goto-todos</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgheadline25" class="outline-3">
-<h3 id="org-mime"><a id="orgheadline25"></a><span class="section-number-3">3.8</span> Org-MIME</h3>
+<div id="outline-container-orgheadline27" class="outline-3">
+<h3 id="org-mime"><a id="orgheadline27"></a><span class="section-number-3">3.7</span> Org-MIME</h3>
 <div class="outline-text-3" id="text-org-mime">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1864,11 +1913,80 @@ org-present must be activated explicitly by typing: <code>SPC SPC org-present</c
 </table>
 </div>
 </div>
+
+<div id="outline-container-orgheadline28" class="outline-3">
+<h3 id="org-download"><a id="orgheadline28"></a><span class="section-number-3">3.8</span> Org-download</h3>
+<div class="outline-text-3" id="text-org-download">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m i s</code></td>
+<td class="org-left">Take screenshot</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i y</code></td>
+<td class="org-left">Yank image url</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline29" class="outline-3">
+<h3 id="org-projectile"><a id="orgheadline29"></a><span class="section-number-3">3.9</span> Org-projectile</h3>
+<div class="outline-text-3" id="text-org-projectile">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC a o p</code></td>
+<td class="org-left">Capture a TODO for the current project</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC u SPC a o p</code></td>
+<td class="org-left">Capture a TODO for any given project (choose from list)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC p o</code></td>
+<td class="org-left">Go to the TODOs for the current project</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-30 Wed 23:05</p>
+<p class="date">Created: 2016-10-03 Mon 00:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

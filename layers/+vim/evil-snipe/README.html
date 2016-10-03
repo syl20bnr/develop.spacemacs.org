@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-30 Wed 23:04 -->
+<!-- 2016-10-03 Mon 00:55 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Evil-snipe layer</title>
@@ -242,8 +242,8 @@ layer variable <code>evil-snipe-enable-alternate-f-and-t-behaviors</code> to <co
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">evil-snipe</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">evil-snipe-enable-alternate-f-and-t-behaviors</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>evil-snipe <span class="org-builtin">:variables</span> evil-snipe-enable-alternate-f-and-t-behaviors t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -343,8 +343,8 @@ search with <code>sa[</code> would find <code>a[</code>, <code>a{</code> or <cod
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Alias [ and ] to all types of brackets</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">push</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-1">?</span>\[ <span class="org-string">"[[{(]"</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="ATTRLIST">evil-snipe-aliases</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">push</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-1">?</span>\] <span class="org-string">"[]})]"</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="ATTRLIST">evil-snipe-aliases</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>push '<span class="org-rainbow-delimiters-depth-2">(</span>?\[ <span class="org-string">"[[{(]"</span><span class="org-rainbow-delimiters-depth-2">)</span> evil-snipe-aliases<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>push '<span class="org-rainbow-delimiters-depth-2">(</span>?\] <span class="org-string">"[]})]"</span><span class="org-rainbow-delimiters-depth-2">)</span> evil-snipe-aliases<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -357,10 +357,10 @@ quickly cycle through all function definitions in a buffer!</li>
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">For python style functions</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-3">add-hook</span> '<span class="ATTRLIST-2">python-mode-hook</span>
-          <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword"><span class="ATTRLIST-3">lambda</span></span> <span class="org-rainbow-delimiters-depth-3">()</span>
-            <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-3">make-variable-buffer-local</span> '<span class="ATTRLIST-3">evil-snipe-aliases</span><span class="org-rainbow-delimiters-depth-3">)</span>
-            <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-1">push</span> '<span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST">?:</span> <span class="org-string">"def .+:"</span><span class="org-rainbow-delimiters-depth-4">)</span> <span class="ATTRLIST-3">evil-snipe-aliases</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'python-mode-hook
+          <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span>
+            <span class="org-rainbow-delimiters-depth-3">(</span>make-variable-buffer-local 'evil-snipe-aliases<span class="org-rainbow-delimiters-depth-3">)</span>
+            <span class="org-rainbow-delimiters-depth-3">(</span>push '<span class="org-rainbow-delimiters-depth-4">(</span>?: <span class="org-string">"def .+:"</span><span class="org-rainbow-delimiters-depth-4">)</span> evil-snipe-aliases<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -375,7 +375,7 @@ quickly cycle through all function definitions in a buffer!</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-30 Wed 23:04</p>
+<p class="date">Created: 2016-10-03 Mon 00:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

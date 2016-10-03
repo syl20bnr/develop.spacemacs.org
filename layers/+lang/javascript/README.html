@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-30 Wed 23:05 -->
+<!-- 2016-10-03 Mon 00:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>JavaScript layer</title>
@@ -229,8 +229,8 @@ This layer adds support for the JavaScript language using <a href="https://githu
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>javascript</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
-file.
+add <code>javascript</code> to the existing <code>dotspacemacs-configuration-layers</code> list in
+this file.
 </p>
 
 <p>
@@ -239,7 +239,7 @@ documentation features:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">$ <span class="ATTRLIST-2">npm</span> <span class="ATTRLIST-3">install</span> <span class="ATTRLIST-1">-g</span> <span class="ATTRLIST">tern</span>
+<pre class="src src-sh">$ npm install -g tern
 </pre>
 </div>
 
@@ -248,16 +248,19 @@ To use the formatting features, install <code>js-beautify</code>:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">$ <span class="ATTRLIST-2">npm</span> <span class="ATTRLIST-3">install</span> <span class="ATTRLIST-1">-g</span> <span class="ATTRLIST">js-beautify</span>
+<pre class="src src-sh">$ npm install -g js-beautify
 </pre>
 </div>
 
 <p>
-To activate error checking using flycheck install <code>JSHint</code>:
+To activate error checking using flycheck, install one of the <a href="http://www.flycheck.org/en/latest/languages.html#javascript">available linters</a>
+such as <code>ESLint</code> or <code>JSHint</code>:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">$ <span class="ATTRLIST-2">npm</span> <span class="ATTRLIST-3">install</span> <span class="ATTRLIST-1">-g</span> <span class="ATTRLIST">jshint</span>
+<pre class="src src-sh">$ npm install -g eslint
+<span class="org-comment-delimiter"># </span><span class="org-comment">or</span>
+$ npm install -g jshint
 </pre>
 </div>
 </div>
@@ -278,13 +281,26 @@ for more details</a>):
 </p>
 
 <p>
-The variables provided below can be set when adding the <code>javascript</code> configuration
-layer, as detailed in <a href="../../../doc/DOCUMENTATION.html#MissingReference">this</a> section of the documentation.
+The variables provided below can be set when adding the <code>javascript</code>
+configuration layer, as detailed in <a href="../../../doc/DOCUMENTATION.html#MissingReference">this</a> section of the documentation.
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">javascript</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">javascript-disable-tern-port-files</span> <span class="ATTRLIST">nil</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span> javascript-disable-tern-port-files nil<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Windows users may need to set the variable <code>tern-command</code> in order for emacs to
+locate and launch tern server successfully. See <a href="https://github.com/syl20bnr/spacemacs/issues/5733">this open issue for more
+details</a>. The variable can be set when adding the <code>javascript</code> configuration
+layer:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span> tern-command '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"node"</span> <span class="org-string">"/path/to/tern/bin/tern"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -294,12 +310,13 @@ layer, as detailed in <a href="../../../doc/DOCUMENTATION.html#MissingReference"
 <h3 id="indentation"><a id="orgheadline5"></a><span class="section-number-3">3.2</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
-To change how js2-mode indents code, set the variable <code>js2-basic-offset</code>, as such:
+To change how js2-mode indents code, set the variable <code>js2-basic-offset</code>, as
+such:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq-default</span> <span class="ATTRLIST">js2-basic-offset</span> <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default js2-basic-offset <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -310,7 +327,7 @@ Similarly, to change how js-mode indents JSON files, set the variable
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq-default</span> <span class="ATTRLIST">js-indent-level</span> <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default js-indent-level <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -320,13 +337,11 @@ Similarly, to change how js-mode indents JSON files, set the variable
 <h3 id="repl"><a id="orgheadline6"></a><span class="section-number-3">3.3</span> REPL</h3>
 <div class="outline-text-3" id="text-repl">
 <p>
-To use the available JS repl, you need a running httpd server and a page
-loaded with skewer. If a blank page serves your needs, just use the
-run-skewer command in your javascript buffer. If you want to inject it
-in your own page, follow the instructions in
-<a href="https://github.com/skeeto/skewer-mode#skewering-with-cors">https://github.com/skeeto/skewer-mode#skewering-with-cors</a> (install the
-Greasemonkey script and then click the triangle in the top-right
-corner - if it turns green, you're good to go). 
+To use the available JS repl, you need a running httpd server and a page loaded
+with skewer. If a blank page serves your needs, just use the run-skewer command
+in your javascript buffer. If you want to inject it in your own page, follow
+<a href="https://github.com/skeeto/skewer-mode#skewering-with-cors">these instructions</a> (install the Greasemonkey script and then click the triangle
+in the top-right corner - if it turns green, you're good to go).
 </p>
 </div>
 </div>
@@ -444,16 +459,6 @@ Bindings should match the plain emacs assignments.
 </tr>
 </thead>
 <tbody>
-<tr>
-<td class="org-left"><code>SPC x m j</code></td>
-<td class="org-left">move line down, while keeping commas correctly placed</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC x m k</code></td>
-<td class="org-left">move line up, while keeping commas correctly placed</td>
-</tr>
-
 <tr>
 <td class="org-left"><code>SPC m k</code></td>
 <td class="org-left">deletes to the end of the line, but does not cross semantic boundaries</td>
@@ -592,6 +597,16 @@ Bindings should match the plain emacs assignments.
 <tr>
 <td class="org-left"><code>SPC m r w l</code></td>
 <td class="org-left">wraps the region in a for-loop</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m x m j</code></td>
+<td class="org-left">move line down, while keeping commas correctly placed</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m x m k</code></td>
+<td class="org-left">move line up, while keeping commas correctly placed</td>
 </tr>
 </tbody>
 </table>
@@ -780,7 +795,6 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </tbody>
 </table>
 
-
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -848,7 +862,7 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-30 Wed 23:05</p>
+<p class="date">Created: 2016-10-03 Mon 00:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
