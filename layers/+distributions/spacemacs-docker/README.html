@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-01-12 Thu 23:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>spacemacs-docker distribution</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Sylvain Benner" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+                 href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script type="text/javascript"
+                  src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script>
+           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+               Date();a=s.createElement(o),
+               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+          </script>
+<link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
+<h1 class="title">spacemacs-docker distribution</h1>
+<div id="table-of-contents">
+<h2>Table of Contents<a href="#">Close</a></h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#description">1. Description</a></li>
+<li><a href="#features">2. Features:</a></li>
+<li><a href="#drawbacks-">3. Drawbacks:</a></li>
+<li><a href="#getting-startedafter-this-pr-is-merged">4. Getting started(AFTER THIS PR IS MERGED)</a>
+<ul>
+<li><a href="#for-all-platform">4.1. For all platform</a>
+<ul>
+<li><a href="#how-to-build">4.1.1. How to build:</a></li>
+<li><a href="#how-to-usewith-the-default-settings">4.1.2. How to use(with the default settings)</a></li>
+</ul>
+</li>
+<li><a href="#optimizations">4.2. Optimizations</a>
+<ul>
+<li><a href="#data-transfer-via-mmapgnulinux">4.2.1. Data transfer via mmap(GNU/Linux)</a></li>
+<li><a href="#use-hosts-network">4.2.2. Use host's network</a></li>
+<li><a href="#use-hosts-file-system">4.2.3. Use host's file system</a></li>
+<li><a href="#use-hosts-x11-session-instead-of-sshxpragnulinux">4.2.4. Use host's X11 session instead of SSH/Xpra(GNU/Linux)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#faq">5. FAQ</a>
+<ul>
+<li><a href="#how-to-set-localtimezone">5.1. How to set localtime/zone?</a></li>
+<li><a href="#what-layers-supportcurrently-automatic-dependency-installation-">5.2. What layers support(currently) automatic dependency installation?</a></li>
+<li><a href="#how-to-contribute">5.3. How to contribute?</a></li>
+<li><a href="#whats-up-with-the-dockerfile-formatting">5.4. What's up with the Dockerfile formatting?</a></li>
+<li><a href="#why-not-use-docker-compose">5.5. Why not use Docker compose?</a></li>
+<li><a href="#why-xpra">5.6. Why Xpra?</a></li>
+<li><a href="#how-to-update">5.7. How to update?</a></li>
+<li><a href="#how-to-get-an-older-buildbackup-of-my-spacemacs">5.8. How to get an older build(backup) of my Spacemacs?</a></li>
+<li><a href="#todo-add-answers-to-the-questions-from-the-pr">5.9. <span class="todo TODO">TODO</span> Add answers to the questions from the PR</a></li>
+</ul>
+</li>
+<li><a href="#troubleshooting">6. Troubleshooting</a>
+<ul>
+<li><a href="#font-sizescreen-is-messed-up-help">6.1. Font size/screen is messed-up. Help!</a></li>
+<li><a href="#mosh-fontsspace-line-doesnt-look-right">6.2. Mosh fonts/space-line doesn't look right</a></li>
+<li><a href="#i-have-a-lagpicture-is-blurryclipboard-sharing-doesnt-work">6.3. I have a lag/picture is blurry/clipboard sharing doesn't work&#x2026;</a></li>
+<li><a href="#ranger-sometimes-lags-with-the-message--process--something-">6.4. Ranger sometimes lags with the message "&#x2026; process &#x2026; something &#x2026;"</a>
+<ul>
+<li><a href="#todo-localize-the-bug-current-status-heisenbug-">6.4.1. <span class="todo TODO">TODO</span> localize the bug. Current status: heisenbug :(</a></li>
+</ul>
+</li>
+<li><a href="#sometimesrarely-i-have-strange-emacs-slowdowns">6.5. Sometimes(rarely) I have strange Emacs slowdowns</a>
+<ul>
+<li><a href="#todo-find-out-whats-going-one">6.5.1. <span class="todo TODO">TODO</span> Find out what's going one.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge537de2" class="outline-2">
+<h2 id="description"><a id="orge537de2"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
+<p>
+Cross-platform, cross-device persistent emacs distribution with
+automatic dependency management and free cloud builds/backups.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgffb0395" class="outline-2">
+<h2 id="features"><a id="orgffb0395"></a><span class="section-number-2">2</span> Features:</h2>
+<div class="outline-text-2" id="text-features">
+<ol class="org-ol">
+<li>automatic dependency(SDK, tools) installation for Spacemacs layers. Instead
+of everyone figuring out how to install/build a layer dependencies, we can
+write an installation script once and everyone will automatically get them.</li>
+<li>Run the same Spacemacs installation across all platforms and devices
+separately or shared (useful for mentoring, collaborative editing etc.)
+<a href="https://i.imgur.com/ijdSuX6.gifv">DEMO</a> - same Spacemacs instance shared between Win 10 Notebook and Ubuntu PC.
+On the both systems Spacemacs window(frame) behaves like if it was a native
+app it even has proper taskbar icon :) Copy-pasta and full-screen also work.
+You can even use Spacemacs in a web-browser! (<a href="https://i.imgur.com/wDLDMZN.gifv">DEMO</a>)
+It us useful, for example, if you want to showcase Spacemacs or your personal
+setup with the zero install requirements.</li>
+<li>Client can disconnect and reconnect(from the same or another machine) to
+a Spacemacs instance without disturbing its execution. <a href="https://i.imgur.com/3FLISud.gifv">DEMO</a>.
+It means that you can start Spacemacs at work and simply connect to it from
+a handheld devices on the way back home to check rss feed/email and then
+from a home machine and Spacemacs will be in the exact same state as you
+left it.</li>
+<li>You can run multiply Spacemacs instances on the same host. <a href="https://i.imgur.com/v6xeBtW.gifv">DEMO</a>.
+They can be fully isolated or share only what you want them to share.
+Bandwidth, CPU, disk space quota also supported. It may be really useful
+for education. Imagine a classroom with a bunch of cheap Raspberry PI
+clients and one Spacemacs host(local or cloud based).</li>
+<li>Pausing(freezing) - may be handy if you want to temporary free CPU
+resources, but don't want to kill your development environment.</li>
+<li>Snapshots for host migration and potentially the fastest way to start
+Spacemacs based development environment, especially if you use stuff like
+JVM that needs time to "heat up" <a href="https://i.imgur.com/plTjTXL.gifv">DEMO</a>. For GNU/Linux it uses native
+"snapshoter" <a href="https://criu.org/Main_Page">CRIU</a></li>
+<li>Disposable sandboxed development environment. Its much harder to damager
+your actual OS and if your experiment gone wrong you can drop all changes.</li>
+<li>Free cloud builds and storage - especially handy if your internet upload is
+much slower or expensive than download.</li>
+<li>Since spacemacs-docker distribution uses common base (Emacs version, OS, 
+packages) it is much easer to reproduce and fix bugs.</li>
+<li>Docker uses <a href="https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/">layered filesystem</a> so for updates you'll need to download only
+the changed layer. Also you can make multiply images that share the most of
+data so they require less disk space.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org876d40c" class="outline-2">
+<h2 id="drawbacks-"><a id="org876d40c"></a><span class="section-number-2">3</span> Drawbacks:</h2>
+<div class="outline-text-2" id="text-drawbacks-">
+<ol class="org-ol">
+<li>While performance with the GNU/Linux host seems to be equal(perceptually)
+to a locally installed Spacemacs, even with a Windows 10 client on a fairly
+ancient laptop(first gen. mobile i3). It's actual better, if you take into
+account code linter, compiler etc.). But if you host both client and server
+on such laptop you'll experience noticeable keyboard lag (probably due to
+low specs and a poor Hyper-V support).</li>
+<li>You will need Docker on the server machine and(for the most cases) Xpra
+at the client + ssh. But if you don't mind some hacks and want to use Linux
+and run spacemacs-docker locally, then you only need Docker. As a bonus
+you'll get max speed.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org9c5cf53" class="outline-2">
+<h2 id="getting-startedafter-this-pr-is-merged"><a id="org9c5cf53"></a><span class="section-number-2">4</span> Getting started(AFTER THIS PR IS MERGED)</h2>
+<div class="outline-text-2" id="text-getting-startedafter-this-pr-is-merged">
+</div>
+
+<div id="outline-container-org8100abe" class="outline-3">
+<h3 id="for-all-platform"><a id="org8100abe"></a><span class="section-number-3">4.1</span> For all platform</h3>
+<div class="outline-text-3" id="text-for-all-platform">
+</div>
+
+<div id="outline-container-orgc30d572" class="outline-4">
+<h4 id="how-to-build"><a id="orgc30d572"></a><span class="section-number-4">4.1.1</span> How to build:</h4>
+<div class="outline-text-4" id="text-how-to-build">
+<ul class="org-ul">
+<li>Install docker like <a href="https://docker.github.io/engine/installation/">normal ppl do</a> or
+<a href="https://get.docker.com/">like if there is no tomorrow(don't forget sudo)</a>. 
+Also you'll need <a href="https://xpra.org">Xpra</a> (optionally).</li>
+<li>Fork <a href="https://github.com/JAremko/spacemacs-docker-seed">the seed repo</a>, read its <a href="https://github.com/JAremko/spacemacs-docker-seed/blob/master/README.md">README.org</a></li>
+<li>Register at <a href="https://hub.docker.com/">DockeHub</a> and create an <a href="https://docs.docker.com/docker-hub/builds/">automated builds</a> from the fork.
+Also you may want to link it to <code>spacemacs/onbuild</code> repository - this way
+your Spacemacs will automatically rebuild each time <code>spacemacs/onbuild</code> is
+updated.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1fb05c8" class="outline-4">
+<h4 id="how-to-usewith-the-default-settings"><a id="org1fb05c8"></a><span class="section-number-4">4.1.2</span> How to use(with the default settings)</h4>
+<div class="outline-text-4" id="text-how-to-usewith-the-default-settings">
+</div>
+
+<ol class="org-ol"><li><a id="xpra-over-sshgui"></a><a id="orgf5353f9"></a>Xpra over SSH(GUI):<br  /><div class="outline-text-5" id="text-xpra-over-sshgui">
+<ul class="org-ul">
+<li><code>docker run -ti --rm -p 22:22 &lt;YOU_NAME&gt;/spacemacs</code> it will attach Xpra
+output to the console, it you detach it Docker will kill and delete the
+container (and all changes). So to make it useful you need to mount your
+workspace. To do so add <code>-v &lt;...&gt;/workspace:/mnt/workspace</code> where <code>&lt;...&gt;</code>
+is the absolute path to your local workspace. Also you probably would like
+to make your layouts and recent files persistent: 
+First create a folder on the host's file system where you want to store
+those files. For example <code>/tmp/spacemacs-cache</code> then <code>docker run</code> with 
+<code>-v /tmp/spacemacs-cache:/home/spacemacs/.emacs.d/.cache</code> (Linux example)</li>
+<li><p>
+Then you can attach to it via Xpra:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">xpra attach --encoding=rgb --pulseaudio=no --compress=<span class="org-highlight-numbers-number">0</span><span class="org-sh-escaped-newline">\</span>
+ssh:&lt;NAME_FROM_/hooks/build&gt;@localhost:14
+</pre>
+</div>
+<p>
+on Windows executable is called <code>Xpra_cmd</code> also you can use Xpra's GUI app
+but it's a good idea to fist run it with log/console output, it will tell
+you if your client misses python libraries.
+</p></li>
+<li>You can share your Spacemacs by adding <code>--sharing=yes</code> for each Xpra
+client <code>xpra attach ... --sharing=yes ...</code></li>
+<li>Read <a href="https://docs.docker.com/engine/reference/run/">Docker run reference</a> and <a href="https://www.xpra.org/trac/wiki/FAQ">Xpra FAQ</a>.</li>
+</ul>
+</div></li>
+<li><a id="in-webbrowser"></a><a id="org3dac04f"></a>In webbrowser:<br  /><div class="outline-text-5" id="text-in-webbrowser">
+<ul class="org-ul">
+<li>Same as with Xpra over SSH <code>docker run -ti --rm &lt;YOU_NAME&gt;/spacemacs</code> but
+instead of <code>-p 22:22</code> map <code>-p 10000:10000</code> and add set container's
+environment variable <code>SDMODE</code> to <code>webbrowser_insecure</code> i.e:
+<code>docker run ... -e SDMODE=webbrowser_insecure ...</code> Also you'll need to
+set a password <code>... -e XPRA_PASSWORD=&lt;YOUR_PASSWORD&gt; ...</code> 
+Now you can use Spacemacs via webbrowser. URL:
+<a href="http://localhost:10000/index.html?encoding=png&amp;password">http://localhost:10000/index.html?encoding=png&amp;password</a>=&lt;YOUR<sub>PASSWORD</sub>&gt;
+or use <a href="http://localhost:10000/connect.html">http://localhost:10000/connect.html</a> if you want to configure
+keyboard layout, encoding, full-screen mode etc. To get proper full-screen
+you need to fist enter browser full-screen at this page and then connect
+to the Spacemacs.
+The mode is called <b>"webbrowser<sub>insecure</sub>"</b> because it uses http protocol.
+So you should use it <b>only for local network</b>  behind system firewall or
+Docker's one i.e don't map container's port <code>10000</code> to the host's port.
+Find out local IP of the container and use it instead of <code>localhost</code>.
+For the remote use you can add <a href="https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion">TLS proxy</a> and may be wrap
+your setup into <a href="https://docs.docker.com/compose">Docker compose</a> for the convenience.</li>
+</ul>
+</div></li>
+<li><a id="moshsshterminal"></a><a id="org3f36e76"></a>Mosh/SSH(terminal):<br  /><div class="outline-text-5" id="text-moshsshterminal">
+<ul class="org-ul">
+<li>Use <a href="#xpra-over-sshgui">Xpra over SSH(GUI)</a> method to launch a new Spacemacs instance
+(or use existing one). Set container's environment variable <code>SDMODE</code> to
+<code>ssh</code> i.e: <code>docker run ... -e SDMODE=ssh ...</code> if you don't need Xpra.</li>
+<li>Then use ssh to connect <code>ssh &lt;NAME_FROM_/hooks/build&gt;@localhost</code></li>
+<li>To use Mosh (which is much better way than ssh) you'll also need to map
+an UDP port <code>docker run ... -p 60001:60001/udp ...</code> then to connect:
+<code>mosh -p 60001 &lt;NAME_FROM_/hooks/build&gt;@localhost emacs</code></li>
+</ul>
+</div></li></ol>
+</div>
+</div>
+<div id="outline-container-orgc8e1735" class="outline-3">
+<h3 id="optimizations"><a id="orgc8e1735"></a><span class="section-number-3">4.2</span> Optimizations</h3>
+<div class="outline-text-3" id="text-optimizations">
+</div>
+
+<div id="outline-container-orgedf2678" class="outline-4">
+<h4 id="data-transfer-via-mmapgnulinux"><a id="orgedf2678"></a><span class="section-number-4">4.2.1</span> Data transfer via mmap(GNU/Linux)</h4>
+<div class="outline-text-4" id="text-data-transfer-via-mmapgnulinux">
+<p>
+You can use Xpra mmap protocol to greatly reduce CPU usage, but only
+if the host and the client are on the same machine(file system).
+For this first create a folder on the host's file system where the
+mmap will be created. For example <code>spacemacs-mmap</code> (it should
+be owned by user) then same as with <a href="#xpra-over-sshgui">Xpra over SSH(GUI)</a> but also mount
+the folder <code>-v /tmp/spacemacs-mmap/:/tmp/spacemacs-mmap/</code> to attach run:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span class="org-variable-name">TMPDIR</span>=/tmp/spacemacs-mmap/ xpra attach --mmap=yes ...
+</pre>
+</div>
+<p>
+the mmap option only works for GNU/Linux See <a href="https://www.xpra.org/trac/changeset/10846/xpra">change-log</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-org22293c6" class="outline-4">
+<h4 id="use-hosts-network"><a id="org22293c6"></a><span class="section-number-4">4.2.2</span> Use host's network</h4>
+<div class="outline-text-4" id="text-use-hosts-network">
+<p>
+Instead of using <code>-p</code> to map individual ports, you can add
+<code>--network=host</code> to the <code>docker run...</code> it's not only more convenient
+way to run stuff, but also more efficient (and less secure). If you use
+docker for Mac/Windows you'll may need to figure out your docker machine
+IP and use it instead of localhost.
+</p>
+</div>
+</div>
+<div id="outline-container-org48721a8" class="outline-4">
+<h4 id="use-hosts-file-system"><a id="org48721a8"></a><span class="section-number-4">4.2.3</span> Use host's file system</h4>
+<div class="outline-text-4" id="text-use-hosts-file-system">
+<p>
+Docker's file system is somewhat slower. If you have "hot" folders you
+can mount them to the host's filesystem. See <a href="https://docs.docker.com/engine/tutorials/dockervolumes/">Docker volumes</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-org43d43e0" class="outline-4">
+<h4 id="use-hosts-x11-session-instead-of-sshxpragnulinux"><a id="org43d43e0"></a><span class="section-number-4">4.2.4</span> Use host's X11 session instead of SSH/Xpra(GNU/Linux)</h4>
+<div class="outline-text-4" id="text-use-hosts-x11-session-instead-of-sshxpragnulinux">
+<p>
+This is a hacky way to get absolute best performance. For it to work
+host's X11 session owner should have same UID as the spacemacs-docker
+user (both are 1000 be the default). Simply mount
+<code>/tmp/.X11-unix</code> and run Emacs directly without ssh and Xpra: 
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">docker run -ti --rm -v /tmp/.X11-unix:/tmp/.X11-unix<span class="org-sh-escaped-newline">\</span>
+ -e <span class="org-variable-name">DISPLAY</span>=$<span class="org-variable-name">DISPLAY</span><span class="org-sh-escaped-newline">\</span>
+ --entrypoint=/usr/bin/emacs<span class="org-sh-escaped-newline">\</span>
+ -e <span class="org-variable-name">NO_AT_BRIDGE</span>=<span class="org-highlight-numbers-number">1</span><span class="org-sh-escaped-newline">\</span>
+ -e <span class="org-variable-name">SHELL</span>=/bin/bash<span class="org-sh-escaped-newline">\</span>
+ &lt;YOUR_NAME&gt;/spacemacs
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org09c46b6" class="outline-2">
+<h2 id="faq"><a id="org09c46b6"></a><span class="section-number-2">5</span> FAQ</h2>
+<div class="outline-text-2" id="text-faq">
+</div>
+
+<div id="outline-container-org6bea2ac" class="outline-3">
+<h3 id="how-to-set-localtimezone"><a id="org6bea2ac"></a><span class="section-number-3">5.1</span> How to set localtime/zone?</h3>
+<div class="outline-text-3" id="text-how-to-set-localtimezone">
+<p>
+Try <code>docker run ... -v /etc/localtime:/etc/localtime:ro ...</code>
+or <code>docker run ... -e TZ=UTC  ...</code> - Replace <code>UTC</code> with your time zone.
+</p>
+</div>
+</div>
+<div id="outline-container-org62107e6" class="outline-3">
+<h3 id="what-layers-supportcurrently-automatic-dependency-installation-"><a id="org62107e6"></a><span class="section-number-3">5.2</span> What layers support(currently) automatic dependency installation?</h3>
+<div class="outline-text-3" id="text-what-layers-supportcurrently-automatic-dependency-installation-">
+<p>
+See <a href="./dockerfiles/spacemacs-docker/usr/local/spacemacs/deps-installers/README.html">deps-installers/README.org</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orga7302aa" class="outline-3">
+<h3 id="how-to-contribute"><a id="orga7302aa"></a><span class="section-number-3">5.3</span> How to contribute?</h3>
+<div class="outline-text-3" id="text-how-to-contribute">
+<p>
+You can contribute a dependency installation script for a
+currently unsupported layer or  fix/extend existing one.
+See <a href="./dockerfiles/spacemacs-docker/usr/local/spacemacs/lib/README.html">lib/README.org</a>. Also you can improve libraries, docs.
+</p>
+</div>
+</div>
+<div id="outline-container-org1036417" class="outline-3">
+<h3 id="whats-up-with-the-dockerfile-formatting"><a id="org1036417"></a><span class="section-number-3">5.4</span> What's up with the Dockerfile formatting?</h3>
+<div class="outline-text-3" id="text-whats-up-with-the-dockerfile-formatting">
+<p>
+Docker build logs are ugly anyway. At least we can keep Dockerfiles
+as readable as possible. Also Emacs-Lisp build helpers prints out
+executed command and its output (if any) so we don't need to dig
+into usual docker builder's wall of text.
+</p>
+</div>
+</div>
+<div id="outline-container-org8bcf849" class="outline-3">
+<h3 id="why-not-use-docker-compose"><a id="org8bcf849"></a><span class="section-number-3">5.5</span> Why not use Docker compose?</h3>
+<div class="outline-text-3" id="text-why-not-use-docker-compose">
+<p>
+It will make <code>spacemacs-docker</code> setup much less "beginner friendly".
+Currently user's .spacemacs file serves similar role. During the
+build process(at DockerHub) builder reads .spacemacs file and reads
+layer related variables from Spacemacs to configures the installation
+or even modify the .spacemacs file.
+If will be impossible to do with the modular design. Also modularity
+may increase the maintenance cost of the distribution.
+</p>
+</div>
+</div>
+<div id="outline-container-org8149af3" class="outline-3">
+<h3 id="why-xpra"><a id="org8149af3"></a><span class="section-number-3">5.6</span> Why Xpra?</h3>
+<div class="outline-text-3" id="text-why-xpra">
+<ul class="org-ul">
+<li>Besides all the Xpra features outlined in the <a href="#features">Features</a> section.
+It also has a client for all major platforms (even Android) and
+due to its implementation it is likely to work in the same way
+with all the client variations, so it should be easier to maintain.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6893232" class="outline-3">
+<h3 id="how-to-update"><a id="org6893232"></a><span class="section-number-3">5.7</span> How to update?</h3>
+<div class="outline-text-3" id="text-how-to-update">
+<ul class="org-ul">
+<li>First get a new version <code>docker pull &lt;YOUR_NAME&gt;/spacemacs</code></li>
+<li>Then run it. And if it is fine, remove the old one:
+<ol class="org-ol">
+<li>Get image list <code>docker images</code>.</li>
+<li>Remove an image <code>docker rmi &lt;IMAGE&gt;</code>.</li>
+</ol></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgef7227f" class="outline-3">
+<h3 id="how-to-get-an-older-buildbackup-of-my-spacemacs"><a id="orgef7227f"></a><span class="section-number-3">5.8</span> How to get an older build(backup) of my Spacemacs?</h3>
+<div class="outline-text-3" id="text-how-to-get-an-older-buildbackup-of-my-spacemacs">
+<p>
+You can <a href="https://docs.docker.com/engine/reference/commandline/pull/#/pull-an-image-by-digest-immutable-identifier">pull by the digest</a>. Also you can use digest in the <code>FROM</code>
+Dockerfile instruction.
+</p>
+</div>
+</div>
+<div id="outline-container-org8f20fc7" class="outline-3">
+<h3 id="todo-add-answers-to-the-questions-from-the-pr"><a id="org8f20fc7"></a><span class="section-number-3">5.9</span> <span class="todo TODO">TODO</span> Add answers to the questions from the PR</h3>
+<div class="outline-text-3" id="text-todo-add-answers-to-the-questions-from-the-pr">
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org83ea618" class="outline-2">
+<h2 id="troubleshooting"><a id="org83ea618"></a><span class="section-number-2">6</span> Troubleshooting</h2>
+<div class="outline-text-2" id="text-troubleshooting">
+</div>
+
+<div id="outline-container-orgb3bf288" class="outline-3">
+<h3 id="font-sizescreen-is-messed-up-help"><a id="orgb3bf288"></a><span class="section-number-3">6.1</span> Font size/screen is messed-up. Help!</h3>
+<div class="outline-text-3" id="text-font-sizescreen-is-messed-up-help">
+<p>
+If you have more than one display/projector or other displaying
+device connected, Xpra may use DPI from the wrong device. You can
+specify DPI at the client with <code>xpra attach --dpi=&lt;DPI&gt; ...</code> and/or
+at the server side. <a href="https://github.com/JAremko/spacemacs-docker-seed/blob/master/Dockerfile#L33">See Seed project's Dockerfile</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-org7a2b752" class="outline-3">
+<h3 id="mosh-fontsspace-line-doesnt-look-right"><a id="org7a2b752"></a><span class="section-number-3">6.2</span> Mosh fonts/space-line doesn't look right</h3>
+<div class="outline-text-3" id="text-mosh-fontsspace-line-doesnt-look-right">
+<p>
+You probably need to install <code>NanumGothic</code> and <code>source-code-pro</code> fonts
+</p>
+</div>
+</div>
+<div id="outline-container-org4661ffe" class="outline-3">
+<h3 id="i-have-a-lagpicture-is-blurryclipboard-sharing-doesnt-work"><a id="org4661ffe"></a><span class="section-number-3">6.3</span> I have a lag/picture is blurry/clipboard sharing doesn't work&#x2026;</h3>
+<div class="outline-text-3" id="text-i-have-a-lagpicture-is-blurryclipboard-sharing-doesnt-work">
+<p>
+Xpra has many setting that can be changed on the fly(some of them have
+hot-keys). While attached, click Xpra logo near the system clock on the
+taskbar(Windows) and make sure that the configs are right.
+</p>
+</div>
+</div>
+<div id="outline-container-org4e3ffd4" class="outline-3">
+<h3 id="ranger-sometimes-lags-with-the-message--process--something-"><a id="org4e3ffd4"></a><span class="section-number-3">6.4</span> Ranger sometimes lags with the message "&#x2026; process &#x2026; something &#x2026;"</h3>
+<div class="outline-text-3" id="text-ranger-sometimes-lags-with-the-message--process--something-">
+</div>
+
+<div id="outline-container-org5688833" class="outline-4">
+<h4 id="todo-localize-the-bug-current-status-heisenbug-"><a id="org5688833"></a><span class="section-number-4">6.4.1</span> <span class="todo TODO">TODO</span> localize the bug. Current status: heisenbug :(</h4>
+<div class="outline-text-4" id="text-todo-localize-the-bug-current-status-heisenbug-">
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga8e4b9d" class="outline-3">
+<h3 id="sometimesrarely-i-have-strange-emacs-slowdowns"><a id="orga8e4b9d"></a><span class="section-number-3">6.5</span> Sometimes(rarely) I have strange Emacs slowdowns</h3>
+<div class="outline-text-3" id="text-sometimesrarely-i-have-strange-emacs-slowdowns">
+</div>
+
+<div id="outline-container-org1543ce8" class="outline-4">
+<h4 id="todo-find-out-whats-going-one"><a id="org1543ce8"></a><span class="section-number-4">6.5.1</span> <span class="todo TODO">TODO</span> Find out what's going one.</h4>
+<div class="outline-text-4" id="text-todo-find-out-whats-going-one">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2017-01-12 Thu 23:12</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
