@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-01-12 Thu 23:00 -->
+<!-- 2017-02-12 Sun 23:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs Lisp layer</title>
@@ -254,10 +254,12 @@ for the JavaScript code in this tag.
 <li><a href="#install">2. Install</a></li>
 <li><a href="#auto-compile">3. Auto-compile</a></li>
 <li><a href="#working-with-lisp-files-barfage-slurpage--more">4. Working with lisp files (barfage, slurpage &amp; more)</a></li>
-<li><a href="#key-bindings">5. Key bindings</a>
+<li><a href="#debugging-elisp">5. Debugging Elisp</a></li>
+<li><a href="#key-bindings">6. Key bindings</a>
 <ul>
-<li><a href="#smartparens">5.1. smartparens</a></li>
-<li><a href="#srefactor">5.2. srefactor</a></li>
+<li><a href="#additional-evaluation-functions">6.1. Additional evaluation functions</a></li>
+<li><a href="#format-code">6.2. Format code</a></li>
+<li><a href="#debugging">6.3. Debugging</a></li>
 </ul>
 </li>
 </ul>
@@ -269,8 +271,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org60df509" class="outline-2">
-<h2 id="description"><a id="org60df509"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orge5c327c" class="outline-2">
+<h2 id="description"><a id="orge5c327c"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer gathers all the configuration related to emacs-lisp. This should
@@ -279,8 +281,8 @@ always be in your dotfile, it is not recommended to uninstall it.
 </div>
 </div>
 
-<div id="outline-container-orge4b0178" class="outline-2">
-<h2 id="install"><a id="orge4b0178"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgd669e2e" class="outline-2">
+<h2 id="install"><a id="orgd669e2e"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -290,8 +292,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orge28796e" class="outline-2">
-<h2 id="auto-compile"><a id="orge28796e"></a><span class="section-number-2">3</span> Auto-compile</h2>
+<div id="outline-container-orgd100ea6" class="outline-2">
+<h2 id="auto-compile"><a id="orgd100ea6"></a><span class="section-number-2">3</span> Auto-compile</h2>
 <div class="outline-text-2" id="text-auto-compile">
 <p>
 This layer adds the <a href="https://github.com/tarsius/auto-compile">auto-compile</a> package to automatically keep the byte-compiled
@@ -313,8 +315,8 @@ You can also exclude the <code>auto-compile</code> package.
 </div>
 </div>
 
-<div id="outline-container-orgedf89ba" class="outline-2">
-<h2 id="working-with-lisp-files-barfage-slurpage--more"><a id="orgedf89ba"></a><span class="section-number-2">4</span> Working with lisp files (barfage, slurpage &amp; more)</h2>
+<div id="outline-container-org8ce7732" class="outline-2">
+<h2 id="working-with-lisp-files-barfage-slurpage--more"><a id="org8ce7732"></a><span class="section-number-2">4</span> Working with lisp files (barfage, slurpage &amp; more)</h2>
 <div class="outline-text-2" id="text-working-with-lisp-files-barfage-slurpage--more">
 <p>
 Spacemacs comes with a special <code>lisp-state</code> for working with lisp code that
@@ -329,8 +331,75 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org66cba33" class="outline-2">
-<h2 id="key-bindings"><a id="org66cba33"></a><span class="section-number-2">5</span> Key bindings</h2>
+<div id="outline-container-orgea80a50" class="outline-2">
+<h2 id="debugging-elisp"><a id="orgea80a50"></a><span class="section-number-2">5</span> Debugging Elisp</h2>
+<div class="outline-text-2" id="text-debugging-elisp">
+<p>
+Here is an interactive quick start to debug Emacs Lisp.
+</p>
+
+<p>
+First you need to read this file in Emacs in order to have the following code
+block to be interactively opened as Emacs Lisp.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">helloworld</span> <span class="org-rainbow-delimiters-depth-2">(</span>name<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>n <span class="org-rainbow-delimiters-depth-5">(</span>subroutine name<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>message <span class="org-rainbow-delimiters-depth-4">(</span>format <span class="org-string">"Hello world, %s!"</span> name<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">subroutine</span> <span class="org-rainbow-delimiters-depth-2">(</span>s<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>concat <span class="org-string">"my dear "</span> s<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span>helloworld <span class="org-string">"Spacemacs"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<ol class="org-ol">
+<li>To start the tutorial put your point in the source block above and press <code>, '</code></li>
+</ol>
+<p>
+it will open a new buffer in <code>emacs-lisp-mode</code>.
+</p>
+
+<ol class="org-ol">
+<li>Evaluate each sexp by putting your point in each of them and press <code>, e f</code>.</li>
+
+<li>To debug the <code>helloworld</code> function, put your cursor on the <code>defun</code> keyword and</li>
+</ol>
+<p>
+press <code>SPC m d f</code> (or <code>, d f</code>), it will put a breakpoint on the function (we say
+that we instrumentalise this function) so whenever the Lisp interpreter
+encounters this function it will start the debugger.
+</p>
+
+<ol class="org-ol">
+<li>Then go to the closing parenthesis of <code>(helloworld "Spacemacs")</code> and press</li>
+</ol>
+<p>
+<code>, e e</code> to evaluate it, if you are using <code>vim</code> editing style you end up in
+evilified state otherwise you end up in emacs state and <code>*Debugging*</code> is
+displayed in the mode line.
+</p>
+
+<ol class="org-ol">
+<li>Press <code>s</code> to go to next step up to the opening parenthesis of
+<code>(subroutine name)</code>,</li>
+
+<li>Press <code>i</code> to go into the <code>subroutine</code> where you can press <code>s</code> to step in</li>
+</ol>
+<p>
+function or press <code>o</code> to go out of it.
+</p>
+
+<ol class="org-ol">
+<li>Press <code>a</code> to stop debugging.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org073a3dc" class="outline-2">
+<h2 id="key-bindings"><a id="org073a3dc"></a><span class="section-number-2">6</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -350,6 +419,11 @@ As this state works the same for all files, the documentation is in global
 <tr>
 <td class="org-left"><code>SPC m g g</code></td>
 <td class="org-left">go to definition of symbol under point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g G</code></td>
+<td class="org-left">go to definition of symbol under point in other window</td>
 </tr>
 
 <tr>
@@ -420,9 +494,9 @@ As this state works the same for all files, the documentation is in global
 </table>
 </div>
 
-<div id="outline-container-org4c64a98" class="outline-3">
-<h3 id="smartparens"><a id="org4c64a98"></a><span class="section-number-3">5.1</span> smartparens</h3>
-<div class="outline-text-3" id="text-smartparens">
+<div id="outline-container-orgc6a6753" class="outline-3">
+<h3 id="additional-evaluation-functions"><a id="orgc6a6753"></a><span class="section-number-3">6.1</span> Additional evaluation functions</h3>
+<div class="outline-text-3" id="text-additional-evaluation-functions">
 <p>
 If <code>smartparens</code> is used the following additional key bindings are available:
 </p>
@@ -456,9 +530,9 @@ If <code>smartparens</code> is used the following additional key bindings are av
 </div>
 </div>
 
-<div id="outline-container-org13017e3" class="outline-3">
-<h3 id="srefactor"><a id="org13017e3"></a><span class="section-number-3">5.2</span> srefactor</h3>
-<div class="outline-text-3" id="text-srefactor">
+<div id="outline-container-org4c1ebfd" class="outline-3">
+<h3 id="format-code"><a id="org4c1ebfd"></a><span class="section-number-3">6.2</span> Format code</h3>
+<div class="outline-text-3" id="text-format-code">
 <p>
 The <a href="../../semantic/README.html">semantic</a> layer should be installed for these key bindings to become active.
 </p>
@@ -501,11 +575,70 @@ The <a href="../../semantic/README.html">semantic</a> layer should be installed 
 </table>
 </div>
 </div>
+
+<div id="outline-container-orgc36f50f" class="outline-3">
+<h3 id="debugging"><a id="orgc36f50f"></a><span class="section-number-3">6.3</span> Debugging</h3>
+<div class="outline-text-3" id="text-debugging">
+<p>
+To start debugging:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d f</code></td>
+<td class="org-left">on a <code>defun</code> symbol toggle on the instrumentalisation of the function</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d F</code></td>
+<td class="org-left">on a <code>defun</code> symbol toggle off the instrumentalisation of the function</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d t</code></td>
+<td class="org-left">insert <code>(debug)</code> to print the stack trace and re-evaluate the function</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+In <code>edebug-mode</code> (<code>*Debugging*</code> is displayed in the minor modes segment of the
+mode line)
+</p>
+
+<p>
+TODO
+</p>
+
+<p>
+In <code>debugger-mode</code> (<code>Debugger</code> is displayed in major mode segment of the mode
+line)
+</p>
+
+<p>
+TODO
+</p>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2017-01-12 Thu 23:00</p>
+<p class="date">Created: 2017-02-12 Sun 23:14</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

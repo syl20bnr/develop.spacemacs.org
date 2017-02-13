@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-01-12 Thu 22:59 -->
+<!-- 2017-02-12 Sun 23:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GitHub layer</title>
@@ -259,14 +259,16 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
 <li><a href="#git-configuration">2.2. Git configuration</a></li>
+<li><a href="#hub-configuration">2.3. Hub configuration</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key Bindings</a>
 <ul>
 <li><a href="#magit-gh-pulls">3.1. magit-gh-pulls</a></li>
-<li><a href="#gistel">3.2. gist.el</a></li>
-<li><a href="#clone-repositories">3.3. Clone repositories</a></li>
-<li><a href="#browse-files">3.4. Browse files</a></li>
+<li><a href="#magithub">3.2. magithub</a></li>
+<li><a href="#gistel">3.3. gist.el</a></li>
+<li><a href="#clone-repositories">3.4. Clone repositories</a></li>
+<li><a href="#browse-files">3.5. Browse files</a></li>
 </ul>
 </li>
 </ul>
@@ -278,19 +280,20 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orge14ea3b" class="outline-2">
-<h2 id="description"><a id="orge14ea3b"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org4fa0011" class="outline-2">
+<h2 id="description"><a id="org4fa0011"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layers adds support for <a href="http://github.com">GitHub</a>.
 </p>
 </div>
 
-<div id="outline-container-org246c96d" class="outline-3">
-<h3 id="features"><a id="org246c96d"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orga4cc1a3" class="outline-3">
+<h3 id="features"><a id="orga4cc1a3"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li><a href="https://github.com/sigma/magit-gh-pulls">magit-gh-pulls</a>: handy <code>magit</code> add-on to manage GitHub pull requests.</li>
+<li><a href="https://github.com/vermiculus/magithub">magithub</a>: magit integrated interface to <a href="https://hub.github.com/">hub</a> command line</li>
 <li><a href="https://github.com/defunkt/gist.el">gist.el</a>: full-featured mode to browse and post GitHub gists.</li>
 <li><a href="https://github.com/osener/github-browse-file">github-browse-file</a> and <a href="https://github.com/sshaw/git-link">git-link</a>: quickly browse GitHub URL in your
 browser.</li>
@@ -300,13 +303,13 @@ browser.</li>
 </div>
 </div>
 
-<div id="outline-container-org0d026bd" class="outline-2">
-<h2 id="install"><a id="org0d026bd"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org1a525c6" class="outline-2">
+<h2 id="install"><a id="org1a525c6"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgd524589" class="outline-3">
-<h3 id="layer"><a id="orgd524589"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org4a93643" class="outline-3">
+<h3 id="layer"><a id="org4a93643"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -316,8 +319,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orga051e34" class="outline-3">
-<h3 id="git-configuration"><a id="orga051e34"></a><span class="section-number-3">2.2</span> Git configuration</h3>
+<div id="outline-container-org65d7103" class="outline-3">
+<h3 id="git-configuration"><a id="org65d7103"></a><span class="section-number-3">2.2</span> Git configuration</h3>
 <div class="outline-text-3" id="text-git-configuration">
 <p>
 You will need to generate a <a href="https://github.com/settings/tokens">personal access token</a> on GitHub. This token should
@@ -331,15 +334,26 @@ be added to your <code>~/.gitconfig</code>
 </div>
 </div>
 </div>
+
+<div id="outline-container-org5275a15" class="outline-3">
+<h3 id="hub-configuration"><a id="org5275a15"></a><span class="section-number-3">2.3</span> Hub configuration</h3>
+<div class="outline-text-3" id="text-hub-configuration">
+<p>
+For now, <code>Magithub</code> requires the <code>hub</code> utility to work &#x2013; before trying to use
+Magithub, follow the installation instructions at hub.github.com. To force hub
+to authenticate, you can use hub browse in a terminal (inside a GitHub repo).
+</p>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orge3c90f6" class="outline-2">
-<h2 id="key-bindings"><a id="orge3c90f6"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-org5d71b87" class="outline-2">
+<h2 id="key-bindings"><a id="org5d71b87"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org3cd0aae" class="outline-3">
-<h3 id="magit-gh-pulls"><a id="org3cd0aae"></a><span class="section-number-3">3.1</span> magit-gh-pulls</h3>
+<div id="outline-container-orgc4e0d39" class="outline-3">
+<h3 id="magit-gh-pulls"><a id="orgc4e0d39"></a><span class="section-number-3">3.1</span> magit-gh-pulls</h3>
 <div class="outline-text-3" id="text-magit-gh-pulls">
 <p>
 In a <code>magit status</code> buffer (<code>SPC g s</code>):
@@ -404,8 +418,55 @@ possible.
 </div>
 </div>
 
-<div id="outline-container-org2046680" class="outline-3">
-<h3 id="gistel"><a id="org2046680"></a><span class="section-number-3">3.2</span> gist.el</h3>
+<div id="outline-container-org7a6c101" class="outline-3">
+<h3 id="magithub"><a id="org7a6c101"></a><span class="section-number-3">3.2</span> magithub</h3>
+<div class="outline-text-3" id="text-magithub">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>@ H</code></td>
+<td class="org-left">opens the current repository in the browser</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>@ c</code></td>
+<td class="org-left">pushes a brand-new local repository up to GitHub</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>@ f</code></td>
+<td class="org-left">create a fork of an existing repository</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>@ p</code></td>
+<td class="org-left">submit pull request upstream</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>@ i</code></td>
+<td class="org-left">create an issue</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orge98f7ab" class="outline-3">
+<h3 id="gistel"><a id="orge98f7ab"></a><span class="section-number-3">3.3</span> gist.el</h3>
 <div class="outline-text-3" id="text-gistel">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -552,8 +613,8 @@ In the gist list buffer:
 </div>
 </div>
 
-<div id="outline-container-org608eb02" class="outline-3">
-<h3 id="clone-repositories"><a id="org608eb02"></a><span class="section-number-3">3.3</span> Clone repositories</h3>
+<div id="outline-container-org275d49c" class="outline-3">
+<h3 id="clone-repositories"><a id="org275d49c"></a><span class="section-number-3">3.4</span> Clone repositories</h3>
 <div class="outline-text-3" id="text-clone-repositories">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -599,8 +660,8 @@ In the gist list buffer:
 </div>
 </div>
 
-<div id="outline-container-orgee88540" class="outline-3">
-<h3 id="browse-files"><a id="orgee88540"></a><span class="section-number-3">3.4</span> Browse files</h3>
+<div id="outline-container-orgedbe769" class="outline-3">
+<h3 id="browse-files"><a id="orgedbe769"></a><span class="section-number-3">3.5</span> Browse files</h3>
 <div class="outline-text-3" id="text-browse-files">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -629,7 +690,7 @@ In the gist list buffer:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2017-01-12 Thu 22:59</p>
+<p class="date">Created: 2017-02-12 Sun 23:14</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
