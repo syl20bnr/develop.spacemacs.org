@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-02-12 Sun 23:14 -->
+<!-- 2017-04-29 Sat 04:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ansible layer</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -257,7 +256,7 @@ for the JavaScript code in this tag.
 <li><a href="#ansible-vault">3.1. ansible-vault</a>
 <ul>
 <li><a href="#password">3.1.1. Password</a></li>
-<li><a href="#automatic-encryption-and-descryption">3.1.2. Automatic encryption and descryption</a></li>
+<li><a href="#automatic-encryption-and-decryption">3.1.2. Automatic encryption and decryption</a></li>
 </ul>
 </li>
 </ul>
@@ -272,8 +271,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgf06f2d9" class="outline-2">
-<h2 id="description"><a id="orgf06f2d9"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgba36313" class="outline-2">
+<h2 id="description"><a id="orgba36313"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for Ansible-flavored YAML buffers and Jinja2 templates.
@@ -281,8 +280,8 @@ This layer adds support for Ansible-flavored YAML buffers and Jinja2 templates.
 </div>
 </div>
 
-<div id="outline-container-org082b59a" class="outline-2">
-<h2 id="install"><a id="org082b59a"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org179ce5e" class="outline-2">
+<h2 id="install"><a id="org179ce5e"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -292,22 +291,22 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orge3691c4" class="outline-2">
-<h2 id="configuration"><a id="orge3691c4"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org7b7a4c9" class="outline-2">
+<h2 id="configuration"><a id="org7b7a4c9"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-orga0d1e7f" class="outline-3">
-<h3 id="ansible-vault"><a id="orga0d1e7f"></a><span class="section-number-3">3.1</span> ansible-vault</h3>
+<div id="outline-container-org2b08003" class="outline-3">
+<h3 id="ansible-vault"><a id="org2b08003"></a><span class="section-number-3">3.1</span> ansible-vault</h3>
 <div class="outline-text-3" id="text-ansible-vault">
 </div>
 
-<div id="outline-container-org72bdfa9" class="outline-4">
-<h4 id="password"><a id="org72bdfa9"></a><span class="section-number-4">3.1.1</span> Password</h4>
+<div id="outline-container-org953ad18" class="outline-4">
+<h4 id="password"><a id="org953ad18"></a><span class="section-number-4">3.1.1</span> Password</h4>
 <div class="outline-text-4" id="text-password">
 <p>
 To use <code>ansible-vault</code> you have to provide the path to a file containing the
-password to use somewhere in you <code>dotspacemacs/user-config</code> function.
+password to use somewhere in your <code>dotspacemacs/user-config</code> function.
 For instance:
 </p>
 
@@ -319,12 +318,27 @@ For instance:
 <p>
 The default value is the ansible-vault default value: <code>~/.vault_pass.txt</code>.
 </p>
+
+<p>
+For now Ansible does not handle multiple passwords in the vault file
+(see <a href="https://github.com/ansible/ansible/issues/13243">https://github.com/ansible/ansible/issues/13243</a>). To work around this
+limitation directory local variables can be used to define a different
+password file for a given environment. Example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>yaml-mode . <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>ansible::vault-password-file . <span class="org-string">"path/to/vault_file"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
 </div>
 </div>
 
-<div id="outline-container-orgd3a654e" class="outline-4">
-<h4 id="automatic-encryption-and-descryption"><a id="orgd3a654e"></a><span class="section-number-4">3.1.2</span> Automatic encryption and descryption</h4>
-<div class="outline-text-4" id="text-automatic-encryption-and-descryption">
+<div id="outline-container-org9abe67e" class="outline-4">
+<h4 id="automatic-encryption-and-decryption"><a id="org9abe67e"></a><span class="section-number-4">3.1.2</span> Automatic encryption and decryption</h4>
+<div class="outline-text-4" id="text-automatic-encryption-and-decryption">
 <p>
 This layer comes preconfigured with automatic encryption/decryption of
 encrypted files using <code>ansible-vault</code> so it is possible to edit seamlessly
@@ -333,11 +347,11 @@ any encrypted files.
 
 <p>
 If you want to disable this feature then set the layer variable
-<code>ansible-auto-encrypt-descrypt</code> to <code>nil</code>.
+<code>ansible-auto-encrypt-decrypt</code> to <code>nil</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>ansible <span class="org-builtin">:variables</span> ansible-auto-encrypt-descrypt t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>ansible <span class="org-builtin">:variables</span> ansible-auto-encrypt-decrypt t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -345,8 +359,8 @@ If you want to disable this feature then set the layer variable
 </div>
 </div>
 
-<div id="outline-container-org26e1044" class="outline-2">
-<h2 id="key-bindings"><a id="org26e1044"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org2643580" class="outline-2">
+<h2 id="key-bindings"><a id="org2643580"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -383,8 +397,7 @@ If you want to disable this feature then set the layer variable
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2017-02-12 Sun 23:14</p>
+<p class="date">Created: 2017-04-29 Sat 04:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

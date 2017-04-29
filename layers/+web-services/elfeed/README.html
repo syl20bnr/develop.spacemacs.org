@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-02-12 Sun 23:14 -->
+<!-- 2017-04-29 Sat 04:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elfeed layer</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -279,8 +278,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orga67af4b" class="outline-2">
-<h2 id="description"><a id="orga67af4b"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgbde4420" class="outline-2">
+<h2 id="description"><a id="orgbde4420"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer enables <a href="https://github.com/skeeto/elfeed">Elfeed</a>, a web feeds client which supports both Atom and RSS
@@ -290,13 +289,13 @@ feeds. It'll optionally enable supporting packages, such as <code>elfeed-web</co
 </div>
 </div>
 
-<div id="outline-container-orgcbd19a0" class="outline-2">
-<h2 id="install"><a id="orgcbd19a0"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orge8fb147" class="outline-2">
+<h2 id="install"><a id="orge8fb147"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org1ae60d5" class="outline-3">
-<h3 id="layer"><a id="org1ae60d5"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-orgdffcf29" class="outline-3">
+<h3 id="layer"><a id="orgdffcf29"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -310,13 +309,13 @@ By default, <code>elfeed</code> stores its database under <code>~/.elfeed</code>
 </div>
 </div>
 
-<div id="outline-container-org65893f2" class="outline-3">
-<h3 id="setup-feeds"><a id="org65893f2"></a><span class="section-number-3">2.2</span> Setup feeds</h3>
+<div id="outline-container-org06e60e5" class="outline-3">
+<h3 id="setup-feeds"><a id="org06e60e5"></a><span class="section-number-3">2.2</span> Setup feeds</h3>
 <div class="outline-text-3" id="text-setup-feeds">
 </div>
 
-<div id="outline-container-org42645b7" class="outline-4">
-<h4 id="with-org"><a id="org42645b7"></a><span class="section-number-4">2.2.1</span> With Org</h4>
+<div id="outline-container-org7ad5f7f" class="outline-4">
+<h4 id="with-org"><a id="org7ad5f7f"></a><span class="section-number-4">2.2.1</span> With Org</h4>
 <div class="outline-text-4" id="text-with-org">
 <p>
 It is recommended to manage your feeds list and tags via org files, this is
@@ -338,33 +337,32 @@ Here is an example of such a file (note the usage of org tags to tag your feeds)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-org"><span class="org-org-level-1">* Blogs                                                              </span><span class="org-org-level-1"><span class="org-org-tag">:elfeed:</span></span>
-<span class="custom">*</span><span class="org-org-level-2">* entry-title: \(linux\|linus\|ubuntu\|kde\|gnome\)                  </span><span class="org-org-level-2"><span class="org-org-tag">:linux:</span></span>
-<span class="custom">*</span><span class="org-org-level-2">* </span><span class="org-org-link"><a href="http://git-annex.branchable.com/design/assistant/blog/index.rss">http://git-annex.branchable.com/design/assistant/blog/index.rss</a></span><span class="org-org-level-2"> </span><span class="org-org-level-2"><span class="org-org-tag">:mustread:</span></span>
-<span class="custom">*</span><span class="org-org-level-2">* </span><span class="org-org-link"><a href="http://feeds.feedburner.com/InformationIsBeautiful">http://feeds.feedburner.com/InformationIsBeautiful</a></span>
-<span class="custom">*</span><span class="org-org-level-2">* </span><span class="org-org-link"><a href="http://orgmode.org">Org Mode Links supported as well</a></span>
-<span class="custom">*</span><span class="org-org-level-2">* Software Development                                                 </span><span class="org-org-level-2"><span class="org-org-tag">:dev:</span></span>
-<span class="custom">**</span><span class="org-org-level-3">* Emacs                                                    </span><span class="org-org-level-3"><span class="org-org-tag">:emacs:mustread:</span></span>
-<span class="custom">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://www.terminally-incoherent.com/blog/feed">http://www.terminally-incoherent.com/blog/feed</a></span>
-<span class="custom">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://nullprogram.com/feed">http://nullprogram.com/feed</a></span>
-<span class="custom">***</span><span class="org-org-level-4">* entry-title: \(emacs\|org-mode\)</span>
-<span class="custom">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://planet.emacsen.org/atom.xml">http://planet.emacsen.org/atom.xml</a></span>
-<span class="custom">**</span><span class="org-org-level-3">* Web Development                                                     </span><span class="org-org-level-3"><span class="org-org-tag">:web:</span></span>
-<span class="custom">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://planet.phpunit.de/atom.xml">http://planet.phpunit.de/atom.xml</a></span>
-<span class="custom">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://feeds.feedburner.com/symfony/blog">http://feeds.feedburner.com/symfony/blog</a></span>
-<span class="custom">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://feeds.feedburner.com/qooxdoo/blog/content">http://feeds.feedburner.com/qooxdoo/blog/content</a></span>
-<span class="custom">**</span><span class="org-org-level-3">* Eclipse                                                         </span><span class="org-org-level-3"><span class="org-org-tag">:eclipse:</span></span>
-<span class="custom">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://blog.eclipse-tips.com/feeds/posts/default?alt=rss">http://blog.eclipse-tips.com/feeds/posts/default?alt=rss</a></span>
-<span class="custom">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://ed-merks.blogspot.com/feeds/posts/default">http://ed-merks.blogspot.com/feeds/posts/default</a></span>
-<span class="custom">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://feeds.feedburner.com/eclipselive">http://feeds.feedburner.com/eclipselive</a></span>
-<span class="custom">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://www.fosslc.org/drupal/rss.xml">http://www.fosslc.org/drupal/rss.xml</a></span><span class="org-org-level-4">                             </span><span class="org-org-level-4"><span class="org-org-tag">:video:</span></span>
+<pre class="src src-org">* Blogs                                                              :elfeed:
+** entry-title: \(linux\|linus\|ubuntu\|kde\|gnome\)                  :linux:
+** http://git-annex.branchable.com/design/assistant/blog/index.rss :mustread:
+** http://feeds.feedburner.com/InformationIsBeautiful
+** [[http://orgmode.org][Org Mode Links supported as well]]
+** Software Development                                                 :dev:
+*** Emacs                                                    :emacs:mustread:
+**** http://www.terminally-incoherent.com/blog/feed/
+**** http://nullprogram.com/feed/
+**** entry-title: \(emacs\|org-mode\)
+**** http://planet.emacsen.org/atom.xml
+*** Web Development                                                     :web:
+**** http://feeds.feedburner.com/symfony/blog
+**** http://feeds.feedburner.com/qooxdoo/blog/content
+*** Eclipse                                                         :eclipse:
+**** http://blog.eclipse-tips.com/feeds/posts/default?alt=rss
+**** http://ed-merks.blogspot.com/feeds/posts/default
+**** http://feeds.feedburner.com/eclipselive
+**** http://www.fosslc.org/drupal/rss.xml                             :video:
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgdc57d56" class="outline-4">
-<h4 id="manually"><a id="orgdc57d56"></a><span class="section-number-4">2.2.2</span> Manually</h4>
+<div id="outline-container-orgdf5de0c" class="outline-4">
+<h4 id="manually"><a id="orgdf5de0c"></a><span class="section-number-4">2.2.2</span> Manually</h4>
 <div class="outline-text-4" id="text-manually">
 <p>
 To explicitly setup the list of feeds, set the value of <code>elfeed-feeds</code> variable
@@ -387,8 +385,8 @@ Check documentation for <code>elfeed-feeds</code> for more information about thi
 </div>
 </div>
 
-<div id="outline-container-org943a210" class="outline-3">
-<h3 id="server"><a id="org943a210"></a><span class="section-number-3">2.3</span> Server</h3>
+<div id="outline-container-org2e7eed8" class="outline-3">
+<h3 id="server"><a id="org2e7eed8"></a><span class="section-number-3">2.3</span> Server</h3>
 <div class="outline-text-3" id="text-server">
 <p>
 Elfeed comes with a simple <a href="https://github.com/skeeto/elfeed#web-interface">web interface</a> to browse its database. You can manually
@@ -409,8 +407,8 @@ the default port by changing the value of <code>httpd-port</code>.
 </div>
 </div>
 
-<div id="outline-container-org6bb392f" class="outline-2">
-<h2 id="key-bindings"><a id="org6bb392f"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-orge47cc78" class="outline-2">
+<h2 id="key-bindings"><a id="orge47cc78"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -533,13 +531,13 @@ In <code>elfeed-show</code> mode, you can use the following bindings:
 </div>
 </div>
 
-<div id="outline-container-orgeac4445" class="outline-2">
-<h2 id="troubleshooting"><a id="orgeac4445"></a><span class="section-number-2">4</span> Troubleshooting</h2>
+<div id="outline-container-orged8d617" class="outline-2">
+<h2 id="troubleshooting"><a id="orged8d617"></a><span class="section-number-2">4</span> Troubleshooting</h2>
 <div class="outline-text-2" id="text-troubleshooting">
 </div>
 
-<div id="outline-container-org5622aea" class="outline-3">
-<h3 id="database-empty-at-first-start"><a id="org5622aea"></a><span class="section-number-3">4.1</span> Database empty at first start</h3>
+<div id="outline-container-org6a7ec69" class="outline-3">
+<h3 id="database-empty-at-first-start"><a id="org6a7ec69"></a><span class="section-number-3">4.1</span> Database empty at first start</h3>
 <div class="outline-text-3" id="text-database-empty-at-first-start">
 <p>
 Be sure that you added some feeds first then load your feeds with <code>gr</code>
@@ -548,8 +546,8 @@ in evilified buffer. Or <code>M-x elfeed-update</code>.
 </div>
 </div>
 
-<div id="outline-container-orgd9fec5e" class="outline-3">
-<h3 id="queue-timeout-exceeded"><a id="orgd9fec5e"></a><span class="section-number-3">4.2</span> Queue timeout exceeded</h3>
+<div id="outline-container-org3c3df4d" class="outline-3">
+<h3 id="queue-timeout-exceeded"><a id="org3c3df4d"></a><span class="section-number-3">4.2</span> Queue timeout exceeded</h3>
 <div class="outline-text-3" id="text-queue-timeout-exceeded">
 <p>
 If you are getting "Queue timeout exceeded" errors, try increasing
@@ -565,8 +563,7 @@ the value of <code>url-queue-timeout</code>.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2017-02-12 Sun 23:14</p>
+<p class="date">Created: 2017-04-29 Sat 04:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
