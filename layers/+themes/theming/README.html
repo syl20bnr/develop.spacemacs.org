@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-02-12 Sun 23:14 -->
+<!-- 2017-04-29 Sat 04:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Theming layer</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -252,7 +251,11 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#description">1. Description</a></li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#usage">3. Usage</a></li>
+<li><a href="#usage">3. Usage</a>
+<ul>
+<li><a href="#example">3.1. Example</a></li>
+</ul>
+</li>
 <li><a href="#attributes">4. Attributes</a></li>
 <li><a href="#faces">5. Faces</a></li>
 <li><a href="#headers">6. Headers</a></li>
@@ -260,8 +263,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgea57eda" class="outline-2">
-<h2 id="description"><a id="orgea57eda"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orge9bb887" class="outline-2">
+<h2 id="description"><a id="orge9bb887"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer allows for a simple way of modifying themes.
@@ -269,8 +272,8 @@ This layer allows for a simple way of modifying themes.
 </div>
 </div>
 
-<div id="outline-container-org4206dbb" class="outline-2">
-<h2 id="install"><a id="org4206dbb"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org130ecd0" class="outline-2">
+<h2 id="install"><a id="org130ecd0"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -280,8 +283,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org79c2a83" class="outline-2">
-<h2 id="usage"><a id="org79c2a83"></a><span class="section-number-2">3</span> Usage</h2>
+<div id="outline-container-org5c8eba4" class="outline-2">
+<h2 id="usage"><a id="org5c8eba4"></a><span class="section-number-2">3</span> Usage</h2>
 <div class="outline-text-2" id="text-usage">
 <p>
 To use this layer, set the value of <code>theming-modifications</code>. It should be a list
@@ -298,6 +301,29 @@ of the following form:
  ...<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
+</div>
+
+<div id="outline-container-org54d2c54" class="outline-3">
+<h3 id="example"><a id="org54d2c54"></a><span class="section-number-3">3.1</span> Example</h3>
+<div class="outline-text-3" id="text-example">
+<div class="org-src-container">
+<pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-init</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>setq theming-modifications
+        '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>monokai
+           <span class="org-comment-delimiter">;; </span><span class="org-comment">Font locking</span>
+           <span class="org-rainbow-delimiters-depth-5">(</span>font-lock-comment-face <span class="org-builtin">:slant</span> italic<span class="org-rainbow-delimiters-depth-5">)</span>
+           <span class="org-rainbow-delimiters-depth-5">(</span>web-mode-html-attr-name-face <span class="org-builtin">:inherit</span> font-lock-variable-name-face
+                                         <span class="org-builtin">:foreground</span> nil<span class="org-rainbow-delimiters-depth-5">)</span>
+           <span class="org-comment-delimiter">;; </span><span class="org-comment">Modeline</span>
+           <span class="org-rainbow-delimiters-depth-5">(</span>powerline-active1 <span class="org-builtin">:box</span> <span class="org-rainbow-delimiters-depth-6">(</span><span class="org-builtin">:color</span> <span class="org-string">"#999999"</span>
+                                    <span class="org-builtin">:line-width</span> <span class="org-highlight-numbers-number">1</span>
+                                    <span class="org-builtin">:style</span> released-button<span class="org-rainbow-delimiters-depth-6">)</span>
+                              <span class="org-builtin">:background</span> <span class="org-string">"#5a5a5a"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+<p>
+Source: <a href="https://gist.github.com/TheBB/f25a607b9bda4d5861f2#file-init-el-L274">gist</a>
+</p>
 
 <p>
 This will apply the given attributes to the relevant faces whenever the
@@ -306,9 +332,10 @@ spacemacs/update-theme</code>.
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-org4e2b126" class="outline-2">
-<h2 id="attributes"><a id="org4e2b126"></a><span class="section-number-2">4</span> Attributes</h2>
+<div id="outline-container-org4b68407" class="outline-2">
+<h2 id="attributes"><a id="org4b68407"></a><span class="section-number-2">4</span> Attributes</h2>
 <div class="outline-text-2" id="text-attributes">
 <p>
 See <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Face-Attributes.html#Face-Attributes">face attributes</a> in the Emacs manual for more information. Some of the more
@@ -328,8 +355,8 @@ the underlying face)</dd>
 </div>
 </div>
 
-<div id="outline-container-orgef122b2" class="outline-2">
-<h2 id="faces"><a id="orgef122b2"></a><span class="section-number-2">5</span> Faces</h2>
+<div id="outline-container-org04966ca" class="outline-2">
+<h2 id="faces"><a id="org04966ca"></a><span class="section-number-2">5</span> Faces</h2>
 <div class="outline-text-2" id="text-faces">
 <p>
 To see a list over all loaded faces and what they look like, use <code>SPC SPC
@@ -369,8 +396,8 @@ As well as the mode-line faces for the active and inactive windows:
 </div>
 </div>
 
-<div id="outline-container-orgcbfe015" class="outline-2">
-<h2 id="headers"><a id="orgcbfe015"></a><span class="section-number-2">6</span> Headers</h2>
+<div id="outline-container-org9b8421f" class="outline-2">
+<h2 id="headers"><a id="org9b8421f"></a><span class="section-number-2">6</span> Headers</h2>
 <div class="outline-text-2" id="text-headers">
 <p>
 This layer includes three additional layer variables for tweaking headings.
@@ -390,8 +417,7 @@ headings</dd>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2017-02-12 Sun 23:14</p>
+<p class="date">Created: 2017-04-29 Sat 04:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

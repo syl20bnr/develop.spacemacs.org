@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-02-12 Sun 23:14 -->
+<!-- 2017-04-29 Sat 04:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GO layer</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -266,6 +265,7 @@ for the JavaScript code in this tag.
 <li><a href="#indentation">3.1. Indentation</a></li>
 <li><a href="#tests">3.2. Tests</a></li>
 <li><a href="#guru">3.3. Guru</a></li>
+<li><a href="#autocomplete">3.4. Autocomplete</a></li>
 </ul>
 </li>
 <li><a href="#working-with-go">4. Working with Go</a>
@@ -283,21 +283,21 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org639bce7" class="outline-2">
-<h2 id="description"><a id="org639bce7"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org1423e1e" class="outline-2">
+<h2 id="description"><a id="org1423e1e"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds extensive support for go.
 </p>
 </div>
 
-<div id="outline-container-orgb370652" class="outline-3">
-<h3 id="features"><a id="orgb370652"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org93b94bb" class="outline-3">
+<h3 id="features"><a id="org93b94bb"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>gofmt/goimports on file save</li>
 <li>Auto-completion using <a href="https://github.com/nsf/gocode/tree/master/emacs">go-autocomplete</a> (with the <code>auto-completion</code> layer)</li>
-<li>Source analysis using <a href="https://godoc.org/golang.org/x/tools/cmd/guru">go-guru</a></li>
+<li>Source analysis using <a href="https://docs.google.com/document/d/1_Y9xCEMj5S-7rv2ooHpZNH15JgRT5iM742gJkw5LtmQ">go-guru</a></li>
 <li>Linting with flycheck's built-in checkers or flycheck-gometalinter</li>
 <li>Coverage profile visualization</li>
 </ul>
@@ -305,13 +305,13 @@ This layer adds extensive support for go.
 </div>
 </div>
 
-<div id="outline-container-org21f4f56" class="outline-2">
-<h2 id="install"><a id="org21f4f56"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org999ca7b" class="outline-2">
+<h2 id="install"><a id="org999ca7b"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org0e056c9" class="outline-3">
-<h3 id="pre-requisites"><a id="org0e056c9"></a><span class="section-number-3">2.1</span> Pre-requisites</h3>
+<div id="outline-container-orgdf335d4" class="outline-3">
+<h3 id="pre-requisites"><a id="orgdf335d4"></a><span class="section-number-3">2.1</span> Pre-requisites</h3>
 <div class="outline-text-3" id="text-pre-requisites">
 <p>
 You will need <code>gocode</code> and <code>godef</code>:
@@ -322,7 +322,7 @@ You will need <code>gocode</code> and <code>godef</code>:
 go get -u -v github.com/rogpeppe/godef
 go get -u -v golang.org/x/tools/cmd/guru
 go get -u -v golang.org/x/tools/cmd/gorename
-go get -u -v golang.org/x/tools/cmd/goimports
+go get -u -v github.com/golang/tools/cmd/goimports
 </pre>
 </div>
 
@@ -352,7 +352,7 @@ and <a href="https://github.com/favadi/flycheck-gometalinter/blob/master/README.
 
 <p>
 Make sure that <code>gocode</code> executable is in your PATH. For information about
-setting up <code>$PATH</code>, check out the corresponding section in the FAQ (<code>SPC h SPC
+setting up <code>$PATH</code>, check out the corresponding section in the FAQ (<code>SPC h f
 $PATH RET</code>).
 </p>
 
@@ -363,8 +363,8 @@ layers are enabled as well.
 </div>
 </div>
 
-<div id="outline-container-org0c752c3" class="outline-3">
-<h3 id="layer"><a id="org0c752c3"></a><span class="section-number-3">2.2</span> Layer</h3>
+<div id="outline-container-orge8b59ed" class="outline-3">
+<h3 id="layer"><a id="orge8b59ed"></a><span class="section-number-3">2.2</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -375,8 +375,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org33ca4d3" class="outline-2">
-<h2 id="configuration"><a id="org33ca4d3"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org4209523" class="outline-2">
+<h2 id="configuration"><a id="org4209523"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 By default, go buffers are run through <code>gofmt</code> on save. To use a different
@@ -398,8 +398,8 @@ or
 </div>
 </div>
 
-<div id="outline-container-orgeac7865" class="outline-3">
-<h3 id="indentation"><a id="orgeac7865"></a><span class="section-number-3">3.1</span> Indentation</h3>
+<div id="outline-container-orgba35571" class="outline-3">
+<h3 id="indentation"><a id="orgba35571"></a><span class="section-number-3">3.1</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
 By default, the tab width in Go mode is 8 spaces. To use a different value set
@@ -413,8 +413,8 @@ the layer variable <code>go-tab-width</code>, e.g.
 </div>
 </div>
 
-<div id="outline-container-org9164d8a" class="outline-3">
-<h3 id="tests"><a id="org9164d8a"></a><span class="section-number-3">3.2</span> Tests</h3>
+<div id="outline-container-org73c85b1" class="outline-3">
+<h3 id="tests"><a id="org73c85b1"></a><span class="section-number-3">3.2</span> Tests</h3>
 <div class="outline-text-3" id="text-tests">
 <p>
 If you're using <code>gocheck</code> in your project you can use the
@@ -427,11 +427,17 @@ function testing to work.
 the coverage buffer. See <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Choosing-Window.html"><code>display-buffer</code></a> for a list of possible functions.
 The default value is <code>display-buffer-reuse-window</code>.
 </p>
+
+<p>
+Tests are run in a compilation buffer displayed in a popup window that can be
+closed by pressing <code>C-g</code> from any other window. The variable
+<code>go-test-buffer-name</code> can be customized to set the output buffer name.
+</p>
 </div>
 </div>
 
-<div id="outline-container-org93debe7" class="outline-3">
-<h3 id="guru"><a id="org93debe7"></a><span class="section-number-3">3.3</span> Guru</h3>
+<div id="outline-container-org22dfd5b" class="outline-3">
+<h3 id="guru"><a id="org22dfd5b"></a><span class="section-number-3">3.3</span> Guru</h3>
 <div class="outline-text-3" id="text-guru">
 <p>
 Go Oracle has been deprecated as of October 1, 2016, it's replacement is <code>go-guru</code>.
@@ -450,15 +456,33 @@ In addition, <code>GOPATH</code> must be set prior to <code>go-guru</code> initi
 </p>
 </div>
 </div>
+
+<div id="outline-container-orga0d047d" class="outline-3">
+<h3 id="autocomplete"><a id="orga0d047d"></a><span class="section-number-3">3.4</span> Autocomplete</h3>
+<div class="outline-text-3" id="text-autocomplete">
+<p>
+<code>gocode</code> uses the output from installed binary files to provide its suggestions.
+You have a few options to ensure you always get up to date suggestions:
+</p>
+
+<ul class="org-ul">
+<li>Run <code>go install ./...</code> in your package directory when you make a file change.</li>
+<li>Run <code>gocode set autobuild true</code> to have gocode attempt to run <code>go install
+  ./...</code> for you.</li>
+<li>You can configure your task runner to run <code>go install ./...</code> command on every
+file change.</li>
+</ul>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org7d1c3f0" class="outline-2">
-<h2 id="working-with-go"><a id="org7d1c3f0"></a><span class="section-number-2">4</span> Working with Go</h2>
+<div id="outline-container-org9cd0ceb" class="outline-2">
+<h2 id="working-with-go"><a id="org9cd0ceb"></a><span class="section-number-2">4</span> Working with Go</h2>
 <div class="outline-text-2" id="text-working-with-go">
 </div>
 
-<div id="outline-container-orgfebf906" class="outline-3">
-<h3 id="go-commands-start-with-m"><a id="orgfebf906"></a><span class="section-number-3">4.1</span> Go commands (start with <code>m</code>):</h3>
+<div id="outline-container-orga67316a" class="outline-3">
+<h3 id="go-commands-start-with-m"><a id="orga67316a"></a><span class="section-number-3">4.1</span> Go commands (start with <code>m</code>):</h3>
 <div class="outline-text-3" id="text-go-commands-start-with-m">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -559,8 +583,8 @@ In addition, <code>GOPATH</code> must be set prior to <code>go-guru</code> initi
 </div>
 </div>
 
-<div id="outline-container-org903f00c" class="outline-3">
-<h3 id="go-guru"><a id="org903f00c"></a><span class="section-number-3">4.2</span> Go Guru</h3>
+<div id="outline-container-orgf556733" class="outline-3">
+<h3 id="go-guru"><a id="orgf556733"></a><span class="section-number-3">4.2</span> Go Guru</h3>
 <div class="outline-text-3" id="text-go-guru">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -643,8 +667,7 @@ In addition, <code>GOPATH</code> must be set prior to <code>go-guru</code> initi
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2017-02-12 Sun 23:14</p>
+<p class="date">Created: 2017-04-29 Sat 04:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-02-12 Sun 23:14 -->
+<!-- 2017-04-29 Sat 04:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Version-Control layer</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -268,14 +267,15 @@ for the JavaScript code in this tag.
 <li><a href="#key-bindings">4. Key Bindings</a>
 <ul>
 <li><a href="#version-control-transient-state">4.1. Version Control Transient-state</a></li>
+<li><a href="#smerge-mode-transient-state">4.2. Smerge Mode Transient-state</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org800dce7" class="outline-2">
-<h2 id="description"><a id="org800dce7"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgd54ff41" class="outline-2">
+<h2 id="description"><a id="orgd54ff41"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layers adds general configuration for <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Version-Control.html">Emacs VC</a>.
@@ -283,8 +283,8 @@ It should work with all VC backends such as Git, Mercurial, Bazaar, SVN, etc&#x2
 </p>
 </div>
 
-<div id="outline-container-org5dce0e1" class="outline-3">
-<h3 id="features"><a id="org5dce0e1"></a><span class="section-number-3">1.1</span> Features</h3>
+<div id="outline-container-org1f15b50" class="outline-3">
+<h3 id="features"><a id="org1f15b50"></a><span class="section-number-3">1.1</span> Features</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>highlights uncommitted changes in the fringe or margin with <a href="https://github.com/dgutov/diff-hl">diff-hl</a>,</li>
@@ -302,13 +302,13 @@ buffer hunks.
 </div>
 </div>
 
-<div id="outline-container-org289c70b" class="outline-2">
-<h2 id="install"><a id="org289c70b"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orge42c859" class="outline-2">
+<h2 id="install"><a id="orge42c859"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org1a4951c" class="outline-3">
-<h3 id="layer"><a id="org1a4951c"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-orgda85be8" class="outline-3">
+<h3 id="layer"><a id="orgda85be8"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -319,8 +319,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgbf1a674" class="outline-2">
-<h2 id="configuration"><a id="orgbf1a674"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org3959cbd" class="outline-2">
+<h2 id="configuration"><a id="org3959cbd"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 You can choose the package to facilitate the diff transient-state and show margins
@@ -355,8 +355,8 @@ To automatically enable diff margins in all buffers, set
 </div>
 </div>
 
-<div id="outline-container-orgcbae2a1" class="outline-3">
-<h3 id="differences-between-margin-programs"><a id="orgcbae2a1"></a><span class="section-number-3">3.1</span> Differences between margin programs</h3>
+<div id="outline-container-orga8fbc67" class="outline-3">
+<h3 id="differences-between-margin-programs"><a id="orga8fbc67"></a><span class="section-number-3">3.1</span> Differences between margin programs</h3>
 <div class="outline-text-3" id="text-differences-between-margin-programs">
 <p>
 This layer contains generalized mappings for three diff margin packages:
@@ -422,8 +422,8 @@ one over the other:
 </div>
 </div>
 
-<div id="outline-container-orgbfde45a" class="outline-2">
-<h2 id="key-bindings"><a id="orgbfde45a"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org7fd3ad8" class="outline-2">
+<h2 id="key-bindings"><a id="org7fd3ad8"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -446,6 +446,11 @@ one over the other:
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC g r</code></td>
+<td class="org-left">smerge mode transient-state</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC T d</code></td>
 <td class="org-left">toggle diff margins</td>
 </tr>
@@ -454,12 +459,17 @@ one over the other:
 <td class="org-left"><code>SPC T C-d</code></td>
 <td class="org-left">toggle diff margins globally</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>SPC g h o</code></td>
+<td class="org-left">browser at remote</td>
+</tr>
 </tbody>
 </table>
 </div>
 
-<div id="outline-container-org79ade59" class="outline-3">
-<h3 id="version-control-transient-state"><a id="org79ade59"></a><span class="section-number-3">4.1</span> Version Control Transient-state</h3>
+<div id="outline-container-orgc9e9b23" class="outline-3">
+<h3 id="version-control-transient-state"><a id="orgc9e9b23"></a><span class="section-number-3">4.1</span> Version Control Transient-state</h3>
 <div class="outline-text-3" id="text-version-control-transient-state">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -564,11 +574,102 @@ one over the other:
 </table>
 </div>
 </div>
+
+<div id="outline-container-orgb352b45" class="outline-3">
+<h3 id="smerge-mode-transient-state"><a id="orgb352b45"></a><span class="section-number-3">4.2</span> Smerge Mode Transient-state</h3>
+<div class="outline-text-3" id="text-smerge-mode-transient-state">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC g r n</code></td>
+<td class="org-left">Next hunk</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g r N</code></td>
+<td class="org-left">Previous hunk</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g r p</code></td>
+<td class="org-left">Previous hunk</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g r j</code></td>
+<td class="org-left">Go to next line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g r k</code></td>
+<td class="org-left">Go to previous line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g r b</code></td>
+<td class="org-left">Smerge keep base</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g r m</code></td>
+<td class="org-left">Smerge keep mine</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g r a</code></td>
+<td class="org-left">Smerge keep all</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g r o</code></td>
+<td class="org-left">Smerge keep other</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g r c</code></td>
+<td class="org-left">Smerge keep current</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g r C</code></td>
+<td class="org-left">Smerge combine with next</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g r u</code></td>
+<td class="org-left">Undo</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g r r</code></td>
+<td class="org-left">Smerge refine</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g r q</code></td>
+<td class="org-left">Quit transient state</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2017-02-12 Sun 23:14</p>
+<p class="date">Created: 2017-04-29 Sat 04:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
