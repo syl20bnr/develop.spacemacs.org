@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-04-29 Sat 04:12 -->
+<!-- 2017-05-08 Mon 02:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Slack layer</title>
@@ -182,8 +182,8 @@
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-          <script type="text/javascript"
-                  src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
@@ -199,7 +199,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -251,7 +251,11 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#description">1. Description</a></li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#configuration">3. Configuration</a></li>
+<li><a href="#configuration">3. Configuration</a>
+<ul>
+<li><a href="#spacemacs-layout-integration">3.1. Spacemacs layout integration</a></li>
+</ul>
+</li>
 <li><a href="#key-bindings">4. Key bindings</a></li>
 </ul>
 </div>
@@ -262,8 +266,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org253725a" class="outline-2">
-<h2 id="description"><a id="org253725a"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org38e39f2" class="outline-2">
+<h2 id="description"><a id="org38e39f2"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer provides an interface to the Slack chat service via the emacs-slack
@@ -273,8 +277,8 @@ packages in Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-org6874c85" class="outline-2">
-<h2 id="install"><a id="org6874c85"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgb5b6a32" class="outline-2">
+<h2 id="install"><a id="orgb5b6a32"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -284,8 +288,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org80165d7" class="outline-2">
-<h2 id="configuration"><a id="org80165d7"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org55e0a9e" class="outline-2">
+<h2 id="configuration"><a id="org55e0a9e"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 Follow the instructions in the <a href="https://github.com/yuya373/emacs-slack/blob/master/README.md">emacs-slack</a> package for obtaining your client ID,
@@ -314,10 +318,35 @@ stuff elsewhere (like Dropbox for instance) and load the file in your dotfile.
 </pre>
 </div>
 </div>
+
+<div id="outline-container-org1cb7a3b" class="outline-3">
+<h3 id="spacemacs-layout-integration"><a id="org1cb7a3b"></a><span class="section-number-3">3.1</span> Spacemacs layout integration</h3>
+<div class="outline-text-3" id="text-spacemacs-layout-integration">
+<p>
+A <a href="../../../doc/DOCUMENTATION.html#layouts-and-workspaces">Spacemacs custom layout</a> is defined by the layer. The name and the key binding
+for it can be customized with the following layer variables:
+</p>
+<ul class="org-ul">
+<li><code>slack-spacemacs-layout-name</code> for the layout name,</li>
+<li><code>slack-spacemacs-layout-binding</code> for the key binding.</li>
+</ul>
+
+<p>
+By default the values are:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>slack <span class="org-builtin">:variables</span> slack-spacemacs-layout-name <span class="org-string">"@Slack"</span>
+                    slack-spacemacs-layout-binding <span class="org-string">"s"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orga7b904c" class="outline-2">
-<h2 id="key-bindings"><a id="orga7b904c"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-orgabbadc6" class="outline-2">
+<h2 id="key-bindings"><a id="orgabbadc6"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -446,7 +475,7 @@ prefix.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-04-29 Sat 04:12</p>
+<p class="date">Created: 2017-05-08 Mon 02:28</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

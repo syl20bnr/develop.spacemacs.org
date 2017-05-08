@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-04-29 Sat 04:12 -->
+<!-- 2017-05-08 Mon 02:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Migrating from Vim</title>
@@ -182,8 +182,8 @@
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-          <script type="text/javascript"
-                  src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
@@ -199,7 +199,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -308,8 +308,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org2ebb886" class="outline-2">
-<h2 id="purpose-of-this-document"><a id="org2ebb886"></a><span class="section-number-2">1</span> Purpose of this document</h2>
+<div id="outline-container-orga49a303" class="outline-2">
+<h2 id="purpose-of-this-document"><a id="orga49a303"></a><span class="section-number-2">1</span> Purpose of this document</h2>
 <div class="outline-text-2" id="text-purpose-of-this-document">
 <p>
 This document is intended to supplement the Spacemacs documentation by bridging
@@ -324,8 +324,8 @@ read both files to fully understand Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-org7f58716" class="outline-2">
-<h2 id="philosophy"><a id="org7f58716"></a><span class="section-number-2">2</span> Philosophy</h2>
+<div id="outline-container-org7698021" class="outline-2">
+<h2 id="philosophy"><a id="org7698021"></a><span class="section-number-2">2</span> Philosophy</h2>
 <div class="outline-text-2" id="text-philosophy">
 <p>
 One misconception many vim users have is that Spacemacs is an Emacs <i>clone</i> of
@@ -339,13 +339,13 @@ vim and the nicer configuration language of Emacs.
 </div>
 </div>
 
-<div id="outline-container-orgb1672d3" class="outline-2">
-<h2 id="basic-orientation"><a id="orgb1672d3"></a><span class="section-number-2">3</span> Basic orientation</h2>
+<div id="outline-container-orgbbd1873" class="outline-2">
+<h2 id="basic-orientation"><a id="orgbbd1873"></a><span class="section-number-2">3</span> Basic orientation</h2>
 <div class="outline-text-2" id="text-basic-orientation">
 </div>
 
-<div id="outline-container-orgd0912e1" class="outline-3">
-<h3 id="terms"><a id="orgd0912e1"></a><span class="section-number-3">3.1</span> Terms</h3>
+<div id="outline-container-orgb8cad5a" class="outline-3">
+<h3 id="terms"><a id="orgb8cad5a"></a><span class="section-number-3">3.1</span> Terms</h3>
 <div class="outline-text-3" id="text-terms">
 <p>
 Spacemacs uses some different terminology than vim, which can cause confusion
@@ -353,8 +353,8 @@ for new users. This section attempts to clear up any confusion.
 </p>
 </div>
 
-<div id="outline-container-orgc8d736c" class="outline-4">
-<h4 id="modes-vs-states"><a id="orgc8d736c"></a><span class="section-number-4">3.1.1</span> Modes vs. States</h4>
+<div id="outline-container-orgd1a8191" class="outline-4">
+<h4 id="modes-vs-states"><a id="orgd1a8191"></a><span class="section-number-4">3.1.1</span> Modes vs. States</h4>
 <div class="outline-text-4" id="text-modes-vs-states">
 <p>
 In vim you have various editing modes like <code>insert mode</code> and <code>visual mode</code> to
@@ -375,8 +375,8 @@ only one <code>major-mode</code> per buffer.
 </div>
 </div>
 
-<div id="outline-container-org6f938b2" class="outline-4">
-<h4 id="layers"><a id="org6f938b2"></a><span class="section-number-4">3.1.2</span> Layers</h4>
+<div id="outline-container-org83bc56f" class="outline-4">
+<h4 id="layers"><a id="org83bc56f"></a><span class="section-number-4">3.1.2</span> Layers</h4>
 <div class="outline-text-4" id="text-layers">
 <p>
 Spacemacs has the concept of layers. Layers are similar to vim plugins. They
@@ -391,8 +391,8 @@ More information on layers can be found in the <a href="#customization">customiz
 </div>
 </div>
 
-<div id="outline-container-org05b5a0e" class="outline-4">
-<h4 id="transient-states"><a id="org05b5a0e"></a><span class="section-number-4">3.1.3</span> Transient-states</h4>
+<div id="outline-container-orgb1a83ac" class="outline-4">
+<h4 id="transient-states"><a id="orgb1a83ac"></a><span class="section-number-4">3.1.3</span> Transient-states</h4>
 <div class="outline-text-4" id="text-transient-states">
 <p>
 Spacemacs provides a special functionality called transient-states. Transient-states
@@ -412,8 +412,8 @@ bottom of your window. To exit a transient-state press <code>q</code>.
 </div>
 </div>
 
-<div id="outline-container-orge0d4232" class="outline-3">
-<h3 id="keybinding-conventions"><a id="orge0d4232"></a><span class="section-number-3">3.2</span> Keybinding conventions</h3>
+<div id="outline-container-org4f8b871" class="outline-3">
+<h3 id="keybinding-conventions"><a id="org4f8b871"></a><span class="section-number-3">3.2</span> Keybinding conventions</h3>
 <div class="outline-text-3" id="text-keybinding-conventions">
 <p>
 Spacemacs uses <code>SPC</code> as its <code>&lt;Leader&gt;</code> key. This document will use <code>SPC</code> to refer to
@@ -435,8 +435,8 @@ Spacemacs uses <a href="https://github.com/justbur/emacs-which-key">which-key</a
 </div>
 </div>
 
-<div id="outline-container-org9c5e51b" class="outline-3">
-<h3 id="running-commands"><a id="org9c5e51b"></a><span class="section-number-3">3.3</span> Running commands</h3>
+<div id="outline-container-org06f7e61" class="outline-3">
+<h3 id="running-commands"><a id="org06f7e61"></a><span class="section-number-3">3.3</span> Running commands</h3>
 <div class="outline-text-3" id="text-running-commands">
 <p>
 Emacs commands can be run using <code>SPC SPC</code>. This will pop up a buffer using <a href="https://github.com/emacs-helm/helm">Helm</a>
@@ -451,13 +451,13 @@ commands using <code>SPC SPC</code>.
 </div>
 </div>
 
-<div id="outline-container-org7ecfc14" class="outline-3">
-<h3 id="buffer-and-window-management"><a id="org7ecfc14"></a><span class="section-number-3">3.4</span> Buffer and window management</h3>
+<div id="outline-container-org445b6ba" class="outline-3">
+<h3 id="buffer-and-window-management"><a id="org445b6ba"></a><span class="section-number-3">3.4</span> Buffer and window management</h3>
 <div class="outline-text-3" id="text-buffer-and-window-management">
 </div>
 
-<div id="outline-container-org4907b97" class="outline-4">
-<h4 id="buffers"><a id="org4907b97"></a><span class="section-number-4">3.4.1</span> Buffers</h4>
+<div id="outline-container-org9a74bb5" class="outline-4">
+<h4 id="buffers"><a id="org9a74bb5"></a><span class="section-number-4">3.4.1</span> Buffers</h4>
 <div class="outline-text-4" id="text-buffers">
 <p>
 Buffers in Emacs and vim are essentially the same. The keybindings for buffers
@@ -522,8 +522,8 @@ are located under the <code>SPC b</code> prefix.
 </table>
 </div>
 
-<div id="outline-container-org96c7d42" class="outline-5">
-<h5 id="special-buffers"><a id="org96c7d42"></a><span class="section-number-5">3.4.1.1</span> Special buffers</h5>
+<div id="outline-container-orgf5fe250" class="outline-5">
+<h5 id="special-buffers"><a id="orgf5fe250"></a><span class="section-number-5">3.4.1.1</span> Special buffers</h5>
 <div class="outline-text-5" id="text-special-buffers">
 <p>
 By default Emacs creates a lot of buffers that most people will never need, like
@@ -534,8 +534,8 @@ key bindings. More information can be found <a href="DOCUMENTATION.html#special-
 </div>
 </div>
 
-<div id="outline-container-org515af7a" class="outline-4">
-<h4 id="windows"><a id="org515af7a"></a><span class="section-number-4">3.4.2</span> Windows</h4>
+<div id="outline-container-orgbc8198b" class="outline-4">
+<h4 id="windows"><a id="orgbc8198b"></a><span class="section-number-4">3.4.2</span> Windows</h4>
 <div class="outline-text-4" id="text-windows">
 <p>
 Windows are like splits in vim. They are useful for editing multiple files at
@@ -587,8 +587,8 @@ once. All window keybindings are under the <code>SPC w</code> prefix.
 </div>
 </div>
 
-<div id="outline-container-org9369603" class="outline-3">
-<h3 id="files"><a id="org9369603"></a><span class="section-number-3">3.5</span> Files</h3>
+<div id="outline-container-orgb65858e" class="outline-3">
+<h3 id="files"><a id="orgb65858e"></a><span class="section-number-3">3.5</span> Files</h3>
 <div class="outline-text-3" id="text-files">
 <p>
 All file commands in Spacemacs are available under the <code>SPC f</code> prefix.
@@ -638,8 +638,8 @@ All file commands in Spacemacs are available under the <code>SPC f</code> prefix
 </div>
 </div>
 
-<div id="outline-container-org8f1f499" class="outline-3">
-<h3 id="the-help-system"><a id="org8f1f499"></a><span class="section-number-3">3.6</span> The Help System</h3>
+<div id="outline-container-org3e88b01" class="outline-3">
+<h3 id="the-help-system"><a id="org3e88b01"></a><span class="section-number-3">3.6</span> The Help System</h3>
 <div class="outline-text-3" id="text-the-help-system">
 <p>
 Emacs has an extensive help system. All keybindings under the <code>SPC h d</code> prefix
@@ -692,8 +692,8 @@ functions are the first thing you should refer to.
 </div>
 </div>
 
-<div id="outline-container-orgd96a26f" class="outline-3">
-<h3 id="exploring"><a id="orgd96a26f"></a><span class="section-number-3">3.7</span> Exploring</h3>
+<div id="outline-container-org55ba991" class="outline-3">
+<h3 id="exploring"><a id="org55ba991"></a><span class="section-number-3">3.7</span> Exploring</h3>
 <div class="outline-text-3" id="text-exploring">
 <p>
 There are a few ways to explore the functionality of Spacemacs. One is to read
@@ -732,13 +732,13 @@ explore:
 </div>
 </div>
 
-<div id="outline-container-org6a7a2a0" class="outline-2">
-<h2 id="customization"><a id="org6a7a2a0"></a><span class="section-number-2">4</span> Customization</h2>
+<div id="outline-container-org50e0745" class="outline-2">
+<h2 id="customization"><a id="org50e0745"></a><span class="section-number-2">4</span> Customization</h2>
 <div class="outline-text-2" id="text-customization">
 </div>
 
-<div id="outline-container-orgbf632ae" class="outline-3">
-<h3 id="the-spacemacs-file"><a id="orgbf632ae"></a><span class="section-number-3">4.1</span> The .spacemacs file</h3>
+<div id="outline-container-orgaad4e4c" class="outline-3">
+<h3 id="the-spacemacs-file"><a id="orgaad4e4c"></a><span class="section-number-3">4.1</span> The .spacemacs file</h3>
 <div class="outline-text-3" id="text-the-spacemacs-file">
 <p>
 When you first start spacemacs, you will be prompted to choose an editing style.
@@ -788,8 +788,8 @@ is the one you will use the most. This is where you define any user configuratio
 </div>
 </div>
 
-<div id="outline-container-org9d613e1" class="outline-3">
-<h3 id="emacs-lisp"><a id="org9d613e1"></a><span class="section-number-3">4.2</span> Emacs Lisp</h3>
+<div id="outline-container-org98107c2" class="outline-3">
+<h3 id="emacs-lisp"><a id="org98107c2"></a><span class="section-number-3">4.2</span> Emacs Lisp</h3>
 <div class="outline-text-3" id="text-emacs-lisp">
 <p>
 This section introduces a few emacs lisp functions that are needed to configure
@@ -799,8 +799,8 @@ found at <code>SPC h i elisp RET</code> .
 </p>
 </div>
 
-<div id="outline-container-org416e043" class="outline-4">
-<h4 id="variables"><a id="org416e043"></a><span class="section-number-4">4.2.1</span> Variables</h4>
+<div id="outline-container-orgef50569" class="outline-4">
+<h4 id="variables"><a id="orgef50569"></a><span class="section-number-4">4.2.1</span> Variables</h4>
 <div class="outline-text-4" id="text-variables">
 <p>
 Setting variables is the most common way to customize the behavior of Spacemacs.
@@ -818,8 +818,8 @@ The syntax is simple:
 </div>
 </div>
 
-<div id="outline-container-orgfdc00b8" class="outline-4">
-<h4 id="keybindings"><a id="orgfdc00b8"></a><span class="section-number-4">4.2.2</span> Keybindings</h4>
+<div id="outline-container-orgcfe06ce" class="outline-4">
+<h4 id="keybindings"><a id="orgcfe06ce"></a><span class="section-number-4">4.2.2</span> Keybindings</h4>
 <div class="outline-text-4" id="text-keybindings">
 <p>
 Defining keybindings is something that almost everyone will want to do. The
@@ -857,8 +857,8 @@ To map <code>&lt;Leader&gt;</code> keybindings, use the <code>spacemacs/set-lead
 </div>
 </div>
 
-<div id="outline-container-orgc58e359" class="outline-4">
-<h4 id="functions"><a id="orgc58e359"></a><span class="section-number-4">4.2.3</span> Functions</h4>
+<div id="outline-container-orga5d3c52" class="outline-4">
+<h4 id="functions"><a id="orga5d3c52"></a><span class="section-number-4">4.2.3</span> Functions</h4>
 <div class="outline-text-4" id="text-functions">
 <p>
 You may occasionally want to define a function to do a more complex
@@ -900,8 +900,8 @@ Here is an example of a function that is useful in real life:
 </div>
 </div>
 
-<div id="outline-container-org75e3280" class="outline-3">
-<h3 id="activating-a-layer"><a id="org75e3280"></a><span class="section-number-3">4.3</span> Activating a Layer</h3>
+<div id="outline-container-org8414fff" class="outline-3">
+<h3 id="activating-a-layer"><a id="org8414fff"></a><span class="section-number-3">4.3</span> Activating a Layer</h3>
 <div class="outline-text-3" id="text-activating-a-layer">
 <p>
 As said in the terms section, layers provide an easy way to add features.
@@ -935,8 +935,8 @@ Emacs or press <code>SPC f e R</code> . To view all layers and their documentati
 </div>
 </div>
 
-<div id="outline-container-org32fe31b" class="outline-3">
-<h3 id="creating-a-layer"><a id="org32fe31b"></a><span class="section-number-3">4.4</span> Creating a Layer</h3>
+<div id="outline-container-org231f165" class="outline-3">
+<h3 id="creating-a-layer"><a id="org231f165"></a><span class="section-number-3">4.4</span> Creating a Layer</h3>
 <div class="outline-text-3" id="text-creating-a-layer">
 <p>
 To group configuration or when configuration doesn't fit well in your
@@ -963,7 +963,7 @@ looks like this:
 
 <p>
 The <code>packages.el</code> file contains a list of packages that you can install in the
-variable <code>&lt;layer-name&gt;-packages</code>. Any package that is available on the <a href="http:melpa.org">MELPA</a>
+variable <code>&lt;layer-name&gt;-packages</code>. Any package that is available on the <a href="http://melpa.org">MELPA</a>
 repository can be added to the list. A list can also exclude packages using the
 <code>:excluded t</code> property.
 Each package requires a function to initialize it. The function <i>must</i> be named
@@ -1011,8 +1011,8 @@ the <a href="LAYERS.html">configuration layers documentation.</a>
 </div>
 </div>
 
-<div id="outline-container-org90dfb01" class="outline-3">
-<h3 id="installing-a-single-package"><a id="org90dfb01"></a><span class="section-number-3">4.5</span> Installing a single package</h3>
+<div id="outline-container-orgf567f22" class="outline-3">
+<h3 id="installing-a-single-package"><a id="orgf567f22"></a><span class="section-number-3">4.5</span> Installing a single package</h3>
 <div class="outline-text-3" id="text-installing-a-single-package">
 <p>
 Sometimes creating a layer is a bit overkill. Maybe you just want one package
@@ -1025,8 +1025,8 @@ will be installed when you restart. Loading the package is covered in the next
 </div>
 </div>
 
-<div id="outline-container-orgaf2ddf2" class="outline-3">
-<h3 id="loading-packages"><a id="orgaf2ddf2"></a><span class="section-number-3">4.6</span> Loading packages</h3>
+<div id="outline-container-org1aa591b" class="outline-3">
+<h3 id="loading-packages"><a id="org1aa591b"></a><span class="section-number-3">4.6</span> Loading packages</h3>
 <div class="outline-text-3" id="text-loading-packages">
 <p>
 Ever wonder how Spacemacs can load over a 100 packages in just a few seconds?
@@ -1066,8 +1066,8 @@ to control how a package loads using it that aren't covered here.
 </div>
 </div>
 
-<div id="outline-container-orge3cdeb7" class="outline-3">
-<h3 id="uninstalling-a-package"><a id="orge3cdeb7"></a><span class="section-number-3">4.7</span> Uninstalling a package</h3>
+<div id="outline-container-org4e5faef" class="outline-3">
+<h3 id="uninstalling-a-package"><a id="org4e5faef"></a><span class="section-number-3">4.7</span> Uninstalling a package</h3>
 <div class="outline-text-3" id="text-uninstalling-a-package">
 <p>
 Spacemacs provides a variable in the <code>dotspacemacs/init</code> function in
@@ -1077,8 +1077,8 @@ the list and it will be uninstalled when you restart.
 </div>
 </div>
 
-<div id="outline-container-org14706f4" class="outline-3">
-<h3 id="common-tweaks"><a id="org14706f4"></a><span class="section-number-3">4.8</span> Common tweaks</h3>
+<div id="outline-container-org3e2f946" class="outline-3">
+<h3 id="common-tweaks"><a id="org3e2f946"></a><span class="section-number-3">4.8</span> Common tweaks</h3>
 <div class="outline-text-3" id="text-common-tweaks">
 <p>
 This section is for things many will want to change. All of these settings go in
@@ -1086,8 +1086,8 @@ the <code>dotspacemacs/user-config</code> function in your <code>.spacemacs</cod
 </p>
 </div>
 
-<div id="outline-container-org253cf4b" class="outline-4">
-<h4 id="changing-the-escape-key"><a id="org253cf4b"></a><span class="section-number-4">4.8.1</span> Changing the escape key</h4>
+<div id="outline-container-org583e2d5" class="outline-4">
+<h4 id="changing-the-escape-key"><a id="org583e2d5"></a><span class="section-number-4">4.8.1</span> Changing the escape key</h4>
 <div class="outline-text-4" id="text-changing-the-escape-key">
 <p>
 Spacemacs uses <a href="https://github.com/syl20bnr/evil-escape">evil-escape</a> to
@@ -1109,8 +1109,8 @@ More documentation is found in the <code>evil-escape</code> <a href="https://git
 </div>
 </div>
 
-<div id="outline-container-org19d0efe" class="outline-4">
-<h4 id="changing-the-colorscheme"><a id="org19d0efe"></a><span class="section-number-4">4.8.2</span> Changing the colorscheme</h4>
+<div id="outline-container-org81d1c25" class="outline-4">
+<h4 id="changing-the-colorscheme"><a id="org81d1c25"></a><span class="section-number-4">4.8.2</span> Changing the colorscheme</h4>
 <div class="outline-text-4" id="text-changing-the-colorscheme">
 <p>
 The <code>.spacemacs</code> file contains the <code>dotspacemacs-themes</code> variable in the
@@ -1137,8 +1137,8 @@ All installed themes can be listed and chosen using the <code>SPC T h</code> key
 </div>
 </div>
 
-<div id="outline-container-org09944f8" class="outline-4">
-<h4 id="nohlsearch"><a id="org09944f8"></a><span class="section-number-4">4.8.3</span> Nohlsearch</h4>
+<div id="outline-container-orgf927f57" class="outline-4">
+<h4 id="nohlsearch"><a id="orgf927f57"></a><span class="section-number-4">4.8.3</span> Nohlsearch</h4>
 <div class="outline-text-4" id="text-nohlsearch">
 <p>
 Spacemacs emulates the default vim behavior which highlights search results even
@@ -1153,8 +1153,8 @@ you can <a href="#uninstalling-a-package">uninstall</a> the <code>evil-search-hi
 </div>
 </div>
 
-<div id="outline-container-org4c1f95b" class="outline-4">
-<h4 id="sessions"><a id="org4c1f95b"></a><span class="section-number-4">4.8.4</span> Sessions</h4>
+<div id="outline-container-org458522b" class="outline-4">
+<h4 id="sessions"><a id="org458522b"></a><span class="section-number-4">4.8.4</span> Sessions</h4>
 <div class="outline-text-4" id="text-sessions">
 <p>
 Spacemacs does not automatically restore your windows and buffers when you
@@ -1164,8 +1164,8 @@ reopen it. If you use vim sessions regularly you may want to set
 </div>
 </div>
 
-<div id="outline-container-orge66b9cf" class="outline-4">
-<h4 id="navigating-using-visual-lines"><a id="orge66b9cf"></a><span class="section-number-4">4.8.5</span> Navigating using visual lines</h4>
+<div id="outline-container-orgd1bdb68" class="outline-4">
+<h4 id="navigating-using-visual-lines"><a id="orgd1bdb68"></a><span class="section-number-4">4.8.5</span> Navigating using visual lines</h4>
 <div class="outline-text-4" id="text-navigating-using-visual-lines">
 <p>
 Spacemacs uses the vim default of navigating by actual lines, even if they are
@@ -1183,8 +1183,8 @@ your <code>.spacemacs</code>:
 </div>
 </div>
 
-<div id="outline-container-org6dd97aa" class="outline-2">
-<h2 id="other-useful-links"><a id="org6dd97aa"></a><span class="section-number-2">5</span> Other useful links</h2>
+<div id="outline-container-org1824eb2" class="outline-2">
+<h2 id="other-useful-links"><a id="org1824eb2"></a><span class="section-number-2">5</span> Other useful links</h2>
 <div class="outline-text-2" id="text-other-useful-links">
 <ul class="org-ul">
 <li><a href="https://www.gnu.org/software/emacs/manual/emacs.html">Emacs Manual</a></li>
@@ -1201,7 +1201,7 @@ It is <code>SPC b b</code></li>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-04-29 Sat 04:12</p>
+<p class="date">Created: 2017-05-08 Mon 02:28</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
