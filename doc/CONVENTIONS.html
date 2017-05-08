@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-04-29 Sat 04:12 -->
+<!-- 2017-05-08 Mon 02:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spacemacs Conventions</title>
@@ -182,8 +182,8 @@
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-          <script type="text/javascript"
-                  src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
@@ -199,7 +199,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -314,13 +314,13 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgbd827b1" class="outline-2">
-<h2 id="code-guidelines"><a id="orgbd827b1"></a><span class="section-number-2">1</span> Code guidelines</h2>
+<div id="outline-container-orgd8e6d5a" class="outline-2">
+<h2 id="code-guidelines"><a id="orgd8e6d5a"></a><span class="section-number-2">1</span> Code guidelines</h2>
 <div class="outline-text-2" id="text-code-guidelines">
 </div>
 
-<div id="outline-container-org58639ba" class="outline-3">
-<h3 id="spacemacs-core-and-layer"><a id="org58639ba"></a><span class="section-number-3">1.1</span> Spacemacs core and layer</h3>
+<div id="outline-container-org4859200" class="outline-3">
+<h3 id="spacemacs-core-and-layer"><a id="org4859200"></a><span class="section-number-3">1.1</span> Spacemacs core and layer</h3>
 <div class="outline-text-3" id="text-spacemacs-core-and-layer">
 <p>
 Function names follow these conventions:
@@ -341,8 +341,8 @@ Variables follow these conventions:
 </div>
 </div>
 
-<div id="outline-container-org6b78049" class="outline-3">
-<h3 id="all-layers"><a id="org6b78049"></a><span class="section-number-3">1.2</span> All layers</h3>
+<div id="outline-container-orgbec8010" class="outline-3">
+<h3 id="all-layers"><a id="orgbec8010"></a><span class="section-number-3">1.2</span> All layers</h3>
 <div class="outline-text-3" id="text-all-layers">
 <p>
 A package is initialized in a function with name <code>&lt;layer&gt;/init-xxx</code> where:
@@ -354,8 +354,8 @@ A package is initialized in a function with name <code>&lt;layer&gt;/init-xxx</c
 </div>
 </div>
 
-<div id="outline-container-org6d7fa6d" class="outline-3">
-<h3 id="use-package"><a id="org6d7fa6d"></a><span class="section-number-3">1.3</span> Use-package</h3>
+<div id="outline-container-org88e4fc9" class="outline-3">
+<h3 id="use-package"><a id="org88e4fc9"></a><span class="section-number-3">1.3</span> Use-package</h3>
 <div class="outline-text-3" id="text-use-package">
 <ul class="org-ul">
 <li>Always use <code>progn</code> when a code block requires multiple lines for <code>:init</code> or
@@ -369,18 +369,18 @@ to do it.</li>
 </div>
 </div>
 
-<div id="outline-container-org06535da" class="outline-2">
-<h2 id="key-bindings-conventions"><a id="org06535da"></a><span class="section-number-2">2</span> Key bindings conventions</h2>
+<div id="outline-container-orgf7b9145" class="outline-2">
+<h2 id="key-bindings-conventions"><a id="orgf7b9145"></a><span class="section-number-2">2</span> Key bindings conventions</h2>
 <div class="outline-text-2" id="text-key-bindings-conventions">
 </div>
 
-<div id="outline-container-org23bac69" class="outline-3">
-<h3 id="reserved-prefix"><a id="org23bac69"></a><span class="section-number-3">2.1</span> Reserved prefix</h3>
+<div id="outline-container-org6004e54" class="outline-3">
+<h3 id="reserved-prefix"><a id="org6004e54"></a><span class="section-number-3">2.1</span> Reserved prefix</h3>
 <div class="outline-text-3" id="text-reserved-prefix">
 </div>
 
-<div id="outline-container-org872480d" class="outline-4">
-<h4 id="user-prefix"><a id="org872480d"></a><span class="section-number-4">2.1.1</span> User prefix</h4>
+<div id="outline-container-org2873583" class="outline-4">
+<h4 id="user-prefix"><a id="org2873583"></a><span class="section-number-4">2.1.1</span> User prefix</h4>
 <div class="outline-text-4" id="text-user-prefix">
 <p>
 <code>SPC o</code> and <code>SPC m o</code> must not be used by any layer. They are reserved for the
@@ -389,8 +389,8 @@ user.
 </div>
 </div>
 
-<div id="outline-container-orgbbc3694" class="outline-4">
-<h4 id="major-mode-prefix"><a id="orgbbc3694"></a><span class="section-number-4">2.1.2</span> Major mode prefix</h4>
+<div id="outline-container-org8fea412" class="outline-4">
+<h4 id="major-mode-prefix"><a id="org8fea412"></a><span class="section-number-4">2.1.2</span> Major mode prefix</h4>
 <div class="outline-text-4" id="text-major-mode-prefix">
 <p>
 <code>SPC m</code> is reserved for the current major mode. Three keys bindings are not an
@@ -399,8 +399,8 @@ issue (ie. <code>SPC m h d</code>) since <code>SPC m</code> can be accessed via 
 </div>
 </div>
 
-<div id="outline-container-orgf95dc0a" class="outline-4">
-<h4 id="transient-state"><a id="orgf95dc0a"></a><span class="section-number-4">2.1.3</span> Transient-state</h4>
+<div id="outline-container-orgf4b6ec7" class="outline-4">
+<h4 id="transient-state"><a id="orgf4b6ec7"></a><span class="section-number-4">2.1.3</span> Transient-state</h4>
 <div class="outline-text-4" id="text-transient-state">
 <p>
 Whenever possible a transient-state should be enabled with <code>M-SPC</code> and <code>s-M-SPC</code>. We
@@ -419,8 +419,8 @@ It is recommended to add <code>q</code> to leave the transient-state.
 </div>
 </div>
 
-<div id="outline-container-orgbff08e4" class="outline-3">
-<h3 id="evilified-buffers"><a id="orgbff08e4"></a><span class="section-number-3">2.2</span> Evilified buffers</h3>
+<div id="outline-container-orgff1da25" class="outline-3">
+<h3 id="evilified-buffers"><a id="orgff1da25"></a><span class="section-number-3">2.2</span> Evilified buffers</h3>
 <div class="outline-text-3" id="text-evilified-buffers">
 <p>
 <i>Evilifying</i> a buffer is to set the <code>evilified state</code> as the default
@@ -466,13 +466,13 @@ is displayed in <code>*Messages*</code>.
 </div>
 </div>
 
-<div id="outline-container-orgb1d2fa1" class="outline-3">
-<h3 id="navigation"><a id="orgb1d2fa1"></a><span class="section-number-3">2.3</span> Navigation</h3>
+<div id="outline-container-orgf8ae978" class="outline-3">
+<h3 id="navigation"><a id="orgf8ae978"></a><span class="section-number-3">2.3</span> Navigation</h3>
 <div class="outline-text-3" id="text-navigation">
 </div>
 
-<div id="outline-container-org54a74a3" class="outline-4">
-<h4 id="n-and-n"><a id="org54a74a3"></a><span class="section-number-4">2.3.1</span> n and N</h4>
+<div id="outline-container-org60c7a53" class="outline-4">
+<h4 id="n-and-n"><a id="org60c7a53"></a><span class="section-number-4">2.3.1</span> n and N</h4>
 <div class="outline-text-4" id="text-n-and-n">
 <p>
 To be consistent with the Vim way, <code>n</code> and <code>N</code> are favored over Emacs <code>n</code> and
@@ -483,13 +483,13 @@ To be consistent with the Vim way, <code>n</code> and <code>N</code> are favored
 Ideally a transient-state should be provided to smooth the navigation
 experience. A transient-state allows to repeat key bindings without entering
 each time the prefix commands. More info on transient-states in the
-<a href="DOCUMENTATION.html#org78e06b5">documentation</a>.
+<a href="DOCUMENTATION.html#org065e285">documentation</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgd0aacc3" class="outline-4">
-<h4 id="code-navigation"><a id="orgd0aacc3"></a><span class="section-number-4">2.3.2</span> Code Navigation</h4>
+<div id="outline-container-orge6db2b1" class="outline-4">
+<h4 id="code-navigation"><a id="orge6db2b1"></a><span class="section-number-4">2.3.2</span> Code Navigation</h4>
 <div class="outline-text-4" id="text-code-navigation">
 <p>
 The prefix for going to something is <code>SPC m g</code>.
@@ -539,8 +539,8 @@ The prefix for going to something is <code>SPC m g</code>.
 </div>
 </div>
 
-<div id="outline-container-org3b280e4" class="outline-4">
-<h4 id="insert-state-buffers"><a id="org3b280e4"></a><span class="section-number-4">2.3.3</span> <code>insert state</code> buffers</h4>
+<div id="outline-container-org751142d" class="outline-4">
+<h4 id="insert-state-buffers"><a id="org751142d"></a><span class="section-number-4">2.3.3</span> <code>insert state</code> buffers</h4>
 <div class="outline-text-4" id="text-insert-state-buffers">
 <p>
 Navigation in buffers like <code>Helm</code> and <code>ido</code> which are in <code>insert state</code>
@@ -577,8 +577,8 @@ should be performed with <code>C-j</code> and <code>C-k</code> bindings for vert
 </div>
 </div>
 
-<div id="outline-container-org871c4b7" class="outline-3">
-<h3 id="confirm-and-abort"><a id="org871c4b7"></a><span class="section-number-3">2.4</span> Confirm and Abort</h3>
+<div id="outline-container-org456bffc" class="outline-3">
+<h3 id="confirm-and-abort"><a id="org456bffc"></a><span class="section-number-3">2.4</span> Confirm and Abort</h3>
 <div class="outline-text-3" id="text-confirm-and-abort">
 <p>
 Confirming and aborting actions which are bound to <code>C-c C-c</code> and <code>C-c C-k</code>
@@ -619,8 +619,8 @@ mails or <code>org-mode</code> notes.
 </div>
 </div>
 
-<div id="outline-container-org328d001" class="outline-3">
-<h3 id="evaluation"><a id="org328d001"></a><span class="section-number-3">2.5</span> Evaluation</h3>
+<div id="outline-container-org608992e" class="outline-3">
+<h3 id="evaluation"><a id="org608992e"></a><span class="section-number-3">2.5</span> Evaluation</h3>
 <div class="outline-text-3" id="text-evaluation">
 <p>
 Live evaluation of code is under the prefix <code>SPC m e</code>.
@@ -675,13 +675,13 @@ Live evaluation of code is under the prefix <code>SPC m e</code>.
 </div>
 </div>
 
-<div id="outline-container-orgb7437d1" class="outline-3">
-<h3 id="repls"><a id="orgb7437d1"></a><span class="section-number-3">2.6</span> REPLs</h3>
+<div id="outline-container-orgdc52ebc" class="outline-3">
+<h3 id="repls"><a id="orgdc52ebc"></a><span class="section-number-3">2.6</span> REPLs</h3>
 <div class="outline-text-3" id="text-repls">
 </div>
 
-<div id="outline-container-org80521a9" class="outline-4">
-<h4 id="send-code"><a id="org80521a9"></a><span class="section-number-4">2.6.1</span> Send code</h4>
+<div id="outline-container-org2d60472" class="outline-4">
+<h4 id="send-code"><a id="org2d60472"></a><span class="section-number-4">2.6.1</span> Send code</h4>
 <div class="outline-text-4" id="text-send-code">
 <p>
 A lot of languages can interact with a REPL. To help keeping a
@@ -773,8 +773,8 @@ Note: we don't distinguish between the file and the buffer.
 </div>
 </div>
 
-<div id="outline-container-org2c36de2" class="outline-4">
-<h4 id="in-terminal"><a id="org2c36de2"></a><span class="section-number-4">2.6.2</span> In terminal</h4>
+<div id="outline-container-org531007a" class="outline-4">
+<h4 id="in-terminal"><a id="org531007a"></a><span class="section-number-4">2.6.2</span> In terminal</h4>
 <div class="outline-text-4" id="text-in-terminal">
 <p>
 History navigation in shells or REPLs buffers should be bound as well to
@@ -821,8 +821,8 @@ History navigation in shells or REPLs buffers should be bound as well to
 </div>
 </div>
 
-<div id="outline-container-orge0b00a4" class="outline-3">
-<h3 id="building-and-compilation"><a id="orge0b00a4"></a><span class="section-number-3">2.7</span> Building and Compilation</h3>
+<div id="outline-container-org205a36a" class="outline-3">
+<h3 id="building-and-compilation"><a id="org205a36a"></a><span class="section-number-3">2.7</span> Building and Compilation</h3>
 <div class="outline-text-3" id="text-building-and-compilation">
 <p>
 The base prefix for major mode specific compilation is <code>SPC m c</code>.
@@ -872,8 +872,8 @@ implement an auto-save of the buffer before compiling the buffer.
 </div>
 </div>
 
-<div id="outline-container-org677f76c" class="outline-3">
-<h3 id="debugging"><a id="org677f76c"></a><span class="section-number-3">2.8</span> Debugging</h3>
+<div id="outline-container-org8e6df93" class="outline-3">
+<h3 id="debugging"><a id="org8e6df93"></a><span class="section-number-3">2.8</span> Debugging</h3>
 <div class="outline-text-3" id="text-debugging">
 <p>
 The base prefix for debugging commands is <code>SPC m d</code>.
@@ -963,8 +963,8 @@ upstream (major mode repository).</li>
 </div>
 </div>
 
-<div id="outline-container-org4791e8b" class="outline-3">
-<h3 id="plain-text-markup-languages"><a id="org4791e8b"></a><span class="section-number-3">2.9</span> Plain Text Markup Languages</h3>
+<div id="outline-container-org89040ae" class="outline-3">
+<h3 id="plain-text-markup-languages"><a id="org89040ae"></a><span class="section-number-3">2.9</span> Plain Text Markup Languages</h3>
 <div class="outline-text-3" id="text-plain-text-markup-languages">
 <p>
 For layers supporting markup languages please follow the following
@@ -972,8 +972,8 @@ keybindings whenever applicable.
 </p>
 </div>
 
-<div id="outline-container-org7ae0810" class="outline-4">
-<h4 id="headers"><a id="org7ae0810"></a><span class="section-number-4">2.9.1</span> Headers</h4>
+<div id="outline-container-orgf5e383c" class="outline-4">
+<h4 id="headers"><a id="orgf5e383c"></a><span class="section-number-4">2.9.1</span> Headers</h4>
 <div class="outline-text-4" id="text-headers">
 <p>
 All header functionality should be grouped under <code>SPC m h</code>
@@ -1013,8 +1013,8 @@ All header functionality should be grouped under <code>SPC m h</code>
 </div>
 </div>
 
-<div id="outline-container-org4d500e9" class="outline-4">
-<h4 id="insertion-of-common-elements"><a id="org4d500e9"></a><span class="section-number-4">2.9.2</span> Insertion of common elements</h4>
+<div id="outline-container-org2269925" class="outline-4">
+<h4 id="insertion-of-common-elements"><a id="org2269925"></a><span class="section-number-4">2.9.2</span> Insertion of common elements</h4>
 <div class="outline-text-4" id="text-insertion-of-common-elements">
 <p>
 Insertion of common elements like links or footnotes should be grouped
@@ -1065,8 +1065,8 @@ under <code>SPC m i</code>
 </div>
 </div>
 
-<div id="outline-container-org97a0d93" class="outline-4">
-<h4 id="text-manipulation"><a id="org97a0d93"></a><span class="section-number-4">2.9.3</span> Text manipulation</h4>
+<div id="outline-container-org6ee53c8" class="outline-4">
+<h4 id="text-manipulation"><a id="org6ee53c8"></a><span class="section-number-4">2.9.3</span> Text manipulation</h4>
 <div class="outline-text-4" id="text-text-manipulation">
 <p>
 Manipulation of text regions should be grouped under <code>SPC m x</code>
@@ -1131,8 +1131,8 @@ Manipulation of text regions should be grouped under <code>SPC m x</code>
 </div>
 </div>
 
-<div id="outline-container-org536780c" class="outline-4">
-<h4 id="movement-in-normal-mode"><a id="org536780c"></a><span class="section-number-4">2.9.4</span> Movement in normal mode</h4>
+<div id="outline-container-orga2815c4" class="outline-4">
+<h4 id="movement-in-normal-mode"><a id="orga2815c4"></a><span class="section-number-4">2.9.4</span> Movement in normal mode</h4>
 <div class="outline-text-4" id="text-movement-in-normal-mode">
 <p>
 In normal mode Vim style movement should be enabled with these keybindings:
@@ -1177,8 +1177,8 @@ In normal mode Vim style movement should be enabled with these keybindings:
 </div>
 </div>
 
-<div id="outline-container-orgf462b47" class="outline-4">
-<h4 id="promotion-demotion-and-element-movement"><a id="orgf462b47"></a><span class="section-number-4">2.9.5</span> Promotion, Demotion and element movement</h4>
+<div id="outline-container-org8e5c217" class="outline-4">
+<h4 id="promotion-demotion-and-element-movement"><a id="org8e5c217"></a><span class="section-number-4">2.9.5</span> Promotion, Demotion and element movement</h4>
 <div class="outline-text-4" id="text-promotion-demotion-and-element-movement">
 <p>
 Promotion, demotion and movement of headings or list elements (whatever is
@@ -1224,8 +1224,8 @@ possible) should be enabled with the following keys in any mode
 </div>
 </div>
 
-<div id="outline-container-org3369e9f" class="outline-4">
-<h4 id="table-editing"><a id="org3369e9f"></a><span class="section-number-4">2.9.6</span> Table editing</h4>
+<div id="outline-container-org3ea2787" class="outline-4">
+<h4 id="table-editing"><a id="org3ea2787"></a><span class="section-number-4">2.9.6</span> Table editing</h4>
 <div class="outline-text-4" id="text-table-editing">
 <p>
 If table specific commands are available the they are grouped under the
@@ -1235,8 +1235,8 @@ If table specific commands are available the they are grouped under the
 </div>
 </div>
 
-<div id="outline-container-orge878a2e" class="outline-3">
-<h3 id="tests"><a id="orge878a2e"></a><span class="section-number-3">2.10</span> Tests</h3>
+<div id="outline-container-org65a937a" class="outline-3">
+<h3 id="tests"><a id="org65a937a"></a><span class="section-number-3">2.10</span> Tests</h3>
 <div class="outline-text-3" id="text-tests">
 <p>
 A lot of languages have their own test frameworks. These frameworks
@@ -1248,8 +1248,8 @@ share common actions that we can unite under the same key bindings:
 </ul>
 </div>
 
-<div id="outline-container-orgfac4af5" class="outline-4">
-<h4 id="all-languages"><a id="orgfac4af5"></a><span class="section-number-4">2.10.1</span> All languages</h4>
+<div id="outline-container-org3056c65" class="outline-4">
+<h4 id="all-languages"><a id="org3056c65"></a><span class="section-number-4">2.10.1</span> All languages</h4>
 <div class="outline-text-4" id="text-all-languages">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1306,8 +1306,8 @@ buffer.
 </div>
 </div>
 
-<div id="outline-container-org2861be8" class="outline-4">
-<h4 id="language-specific"><a id="org2861be8"></a><span class="section-number-4">2.10.2</span> Language specific</h4>
+<div id="outline-container-org91cf486" class="outline-4">
+<h4 id="language-specific"><a id="org91cf486"></a><span class="section-number-4">2.10.2</span> Language specific</h4>
 <div class="outline-text-4" id="text-language-specific">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1354,8 +1354,8 @@ one or more bindings for the same thing
 </div>
 </div>
 
-<div id="outline-container-org4ea7e3d" class="outline-3">
-<h3 id="toggles"><a id="org4ea7e3d"></a><span class="section-number-3">2.11</span> Toggles</h3>
+<div id="outline-container-org69293c8" class="outline-3">
+<h3 id="toggles"><a id="org69293c8"></a><span class="section-number-3">2.11</span> Toggles</h3>
 <div class="outline-text-3" id="text-toggles">
 <ul class="org-ul">
 <li>Global toggles are under <code>SPC t</code>, <code>SPC T</code> and <code>SPC C-t</code></li>
@@ -1364,8 +1364,8 @@ one or more bindings for the same thing
 </div>
 </div>
 
-<div id="outline-container-org9202f28" class="outline-3">
-<h3 id="refactoring"><a id="org9202f28"></a><span class="section-number-3">2.12</span> Refactoring</h3>
+<div id="outline-container-org03bb8c7" class="outline-3">
+<h3 id="refactoring"><a id="org03bb8c7"></a><span class="section-number-3">2.12</span> Refactoring</h3>
 <div class="outline-text-3" id="text-refactoring">
 <p>
 Refactoring prefix is <code>SPC m r</code>.
@@ -1373,8 +1373,8 @@ Refactoring prefix is <code>SPC m r</code>.
 </div>
 </div>
 
-<div id="outline-container-org10cfb5b" class="outline-3">
-<h3 id="code-formatting"><a id="org10cfb5b"></a><span class="section-number-3">2.13</span> Code Formatting</h3>
+<div id="outline-container-org5094e5d" class="outline-3">
+<h3 id="code-formatting"><a id="org5094e5d"></a><span class="section-number-3">2.13</span> Code Formatting</h3>
 <div class="outline-text-3" id="text-code-formatting">
 <p>
 Major-mode code formatting is under prefix <code>SPC m =</code>.
@@ -1414,8 +1414,8 @@ Major-mode code formatting is under prefix <code>SPC m =</code>.
 </div>
 </div>
 
-<div id="outline-container-orgfe23522" class="outline-3">
-<h3 id="help-or-documentation"><a id="orgfe23522"></a><span class="section-number-3">2.14</span> Help or Documentation</h3>
+<div id="outline-container-org2d612d3" class="outline-3">
+<h3 id="help-or-documentation"><a id="org2d612d3"></a><span class="section-number-3">2.14</span> Help or Documentation</h3>
 <div class="outline-text-3" id="text-help-or-documentation">
 <p>
 The base prefix for help commands is <code>SPC m h</code>. Documentation is considered
@@ -1452,8 +1452,8 @@ as an help command.
 </div>
 </div>
 
-<div id="outline-container-org0560fb2" class="outline-2">
-<h2 id="writing-documentation"><a id="org0560fb2"></a><span class="section-number-2">3</span> Writing documentation</h2>
+<div id="outline-container-orgcb57b5b" class="outline-2">
+<h2 id="writing-documentation"><a id="orgcb57b5b"></a><span class="section-number-2">3</span> Writing documentation</h2>
 <div class="outline-text-2" id="text-writing-documentation">
 <p>
 Spacemacs provides an example layer <code>README.org</code> file in
@@ -1461,8 +1461,8 @@ Spacemacs provides an example layer <code>README.org</code> file in
 </p>
 </div>
 
-<div id="outline-container-org42b3f9d" class="outline-3">
-<h3 id="spacing-in-documentation"><a id="org42b3f9d"></a><span class="section-number-3">3.1</span> Spacing in documentation</h3>
+<div id="outline-container-orgb847173" class="outline-3">
+<h3 id="spacing-in-documentation"><a id="orgb847173"></a><span class="section-number-3">3.1</span> Spacing in documentation</h3>
 <div class="outline-text-3" id="text-spacing-in-documentation">
 <ul class="org-ul">
 <li>Spacemacs tries to keep the documentation consistent between all layers by
@@ -1486,7 +1486,7 @@ key bindings, you don't need to mention <code>M-m</code>.</li>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-04-29 Sat 04:12</p>
+<p class="date">Created: 2017-05-08 Mon 02:28</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

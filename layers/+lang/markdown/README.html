@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-04-29 Sat 04:12 -->
+<!-- 2017-05-08 Mon 02:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Markdown layer</title>
@@ -182,8 +182,8 @@
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-          <script type="text/javascript"
-                  src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
@@ -199,7 +199,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -259,6 +259,7 @@ for the JavaScript code in this tag.
 <li><a href="#configuration">3. Configuration</a>
 <ul>
 <li><a href="#live-preview">3.1. Live preview</a></li>
+<li><a href="#automatic-mmm-mode-generation">3.2. Automatic MMM-Mode Generation</a></li>
 </ul>
 </li>
 <li><a href="#usage">4. Usage</a>
@@ -289,16 +290,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org7b6c2a0" class="outline-2">
-<h2 id="description"><a id="org7b6c2a0"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgc598c4c" class="outline-2">
+<h2 id="description"><a id="orgc598c4c"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds markdown support to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-org0e163bb" class="outline-3">
-<h3 id="features"><a id="org0e163bb"></a><span class="section-number-3">1.1</span> Features</h3>
+<div id="outline-container-orgb012e82" class="outline-3">
+<h3 id="features"><a id="orgb012e82"></a><span class="section-number-3">1.1</span> Features</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>markdown files support via <a href="http://jblevins.org/git/markdown-mode.git/">markdown-mode</a></li>
@@ -310,19 +311,19 @@ using the <code>emoji</code> layer or having a proper font) :clap:</li>
 </div>
 </div>
 
-<div id="outline-container-org373d0e5" class="outline-3">
-<h3 id="bibtex"><a id="org373d0e5"></a><span class="section-number-3">1.2</span> BibTeX</h3>
+<div id="outline-container-org57245a7" class="outline-3">
+<h3 id="bibtex"><a id="org57245a7"></a><span class="section-number-3">1.2</span> BibTeX</h3>
 <div class="outline-text-3" id="text-bibtex">
 <p>
 For more extensive support of references with BibTeX files, have a look at the
-<a href="../bibtex">BibTeX layer</a>.
+<a href="../bibtex/README.html">BibTeX layer</a>.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org33474b5" class="outline-2">
-<h2 id="install"><a id="org33474b5"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgbf7921d" class="outline-2">
+<h2 id="install"><a id="orgbf7921d"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -332,13 +333,13 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org94d218f" class="outline-2">
-<h2 id="configuration"><a id="org94d218f"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org18c0e4f" class="outline-2">
+<h2 id="configuration"><a id="org18c0e4f"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org74b2285" class="outline-3">
-<h3 id="live-preview"><a id="org74b2285"></a><span class="section-number-3">3.1</span> Live preview</h3>
+<div id="outline-container-org2fe9a17" class="outline-3">
+<h3 id="live-preview"><a id="org2fe9a17"></a><span class="section-number-3">3.1</span> Live preview</h3>
 <div class="outline-text-3" id="text-live-preview">
 <p>
 By default the built-in Emacs web browser is used to live preview a markdown
@@ -372,15 +373,39 @@ information.
 </p>
 </div>
 </div>
+
+<div id="outline-container-org621cee1" class="outline-3">
+<h3 id="automatic-mmm-mode-generation"><a id="org621cee1"></a><span class="section-number-3">3.2</span> Automatic MMM-Mode Generation</h3>
+<div class="outline-text-3" id="text-automatic-mmm-mode-generation">
+<p>
+To generate MMM-Modes for languages set the value of the variable
+<code>markdown-mmm-auto-modes</code> to a list of the languages. For languages where the
+mode name directly relates to the language name, use a string. Otherwise, use a
+list of `("language" "mode")`:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-1">(</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>markdown <span class="org-builtin">:variables</span> markdown-mmm-auto-modes '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"c"</span> <span class="org-string">"c++"</span> <span class="org-string">"python"</span> <span class="org-string">"scala"</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">"elisp"</span> <span class="org-string">"emacs-lisp"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+</pre>
 </div>
 
-<div id="outline-container-org434a512" class="outline-2">
-<h2 id="usage"><a id="org434a512"></a><span class="section-number-2">4</span> Usage</h2>
+<p>
+<b>Note:</b> Spacemacs already defines the variable <code>markdown-mmm-auto-modes</code> to a
+bunch of languages. Consider opening a PR on the Spacemacs repository to add
+new languages instead of overriding the variable in your dotfile.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org92e4e68" class="outline-2">
+<h2 id="usage"><a id="org92e4e68"></a><span class="section-number-2">4</span> Usage</h2>
 <div class="outline-text-2" id="text-usage">
 </div>
 
-<div id="outline-container-org741b7b9" class="outline-3">
-<h3 id="generate-a-toc"><a id="org741b7b9"></a><span class="section-number-3">4.1</span> Generate a TOC</h3>
+<div id="outline-container-org582b78c" class="outline-3">
+<h3 id="generate-a-toc"><a id="org582b78c"></a><span class="section-number-3">4.1</span> Generate a TOC</h3>
 <div class="outline-text-3" id="text-generate-a-toc">
 <p>
 To generate a table of contents type on top of the buffer:
@@ -390,13 +415,13 @@ To generate a table of contents type on top of the buffer:
 </div>
 </div>
 
-<div id="outline-container-org41d1df3" class="outline-2">
-<h2 id="key-bindings"><a id="org41d1df3"></a><span class="section-number-2">5</span> Key bindings</h2>
+<div id="outline-container-orga22ecb5" class="outline-2">
+<h2 id="key-bindings"><a id="orga22ecb5"></a><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org9f7074d" class="outline-3">
-<h3 id="element-insertion"><a id="org9f7074d"></a><span class="section-number-3">5.1</span> Element insertion</h3>
+<div id="outline-container-org9045fc0" class="outline-3">
+<h3 id="element-insertion"><a id="org9045fc0"></a><span class="section-number-3">5.1</span> Element insertion</h3>
 <div class="outline-text-3" id="text-element-insertion">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -552,8 +577,8 @@ To generate a table of contents type on top of the buffer:
 </div>
 </div>
 
-<div id="outline-container-org899950b" class="outline-3">
-<h3 id="element-removal"><a id="org899950b"></a><span class="section-number-3">5.2</span> Element removal</h3>
+<div id="outline-container-orgc518671" class="outline-3">
+<h3 id="element-removal"><a id="orgc518671"></a><span class="section-number-3">5.2</span> Element removal</h3>
 <div class="outline-text-3" id="text-element-removal">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -579,8 +604,8 @@ To generate a table of contents type on top of the buffer:
 </div>
 </div>
 
-<div id="outline-container-orgf9d28c2" class="outline-3">
-<h3 id="completion"><a id="orgf9d28c2"></a><span class="section-number-3">5.3</span> Completion</h3>
+<div id="outline-container-orgc69df1b" class="outline-3">
+<h3 id="completion"><a id="orgc69df1b"></a><span class="section-number-3">5.3</span> Completion</h3>
 <div class="outline-text-3" id="text-completion">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -606,8 +631,8 @@ To generate a table of contents type on top of the buffer:
 </div>
 </div>
 
-<div id="outline-container-orgc1f22d6" class="outline-3">
-<h3 id="following-and-jumping"><a id="orgc1f22d6"></a><span class="section-number-3">5.4</span> Following and Jumping</h3>
+<div id="outline-container-org045024d" class="outline-3">
+<h3 id="following-and-jumping"><a id="org045024d"></a><span class="section-number-3">5.4</span> Following and Jumping</h3>
 <div class="outline-text-3" id="text-following-and-jumping">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -638,8 +663,8 @@ To generate a table of contents type on top of the buffer:
 </div>
 </div>
 
-<div id="outline-container-org209f4b5" class="outline-3">
-<h3 id="indentation"><a id="org209f4b5"></a><span class="section-number-3">5.5</span> Indentation</h3>
+<div id="outline-container-org633f818" class="outline-3">
+<h3 id="indentation"><a id="org633f818"></a><span class="section-number-3">5.5</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -670,8 +695,8 @@ To generate a table of contents type on top of the buffer:
 </div>
 </div>
 
-<div id="outline-container-org63fb5e2" class="outline-3">
-<h3 id="header-navigation"><a id="org63fb5e2"></a><span class="section-number-3">5.6</span> Header navigation</h3>
+<div id="outline-container-org7e40f4b" class="outline-3">
+<h3 id="header-navigation"><a id="org7e40f4b"></a><span class="section-number-3">5.6</span> Header navigation</h3>
 <div class="outline-text-3" id="text-header-navigation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -712,8 +737,8 @@ To generate a table of contents type on top of the buffer:
 </div>
 </div>
 
-<div id="outline-container-org7711b2f" class="outline-3">
-<h3 id="buffer-wide-commands"><a id="org7711b2f"></a><span class="section-number-3">5.7</span> Buffer-wide commands</h3>
+<div id="outline-container-org8296b98" class="outline-3">
+<h3 id="buffer-wide-commands"><a id="org8296b98"></a><span class="section-number-3">5.7</span> Buffer-wide commands</h3>
 <div class="outline-text-3" id="text-buffer-wide-commands">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -789,8 +814,8 @@ To generate a table of contents type on top of the buffer:
 </div>
 </div>
 
-<div id="outline-container-orgd5a85b3" class="outline-3">
-<h3 id="list-editing"><a id="orgd5a85b3"></a><span class="section-number-3">5.8</span> List editing</h3>
+<div id="outline-container-org9968e6a" class="outline-3">
+<h3 id="list-editing"><a id="org9968e6a"></a><span class="section-number-3">5.8</span> List editing</h3>
 <div class="outline-text-3" id="text-list-editing">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -816,8 +841,8 @@ To generate a table of contents type on top of the buffer:
 </div>
 </div>
 
-<div id="outline-container-orgac543a8" class="outline-3">
-<h3 id="movement"><a id="orgac543a8"></a><span class="section-number-3">5.9</span> Movement</h3>
+<div id="outline-container-org3165892" class="outline-3">
+<h3 id="movement"><a id="org3165892"></a><span class="section-number-3">5.9</span> Movement</h3>
 <div class="outline-text-3" id="text-movement">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -858,8 +883,8 @@ To generate a table of contents type on top of the buffer:
 </div>
 </div>
 
-<div id="outline-container-org68719b5" class="outline-3">
-<h3 id="promotion-demotion"><a id="org68719b5"></a><span class="section-number-3">5.10</span> Promotion, Demotion</h3>
+<div id="outline-container-org2c61272" class="outline-3">
+<h3 id="promotion-demotion"><a id="org2c61272"></a><span class="section-number-3">5.10</span> Promotion, Demotion</h3>
 <div class="outline-text-3" id="text-promotion-demotion">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -902,7 +927,7 @@ To generate a table of contents type on top of the buffer:
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-04-29 Sat 04:12</p>
+<p class="date">Created: 2017-05-08 Mon 02:28</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
