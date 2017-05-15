@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spacemacs-purpose layer</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
@@ -275,8 +288,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org352511a" class="outline-2">
-<h2 id="description"><a id="org352511a"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orga9f3d14" class="outline-2">
+<h2 id="description"><a id="orga9f3d14"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer enables <a href="https://github.com/bmag/emacs-purpose">window-purpose</a>, which provides an alternative, purpose-based
@@ -291,8 +304,8 @@ brings popwin's behavior towindows-purpose and solves that problem.
 </p>
 </div>
 
-<div id="outline-container-org389b5ca" class="outline-3">
-<h3 id="purposes"><a id="org389b5ca"></a><span class="section-number-3">1.1</span> Purposes</h3>
+<div id="outline-container-org2ae62d2" class="outline-3">
+<h3 id="purposes"><a id="org2ae62d2"></a><span class="section-number-3">1.1</span> Purposes</h3>
 <div class="outline-text-3" id="text-purposes">
 <p>
 windows-purpose contains a configuration which assigns a purpose for each
@@ -317,8 +330,8 @@ reserved only for buffers that share that purpose.
 </div>
 </div>
 
-<div id="outline-container-org9f8c719" class="outline-3">
-<h3 id="switch-to-buffer-and-display-buffer"><a id="org9f8c719"></a><span class="section-number-3">1.2</span> switch-to-buffer and display-buffer</h3>
+<div id="outline-container-org50f8c8d" class="outline-3">
+<h3 id="switch-to-buffer-and-display-buffer"><a id="org50f8c8d"></a><span class="section-number-3">1.2</span> switch-to-buffer and display-buffer</h3>
 <div class="outline-text-3" id="text-switch-to-buffer-and-display-buffer">
 <p>
 In regular Emacs, <code>switch-to-buffer</code> follows different rules than the other
@@ -331,13 +344,13 @@ result is a better control over how buffers are displayed, since
 </div>
 </div>
 
-<div id="outline-container-org7fd414c" class="outline-2">
-<h2 id="features"><a id="org7fd414c"></a><span class="section-number-2">2</span> Features</h2>
+<div id="outline-container-org93f3d9c" class="outline-2">
+<h2 id="features"><a id="org93f3d9c"></a><span class="section-number-2">2</span> Features</h2>
 <div class="outline-text-2" id="text-features">
 </div>
 
-<div id="outline-container-org7189ae9" class="outline-3">
-<h3 id="windows-purpose-purpose-mode"><a id="org7189ae9"></a><span class="section-number-3">2.1</span> windows-purpose (purpose-mode)</h3>
+<div id="outline-container-org0639143" class="outline-3">
+<h3 id="windows-purpose-purpose-mode"><a id="org0639143"></a><span class="section-number-3">2.1</span> windows-purpose (purpose-mode)</h3>
 <div class="outline-text-3" id="text-windows-purpose-purpose-mode">
 <ul class="org-ul">
 <li>window layout is more robust and less likely to change unintentionally</li>
@@ -349,8 +362,8 @@ result is a better control over how buffers are displayed, since
 </div>
 </div>
 
-<div id="outline-container-org49f448b" class="outline-3">
-<h3 id="purpose-popwinel-pupo-mode"><a id="org49f448b"></a><span class="section-number-3">2.2</span> purpose-popwin.el (pupo-mode)</h3>
+<div id="outline-container-orgf253136" class="outline-3">
+<h3 id="purpose-popwinel-pupo-mode"><a id="orgf253136"></a><span class="section-number-3">2.2</span> purpose-popwin.el (pupo-mode)</h3>
 <div class="outline-text-3" id="text-purpose-popwinel-pupo-mode">
 <ul class="org-ul">
 <li>replicate popwin behavior for purpose-mode - almost no regression in popup
@@ -363,8 +376,8 @@ sometimes bigger than with regular popwin in the same situation.</li>
 </div>
 </div>
 
-<div id="outline-container-org5475d71" class="outline-3">
-<h3 id="misc"><a id="org5475d71"></a><span class="section-number-3">2.3</span> misc</h3>
+<div id="outline-container-org946ff7c" class="outline-3">
+<h3 id="misc"><a id="org946ff7c"></a><span class="section-number-3">2.3</span> misc</h3>
 <div class="outline-text-3" id="text-misc">
 <ul class="org-ul">
 <li>specialized helm source similar to <code>helm-source-buffers-list</code></li>
@@ -373,8 +386,8 @@ sometimes bigger than with regular popwin in the same situation.</li>
 </div>
 </div>
 
-<div id="outline-container-org5013503" class="outline-2">
-<h2 id="install"><a id="org5013503"></a><span class="section-number-2">3</span> Install</h2>
+<div id="outline-container-org73936f2" class="outline-2">
+<h2 id="install"><a id="org73936f2"></a><span class="section-number-2">3</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -384,8 +397,8 @@ this file.
 </div>
 </div>
 
-<div id="outline-container-org5ebe090" class="outline-2">
-<h2 id="usage"><a id="org5ebe090"></a><span class="section-number-2">4</span> Usage</h2>
+<div id="outline-container-orgfab72d2" class="outline-2">
+<h2 id="usage"><a id="orgfab72d2"></a><span class="section-number-2">4</span> Usage</h2>
 <div class="outline-text-2" id="text-usage">
 <p>
 With windows-purpose layer installed, <code>purpose-mode</code> and <code>pupo-mode</code> are enabled.
@@ -406,8 +419,8 @@ See <a href="https://github.com/bmag/emacs-purpose/wiki">window-purpose wiki</a>
 </div>
 </div>
 
-<div id="outline-container-org32afbc2" class="outline-2">
-<h2 id="key-bindings"><a id="org32afbc2"></a><span class="section-number-2">5</span> Key Bindings</h2>
+<div id="outline-container-org8d83ca6" class="outline-2">
+<h2 id="key-bindings"><a id="org8d83ca6"></a><span class="section-number-2">5</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -458,13 +471,13 @@ See <a href="https://github.com/bmag/emacs-purpose/wiki">window-purpose wiki</a>
 </div>
 </div>
 
-<div id="outline-container-org926258d" class="outline-2">
-<h2 id="caveats"><a id="org926258d"></a><span class="section-number-2">6</span> Caveats</h2>
+<div id="outline-container-org48b097e" class="outline-2">
+<h2 id="caveats"><a id="org48b097e"></a><span class="section-number-2">6</span> Caveats</h2>
 <div class="outline-text-2" id="text-caveats">
 </div>
 
-<div id="outline-container-orgf903ab6" class="outline-3">
-<h3 id="popwin-and-guide-key"><a id="orgf903ab6"></a><span class="section-number-3">6.1</span> Popwin and guide-key</h3>
+<div id="outline-container-org21acf12" class="outline-3">
+<h3 id="popwin-and-guide-key"><a id="org21acf12"></a><span class="section-number-3">6.1</span> Popwin and guide-key</h3>
 <div class="outline-text-3" id="text-popwin-and-guide-key">
 <p>
 If a buffer is displayed in two different windows, and only one of those windows
@@ -474,8 +487,8 @@ purpose-dedicated.
 </div>
 </div>
 
-<div id="outline-container-orgcb3b5d9" class="outline-3">
-<h3 id="packages-that-do-display-management"><a id="orgcb3b5d9"></a><span class="section-number-3">6.2</span> Packages that do display management</h3>
+<div id="outline-container-orgfb9ba94" class="outline-3">
+<h3 id="packages-that-do-display-management"><a id="orgfb9ba94"></a><span class="section-number-3">6.2</span> Packages that do display management</h3>
 <div class="outline-text-3" id="text-packages-that-do-display-management">
 <p>
 Some packages that manage how windows are displayed, such as <code>gdb</code> with
@@ -488,7 +501,7 @@ with <code>window-purpose</code>.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

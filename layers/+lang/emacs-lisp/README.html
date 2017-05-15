@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs Lisp layer</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
@@ -270,8 +283,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgcc7caa8" class="outline-2">
-<h2 id="description"><a id="orgcc7caa8"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org6e9f6a0" class="outline-2">
+<h2 id="description"><a id="org6e9f6a0"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer gathers all the configuration related to emacs-lisp. This should
@@ -280,8 +293,8 @@ always be in your dotfile, it is not recommended to uninstall it.
 </div>
 </div>
 
-<div id="outline-container-org182f29f" class="outline-2">
-<h2 id="install"><a id="org182f29f"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orga5851ec" class="outline-2">
+<h2 id="install"><a id="orga5851ec"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -291,8 +304,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgcc5e55d" class="outline-2">
-<h2 id="auto-compile"><a id="orgcc5e55d"></a><span class="section-number-2">3</span> Auto-compile</h2>
+<div id="outline-container-org6de2b02" class="outline-2">
+<h2 id="auto-compile"><a id="org6de2b02"></a><span class="section-number-2">3</span> Auto-compile</h2>
 <div class="outline-text-2" id="text-auto-compile">
 <p>
 This layer adds the <a href="https://github.com/tarsius/auto-compile">auto-compile</a> package to automatically keep the byte-compiled
@@ -314,8 +327,8 @@ You can also exclude the <code>auto-compile</code> package.
 </div>
 </div>
 
-<div id="outline-container-orge62c656" class="outline-2">
-<h2 id="working-with-lisp-files-barfage-slurpage--more"><a id="orge62c656"></a><span class="section-number-2">4</span> Working with lisp files (barfage, slurpage &amp; more)</h2>
+<div id="outline-container-org30266ed" class="outline-2">
+<h2 id="working-with-lisp-files-barfage-slurpage--more"><a id="org30266ed"></a><span class="section-number-2">4</span> Working with lisp files (barfage, slurpage &amp; more)</h2>
 <div class="outline-text-2" id="text-working-with-lisp-files-barfage-slurpage--more">
 <p>
 Spacemacs comes with a special <code>lisp-state</code> for working with lisp code that
@@ -330,8 +343,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org6f91437" class="outline-2">
-<h2 id="debugging-elisp"><a id="org6f91437"></a><span class="section-number-2">5</span> Debugging Elisp</h2>
+<div id="outline-container-org5d58fe2" class="outline-2">
+<h2 id="debugging-elisp"><a id="org5d58fe2"></a><span class="section-number-2">5</span> Debugging Elisp</h2>
 <div class="outline-text-2" id="text-debugging-elisp">
 <p>
 Here is an interactive quick start to debug Emacs Lisp.
@@ -397,8 +410,8 @@ function or press <code>o</code> to go out of it.
 </div>
 </div>
 
-<div id="outline-container-orgb7e4eb1" class="outline-2">
-<h2 id="key-bindings"><a id="orgb7e4eb1"></a><span class="section-number-2">6</span> Key bindings</h2>
+<div id="outline-container-org2bc9099" class="outline-2">
+<h2 id="key-bindings"><a id="org2bc9099"></a><span class="section-number-2">6</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -493,8 +506,8 @@ function or press <code>o</code> to go out of it.
 </table>
 </div>
 
-<div id="outline-container-org7dbfb29" class="outline-3">
-<h3 id="additional-evaluation-functions"><a id="org7dbfb29"></a><span class="section-number-3">6.1</span> Additional evaluation functions</h3>
+<div id="outline-container-org62fa6c4" class="outline-3">
+<h3 id="additional-evaluation-functions"><a id="org62fa6c4"></a><span class="section-number-3">6.1</span> Additional evaluation functions</h3>
 <div class="outline-text-3" id="text-additional-evaluation-functions">
 <p>
 If <code>smartparens</code> is used the following additional key bindings are available:
@@ -529,8 +542,8 @@ If <code>smartparens</code> is used the following additional key bindings are av
 </div>
 </div>
 
-<div id="outline-container-orgabebaea" class="outline-3">
-<h3 id="format-code"><a id="orgabebaea"></a><span class="section-number-3">6.2</span> Format code</h3>
+<div id="outline-container-org865fa6c" class="outline-3">
+<h3 id="format-code"><a id="org865fa6c"></a><span class="section-number-3">6.2</span> Format code</h3>
 <div class="outline-text-3" id="text-format-code">
 <p>
 The <a href="../../+emacs/semantic/README.html">semantic</a> layer should be installed for these key bindings to become active.
@@ -575,8 +588,8 @@ The <a href="../../+emacs/semantic/README.html">semantic</a> layer should be ins
 </div>
 </div>
 
-<div id="outline-container-org93b77ce" class="outline-3">
-<h3 id="debugging"><a id="org93b77ce"></a><span class="section-number-3">6.3</span> Debugging</h3>
+<div id="outline-container-orgd7c9ec0" class="outline-3">
+<h3 id="debugging"><a id="orgd7c9ec0"></a><span class="section-number-3">6.3</span> Debugging</h3>
 <div class="outline-text-3" id="text-debugging">
 <p>
 To start debugging:
@@ -636,7 +649,7 @@ TODO
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

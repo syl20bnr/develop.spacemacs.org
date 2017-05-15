@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GO layer</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
@@ -283,16 +296,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org9f40730" class="outline-2">
-<h2 id="description"><a id="org9f40730"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgc27a264" class="outline-2">
+<h2 id="description"><a id="orgc27a264"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds extensive support for go.
 </p>
 </div>
 
-<div id="outline-container-org740dc4b" class="outline-3">
-<h3 id="features"><a id="org740dc4b"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orgaac3ca4" class="outline-3">
+<h3 id="features"><a id="orgaac3ca4"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>gofmt/goimports on file save</li>
@@ -305,13 +318,13 @@ This layer adds extensive support for go.
 </div>
 </div>
 
-<div id="outline-container-org7bdb1f2" class="outline-2">
-<h2 id="install"><a id="org7bdb1f2"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgef191eb" class="outline-2">
+<h2 id="install"><a id="orgef191eb"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org8d91872" class="outline-3">
-<h3 id="pre-requisites"><a id="org8d91872"></a><span class="section-number-3">2.1</span> Pre-requisites</h3>
+<div id="outline-container-orgc392200" class="outline-3">
+<h3 id="pre-requisites"><a id="orgc392200"></a><span class="section-number-3">2.1</span> Pre-requisites</h3>
 <div class="outline-text-3" id="text-pre-requisites">
 <p>
 You will need <code>gocode</code> and <code>godef</code>:
@@ -363,8 +376,8 @@ layers are enabled as well.
 </div>
 </div>
 
-<div id="outline-container-org57a4b3c" class="outline-3">
-<h3 id="layer"><a id="org57a4b3c"></a><span class="section-number-3">2.2</span> Layer</h3>
+<div id="outline-container-org29731e0" class="outline-3">
+<h3 id="layer"><a id="org29731e0"></a><span class="section-number-3">2.2</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -375,8 +388,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org5f61eeb" class="outline-2">
-<h2 id="configuration"><a id="org5f61eeb"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org07c5dd7" class="outline-2">
+<h2 id="configuration"><a id="org07c5dd7"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 By default, go buffers are run through <code>gofmt</code> on save. To use a different
@@ -398,8 +411,8 @@ or
 </div>
 </div>
 
-<div id="outline-container-org8d8d0bf" class="outline-3">
-<h3 id="indentation"><a id="org8d8d0bf"></a><span class="section-number-3">3.1</span> Indentation</h3>
+<div id="outline-container-org103fecf" class="outline-3">
+<h3 id="indentation"><a id="org103fecf"></a><span class="section-number-3">3.1</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
 By default, the tab width in Go mode is 8 spaces. To use a different value set
@@ -413,8 +426,8 @@ the layer variable <code>go-tab-width</code>, e.g.
 </div>
 </div>
 
-<div id="outline-container-orgbaa43b9" class="outline-3">
-<h3 id="tests"><a id="orgbaa43b9"></a><span class="section-number-3">3.2</span> Tests</h3>
+<div id="outline-container-org2872043" class="outline-3">
+<h3 id="tests"><a id="org2872043"></a><span class="section-number-3">3.2</span> Tests</h3>
 <div class="outline-text-3" id="text-tests">
 <p>
 If you're using <code>gocheck</code> in your project you can use the
@@ -436,8 +449,8 @@ closed by pressing <code>C-g</code> from any other window. The variable
 </div>
 </div>
 
-<div id="outline-container-org89225a3" class="outline-3">
-<h3 id="guru"><a id="org89225a3"></a><span class="section-number-3">3.3</span> Guru</h3>
+<div id="outline-container-orga48318f" class="outline-3">
+<h3 id="guru"><a id="orga48318f"></a><span class="section-number-3">3.3</span> Guru</h3>
 <div class="outline-text-3" id="text-guru">
 <p>
 Go Oracle has been deprecated as of October 1, 2016, it's replacement is <code>go-guru</code>.
@@ -457,8 +470,8 @@ In addition, <code>GOPATH</code> must be set prior to <code>go-guru</code> initi
 </div>
 </div>
 
-<div id="outline-container-org23a0034" class="outline-3">
-<h3 id="autocomplete"><a id="org23a0034"></a><span class="section-number-3">3.4</span> Autocomplete</h3>
+<div id="outline-container-org99e5fb5" class="outline-3">
+<h3 id="autocomplete"><a id="org99e5fb5"></a><span class="section-number-3">3.4</span> Autocomplete</h3>
 <div class="outline-text-3" id="text-autocomplete">
 <p>
 <code>gocode</code> uses the output from installed binary files to provide its suggestions.
@@ -476,13 +489,13 @@ file change.</li>
 </div>
 </div>
 
-<div id="outline-container-orgad3c72e" class="outline-2">
-<h2 id="working-with-go"><a id="orgad3c72e"></a><span class="section-number-2">4</span> Working with Go</h2>
+<div id="outline-container-org12117ec" class="outline-2">
+<h2 id="working-with-go"><a id="org12117ec"></a><span class="section-number-2">4</span> Working with Go</h2>
 <div class="outline-text-2" id="text-working-with-go">
 </div>
 
-<div id="outline-container-org6fb96cd" class="outline-3">
-<h3 id="go-commands-start-with-m"><a id="org6fb96cd"></a><span class="section-number-3">4.1</span> Go commands (start with <code>m</code>):</h3>
+<div id="outline-container-orga982e70" class="outline-3">
+<h3 id="go-commands-start-with-m"><a id="orga982e70"></a><span class="section-number-3">4.1</span> Go commands (start with <code>m</code>):</h3>
 <div class="outline-text-3" id="text-go-commands-start-with-m">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -583,8 +596,8 @@ file change.</li>
 </div>
 </div>
 
-<div id="outline-container-org3147746" class="outline-3">
-<h3 id="go-guru"><a id="org3147746"></a><span class="section-number-3">4.2</span> Go Guru</h3>
+<div id="outline-container-orgb76efed" class="outline-3">
+<h3 id="go-guru"><a id="orgb76efed"></a><span class="section-number-3">4.2</span> Go Guru</h3>
 <div class="outline-text-3" id="text-go-guru">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -667,7 +680,7 @@ file change.</li>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

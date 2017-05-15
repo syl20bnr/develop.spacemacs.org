@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ocaml layer</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
@@ -281,16 +294,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org667af46" class="outline-2">
-<h2 id="description"><a id="org667af46"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org0b429ca" class="outline-2">
+<h2 id="description"><a id="org0b429ca"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This is a very basic layer for editing ocaml files.
 </p>
 </div>
 
-<div id="outline-container-org6d66eeb" class="outline-3">
-<h3 id="features"><a id="org6d66eeb"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org5f3a294" class="outline-3">
+<h3 id="features"><a id="org5f3a294"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Syntax highlighting (major-mode) via <a href="https://github.com/ocaml/tuareg">tuareg-mode</a></li>
@@ -302,13 +315,13 @@ This is a very basic layer for editing ocaml files.
 </div>
 </div>
 
-<div id="outline-container-org88b7956" class="outline-2">
-<h2 id="install"><a id="org88b7956"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgd775b88" class="outline-2">
+<h2 id="install"><a id="orgd775b88"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org29e292e" class="outline-3">
-<h3 id="layer"><a id="org29e292e"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org32dcfb2" class="outline-3">
+<h3 id="layer"><a id="org32dcfb2"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -318,8 +331,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgc8b287e" class="outline-3">
-<h3 id="opam-packages"><a id="orgc8b287e"></a><span class="section-number-3">2.2</span> OPAM packages</h3>
+<div id="outline-container-orgae2cdb0" class="outline-3">
+<h3 id="opam-packages"><a id="orgae2cdb0"></a><span class="section-number-3">2.2</span> OPAM packages</h3>
 <div class="outline-text-3" id="text-opam-packages">
 <p>
 This layer requires some <a href="http://opam.ocaml.org">opam</a> packages:
@@ -353,8 +366,8 @@ opam config setup -a
 </div>
 </div>
 
-<div id="outline-container-org1a9592b" class="outline-2">
-<h2 id="key-bindings"><a id="org1a9592b"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-orgd6e77dc" class="outline-2">
+<h2 id="key-bindings"><a id="orgd6e77dc"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -469,8 +482,8 @@ opam config setup -a
 </table>
 </div>
 
-<div id="outline-container-org684cd6a" class="outline-3">
-<h3 id="repl-utop"><a id="org684cd6a"></a><span class="section-number-3">3.1</span> REPL (utop)</h3>
+<div id="outline-container-org6aab45f" class="outline-3">
+<h3 id="repl-utop"><a id="org6aab45f"></a><span class="section-number-3">3.1</span> REPL (utop)</h3>
 <div class="outline-text-3" id="text-repl-utop">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -537,33 +550,33 @@ opam config setup -a
 </div>
 </div>
 
-<div id="outline-container-orgd60eeb2" class="outline-2">
-<h2 id="todos"><a id="orgd60eeb2"></a><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> S</h2>
+<div id="outline-container-org8ff7e84" class="outline-2">
+<h2 id="todos"><a id="org8ff7e84"></a><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> S</h2>
 <div class="outline-text-2" id="text-todos">
 </div>
 
 
-<div id="outline-container-orga2fdf27" class="outline-3">
-<h3 id="todo-add-more-proper-spacemacs-key-bindings-for-basic-merlin-tasks"><a id="orga2fdf27"></a><span class="section-number-3">4.1</span> <span class="todo TODO">TODO</span> Add more proper spacemacs key-bindings for basic merlin tasks</h3>
+<div id="outline-container-org91edbf5" class="outline-3">
+<h3 id="todo-add-more-proper-spacemacs-key-bindings-for-basic-merlin-tasks"><a id="org91edbf5"></a><span class="section-number-3">4.1</span> <span class="todo TODO">TODO</span> Add more proper spacemacs key-bindings for basic merlin tasks</h3>
 <div class="outline-text-3" id="text-todo-add-more-proper-spacemacs-key-bindings-for-basic-merlin-tasks">
 </div>
 </div>
 
-<div id="outline-container-org6c84afc" class="outline-3">
-<h3 id="todo-add-proper-keybindings-for-ocamldebug"><a id="org6c84afc"></a><span class="section-number-3">4.2</span> <span class="todo TODO">TODO</span> Add proper keybindings for ocamldebug</h3>
+<div id="outline-container-orga10e4ba" class="outline-3">
+<h3 id="todo-add-proper-keybindings-for-ocamldebug"><a id="orga10e4ba"></a><span class="section-number-3">4.2</span> <span class="todo TODO">TODO</span> Add proper keybindings for ocamldebug</h3>
 <div class="outline-text-3" id="text-todo-add-proper-keybindings-for-ocamldebug">
 </div>
 </div>
 
-<div id="outline-container-orgbdb5750" class="outline-3">
-<h3 id="todo-add-more-keybindings-for-tuareg-mode"><a id="orgbdb5750"></a><span class="section-number-3">4.3</span> <span class="todo TODO">TODO</span> Add more keybindings for tuareg-mode</h3>
+<div id="outline-container-orgca96fe7" class="outline-3">
+<h3 id="todo-add-more-keybindings-for-tuareg-mode"><a id="orgca96fe7"></a><span class="section-number-3">4.3</span> <span class="todo TODO">TODO</span> Add more keybindings for tuareg-mode</h3>
 <div class="outline-text-3" id="text-todo-add-more-keybindings-for-tuareg-mode">
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

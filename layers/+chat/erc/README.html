@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ERC layer</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
@@ -269,8 +282,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orge3a1ea0" class="outline-2">
-<h2 id="description"><a id="orge3a1ea0"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orga0fe310" class="outline-2">
+<h2 id="description"><a id="orga0fe310"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 Layer for <a href="http://www.emacswiki.org/emacs/ERC">ERC IRC chat</a>.
@@ -278,8 +291,8 @@ Layer for <a href="http://www.emacswiki.org/emacs/ERC">ERC IRC chat</a>.
 </div>
 </div>
 
-<div id="outline-container-orgc5dacb1" class="outline-2">
-<h2 id="features"><a id="orgc5dacb1"></a><span class="section-number-2">2</span> Features</h2>
+<div id="outline-container-orgbedc616" class="outline-2">
+<h2 id="features"><a id="orgbedc616"></a><span class="section-number-2">2</span> Features</h2>
 <div class="outline-text-2" id="text-features">
 <ul class="org-ul">
 <li>Highlight nicks (using <a href="https://github.com/leathekd/erc-hl-nicks">erc-hl-nicks</a>)</li>
@@ -296,13 +309,13 @@ using the <code>emoji</code> layer or having a proper font) :clap:</li>
 </div>
 </div>
 
-<div id="outline-container-org8ae988f" class="outline-2">
-<h2 id="install"><a id="org8ae988f"></a><span class="section-number-2">3</span> Install</h2>
+<div id="outline-container-orgd42db24" class="outline-2">
+<h2 id="install"><a id="orgd42db24"></a><span class="section-number-2">3</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org08b5c5b" class="outline-3">
-<h3 id="layer"><a id="org08b5c5b"></a><span class="section-number-3">3.1</span> Layer</h3>
+<div id="outline-container-org4fb5f28" class="outline-3">
+<h3 id="layer"><a id="org4fb5f28"></a><span class="section-number-3">3.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -312,8 +325,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org0da77c6" class="outline-3">
-<h3 id="os-x"><a id="org0da77c6"></a><span class="section-number-3">3.2</span> OS X</h3>
+<div id="outline-container-orgd856aac" class="outline-3">
+<h3 id="os-x"><a id="orgd856aac"></a><span class="section-number-3">3.2</span> OS X</h3>
 <div class="outline-text-3" id="text-os-x">
 <p>
 It's recommended to install the <a href="https://github.com/alloy/terminal-notifier">terminal-notifier gem</a> so that you get
@@ -322,8 +335,8 @@ notifications via the OS X Notification Center.
 </div>
 </div>
 
-<div id="outline-container-org7a7fb2d" class="outline-3">
-<h3 id="social-graph"><a id="org7a7fb2d"></a><span class="section-number-3">3.3</span> Social graph</h3>
+<div id="outline-container-org4c27777" class="outline-3">
+<h3 id="social-graph"><a id="org4c27777"></a><span class="section-number-3">3.3</span> Social graph</h3>
 <div class="outline-text-3" id="text-social-graph">
 <p>
 <a href="https://github.com/vibhavp/erc-social-graph">erc-social-graph</a> needs graphviz to be installed on your system.
@@ -331,8 +344,8 @@ notifications via the OS X Notification Center.
 </div>
 </div>
 
-<div id="outline-container-orge5c8748" class="outline-3">
-<h3 id="default-servers"><a id="orge5c8748"></a><span class="section-number-3">3.4</span> Default servers</h3>
+<div id="outline-container-org79c65ec" class="outline-3">
+<h3 id="default-servers"><a id="org79c65ec"></a><span class="section-number-3">3.4</span> Default servers</h3>
 <div class="outline-text-3" id="text-default-servers">
 <p>
 You can define the default servers in the ERC custom layout by setting the
@@ -358,8 +371,8 @@ custom layout.
 </div>
 </div>
 
-<div id="outline-container-org96a85e3" class="outline-4">
-<h4 id="security-note"><a id="org96a85e3"></a><span class="section-number-4">3.4.1</span> Security Note</h4>
+<div id="outline-container-orgc9f0a79" class="outline-4">
+<h4 id="security-note"><a id="orgc9f0a79"></a><span class="section-number-4">3.4.1</span> Security Note</h4>
 <div class="outline-text-4" id="text-security-note">
 <p>
 You should not store your passwords in the clear in your <code>.spacemacs</code>, and that
@@ -389,8 +402,8 @@ read that in <code>:password</code>.
 </div>
 </div>
 
-<div id="outline-container-org21249f8" class="outline-2">
-<h2 id="key-bindings"><a id="org21249f8"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-orgdbbb1b4" class="outline-2">
+<h2 id="key-bindings"><a id="orgdbbb1b4"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -476,8 +489,8 @@ read that in <code>:password</code>.
 </div>
 </div>
 
-<div id="outline-container-orgeb19aba" class="outline-2">
-<h2 id="spacemacs-layout-support"><a id="orgeb19aba"></a><span class="section-number-2">5</span> Spacemacs Layout Support</h2>
+<div id="outline-container-org6e52add" class="outline-2">
+<h2 id="spacemacs-layout-support"><a id="org6e52add"></a><span class="section-number-2">5</span> Spacemacs Layout Support</h2>
 <div class="outline-text-2" id="text-spacemacs-layout-support">
 <p>
 ERC buffers are added automatically to the default layout for ERC controlled by
@@ -488,7 +501,7 @@ binding ("E") is controlled by <code>erc-spacemacs-layout-binding</code>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

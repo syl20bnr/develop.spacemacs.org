@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Vagrant layer</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
@@ -271,8 +284,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org893365d" class="outline-2">
-<h2 id="description"><a id="org893365d"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org406971b" class="outline-2">
+<h2 id="description"><a id="org406971b"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for working with Vagrant using <a href="https://github.com/ottbot/vagrant.el">vagrant.el</a> and
@@ -280,8 +293,8 @@ This layer adds support for working with Vagrant using <a href="https://github.c
 </p>
 </div>
 
-<div id="outline-container-org2ade158" class="outline-3">
-<h3 id="features"><a id="org2ade158"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orgc3e8e3b" class="outline-3">
+<h3 id="features"><a id="orgc3e8e3b"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Manage boxes (under the <code>SPC a V</code> prefix)</li>
@@ -291,13 +304,13 @@ This layer adds support for working with Vagrant using <a href="https://github.c
 </div>
 </div>
 
-<div id="outline-container-org5b94aad" class="outline-2">
-<h2 id="install"><a id="org5b94aad"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org045fc33" class="outline-2">
+<h2 id="install"><a id="org045fc33"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgacc6735" class="outline-3">
-<h3 id="layer"><a id="orgacc6735"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org5fce493" class="outline-3">
+<h3 id="layer"><a id="org5fce493"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -312,8 +325,8 @@ to install the <code>ruby</code> layer as well.
 </div>
 </div>
 
-<div id="outline-container-orgf78879c" class="outline-3">
-<h3 id="vagrant"><a id="orgf78879c"></a><span class="section-number-3">2.2</span> Vagrant</h3>
+<div id="outline-container-org33a5278" class="outline-3">
+<h3 id="vagrant"><a id="org33a5278"></a><span class="section-number-3">2.2</span> Vagrant</h3>
 <div class="outline-text-3" id="text-vagrant">
 <p>
 Follow the <a href="https://www.vagrantup.com/docs/installation/index.html">Installing Vagrant</a> and <a href="https://www.vagrantup.com/intro/getting-started/index.html">Getting Started</a> guides in
@@ -322,8 +335,8 @@ Vagrant's documentation.
 </div>
 </div>
 
-<div id="outline-container-orgafab2d2" class="outline-3">
-<h3 id="testing"><a id="orgafab2d2"></a><span class="section-number-3">2.3</span> Testing</h3>
+<div id="outline-container-org80db9d6" class="outline-3">
+<h3 id="testing"><a id="org80db9d6"></a><span class="section-number-3">2.3</span> Testing</h3>
 <div class="outline-text-3" id="text-testing">
 <p>
 If you'd like to test this layer out in a simple way (for example to
@@ -334,8 +347,8 @@ in this directory.
 </div>
 </div>
 
-<div id="outline-container-org8e33b3f" class="outline-2">
-<h2 id="keybindings"><a id="org8e33b3f"></a><span class="section-number-2">3</span> Keybindings</h2>
+<div id="outline-container-org08a2122" class="outline-2">
+<h2 id="keybindings"><a id="org08a2122"></a><span class="section-number-2">3</span> Keybindings</h2>
 <div class="outline-text-2" id="text-keybindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -407,7 +420,7 @@ in this directory.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

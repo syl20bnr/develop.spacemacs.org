@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elfeed layer</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
@@ -278,8 +291,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orga73ddea" class="outline-2">
-<h2 id="description"><a id="orga73ddea"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orge64f7fc" class="outline-2">
+<h2 id="description"><a id="orge64f7fc"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer enables <a href="https://github.com/skeeto/elfeed">Elfeed</a>, a web feeds client which supports both Atom and RSS
@@ -289,13 +302,13 @@ feeds. It'll optionally enable supporting packages, such as <code>elfeed-web</co
 </div>
 </div>
 
-<div id="outline-container-org678b454" class="outline-2">
-<h2 id="install"><a id="org678b454"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org71ff466" class="outline-2">
+<h2 id="install"><a id="org71ff466"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org9abf0be" class="outline-3">
-<h3 id="layer"><a id="org9abf0be"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org10d4c90" class="outline-3">
+<h3 id="layer"><a id="org10d4c90"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -309,13 +322,13 @@ By default, <code>elfeed</code> stores its database under <code>~/.elfeed</code>
 </div>
 </div>
 
-<div id="outline-container-orgccf400c" class="outline-3">
-<h3 id="setup-feeds"><a id="orgccf400c"></a><span class="section-number-3">2.2</span> Setup feeds</h3>
+<div id="outline-container-orge59527a" class="outline-3">
+<h3 id="setup-feeds"><a id="orge59527a"></a><span class="section-number-3">2.2</span> Setup feeds</h3>
 <div class="outline-text-3" id="text-setup-feeds">
 </div>
 
-<div id="outline-container-orgfc39397" class="outline-4">
-<h4 id="with-org"><a id="orgfc39397"></a><span class="section-number-4">2.2.1</span> With Org</h4>
+<div id="outline-container-org869d23b" class="outline-4">
+<h4 id="with-org"><a id="org869d23b"></a><span class="section-number-4">2.2.1</span> With Org</h4>
 <div class="outline-text-4" id="text-with-org">
 <p>
 It is recommended to manage your feeds list and tags via org files, this is
@@ -361,8 +374,8 @@ Here is an example of such a file (note the usage of org tags to tag your feeds)
 </div>
 </div>
 
-<div id="outline-container-org0887fe2" class="outline-4">
-<h4 id="manually"><a id="org0887fe2"></a><span class="section-number-4">2.2.2</span> Manually</h4>
+<div id="outline-container-orgc71f973" class="outline-4">
+<h4 id="manually"><a id="orgc71f973"></a><span class="section-number-4">2.2.2</span> Manually</h4>
 <div class="outline-text-4" id="text-manually">
 <p>
 To explicitly setup the list of feeds, set the value of <code>elfeed-feeds</code> variable
@@ -385,8 +398,8 @@ Check documentation for <code>elfeed-feeds</code> for more information about thi
 </div>
 </div>
 
-<div id="outline-container-orged1385e" class="outline-3">
-<h3 id="server"><a id="orged1385e"></a><span class="section-number-3">2.3</span> Server</h3>
+<div id="outline-container-orgb19f188" class="outline-3">
+<h3 id="server"><a id="orgb19f188"></a><span class="section-number-3">2.3</span> Server</h3>
 <div class="outline-text-3" id="text-server">
 <p>
 Elfeed comes with a simple <a href="https://github.com/skeeto/elfeed#web-interface">web interface</a> to browse its database. You can manually
@@ -407,8 +420,8 @@ the default port by changing the value of <code>httpd-port</code>.
 </div>
 </div>
 
-<div id="outline-container-org9c41030" class="outline-2">
-<h2 id="key-bindings"><a id="org9c41030"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-org6b8cda5" class="outline-2">
+<h2 id="key-bindings"><a id="org6b8cda5"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -531,13 +544,13 @@ In <code>elfeed-show</code> mode, you can use the following bindings:
 </div>
 </div>
 
-<div id="outline-container-org9e1519f" class="outline-2">
-<h2 id="troubleshooting"><a id="org9e1519f"></a><span class="section-number-2">4</span> Troubleshooting</h2>
+<div id="outline-container-org10a1529" class="outline-2">
+<h2 id="troubleshooting"><a id="org10a1529"></a><span class="section-number-2">4</span> Troubleshooting</h2>
 <div class="outline-text-2" id="text-troubleshooting">
 </div>
 
-<div id="outline-container-org8c3d0c4" class="outline-3">
-<h3 id="database-empty-at-first-start"><a id="org8c3d0c4"></a><span class="section-number-3">4.1</span> Database empty at first start</h3>
+<div id="outline-container-org05176a7" class="outline-3">
+<h3 id="database-empty-at-first-start"><a id="org05176a7"></a><span class="section-number-3">4.1</span> Database empty at first start</h3>
 <div class="outline-text-3" id="text-database-empty-at-first-start">
 <p>
 Be sure that you added some feeds first then load your feeds with <code>gr</code>
@@ -546,8 +559,8 @@ in evilified buffer. Or <code>M-x elfeed-update</code>.
 </div>
 </div>
 
-<div id="outline-container-org2fdefac" class="outline-3">
-<h3 id="queue-timeout-exceeded"><a id="org2fdefac"></a><span class="section-number-3">4.2</span> Queue timeout exceeded</h3>
+<div id="outline-container-org8304397" class="outline-3">
+<h3 id="queue-timeout-exceeded"><a id="org8304397"></a><span class="section-number-3">4.2</span> Queue timeout exceeded</h3>
 <div class="outline-text-3" id="text-queue-timeout-exceeded">
 <p>
 If you are getting "Queue timeout exceeded" errors, try increasing
@@ -563,7 +576,7 @@ the value of <code>url-queue-timeout</code>.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

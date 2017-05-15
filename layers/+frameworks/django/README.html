@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Django layer</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
@@ -270,8 +283,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org4c64512" class="outline-2">
-<h2 id="description"><a id="org4c64512"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org198f9d2" class="outline-2">
+<h2 id="description"><a id="org198f9d2"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for the Python <a href="https://www.djangoproject.com/">Django</a> framework via <a href="https://github.com/davidmiller/pony-mode">pony-mode</a>.
@@ -279,8 +292,8 @@ This layer adds support for the Python <a href="https://www.djangoproject.com/">
 </div>
 </div>
 
-<div id="outline-container-org65b56c1" class="outline-2">
-<h2 id="install"><a id="org65b56c1"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org8186d43" class="outline-2">
+<h2 id="install"><a id="org8186d43"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -290,8 +303,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org18350f7" class="outline-2">
-<h2 id="key-bindings"><a id="org18350f7"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-orga9329b6" class="outline-2">
+<h2 id="key-bindings"><a id="orga9329b6"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
 Django related key bindings uses  <a href="https://github.com/davidmiller/pony-mode">pony-mode</a> and are behind the prefix <code>SPC m j</code>.
@@ -307,8 +320,8 @@ Manage Django with <code>SPC m j m</code>.
 </p>
 </div>
 
-<div id="outline-container-orga522288" class="outline-3">
-<h3 id="fabric"><a id="orga522288"></a><span class="section-number-3">3.1</span> Fabric</h3>
+<div id="outline-container-org0e5b283" class="outline-3">
+<h3 id="fabric"><a id="org0e5b283"></a><span class="section-number-3">3.1</span> Fabric</h3>
 <div class="outline-text-3" id="text-fabric">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -339,8 +352,8 @@ Manage Django with <code>SPC m j m</code>.
 </div>
 </div>
 
-<div id="outline-container-org188e53b" class="outline-3">
-<h3 id="files"><a id="org188e53b"></a><span class="section-number-3">3.2</span> Files</h3>
+<div id="outline-container-org5e8bafc" class="outline-3">
+<h3 id="files"><a id="org5e8bafc"></a><span class="section-number-3">3.2</span> Files</h3>
 <div class="outline-text-3" id="text-files">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -381,8 +394,8 @@ Manage Django with <code>SPC m j m</code>.
 </div>
 </div>
 
-<div id="outline-container-org0f961a8" class="outline-3">
-<h3 id="interactive"><a id="org0f961a8"></a><span class="section-number-3">3.3</span> Interactive</h3>
+<div id="outline-container-orgedb5120" class="outline-3">
+<h3 id="interactive"><a id="orgedb5120"></a><span class="section-number-3">3.3</span> Interactive</h3>
 <div class="outline-text-3" id="text-interactive">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -413,8 +426,8 @@ Manage Django with <code>SPC m j m</code>.
 </div>
 </div>
 
-<div id="outline-container-org885d8e7" class="outline-3">
-<h3 id="server"><a id="org885d8e7"></a><span class="section-number-3">3.4</span> Server</h3>
+<div id="outline-container-org1646534" class="outline-3">
+<h3 id="server"><a id="org1646534"></a><span class="section-number-3">3.4</span> Server</h3>
 <div class="outline-text-3" id="text-server">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -460,8 +473,8 @@ Manage Django with <code>SPC m j m</code>.
 </div>
 </div>
 
-<div id="outline-container-org918c285" class="outline-3">
-<h3 id="southsyncdb"><a id="org918c285"></a><span class="section-number-3">3.5</span> South/Syncdb</h3>
+<div id="outline-container-org0d24ae3" class="outline-3">
+<h3 id="southsyncdb"><a id="org0d24ae3"></a><span class="section-number-3">3.5</span> South/Syncdb</h3>
 <div class="outline-text-3" id="text-southsyncdb">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -507,8 +520,8 @@ Manage Django with <code>SPC m j m</code>.
 </div>
 </div>
 
-<div id="outline-container-org07723a5" class="outline-3">
-<h3 id="test"><a id="org07723a5"></a><span class="section-number-3">3.6</span> Test</h3>
+<div id="outline-container-org9343b8e" class="outline-3">
+<h3 id="test"><a id="org9343b8e"></a><span class="section-number-3">3.6</span> Test</h3>
 <div class="outline-text-3" id="text-test">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -556,7 +569,7 @@ Manage Django with <code>SPC m j m</code>.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

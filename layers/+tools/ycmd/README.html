@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>YCMD layer</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
@@ -268,8 +281,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org0bdd972" class="outline-2">
-<h2 id="description"><a id="org0bdd972"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgdc1460b" class="outline-2">
+<h2 id="description"><a id="orgdc1460b"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds <a href="https://github.com/abingham/emacs-ycmd">emacs-ycmd</a> support, including its integrations with company,
@@ -278,13 +291,13 @@ flycheck, and eldoc.
 </div>
 </div>
 
-<div id="outline-container-org90fc3a1" class="outline-2">
-<h2 id="install"><a id="org90fc3a1"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgf411932" class="outline-2">
+<h2 id="install"><a id="orgf411932"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org125fc5c" class="outline-3">
-<h3 id="layer"><a id="org125fc5c"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-orgdd281ef" class="outline-3">
+<h3 id="layer"><a id="orgdd281ef"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -294,8 +307,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgc06ce63" class="outline-3">
-<h3 id="ycmd"><a id="orgc06ce63"></a><span class="section-number-3">2.2</span> YCMD</h3>
+<div id="outline-container-orga3f2a7c" class="outline-3">
+<h3 id="ycmd"><a id="orga3f2a7c"></a><span class="section-number-3">2.2</span> YCMD</h3>
 <div class="outline-text-3" id="text-ycmd">
 <ol class="org-ol">
 <li>Install the <code>ycm</code> server. Installation instructions can be found <a href="https://github.com/Valloric/ycmd#user-content-building">here</a>.</li>
@@ -337,8 +350,8 @@ The completion is not going to work automatically until we actually force it:
 </div>
 </div>
 
-<div id="outline-container-org282f370" class="outline-3">
-<h3 id="other-requirements"><a id="org282f370"></a><span class="section-number-3">2.3</span> Other Requirements</h3>
+<div id="outline-container-org313b756" class="outline-3">
+<h3 id="other-requirements"><a id="org313b756"></a><span class="section-number-3">2.3</span> Other Requirements</h3>
 <div class="outline-text-3" id="text-other-requirements">
 <p>
 This package requires the <code>auto-completion</code> layer in order to get actual
@@ -348,14 +361,14 @@ completion. The <code>syntax-checking</code> layer is required for flycheck supp
 </div>
 </div>
 
-<div id="outline-container-org0cdc47c" class="outline-2">
-<h2 id="configuration"><a id="org0cdc47c"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org592a2b5" class="outline-2">
+<h2 id="configuration"><a id="org592a2b5"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
 
-<div id="outline-container-org5d5008b" class="outline-3">
-<h3 id="activating-ycmd-in-a-major-mode"><a id="org5d5008b"></a><span class="section-number-3">3.1</span> Activating ycmd in a major mode</h3>
+<div id="outline-container-org74ffe8e" class="outline-3">
+<h3 id="activating-ycmd-in-a-major-mode"><a id="org74ffe8e"></a><span class="section-number-3">3.1</span> Activating ycmd in a major mode</h3>
 <div class="outline-text-3" id="text-activating-ycmd-in-a-major-mode">
 <p>
 By default this layer only activates ycmd for <code>c++-mode</code> and <code>c-mode</code>.
@@ -373,8 +386,8 @@ specific languages like:
 </div>
 </div>
 
-<div id="outline-container-org158c4aa" class="outline-3">
-<h3 id="getting-the-compilation-flags"><a id="org158c4aa"></a><span class="section-number-3">3.2</span> Getting the compilation flags</h3>
+<div id="outline-container-org56a3c81" class="outline-3">
+<h3 id="getting-the-compilation-flags"><a id="org56a3c81"></a><span class="section-number-3">3.2</span> Getting the compilation flags</h3>
 <div class="outline-text-3" id="text-getting-the-compilation-flags">
 <p>
 Spacemacs uses its own ycmd global configuration file. If you prefer, you can
@@ -413,8 +426,8 @@ with almost any build system.
 </div>
 </div>
 
-<div id="outline-container-org2c325c7" class="outline-2">
-<h2 id="key-bindings"><a id="org2c325c7"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-orgb9993b0" class="outline-2">
+<h2 id="key-bindings"><a id="orgb9993b0"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
 Adds <code>SPC m g g</code> go to definition binding to <code>c++-mode</code> as well as <code>SPC m g G</code>
@@ -424,7 +437,7 @@ for the more imprecise but faster version.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

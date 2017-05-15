@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Configuration layers</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="../css/readtheorg.css" />
 <script type="text/javascript">
@@ -273,8 +286,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org5545510" class="outline-2">
-<h2 id="chat"><a id="org5545510"></a><span class="section-number-2">1</span> Chat</h2>
+<div id="outline-container-orga885d3a" class="outline-2">
+<h2 id="chat"><a id="orga885d3a"></a><span class="section-number-2">1</span> Chat</h2>
 <div class="outline-text-2" id="text-chat">
 <ul class="org-ul">
 <li><a href="+chat/erc/README.html">erc</a></li>
@@ -285,8 +298,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgedc4e70" class="outline-2">
-<h2 id="checkers"><a id="orgedc4e70"></a><span class="section-number-2">2</span> Checkers</h2>
+<div id="outline-container-orgee1674d" class="outline-2">
+<h2 id="checkers"><a id="orgee1674d"></a><span class="section-number-2">2</span> Checkers</h2>
 <div class="outline-text-2" id="text-checkers">
 <ul class="org-ul">
 <li><a href="+checkers/spell-checking/README.html">spell-checking</a></li>
@@ -295,8 +308,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org2521be4" class="outline-2">
-<h2 id="completion"><a id="org2521be4"></a><span class="section-number-2">3</span> Completion</h2>
+<div id="outline-container-orgf8dd943" class="outline-2">
+<h2 id="completion"><a id="orgf8dd943"></a><span class="section-number-2">3</span> Completion</h2>
 <div class="outline-text-2" id="text-completion">
 <ul class="org-ul">
 <li><a href="+completion/auto-completion/README.html">auto-completion</a></li>
@@ -306,8 +319,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org12456ac" class="outline-2">
-<h2 id="distributions"><a id="org12456ac"></a><span class="section-number-2">4</span> Distributions</h2>
+<div id="outline-container-org458d21e" class="outline-2">
+<h2 id="distributions"><a id="org458d21e"></a><span class="section-number-2">4</span> Distributions</h2>
 <div class="outline-text-2" id="text-distributions">
 <ul class="org-ul">
 <li><a href="+distributions/spacemacs/README.html">spacemacs</a></li>
@@ -318,8 +331,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgdcb5762" class="outline-2">
-<h2 id="emacs"><a id="orgdcb5762"></a><span class="section-number-2">5</span> Emacs</h2>
+<div id="outline-container-org8254aec" class="outline-2">
+<h2 id="emacs"><a id="org8254aec"></a><span class="section-number-2">5</span> Emacs</h2>
 <div class="outline-text-2" id="text-emacs">
 <ul class="org-ul">
 <li><a href="+emacs/better-defaults/README.html">better-defaults</a></li>
@@ -332,8 +345,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org583c87e" class="outline-2">
-<h2 id="e-mail"><a id="org583c87e"></a><span class="section-number-2">6</span> E-mail</h2>
+<div id="outline-container-org07c7d81" class="outline-2">
+<h2 id="e-mail"><a id="org07c7d81"></a><span class="section-number-2">6</span> E-mail</h2>
 <div class="outline-text-2" id="text-e-mail">
 <ul class="org-ul">
 <li><a href="+email/gnus/README.html">gnus</a></li>
@@ -342,8 +355,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org6c29fd3" class="outline-2">
-<h2 id="frameworks"><a id="org6c29fd3"></a><span class="section-number-2">7</span> Frameworks</h2>
+<div id="outline-container-org5a861c1" class="outline-2">
+<h2 id="frameworks"><a id="org5a861c1"></a><span class="section-number-2">7</span> Frameworks</h2>
 <div class="outline-text-2" id="text-frameworks">
 <ul class="org-ul">
 <li><a href="+frameworks/django/README.html">django</a></li>
@@ -353,8 +366,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orga8ffeda" class="outline-2">
-<h2 id="fun"><a id="orga8ffeda"></a><span class="section-number-2">8</span> Fun</h2>
+<div id="outline-container-org221ff21" class="outline-2">
+<h2 id="fun"><a id="org221ff21"></a><span class="section-number-2">8</span> Fun</h2>
 <div class="outline-text-2" id="text-fun">
 <ul class="org-ul">
 <li><a href="+fun/emoji/README.html">emoji</a></li>
@@ -365,8 +378,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgd43c346" class="outline-2">
-<h2 id="international-support"><a id="orgd43c346"></a><span class="section-number-2">9</span> International support</h2>
+<div id="outline-container-orge841dc2" class="outline-2">
+<h2 id="international-support"><a id="orge841dc2"></a><span class="section-number-2">9</span> International support</h2>
 <div class="outline-text-2" id="text-international-support">
 <ul class="org-ul">
 <li><a href="+intl/chinese/README.html">chinese</a></li>
@@ -375,8 +388,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgcef81c8" class="outline-2">
-<h2 id="programming-and-markup-languages"><a id="orgcef81c8"></a><span class="section-number-2">10</span> Programming and markup languages</h2>
+<div id="outline-container-org132db72" class="outline-2">
+<h2 id="programming-and-markup-languages"><a id="org132db72"></a><span class="section-number-2">10</span> Programming and markup languages</h2>
 <div class="outline-text-2" id="text-programming-and-markup-languages">
 <ul class="org-ul">
 <li><a href="+lang/agda/README.html">agda</a></li>
@@ -440,8 +453,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org2fd8fcf" class="outline-2">
-<h2 id="misc"><a id="org2fd8fcf"></a><span class="section-number-2">11</span> Misc</h2>
+<div id="outline-container-orgab4abee" class="outline-2">
+<h2 id="misc"><a id="orgab4abee"></a><span class="section-number-2">11</span> Misc</h2>
 <div class="outline-text-2" id="text-misc">
 <ul class="org-ul">
 <li><a href="+misc/nlinum/README.html">nlinum</a></li>
@@ -449,8 +462,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org02e5942" class="outline-2">
-<h2 id="operating-systems"><a id="org02e5942"></a><span class="section-number-2">12</span> Operating systems</h2>
+<div id="outline-container-org6afe540" class="outline-2">
+<h2 id="operating-systems"><a id="org6afe540"></a><span class="section-number-2">12</span> Operating systems</h2>
 <div class="outline-text-2" id="text-operating-systems">
 <ul class="org-ul">
 <li><a href="+os/nixos/README.html">nixos</a></li>
@@ -459,8 +472,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgd15a109" class="outline-2">
-<h2 id="pair-programming"><a id="orgd15a109"></a><span class="section-number-2">13</span> Pair programming</h2>
+<div id="outline-container-org828ff10" class="outline-2">
+<h2 id="pair-programming"><a id="org828ff10"></a><span class="section-number-2">13</span> Pair programming</h2>
 <div class="outline-text-2" id="text-pair-programming">
 <ul class="org-ul">
 <li><a href="+pair-programming/floobits/README.html">floobits</a></li>
@@ -468,8 +481,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org8a69180" class="outline-2">
-<h2 id="source-control"><a id="org8a69180"></a><span class="section-number-2">14</span> Source control</h2>
+<div id="outline-container-org0d1eb5f" class="outline-2">
+<h2 id="source-control"><a id="org0d1eb5f"></a><span class="section-number-2">14</span> Source control</h2>
 <div class="outline-text-2" id="text-source-control">
 <ul class="org-ul">
 <li><a href="+source-control/git/README.html">git</a></li>
@@ -480,8 +493,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgd8a14e9" class="outline-2">
-<h2 id="spacemacs-distribution-layers"><a id="orgd8a14e9"></a><span class="section-number-2">15</span> Spacemacs distribution layers</h2>
+<div id="outline-container-org01317c2" class="outline-2">
+<h2 id="spacemacs-distribution-layers"><a id="org01317c2"></a><span class="section-number-2">15</span> Spacemacs distribution layers</h2>
 <div class="outline-text-2" id="text-spacemacs-distribution-layers">
 <ul class="org-ul">
 <li><a href="+spacemacs/spacemacs-completion/README.html">spacemacs-completion</a></li>
@@ -500,8 +513,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org133d3a4" class="outline-2">
-<h2 id="tags"><a id="org133d3a4"></a><span class="section-number-2">16</span> Tags</h2>
+<div id="outline-container-orgaae7fa9" class="outline-2">
+<h2 id="tags"><a id="orgaae7fa9"></a><span class="section-number-2">16</span> Tags</h2>
 <div class="outline-text-2" id="text-tags">
 <ul class="org-ul">
 <li><a href="+tags/cscope/README.html">cscope</a></li>
@@ -510,8 +523,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgfd71031" class="outline-2">
-<h2 id="themes"><a id="orgfd71031"></a><span class="section-number-2">17</span> Themes</h2>
+<div id="outline-container-org629b887" class="outline-2">
+<h2 id="themes"><a id="org629b887"></a><span class="section-number-2">17</span> Themes</h2>
 <div class="outline-text-2" id="text-themes">
 <ul class="org-ul">
 <li><a href="+themes/colors/README.html">colors</a></li>
@@ -521,8 +534,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org66180b8" class="outline-2">
-<h2 id="tools"><a id="org66180b8"></a><span class="section-number-2">18</span> Tools</h2>
+<div id="outline-container-orga8e514c" class="outline-2">
+<h2 id="tools"><a id="orga8e514c"></a><span class="section-number-2">18</span> Tools</h2>
 <div class="outline-text-2" id="text-tools">
 <ul class="org-ul">
 <li><a href="+tools/ansible/README.html">ansible</a></li>
@@ -557,8 +570,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org48256b0" class="outline-2">
-<h2 id="vim"><a id="org48256b0"></a><span class="section-number-2">19</span> Vim</h2>
+<div id="outline-container-org2afaa8b" class="outline-2">
+<h2 id="vim"><a id="org2afaa8b"></a><span class="section-number-2">19</span> Vim</h2>
 <div class="outline-text-2" id="text-vim">
 <ul class="org-ul">
 <li><a href="+vim/evil-cleverparens/README.html">evil-cleverparens</a></li>
@@ -571,8 +584,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orge9a6d3d" class="outline-2">
-<h2 id="web-services"><a id="orge9a6d3d"></a><span class="section-number-2">20</span> Web services</h2>
+<div id="outline-container-org4f00f6c" class="outline-2">
+<h2 id="web-services"><a id="org4f00f6c"></a><span class="section-number-2">20</span> Web services</h2>
 <div class="outline-text-2" id="text-web-services">
 <ul class="org-ul">
 <li><a href="+web-services/confluence/README.html">confluence</a></li>
@@ -587,7 +600,7 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
