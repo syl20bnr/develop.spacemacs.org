@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>C/C++ layer</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
@@ -263,7 +276,11 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#key-bindings">4. Key Bindings</a></li>
+<li><a href="#key-bindings">4. Key Bindings</a>
+<ul>
+<li><a href="#debugger-realgud">4.1. Debugger (realgud)</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -272,8 +289,8 @@ for the JavaScript code in this tag.
 <img src="img/cmake.png" alt="cmake.png" />
 </p>
 
-<div id="outline-container-orgd2a1a34" class="outline-2">
-<h2 id="description"><a id="orgd2a1a34"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org1363d2f" class="outline-2">
+<h2 id="description"><a id="org1363d2f"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds configuration for C/C++ language as well support for <a href="https://cmake.org/">CMake</a>
@@ -282,8 +299,8 @@ scripts.
 </div>
 </div>
 
-<div id="outline-container-org88aed3d" class="outline-2">
-<h2 id="features"><a id="org88aed3d"></a><span class="section-number-2">2</span> Features</h2>
+<div id="outline-container-org647a8c5" class="outline-2">
+<h2 id="features"><a id="org647a8c5"></a><span class="section-number-2">2</span> Features</h2>
 <div class="outline-text-2" id="text-features">
 <ul class="org-ul">
 <li>Support syntax checking via flycheck with Clang.</li>
@@ -299,17 +316,18 @@ demonstration of refactoring features. (when <code>semantic</code> layer is incl
 <li>Support auto-completion (when <code>auto-completion</code> layer is included) via
 company-clang (when <code>c-c++-enable-clang-support</code> is turned on), or
 company-ycmd (when <code>ycmd</code> layer is included).</li>
+<li>Support for <a href="https://github.com/realgud/realgud">realgud</a> debugger.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgaffaa84" class="outline-2">
-<h2 id="install"><a id="orgaffaa84"></a><span class="section-number-2">3</span> Install</h2>
+<div id="outline-container-org84c00c1" class="outline-2">
+<h2 id="install"><a id="org84c00c1"></a><span class="section-number-2">3</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org37efa1f" class="outline-3">
-<h3 id="layer"><a id="org37efa1f"></a><span class="section-number-3">3.1</span> Layer</h3>
+<div id="outline-container-orgfac5d38" class="outline-3">
+<h3 id="layer"><a id="orgfac5d38"></a><span class="section-number-3">3.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -323,8 +341,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org0b71083" class="outline-3">
-<h3 id="default-mode-for-header-files"><a id="org0b71083"></a><span class="section-number-3">3.2</span> Default mode for header files</h3>
+<div id="outline-container-org6f81168" class="outline-3">
+<h3 id="default-mode-for-header-files"><a id="org6f81168"></a><span class="section-number-3">3.2</span> Default mode for header files</h3>
 <div class="outline-text-3" id="text-default-mode-for-header-files">
 <p>
 By default header files are opened in <code>c-mode</code>, you can open them in <code>c++-mode</code>
@@ -346,8 +364,8 @@ can be found in the <a href="http://www.gnu.org/software/emacs/manual/html_node/
 </div>
 </div>
 
-<div id="outline-container-orga362da1" class="outline-3">
-<h3 id="enable-clang-support"><a id="orga362da1"></a><span class="section-number-3">3.3</span> Enable Clang support</h3>
+<div id="outline-container-orgcbf8037" class="outline-3">
+<h3 id="enable-clang-support"><a id="orgcbf8037"></a><span class="section-number-3">3.3</span> Enable Clang support</h3>
 <div class="outline-text-3" id="text-enable-clang-support">
 <p>
 To enable Clang support set the layer variable <code>c-c++-enable-clang-support</code>
@@ -361,8 +379,8 @@ to <code>t</code> in the dotfile:
 </div>
 </div>
 
-<div id="outline-container-orgb6bce5b" class="outline-4">
-<h4 id="clang-format"><a id="orgb6bce5b"></a><span class="section-number-4">3.3.1</span> clang-format</h4>
+<div id="outline-container-orge544b29" class="outline-4">
+<h4 id="clang-format"><a id="orge544b29"></a><span class="section-number-4">3.3.1</span> clang-format</h4>
 <div class="outline-text-4" id="text-clang-format">
 <p>
 <a href="http://clang.llvm.org/docs/ClangFormat.html">clang-format</a> allows reformatting either a selected region of code
@@ -382,9 +400,9 @@ particular mode or all modes in your <code>dotspacemacs/user-config</code> (with
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Bind clang-format-region to C-M-tab in all modes:</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>global-set-key <span class="org-rainbow-delimiters-depth-2">[</span>C-M-tab<span class="org-rainbow-delimiters-depth-2">]</span> 'clang-format-region<span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Bind clang-format-buffer to tab on the c++-mode only:</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'c++-mode-hook 'clang-format-bindings<span class="org-rainbow-delimiters-depth-1">)</span>
-  <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">clang-format-bindings</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-    <span class="org-rainbow-delimiters-depth-2">(</span>define-key c++-mode-map <span class="org-rainbow-delimiters-depth-3">[</span>tab<span class="org-rainbow-delimiters-depth-3">]</span> 'clang-format-buffer<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'c++-mode-hook 'clang-format-bindings
+          <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">defun</span> <span class="org-function-name">clang-format-bindings</span> <span class="org-rainbow-delimiters-depth-3">()</span>
+            <span class="org-rainbow-delimiters-depth-3">(</span>define-key c++-mode-map <span class="org-rainbow-delimiters-depth-4">[</span>tab<span class="org-rainbow-delimiters-depth-4">]</span> 'clang-format-buffer<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -401,8 +419,8 @@ To enable automatic buffer formatting on save, set the variable
 </div>
 </div>
 
-<div id="outline-container-orgb440ddb" class="outline-4">
-<h4 id="company-clang-and-flycheck"><a id="orgb440ddb"></a><span class="section-number-4">3.3.2</span> Company-clang and flycheck</h4>
+<div id="outline-container-org0e88b0a" class="outline-4">
+<h4 id="company-clang-and-flycheck"><a id="org0e88b0a"></a><span class="section-number-4">3.3.2</span> Company-clang and flycheck</h4>
 <div class="outline-text-4" id="text-company-clang-and-flycheck">
 <p>
 This layer adds some fancy improvements to <code>company-clang</code>.
@@ -421,8 +439,8 @@ doesn't complain about missing header files.
 </div>
 </div>
 
-<div id="outline-container-org7dd0686" class="outline-2">
-<h2 id="key-bindings"><a id="org7dd0686"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org815bd37" class="outline-2">
+<h2 id="key-bindings"><a id="org815bd37"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -465,10 +483,92 @@ doesn't complain about missing header files.
 <b>Note:</b>  <a href="https://github.com/tuhdo/semantic-refactor">semantic-refactor</a>  is only available for Emacs 24.4+
 </p>
 </div>
+
+<div id="outline-container-org02be762" class="outline-3">
+<h3 id="debugger-realgud"><a id="org02be762"></a><span class="section-number-3">4.1</span> Debugger (realgud)</h3>
+<div class="outline-text-3" id="text-debugger-realgud">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d d</code></td>
+<td class="org-left">open cmd buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d e</code></td>
+<td class="org-left">eval variable</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s</code></td>
+<td class="org-left">step over</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>i</code></td>
+<td class="org-left">step into</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>b</code></td>
+<td class="org-left">set break</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>B</code></td>
+<td class="org-left">unset break</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>o</code></td>
+<td class="org-left">step out</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>c</code></td>
+<td class="org-left">continue</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>e</code></td>
+<td class="org-left">eval variable</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>r</code></td>
+<td class="org-left">restart</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>q</code></td>
+<td class="org-left">quit debug</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>S</code></td>
+<td class="org-left">goto cmd buffer</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

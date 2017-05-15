@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Contribution guidelines</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="css/readtheorg.css" />
 <script type="text/javascript">
@@ -305,8 +318,8 @@ You can only consider reading the sections relevant to what you are going to do:
 Thanks! :heart: :heart: :heart:
 </p>
 
-<div id="outline-container-org554bf6b" class="outline-2">
-<h2 id="asking-for-help"><a id="org554bf6b"></a><span class="section-number-2">1</span> Asking for help</h2>
+<div id="outline-container-org372a6bf" class="outline-2">
+<h2 id="asking-for-help"><a id="org372a6bf"></a><span class="section-number-2">1</span> Asking for help</h2>
 <div class="outline-text-2" id="text-asking-for-help">
 <p>
 If you want to ask an usage question, be sure to look first into some places as
@@ -327,8 +340,8 @@ open an issue if it is needed.
 </div>
 </div>
 
-<div id="outline-container-org1f40d84" class="outline-2">
-<h2 id="reporting-issues"><a id="org1f40d84"></a><span class="section-number-2">2</span> Reporting issues</h2>
+<div id="outline-container-org683edc7" class="outline-2">
+<h2 id="reporting-issues"><a id="org683edc7"></a><span class="section-number-2">2</span> Reporting issues</h2>
 <div class="outline-text-2" id="text-reporting-issues">
 <p>
 Issues have to be reported on our <a href="https://github.com/syl20bnr/spacemacs/issues">issues tracker</a>. Please:
@@ -360,8 +373,8 @@ step guide.</li>
 </div>
 </div>
 
-<div id="outline-container-org75d8049" class="outline-2">
-<h2 id="contributing-code"><a id="org75d8049"></a><span class="section-number-2">3</span> Contributing code</h2>
+<div id="outline-container-org38f0c60" class="outline-2">
+<h2 id="contributing-code"><a id="org38f0c60"></a><span class="section-number-2">3</span> Contributing code</h2>
 <div class="outline-text-2" id="text-contributing-code">
 <p>
 Code contributions are welcome. Please read the following sections carefully. In
@@ -370,14 +383,14 @@ contributing!
 </p>
 </div>
 
-<div id="outline-container-orga7562d7" class="outline-3">
-<h3 id="general-contribution-guidelines"><a id="orga7562d7"></a><span class="section-number-3">3.1</span> General contribution guidelines</h3>
+<div id="outline-container-orgdcda6fe" class="outline-3">
+<h3 id="general-contribution-guidelines"><a id="orgdcda6fe"></a><span class="section-number-3">3.1</span> General contribution guidelines</h3>
 <div class="outline-text-3" id="text-general-contribution-guidelines">
 </div>
 
 
-<div id="outline-container-org8535cf6" class="outline-4">
-<h4 id="license"><a id="org8535cf6"></a><span class="section-number-4">3.1.1</span> License</h4>
+<div id="outline-container-org47f0e2a" class="outline-4">
+<h4 id="license"><a id="org47f0e2a"></a><span class="section-number-4">3.1.1</span> License</h4>
 <div class="outline-text-4" id="text-license">
 <p>
 The license is <code>GPLv3</code> for all parts specific to Spacemacs, this includes:
@@ -395,8 +408,8 @@ accept code without a proper header file.
 </div>
 </div>
 
-<div id="outline-container-org35899a8" class="outline-4">
-<h4 id="conventions"><a id="org35899a8"></a><span class="section-number-4">3.1.2</span> Conventions</h4>
+<div id="outline-container-orgb5b6cf3" class="outline-4">
+<h4 id="conventions"><a id="orgb5b6cf3"></a><span class="section-number-4">3.1.2</span> Conventions</h4>
 <div class="outline-text-4" id="text-conventions">
 <p>
 Spacemacs is based on conventions, mainly for naming functions, keybindings
@@ -406,8 +419,8 @@ before your first contribution to get to know them.
 </div>
 </div>
 
-<div id="outline-container-orgac3df55" class="outline-4">
-<h4 id="pull-request"><a id="orgac3df55"></a><span class="section-number-4">3.1.3</span> Pull-Request</h4>
+<div id="outline-container-org0578d8c" class="outline-4">
+<h4 id="pull-request"><a id="org0578d8c"></a><span class="section-number-4">3.1.3</span> Pull-Request</h4>
 <div class="outline-text-4" id="text-pull-request">
 <p>
 Submit your contribution against the <code>develop</code> branch. You should not use
@@ -424,8 +437,8 @@ You may want to <a href="https://github.com/syl20bnr/spacemacs/wiki/Beginner's-G
 </p>
 </div>
 
-<div id="outline-container-orgb9c3d0c" class="outline-5">
-<h5 id="ideally-for-simple-prs-most-of-them"><a id="orgb9c3d0c"></a><span class="section-number-5">3.1.3.1</span> Ideally for <i>simple</i> PRs (most of them):</h5>
+<div id="outline-container-org31d5de6" class="outline-5">
+<h5 id="ideally-for-simple-prs-most-of-them"><a id="org31d5de6"></a><span class="section-number-5">3.1.3.1</span> Ideally for <i>simple</i> PRs (most of them):</h5>
 <div class="outline-text-5" id="text-ideally-for-simple-prs-most-of-them">
 <ul class="org-ul">
 <li>Branch from <code>develop</code></li>
@@ -444,8 +457,8 @@ Those PRs are usually <i>cherry-picked</i>.
 </div>
 </div>
 
-<div id="outline-container-orgc04a4a1" class="outline-5">
-<h5 id="for-complex-prs-big-refactoring-etc"><a id="orgc04a4a1"></a><span class="section-number-5">3.1.3.2</span> For complex PRs (big refactoring, etc):</h5>
+<div id="outline-container-orge6c1299" class="outline-5">
+<h5 id="for-complex-prs-big-refactoring-etc"><a id="orge6c1299"></a><span class="section-number-5">3.1.3.2</span> For complex PRs (big refactoring, etc):</h5>
 <div class="outline-text-5" id="text-for-complex-prs-big-refactoring-etc">
 <ul class="org-ul">
 <li>Squash only the commits with uninteresting changes like typos, syntax fixes,
@@ -459,8 +472,8 @@ Those PRs are <i>merged</i> and explicitly <i>not fast-forwarded</i>.
 </div>
 </div>
 
-<div id="outline-container-orgcdc2145" class="outline-4">
-<h4 id="commit-messages"><a id="orgcdc2145"></a><span class="section-number-4">3.1.4</span> Commit messages</h4>
+<div id="outline-container-orgc6685f3" class="outline-4">
+<h4 id="commit-messages"><a id="orgc6685f3"></a><span class="section-number-4">3.1.4</span> Commit messages</h4>
 <div class="outline-text-4" id="text-commit-messages">
 <p>
 Write commit messages according to adapted <a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">Tim Pope's guidelines</a>:
@@ -512,8 +525,8 @@ to comply to these guidelines.
 </div>
 </div>
 
-<div id="outline-container-org890b981" class="outline-3">
-<h3 id="contributing-a-layer"><a id="org890b981"></a><span class="section-number-3">3.2</span> Contributing a layer</h3>
+<div id="outline-container-org96668e6" class="outline-3">
+<h3 id="contributing-a-layer"><a id="org96668e6"></a><span class="section-number-3">3.2</span> Contributing a layer</h3>
 <div class="outline-text-3" id="text-contributing-a-layer">
 <p>
 Please read the <a href="doc/LAYERS.html">layers documentation</a> first.
@@ -538,8 +551,8 @@ variable <code>dotspacemacs-additional-packages</code>.
 </p>
 </div>
 
-<div id="outline-container-org987d551" class="outline-4">
-<h4 id="file-header"><a id="org987d551"></a><span class="section-number-4">3.2.1</span> File header</h4>
+<div id="outline-container-org5c03228" class="outline-4">
+<h4 id="file-header"><a id="org5c03228"></a><span class="section-number-4">3.2.1</span> File header</h4>
 <div class="outline-text-4" id="text-file-header">
 <p>
 The file header for <code>elisp</code> files should look like the following template:
@@ -569,8 +582,8 @@ files and headers for you, and for free :smile: !
 </div>
 </div>
 
-<div id="outline-container-orge1991a0" class="outline-4">
-<h4 id="author-of-a-new-layer"><a id="orge1991a0"></a><span class="section-number-4">3.2.2</span> Author of a new layer</h4>
+<div id="outline-container-org5557dc9" class="outline-4">
+<h4 id="author-of-a-new-layer"><a id="org5557dc9"></a><span class="section-number-4">3.2.2</span> Author of a new layer</h4>
 <div class="outline-text-4" id="text-author-of-a-new-layer">
 <p>
 In the files header, change the default author name (<code>Sylvain Benner</code>) to your
@@ -579,8 +592,8 @@ name.
 </div>
 </div>
 
-<div id="outline-container-org4dff854" class="outline-4">
-<h4 id="contributor-to-an-existing-layer"><a id="org4dff854"></a><span class="section-number-4">3.2.3</span> Contributor to an existing layer</h4>
+<div id="outline-container-org32f2020" class="outline-4">
+<h4 id="contributor-to-an-existing-layer"><a id="org32f2020"></a><span class="section-number-4">3.2.3</span> Contributor to an existing layer</h4>
 <div class="outline-text-4" id="text-contributor-to-an-existing-layer">
 <p>
 If you are contributing to an already existing layer, you should not modify any
@@ -590,8 +603,8 @@ header file.
 </div>
 </div>
 
-<div id="outline-container-org5beabbe" class="outline-3">
-<h3 id="contributing-a-keybinding"><a id="org5beabbe"></a><span class="section-number-3">3.3</span> Contributing a keybinding</h3>
+<div id="outline-container-org2f6bea6" class="outline-3">
+<h3 id="contributing-a-keybinding"><a id="org2f6bea6"></a><span class="section-number-3">3.3</span> Contributing a keybinding</h3>
 <div class="outline-text-3" id="text-contributing-a-keybinding">
 <p>
 Keybindings are an important part of spacemacs.
@@ -619,8 +632,8 @@ bindings.
 </div>
 </div>
 
-<div id="outline-container-org7976151" class="outline-3">
-<h3 id="contributing-a-banner"><a id="org7976151"></a><span class="section-number-3">3.4</span> Contributing a banner</h3>
+<div id="outline-container-org2284b9d" class="outline-3">
+<h3 id="contributing-a-banner"><a id="org2284b9d"></a><span class="section-number-3">3.4</span> Contributing a banner</h3>
 <div class="outline-text-3" id="text-contributing-a-banner">
 <p>
 The startup banner is by default the Spacemacs logo but there are also ASCII
@@ -639,13 +652,13 @@ around 75 characters.
 </div>
 </div>
 
-<div id="outline-container-org70743df" class="outline-2">
-<h2 id="additional-information"><a id="org70743df"></a><span class="section-number-2">4</span> Additional information</h2>
+<div id="outline-container-org5d25bca" class="outline-2">
+<h2 id="additional-information"><a id="org5d25bca"></a><span class="section-number-2">4</span> Additional information</h2>
 <div class="outline-text-2" id="text-additional-information">
 </div>
 
-<div id="outline-container-org49e8704" class="outline-3">
-<h3 id="testing"><a id="org49e8704"></a><span class="section-number-3">4.1</span> Testing</h3>
+<div id="outline-container-org4a47352" class="outline-3">
+<h3 id="testing"><a id="org4a47352"></a><span class="section-number-3">4.1</span> Testing</h3>
 <div class="outline-text-3" id="text-testing">
 <p>
 Tests live in the <code>tests/</code> folder, with a folder structure corresponding to the
@@ -700,18 +713,18 @@ See existing tests for examples.
 </div>
 </div>
 
-<div id="outline-container-org1dc3fd5" class="outline-2">
-<h2 id="credits"><a id="org1dc3fd5"></a><span class="section-number-2">5</span> Credits</h2>
+<div id="outline-container-org8001e21" class="outline-2">
+<h2 id="credits"><a id="org8001e21"></a><span class="section-number-2">5</span> Credits</h2>
 <div class="outline-text-2" id="text-credits">
 <p>
 This <code>CONTRIBUTING.org</code> file is partially based on the <a href="https://github.com/rails/rails/blob/master/CONTRIBUTING.md">Rails Contribution
-guidelines</a> and <a href="https://github.com/flycheck/flycheck/blob/master/CONTRIBUTING.md">Flycheck Contribution guidelines</a>.
+guidelines</a> and <a href="https://github.com/flycheck/flycheck/blob/master/doc/contributor/contributing.rst">Flycheck Contribution guidelines</a>.
 </p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

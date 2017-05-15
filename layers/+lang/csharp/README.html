@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>C# layer</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
@@ -282,8 +295,8 @@ for the JavaScript code in this tag.
 <img src="img/csharp.png" alt="csharp.png" /> <img src="img/dotnet.png" alt="dotnet.png" />
 </p>
 
-<div id="outline-container-org5ba109b" class="outline-2">
-<h2 id="description"><a id="org5ba109b"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org2a4330f" class="outline-2">
+<h2 id="description"><a id="org2a4330f"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds experimental support for C# language using <a href="https://github.com/OmniSharp/omnisharp-emacs">OmniSharp</a>.
@@ -291,8 +304,8 @@ This layer adds experimental support for C# language using <a href="https://gith
 </div>
 </div>
 
-<div id="outline-container-org7daca03" class="outline-2">
-<h2 id="packages-included"><a id="org7daca03"></a><span class="section-number-2">2</span> Packages Included</h2>
+<div id="outline-container-orgd0d6c17" class="outline-2">
+<h2 id="packages-included"><a id="orgd0d6c17"></a><span class="section-number-2">2</span> Packages Included</h2>
 <div class="outline-text-2" id="text-packages-included">
 <ul class="org-ul">
 <li><a href="https://github.com/OmniSharp/omnisharp-emacs">OmniSharp-emacs</a></li>
@@ -300,8 +313,8 @@ This layer adds experimental support for C# language using <a href="https://gith
 </div>
 </div>
 
-<div id="outline-container-org0aa6a4e" class="outline-2">
-<h2 id="install"><a id="org0aa6a4e"></a><span class="section-number-2">3</span> Install</h2>
+<div id="outline-container-org96ff6cd" class="outline-2">
+<h2 id="install"><a id="org96ff6cd"></a><span class="section-number-2">3</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -310,13 +323,13 @@ file.
 </p>
 </div>
 
-<div id="outline-container-org1eceef2" class="outline-3">
-<h3 id="prerequisites"><a id="org1eceef2"></a><span class="section-number-3">3.1</span> Prerequisites</h3>
+<div id="outline-container-orgb676e4d" class="outline-3">
+<h3 id="prerequisites"><a id="orgb676e4d"></a><span class="section-number-3">3.1</span> Prerequisites</h3>
 <div class="outline-text-3" id="text-prerequisites">
 </div>
 
-<div id="outline-container-org6875c06" class="outline-4">
-<h4 id="aspnet-5"><a id="org6875c06"></a><span class="section-number-4">3.1.1</span> ASP.NET 5</h4>
+<div id="outline-container-orgcbd6227" class="outline-4">
+<h4 id="aspnet-5"><a id="orgcbd6227"></a><span class="section-number-4">3.1.1</span> ASP.NET 5</h4>
 <div class="outline-text-4" id="text-aspnet-5">
 <p>
 Follow the instructions for your platform <a href="https://github.com/aspnet/home#user-content-get-started">here</a>.
@@ -324,8 +337,8 @@ Follow the instructions for your platform <a href="https://github.com/aspnet/hom
 </div>
 </div>
 
-<div id="outline-container-org7d5a7c3" class="outline-4">
-<h4 id="curl"><a id="org7d5a7c3"></a><span class="section-number-4">3.1.2</span> curl</h4>
+<div id="outline-container-orgdf3f4ee" class="outline-4">
+<h4 id="curl"><a id="orgdf3f4ee"></a><span class="section-number-4">3.1.2</span> curl</h4>
 <div class="outline-text-4" id="text-curl">
 <p>
 You'll need <a href="https://curl.haxx.se/">curl</a> to be able to use the Omnisharp package. Use your favorite
@@ -345,8 +358,8 @@ or set the variable <code>omnisharp--curl-executable-path</code> in your dotfile
 </div>
 </div>
 
-<div id="outline-container-org2e675ba" class="outline-4">
-<h4 id="omnisharp-server"><a id="org2e675ba"></a><span class="section-number-4">3.1.3</span> Omnisharp server</h4>
+<div id="outline-container-org3d24fa4" class="outline-4">
+<h4 id="omnisharp-server"><a id="org3d24fa4"></a><span class="section-number-4">3.1.3</span> Omnisharp server</h4>
 <div class="outline-text-4" id="text-omnisharp-server">
 <p>
 You have to compile the OmniSharp server following the instructions which can
@@ -374,8 +387,8 @@ OmniSharp should now automatically load and start a server when you open a
 </div>
 </div>
 
-<div id="outline-container-org2495921" class="outline-2">
-<h2 id="caveats"><a id="org2495921"></a><span class="section-number-2">4</span> Caveats</h2>
+<div id="outline-container-org5edcb87" class="outline-2">
+<h2 id="caveats"><a id="org5edcb87"></a><span class="section-number-2">4</span> Caveats</h2>
 <div class="outline-text-2" id="text-caveats">
 <ul class="org-ul">
 <li>It's currently not possible to create a C# solution outside of an IDE such as
@@ -387,13 +400,13 @@ solutions.</li>
 </div>
 </div>
 
-<div id="outline-container-org6389f31" class="outline-2">
-<h2 id="key-bindings"><a id="org6389f31"></a><span class="section-number-2">5</span> Key Bindings</h2>
+<div id="outline-container-org0580caf" class="outline-2">
+<h2 id="key-bindings"><a id="org0580caf"></a><span class="section-number-2">5</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgab87655" class="outline-3">
-<h3 id="compilation"><a id="orgab87655"></a><span class="section-number-3">5.1</span> Compilation</h3>
+<div id="outline-container-orgd199c87" class="outline-3">
+<h3 id="compilation"><a id="orgd199c87"></a><span class="section-number-3">5.1</span> Compilation</h3>
 <div class="outline-text-3" id="text-compilation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -419,8 +432,8 @@ solutions.</li>
 </div>
 </div>
 
-<div id="outline-container-org9f6c09a" class="outline-3">
-<h3 id="filesolutionproject-manipulation"><a id="org9f6c09a"></a><span class="section-number-3">5.2</span> File/Solution/Project manipulation</h3>
+<div id="outline-container-org3a6e099" class="outline-3">
+<h3 id="filesolutionproject-manipulation"><a id="org3a6e099"></a><span class="section-number-3">5.2</span> File/Solution/Project manipulation</h3>
 <div class="outline-text-3" id="text-filesolutionproject-manipulation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -466,8 +479,8 @@ solutions.</li>
 </div>
 </div>
 
-<div id="outline-container-orgda6196e" class="outline-3">
-<h3 id="navigation"><a id="orgda6196e"></a><span class="section-number-3">5.3</span> Navigation</h3>
+<div id="outline-container-orgb43a303" class="outline-3">
+<h3 id="navigation"><a id="orgb43a303"></a><span class="section-number-3">5.3</span> Navigation</h3>
 <div class="outline-text-3" id="text-navigation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -553,8 +566,8 @@ solutions.</li>
 </div>
 </div>
 
-<div id="outline-container-org6058bad" class="outline-3">
-<h3 id="helpers-documentation-info"><a id="org6058bad"></a><span class="section-number-3">5.4</span> Helpers (documentation, info)</h3>
+<div id="outline-container-orgd2907bd" class="outline-3">
+<h3 id="helpers-documentation-info"><a id="orgd2907bd"></a><span class="section-number-3">5.4</span> Helpers (documentation, info)</h3>
 <div class="outline-text-3" id="text-helpers-documentation-info">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -585,8 +598,8 @@ solutions.</li>
 </div>
 </div>
 
-<div id="outline-container-orgeba78ed" class="outline-3">
-<h3 id="refactoring"><a id="orgeba78ed"></a><span class="section-number-3">5.5</span> Refactoring</h3>
+<div id="outline-container-org703e454" class="outline-3">
+<h3 id="refactoring"><a id="org703e454"></a><span class="section-number-3">5.5</span> Refactoring</h3>
 <div class="outline-text-3" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -622,8 +635,8 @@ solutions.</li>
 </div>
 </div>
 
-<div id="outline-container-org0265025" class="outline-3">
-<h3 id="omnisharp-server-interaction"><a id="org0265025"></a><span class="section-number-3">5.6</span> OmniSharp server interaction</h3>
+<div id="outline-container-orgdd8a902" class="outline-3">
+<h3 id="omnisharp-server-interaction"><a id="orgdd8a902"></a><span class="section-number-3">5.6</span> OmniSharp server interaction</h3>
 <div class="outline-text-3" id="text-omnisharp-server-interaction">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -659,8 +672,8 @@ solutions.</li>
 </div>
 </div>
 
-<div id="outline-container-orgc55dfee" class="outline-3">
-<h3 id="tests"><a id="orgc55dfee"></a><span class="section-number-3">5.7</span> Tests</h3>
+<div id="outline-container-org4adc0f9" class="outline-3">
+<h3 id="tests"><a id="org4adc0f9"></a><span class="section-number-3">5.7</span> Tests</h3>
 <div class="outline-text-3" id="text-tests">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -696,8 +709,8 @@ solutions.</li>
 </div>
 </div>
 
-<div id="outline-container-org75d76b8" class="outline-3">
-<h3 id="code-manipulation"><a id="org75d76b8"></a><span class="section-number-3">5.8</span> Code manipulation</h3>
+<div id="outline-container-org6f2667f" class="outline-3">
+<h3 id="code-manipulation"><a id="org6f2667f"></a><span class="section-number-3">5.8</span> Code manipulation</h3>
 <div class="outline-text-3" id="text-code-manipulation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -735,7 +748,7 @@ solutions.</li>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

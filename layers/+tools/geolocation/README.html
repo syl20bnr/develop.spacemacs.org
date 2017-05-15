@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Geolocation layer</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
@@ -272,8 +285,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orge93c0d4" class="outline-2">
-<h2 id="description"><a id="orge93c0d4"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgde7ac23" class="outline-2">
+<h2 id="description"><a id="orgde7ac23"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer offers few location sensitive adjustment to Emacs, such as
@@ -283,8 +296,8 @@ CoreLocation services.
 </p>
 </div>
 
-<div id="outline-container-org41780de" class="outline-3">
-<h3 id="supported-packages-in-this-layer"><a id="org41780de"></a><span class="section-number-3">1.1</span> Supported packages in this layer</h3>
+<div id="outline-container-org37c1561" class="outline-3">
+<h3 id="supported-packages-in-this-layer"><a id="org37c1561"></a><span class="section-number-3">1.1</span> Supported packages in this layer</h3>
 <div class="outline-text-3" id="text-supported-packages-in-this-layer">
 <ul class="org-ul">
 <li><a href="https://github.com/aaronbieber/sunshine.el/blob/master/sunshine.el">sunshine</a></li>
@@ -294,8 +307,8 @@ CoreLocation services.
 </div>
 </div>
 
-<div id="outline-container-org7e8a32d" class="outline-2">
-<h2 id="install"><a id="org7e8a32d"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org1542c15" class="outline-2">
+<h2 id="install"><a id="org1542c15"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -318,13 +331,13 @@ something like this:
 </div>
 </div>
 
-<div id="outline-container-orgbce275c" class="outline-2">
-<h2 id="configuration"><a id="orgbce275c"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org13c99a5" class="outline-2">
+<h2 id="configuration"><a id="org13c99a5"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org37bba09" class="outline-3">
-<h3 id="location"><a id="org37bba09"></a><span class="section-number-3">3.1</span> Location</h3>
+<div id="outline-container-org3ec06d0" class="outline-3">
+<h3 id="location"><a id="org3ec06d0"></a><span class="section-number-3">3.1</span> Location</h3>
 <div class="outline-text-3" id="text-location">
 <p>
 Set location manually by setting the following variables to the
@@ -347,8 +360,8 @@ and <code>calendar-longitude</code> i.e. "41.23, 1.80".
 </div>
 </div>
 
-<div id="outline-container-org5c73cdc" class="outline-3">
-<h3 id="theme-changer"><a id="org5c73cdc"></a><span class="section-number-3">3.2</span> theme-changer</h3>
+<div id="outline-container-org617fb83" class="outline-3">
+<h3 id="theme-changer"><a id="org617fb83"></a><span class="section-number-3">3.2</span> theme-changer</h3>
 <div class="outline-text-3" id="text-theme-changer">
 <p>
 This layer implement a simple "theme changer" which, when enabled, will switch
@@ -360,8 +373,8 @@ cycling, etc.
 </div>
 </div>
 
-<div id="outline-container-orged10f31" class="outline-3">
-<h3 id="sunshine-weather-forecast"><a id="orged10f31"></a><span class="section-number-3">3.3</span> sunshine (weather forecast)</h3>
+<div id="outline-container-org0dd1670" class="outline-3">
+<h3 id="sunshine-weather-forecast"><a id="org0dd1670"></a><span class="section-number-3">3.3</span> sunshine (weather forecast)</h3>
 <div class="outline-text-3" id="text-sunshine-weather-forecast">
 <p>
 Sunshine display local weather forecast.
@@ -426,8 +439,8 @@ To display weather forecast icons by default ("pretty mode"), add
 </div>
 </div>
 
-<div id="outline-container-org3df47c2" class="outline-3">
-<h3 id="osx-location"><a id="org3df47c2"></a><span class="section-number-3">3.4</span> osx-location</h3>
+<div id="outline-container-orgce65bfd" class="outline-3">
+<h3 id="osx-location"><a id="orgce65bfd"></a><span class="section-number-3">3.4</span> osx-location</h3>
 <div class="outline-text-3" id="text-osx-location">
 <p>
 OS X users can take adavantage of automatic geogrphical discovery using the OS'
@@ -445,13 +458,13 @@ activated.
 </div>
 </div>
 
-<div id="outline-container-org52bd463" class="outline-2">
-<h2 id="key-bindings"><a id="org52bd463"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-orgc163a25" class="outline-2">
+<h2 id="key-bindings"><a id="orgc163a25"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org1bcc9a7" class="outline-3">
-<h3 id="weather"><a id="org1bcc9a7"></a><span class="section-number-3">4.1</span> Weather</h3>
+<div id="outline-container-org51738e2" class="outline-3">
+<h3 id="weather"><a id="org51738e2"></a><span class="section-number-3">4.1</span> Weather</h3>
 <div class="outline-text-3" id="text-weather">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -489,7 +502,7 @@ activated.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

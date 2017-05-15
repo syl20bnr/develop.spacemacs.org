@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SQL layer</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
@@ -271,8 +284,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org4916220" class="outline-2">
-<h2 id="description"><a id="org4916220"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org63872f5" class="outline-2">
+<h2 id="description"><a id="org63872f5"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds key bindings and configuration for <code>sql-mode</code>, which manages
@@ -281,8 +294,8 @@ interactive SQL buffers and highlights a wide range of SQL dialects.
 </div>
 </div>
 
-<div id="outline-container-org5ddb415" class="outline-2">
-<h2 id="install"><a id="org5ddb415"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org63309f9" class="outline-2">
+<h2 id="install"><a id="org63309f9"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -292,14 +305,14 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org9ab3926" class="outline-2">
-<h2 id="key-bindings"><a id="org9ab3926"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-org0fb09de" class="outline-2">
+<h2 id="key-bindings"><a id="org0fb09de"></a><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
 
-<div id="outline-container-orga5b01b0" class="outline-3">
-<h3 id="highlighting"><a id="orga5b01b0"></a><span class="section-number-3">3.1</span> Highlighting</h3>
+<div id="outline-container-org7f8a1c9" class="outline-3">
+<h3 id="highlighting"><a id="org7f8a1c9"></a><span class="section-number-3">3.1</span> Highlighting</h3>
 <div class="outline-text-3" id="text-highlighting">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -325,8 +338,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org041aa49" class="outline-3">
-<h3 id="inferior-process-interactions-sqli"><a id="org041aa49"></a><span class="section-number-3">3.2</span> Inferior Process Interactions (SQLi)</h3>
+<div id="outline-container-orge4281e7" class="outline-3">
+<h3 id="inferior-process-interactions-sqli"><a id="orge4281e7"></a><span class="section-number-3">3.2</span> Inferior Process Interactions (SQLi)</h3>
 <div class="outline-text-3" id="text-inferior-process-interactions-sqli">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -366,8 +379,8 @@ file.
 </table>
 </div>
 
-<div id="outline-container-org06e8337" class="outline-4">
-<h4 id="send-sql-queries-to-sqli"><a id="org06e8337"></a><span class="section-number-4">3.2.1</span> Send SQL queries to SQLi:</h4>
+<div id="outline-container-org6664d52" class="outline-4">
+<h4 id="send-sql-queries-to-sqli"><a id="org6664d52"></a><span class="section-number-4">3.2.1</span> Send SQL queries to SQLi:</h4>
 <div class="outline-text-4" id="text-send-sql-queries-to-sqli">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -434,8 +447,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org06eaf9e" class="outline-3">
-<h3 id="sqli-buffer"><a id="org06eaf9e"></a><span class="section-number-3">3.3</span> SQLi buffer</h3>
+<div id="outline-container-org302f392" class="outline-3">
+<h3 id="sqli-buffer"><a id="org302f392"></a><span class="section-number-3">3.3</span> SQLi buffer</h3>
 <div class="outline-text-3" id="text-sqli-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -468,7 +481,7 @@ file.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

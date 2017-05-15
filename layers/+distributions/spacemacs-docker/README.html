@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>spacemacs-docker distribution</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
@@ -275,8 +288,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgef45846" class="outline-2">
-<h2 id="description"><a id="orgef45846"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgc8ab029" class="outline-2">
+<h2 id="description"><a id="orgc8ab029"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 Spacemacs distribution that aims to automate dependency installation for
@@ -285,8 +298,8 @@ with GUI support on all major platforms and even <a href="https://i.imgur.com/wD
 </p>
 </div>
 
-<div id="outline-container-orgf00e075" class="outline-3">
-<h3 id="screenshots"><a id="orgf00e075"></a><span class="section-number-3">1.1</span> Screenshots</h3>
+<div id="outline-container-org94ec80f" class="outline-3">
+<h3 id="screenshots"><a id="org94ec80f"></a><span class="section-number-3">1.1</span> Screenshots</h3>
 <div class="outline-text-3" id="text-screenshots">
 
 <div class="figure">
@@ -321,8 +334,8 @@ with GUI support on all major platforms and even <a href="https://i.imgur.com/wD
 </div>
 </div>
 
-<div id="outline-container-orga8ef331" class="outline-3">
-<h3 id="major-benefits"><a id="orga8ef331"></a><span class="section-number-3">1.2</span> Major benefits</h3>
+<div id="outline-container-org0b1383a" class="outline-3">
+<h3 id="major-benefits"><a id="org0b1383a"></a><span class="section-number-3">1.2</span> Major benefits</h3>
 <div class="outline-text-3" id="text-major-benefits">
 <ul class="org-ul">
 <li>Automatically get Spacemacs layers dependency installed with <a href="./deps-install/README.html">installer scripts</a></li>
@@ -342,12 +355,12 @@ with GUI support on all major platforms and even <a href="https://i.imgur.com/wD
 </div>
 </div>
 
-<div id="outline-container-org9bd5e9a" class="outline-2">
-<h2 id="how-to-setup"><a id="org9bd5e9a"></a><span class="section-number-2">2</span> How to setup</h2>
+<div id="outline-container-orgdac9339" class="outline-2">
+<h2 id="how-to-setup"><a id="orgdac9339"></a><span class="section-number-2">2</span> How to setup</h2>
 <div class="outline-text-2" id="text-how-to-setup">
 <p>
 The idea is to build your own image <a href="https://docs.docker.com/engine/reference/builder/#from">FROM</a> the one of the provided base images
-(<a href="https://goo.gl/Rb2Als">spacemacs/emacs25</a> and <a href="https://goo.gl/DFSenZ">spacemacs/emacs-snapshot</a>). Get <a href="https://docs.docker.com/engine/installation">docker</a> for the OS of
+(<a href="https://goo.gl/Rb2Als">spacemacs/emacs25:develop</a> and <a href="https://goo.gl/DFSenZ">spacemacs/emacs-snapshot:develop</a>). Get <a href="https://docs.docker.com/engine/installation">docker</a> for the OS of
 the machine that will run development environment and then use
 <a href="https://github.com/JAremko/spacemacs-docker-seed">spacemacs-docker-seed</a>  as an example to create <a href="https://docs.docker.com/docker-hub/builds/">automated builds on Docker Hub</a> or
 <a href="https://docs.docker.com/engine/reference/commandline/build/">build it locally</a>.
@@ -355,18 +368,18 @@ the machine that will run development environment and then use
 </div>
 </div>
 
-<div id="outline-container-org0630740" class="outline-2">
-<h2 id="how-to-use"><a id="org0630740"></a><span class="section-number-2">3</span> How to use</h2>
+<div id="outline-container-org8ac4fb5" class="outline-2">
+<h2 id="how-to-use"><a id="org8ac4fb5"></a><span class="section-number-2">3</span> How to use</h2>
 <div class="outline-text-2" id="text-how-to-use">
 <p>
-With one of the methods below replace <code>spacemacs/emacs25</code> with your images.
+With one of the methods below replace <code>spacemacs/emacs25:develop</code> with your images.
 NOTE: The guide assumes that you want to run Docker and connect to it from
 the same machine.
 </p>
 </div>
 
-<div id="outline-container-org6f3da79" class="outline-3">
-<h3 id="macos"><a id="org6f3da79"></a><span class="section-number-3">3.1</span> MacOS</h3>
+<div id="outline-container-orga20d6e2" class="outline-3">
+<h3 id="macos"><a id="orga20d6e2"></a><span class="section-number-3">3.1</span> MacOS</h3>
 <div class="outline-text-3" id="text-macos">
 <p>
 Get <a href="https://www.xquartz.org">XQuartz</a> and <code>open -a XQuartz</code> In the XQuartz preferences go to the "Security"
@@ -379,7 +392,7 @@ docker run -ti --name spacemacs <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">DISPLAY</span>=$<span class="org-variable-name">ip</span>:0 <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">TZ</span>=&lt;your_time_zone&gt; <span class="org-sh-escaped-newline">\</span>
  -v &lt;path_to_your_workspace&gt;:/mnt/workspace <span class="org-sh-escaped-newline">\</span>
- spacemacs/emacs25
+ spacemacs/emacs25:develop
 </pre>
 </div>
 <p>
@@ -389,8 +402,8 @@ docker run -ti --name spacemacs <span class="org-sh-escaped-newline">\</span>
 </div>
 </div>
 
-<div id="outline-container-org9487e91" class="outline-3">
-<h3 id="windows"><a id="org9487e91"></a><span class="section-number-3">3.2</span> Windows</h3>
+<div id="outline-container-orgaf5d739" class="outline-3">
+<h3 id="windows"><a id="orgaf5d739"></a><span class="section-number-3">3.2</span> Windows</h3>
 <div class="outline-text-3" id="text-windows">
 <p>
 Get <a href="https://www.cygwin.com">Cygwin</a> with <code>xinit</code>, <code>xorg-server</code> and optionaly <a href="https://github.com/rprichard/winpty">winpty</a>(to run Emacs container with <code>-t</code>)
@@ -405,7 +418,7 @@ xhost + &lt;your-machine-ip&gt;
 <pre class="src src-sh">docker run --name spacemacs <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">DISPLAY</span>=<span class="org-string">"unix$DISPLAY"</span> <span class="org-sh-escaped-newline">\</span>
  -v &lt;path_to_your_workspace&gt;:/mnt/workspace <span class="org-sh-escaped-newline">\</span>
- spacemacs/emacs25
+ spacemacs/emacs25:develop
 </pre>
 </div>
 
@@ -416,7 +429,7 @@ Or with <code>-ti</code> via <code>winpty</code>
 <pre class="src src-sh">winpty docker run -ti --name spacemacs <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">DISPLAY</span>=<span class="org-string">"unix$DISPLAY"</span> <span class="org-sh-escaped-newline">\</span>
  -v &lt;path_to_your_workspace&gt;:/mnt/workspace <span class="org-sh-escaped-newline">\</span>
- spacemacs/emacs25
+ spacemacs/emacs25:develop
 </pre>
 </div>
 <p>
@@ -426,8 +439,8 @@ Also You can use <a href="https://github.com/JAremko/docker-emacs/issues/2#issue
 </div>
 </div>
 
-<div id="outline-container-orgbe07565" class="outline-3">
-<h3 id="gnulinux"><a id="orgbe07565"></a><span class="section-number-3">3.3</span> GNU/Linux</h3>
+<div id="outline-container-org83e05ae" class="outline-3">
+<h3 id="gnulinux"><a id="org83e05ae"></a><span class="section-number-3">3.3</span> GNU/Linux</h3>
 <div class="outline-text-3" id="text-gnulinux">
 <p>
 Make sure that <code>$DISPLAY</code> variable is set
@@ -443,7 +456,7 @@ Make sure that <code>$DISPLAY</code> variable is set
  -v /etc/machine-id:/etc/machine-id:ro <span class="org-sh-escaped-newline">\</span>
  -v /var/run/dbus:/var/run/dbus <span class="org-sh-escaped-newline">\</span>
  -v &lt;path_to_your_workspace&gt;:/mnt/workspace <span class="org-sh-escaped-newline">\</span>
- spacemacs/emacs25
+ spacemacs/emacs25:develop
 </pre>
 </div>
 <p>
@@ -469,13 +482,13 @@ Or allow local connection from the container's host-name
 </div>
 </div>
 
-<div id="outline-container-org7593059" class="outline-3">
-<h3 id="with-xpra-on-any-of-the-oses-and-via-web-browser"><a id="org7593059"></a><span class="section-number-3">3.4</span> With Xpra on any of the OSes and via web-browser</h3>
+<div id="outline-container-orgba928dc" class="outline-3">
+<h3 id="with-xpra-on-any-of-the-oses-and-via-web-browser"><a id="orgba928dc"></a><span class="section-number-3">3.4</span> With Xpra on any of the OSes and via web-browser</h3>
 <div class="outline-text-3" id="text-with-xpra-on-any-of-the-oses-and-via-web-browser">
 </div>
 
-<div id="outline-container-orgb6358b7" class="outline-4">
-<h4 id="pros"><a id="orgb6358b7"></a><span class="section-number-4">3.4.1</span> Pros</h4>
+<div id="outline-container-orgb47fb22" class="outline-4">
+<h4 id="pros"><a id="orgb47fb22"></a><span class="section-number-4">3.4.1</span> Pros</h4>
 <div class="outline-text-4" id="text-pros">
 <ul class="org-ul">
 <li>Xpra has a client for GNU/Linux, Windows and MacOS + can work via web browser</li>
@@ -486,8 +499,8 @@ Or allow local connection from the container's host-name
 </div>
 </div>
 
-<div id="outline-container-orga08be44" class="outline-4">
-<h4 id="cons"><a id="orga08be44"></a><span class="section-number-4">3.4.2</span> Cons</h4>
+<div id="outline-container-org09c0d8f" class="outline-4">
+<h4 id="cons"><a id="org09c0d8f"></a><span class="section-number-4">3.4.2</span> Cons</h4>
 <div class="outline-text-4" id="text-cons">
 <ul class="org-ul">
 <li>Lag spikes with some OSes</li>
@@ -495,8 +508,8 @@ Or allow local connection from the container's host-name
 </div>
 </div>
 
-<div id="outline-container-org023b250" class="outline-4">
-<h4 id="instruction"><a id="org023b250"></a><span class="section-number-4">3.4.3</span> Instruction</h4>
+<div id="outline-container-orgdbc8db2" class="outline-4">
+<h4 id="instruction"><a id="orgdbc8db2"></a><span class="section-number-4">3.4.3</span> Instruction</h4>
 <div class="outline-text-4" id="text-instruction">
 <p>
 It's a good idea to read <a href="https://github.com/JAremko/docker-x11-bridge">docker-x11-bridge</a> and <a href="https://www.xpra.org/trac/">Xpra</a> documentations, but
@@ -504,7 +517,7 @@ here is a short instruction:
 </p>
 </div>
 
-<ol class="org-ol"><li><a id="with-xpra-desktop-client"></a><a id="org4e4885f"></a>With Xpra desktop client<br /><div class="outline-text-5" id="text-with-xpra-desktop-client">
+<ol class="org-ol"><li><a id="with-xpra-desktop-client"></a><a id="org233e32b"></a>With Xpra desktop client<br /><div class="outline-text-5" id="text-with-xpra-desktop-client">
 <p>
 Get <a href="https://xpra.org/">Xpra</a> client for your OS. then
 </p>
@@ -520,7 +533,7 @@ docker run -ti --rm --name spacemacs <span class="org-sh-escaped-newline">\</spa
  --volumes-from x11-bridge <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">DISPLAY</span>=:14 <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">TZ</span>=&lt;your_time_zone&gt; <span class="org-sh-escaped-newline">\</span>
- spacemacs/emacs25
+ spacemacs/emacs25:develop
 </pre>
 </div>
 <p>
@@ -534,7 +547,7 @@ Now you can connect to it with Xpra desktop client
 </div>
 </div></li>
 
-<li><a id="via-web-browser"></a><a id="orgd4156de"></a>Via web-browser<br /><div class="outline-text-5" id="text-via-web-browser">
+<li><a id="via-web-browser"></a><a id="org24c8508"></a>Via web-browser<br /><div class="outline-text-5" id="text-via-web-browser">
 <div class="org-src-container">
 <pre class="src src-sh">docker run -ti --rm --name x11-bridge <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">MODE</span>=<span class="org-string">"html"</span> <span class="org-sh-escaped-newline">\</span>
@@ -547,7 +560,7 @@ docker run -ti --rm --name spacemacs <span class="org-sh-escaped-newline">\</spa
  --volumes-from x11-bridge <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">TZ</span>=&lt;your_time_zone&gt; <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">DISPLAY</span>=:14 <span class="org-sh-escaped-newline">\</span>
- spacemacs/emacs25
+ spacemacs/emacs25:develop
 </pre>
 </div>
 <p>
@@ -558,18 +571,18 @@ Now visit <a href="http://localhost:10000/index.html?encoding=png&amp;password">
 </div>
 </div>
 
-<div id="outline-container-org9fbfce4" class="outline-2">
-<h2 id="some-basic-docker-commands-to-get-you-going"><a id="org9fbfce4"></a><span class="section-number-2">4</span> Some basic docker commands to get you going</h2>
+<div id="outline-container-org73dc40a" class="outline-2">
+<h2 id="some-basic-docker-commands-to-get-you-going"><a id="org73dc40a"></a><span class="section-number-2">4</span> Some basic docker commands to get you going</h2>
 <div class="outline-text-2" id="text-some-basic-docker-commands-to-get-you-going">
 <ul class="org-ul">
 <li><code>docker rm -f spacemacs</code> - remove <code>spacemacs</code> container</li>
 <li><code>docker restart spacemacs</code> - restart <code>spacemacs</code> container</li>
-<li><code>docker rmi -f spacemacs/emacs25</code> - remove <code>spacemacs/emacs25</code> image</li>
-<li><code>docker pull spacemacs/emacs25</code> - get newer <code>spacemacs/emacs25</code> version</li>
+<li><code>docker rmi -f spacemacs/emacs25:develop</code> - remove <code>spacemacs/emacs25:develop</code> image</li>
+<li><code>docker pull spacemacs/emacs25:develop</code> - get newer <code>spacemacs/emacs25:develop</code> version</li>
 <li><code>docker images -a</code> - list all images</li>
 <li><code>docker ps -a</code> - list all containers</li>
-<li><code>docker run ... spacemacs/emacs25</code> - run the <a href="https://github.com/JAremko/docker-emacs/blob/master/Dockerfile#L45">default command</a></li>
-<li><code>docker run -ti ... spacemacs/emacs25 /bin/bash</code> - start bash</li>
+<li><code>docker run ... spacemacs/emacs25:develop</code> - run the <a href="https://github.com/JAremko/docker-emacs/blob/master/Dockerfile.emacs25#L63">default command</a></li>
+<li><code>docker run -ti ... spacemacs/emacs25:develop /bin/bash</code> - start bash</li>
 <li><code>docker exec spacemacs /usr/bin/emacs</code> - start <code>/usr/bin/emacs</code></li>
 </ul>
 <p>
@@ -582,7 +595,7 @@ With the running <code>spacemacs</code> container
 <li>Manage data in containers with <a href="https://docs.docker.com/engine/tutorials/dockervolumes/">Docker volumes</a>. Example
 <ul class="org-ul">
 <li><code>docker volume create --name my-ws</code></li>
-<li><code>docker run ... -v my-ws:/mnt/workspace ... spacemacs/emacs25</code></li>
+<li><code>docker run ... -v my-ws:/mnt/workspace ... spacemacs/emacs25:develop</code></li>
 <li><code>docker run ... -v my-ws:/home/developer/workspace ... jare/vim-bundle</code></li>
 </ul></li>
 </ul>
@@ -590,7 +603,7 @@ With the running <code>spacemacs</code> container
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

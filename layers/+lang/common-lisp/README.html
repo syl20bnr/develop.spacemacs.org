@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-08 Mon 02:28 -->
+<!-- 2017-05-15 Mon 03:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Common Lisp layer</title>
@@ -183,15 +183,28 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-          <script src="http://spacemacs.org/js/permalinks.js"></script>
           <script>
-           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-               Date();a=s.createElement(o),
-               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
@@ -275,8 +288,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org86239e2" class="outline-2">
-<h2 id="description"><a id="org86239e2"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org3a1b4b3" class="outline-2">
+<h2 id="description"><a id="org3a1b4b3"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 A Spacemacs contribution layer providing Common Lisp support via <a href="https://github.com/slime/slime">SLIME</a>.
@@ -284,8 +297,8 @@ A Spacemacs contribution layer providing Common Lisp support via <a href="https:
 </div>
 </div>
 
-<div id="outline-container-org18bb6a7" class="outline-2">
-<h2 id="install"><a id="org18bb6a7"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgbf44965" class="outline-2">
+<h2 id="install"><a id="orgbf44965"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 If you have previously installed slime in any other way, it is recommended that
@@ -313,13 +326,13 @@ of Common Lisp, you can specify it in your <code>~/.spacemacs</code>
 </div>
 </div>
 
-<div id="outline-container-orgc824bdc" class="outline-2">
-<h2 id="key-bindings"><a id="orgc824bdc"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-org8e84257" class="outline-2">
+<h2 id="key-bindings"><a id="org8e84257"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org8cf3ce4" class="outline-3">
-<h3 id="working-with-lisp-files-barfage-slurpage--more"><a id="org8cf3ce4"></a><span class="section-number-3">3.1</span> Working with lisp files (barfage, slurpage &amp; more)</h3>
+<div id="outline-container-orgf8a9d77" class="outline-3">
+<h3 id="working-with-lisp-files-barfage-slurpage--more"><a id="orgf8a9d77"></a><span class="section-number-3">3.1</span> Working with lisp files (barfage, slurpage &amp; more)</h3>
 <div class="outline-text-3" id="text-working-with-lisp-files-barfage-slurpage--more">
 <p>
 Spacemacs comes with a special <code>lisp-state</code> for working with lisp code that
@@ -334,13 +347,13 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org076f7b9" class="outline-3">
-<h3 id="leader"><a id="org076f7b9"></a><span class="section-number-3">3.2</span> Leader</h3>
+<div id="outline-container-orgcadb2da" class="outline-3">
+<h3 id="leader"><a id="orgcadb2da"></a><span class="section-number-3">3.2</span> Leader</h3>
 <div class="outline-text-3" id="text-leader">
 </div>
 
-<div id="outline-container-org5263354" class="outline-4">
-<h4 id="help"><a id="org5263354"></a><span class="section-number-4">3.2.1</span> Help</h4>
+<div id="outline-container-orgb539ad7" class="outline-4">
+<h4 id="help"><a id="orgb539ad7"></a><span class="section-number-4">3.2.1</span> Help</h4>
 <div class="outline-text-4" id="text-help">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -426,8 +439,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org075f7dc" class="outline-4">
-<h4 id="evaluation"><a id="org075f7dc"></a><span class="section-number-4">3.2.2</span> Evaluation</h4>
+<div id="outline-container-orgc643224" class="outline-4">
+<h4 id="evaluation"><a id="orgc643224"></a><span class="section-number-4">3.2.2</span> Evaluation</h4>
 <div class="outline-text-4" id="text-evaluation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -478,8 +491,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-orga663a4b" class="outline-4">
-<h4 id="repl"><a id="orga663a4b"></a><span class="section-number-4">3.2.3</span> REPL</h4>
+<div id="outline-container-orgb5ded98" class="outline-4">
+<h4 id="repl"><a id="orgb5ded98"></a><span class="section-number-4">3.2.3</span> REPL</h4>
 <div class="outline-text-4" id="text-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -515,8 +528,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org6b4240c" class="outline-4">
-<h4 id="compile"><a id="org6b4240c"></a><span class="section-number-4">3.2.4</span> Compile</h4>
+<div id="outline-container-orgff05e04" class="outline-4">
+<h4 id="compile"><a id="orgff05e04"></a><span class="section-number-4">3.2.4</span> Compile</h4>
 <div class="outline-text-4" id="text-compile">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -567,8 +580,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-orgd429497" class="outline-4">
-<h4 id="navigation"><a id="orgd429497"></a><span class="section-number-4">3.2.5</span> Navigation</h4>
+<div id="outline-container-orgde37162" class="outline-4">
+<h4 id="navigation"><a id="orgde37162"></a><span class="section-number-4">3.2.5</span> Navigation</h4>
 <div class="outline-text-4" id="text-navigation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -609,8 +622,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org0e97ba8" class="outline-4">
-<h4 id="macroexpansion"><a id="org0e97ba8"></a><span class="section-number-4">3.2.6</span> Macroexpansion</h4>
+<div id="outline-container-org6174692" class="outline-4">
+<h4 id="macroexpansion"><a id="org6174692"></a><span class="section-number-4">3.2.6</span> Macroexpansion</h4>
 <div class="outline-text-4" id="text-macroexpansion">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -644,7 +657,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-08 Mon 02:28</p>
+<p class="date">Created: 2017-05-15 Mon 03:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
