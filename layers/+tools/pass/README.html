@@ -6,7 +6,7 @@
 <!-- 2017-05-23 Tue 09:17 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Scheme layer</title>
+<title>Pass contribution layer</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -257,73 +257,53 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Scheme layer</h1>
+<h1 class="title">Pass contribution layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#description">1. Description</a></li>
-<li><a href="#install">2. Install</a></li>
-<li><a href="#key-bindings">3. Key Bindings</a>
+<li><a href="#install">2. Install</a>
 <ul>
-<li><a href="#compiling">3.1. Compiling</a></li>
-<li><a href="#navigation">3.2. Navigation</a></li>
-<li><a href="#documentation">3.3. Documentation</a></li>
-<li><a href="#insertion">3.4. Insertion</a></li>
-<li><a href="#macroexpansion">3.5. Macroexpansion</a></li>
-<li><a href="#repl">3.6. REPL</a></li>
-<li><a href="#evaluation">3.7. Evaluation</a></li>
+<li><a href="#layer">2.1. Layer</a></li>
 </ul>
 </li>
+<li><a href="#key-bindings">3. Key Bindings</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org5f313de" class="outline-2">
-<h2 id="description"><a id="org5f313de"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgc2df5cc" class="outline-2">
+<h2 id="description"><a id="orgc2df5cc"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-A spacemacs contribution layer providing Scheme support via <a href="http://www.nongnu.org/geiser/">Geiser</a>.
+This layer adds intregration with <a href="http://www.passwordstore.org/">pass</a>, the standard unix password manager.
+You must have <code>pass</code> installed and available in your path for this layer to
+function properly.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org5eb8a34" class="outline-2">
-<h2 id="install"><a id="org5eb8a34"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orga5c6121" class="outline-2">
+<h2 id="install"><a id="orga5c6121"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
-<p>
-The scheme layer currently supports: Chicken and Guile. Combined usage of racket-mode
-and geiser has not been tested.
-</p>
+</div>
 
+<div id="outline-container-orge94f9a3" class="outline-3">
+<h3 id="layer"><a id="orge94f9a3"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>scheme</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+add <code>passwords</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
 file.
 </p>
-
-<p>
-For full Chicken support, the following commands should be run:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-shell">$ chicken-install -s apropos chicken-doc
-$ cd <span class="org-sh-quoted-exec">`csi -p '(chicken-home)'`</span>
-$ curl https://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
-</pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgaacc8cc" class="outline-2">
-<h2 id="key-bindings"><a id="orgaacc8cc"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-org96248c6" class="outline-2">
+<h2 id="key-bindings"><a id="org96248c6"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
-</div>
-
-
-<div id="outline-container-orgca05dcc" class="outline-3">
-<h3 id="compiling"><a id="orgca05dcc"></a><span class="section-number-3">3.1</span> Compiling</h3>
-<div class="outline-text-3" id="text-compiling">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -334,295 +314,67 @@ $ curl https://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key Bindings</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m c c</code></td>
-<td class="org-left">Compile current buffer</td>
+<td class="org-left"><code>SPC A p y</code></td>
+<td class="org-left">copy password</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m c p</code></td>
-<td class="org-left">Add directory to load path</td>
+<td class="org-left"><code>SPC A p Y</code></td>
+<td class="org-left">copy and describe password</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC A p ?</code></td>
+<td class="org-left">describe password</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC A p g</code></td>
+<td class="org-left">generate new password</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC A p i</code></td>
+<td class="org-left">insert new password</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC A p c</code></td>
+<td class="org-left">edit password</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC A p r</code></td>
+<td class="org-left">rename password</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC A p d</code></td>
+<td class="org-left">remove from password store</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC A p D</code></td>
+<td class="org-left">clear the password store</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC A p I</code></td>
+<td class="org-left">initialize the password store</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC A p w</code></td>
+<td class="org-left">open url</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-
-<div id="outline-container-org6d205cc" class="outline-3">
-<h3 id="navigation"><a id="org6d205cc"></a><span class="section-number-3">3.2</span> Navigation</h3>
-<div class="outline-text-3" id="text-navigation">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m g g</code></td>
-<td class="org-left">Goto Definition</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g b</code></td>
-<td class="org-left">Go Back</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g m</code></td>
-<td class="org-left">Goto Module</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g n</code></td>
-<td class="org-left">Goto next error</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g N</code></td>
-<td class="org-left">Goto previous error</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-org2cca270" class="outline-3">
-<h3 id="documentation"><a id="org2cca270"></a><span class="section-number-3">3.3</span> Documentation</h3>
-<div class="outline-text-3" id="text-documentation">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m h h</code></td>
-<td class="org-left">Docs for symbol at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m h d</code></td>
-<td class="org-left">Look up manual entry for symbol at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m h m</code></td>
-<td class="org-left">Display exports for module</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m h &lt;</code></td>
-<td class="org-left">Display callers</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m h &gt;</code></td>
-<td class="org-left">Display callees</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orga7404a8" class="outline-3">
-<h3 id="insertion"><a id="orga7404a8"></a><span class="section-number-3">3.4</span> Insertion</h3>
-<div class="outline-text-3" id="text-insertion">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m i l</code></td>
-<td class="org-left">Insert Lambda</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orga5d035f" class="outline-3">
-<h3 id="macroexpansion"><a id="orga5d035f"></a><span class="section-number-3">3.5</span> Macroexpansion</h3>
-<div class="outline-text-3" id="text-macroexpansion">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m m e</code></td>
-<td class="org-left">Macroexpand last sexp</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m m f</code></td>
-<td class="org-left">Macroexpand surrounding sexp</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m m r</code></td>
-<td class="org-left">Macroexpand region</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-org925dba8" class="outline-3">
-<h3 id="repl"><a id="org925dba8"></a><span class="section-number-3">3.6</span> REPL</h3>
-<div class="outline-text-3" id="text-repl">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m s i</code></td>
-<td class="org-left">Start or switch to the REPL</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s s</code></td>
-<td class="org-left">Select Scheme implementation</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s b</code></td>
-<td class="org-left">Send buffer to the REPL</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s B</code></td>
-<td class="org-left">Send buffer to the REPL and focus it</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s f</code></td>
-<td class="org-left">Send definition to the REPL</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s F</code></td>
-<td class="org-left">Send definition to the REPL and focus it</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s e</code></td>
-<td class="org-left">Send last sexp to the REPL</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s r</code></td>
-<td class="org-left">Send region to the REPL</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s R</code></td>
-<td class="org-left">Send region to the REPL and focus it</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-org6f361c7" class="outline-3">
-<h3 id="evaluation"><a id="org6f361c7"></a><span class="section-number-3">3.7</span> Evaluation</h3>
-<div class="outline-text-3" id="text-evaluation">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m e b</code></td>
-<td class="org-left">Evaluate the whole buffer</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m e e</code></td>
-<td class="org-left">Evaluate last sexp</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m e f</code></td>
-<td class="org-left">Evaluate current function</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m e l</code></td>
-<td class="org-left">Evaluate line</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m e r</code></td>
-<td class="org-left">Evaluate region</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 </div>
 </div>
