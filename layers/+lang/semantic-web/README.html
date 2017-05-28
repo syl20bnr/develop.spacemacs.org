@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-28 Sun 01:18 -->
+<!-- 2017-05-28 Sun 01:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Version-Control layer</title>
+<title>Semantic Web layer</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -257,186 +257,53 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Version-Control layer</h1>
+<h1 class="title">Semantic Web layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#description">1. Description</a>
-<ul>
-<li><a href="#features">1.1. Features</a></li>
-</ul>
-</li>
-<li><a href="#install">2. Install</a>
-<ul>
-<li><a href="#layer">2.1. Layer</a></li>
-</ul>
-</li>
-<li><a href="#configuration">3. Configuration</a>
-<ul>
-<li><a href="#differences-between-margin-programs">3.1. Differences between margin programs</a></li>
-</ul>
-</li>
-<li><a href="#key-bindings">4. Key Bindings</a>
-<ul>
-<li><a href="#version-control-transient-state">4.1. Version Control Transient-state</a></li>
-<li><a href="#smerge-mode-transient-state">4.2. Smerge Mode Transient-state</a></li>
-</ul>
-</li>
+<li><a href="#description">1. Description</a></li>
+<li><a href="#install">2. Install</a></li>
+<li><a href="#key-bindings">3. Key bindings</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf3873e6" class="outline-2">
-<h2 id="description"><a id="orgf3873e6"></a><span class="section-number-2">1</span> Description</h2>
+<div class="figure">
+<p><img src="img/semweb.png" alt="semweb.png" />
+</p>
+</div>
+
+<div id="outline-container-org8a9b0d4" class="outline-2">
+<h2 id="description"><a id="org8a9b0d4"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layers adds general configuration for <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Version-Control.html">Emacs VC</a>.
-It should work with all VC backends such as Git, Mercurial, Bazaar, SVN, etc&#x2026;
+This layer adds support for RDF files in N3 and <a href="https://www.w3.org/TR/turtle/">Turtle syntax</a> using <a href="https://bitbucket.org/nxg/ttl-mode">ttl-mode</a>
+and for <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a> queries using <a href="https://github.com/ljos/sparql-mode">sparql-mode</a>.
 </p>
-</div>
 
-<div id="outline-container-org5f95cf8" class="outline-3">
-<h3 id="features"><a id="org5f95cf8"></a><span class="section-number-3">1.1</span> Features</h3>
-<div class="outline-text-3" id="text-features">
-<ul class="org-ul">
-<li>highlights uncommitted changes in the fringe or margin with <a href="https://github.com/dgutov/diff-hl">diff-hl</a>,</li>
-</ul>
 <p>
-git-gutter, or git-gutter+
+SPARQL-mode supports the execution of queries. When first called, you will be
+prompted for a SPARQL HTTP endpoint in the minibuffer, which defaults to
+<a href="http://localhost:2020/">http://localhost:2020/</a>. Once set, it will be used for all subsequent queries in
+that buffer. Results will be displayed in another buffer in CSV format.
 </p>
-<ul class="org-ul">
-<li>adds vcs transient-state <code>SPC g.</code> to allow quick navigation and modification of</li>
-</ul>
-<p>
-buffer hunks.
-</p>
-</div>
 </div>
 </div>
 
-<div id="outline-container-org21fe907" class="outline-2">
-<h2 id="install"><a id="org21fe907"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org7b3b38e" class="outline-2">
+<h2 id="install"><a id="org7b3b38e"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
-</div>
-
-<div id="outline-container-orgbc308c7" class="outline-3">
-<h3 id="layer"><a id="orgbc308c7"></a><span class="section-number-3">2.1</span> Layer</h3>
-<div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>version-control</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+add <code>semweb</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
 file.
 </p>
 </div>
 </div>
-</div>
 
-<div id="outline-container-org7bc30f8" class="outline-2">
-<h2 id="configuration"><a id="org7bc30f8"></a><span class="section-number-2">3</span> Configuration</h2>
-<div class="outline-text-2" id="text-configuration">
-<p>
-You can choose the package to facilitate the diff transient-state and show margins
-by setting <code>version-control-diff-tool</code>
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">'<span class="org-rainbow-delimiters-depth-1">(</span>version-control <span class="org-builtin">:variables</span>
-                  version-control-diff-tool 'diff-hl<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-You can choose the side on which the diff appears (by default it's the right side)
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">'<span class="org-rainbow-delimiters-depth-1">(</span>version-control <span class="org-builtin">:variables</span>
-                  version-control-diff-side 'left<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-To automatically enable diff margins in all buffers, set
-<code>version-control-global-margin</code>
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">'<span class="org-rainbow-delimiters-depth-1">(</span>version-control <span class="org-builtin">:variables</span>
-                  version-control-global-margin t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-
-<div id="outline-container-orgc8b5203" class="outline-3">
-<h3 id="differences-between-margin-programs"><a id="orgc8b5203"></a><span class="section-number-3">3.1</span> Differences between margin programs</h3>
-<div class="outline-text-3" id="text-differences-between-margin-programs">
-<p>
-This layer contains generalized mappings for three diff margin packages:
-diff-hl, git-gutter, and git-gutter+.
-</p>
-
-<p>
-There are some differences between packages that might have some people prefer
-one over the other:
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Feature</th>
-<th scope="col" class="org-left">diff-hl</th>
-<th scope="col" class="org-left">git-gutter</th>
-<th scope="col" class="org-left">git-gutter+</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">Show in fringe</td>
-<td class="org-left">X</td>
-<td class="org-left">X</td>
-<td class="org-left">X</td>
-</tr>
-
-<tr>
-<td class="org-left">Extended VCS support (e.g. hg, svn)</td>
-<td class="org-left">X</td>
-<td class="org-left">X</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">Stage hunks from buffer</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">X</td>
-<td class="org-left">X</td>
-</tr>
-
-<tr>
-<td class="org-left">Dired support</td>
-<td class="org-left">X</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org842778d" class="outline-2">
-<h2 id="key-bindings"><a id="org842778d"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org10ae9d8" class="outline-2">
+<h2 id="key-bindings"><a id="org10ae9d8"></a><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -454,235 +321,16 @@ one over the other:
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC g .</code></td>
-<td class="org-left">version control transient-state</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g r</code></td>
-<td class="org-left">smerge mode transient-state</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC T d</code></td>
-<td class="org-left">toggle diff margins</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC T C-d</code></td>
-<td class="org-left">toggle diff margins globally</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g h o</code></td>
-<td class="org-left">browser at remote</td>
+<td class="org-left"><code>SPC m q</code></td>
+<td class="org-left">Execute SPARQL query</td>
 </tr>
 </tbody>
 </table>
-</div>
-
-<div id="outline-container-org40f6790" class="outline-3">
-<h3 id="version-control-transient-state"><a id="org40f6790"></a><span class="section-number-3">4.1</span> Version Control Transient-state</h3>
-<div class="outline-text-3" id="text-version-control-transient-state">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC g . h</code></td>
-<td class="org-left">Show diff of hunk</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . n</code></td>
-<td class="org-left">Next hunk</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . N</code></td>
-<td class="org-left">Previous hunk</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . p</code></td>
-<td class="org-left">Previous hunk</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . r</code></td>
-<td class="org-left">Revert hunk</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . s</code></td>
-<td class="org-left">Stage hunk</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . t</code></td>
-<td class="org-left">Toggle margin indicators</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . w</code></td>
-<td class="org-left">Stage file</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . u</code></td>
-<td class="org-left">Unstage file</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . d</code></td>
-<td class="org-left">Repo diff popup</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . D</code></td>
-<td class="org-left">Show diffs of unstaged hunks</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . c</code></td>
-<td class="org-left">Commit with popup</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . C</code></td>
-<td class="org-left">Commit</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . P</code></td>
-<td class="org-left">Push repo with popup</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . f</code></td>
-<td class="org-left">Fetch for repo with popup</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . F</code></td>
-<td class="org-left">Pull repo with popup</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . l</code></td>
-<td class="org-left">Show repo log</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-org60ccbe5" class="outline-3">
-<h3 id="smerge-mode-transient-state"><a id="org60ccbe5"></a><span class="section-number-3">4.2</span> Smerge Mode Transient-state</h3>
-<div class="outline-text-3" id="text-smerge-mode-transient-state">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC g r n</code></td>
-<td class="org-left">Next hunk</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g r N</code></td>
-<td class="org-left">Previous hunk</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g r p</code></td>
-<td class="org-left">Previous hunk</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g r j</code></td>
-<td class="org-left">Go to next line</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g r k</code></td>
-<td class="org-left">Go to previous line</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g r b</code></td>
-<td class="org-left">Smerge keep base</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g r m</code></td>
-<td class="org-left">Smerge keep mine</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g r a</code></td>
-<td class="org-left">Smerge keep all</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g r o</code></td>
-<td class="org-left">Smerge keep other</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g r c</code></td>
-<td class="org-left">Smerge keep current</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g r C</code></td>
-<td class="org-left">Smerge combine with next</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g r u</code></td>
-<td class="org-left">Undo</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g r r</code></td>
-<td class="org-left">Smerge refine</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g r q</code></td>
-<td class="org-left">Quit transient state</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-28 Sun 01:18</p>
+<p class="date">Created: 2017-05-28 Sun 01:19</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

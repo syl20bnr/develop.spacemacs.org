@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-23 Tue 14:36 -->
+<!-- 2017-05-28 Sun 01:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GO layer</title>
@@ -285,6 +285,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#go-commands-start-with-m">4.1. Go commands (start with <code>m</code>):</a></li>
 <li><a href="#go-guru">4.2. Go Guru</a></li>
+<li><a href="#refactoring">4.3. Refactoring</a></li>
 </ul>
 </li>
 </ul>
@@ -296,21 +297,22 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org3d3dda3" class="outline-2">
-<h2 id="description"><a id="org3d3dda3"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org7011529" class="outline-2">
+<h2 id="description"><a id="org7011529"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds extensive support for go.
 </p>
 </div>
 
-<div id="outline-container-orgf5b1087" class="outline-3">
-<h3 id="features"><a id="orgf5b1087"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org7721edb" class="outline-3">
+<h3 id="features"><a id="org7721edb"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>gofmt/goimports on file save</li>
 <li>Auto-completion using <a href="https://github.com/nsf/gocode/tree/master/emacs">go-autocomplete</a> (with the <code>auto-completion</code> layer)</li>
 <li>Source analysis using <a href="https://docs.google.com/document/d/1_Y9xCEMj5S-7rv2ooHpZNH15JgRT5iM742gJkw5LtmQ">go-guru</a></li>
+<li>Refactoring with <a href="http://gorefactor.org/">godoctor</a></li>
 <li>Linting with flycheck's built-in checkers or flycheck-gometalinter</li>
 <li>Coverage profile visualization</li>
 </ul>
@@ -318,16 +320,16 @@ This layer adds extensive support for go.
 </div>
 </div>
 
-<div id="outline-container-org0a3b332" class="outline-2">
-<h2 id="install"><a id="org0a3b332"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgf7d55fa" class="outline-2">
+<h2 id="install"><a id="orgf7d55fa"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orge45abb9" class="outline-3">
-<h3 id="pre-requisites"><a id="orge45abb9"></a><span class="section-number-3">2.1</span> Pre-requisites</h3>
+<div id="outline-container-org973e30a" class="outline-3">
+<h3 id="pre-requisites"><a id="org973e30a"></a><span class="section-number-3">2.1</span> Pre-requisites</h3>
 <div class="outline-text-3" id="text-pre-requisites">
 <p>
-You will need <code>gocode</code> and <code>godef</code>:
+You will need <code>gocode</code>, <code>godef</code> and <code>godoctor</code>:
 </p>
 
 <div class="org-src-container">
@@ -364,7 +366,17 @@ and <a href="https://github.com/favadi/flycheck-gometalinter/blob/master/README.
 </p>
 
 <p>
-Make sure that <code>gocode</code> executable is in your PATH. For information about
+If you wish to use <code>godoctor</code> for refactoring, install it too:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">go get -u -v github.com/godoctor/godoctor
+go install github.com/godoctor/godoctor
+</pre>
+</div>
+
+<p>
+Make sure that the <code>gocode</code> executable is in your PATH. For information about
 setting up <code>$PATH</code>, check out the corresponding section in the FAQ (<code>SPC h f
 $PATH RET</code>).
 </p>
@@ -376,8 +388,8 @@ layers are enabled as well.
 </div>
 </div>
 
-<div id="outline-container-orge5a55be" class="outline-3">
-<h3 id="layer"><a id="orge5a55be"></a><span class="section-number-3">2.2</span> Layer</h3>
+<div id="outline-container-org55ee0a7" class="outline-3">
+<h3 id="layer"><a id="org55ee0a7"></a><span class="section-number-3">2.2</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -388,8 +400,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org2e76469" class="outline-2">
-<h2 id="configuration"><a id="org2e76469"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-orgc450483" class="outline-2">
+<h2 id="configuration"><a id="orgc450483"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 By default, go buffers are run through <code>gofmt</code> on save. To use a different
@@ -411,8 +423,8 @@ or
 </div>
 </div>
 
-<div id="outline-container-org40954e2" class="outline-3">
-<h3 id="indentation"><a id="org40954e2"></a><span class="section-number-3">3.1</span> Indentation</h3>
+<div id="outline-container-org4f58fe7" class="outline-3">
+<h3 id="indentation"><a id="org4f58fe7"></a><span class="section-number-3">3.1</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
 By default, the tab width in Go mode is 8 spaces. To use a different value set
@@ -426,8 +438,8 @@ the layer variable <code>go-tab-width</code>, e.g.
 </div>
 </div>
 
-<div id="outline-container-orgec47f04" class="outline-3">
-<h3 id="tests"><a id="orgec47f04"></a><span class="section-number-3">3.2</span> Tests</h3>
+<div id="outline-container-org8ab7358" class="outline-3">
+<h3 id="tests"><a id="org8ab7358"></a><span class="section-number-3">3.2</span> Tests</h3>
 <div class="outline-text-3" id="text-tests">
 <p>
 If you're using <code>gocheck</code> in your project you can use the
@@ -446,11 +458,19 @@ Tests are run in a compilation buffer displayed in a popup window that can be
 closed by pressing <code>C-g</code> from any other window. The variable
 <code>go-test-buffer-name</code> can be customized to set the output buffer name.
 </p>
+
+<p>
+To provide additional arguments to go test, specify <code>go-use-test-args</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-use-test-args <span class="org-string">"-race -timeout 10s"</span>
+</pre>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org87bad31" class="outline-3">
-<h3 id="guru"><a id="org87bad31"></a><span class="section-number-3">3.3</span> Guru</h3>
+<div id="outline-container-org6328a2c" class="outline-3">
+<h3 id="guru"><a id="org6328a2c"></a><span class="section-number-3">3.3</span> Guru</h3>
 <div class="outline-text-3" id="text-guru">
 <p>
 Go Oracle has been deprecated as of October 1, 2016, it's replacement is <code>go-guru</code>.
@@ -470,8 +490,8 @@ In addition, <code>GOPATH</code> must be set prior to <code>go-guru</code> initi
 </div>
 </div>
 
-<div id="outline-container-orgcceb448" class="outline-3">
-<h3 id="autocomplete"><a id="orgcceb448"></a><span class="section-number-3">3.4</span> Autocomplete</h3>
+<div id="outline-container-org4ce0cc0" class="outline-3">
+<h3 id="autocomplete"><a id="org4ce0cc0"></a><span class="section-number-3">3.4</span> Autocomplete</h3>
 <div class="outline-text-3" id="text-autocomplete">
 <p>
 <code>gocode</code> uses the output from installed binary files to provide its suggestions.
@@ -489,13 +509,13 @@ file change.</li>
 </div>
 </div>
 
-<div id="outline-container-orgd2bdaa0" class="outline-2">
-<h2 id="working-with-go"><a id="orgd2bdaa0"></a><span class="section-number-2">4</span> Working with Go</h2>
+<div id="outline-container-orgd8546c0" class="outline-2">
+<h2 id="working-with-go"><a id="orgd8546c0"></a><span class="section-number-2">4</span> Working with Go</h2>
 <div class="outline-text-2" id="text-working-with-go">
 </div>
 
-<div id="outline-container-org711d030" class="outline-3">
-<h3 id="go-commands-start-with-m"><a id="org711d030"></a><span class="section-number-3">4.1</span> Go commands (start with <code>m</code>):</h3>
+<div id="outline-container-orgf4bb0b8" class="outline-3">
+<h3 id="go-commands-start-with-m"><a id="orgf4bb0b8"></a><span class="section-number-3">4.1</span> Go commands (start with <code>m</code>):</h3>
 <div class="outline-text-3" id="text-go-commands-start-with-m">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -596,8 +616,8 @@ file change.</li>
 </div>
 </div>
 
-<div id="outline-container-org6f5abf4" class="outline-3">
-<h3 id="go-guru"><a id="org6f5abf4"></a><span class="section-number-3">4.2</span> Go Guru</h3>
+<div id="outline-container-orge129357" class="outline-3">
+<h3 id="go-guru"><a id="orge129357"></a><span class="section-number-3">4.2</span> Go Guru</h3>
 <div class="outline-text-3" id="text-go-guru">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -677,10 +697,57 @@ file change.</li>
 </table>
 </div>
 </div>
+
+<div id="outline-container-orgd58027d" class="outline-3">
+<h3 id="refactoring"><a id="orgd58027d"></a><span class="section-number-3">4.3</span> Refactoring</h3>
+<div class="outline-text-3" id="text-refactoring">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m r N</code></td>
+<td class="org-left">Rename (with <code>go-rename</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r n</code></td>
+<td class="org-left">Rename (with <code>godoctor</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r e</code></td>
+<td class="org-left">Extract code as new function</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r t</code></td>
+<td class="org-left">Toggle declaration and assignment</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r d</code></td>
+<td class="org-left">Add comment stubs</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-23 Tue 14:36</p>
+<p class="date">Created: 2017-05-28 Sun 01:19</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
