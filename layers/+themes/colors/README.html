@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-23 Tue 14:36 -->
+<!-- 2017-05-28 Sun 01:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Colors layer</title>
@@ -286,25 +286,25 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgead8294" class="outline-2">
-<h2 id="description"><a id="orgead8294"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org1009497" class="outline-2">
+<h2 id="description"><a id="org1009497"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer colors your life with:
+This layer colors your life with the help of the following packages:
 </p>
 <ul class="org-ul">
-<li><a href="https://github.com/Fanael/rainbow-identifiers">rainbow identifiers</a> mode will colorize all identifiers (christmas tree mode :-))
-with an almost unique color.</li>
+<li><a href="https://github.com/Fanael/rainbow-identifiers">rainbow-identifiers</a> mode will colorize all identifiers (christmas tree mode :-))
+with mostly unique colors, and the ability to choose saturation and lightness.</li>
 <li><a href="https://github.com/ankurdave/color-identifiers-mode">color-identifiers</a> mode will colorize only identifiers recognized as variables.</li>
-<li><a href="https://julien.danjou.info/projects/emacs-packages">rainbow mode</a> displays strings representing colors with the color they
+<li><a href="https://julien.danjou.info/projects/emacs-packages">rainbow-mode</a> displays strings representing colors with the color they
 represent as background.</li>
-<li><a href="https://github.com/syl20bnr/nyan-mode">nyan mode</a> display a Nyan cat progress bar in the mode-line.</li>
+<li><a href="https://github.com/syl20bnr/nyan-mode">nyan-mode</a> display a Nyan cat progress bar in the mode-line.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgebc042e" class="outline-2">
-<h2 id="install"><a id="orgebc042e"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgda29acc" class="outline-2">
+<h2 id="install"><a id="orgda29acc"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -314,19 +314,22 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org96a8f70" class="outline-2">
-<h2 id="configuration"><a id="org96a8f70"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org84b0893" class="outline-2">
+<h2 id="configuration"><a id="org84b0893"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org7bdd0b6" class="outline-3">
-<h3 id="colorize-identifiers"><a id="org7bdd0b6"></a><span class="section-number-3">3.1</span> Colorize identifiers</h3>
+<div id="outline-container-org4289693" class="outline-3">
+<h3 id="colorize-identifiers"><a id="org4289693"></a><span class="section-number-3">3.1</span> Colorize identifiers</h3>
 <div class="outline-text-3" id="text-colorize-identifiers">
 <p>
-To colorize some identifiers by default in programming language buffers, set
-the layer variables <code>colors-colorize-identifiers</code> to either <code>variables</code> or
-<code>all</code>. <code>variables</code> will colorize only words recognized as variables, <code>all</code>
-will colorize all the words.
+To colorize variable identifiers using color-identifiers and its supported languages,
+set the layer variable <code>colors-colorize-identifiers</code> to <code>variables</code>.
+</p>
+
+<p>
+If you want to colorize all identifiers using the more universal rainbow-identifiers
+method instead, set the layer variable <code>colors-colorize-identifiers</code> to <code>all</code>.
 </p>
 
 <div class="org-src-container">
@@ -336,14 +339,20 @@ will colorize all the words.
 </div>
 
 <p>
-When using the value <code>all</code> the Saturation and lightness of can be set per theme
-by adding an entry in the variable <code>colors-theme-identifiers-sat&amp;light</code>. This is
-an alist where the key is a theme symbol and the value is a pair <code>(saturation
-lightness)</code>.
+When using the value <code>all</code> (rainbow-identifiers method), the Saturation and Lightness
+used for colors can be set on a per-theme basis by adding an entry to the variable
+<code>colors-theme-identifiers-sat&amp;light</code>. This is an alist where the key is a theme symbol
+and the value is a pair <code>(saturation lightness)</code>.
 </p>
 
 <p>
-For now saturation and lightness are not supported with the <code>variables</code> value.
+For now, saturation and lightness are not supported via a <code>variables</code> value!
+Instead, you must push themes into the alist in your <code>dotspacemacs/user-config</code> section,
+and then refresh the values to ensure your overrides are applied to your current theme.
+</p>
+
+<p>
+Two handy built-in functions makes both of those steps very easy.
 </p>
 
 <p>
@@ -351,17 +360,38 @@ Example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">push</span> '<span class="org-rainbow-delimiters-depth-2">(</span>mytheme . <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-highlight-numbers-number">50</span> <span class="org-highlight-numbers-number">50</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span> colors-theme-identifiers-sat&amp;light<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">add per-theme sat&amp;light overrides and refresh values for your current theme</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>colors/add-theme-sat&amp;light 'mytheme '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-highlight-numbers-number">50</span> <span class="org-highlight-numbers-number">50</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>colors/add-theme-sat&amp;light 'anothertheme '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-highlight-numbers-number">90</span> <span class="org-highlight-numbers-number">40</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>colors/refresh-theme-look<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+For all themes that lack per-theme overrides, it uses default saturation and lightness.
+You can configure your own defaults via <code>colors-default-rainbow-identifiers-sat</code>
+and <code>colors-default-rainbow-identifiers-light</code>, which can be set via <code>variables</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>colors <span class="org-builtin">:variables</span>
+    colors-colorize-identifiers 'all
+    colors-default-rainbow-identifiers-sat <span class="org-highlight-numbers-number">42</span>
+    colors-default-rainbow-identifiers-light <span class="org-highlight-numbers-number">86</span><span class="org-rainbow-delimiters-depth-3">)</span>
+  <span class="org-rainbow-delimiters-depth-2">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5916a8d" class="outline-3">
-<h3 id="enable-nyan-cat"><a id="org5916a8d"></a><span class="section-number-3">3.2</span> Enable Nyan cat</h3>
+<div id="outline-container-org59cd161" class="outline-3">
+<h3 id="enable-nyan-cat"><a id="org59cd161"></a><span class="section-number-3">3.2</span> Enable Nyan cat</h3>
 <div class="outline-text-3" id="text-enable-nyan-cat">
 <p>
-To enable the package <code>nyan-mode</code> set the variable
+To enable the package <code>nyan-mode</code> just set the variable
 <code>colors-enable-nyan-cat-progress-bar</code> to <code>t</code>:
 </p>
 
@@ -372,8 +402,8 @@ To enable the package <code>nyan-mode</code> set the variable
 </div>
 
 <p>
-It may be handy to enable it only in a GUI, you can do it by using
-a quasi-quoted list:
+It may be handy to enable it only when Emacs is running in a GUI.
+You can do that by using a quasi-quoted list which checks the Emacs mode:
 </p>
 
 <div class="org-src-container">
@@ -386,16 +416,13 @@ a quasi-quoted list:
 </div>
 </div>
 
-<div id="outline-container-org3c74f34" class="outline-2">
-<h2 id="key-bindings"><a id="org3c74f34"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org150f4cc" class="outline-2">
+<h2 id="key-bindings"><a id="org150f4cc"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
-<p>
-The prefix associated with colors is <code>C</code>.
-</p>
 </div>
 
-<div id="outline-container-orgde4f886" class="outline-3">
-<h3 id="colorize-identifiers-1"><a id="orgde4f886"></a><span class="section-number-3">4.1</span> Colorize Identifiers</h3>
+<div id="outline-container-orgfad3119" class="outline-3">
+<h3 id="colorize-identifiers-1"><a id="orgfad3119"></a><span class="section-number-3">4.1</span> Colorize Identifiers</h3>
 <div class="outline-text-3" id="text-colorize-identifiers-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -413,30 +440,30 @@ The prefix associated with colors is <code>C</code>.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC C a</code></td>
-<td class="org-left">colorize all idendifiers in current buffer</td>
+<td class="org-left"><code>SPC t C a</code></td>
+<td class="org-left">colorize all identifiers in current buffer (rainbow-identifiers mode)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC C C-a</code></td>
-<td class="org-left">globally colorize all idendifiers and all subsequent buffers</td>
+<td class="org-left"><code>SPC t C C-a</code></td>
+<td class="org-left">globally colorize all identifiers and all subsequent buffers</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC C v</code></td>
-<td class="org-left">colorize all variables only in current buffer</td>
+<td class="org-left"><code>SPC t C v</code></td>
+<td class="org-left">colorize only variables in current buffer (color-identifiers mode)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC C C-v</code></td>
-<td class="org-left">globally colorize all variables only and all subsequent buffers</td>
+<td class="org-left"><code>SPC t C C-v</code></td>
+<td class="org-left">globally colorize only variables and all subsequent buffers</td>
 </tr>
 </tbody>
 </table>
 
 <p>
-The <code>saturation</code> and <code>lightness</code> of identifier colors can be adjusted live
-when colorizing all the identifiers with the transient-state:
+The <code>saturation</code> and <code>lightness</code> of rainbow-identifier mode's colors
+can be adjusted live via the following transient-state:
 </p>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -488,8 +515,8 @@ when colorizing all the identifiers with the transient-state:
 </div>
 </div>
 
-<div id="outline-container-orge4ce8de" class="outline-3">
-<h3 id="rainbow-mode"><a id="orge4ce8de"></a><span class="section-number-3">4.2</span> Rainbow Mode</h3>
+<div id="outline-container-org70a5fe2" class="outline-3">
+<h3 id="rainbow-mode"><a id="org70a5fe2"></a><span class="section-number-3">4.2</span> Rainbow Mode</h3>
 <div class="outline-text-3" id="text-rainbow-mode">
 
 <div class="figure">
@@ -498,7 +525,18 @@ when colorizing all the identifiers with the transient-state:
 </div>
 
 <p>
-<code>rainbow-mode</code> mode can be toggled on and off with:
+<code>rainbow-mode</code> mode is different from both rainbow-identifiers and color-identifiers.
+It can be used together with either (or none) of the identifier colorizers.
+</p>
+
+<p>
+All detected color codes in the current buffer will be be highlighted as their
+actual color. However, for accurate display, this mode requires that you use
+GUI Emacs and that you haven't disabled sRGB mode (if your platform uses that).
+</p>
+
+<p>
+To enable, you must manually toggle it on and off on a per-buffer basis with:
 </p>
 
 <p>
@@ -507,8 +545,8 @@ when colorizing all the identifiers with the transient-state:
 </div>
 </div>
 
-<div id="outline-container-org29443a8" class="outline-3">
-<h3 id="nyan-mode"><a id="org29443a8"></a><span class="section-number-3">4.3</span> Nyan Mode</h3>
+<div id="outline-container-org085437f" class="outline-3">
+<h3 id="nyan-mode"><a id="org085437f"></a><span class="section-number-3">4.3</span> Nyan Mode</h3>
 <div class="outline-text-3" id="text-nyan-mode">
 <p>
 <code>nyan-mode</code> mode can be toggled on and off with:
@@ -526,7 +564,7 @@ Note that the toggle is local to the current buffer.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-05-23 Tue 14:36</p>
+<p class="date">Created: 2017-05-28 Sun 01:18</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
