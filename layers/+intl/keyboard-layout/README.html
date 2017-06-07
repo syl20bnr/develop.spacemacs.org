@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-06-03 Sat 06:08 -->
+<!-- 2017-06-06 Tue 10:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>keyboard-layout layer</title>
@@ -273,36 +273,36 @@ for the JavaScript code in this tag.
 <li><a href="#concept">4. Concept</a></li>
 <li><a href="#keyboard-layouts">5. Keyboard layouts</a>
 <ul>
-<li><a href="#bepo">5.1. bepo</a></li>
-<li><a href="#dvorak">5.2. dvorak</a></li>
-<li><a href="#colemak">5.3. colemak</a></li>
+<li><a href="#bepo">5.1. Bepo</a></li>
+<li><a href="#dvorak">5.2. Dvorak</a></li>
+<li><a href="#colemak">5.3. Colemak</a></li>
 <li><a href="#workman">5.4. Workman</a></li>
 </ul>
 </li>
 <li><a href="#package-configurations">6. Package Configurations</a></li>
-<li><a href="#keybindings">7. Keybindings</a></li>
-<li><a href="#sources">8. Sources</a></li>
+<li><a href="#key-bindings">7. Key bindings</a></li>
+<li><a href="#image-sources">8. Image sources</a></li>
 </ul>
 </div>
 </div>
 
 <div class="figure">
-<p><img src="img/keyboard-layout.png" alt="keyboard-layout.png" />
+<p><img src="img/keyboard-layout-layer-logo.png" alt="keyboard-layout-layer-logo.png" />
 </p>
 </div>
 
-<div id="outline-container-org909d06a" class="outline-2">
-<h2 id="description"><a id="org909d06a"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgbb3afaa" class="outline-2">
+<h2 id="description"><a id="orgbb3afaa"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer configures some keybindings in spacemacs to make it compatible with
-keyboard layouts that differs from the traditional <code>en-us</code> keymap.
+This layer configures some key bindings in Spacemacs, to make it compatible with
+keyboard layouts that differs from the traditional <code>en-us</code> <code>QWERTY</code> layout.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org5bc5f8a" class="outline-2">
-<h2 id="installation"><a id="org5bc5f8a"></a><span class="section-number-2">2</span> Installation</h2>
+<div id="outline-container-org9d10cec" class="outline-2">
+<h2 id="installation"><a id="org9d10cec"></a><span class="section-number-2">2</span> Installation</h2>
 <div class="outline-text-2" id="text-installation">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -319,13 +319,13 @@ in this file. You can then select the desired layout by specifying the
 </div>
 </div>
 
-<div id="outline-container-orgabc08e7" class="outline-2">
-<h2 id="configuration"><a id="orgabc08e7"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-orge4d3f91" class="outline-2">
+<h2 id="configuration"><a id="orge4d3f91"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-orgbe6c663" class="outline-3">
-<h3 id="enabledisable-package-configurations"><a id="orgbe6c663"></a><span class="section-number-3">3.1</span> Enable/Disable package configurations</h3>
+<div id="outline-container-orgf973197" class="outline-3">
+<h3 id="enabledisable-package-configurations"><a id="orgf973197"></a><span class="section-number-3">3.1</span> Enable/Disable package configurations</h3>
 <div class="outline-text-3" id="text-enabledisable-package-configurations">
 <p>
 This layer can be customized with two variables:
@@ -338,10 +338,10 @@ This layer can be customized with two variables:
 <p>
 The first one is used to set the list of configurations to activate, and the
 second one to prevent loading certain configurations. If the
-<code>kl-enabled-configurations</code> is nil (by default), all configurations are loaded.
-Otherwise, only the listed configurations are loaded. Any configuration listed
-in <code>kl-disabled-configurations</code> will never be loaded, whether it is in the
-enabled list or not (empty by default).
+<code>kl-enabled-configurations</code> variable is <code>nil</code>, (default: <code>nil</code>), then all
+configurations are loaded. Otherwise, only the listed configurations are loaded.
+Any configuration listed in <code>kl-disabled-configurations</code> will never be loaded,
+whether it is in the enabled list or not (default: <code>nil</code>).
 </p>
 
 <div class="org-src-container">
@@ -354,14 +354,14 @@ enabled list or not (empty by default).
 </div>
 </div>
 
-<div id="outline-container-org1acfac4" class="outline-3">
-<h3 id="addoverride-key-bindings"><a id="org1acfac4"></a><span class="section-number-3">3.2</span> Add/Override key bindings</h3>
+<div id="outline-container-org6297bb9" class="outline-3">
+<h3 id="addoverride-key-bindings"><a id="org6297bb9"></a><span class="section-number-3">3.2</span> Add/Override key bindings</h3>
 <div class="outline-text-3" id="text-addoverride-key-bindings">
 <p>
-It is possible to override or add bindings by defining functions named
+It is possible to override or add key bindings, by defining functions named
 <code>kl/pre-config-&lt;NAME&gt;</code> and <code>kl/post-config-&lt;NAME&gt;</code> in <code>dotspacemacs/user-init</code>.
-They are respectively called just before and after the actual configuration of
-keybindings in this layer, so <b>you don't have to think about when to apply the
+They are called just before and after the actual configuration of the key
+bindings in this layer. <b>You don't have to think about when to apply the
 configuration by yourself</b>. <code>&lt;NAME&gt;</code> is the name of the configuration you want
 to customize, they are listed under the <a href="#configuration">Configuration</a> section.
 </p>
@@ -377,54 +377,53 @@ Example:
 </div>
 
 <p>
-Note: If you define some of these functions in your own layer, be sure that the
-<code>keyboard-layout</code> layer is placed <span class="underline">after</span> it in the
+Note: If you define some of these functions in your own layer, then make sure
+that the <code>keyboard-layout</code> layer is placed <b>after</b> it in the
 <code>dotspacemacs-configuration-layers</code> list.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org01c1c5e" class="outline-2">
-<h2 id="concept"><a id="org01c1c5e"></a><span class="section-number-2">4</span> Concept</h2>
+<div id="outline-container-orge9480a8" class="outline-2">
+<h2 id="concept"><a id="orge9480a8"></a><span class="section-number-2">4</span> Concept</h2>
 <div class="outline-text-2" id="text-concept">
 <p>
-This package first switch traditional <code>hjkl</code> movement keys with their equivalent
-in destination layout, and then try to correct the bugs introduced by these
-changes in other parts of Spacemacs. This layer only tries to do these changes
-when the letters are used for <b>doing a movement</b>.
+This package first switches the traditional <code>hjkl</code> movement keys, with their
+equivalent keys in the destination layout. It then tries to correct the bugs,
+that were introduced by these changes in other parts of Spacemacs. This layer
+only tries to make these changes when the letters are used for <b>movements</b>.
 </p>
 
 <p>
 The equivalent remapping is also made for uppercase letters, <code>CTRL+KEY</code>,
-<code>META+KEY</code> and leaders keybindings (<code>SPC …</code>) whenever it makes sense to make
-such changes.
+<code>META+KEY</code> and leader key bindings such as (<code>SPC …</code>), whenever it makes sense.
 </p>
 
 <p>
-In some cases the key remapping will not follow these conventions, mainly
-because there are better alternatives, or because some moves don't make sense.
+In some cases the remapped keys won't follow these conventions, mainly because
+there are better alternatives, or because some movements don't make sense.
 </p>
 
-<p class="verse">
-Example: In the <code>magit</code> status buffer, the <code>c</code> is used for <code>commit</code> by default,<br />
-but if we want to follow the conventions, it should be remapped to "move left"<br />
-in bepo. As it is not useful to move left on <code>magit</code> because operations are done<br />
-line by line the <code>c</code> is not remapped.<br />
+<p>
+For example: In the <code>magit</code> status buffer, the <code>c</code> key is bound to <code>commit</code> by
+default. If we want to follow the conventions, then it should be remapped to
+"move left" in the bepo layout, but since operations in <code>magit</code> are done line by
+line, then there's no reason to move left, and we won't remap the <code>c</code> key.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb89ca88" class="outline-2">
-<h2 id="keyboard-layouts"><a id="orgb89ca88"></a><span class="section-number-2">5</span> Keyboard layouts</h2>
+<div id="outline-container-org7223a58" class="outline-2">
+<h2 id="keyboard-layouts"><a id="org7223a58"></a><span class="section-number-2">5</span> Keyboard layouts</h2>
 <div class="outline-text-2" id="text-keyboard-layouts">
 <p>
-The keyboard-layouts available with this layer are the following:
+The following keyboard-layouts are available with this layer:
 </p>
 </div>
 
-<div id="outline-container-orga2f4322" class="outline-3">
-<h3 id="bepo"><a id="orga2f4322"></a><span class="section-number-3">5.1</span> bepo</h3>
+<div id="outline-container-orgb19af80" class="outline-3">
+<h3 id="bepo"><a id="orgb19af80"></a><span class="section-number-3">5.1</span> Bepo</h3>
 <div class="outline-text-3" id="text-bepo">
 
 <div class="figure">
@@ -433,12 +432,12 @@ The keyboard-layouts available with this layer are the following:
 </div>
 
 <p>
-<code>bepo</code> is a keyboard layout optimized for the French language.
+<code>bepo</code> is a keyboard layout, that's optimized for the French language.
 </p>
 
 
 <div class="figure">
-<p><img src="img/bepo-keymap.png" alt="bepo-keymap.png" />
+<p><img src="img/bepo-layout.png" alt="bepo-layout.png" />
 </p>
 </div>
 
@@ -447,7 +446,7 @@ The mapping correction is the one proposed for vim on the official bepo <a href=
 </p>
 
 <ul class="org-ul">
-<li>Map the movements keys under the right hand's fingers:
+<li>The <code>bepo</code> layout: matches Vims movements keys:
 <ul class="org-ul">
 <li><code>c → h</code></li>
 <li><code>t → j</code></li>
@@ -455,7 +454,7 @@ The mapping correction is the one proposed for vim on the official bepo <a href=
 <li><code>r → l</code></li>
 </ul></li>
 
-<li>Map lost functionalities back to some keys:
+<li>The lost keys are remapped as follows:
 <ul class="org-ul">
 <li><code>h → r</code></li>
 <li><code>j → t</code></li>
@@ -465,18 +464,19 @@ The mapping correction is the one proposed for vim on the official bepo <a href=
 </ul>
 
 <p>
-Some bepo keys are not used in traditional mapping, mainly because they are not
-on the <code>en-us</code> keyboard layout. They are used as aliases for other shortcuts:
+Some bepo keys are not used in the traditional mapping, mainly because they are
+not on the <code>en-us</code> keyboard layout. They are used as aliases for other
+shortcuts:
 </p>
 
 <ul class="org-ul">
-<li>Map unused <code>é</code> key as an alias of <code>w</code>, more useful in vim mode:
+<li>Map the unused <code>é</code> key as an alias for <code>w</code>, it's more useful in vim mode:
 <ul class="org-ul">
 <li><code>é → w</code></li>
 <li><code>É → W</code></li>
 </ul></li>
 
-<li>Map indentation on direct-access keys:
+<li>Map indentation to direct-access keys:
 <ul class="org-ul">
 <li><code>» → &gt;</code></li>
 <li><code>« → &lt;</code></li>
@@ -489,58 +489,120 @@ defaults are changed:
 </p>
 
 <ul class="org-ul">
-<li>Change <code>evil-escape</code> escape combination to something faster to type, while
+<li>Change the <code>evil-escape</code> combination to something that's faster to type, while
 being nearly nonexistent in French or English words:
 <ul class="org-ul">
 <li><code>fd → gq</code></li>
 </ul></li>
 
-<li>In <code>avy</code>, the key used to select words/lines are remapped to the 8 characters
-under the fingers:
+<li>In <code>avy</code>, the keys that select words/lines are remapped to the 8 characters
+under the home row fingers:
 <ul class="org-ul">
 <li><code>a u i e t s r n</code></li>
 </ul></li>
 </ul>
 
 <p>
-Note: One difference exists with the wiki version: the <code>w</code> is <b>not</b> remapped to
-<code>C-w</code> to avoid having to change its meaning in other modes. Spacemacs provides
-already a <code>SPC w</code> key binding for working with windows.
+Note: There's one difference from the wiki version: <code>w</code> is <b>not</b> remapped to
+<code>C-w</code>. This avoids having to change its meaning in other modes. Spacemacs
+already provides <code>SPC w</code> for working with windows.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org527a6f5" class="outline-3">
-<h3 id="dvorak"><a id="org527a6f5"></a><span class="section-number-3">5.2</span> dvorak</h3>
+<div id="outline-container-orgde917b9" class="outline-3">
+<h3 id="dvorak"><a id="orgde917b9"></a><span class="section-number-3">5.2</span> Dvorak</h3>
 <div class="outline-text-3" id="text-dvorak">
 <p>
-<code>dvorak</code> is a keyboard layout optimized for the English language. <a href="http://www.kaufmann.no/roland/dvorak/">dvorak
-programmer</a> is an optimized keyboard layout focused in programming and it's a
-variant of the more general <code>dvorak</code> (us) keyboard layout. This configuration
-will remap keybindings for the <code>dvorak-programmer</code> variant.
+<code>dvorak</code> is a keyboard layout, that's optimized for the English language. It
+rearranges the keys, to require less finger movements away from the home row.
 </p>
 
 <p>
-There are 2 variants of dvorak implemented in this layout: dvp and dvorak. Dvp
-tries to match vim like hand placement on keyboard. Dvorak has movement keys
-shifted by 1 key to the right on home row.
+The most common Dvorak layout is called Dvorak Simplified Keyboard (referred to
+as just Dvorak keyboard or Dvorak layout). It comes pre-installed on most
+operating systems.
+</p>
+
+<p>
+<code>Dvorak Simplified Keyboard (US layout)</code>
 </p>
 
 
 <div class="figure">
-<p><img src="img/dvorak-keymap.png" alt="dvorak-keymap.png" />
+<p><img src="img/dvorak-simplified-layout.png" alt="dvorak-simplified-layout.png" />
 </p>
 </div>
+
+<p>
+<code>Programmer Dvorak</code>
+</p>
+
+
+<div class="figure">
+<p><img src="img/programmer-dvorak-layout.png" alt="programmer-dvorak-layout.png" />
+</p>
+</div>
+
+<p>
+There's also a sub-layout called <a href="//www.kaufmann.no/roland/dvorak/">Programmer Dvorak</a>. It reorders the number and
+symbol keys, to make it easier to type common programming symbols, without
+having to hold down the shift key. The keys that differ from the <code>Dvorak
+Simplified Keyboard</code> are shown in blue.
+</p>
+
+<p>
+This Spacemacs Keyboard Layout layer has two Dvorak movement key variants:
+</p>
+
+<p>
+The <code>dvp</code> variant: matches Vims movement keys:
+</p>
+<ul class="org-ul">
+<li><code>d → h</code></li>
+<li><code>h → j</code></li>
+<li><code>t → k</code></li>
+<li><code>n → l</code></li>
+</ul>
+
+<p>
+The lost keys are remapped as follows:
+</p>
+<ul class="org-ul">
+<li><code>j → d</code></li>
+<li><code>k → t</code></li>
+<li><code>l → n</code></li>
+</ul>
+
+<p>
+The <code>dvorak</code> variant: uses the home row, which is shifted 1 key to the right of
+Vims movement keys.
+</p>
+<ul class="org-ul">
+<li><code>h</code> doesn't need to be remapped, it's already under the index finger.</li>
+<li><code>t → j</code></li>
+<li><code>n → k</code></li>
+<li><code>s → l</code></li>
+</ul>
+
+<p>
+The lost keys are remapped as follows:
+</p>
+<ul class="org-ul">
+<li><code>j → t</code></li>
+<li><code>k → n</code></li>
+<li><code>l → s</code></li>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-org5bb35b9" class="outline-3">
-<h3 id="colemak"><a id="org5bb35b9"></a><span class="section-number-3">5.3</span> colemak</h3>
+<div id="outline-container-orgb806ad1" class="outline-3">
+<h3 id="colemak"><a id="orgb806ad1"></a><span class="section-number-3">5.3</span> Colemak</h3>
 <div class="outline-text-3" id="text-colemak">
 <p>
 <code>colemak</code> is a modern alternative to the QWERTY and <code>dvorak</code> layouts. It is
 designed for efficient and ergonomic touch typing in English. More info can be
-found at the <a href="https://colemak.com/">Colemak website</a>.
+found on the <a href="https://colemak.com/">Colemak website</a>.
 </p>
 
 
@@ -548,28 +610,47 @@ found at the <a href="https://colemak.com/">Colemak website</a>.
 <p><img src="img/colemak-layout.png" alt="colemak-layout.png" />
 </p>
 </div>
+
+<ul class="org-ul">
+<li>The <code>colemak</code> layout: matches Vims movement keys:
+<ul class="org-ul">
+<li><code>h</code> doesn't need to be remapped, it's to the left of the index finger.</li>
+<li><code>n → j</code></li>
+<li><code>e → k</code></li>
+<li><code>i → l</code></li>
+</ul></li>
+
+<li>The lost keys are remapped as follows:
+<ul class="org-ul">
+<li><code>j → n</code></li>
+<li><code>k → e</code></li>
+<li><code>l → i</code></li>
+</ul></li>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-org564d28b" class="outline-3">
-<h3 id="workman"><a id="org564d28b"></a><span class="section-number-3">5.4</span> Workman</h3>
+<div id="outline-container-org81e6243" class="outline-3">
+<h3 id="workman"><a id="org81e6243"></a><span class="section-number-3">5.4</span> Workman</h3>
 <div class="outline-text-3" id="text-workman">
 <p>
-<code>Workman</code> is an English-optimized keyboard layout designed to, <a href="https://workmanlayout.com">among other
-things</a>, reduce finger travel-distance, and balance the load equally between
-hands. It is meant to function particularly well in conjunction with ortholinear
-('matrix' or 'grid') keyboards, such as the one depicted in the diagram.
+<code>Workman</code> is an English-optimized keyboard layout that's designed to, among
+other things, reduce finger travel-distance, and balance the load equally
+between hands. It is meant to function particularly well in conjunction with
+ortholinear ('matrix' or 'grid') keyboards, such as the one depicted in the
+diagram below. More information can be found in the <a href="https://en.wikipedia.org/wiki/Keyboard_layout#Workman">Workman section</a>, of the
+wikipedia keyboard layout page.
 </p>
 
 
 <div class="figure">
-<p><img src="img/workman-keymap.png" alt="workman-keymap.png" />
+<p><img src="img/workman-layout.png" alt="workman-layout.png" />
 </p>
 </div>
 
 <p>
-This layer performs the following substitutions, as recommended in <a href="https://axiomatic.neophilus.net/posts/2013-08-13-workman-layout-for-vim.html">this blog
-post</a>, with some suggested mnemonics:
+As recommended in this blog post: <a href="//axiomatic.neophilus.net/posts/2013-08-13-workman-layout-for-vim.html">Workman layout for Vim</a>, this layout
+substitutes the following keys with these mnemonics:
 </p>
 
 <ul class="org-ul">
@@ -577,13 +658,21 @@ post</a>, with some suggested mnemonics:
 <li>Search (n)ext -&gt; (j)ump</li>
 <li>(e)nd word -&gt; brea(k) of word</li>
 <li>(o)pen new line -&gt; (l)ine</li>
+
+<li>The lost keys are remapped as follows:
+<ul class="org-ul">
+<li><code>h → y</code></li>
+<li><code>j → n</code></li>
+<li><code>k → e</code></li>
+<li><code>l → o</code></li>
+</ul></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgae9aa0f" class="outline-2">
-<h2 id="package-configurations"><a id="orgae9aa0f"></a><span class="section-number-2">6</span> Package Configurations</h2>
+<div id="outline-container-orgcec0995" class="outline-2">
+<h2 id="package-configurations"><a id="orgcec0995"></a><span class="section-number-2">6</span> Package Configurations</h2>
 <div class="outline-text-2" id="text-package-configurations">
 <p>
 The available configurations are:
@@ -615,12 +704,12 @@ The available configurations are:
 </div>
 </div>
 
-<div id="outline-container-org2913c01" class="outline-2">
-<h2 id="keybindings"><a id="org2913c01"></a><span class="section-number-2">7</span> Keybindings</h2>
-<div class="outline-text-2" id="text-keybindings">
+<div id="outline-container-org2bcada7" class="outline-2">
+<h2 id="key-bindings"><a id="org2bcada7"></a><span class="section-number-2">7</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
 <p>
-This layer is using functions that try to <i>automatically</i> remap keybindings in a
-lot of modes, so it's difficult to list all changed keybindings. And
+This layer tries to bind keys <i>automatically</i> in a lot of modes. That makes it
+difficult to list them all. For example the key bindings change if:
 </p>
 
 <ul class="org-ul">
@@ -630,25 +719,32 @@ lot of modes, so it's difficult to list all changed keybindings. And
 </ul>
 
 <p>
-So the price you have to pay is the absence of a keybindings list.
+So the price you have to pay is the absence of a key bindings list.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgcaf5a1d" class="outline-2">
-<h2 id="sources"><a id="orgcaf5a1d"></a><span class="section-number-2">8</span> Sources</h2>
-<div class="outline-text-2" id="text-sources">
+<div id="outline-container-org850a688" class="outline-2">
+<h2 id="image-sources"><a id="org850a688"></a><span class="section-number-2">8</span> Image sources</h2>
+<div class="outline-text-2" id="text-image-sources">
+<ul class="org-ul">
+<li>The keyboard-layout layer logo is a modified image from <a href="https://openclipart.org/detail/202777/keyboard-layout">openclipart.org</a>, and
+is under the public domain.</li>
+<li>The Bepo logo and layout images, are from the official <a href="http://bepo.fr/">bepo</a> website. (the
+layout image has been modified).</li>
+<li>The Dvorak Simplified layout image is a modified image from <a href="https://en.wikipedia.org/wiki/File:KB_United_States_Dvorak.svg">Wikipedia</a>.</li>
+<li>The Programmer Dvorak layout image is a modified version of the Dvorak
+Simplified layout image.</li>
+<li>The Colemak layout image is a modified version from <a href="https://en.wikipedia.org/wiki/File:KB_US-Colemak.svg">Wikipedia</a>.</li>
+</ul>
 <p>
-The keyboard-layout logo is coming from <a href="https://openclipart.org/detail/202777/keyboard-layout">openclipart.org</a> and is under the public
-domain. The bepo logo and the keymap images are coming from the <a href="http://bepo.fr/">bepo</a> official
-website.  The Colemak keyboard layout image is from <a href="https://en.wikipedia.org/wiki/File:KB_US-Colemak.svg">Wikipedia</a>. They are all
-licensed under the <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC-BY-SA</a>.
+They are all licensed under the <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC-BY-SA</a>.
 </p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-06-03 Sat 06:08</p>
+<p class="date">Created: 2017-06-06 Tue 10:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
