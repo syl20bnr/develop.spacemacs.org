@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-06-10 Sat 14:45 -->
+<!-- 2017-06-23 Fri 19:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>HTML layer</title>
@@ -268,10 +268,11 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#key-bindings">3. Key Bindings</a>
+<li><a href="#live-display-in-browser">3. Live display in browser</a></li>
+<li><a href="#key-bindings">4. Key Bindings</a>
 <ul>
-<li><a href="#web-mode">3.1. Web mode</a></li>
-<li><a href="#cssscss">3.2. CSS/SCSS</a></li>
+<li><a href="#web-mode">4.1. Web mode</a></li>
+<li><a href="#cssscss">4.2. CSS/SCSS</a></li>
 </ul>
 </li>
 </ul>
@@ -283,31 +284,31 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgeedda9e" class="outline-2">
-<h2 id="description"><a id="orgeedda9e"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org10b9af5" class="outline-2">
+<h2 id="description"><a id="org10b9af5"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for editing HTML and CSS.
 </p>
 </div>
 
-<div id="outline-container-orga56978e" class="outline-3">
-<h3 id="features"><a id="orga56978e"></a><span class="section-number-3">1.1</span> Features</h3>
+<div id="outline-container-orgef33762" class="outline-3">
+<h3 id="features"><a id="orgef33762"></a><span class="section-number-3">1.1</span> Features</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Editing HTML and CSS file using <a href="http://web-mode.org/">web-mode</a></li>
 <li>Support for Sass/Scss and Less files</li>
 <li>Generate HTML and CSS coding using <a href="https://github.com/smihica/emmet-mode">emmet-mode</a></li>
 <li>Tags navigation on key <code>%</code> using <a href="https://github.com/redguardtoo/evil-matchit">evil-matchit</a></li>
-<li>Support for editing Slim and Pug templates using <a href="https://github.com/slim-template/emacs-slim">slim-mode</a>
-and <a href="https://github.com/hlissner/emacs-pug-mode">pug-mode</a></li>
+<li>Support for editing Slim and Pug templates using <a href="https://github.com/slim-template/emacs-slim">slim-mode</a> and <a href="https://github.com/hlissner/emacs-pug-mode">pug-mode</a></li>
+<li>See the effects of typed HTML using <a href="https://github.com/skeeto/impatient-mode">impatient-mode</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1fb3114" class="outline-2">
-<h2 id="install"><a id="org1fb3114"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgf1d974e" class="outline-2">
+<h2 id="install"><a id="orgf1d974e"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -328,13 +329,34 @@ gem specific_install https://github.com/Sweetchuck/scss_lint_reporter_checkstyle
 </div>
 </div>
 
-<div id="outline-container-org59bebc9" class="outline-2">
-<h2 id="key-bindings"><a id="org59bebc9"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-org2a3e82d" class="outline-2">
+<h2 id="live-display-in-browser"><a id="org2a3e82d"></a><span class="section-number-2">3</span> Live display in browser</h2>
+<div class="outline-text-2" id="text-live-display-in-browser">
+<p>
+Use <code>SPC m i</code> to enable impatient mode, opening a live view of a HTML file in
+your browser. You may wish to enable impatient mode in referenced CSS or JS
+files, too.
+</p>
+
+<p>
+When the underlying file is an HTML file, <code>SPC m i</code> automatically opens the page
+in the browser. For other buffers, a list of available views can be found on
+<a href="http://localhost:8080/imp">http://localhost:8080/imp</a>.
+</p>
+
+<p>
+For more information visit the <a href="https://github.com/skeeto/impatient-mode/blob/master/README.md">help page on GitHub.</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org86127f6" class="outline-2">
+<h2 id="key-bindings"><a id="org86127f6"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org1ecdd91" class="outline-3">
-<h3 id="web-mode"><a id="org1ecdd91"></a><span class="section-number-3">3.1</span> Web mode</h3>
+<div id="outline-container-orgb0bc907" class="outline-3">
+<h3 id="web-mode"><a id="orgb0bc907"></a><span class="section-number-3">4.1</span> Web mode</h3>
 <div class="outline-text-3" id="text-web-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -359,6 +381,11 @@ gem specific_install https://github.com/Sweetchuck/scss_lint_reporter_checkstyle
 <tr>
 <td class="org-left"><code>SPC m e h</code></td>
 <td class="org-left">highlight DOM errors</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i</code></td>
+<td class="org-left">open live view in browser</td>
 </tr>
 
 <tr>
@@ -511,8 +538,8 @@ A transient-state is also defined, start it with <code>SPC m .</code> or <code>,
 </div>
 </div>
 
-<div id="outline-container-org017c9fc" class="outline-3">
-<h3 id="cssscss"><a id="org017c9fc"></a><span class="section-number-3">3.2</span> CSS/SCSS</h3>
+<div id="outline-container-org248ad1e" class="outline-3">
+<h3 id="cssscss"><a id="org248ad1e"></a><span class="section-number-3">4.2</span> CSS/SCSS</h3>
 <div class="outline-text-3" id="text-cssscss">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -550,7 +577,7 @@ A transient-state is also defined, start it with <code>SPC m .</code> or <code>,
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-06-10 Sat 14:45</p>
+<p class="date">Created: 2017-06-23 Fri 19:37</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
