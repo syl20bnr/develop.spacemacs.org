@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-06-24 Sat 21:22 -->
+<!-- 2017-07-04 Tue 10:17 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mu4e layer</title>
@@ -289,8 +289,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgb2ea6e7" class="outline-2">
-<h2 id="install"><a id="orgb2ea6e7"></a><span class="section-number-2">1</span> Install</h2>
+<div id="outline-container-org6d7195b" class="outline-2">
+<h2 id="install"><a id="org6d7195b"></a><span class="section-number-2">1</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 In order to use this layer you must install mu and mu4e separately. Typically
@@ -327,14 +327,14 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </div>
 </div>
 
-<div id="outline-container-orgbae98e0" class="outline-2">
-<h2 id="commands"><a id="orgbae98e0"></a><span class="section-number-2">2</span> Commands</h2>
+<div id="outline-container-org76838d3" class="outline-2">
+<h2 id="commands"><a id="org76838d3"></a><span class="section-number-2">2</span> Commands</h2>
 <div class="outline-text-2" id="text-commands">
 </div>
 
 
-<div id="outline-container-orge59f765" class="outline-3">
-<h3 id="global-bindings"><a id="orge59f765"></a><span class="section-number-3">2.1</span> Global bindings</h3>
+<div id="outline-container-org796226d" class="outline-3">
+<h3 id="global-bindings"><a id="org796226d"></a><span class="section-number-3">2.1</span> Global bindings</h3>
 <div class="outline-text-3" id="text-global-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -360,8 +360,8 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </div>
 </div>
 
-<div id="outline-container-org94c8bf1" class="outline-3">
-<h3 id="headers-mode"><a id="org94c8bf1"></a><span class="section-number-3">2.2</span> Headers mode</h3>
+<div id="outline-container-org39dcc00" class="outline-3">
+<h3 id="headers-mode"><a id="org39dcc00"></a><span class="section-number-3">2.2</span> Headers mode</h3>
 <div class="outline-text-3" id="text-headers-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -397,8 +397,8 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </div>
 </div>
 
-<div id="outline-container-orgec9b795" class="outline-3">
-<h3 id="view-mode"><a id="orgec9b795"></a><span class="section-number-3">2.3</span> View mode</h3>
+<div id="outline-container-org31df0f1" class="outline-3">
+<h3 id="view-mode"><a id="org31df0f1"></a><span class="section-number-3">2.3</span> View mode</h3>
 <div class="outline-text-3" id="text-view-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -435,8 +435,8 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </div>
 </div>
 
-<div id="outline-container-orgcf27a1d" class="outline-2">
-<h2 id="configuration"><a id="orgcf27a1d"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-orgfcccc01" class="outline-2">
+<h2 id="configuration"><a id="orgfcccc01"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 Configuration varies too much to give precise instructions.  What follows is one
@@ -445,8 +445,8 @@ instructions.
 </p>
 </div>
 
-<div id="outline-container-org1996201" class="outline-3">
-<h3 id="maildirs-extension"><a id="org1996201"></a><span class="section-number-3">3.1</span> Maildirs extension</h3>
+<div id="outline-container-org18e014b" class="outline-3">
+<h3 id="maildirs-extension"><a id="org18e014b"></a><span class="section-number-3">3.1</span> Maildirs extension</h3>
 <div class="outline-text-3" id="text-maildirs-extension">
 <p>
 The maildirs extension adds a list of all your maildirs to the main mu4e view
@@ -462,69 +462,72 @@ adding the package <code>mu4e-maildirs-extension</code> to your dotfile variable
 </div>
 </div>
 
-<div id="outline-container-org1051f28" class="outline-3">
-<h3 id="multiple-accounts"><a id="org1051f28"></a><span class="section-number-3">3.2</span> Multiple Accounts</h3>
+<div id="outline-container-org7586d9f" class="outline-3">
+<h3 id="multiple-accounts"><a id="org7586d9f"></a><span class="section-number-3">3.2</span> Multiple Accounts</h3>
 <div class="outline-text-3" id="text-multiple-accounts">
 <p>
-This layer includes support for multiple sending accounts.
-If you have only one account you do not need to define this variable.
-If you have multiple accounts, configure the <code>mu4e-account-alist</code> variable:
+With `mu 0.9.16`, mu4e comes with a native contexts feature for managing
+multiple accounts.
+</p>
+
+<p>
+The following example is taken from the manual:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-account-alist
-      '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"gmail"</span>
-         <span class="org-comment-delimiter">;; </span><span class="org-comment">Under each account, set the account-specific variables you want.</span>
-         <span class="org-rainbow-delimiters-depth-4">(</span>mu4e-sent-messages-behavior delete<span class="org-rainbow-delimiters-depth-4">)</span>
-         <span class="org-rainbow-delimiters-depth-4">(</span>mu4e-sent-folder <span class="org-string">"/gmail/[Gmail]/.Sent Mail"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-         <span class="org-rainbow-delimiters-depth-4">(</span>mu4e-drafts-folder <span class="org-string">"/gmail/[Gmail]/.Drafts"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-         <span class="org-rainbow-delimiters-depth-4">(</span>user-mail-address <span class="org-string">"billy@gmail.com"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-         <span class="org-rainbow-delimiters-depth-4">(</span>user-full-name <span class="org-string">"Billy"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-        <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"college"</span>
-         <span class="org-rainbow-delimiters-depth-4">(</span>mu4e-sent-messages-behavior sent<span class="org-rainbow-delimiters-depth-4">)</span>
-         <span class="org-rainbow-delimiters-depth-4">(</span>mu4e-sent-folder <span class="org-string">"/college/Sent Items"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-         <span class="org-rainbow-delimiters-depth-4">(</span>mu4e-drafts-folder <span class="org-string">"/college/Drafts"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-         <span class="org-rainbow-delimiters-depth-4">(</span>user-mail-address <span class="org-string">"bb15@college.edu"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-         <span class="org-rainbow-delimiters-depth-4">(</span>user-full-name <span class="org-string">"Billy Bob 15"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>mu4e/mail-account-reset<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-contexts
+  `<span class="org-rainbow-delimiters-depth-2">(</span> ,<span class="org-rainbow-delimiters-depth-3">(</span>make-mu4e-context
+  <span class="org-builtin">:name</span> <span class="org-string">"Private"</span>
+  <span class="org-builtin">:enter-func</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-5">()</span> <span class="org-rainbow-delimiters-depth-5">(</span>mu4e-message <span class="org-string">"Switch to the Private context"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">leave-func not defined</span>
+  <span class="org-builtin">:match-func</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-5">(</span>msg<span class="org-rainbow-delimiters-depth-5">)</span>
+    <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-keyword">when</span> msg
+      <span class="org-rainbow-delimiters-depth-6">(</span>mu4e-message-contact-field-matches msg
+        <span class="org-builtin">:to</span> <span class="org-string">"aliced@home.example.com"</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+  <span class="org-builtin">:vars</span> '<span class="org-rainbow-delimiters-depth-4">(</span>  <span class="org-rainbow-delimiters-depth-5">(</span> user-mail-address      . <span class="org-string">"aliced@home.example.com"</span>  <span class="org-rainbow-delimiters-depth-5">)</span>
+     <span class="org-rainbow-delimiters-depth-5">(</span> user-full-name     . <span class="org-string">"Alice Derleth"</span> <span class="org-rainbow-delimiters-depth-5">)</span>
+     <span class="org-rainbow-delimiters-depth-5">(</span> mu4e-compose-signature .
+       <span class="org-rainbow-delimiters-depth-6">(</span>concat
+         <span class="org-string">"Alice Derleth\n"</span>
+         <span class="org-string">"Lauttasaari, Finland\n"</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+     ,<span class="org-rainbow-delimiters-depth-3">(</span>make-mu4e-context
+  <span class="org-builtin">:name</span> <span class="org-string">"Work"</span>
+  <span class="org-builtin">:enter-func</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-5">()</span> <span class="org-rainbow-delimiters-depth-5">(</span>mu4e-message <span class="org-string">"Switch to the Work context"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">leave-fun not defined</span>
+  <span class="org-builtin">:match-func</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-5">(</span>msg<span class="org-rainbow-delimiters-depth-5">)</span>
+    <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-keyword">when</span> msg
+      <span class="org-rainbow-delimiters-depth-6">(</span>mu4e-message-contact-field-matches msg
+        <span class="org-builtin">:to</span> <span class="org-string">"aderleth@miskatonic.example.com"</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+  <span class="org-builtin">:vars</span> '<span class="org-rainbow-delimiters-depth-4">(</span>  <span class="org-rainbow-delimiters-depth-5">(</span> user-mail-address      . <span class="org-string">"aderleth@miskatonic.example.com"</span> <span class="org-rainbow-delimiters-depth-5">)</span>
+     <span class="org-rainbow-delimiters-depth-5">(</span> user-full-name     . <span class="org-string">"Alice Derleth"</span> <span class="org-rainbow-delimiters-depth-5">)</span>
+     <span class="org-rainbow-delimiters-depth-5">(</span> mu4e-compose-signature .
+       <span class="org-rainbow-delimiters-depth-6">(</span>concat
+         <span class="org-string">"Prof. Alice Derleth\n"</span>
+         <span class="org-string">"Miskatonic University, Dept. of Occult Sciences\n"</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">set `mu4e-context-policy` and `mu4e-compose-policy` to tweak when mu4e should</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">guess or ask the correct context, e.g.</span>
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">start with the first (default) context;</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">default is to ask-if-none (ask when there's no context yet, and none match)</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">(setq mu4e-context-policy 'pick-first)</span>
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">compose with the current context is no context matches;</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">default is to ask</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">'(setq mu4e-compose-context-policy nil)</span>
 </pre>
 </div>
 
 <p>
-The first account listed will be the default account, so variables like
-<code>user-full-name</code>, which is used by other parts of Emacs, will have their value
-reset for the default account after sending each email.
-</p>
-
-<p>
-Note that the mu4e layer expects <code>mu4e-account-alist</code> to be defined before the
-layer is loaded. For example, you can set <code>mu4e-account-alist</code> to a dummy
-setting in <code>dotspacemacs/layers</code>:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>mu4e <span class="org-builtin">:variables</span> mu4e-account-alist t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-and then actually set <code>mu4e-account-alist</code> later in <code>dotspacemacs/user-config</code>.
-</p>
-
-<p>
-Make sure you call <code>mu4e/mail-account-reset</code> afterward, which will initialize
-the given account variables.
-</p>
-
-<p>
-If you have mu 0.9.16 or later, you can use mu4e's built-in contexts feature
-instead (see <a href="http://www.djcbsoftware.nl/code/mu/mu4e/Contexts.html#Contexts">mu4e's manual</a>).
+Note: We used to have a hack to support multiple accounts with older version of
+`mu` but we removed it to encourage people to update their version and use the
+new contexts feature.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org6c05189" class="outline-3">
-<h3 id="example-configuration"><a id="org6c05189"></a><span class="section-number-3">3.3</span> Example configuration</h3>
+<div id="outline-container-org4fb7ee2" class="outline-3">
+<h3 id="example-configuration"><a id="org4fb7ee2"></a><span class="section-number-3">3.3</span> Example configuration</h3>
 <div class="outline-text-3" id="text-example-configuration">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Set up some common mu4e variables</span>
@@ -559,8 +562,8 @@ instead (see <a href="http://www.djcbsoftware.nl/code/mu/mu4e/Contexts.html#Cont
 </div>
 </div>
 
-<div id="outline-container-orgaaeea34" class="outline-3">
-<h3 id="notifications"><a id="orgaaeea34"></a><span class="section-number-3">3.4</span> Notifications</h3>
+<div id="outline-container-org9787be1" class="outline-3">
+<h3 id="notifications"><a id="org9787be1"></a><span class="section-number-3">3.4</span> Notifications</h3>
 <div class="outline-text-3" id="text-notifications">
 <p>
 <code>mu4e-alert</code> is an extension that provides desktop notifications and adds the
@@ -579,8 +582,8 @@ For an extended documentation of the available customizations please refer to
 </p>
 </div>
 
-<div id="outline-container-org2b53776" class="outline-4">
-<h4 id="os-notifications"><a id="org2b53776"></a><span class="section-number-4">3.4.1</span> OS notifications</h4>
+<div id="outline-container-orgc0d7032" class="outline-4">
+<h4 id="os-notifications"><a id="orgc0d7032"></a><span class="section-number-4">3.4.1</span> OS notifications</h4>
 <div class="outline-text-4" id="text-os-notifications">
 <p>
 To enable notifications about new messages, add the following line to your
@@ -622,8 +625,8 @@ installed libraries:
 </div>
 </div>
 
-<div id="outline-container-orga2529d9" class="outline-4">
-<h4 id="mode-line-notifications"><a id="orga2529d9"></a><span class="section-number-4">3.4.2</span> Mode-line notifications</h4>
+<div id="outline-container-orge586248" class="outline-4">
+<h4 id="mode-line-notifications"><a id="orge586248"></a><span class="section-number-4">3.4.2</span> Mode-line notifications</h4>
 <div class="outline-text-4" id="text-mode-line-notifications">
 <p>
 To enable mode-line display about new messages, add the following line to
@@ -648,8 +651,8 @@ or use layer variables when you add the layer to
 </div>
 </div>
 
-<div id="outline-container-org4af07dc" class="outline-3">
-<h3 id="spacemacs-layout-integration"><a id="org4af07dc"></a><span class="section-number-3">3.5</span> Spacemacs layout integration</h3>
+<div id="outline-container-orga01a6fc" class="outline-3">
+<h3 id="spacemacs-layout-integration"><a id="orga01a6fc"></a><span class="section-number-3">3.5</span> Spacemacs layout integration</h3>
 <div class="outline-text-3" id="text-spacemacs-layout-integration">
 <p>
 A <a href="../../../doc/DOCUMENTATION.html#layouts-and-workspaces">Spacemacs custom layout</a> is defined by the layer. The name and the key binding
@@ -674,8 +677,8 @@ By default the values are:
 </div>
 </div>
 
-<div id="outline-container-orgdc373b4" class="outline-2">
-<h2 id="see-also"><a id="orgdc373b4"></a><span class="section-number-2">4</span> See also</h2>
+<div id="outline-container-orgb93923f" class="outline-2">
+<h2 id="see-also"><a id="orgb93923f"></a><span class="section-number-2">4</span> See also</h2>
 <div class="outline-text-2" id="text-see-also">
 <p>
 Refer to the official mu and mu4e documentation for additional info.
@@ -688,7 +691,7 @@ Refer to the official mu and mu4e documentation for additional info.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-06-24 Sat 21:22</p>
+<p class="date">Created: 2017-07-04 Tue 10:17</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
