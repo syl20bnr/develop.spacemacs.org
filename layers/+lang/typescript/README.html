@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-07-06 Thu 12:54 -->
+<!-- 2017-07-26 Wed 11:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TypeScript layer</title>
@@ -270,10 +270,11 @@ for the JavaScript code in this tag.
 <li><a href="#notes">2.3. Notes</a></li>
 </ul>
 </li>
-<li><a href="#key-bindings">3. Key bindings</a>
+<li><a href="#configuration">3. Configuration</a></li>
+<li><a href="#key-bindings">4. Key bindings</a>
 <ul>
-<li><a href="#typescript-major-mode">3.1. Typescript Major Mode</a></li>
-<li><a href="#reference-major-mode">3.2. Reference Major Mode</a></li>
+<li><a href="#typescript-major-mode">4.1. Typescript Major Mode</a></li>
+<li><a href="#reference-major-mode">4.2. Reference Major Mode</a></li>
 </ul>
 </li>
 </ul>
@@ -285,8 +286,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgb9b0cfe" class="outline-2">
-<h2 id="description"><a id="orgb9b0cfe"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org930e15d" class="outline-2">
+<h2 id="description"><a id="org930e15d"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for TypeScript and TSX editing.
@@ -310,13 +311,13 @@ This layer provides:
 </div>
 </div>
 
-<div id="outline-container-org981259c" class="outline-2">
-<h2 id="install"><a id="org981259c"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org0a9698e" class="outline-2">
+<h2 id="install"><a id="org0a9698e"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgde6393c" class="outline-3">
-<h3 id="pre-requisites"><a id="orgde6393c"></a><span class="section-number-3">2.1</span> Pre-requisites</h3>
+<div id="outline-container-org0a6bd61" class="outline-3">
+<h3 id="pre-requisites"><a id="org0a6bd61"></a><span class="section-number-3">2.1</span> Pre-requisites</h3>
 <div class="outline-text-3" id="text-pre-requisites">
 <p>
 You will need <code>node.js v0.12.0</code> or greater
@@ -336,8 +337,8 @@ For best results, make sure that the <code>auto-completion</code> (company) and 
 </div>
 </div>
 
-<div id="outline-container-org11f315f" class="outline-3">
-<h3 id="layer"><a id="org11f315f"></a><span class="section-number-3">2.2</span> Layer</h3>
+<div id="outline-container-orgc3d2e12" class="outline-3">
+<h3 id="layer"><a id="orgc3d2e12"></a><span class="section-number-3">2.2</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -378,8 +379,8 @@ Default is 'tide .
 </div>
 </div>
 
-<div id="outline-container-orgfdd7ef0" class="outline-3">
-<h3 id="notes"><a id="orgfdd7ef0"></a><span class="section-number-3">2.3</span> Notes</h3>
+<div id="outline-container-org9313f6b" class="outline-3">
+<h3 id="notes"><a id="org9313f6b"></a><span class="section-number-3">2.3</span> Notes</h3>
 <div class="outline-text-3" id="text-notes">
 <p>
 This layer uses:
@@ -399,7 +400,8 @@ Make sure to add <a href="https://github.com/Microsoft/TypeScript/wiki/tsconfig.
 </p>
 
 <p>
-tsserver mangles output sometimes <a href="https://github.com/Microsoft/TypeScript/issues/2758">issue - #2758</a>, which will result in json parse error. Try node version 0.12.x if you get this error.
+tsserver mangles output sometimes <a href="https://github.com/Microsoft/TypeScript/issues/2758">issue - #2758</a>, which will result in json parse
+error. Try node version 0.12.x if you get this error.
 </p>
 
 <p>
@@ -407,20 +409,43 @@ Send to playground requires browser.
 </p>
 
 <p>
-Currently tsserver doesn't pickup tsconfig.json file changes. You might need to restart server after editing it.
+Currently tsserver doesn't pickup tsconfig.json file changes. You might need to
+restart server after editing it.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org3b72bec" class="outline-2">
-<h2 id="key-bindings"><a id="org3b72bec"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-org08957ee" class="outline-2">
+<h2 id="configuration"><a id="org08957ee"></a><span class="section-number-2">3</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+<p>
+Tide comes with an embedded Typescript server, it is recommended to use the
+server intalled by <code>npm</code> instead. To do so set the variable
+<code>tide-tsserver-executable</code> to the path of the <code>tsserver</code> executable.
+</p>
+
+<p>
+For example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>typescript <span class="org-builtin">:variables</span>
+              tide-tsserver-executable <span class="org-string">"/usr/local/bin/tsserver"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga3cc9d1" class="outline-2">
+<h2 id="key-bindings"><a id="orga3cc9d1"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
 
-<div id="outline-container-org5cd566f" class="outline-3">
-<h3 id="typescript-major-mode"><a id="org5cd566f"></a><span class="section-number-3">3.1</span> Typescript Major Mode</h3>
+<div id="outline-container-orgb3abf40" class="outline-3">
+<h3 id="typescript-major-mode"><a id="orgb3abf40"></a><span class="section-number-3">4.1</span> Typescript Major Mode</h3>
 <div class="outline-text-3" id="text-typescript-major-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -486,8 +511,8 @@ Currently tsserver doesn't pickup tsconfig.json file changes. You might need to 
 </div>
 </div>
 
-<div id="outline-container-orge175f1e" class="outline-3">
-<h3 id="reference-major-mode"><a id="orge175f1e"></a><span class="section-number-3">3.2</span> Reference Major Mode</h3>
+<div id="outline-container-orged80fd7" class="outline-3">
+<h3 id="reference-major-mode"><a id="orged80fd7"></a><span class="section-number-3">4.2</span> Reference Major Mode</h3>
 <div class="outline-text-3" id="text-reference-major-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -525,7 +550,7 @@ Currently tsserver doesn't pickup tsconfig.json file changes. You might need to 
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-07-06 Thu 12:54</p>
+<p class="date">Created: 2017-07-26 Wed 11:58</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
