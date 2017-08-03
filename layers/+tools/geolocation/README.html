@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-07-26 Wed 11:58 -->
+<!-- 2017-08-03 Thu 07:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Geolocation layer</title>
 <meta name="generator" content="Org mode" />
+<meta name="author" content="Travis CI User" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -271,9 +272,9 @@ for the JavaScript code in this tag.
 <li><a href="#configuration">3. Configuration</a>
 <ul>
 <li><a href="#location">3.1. Location</a></li>
-<li><a href="#theme-changer">3.2. theme-changer</a></li>
-<li><a href="#sunshine-weather-forecast">3.3. sunshine (weather forecast)</a></li>
-<li><a href="#osx-location">3.4. osx-location</a></li>
+<li><a href="#osx-location">3.2. osx-location</a></li>
+<li><a href="#theme-changer">3.3. theme-changer</a></li>
+<li><a href="#sunshine-weather-forecast">3.4. sunshine (weather forecast)</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">4. Key Bindings</a>
@@ -285,8 +286,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgb798281" class="outline-2">
-<h2 id="description"><a id="orgb798281"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org6c378ca" class="outline-2">
+<h2 id="description"><a id="org6c378ca"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer offers few location sensitive adjustment to Emacs, such as
@@ -296,24 +297,25 @@ CoreLocation services.
 </p>
 </div>
 
-<div id="outline-container-orgb73b96c" class="outline-3">
-<h3 id="supported-packages-in-this-layer"><a id="orgb73b96c"></a><span class="section-number-3">1.1</span> Supported packages in this layer</h3>
+<div id="outline-container-orgb1e1fb9" class="outline-3">
+<h3 id="supported-packages-in-this-layer"><a id="orgb1e1fb9"></a><span class="section-number-3">1.1</span> Supported packages in this layer</h3>
 <div class="outline-text-3" id="text-supported-packages-in-this-layer">
 <ul class="org-ul">
 <li><a href="https://github.com/aaronbieber/sunshine.el/blob/master/sunshine.el">sunshine</a></li>
 <li><a href="https://github.com/purcell/osx-location">osx-location</a></li>
+<li><a href="https://github.com/hadronzoo/theme-changer">theme-changer</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgd0de667" class="outline-2">
-<h2 id="install"><a id="orgd0de667"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org884a916" class="outline-2">
+<h2 id="install"><a id="org884a916"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>geolocation</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
-file.
+add <code>geolocation</code> to the existing <code>dotspacemacs-configuration-layers</code> list in
+this file.
 </p>
 
 <p>
@@ -331,13 +333,13 @@ something like this:
 </div>
 </div>
 
-<div id="outline-container-org3b3dfda" class="outline-2">
-<h2 id="configuration"><a id="org3b3dfda"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org2134ede" class="outline-2">
+<h2 id="configuration"><a id="org2134ede"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org06a1df0" class="outline-3">
-<h3 id="location"><a id="org06a1df0"></a><span class="section-number-3">3.1</span> Location</h3>
+<div id="outline-container-orgcda6abb" class="outline-3">
+<h3 id="location"><a id="orgcda6abb"></a><span class="section-number-3">3.1</span> Location</h3>
 <div class="outline-text-3" id="text-location">
 <p>
 Set location manually by setting the following variables to the
@@ -350,18 +352,34 @@ Set location manually by setting the following variables to the
       calendar-longitude <span class="org-highlight-numbers-number">1.80</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
+</div>
+</div>
+
+<div id="outline-container-org388b68b" class="outline-3">
+<h3 id="osx-location"><a id="org388b68b"></a><span class="section-number-3">3.2</span> osx-location</h3>
+<div class="outline-text-3" id="text-osx-location">
+<p>
+Mac users can take adavantage of automatic geogrphical discovery using the OS'
+CoreLocation system service, implemented as a long running background process.
+In order to enable it, set <code>geolocation-enable-location-service</code> to <code>t</code> as
+explained in installation instructions.
+</p>
 
 <p>
-On OS X, all of these variables get setup automatically if the <code>osx-location</code>
-service was enabled (Wifi must be turned on to make it work). In this case, if
-<code>calendar-location-name</code> was omitted, it'll be stringed-up <code>calendar-latitude</code>
-and <code>calendar-longitude</code> i.e. "41.23, 1.80".
+A helper script will need to be given proper access first time this layer is
+activated.
+</p>
+
+
+<div class="figure">
+<p><img src="img/emacs-location-helper.jpg" alt="emacs-location-helper.jpg" />
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-org4f8cdb1" class="outline-3">
-<h3 id="theme-changer"><a id="org4f8cdb1"></a><span class="section-number-3">3.2</span> theme-changer</h3>
+<div id="outline-container-orgbacfd8b" class="outline-3">
+<h3 id="theme-changer"><a id="orgbacfd8b"></a><span class="section-number-3">3.3</span> theme-changer</h3>
 <div class="outline-text-3" id="text-theme-changer">
 <p>
 This layer implement a simple "theme changer" which, when enabled, will switch
@@ -370,20 +388,23 @@ theme listed will be used as light variant, while the second as the the dark.
 Other themes will be ignored by this layer, though they are still available for
 cycling, etc.
 </p>
+
+<p>
+Note that <code>theme-changer</code> <b>requires</b> location to be set.
+</p>
 </div>
 </div>
 
-<div id="outline-container-orgc335a15" class="outline-3">
-<h3 id="sunshine-weather-forecast"><a id="orgc335a15"></a><span class="section-number-3">3.3</span> sunshine (weather forecast)</h3>
+<div id="outline-container-orge09278a" class="outline-3">
+<h3 id="sunshine-weather-forecast"><a id="orge09278a"></a><span class="section-number-3">3.4</span> sunshine (weather forecast)</h3>
 <div class="outline-text-3" id="text-sunshine-weather-forecast">
 <p>
 Sunshine display local weather forecast.
 </p>
 
 <p>
-Setup <a href="https://home.openweathermap.org/users/sign_in">OpenWeatherMap</a> API key.
-Set <code>sunshine-appid</code> to some hash string from the openweathermap
-website. You need to sign up to the website to get a API key.
+Setup <a href="https://home.openweathermap.org/users/sign_in">OpenWeatherMap</a> API key. Set <code>sunshine-appid</code> to some hash string from the
+openweathermap website. You need to sign up to the website to get a API key.
 </p>
 
 <div class="org-src-container">
@@ -392,13 +413,16 @@ website. You need to sign up to the website to get a API key.
 </div>
 
 <p>
-Configure your location by setting the variable sunshine-location. You
-can provide a string, like "New York, NY" or a ZIP code, like "90210".
-This variable is available through the Customize facility.
-  When specifying a ZIP code, you may receive results from a foreign
-country. This is due to weird behavior from OpenWeatherMap. To resolve
-this, append a comma and the country code after the ZIP code. Note the
-lack of a space in the example below.
+Configure your location by setting the variable sunshine-location. You can
+provide a string, like "New York, NY" or a ZIP code, like "90210". This variable
+is available through the Customize facility.
+</p>
+
+<p>
+When specifying a ZIP code, you may receive results from a foreign country. This
+is due to weird behavior from OpenWeatherMap. To resolve this, append a comma
+and the country code after the ZIP code. Note the lack of a space in the example
+below.
 </p>
 
 <div class="org-src-container">
@@ -438,33 +462,15 @@ To display weather forecast icons by default ("pretty mode"), add
 </div>
 </div>
 </div>
-
-<div id="outline-container-org846d0e8" class="outline-3">
-<h3 id="osx-location"><a id="org846d0e8"></a><span class="section-number-3">3.4</span> osx-location</h3>
-<div class="outline-text-3" id="text-osx-location">
-<p>
-OS X users can take adavantage of automatic geogrphical discovery using the OS'
-CoreLocation system service, implemented as a long running background process. A
-helper script will need to be given proper access first time this layer is
-activated.
-</p>
-
-
-<div class="figure">
-<p><img src="img/emacs-location-helper.jpg" alt="emacs-location-helper.jpg" />
-</p>
-</div>
-</div>
-</div>
 </div>
 
-<div id="outline-container-org84a61f4" class="outline-2">
-<h2 id="key-bindings"><a id="org84a61f4"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org2644e0e" class="outline-2">
+<h2 id="key-bindings"><a id="org2644e0e"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org4dbfdbd" class="outline-3">
-<h3 id="weather"><a id="org4dbfdbd"></a><span class="section-number-3">4.1</span> Weather</h3>
+<div id="outline-container-org7b90053" class="outline-3">
+<h3 id="weather"><a id="org7b90053"></a><span class="section-number-3">4.1</span> Weather</h3>
 <div class="outline-text-3" id="text-weather">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -502,7 +508,8 @@ activated.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-07-26 Wed 11:58</p>
+<p class="author">Author: Travis CI User</p>
+<p class="date">Created: 2017-08-03 Thu 07:35</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
