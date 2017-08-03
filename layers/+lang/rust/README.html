@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-07-26 Wed 11:58 -->
+<!-- 2017-08-03 Thu 07:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rust contribution layer for Spacemacs</title>
 <meta name="generator" content="Org mode" />
+<meta name="author" content="Travis CI User" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -281,8 +282,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgcb6cab8" class="outline-2">
-<h2 id="description"><a id="orgcb6cab8"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgcde31de" class="outline-2">
+<h2 id="description"><a id="orgcde31de"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer supports <a href="https://www.rust-lang.org/en-US/">Rust</a> development in Spacemacs.
@@ -294,13 +295,13 @@ It has auto-completion and navigation support through <a href="https://github.co
 </div>
 </div>
 
-<div id="outline-container-orgad49ad8" class="outline-2">
-<h2 id="install"><a id="orgad49ad8"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org320356b" class="outline-2">
+<h2 id="install"><a id="org320356b"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgf6a76d8" class="outline-3">
-<h3 id="layer"><a id="orgf6a76d8"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-orgc7465d4" class="outline-3">
+<h3 id="layer"><a id="orgc7465d4"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -310,8 +311,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgdf860aa" class="outline-3">
-<h3 id="racer"><a id="orgdf860aa"></a><span class="section-number-3">2.2</span> Racer</h3>
+<div id="outline-container-org8fb0f5b" class="outline-3">
+<h3 id="racer"><a id="org8fb0f5b"></a><span class="section-number-3">2.2</span> Racer</h3>
 <div class="outline-text-3" id="text-racer">
 <p>
 You must install <a href="https://github.com/phildawes/racer">Racer</a> to use this. Make sure the <code>racer</code> binary is available in
@@ -325,8 +326,8 @@ To enable auto-completion, ensure that the <code>auto-completion</code> layer is
 </div>
 </div>
 
-<div id="outline-container-org02f7510" class="outline-3">
-<h3 id="cargo"><a id="org02f7510"></a><span class="section-number-3">2.3</span> Cargo</h3>
+<div id="outline-container-org7b097e0" class="outline-3">
+<h3 id="cargo"><a id="org7b097e0"></a><span class="section-number-3">2.3</span> Cargo</h3>
 <div class="outline-text-3" id="text-cargo">
 <p>
 <a href="http://doc.crates.io/index.html">Cargo</a> is a project management command line tool for Rust. Installation
@@ -335,8 +336,8 @@ instructions can be found on the main page of <a href="http://doc.crates.io/inde
 </div>
 </div>
 
-<div id="outline-container-orgc79dfb5" class="outline-3">
-<h3 id="rustfmt"><a id="orgc79dfb5"></a><span class="section-number-3">2.4</span> Rustfmt</h3>
+<div id="outline-container-org88ad81f" class="outline-3">
+<h3 id="rustfmt"><a id="org88ad81f"></a><span class="section-number-3">2.4</span> Rustfmt</h3>
 <div class="outline-text-3" id="text-rustfmt">
 <p>
 Format Rust code according to style guidelines using <a href="https://github.com/rust-lang-nursery/rustfmt">rustfmt</a>.
@@ -354,8 +355,8 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 </div>
 </div>
 
-<div id="outline-container-orge7972e7" class="outline-2">
-<h2 id="key-bindings"><a id="orge7972e7"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-org046bae4" class="outline-2">
+<h2 id="key-bindings"><a id="org046bae4"></a><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -418,6 +419,11 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC m c l</code></td>
+<td class="org-left">run linter (<a href="https://github.com/arcnmx/cargo-clippy">cargo-clippy</a>) with Cargo</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m c n</code></td>
 <td class="org-left">create a new project with Cargo (new)</td>
 </tr>
@@ -462,7 +468,8 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-07-26 Wed 11:58</p>
+<p class="author">Author: Travis CI User</p>
+<p class="date">Created: 2017-08-03 Thu 07:35</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
