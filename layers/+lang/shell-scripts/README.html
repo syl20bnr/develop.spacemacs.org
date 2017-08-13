@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-03 Thu 07:35 -->
+<!-- 2017-08-13 Sun 17:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shell Scripts layer</title>
@@ -284,8 +284,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org3e433e7" class="outline-2">
-<h2 id="description"><a id="org3e433e7"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgb5621a7" class="outline-2">
+<h2 id="description"><a id="orgb5621a7"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This simple layer adds support for shell scripting.
@@ -304,8 +304,8 @@ Supported scripting files:
 </p>
 </div>
 
-<div id="outline-container-orgef019a8" class="outline-3">
-<h3 id="features"><a id="orgef019a8"></a><span class="section-number-3">1.1</span> Features</h3>
+<div id="outline-container-org0acfd63" class="outline-3">
+<h3 id="features"><a id="org0acfd63"></a><span class="section-number-3">1.1</span> Features</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Auto-completion using <a href="https://github.com/Alexander-Miller/company-shell">company-shell</a></li>
@@ -316,8 +316,8 @@ Supported scripting files:
 </div>
 </div>
 
-<div id="outline-container-org673e130" class="outline-2">
-<h2 id="install"><a id="org673e130"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org83d954e" class="outline-2">
+<h2 id="install"><a id="org83d954e"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -326,8 +326,8 @@ file.
 </p>
 </div>
 
-<div id="outline-container-orgeabf3b2" class="outline-3">
-<h3 id="linting"><a id="orgeabf3b2"></a><span class="section-number-3">2.1</span> Linting</h3>
+<div id="outline-container-org8dc6f1e" class="outline-3">
+<h3 id="linting"><a id="org8dc6f1e"></a><span class="section-number-3">2.1</span> Linting</h3>
 <div class="outline-text-3" id="text-linting">
 <p>
 In order to enable <code>sh</code> scripts linting, install <a href="https://www.shellcheck.net/">shellcheck</a>.
@@ -335,8 +335,8 @@ In order to enable <code>sh</code> scripts linting, install <a href="https://www
 </div>
 </div>
 
-<div id="outline-container-org1dfb9f1" class="outline-3">
-<h3 id="style-checking"><a id="org1dfb9f1"></a><span class="section-number-3">2.2</span> Style checking</h3>
+<div id="outline-container-org721a68f" class="outline-3">
+<h3 id="style-checking"><a id="org721a68f"></a><span class="section-number-3">2.2</span> Style checking</h3>
 <div class="outline-text-3" id="text-style-checking">
 <p>
 In order to enable <code>sh</code> scripts style checking, install <a href="https://github.com/openstack-dev/bashate">bashate</a>.
@@ -345,8 +345,8 @@ In order to enable <code>sh</code> scripts style checking, install <a href="http
 </div>
 </div>
 
-<div id="outline-container-org90ced8f" class="outline-2">
-<h2 id="key-bindings"><a id="org90ced8f"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-orga4e0d7d" class="outline-2">
+<h2 id="key-bindings"><a id="orga4e0d7d"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -364,13 +364,68 @@ In order to enable <code>sh</code> scripts style checking, install <a href="http
 </thead>
 <tbody>
 <tr>
+<td class="org-left"><code>SPC m \</code></td>
+<td class="org-left">insert end-of-line backslashes to the lines in the region</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC i !</code></td>
 <td class="org-left">insert shebang in a script file</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m \</code></td>
-<td class="org-left">insert end-of-line backslashes to the lines in the region</td>
+<td class="org-left"><code>SPC m i !</code></td>
+<td class="org-left">insert shebang in a script file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i c</code></td>
+<td class="org-left">insert switch case statement if supported by shell</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i i</code></td>
+<td class="org-left">insert if statement if supported by shell</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i f</code></td>
+<td class="org-left">insert function definition if supported by shell</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i o</code></td>
+<td class="org-left">insert for loop if supported by shell</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i e</code></td>
+<td class="org-left">insert an indexed for loop if supported by shell</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i w</code></td>
+<td class="org-left">insert while loop if supported by shell</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i r</code></td>
+<td class="org-left">insert repeat loop if supported by shell</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i s</code></td>
+<td class="org-left">insert select loop if supported by shell</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i u</code></td>
+<td class="org-left">insert until loop if supported by shell</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i g</code></td>
+<td class="org-left">insert a getopts while loop if supported by shell</td>
 </tr>
 </tbody>
 </table>
@@ -379,7 +434,7 @@ In order to enable <code>sh</code> scripts style checking, install <a href="http
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-08-03 Thu 07:35</p>
+<p class="date">Created: 2017-08-13 Sun 17:36</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
