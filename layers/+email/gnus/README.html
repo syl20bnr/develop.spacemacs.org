@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-13 Sun 17:36 -->
+<!-- 2017-08-19 Sat 14:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gnus layer</title>
@@ -278,8 +278,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org806c6f5" class="outline-2">
-<h2 id="install"><a id="org806c6f5"></a><span class="section-number-2">1</span> Install</h2>
+<div id="outline-container-org17c04e6" class="outline-2">
+<h2 id="install"><a id="org17c04e6"></a><span class="section-number-2">1</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -289,8 +289,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org57a093c" class="outline-2">
-<h2 id="basic-concepts"><a id="org57a093c"></a><span class="section-number-2">2</span> Basic Concepts</h2>
+<div id="outline-container-orgff55a24" class="outline-2">
+<h2 id="basic-concepts"><a id="orgff55a24"></a><span class="section-number-2">2</span> Basic Concepts</h2>
 <div class="outline-text-2" id="text-basic-concepts">
 <p>
 Gnus is a news reading application. The Gnus terminology can be confusing for
@@ -305,8 +305,8 @@ the Group Buffer if Topic Mode is enabled(default).</dd>
 </div>
 </div>
 
-<div id="outline-container-org412b764" class="outline-2">
-<h2 id="adding-news-sources"><a id="org412b764"></a><span class="section-number-2">3</span> Adding news sources</h2>
+<div id="outline-container-orgdf84130" class="outline-2">
+<h2 id="adding-news-sources"><a id="orgdf84130"></a><span class="section-number-2">3</span> Adding news sources</h2>
 <div class="outline-text-2" id="text-adding-news-sources">
 <p>
 Adding news sources can be done in your <code>.spacemacs</code> file by adding the
@@ -314,15 +314,15 @@ following:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Get email, and store in nnml</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gnus-secondary-select-methods
-  '<span class="org-rainbow-delimiters-depth-2">(</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>nntp <span class="org-string">"gmane"</span>
-           <span class="org-rainbow-delimiters-depth-4">(</span>nntp-address <span class="org-string">"news.gmane.org"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>nntp <span class="org-string">"news.eternal-september.org"</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>nntp <span class="org-string">"nntp.aioe.org"</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>nntp <span class="org-string">"news.gwene.org"</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">;; Get email, and store in nnml
+(setq gnus-secondary-select-methods
+  '(
+    (nntp "gmane"
+           (nntp-address "news.gmane.org"))
+    (nntp "news.eternal-september.org")
+    (nntp "nntp.aioe.org")
+    (nntp "news.gwene.org")
+    ))
 </pre>
 </div>
 
@@ -332,8 +332,8 @@ For adding RSS Feeds please see the <a href="#keybindings">keybindings section</
 </div>
 </div>
 
-<div id="outline-container-org7ce1bcc" class="outline-2">
-<h2 id="configuring-gmail"><a id="org7ce1bcc"></a><span class="section-number-2">4</span> Configuring gmail</h2>
+<div id="outline-container-org421e72b" class="outline-2">
+<h2 id="configuring-gmail"><a id="org421e72b"></a><span class="section-number-2">4</span> Configuring gmail</h2>
 <div class="outline-text-2" id="text-configuring-gmail">
 <p>
 To configure Gnus with gmail support you can add the following to your
@@ -341,34 +341,34 @@ To configure Gnus with gmail support you can add the following to your
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Get email, and store in nnml</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gnus-secondary-select-methods
-'<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>nnimap <span class="org-string">"gmail"</span>
-           <span class="org-rainbow-delimiters-depth-4">(</span>nnimap-address
-            <span class="org-string">"imap.gmail.com"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-           <span class="org-rainbow-delimiters-depth-4">(</span>nnimap-server-port <span class="org-highlight-numbers-number">993</span><span class="org-rainbow-delimiters-depth-4">)</span>
-           <span class="org-rainbow-delimiters-depth-4">(</span>nnimap-stream ssl<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-  <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">;; Get email, and store in nnml
+(setq gnus-secondary-select-methods
+'(
+  (nnimap "gmail"
+           (nnimap-address
+            "imap.gmail.com")
+           (nnimap-server-port 993)
+           (nnimap-stream ssl))
+  ))
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">Send email via Gmail:</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> message-send-mail-function 'smtpmail-send-it
-  smtpmail-default-smtp-server <span class="org-string">"smtp.gmail.com"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+;; Send email via Gmail:
+(setq message-send-mail-function 'smtpmail-send-it
+  smtpmail-default-smtp-server "smtp.gmail.com")
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">Archive outgoing email in Sent folder on imap.gmail.com:</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gnus-message-archive-method '<span class="org-rainbow-delimiters-depth-2">(</span>nnimap <span class="org-string">"imap.gmail.com"</span><span class="org-rainbow-delimiters-depth-2">)</span>
-    gnus-message-archive-group <span class="org-string">"[Gmail]/Sent Mail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+;; Archive outgoing email in Sent folder on imap.gmail.com:
+(setq gnus-message-archive-method '(nnimap "imap.gmail.com")
+    gnus-message-archive-group "[Gmail]/Sent Mail")
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">set return email address based on incoming email address</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gnus-posting-styles
-    '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>header <span class="org-string">"to"</span> <span class="org-string">"address@outlook.com"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-       <span class="org-rainbow-delimiters-depth-4">(</span>address <span class="org-string">"address@outlook.com"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>header <span class="org-string">"to"</span> <span class="org-string">"address@gmail.com"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-     <span class="org-rainbow-delimiters-depth-4">(</span>address <span class="org-string">"address@gmail.com"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+;; set return email address based on incoming email address
+(setq gnus-posting-styles
+    '(((header "to" "address@outlook.com")
+       (address "address@outlook.com"))
+  ((header "to" "address@gmail.com")
+     (address "address@gmail.com"))))
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">store email in ~/gmail directory</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> nnml-directory <span class="org-string">"~/gmail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> message-directory <span class="org-string">"~/gmail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+;; store email in ~/gmail directory
+(setq nnml-directory "~/gmail")
+(setq message-directory "~/gmail")
 </pre>
 </div>
 
@@ -389,8 +389,8 @@ password</a>.
 </div>
 </div>
 
-<div id="outline-container-org574593f" class="outline-2">
-<h2 id="org-mime-in-org-layer"><a id="org574593f"></a><span class="section-number-2">5</span> Org MIME in Org layer</h2>
+<div id="outline-container-org9251d75" class="outline-2">
+<h2 id="org-mime-in-org-layer"><a id="org9251d75"></a><span class="section-number-2">5</span> Org MIME in Org layer</h2>
 <div class="outline-text-2" id="text-org-mime-in-org-layer">
 <p>
 It is possible to send beautiful HTML emails using org mode.
@@ -404,8 +404,8 @@ from org mode to html.  An org mode buffer can be sent via html email by pressin
 </div>
 </div>
 
-<div id="outline-container-orgdadcc86" class="outline-2">
-<h2 id="keybindings"><a id="orgdadcc86"></a><span class="section-number-2">6</span> Keybindings</h2>
+<div id="outline-container-org71c1e93" class="outline-2">
+<h2 id="keybindings"><a id="org71c1e93"></a><span class="section-number-2">6</span> Keybindings</h2>
 <div class="outline-text-2" id="text-keybindings">
 <p>
 Gnus has very modal default keybindings.
@@ -487,7 +487,7 @@ Basic and Spacemacs specific keybindings can be found in the following table.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-08-13 Sun 17:36</p>
+<p class="date">Created: 2017-08-19 Sat 14:21</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

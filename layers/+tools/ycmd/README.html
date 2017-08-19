@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-13 Sun 17:35 -->
+<!-- 2017-08-19 Sat 14:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>YCMD layer</title>
@@ -282,8 +282,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orge58fe65" class="outline-2">
-<h2 id="description"><a id="orge58fe65"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgd11d20c" class="outline-2">
+<h2 id="description"><a id="orgd11d20c"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds <a href="https://github.com/abingham/emacs-ycmd">emacs-ycmd</a> support, including its integrations with company,
@@ -292,13 +292,13 @@ flycheck, and eldoc.
 </div>
 </div>
 
-<div id="outline-container-orgd687c07" class="outline-2">
-<h2 id="install"><a id="orgd687c07"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org76755a5" class="outline-2">
+<h2 id="install"><a id="org76755a5"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgc5eba3b" class="outline-3">
-<h3 id="layer"><a id="orgc5eba3b"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org4f91fe0" class="outline-3">
+<h3 id="layer"><a id="org4f91fe0"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -308,8 +308,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org1293b22" class="outline-3">
-<h3 id="ycmd"><a id="org1293b22"></a><span class="section-number-3">2.2</span> YCMD</h3>
+<div id="outline-container-org0841a9e" class="outline-3">
+<h3 id="ycmd"><a id="org0841a9e"></a><span class="section-number-3">2.2</span> YCMD</h3>
 <div class="outline-text-3" id="text-ycmd">
 <ol class="org-ol">
 <li>Install the <code>ycm</code> server. Installation instructions can be found <a href="https://github.com/Valloric/ycmd#user-content-building">here</a>.</li>
@@ -317,7 +317,7 @@ file.
 Set the <code>ycmd-server-command</code> variable to reflect the path to the installation:
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ycmd-server-command '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"python"</span> <span class="org-string">"/path/to/YouCompleteMe/third_party/ycmd/ycmd"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(setq ycmd-server-command '("python" "/path/to/YouCompleteMe/third_party/ycmd/ycmd"))
 </pre>
 </div>
 <p>
@@ -325,7 +325,7 @@ Note that no filename expansions are done, so <code>~</code>-paths will not work
 If you need expansions, you can use Emacs's <code>file-truename</code> like this:
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ycmd-server-command <span class="org-rainbow-delimiters-depth-2">(</span>list <span class="org-string">"python"</span> <span class="org-rainbow-delimiters-depth-3">(</span>file-truename <span class="org-string">"~/some/path"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(setq ycmd-server-command (list "python" (file-truename "~/some/path")))
 </pre>
 </div></li>
 <li>By default, spacemacs configures ycmd for getting the compilation flags from either
@@ -336,23 +336,23 @@ a compile<sub>commands.json</sub> or a .clang<sub>complete</sub> file and get ad
 Whitelist the file by adding the following to <code>.spacemacs</code>:
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">In this example we whitelist everything in the Develop folder</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ycmd-extra-conf-whitelist '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"~/Develop/*"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">;; In this example we whitelist everything in the Develop folder
+(setq ycmd-extra-conf-whitelist '("~/Develop/*"))
 </pre>
 </div></li>
 <li><p>
 The completion is not going to work automatically until we actually force it:
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ycmd-force-semantic-completion t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(setq ycmd-force-semantic-completion t)
 </pre>
 </div></li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-orgd039501" class="outline-3">
-<h3 id="other-requirements"><a id="orgd039501"></a><span class="section-number-3">2.3</span> Other Requirements</h3>
+<div id="outline-container-orgd85174f" class="outline-3">
+<h3 id="other-requirements"><a id="orgd85174f"></a><span class="section-number-3">2.3</span> Other Requirements</h3>
 <div class="outline-text-3" id="text-other-requirements">
 <p>
 This package requires the <code>auto-completion</code> layer in order to get actual
@@ -362,14 +362,13 @@ completion. The <code>syntax-checking</code> layer is required for flycheck supp
 </div>
 </div>
 
-<div id="outline-container-org73470c7" class="outline-2">
-<h2 id="configuration"><a id="org73470c7"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-orge28d1df" class="outline-2">
+<h2 id="configuration"><a id="orge28d1df"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-
-<div id="outline-container-orgd4eb308" class="outline-3">
-<h3 id="activating-ycmd-in-a-major-mode"><a id="orgd4eb308"></a><span class="section-number-3">3.1</span> Activating ycmd in a major mode</h3>
+<div id="outline-container-org74a37d1" class="outline-3">
+<h3 id="activating-ycmd-in-a-major-mode"><a id="org74a37d1"></a><span class="section-number-3">3.1</span> Activating ycmd in a major mode</h3>
 <div class="outline-text-3" id="text-activating-ycmd-in-a-major-mode">
 <p>
 By default this layer only activates ycmd for <code>c++-mode</code> and <code>c-mode</code>.
@@ -381,14 +380,14 @@ specific languages like:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'c++-mode-hook 'ycmd-mode<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(add-hook 'c++-mode-hook 'ycmd-mode)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org71d0969" class="outline-3">
-<h3 id="getting-the-compilation-flags"><a id="org71d0969"></a><span class="section-number-3">3.2</span> Getting the compilation flags</h3>
+<div id="outline-container-orge6ed065" class="outline-3">
+<h3 id="getting-the-compilation-flags"><a id="orge6ed065"></a><span class="section-number-3">3.2</span> Getting the compilation flags</h3>
 <div class="outline-text-3" id="text-getting-the-compilation-flags">
 <p>
 Spacemacs uses its own ycmd global configuration file. If you prefer, you can
@@ -413,8 +412,8 @@ Example .ycm<sub>extra</sub><sub>flags</sub>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-conf"><span class="org-comment-delimiter"># </span><span class="org-comment">Additionnal flags for ycmd</span>
-<span class="org-variable-name">--sysroot</span>=<span class="org-string">"/path/to/your/toolchain/libc"</span> <span class="org-comment-delimiter"># </span><span class="org-comment">if you are cross-compiling</span>
+<pre class="src src-conf"># Additionnal flags for ycmd
+--sysroot="/path/to/your/toolchain/libc" # if you are cross-compiling
 </pre>
 </div>
 
@@ -427,8 +426,8 @@ with almost any build system.
 </div>
 </div>
 
-<div id="outline-container-org85727c9" class="outline-2">
-<h2 id="key-bindings"><a id="org85727c9"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org1393355" class="outline-2">
+<h2 id="key-bindings"><a id="org1393355"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
 Adds <code>SPC m g g</code> go to definition binding to <code>c++-mode</code> as well as <code>SPC m g G</code>
@@ -439,7 +438,7 @@ for the more imprecise but faster version.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-08-13 Sun 17:35</p>
+<p class="date">Created: 2017-08-19 Sat 14:20</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

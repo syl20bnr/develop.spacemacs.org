@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-13 Sun 17:36 -->
+<!-- 2017-08-19 Sat 14:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Slack layer</title>
@@ -284,8 +284,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgffc7b56" class="outline-2">
-<h2 id="description"><a id="orgffc7b56"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgeeeeae2" class="outline-2">
+<h2 id="description"><a id="orgeeeeae2"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer provides an interface to the Slack chat service via the emacs-slack
@@ -294,8 +294,8 @@ packages in Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-org4eddd6e" class="outline-3">
-<h3 id="features"><a id="org4eddd6e"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orga563b2d" class="outline-3">
+<h3 id="features"><a id="orga563b2d"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Real time messaging with <a href="https://github.com/ahyatt/emacs-websocket">emacs-websocket</a></li>
@@ -306,8 +306,8 @@ packages in Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-org91632d4" class="outline-2">
-<h2 id="install"><a id="org91632d4"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgfef8727" class="outline-2">
+<h2 id="install"><a id="orgfef8727"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -317,8 +317,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org2d2747b" class="outline-2">
-<h2 id="configuration"><a id="org2d2747b"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-orgeeb0b82" class="outline-2">
+<h2 id="configuration"><a id="orgeeb0b82"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 Follow the instructions in the <a href="https://github.com/yuya373/emacs-slack/blob/master/README.md">emacs-slack</a> package for obtaining your client ID,
@@ -337,19 +337,19 @@ stuff elsewhere (like Dropbox for instance) and load the file in your dotfile.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>slack-register-team
-  <span class="org-builtin">:name</span> <span class="org-string">"emacs-slack"</span>
-  <span class="org-builtin">:default</span> t
-  <span class="org-builtin">:client-id</span> <span class="org-string">"my@email.address"</span>
-  <span class="org-builtin">:client-secret</span> <span class="org-string">"mypassword"</span>
-  <span class="org-builtin">:token</span> <span class="org-string">"token"</span>
-  <span class="org-builtin">:subscribed-channels</span> '<span class="org-rainbow-delimiters-depth-2">(</span>general slackbot<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(slack-register-team
+  :name "emacs-slack"
+  :default t
+  :client-id "my@email.address"
+  :client-secret "mypassword"
+  :token "token"
+  :subscribed-channels '(general slackbot))
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org2334af5" class="outline-3">
-<h3 id="spacemacs-layout-integration"><a id="org2334af5"></a><span class="section-number-3">3.1</span> Spacemacs layout integration</h3>
+<div id="outline-container-org74e2e3a" class="outline-3">
+<h3 id="spacemacs-layout-integration"><a id="org74e2e3a"></a><span class="section-number-3">3.1</span> Spacemacs layout integration</h3>
 <div class="outline-text-3" id="text-spacemacs-layout-integration">
 <p>
 A <a href="../../../doc/DOCUMENTATION.html#layouts-and-workspaces">Spacemacs custom layout</a> is defined by the layer. The name and the key binding
@@ -365,17 +365,17 @@ By default the values are:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>slack <span class="org-builtin">:variables</span> slack-spacemacs-layout-name <span class="org-string">"@Slack"</span>
-                    slack-spacemacs-layout-binding <span class="org-string">"s"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(setq-default dotspacemacs-configuration-layers '(
+  (slack :variables slack-spacemacs-layout-name "@Slack"
+                    slack-spacemacs-layout-binding "s")))
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org6b3006c" class="outline-2">
-<h2 id="key-bindings"><a id="org6b3006c"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-orgbd1aa6d" class="outline-2">
+<h2 id="key-bindings"><a id="orgbd1aa6d"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -525,7 +525,7 @@ prefix.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-08-13 Sun 17:36</p>
+<p class="date">Created: 2017-08-19 Sat 14:21</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

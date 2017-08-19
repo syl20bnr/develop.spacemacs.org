@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-13 Sun 17:35 -->
+<!-- 2017-08-19 Sat 14:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Colors layer</title>
@@ -287,8 +287,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org3f77006" class="outline-2">
-<h2 id="description"><a id="org3f77006"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org2532267" class="outline-2">
+<h2 id="description"><a id="org2532267"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer colors your life with the help of the following packages:
@@ -304,8 +304,8 @@ represent as background.</li>
 </div>
 </div>
 
-<div id="outline-container-org9bff75d" class="outline-2">
-<h2 id="install"><a id="org9bff75d"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org3f4af89" class="outline-2">
+<h2 id="install"><a id="org3f4af89"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -315,13 +315,13 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orga26347b" class="outline-2">
-<h2 id="configuration"><a id="orga26347b"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-orgd223c55" class="outline-2">
+<h2 id="configuration"><a id="orgd223c55"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org1f281eb" class="outline-3">
-<h3 id="colorize-identifiers"><a id="org1f281eb"></a><span class="section-number-3">3.1</span> Colorize identifiers</h3>
+<div id="outline-container-orgf5e3f8d" class="outline-3">
+<h3 id="colorize-identifiers"><a id="orgf5e3f8d"></a><span class="section-number-3">3.1</span> Colorize identifiers</h3>
 <div class="outline-text-3" id="text-colorize-identifiers">
 <p>
 To colorize variable identifiers using color-identifiers and its supported languages,
@@ -334,8 +334,8 @@ method instead, set the layer variable <code>colors-colorize-identifiers</code> 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>colors <span class="org-builtin">:variables</span> colors-colorize-identifiers 'all<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(setq-default dotspacemacs-configuration-layers '(
+  (colors :variables colors-colorize-identifiers 'all)))
 </pre>
 </div>
 
@@ -361,12 +361,12 @@ Example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">add per-theme sat&amp;light overrides and refresh values for your current theme</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>colors/add-theme-sat&amp;light 'mytheme '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-highlight-numbers-number">50</span> <span class="org-highlight-numbers-number">50</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>colors/add-theme-sat&amp;light 'anothertheme '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-highlight-numbers-number">90</span> <span class="org-highlight-numbers-number">40</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>colors/refresh-theme-look<span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(defun dotspacemacs/user-config ()
+  ;; add per-theme sat&amp;light overrides and refresh values for your current theme
+  (colors/add-theme-sat&amp;light 'mytheme '(50 50))
+  (colors/add-theme-sat&amp;light 'anothertheme '(90 40))
+  (colors/refresh-theme-look)
+  )
 </pre>
 </div>
 
@@ -377,19 +377,19 @@ and <code>colors-default-rainbow-identifiers-light</code>, which can be set via 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>colors <span class="org-builtin">:variables</span>
+<pre class="src src-emacs-lisp">(setq-default dotspacemacs-configuration-layers '(
+  (colors :variables
     colors-colorize-identifiers 'all
-    colors-default-rainbow-identifiers-sat <span class="org-highlight-numbers-number">42</span>
-    colors-default-rainbow-identifiers-light <span class="org-highlight-numbers-number">86</span><span class="org-rainbow-delimiters-depth-3">)</span>
-  <span class="org-rainbow-delimiters-depth-2">)</span>
+    colors-default-rainbow-identifiers-sat 42
+    colors-default-rainbow-identifiers-light 86)
+  )
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orge2a38ea" class="outline-3">
-<h3 id="enable-nyan-cat"><a id="orge2a38ea"></a><span class="section-number-3">3.2</span> Enable Nyan cat</h3>
+<div id="outline-container-orge016a19" class="outline-3">
+<h3 id="enable-nyan-cat"><a id="orge016a19"></a><span class="section-number-3">3.2</span> Enable Nyan cat</h3>
 <div class="outline-text-3" id="text-enable-nyan-cat">
 <p>
 To enable the package <code>nyan-mode</code> just set the variable
@@ -397,8 +397,8 @@ To enable the package <code>nyan-mode</code> just set the variable
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>colors <span class="org-builtin">:variables</span> colors-enable-nyan-cat-progress-bar t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(setq-default dotspacemacs-configuration-layers '(
+  (colors :variables colors-enable-nyan-cat-progress-bar t)))
 </pre>
 </div>
 
@@ -408,22 +408,22 @@ You can do that by using a quasi-quoted list which checks the Emacs mode:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>colors <span class="org-builtin">:variables</span>
-          colors-enable-nyan-cat-progress-bar <span class="org-rainbow-delimiters-depth-4">(</span>display-graphic-p<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(setq-default dotspacemacs-configuration-layers '(
+  (colors :variables
+          colors-enable-nyan-cat-progress-bar (display-graphic-p))))
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgdd15ef0" class="outline-2">
-<h2 id="key-bindings"><a id="orgdd15ef0"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-orgb3d9082" class="outline-2">
+<h2 id="key-bindings"><a id="orgb3d9082"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org70764ca" class="outline-3">
-<h3 id="colorize-identifiers-1"><a id="org70764ca"></a><span class="section-number-3">4.1</span> Colorize Identifiers</h3>
+<div id="outline-container-org75f7672" class="outline-3">
+<h3 id="colorize-identifiers-1"><a id="org75f7672"></a><span class="section-number-3">4.1</span> Colorize Identifiers</h3>
 <div class="outline-text-3" id="text-colorize-identifiers-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -516,8 +516,8 @@ can be adjusted live via the following transient-state:
 </div>
 </div>
 
-<div id="outline-container-org43a98cf" class="outline-3">
-<h3 id="rainbow-mode"><a id="org43a98cf"></a><span class="section-number-3">4.2</span> Rainbow Mode</h3>
+<div id="outline-container-orgd043570" class="outline-3">
+<h3 id="rainbow-mode"><a id="orgd043570"></a><span class="section-number-3">4.2</span> Rainbow Mode</h3>
 <div class="outline-text-3" id="text-rainbow-mode">
 
 <div class="figure">
@@ -546,8 +546,8 @@ To enable, you must manually toggle it on and off on a per-buffer basis with:
 </div>
 </div>
 
-<div id="outline-container-org58218f1" class="outline-3">
-<h3 id="nyan-mode"><a id="org58218f1"></a><span class="section-number-3">4.3</span> Nyan Mode</h3>
+<div id="outline-container-org585b20c" class="outline-3">
+<h3 id="nyan-mode"><a id="org585b20c"></a><span class="section-number-3">4.3</span> Nyan Mode</h3>
 <div class="outline-text-3" id="text-nyan-mode">
 <p>
 <code>nyan-mode</code> mode can be toggled on and off with:
@@ -566,7 +566,7 @@ Note that the toggle is local to the current buffer.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-08-13 Sun 17:35</p>
+<p class="date">Created: 2017-08-19 Sat 14:20</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

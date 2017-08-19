@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-13 Sun 17:35 -->
+<!-- 2017-08-19 Sat 14:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>OSX layer</title>
@@ -287,8 +287,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orge10f935" class="outline-2">
-<h2 id="description"><a id="orge10f935"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgf711908" class="outline-2">
+<h2 id="description"><a id="orgf711908"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 Spacemacs is not just emacs+vim. It can have OSX keybindings too! This layer
@@ -302,8 +302,8 @@ While in <code>dired</code> this layer will try to use <code>gls</code> instead 
 </div>
 </div>
 
-<div id="outline-container-orgb9d9485" class="outline-2">
-<h2 id="philosophy"><a id="orgb9d9485"></a><span class="section-number-2">2</span> Philosophy</h2>
+<div id="outline-container-org36291f5" class="outline-2">
+<h2 id="philosophy"><a id="org36291f5"></a><span class="section-number-2">2</span> Philosophy</h2>
 <div class="outline-text-2" id="text-philosophy">
 <p>
 While this layer enables common OSX bindings, it does not implement OSX
@@ -313,13 +313,13 @@ encourage you to do so :)
 </div>
 </div>
 
-<div id="outline-container-orgda98eee" class="outline-2">
-<h2 id="install"><a id="orgda98eee"></a><span class="section-number-2">3</span> Install</h2>
+<div id="outline-container-org7cfa580" class="outline-2">
+<h2 id="install"><a id="org7cfa580"></a><span class="section-number-2">3</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org3ce978b" class="outline-3">
-<h3 id="layer"><a id="org3ce978b"></a><span class="section-number-3">3.1</span> Layer</h3>
+<div id="outline-container-orgeb343e9" class="outline-3">
+<h3 id="layer"><a id="orgeb343e9"></a><span class="section-number-3">3.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 Layer has been updated for new config variables. The variable <code>osx-use-option-as-meta</code>
@@ -333,14 +333,14 @@ The different modifier keys can be set as follows:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-defaults dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-   <span class="org-rainbow-delimiters-depth-3">(</span>osx <span class="org-builtin">:variables</span> osx-command-as       'hyper
+<pre class="src src-emacs-lisp">(setq-defaults dotspacemacs-configuration-layers '(
+   (osx :variables osx-command-as       'hyper
                    osx-option-as        'meta
                    osx-control-as       'control
                    osx-function-as      'none
                    osx-right-command-as 'left
                    osx-right-option-as  'left
-                   osx-right-control-as 'left<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+                   osx-right-control-as 'left))
 </pre>
 </div>
 
@@ -352,8 +352,8 @@ Setting <code>nil</code> for modifiers will leave the left modifiers as emacs de
 </p>
 </div>
 
-<div id="outline-container-org57ed5d6" class="outline-4">
-<h4 id="use-with-non-us-keyboard-layouts"><a id="org57ed5d6"></a><span class="section-number-4">3.1.1</span> Use with non-US keyboard layouts</h4>
+<div id="outline-container-org4b501f9" class="outline-4">
+<h4 id="use-with-non-us-keyboard-layouts"><a id="org4b501f9"></a><span class="section-number-4">3.1.1</span> Use with non-US keyboard layouts</h4>
 <div class="outline-text-4" id="text-use-with-non-us-keyboard-layouts">
 <p>
 If you need the <code>⌥</code> key to type common characters such as <code>{[]}~</code> which is usual
@@ -362,8 +362,8 @@ for e.g. Finnish and Swedish keyboard layouts, you'll probably want to leave the
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-   <span class="org-rainbow-delimiters-depth-3">(</span>osx <span class="org-builtin">:variables</span> osx-option-as 'none<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(setq-default dotspacemacs-configuration-layers '(
+   (osx :variables osx-option-as 'none)))
 </pre>
 </div>
 
@@ -375,16 +375,16 @@ key.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-   <span class="org-rainbow-delimiters-depth-3">(</span>osx <span class="org-builtin">:variables</span> osx-option-as 'meta
-                   osx-right-option-as 'none<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(setq-default dotspacemacs-configuration-layers '(
+   (osx :variables osx-option-as 'meta
+                   osx-right-option-as 'none)))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2076c97" class="outline-4">
-<h4 id="define-words-using-os-x-dictionary"><a id="org2076c97"></a><span class="section-number-4">3.1.2</span> Define words using OS X Dictionary</h4>
+<div id="outline-container-org5fa71db" class="outline-4">
+<h4 id="define-words-using-os-x-dictionary"><a id="org5fa71db"></a><span class="section-number-4">3.1.2</span> Define words using OS X Dictionary</h4>
 <div class="outline-text-4" id="text-define-words-using-os-x-dictionary">
 <p>
 This layer by default enables defining words under point <code>SPC x w d</code> using OS X
@@ -393,8 +393,8 @@ For example,
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-   <span class="org-rainbow-delimiters-depth-3">(</span>osx <span class="org-builtin">:variables</span> osx-dictionary-dictionary-choice <span class="org-string">"English"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(setq-default dotspacemacs-configuration-layers '(
+   (osx :variables osx-dictionary-dictionary-choice "English")))
 </pre>
 </div>
 
@@ -408,16 +408,16 @@ You can disable it by setting <code>osx-use-dictionary-app</code> variable to <c
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-   <span class="org-rainbow-delimiters-depth-3">(</span>osx <span class="org-builtin">:variables</span> osx-use-dictionary-app nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(setq-default dotspacemacs-configuration-layers '(
+   (osx :variables osx-use-dictionary-app nil)))
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orge64d718" class="outline-3">
-<h3 id="coreutils"><a id="orge64d718"></a><span class="section-number-3">3.2</span> Coreutils</h3>
+<div id="outline-container-org4862f40" class="outline-3">
+<h3 id="coreutils"><a id="org4862f40"></a><span class="section-number-3">3.2</span> Coreutils</h3>
 <div class="outline-text-3" id="text-coreutils">
 <p>
 To get <code>gls</code> install coreutils homebrew:
@@ -431,8 +431,8 @@ To get <code>gls</code> install coreutils homebrew:
 </div>
 </div>
 
-<div id="outline-container-org3bf4e01" class="outline-2">
-<h2 id="key-bindings"><a id="org3bf4e01"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org10b5fee" class="outline-2">
+<h2 id="key-bindings"><a id="org10b5fee"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -528,8 +528,8 @@ To get <code>gls</code> install coreutils homebrew:
 </div>
 </div>
 
-<div id="outline-container-orga3bc2b0" class="outline-2">
-<h2 id="future-work"><a id="orga3bc2b0"></a><span class="section-number-2">5</span> Future Work</h2>
+<div id="outline-container-orgbcc2935" class="outline-2">
+<h2 id="future-work"><a id="orgbcc2935"></a><span class="section-number-2">5</span> Future Work</h2>
 <div class="outline-text-2" id="text-future-work">
 <ul class="org-ul">
 <li>Allow user to choose from either <code>hyper</code> or <code>super</code> as <code>⌘</code>. This is an option
@@ -541,7 +541,7 @@ that is supported cross-platform.</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-08-13 Sun 17:35</p>
+<p class="date">Created: 2017-08-19 Sat 14:21</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-13 Sun 17:36 -->
+<!-- 2017-08-19 Sat 14:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>React layer</title>
@@ -289,8 +289,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org1d5b3f4" class="outline-2">
-<h2 id="description"><a id="org1d5b3f4"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org7d37af2" class="outline-2">
+<h2 id="description"><a id="org7d37af2"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 ES6 and JSX ready configuration layer for React
@@ -302,8 +302,8 @@ It will also recognize <code>/** @jsx React.DOM */</code> if it is the first lin
 </p>
 </div>
 
-<div id="outline-container-orge5e1124" class="outline-3">
-<h3 id="features"><a id="orge5e1124"></a><span class="section-number-3">1.1</span> Features</h3>
+<div id="outline-container-orgbddfee9" class="outline-3">
+<h3 id="features"><a id="orgbddfee9"></a><span class="section-number-3">1.1</span> Features</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>on-the-fly syntax checking</li>
@@ -317,8 +317,8 @@ It will also recognize <code>/** @jsx React.DOM */</code> if it is the first lin
 </div>
 </div>
 
-<div id="outline-container-org9ef387c" class="outline-2">
-<h2 id="install"><a id="org9ef387c"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org91ec84f" class="outline-2">
+<h2 id="install"><a id="org91ec84f"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -364,7 +364,7 @@ If you install these in non-standard locations, then add the following to your
 <code>dotspacemacs/user-init</code> function:
 </p>
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'exec-path <span class="org-string">"/path/to/node/bins"</span> t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(add-to-list 'exec-path "/path/to/node/bins" t)
 </pre>
 </div>
 
@@ -401,8 +401,8 @@ is my configuration as an example:
 </div>
 </div>
 
-<div id="outline-container-org1424454" class="outline-2">
-<h2 id="optional-configuration"><a id="org1424454"></a><span class="section-number-2">3</span> Optional Configuration</h2>
+<div id="outline-container-org8327b5e" class="outline-2">
+<h2 id="optional-configuration"><a id="org8327b5e"></a><span class="section-number-2">3</span> Optional Configuration</h2>
 <div class="outline-text-2" id="text-optional-configuration">
 <p>
 You may refer to the <code>web-mode</code> configuration for fine tuning the indenting
@@ -415,15 +415,15 @@ may use these settings:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span>
- <span class="org-comment-delimiter">;; </span><span class="org-comment">js2-mode</span>
- js2-basic-offset <span class="org-highlight-numbers-number">2</span>
- <span class="org-comment-delimiter">;; </span><span class="org-comment">web-mode</span>
- css-indent-offset <span class="org-highlight-numbers-number">2</span>
- web-mode-markup-indent-offset <span class="org-highlight-numbers-number">2</span>
- web-mode-css-indent-offset <span class="org-highlight-numbers-number">2</span>
- web-mode-code-indent-offset <span class="org-highlight-numbers-number">2</span>
- web-mode-attr-indent-offset <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(setq-default
+ ;; js2-mode
+ js2-basic-offset 2
+ ;; web-mode
+ css-indent-offset 2
+ web-mode-markup-indent-offset 2
+ web-mode-css-indent-offset 2
+ web-mode-code-indent-offset 2
+ web-mode-attr-indent-offset 2)
 </pre>
 </div>
 
@@ -432,23 +432,22 @@ And if you want to have 2 space indent also for element's attributes,
 concatenations and contiguous function calls:
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'web-mode
-  <span class="org-rainbow-delimiters-depth-2">(</span>add-to-list 'web-mode-indentation-params '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-args"</span> . nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>add-to-list 'web-mode-indentation-params '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-concats"</span> . nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>add-to-list 'web-mode-indentation-params '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-calls"</span> . nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(with-eval-after-load 'web-mode
+  (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+  (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+  (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org6c9bcb6" class="outline-2">
-<h2 id="key-bindings"><a id="org6c9bcb6"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org2c4d0c5" class="outline-2">
+<h2 id="key-bindings"><a id="org2c4d0c5"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-
-<div id="outline-container-org5ad21da" class="outline-3">
-<h3 id="formatting-web-beautify"><a id="org5ad21da"></a><span class="section-number-3">4.1</span> Formatting (web-beautify)</h3>
+<div id="outline-container-org7577e18" class="outline-3">
+<h3 id="formatting-web-beautify"><a id="org7577e18"></a><span class="section-number-3">4.1</span> Formatting (web-beautify)</h3>
 <div class="outline-text-3" id="text-formatting-web-beautify">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -473,8 +472,8 @@ concatenations and contiguous function calls:
 </table>
 </div>
 
-<div id="outline-container-org291c4fe" class="outline-4">
-<h4 id="documentation-js-doc"><a id="org291c4fe"></a><span class="section-number-4">4.1.1</span> Documentation (js-doc)</h4>
+<div id="outline-container-org6292073" class="outline-4">
+<h4 id="documentation-js-doc"><a id="org6292073"></a><span class="section-number-4">4.1.1</span> Documentation (js-doc)</h4>
 <div class="outline-text-4" id="text-documentation-js-doc">
 <p>
 You can check more <a href="https://github.com/mooz/js-doc/">here</a>
@@ -520,8 +519,8 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 
-<div id="outline-container-org0909ba5" class="outline-3">
-<h3 id="auto-complete-and-documentation-tern"><a id="org0909ba5"></a><span class="section-number-3">4.2</span> Auto-complete and documentation (tern)</h3>
+<div id="outline-container-orga0b9266" class="outline-3">
+<h3 id="auto-complete-and-documentation-tern"><a id="orga0b9266"></a><span class="section-number-3">4.2</span> Auto-complete and documentation (tern)</h3>
 <div class="outline-text-3" id="text-auto-complete-and-documentation-tern">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -575,7 +574,7 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-08-13 Sun 17:36</p>
+<p class="date">Created: 2017-08-19 Sat 14:21</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

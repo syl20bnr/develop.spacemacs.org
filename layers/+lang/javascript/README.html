@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-13 Sun 17:36 -->
+<!-- 2017-08-19 Sat 14:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JavaScript layer</title>
@@ -298,16 +298,16 @@ for the JavaScript code in this tag.
 <img src="img/javascript.png" alt="javascript.png" /> <img src="img/coffee.png" alt="coffee.png" />
 </p>
 
-<div id="outline-container-orga41c25f" class="outline-2">
-<h2 id="description"><a id="orga41c25f"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org91d46b6" class="outline-2">
+<h2 id="description"><a id="org91d46b6"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for the JavaScript language using <a href="https://github.com/mooz/js2-mode">js2-mode</a>.
 </p>
 </div>
 
-<div id="outline-container-org6f5334c" class="outline-3">
-<h3 id="features"><a id="org6f5334c"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org03d1ca5" class="outline-3">
+<h3 id="features"><a id="org03d1ca5"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Smart code folding</li>
@@ -322,8 +322,8 @@ This layer adds support for the JavaScript language using <a href="https://githu
 </div>
 </div>
 
-<div id="outline-container-org59877d0" class="outline-2">
-<h2 id="install"><a id="org59877d0"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgb199443" class="outline-2">
+<h2 id="install"><a id="orgb199443"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -354,7 +354,7 @@ such as <code>ESLint</code> or <code>JSHint</code>:
 </p>
 <div class="org-src-container">
 <pre class="src src-sh">$ npm install -g eslint
-<span class="org-comment-delimiter"># </span><span class="org-comment">or</span>
+# or
 $ npm install -g jshint
 </pre>
 </div>
@@ -363,19 +363,19 @@ $ npm install -g jshint
 If you install these in non-standard locations, then add the following to your <code>dotspacemacs/user-init</code> function:
 </p>
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'exec-path <span class="org-string">"/path/to/node/bins"</span> t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(add-to-list 'exec-path "/path/to/node/bins" t)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org13291ce" class="outline-2">
-<h2 id="configuration"><a id="org13291ce"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-orgc16ac43" class="outline-2">
+<h2 id="configuration"><a id="orgc16ac43"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-orgd0edaaa" class="outline-3">
-<h3 id="tern"><a id="orgd0edaaa"></a><span class="section-number-3">3.1</span> Tern</h3>
+<div id="outline-container-orgd1565c8" class="outline-3">
+<h3 id="tern"><a id="orgd1565c8"></a><span class="section-number-3">3.1</span> Tern</h3>
 <div class="outline-text-3" id="text-tern">
 <p>
 To make tern re-use the server across multiple different editing sessions (thus
@@ -385,11 +385,11 @@ for more details</a>):
 
 <p>
 The variables provided below can be set when adding the <code>javascript</code>
-configuration layer, as detailed in <a href="../../../doc/DOCUMENTATION.html#orgc774aed">this</a> section of the documentation.
+configuration layer, as detailed in <a href="../../../doc/DOCUMENTATION.html#setting-configuration-layers-variables">this</a> section of the documentation.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span> javascript-disable-tern-port-files nil<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(javascript :variables javascript-disable-tern-port-files nil)
 </pre>
 </div>
 
@@ -401,14 +401,14 @@ layer:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span> tern-command '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"node"</span> <span class="org-string">"/path/to/tern/bin/tern"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(javascript :variables tern-command '("node" "/path/to/tern/bin/tern"))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgd6b6864" class="outline-3">
-<h3 id="indentation"><a id="orgd6b6864"></a><span class="section-number-3">3.2</span> Indentation</h3>
+<div id="outline-container-org5da2606" class="outline-3">
+<h3 id="indentation"><a id="org5da2606"></a><span class="section-number-3">3.2</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
 To change how js2-mode indents code, set the variable <code>js2-basic-offset</code>, as
@@ -416,7 +416,7 @@ such:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> js2-basic-offset <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(setq-default js2-basic-offset 2)
 </pre>
 </div>
 
@@ -426,14 +426,14 @@ Similarly, to change how js-mode indents JSON files, set the variable
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> js-indent-level <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(setq-default js-indent-level 2)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org14cecf8" class="outline-3">
-<h3 id="repl"><a id="org14cecf8"></a><span class="section-number-3">3.3</span> REPL</h3>
+<div id="outline-container-org31236e7" class="outline-3">
+<h3 id="repl"><a id="org31236e7"></a><span class="section-number-3">3.3</span> REPL</h3>
 <div class="outline-text-3" id="text-repl">
 <p>
 To use the available JS repl, you need a running httpd server and a page loaded
@@ -446,14 +446,13 @@ in the top-right corner - if it turns green, you're good to go).
 </div>
 </div>
 
-<div id="outline-container-org1ddfec6" class="outline-2">
-<h2 id="key-bindings"><a id="org1ddfec6"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org0a4e72a" class="outline-2">
+<h2 id="key-bindings"><a id="org0a4e72a"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-
-<div id="outline-container-orgad45760" class="outline-3">
-<h3 id="js2-mode"><a id="orgad45760"></a><span class="section-number-3">4.1</span> js2-mode</h3>
+<div id="outline-container-org5359ecd" class="outline-3">
+<h3 id="js2-mode"><a id="org5359ecd"></a><span class="section-number-3">4.1</span> js2-mode</h3>
 <div class="outline-text-3" id="text-js2-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -484,8 +483,8 @@ in the top-right corner - if it turns green, you're good to go).
 </div>
 </div>
 
-<div id="outline-container-orgc63891e" class="outline-3">
-<h3 id="folding-js2-mode"><a id="orgc63891e"></a><span class="section-number-3">4.2</span> Folding (js2-mode)</h3>
+<div id="outline-container-orgbdd8d97" class="outline-3">
+<h3 id="folding-js2-mode"><a id="orgbdd8d97"></a><span class="section-number-3">4.2</span> Folding (js2-mode)</h3>
 <div class="outline-text-3" id="text-folding-js2-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -536,8 +535,8 @@ in the top-right corner - if it turns green, you're good to go).
 </div>
 </div>
 
-<div id="outline-container-orgfdca7b1" class="outline-3">
-<h3 id="refactoring-js2-refactor"><a id="orgfdca7b1"></a><span class="section-number-3">4.3</span> Refactoring (js2-refactor)</h3>
+<div id="outline-container-orgc19d21e" class="outline-3">
+<h3 id="refactoring-js2-refactor"><a id="orgc19d21e"></a><span class="section-number-3">4.3</span> Refactoring (js2-refactor)</h3>
 <div class="outline-text-3" id="text-refactoring-js2-refactor">
 <p>
 Bindings should match the plain emacs assignments.
@@ -712,8 +711,8 @@ Bindings should match the plain emacs assignments.
 </div>
 </div>
 
-<div id="outline-container-org70757de" class="outline-3">
-<h3 id="formatting-web-beautify"><a id="org70757de"></a><span class="section-number-3">4.4</span> Formatting (web-beautify)</h3>
+<div id="outline-container-orgbf5cedd" class="outline-3">
+<h3 id="formatting-web-beautify"><a id="orgbf5cedd"></a><span class="section-number-3">4.4</span> Formatting (web-beautify)</h3>
 <div class="outline-text-3" id="text-formatting-web-beautify">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -738,8 +737,8 @@ Bindings should match the plain emacs assignments.
 </table>
 </div>
 
-<div id="outline-container-org3ac51ab" class="outline-4">
-<h4 id="documentation-js-doc"><a id="org3ac51ab"></a><span class="section-number-4">4.4.1</span> Documentation (js-doc)</h4>
+<div id="outline-container-org87c2adb" class="outline-4">
+<h4 id="documentation-js-doc"><a id="org87c2adb"></a><span class="section-number-4">4.4.1</span> Documentation (js-doc)</h4>
 <div class="outline-text-4" id="text-documentation-js-doc">
 <p>
 You can check more <a href="https://github.com/mooz/js-doc/">here</a>
@@ -785,8 +784,8 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 
-<div id="outline-container-orga21b863" class="outline-3">
-<h3 id="auto-complete-and-documentation-tern"><a id="orga21b863"></a><span class="section-number-3">4.5</span> Auto-complete and documentation (tern)</h3>
+<div id="outline-container-org48b1e99" class="outline-3">
+<h3 id="auto-complete-and-documentation-tern"><a id="org48b1e99"></a><span class="section-number-3">4.5</span> Auto-complete and documentation (tern)</h3>
 <div class="outline-text-3" id="text-auto-complete-and-documentation-tern">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -837,8 +836,8 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 
-<div id="outline-container-org287bf9c" class="outline-3">
-<h3 id="json"><a id="org287bf9c"></a><span class="section-number-3">4.6</span> JSON</h3>
+<div id="outline-container-org9746974" class="outline-3">
+<h3 id="json"><a id="org9746974"></a><span class="section-number-3">4.6</span> JSON</h3>
 <div class="outline-text-3" id="text-json">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -864,8 +863,8 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 
-<div id="outline-container-orgee192dd" class="outline-3">
-<h3 id="repl-skewer-mode"><a id="orgee192dd"></a><span class="section-number-3">4.7</span> REPL (skewer-mode)</h3>
+<div id="outline-container-org6a62b7a" class="outline-3">
+<h3 id="repl-skewer-mode"><a id="org6a62b7a"></a><span class="section-number-3">4.7</span> REPL (skewer-mode)</h3>
 <div class="outline-text-3" id="text-repl-skewer-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -961,7 +960,7 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-08-13 Sun 17:36</p>
+<p class="date">Created: 2017-08-19 Sat 14:21</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
