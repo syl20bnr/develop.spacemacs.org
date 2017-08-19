@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-13 Sun 17:35 -->
+<!-- 2017-08-19 Sat 14:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CFEngine layer</title>
@@ -281,8 +281,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org31cfb03" class="outline-2">
-<h2 id="description"><a id="org31cfb03"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org22b3eef" class="outline-2">
+<h2 id="description"><a id="org22b3eef"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer makes working with CFEngine policy easier:
@@ -295,8 +295,8 @@ This layer makes working with CFEngine policy easier:
 </div>
 </div>
 
-<div id="outline-container-org29e811f" class="outline-2">
-<h2 id="install"><a id="org29e811f"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orga5c7f44" class="outline-2">
+<h2 id="install"><a id="orga5c7f44"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 Add <code>cfengine</code> to the <code>dotspacemacs-configuration-layers</code> in your <code>~/.spacemacs</code>
@@ -305,13 +305,13 @@ to use this layer.
 </div>
 </div>
 
-<div id="outline-container-org0e51a0f" class="outline-2">
-<h2 id="configuration"><a id="org0e51a0f"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org19ee17f" class="outline-2">
+<h2 id="configuration"><a id="org19ee17f"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org8f672c5" class="outline-3">
-<h3 id="set-file-permission-on-save"><a id="org8f672c5"></a><span class="section-number-3">3.1</span> Set file permission on save</h3>
+<div id="outline-container-orga7b5c03" class="outline-3">
+<h3 id="set-file-permission-on-save"><a id="orga7b5c03"></a><span class="section-number-3">3.1</span> Set file permission on save</h3>
 <div class="outline-text-3" id="text-set-file-permission-on-save">
 <p>
 Here is a function to set permissions to 600 on save, this can help avoid
@@ -323,20 +323,20 @@ errors like:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">cfengine-permissions-policy-owner-only</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-doc">"If file starts with a shebang, make `</span><span class="org-doc"><span class="org-constant">buffer-file-name</span></span><span class="org-doc">' executable"</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">save-excursion</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>set-file-modes buffer-file-name <span class="org-highlight-numbers-number">#o600</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>message <span class="org-rainbow-delimiters-depth-4">(</span>concat <span class="org-string">"Made "</span> buffer-file-name <span class="org-string">" accessibly only by the owner (600)."</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(defun cfengine-permissions-policy-owner-only ()
+  "If file starts with a shebang, make `buffer-file-name' executable"
+  (save-excursion
+    (set-file-modes buffer-file-name #o600)
+    (message (concat "Made " buffer-file-name " accessibly only by the owner (600)."))))
 
-<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'after-save-hook 'cfengine-permissions-policy-owner-only nil 'make-it-local<span class="org-rainbow-delimiters-depth-1">)</span>
+(add-hook 'after-save-hook 'cfengine-permissions-policy-owner-only nil 'make-it-local)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1ace89f" class="outline-3">
-<h3 id="indendation"><a id="org1ace89f"></a><span class="section-number-3">3.2</span> Indendation</h3>
+<div id="outline-container-org7f31f65" class="outline-3">
+<h3 id="indendation"><a id="org7f31f65"></a><span class="section-number-3">3.2</span> Indendation</h3>
 <div class="outline-text-3" id="text-indendation">
 <p>
 If you like attributes to be intended from the promiser set <code>Indentation amount
@@ -344,22 +344,22 @@ from anchor</code> to <code>2</code>. For example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cfengine3"><span class="org-builtin">bundle</span> <span class="org-constant">agent</span> <span class="org-function-name">main</span>
-<span class="org-rainbow-delimiters-depth-1">{</span>
-  <span class="org-builtin">vars</span>:
+<pre class="src src-cfengine3">bundle agent main
+{
+  vars:
 
-      <span class="org-string">"promiser"</span>
-        <span class="org-type">string</span> =&gt; <span class="org-string">"value"</span>,
-        comment =&gt; <span class="org-string">"Indented 2 spaces from promiser"</span>;
-<span class="org-rainbow-delimiters-depth-1">}</span>
+      "promiser"
+        string =&gt; "value",
+        comment =&gt; "Indented 2 spaces from promiser";
+}
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5c568df" class="outline-2">
-<h2 id="key-bindings"><a id="org5c568df"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org5dca02e" class="outline-2">
+<h2 id="key-bindings"><a id="org5dca02e"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -387,7 +387,7 @@ from anchor</code> to <code>2</code>. For example:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-08-13 Sun 17:35</p>
+<p class="date">Created: 2017-08-19 Sat 14:20</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-13 Sun 17:35 -->
+<!-- 2017-08-19 Sat 14:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elfeed layer</title>
@@ -292,8 +292,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org7c8cdd7" class="outline-2">
-<h2 id="description"><a id="org7c8cdd7"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgbdefae9" class="outline-2">
+<h2 id="description"><a id="orgbdefae9"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer enables <a href="https://github.com/skeeto/elfeed">Elfeed</a>, a web feeds client which supports both Atom and RSS
@@ -303,13 +303,13 @@ feeds. It'll optionally enable supporting packages, such as <code>elfeed-web</co
 </div>
 </div>
 
-<div id="outline-container-orgb6aba96" class="outline-2">
-<h2 id="install"><a id="orgb6aba96"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org44632a5" class="outline-2">
+<h2 id="install"><a id="org44632a5"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org2e19b48" class="outline-3">
-<h3 id="layer"><a id="org2e19b48"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org3e4913f" class="outline-3">
+<h3 id="layer"><a id="org3e4913f"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -323,13 +323,13 @@ By default, <code>elfeed</code> stores its database under <code>~/.elfeed</code>
 </div>
 </div>
 
-<div id="outline-container-orgd8a9928" class="outline-3">
-<h3 id="setup-feeds"><a id="orgd8a9928"></a><span class="section-number-3">2.2</span> Setup feeds</h3>
+<div id="outline-container-org0abbae1" class="outline-3">
+<h3 id="setup-feeds"><a id="org0abbae1"></a><span class="section-number-3">2.2</span> Setup feeds</h3>
 <div class="outline-text-3" id="text-setup-feeds">
 </div>
 
-<div id="outline-container-org5de4bee" class="outline-4">
-<h4 id="with-org"><a id="org5de4bee"></a><span class="section-number-4">2.2.1</span> With Org</h4>
+<div id="outline-container-orge049be3" class="outline-4">
+<h4 id="with-org"><a id="orge049be3"></a><span class="section-number-4">2.2.1</span> With Org</h4>
 <div class="outline-text-4" id="text-with-org">
 <p>
 It is recommended to manage your feeds list and tags via org files, this is
@@ -337,8 +337,8 @@ possible thanks to <a href="https://github.com/remyhonig/elfeed-org">elfeed-org<
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elfeed <span class="org-builtin">:variables</span> rmh-elfeed-org-files <span class="org-rainbow-delimiters-depth-2">(</span>list <span class="org-string">"~/.emacs.d/private/elfeed1.org"</span>
-                                              <span class="org-string">"~/.emacs.d/private/elfeed2.org"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(elfeed :variables rmh-elfeed-org-files (list "~/.emacs.d/private/elfeed1.org"
+                                              "~/.emacs.d/private/elfeed2.org"))
 </pre>
 </div>
 
@@ -375,8 +375,8 @@ Here is an example of such a file (note the usage of org tags to tag your feeds)
 </div>
 </div>
 
-<div id="outline-container-org7b77b82" class="outline-4">
-<h4 id="manually"><a id="org7b77b82"></a><span class="section-number-4">2.2.2</span> Manually</h4>
+<div id="outline-container-org69d37c7" class="outline-4">
+<h4 id="manually"><a id="org69d37c7"></a><span class="section-number-4">2.2.2</span> Manually</h4>
 <div class="outline-text-4" id="text-manually">
 <p>
 To explicitly setup the list of feeds, set the value of <code>elfeed-feeds</code> variable
@@ -384,10 +384,10 @@ in your <code>.spacemacs</code> file.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elfeed <span class="org-builtin">:variables</span>
-   elfeed-feeds '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"http://nullprogram.com/feed/"</span> blog emacs<span class="org-rainbow-delimiters-depth-3">)</span>
-                  <span class="org-string">"http://www.50ply.com/atom.xml"</span>  <span class="org-comment-delimiter">; </span><span class="org-comment">no autotagging</span>
-                  <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"http://nedroid.com/feed/"</span> webcomic<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(elfeed :variables
+   elfeed-feeds '(("http://nullprogram.com/feed/" blog emacs)
+                  "http://www.50ply.com/atom.xml"  ; no autotagging
+                  ("http://nedroid.com/feed/" webcomic)))
 </pre>
 </div>
 
@@ -399,8 +399,8 @@ Check documentation for <code>elfeed-feeds</code> for more information about thi
 </div>
 </div>
 
-<div id="outline-container-org6694386" class="outline-3">
-<h3 id="server"><a id="org6694386"></a><span class="section-number-3">2.3</span> Server</h3>
+<div id="outline-container-orge8f8596" class="outline-3">
+<h3 id="server"><a id="orge8f8596"></a><span class="section-number-3">2.3</span> Server</h3>
 <div class="outline-text-3" id="text-server">
 <p>
 Elfeed comes with a simple <a href="https://github.com/skeeto/elfeed#web-interface">web interface</a> to browse its database. You can manually
@@ -409,7 +409,7 @@ to <code>t</code> which will start the web automatically when Emacs starts.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elfeed <span class="org-builtin">:variables</span> elfeed-enable-web-interface t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(elfeed :variables elfeed-enable-web-interface t)
 </pre>
 </div>
 
@@ -421,8 +421,8 @@ the default port by changing the value of <code>httpd-port</code>.
 </div>
 </div>
 
-<div id="outline-container-orgdb4db23" class="outline-2">
-<h2 id="key-bindings"><a id="orgdb4db23"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-orgad1ccce" class="outline-2">
+<h2 id="key-bindings"><a id="orgad1ccce"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -545,13 +545,13 @@ In <code>elfeed-show</code> mode, you can use the following bindings:
 </div>
 </div>
 
-<div id="outline-container-orgb72793e" class="outline-2">
-<h2 id="troubleshooting"><a id="orgb72793e"></a><span class="section-number-2">4</span> Troubleshooting</h2>
+<div id="outline-container-orgd5e5fbc" class="outline-2">
+<h2 id="troubleshooting"><a id="orgd5e5fbc"></a><span class="section-number-2">4</span> Troubleshooting</h2>
 <div class="outline-text-2" id="text-troubleshooting">
 </div>
 
-<div id="outline-container-orgce26ec8" class="outline-3">
-<h3 id="database-empty-at-first-start"><a id="orgce26ec8"></a><span class="section-number-3">4.1</span> Database empty at first start</h3>
+<div id="outline-container-org3aadde8" class="outline-3">
+<h3 id="database-empty-at-first-start"><a id="org3aadde8"></a><span class="section-number-3">4.1</span> Database empty at first start</h3>
 <div class="outline-text-3" id="text-database-empty-at-first-start">
 <p>
 Be sure that you added some feeds first then load your feeds with <code>gr</code>
@@ -560,8 +560,8 @@ in evilified buffer. Or <code>M-x elfeed-update</code>.
 </div>
 </div>
 
-<div id="outline-container-org823c919" class="outline-3">
-<h3 id="queue-timeout-exceeded"><a id="org823c919"></a><span class="section-number-3">4.2</span> Queue timeout exceeded</h3>
+<div id="outline-container-org1f5e081" class="outline-3">
+<h3 id="queue-timeout-exceeded"><a id="org1f5e081"></a><span class="section-number-3">4.2</span> Queue timeout exceeded</h3>
 <div class="outline-text-3" id="text-queue-timeout-exceeded">
 <p>
 If you are getting "Queue timeout exceeded" errors, try increasing
@@ -569,7 +569,7 @@ the value of <code>url-queue-timeout</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elfeed <span class="org-builtin">:variables</span> url-queue-timeout <span class="org-highlight-numbers-number">30</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(elfeed :variables url-queue-timeout 30)
 </pre>
 </div>
 </div>
@@ -578,7 +578,7 @@ the value of <code>url-queue-timeout</code>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-08-13 Sun 17:35</p>
+<p class="date">Created: 2017-08-19 Sat 14:20</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

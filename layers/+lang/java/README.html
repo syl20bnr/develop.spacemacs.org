@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-13 Sun 17:36 -->
+<!-- 2017-08-19 Sat 14:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Java layer</title>
@@ -342,8 +342,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org2f70779" class="outline-2">
-<h2 id="description"><a id="org2f70779"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org28a8087" class="outline-2">
+<h2 id="description"><a id="org28a8087"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for the Java language, it supports multiple backends:
@@ -356,13 +356,13 @@ This layer adds support for the Java language, it supports multiple backends:
 </div>
 </div>
 
-<div id="outline-container-org2985c52" class="outline-2">
-<h2 id="layer-installation"><a id="org2985c52"></a><span class="section-number-2">2</span> Layer Installation</h2>
+<div id="outline-container-org9454a86" class="outline-2">
+<h2 id="layer-installation"><a id="org9454a86"></a><span class="section-number-2">2</span> Layer Installation</h2>
 <div class="outline-text-2" id="text-layer-installation">
 </div>
 
-<div id="outline-container-org9423845" class="outline-3">
-<h3 id="layer"><a id="org9423845"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-orgc38a22a" class="outline-3">
+<h3 id="layer"><a id="orgc38a22a"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -372,15 +372,15 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgf9bd9f4" class="outline-3">
-<h3 id="choosing-a-backend"><a id="orgf9bd9f4"></a><span class="section-number-3">2.2</span> Choosing a backend</h3>
+<div id="outline-container-orgbaf1e3b" class="outline-3">
+<h3 id="choosing-a-backend"><a id="orgbaf1e3b"></a><span class="section-number-3">2.2</span> Choosing a backend</h3>
 <div class="outline-text-3" id="text-choosing-a-backend">
 <p>
 To choose a default backend set the layer variable <code>java-backend</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>java <span class="org-builtin">:variables</span> java-backend 'eclim<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(java :variables java-backend 'eclim)
 </pre>
 </div>
 
@@ -391,10 +391,10 @@ Backend can be chosen on a per project basis using directory local variables
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
-<span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
+<pre class="src src-elisp">;;; Directory Local Variables
+;;; For more information see (info "(emacs) Directory Variables")
 
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>java-mode <span class="org-rainbow-delimiters-depth-3">(</span>java-backend . eclim<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+((java-mode (java-backend . eclim)))
 </pre>
 </div>
 
@@ -408,21 +408,21 @@ use the recommended Ensime version (Stable). Please add the following lines to
 <code>dotspacemacs/user-init</code>:
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">push</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"melpa-stable"</span> . <span class="org-string">"stable.melpa.org/packages/"</span><span class="org-rainbow-delimiters-depth-2">)</span> configuration-layer--elpa-archives<span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">push</span> '<span class="org-rainbow-delimiters-depth-2">(</span>ensime . <span class="org-string">"melpa-stable"</span><span class="org-rainbow-delimiters-depth-2">)</span> package-pinned-packages<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
+(push '(ensime . "melpa-stable") package-pinned-packages)
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7281680" class="outline-2">
-<h2 id="backends"><a id="org7281680"></a><span class="section-number-2">3</span> Backends</h2>
+<div id="outline-container-orgc8e3881" class="outline-2">
+<h2 id="backends"><a id="orgc8e3881"></a><span class="section-number-2">3</span> Backends</h2>
 <div class="outline-text-2" id="text-backends">
 </div>
 
-<div id="outline-container-orgaad6113" class="outline-3">
-<h3 id="meghanada"><a id="orgaad6113"></a><span class="section-number-3">3.1</span> Meghanada</h3>
+<div id="outline-container-org50b1d83" class="outline-3">
+<h3 id="meghanada"><a id="org50b1d83"></a><span class="section-number-3">3.1</span> Meghanada</h3>
 <div class="outline-text-3" id="text-meghanada">
 <p>
 Meghanada is composed of a lightweight server and an Emacs minor mode. It
@@ -439,8 +439,8 @@ order to lean how to select a different backend.
 </p>
 </div>
 
-<div id="outline-container-org220baf7" class="outline-4">
-<h4 id="installation"><a id="org220baf7"></a><span class="section-number-4">3.1.1</span> Installation</h4>
+<div id="outline-container-org1516115" class="outline-4">
+<h4 id="installation"><a id="org1516115"></a><span class="section-number-4">3.1.1</span> Installation</h4>
 <div class="outline-text-4" id="text-installation">
 <p>
 The Meghanada server will be installed automatically whenever a Java file
@@ -459,8 +459,8 @@ No additional configuration is necessary!
 </div>
 </div>
 
-<div id="outline-container-org1606683" class="outline-4">
-<h4 id="about-maven"><a id="org1606683"></a><span class="section-number-4">3.1.2</span> About Maven</h4>
+<div id="outline-container-org54f3e3f" class="outline-4">
+<h4 id="about-maven"><a id="org54f3e3f"></a><span class="section-number-4">3.1.2</span> About Maven</h4>
 <div class="outline-text-4" id="text-about-maven">
 <p>
 Maven is not fully supported by Meghanada (but should still work fine for most
@@ -471,8 +471,8 @@ at the root of your project first.
 </div>
 </div>
 
-<div id="outline-container-org14989a2" class="outline-3">
-<h3 id="eclim"><a id="org14989a2"></a><span class="section-number-3">3.2</span> Eclim</h3>
+<div id="outline-container-org54418e8" class="outline-3">
+<h3 id="eclim"><a id="org54418e8"></a><span class="section-number-3">3.2</span> Eclim</h3>
 <div class="outline-text-3" id="text-eclim">
 <p>
 Eclim provides the ability to access Eclipse features such as code completion,
@@ -481,12 +481,12 @@ layer variable <code>java-backend</code>.
 </p>
 </div>
 
-<div id="outline-container-orgfbe01f0" class="outline-4">
-<h4 id="installation-1"><a id="orgfbe01f0"></a><span class="section-number-4">3.2.1</span> Installation</h4>
+<div id="outline-container-orgdeaa22f" class="outline-4">
+<h4 id="installation-1"><a id="orgdeaa22f"></a><span class="section-number-4">3.2.1</span> Installation</h4>
 <div class="outline-text-4" id="text-installation-1">
 </div>
 
-<ol class="org-ol"><li><a id="eclipse"></a><a id="org16ea19b"></a>Eclipse<br /><div class="outline-text-5" id="text-eclipse">
+<ol class="org-ol"><li><a id="eclipse"></a><a id="org2df01b5"></a>Eclipse<br /><div class="outline-text-5" id="text-eclipse">
 <p>
 First you need the last version of Eclispe from the <a href="https://www.eclipse.org/downloads/eclipse-packages/">official Eclipse site</a>.
 </p>
@@ -500,7 +500,7 @@ the command line to install Eclipse is <code>brew cask install eclipse-jee</code
 </p>
 </div></li>
 
-<li><a id="eclim-1"></a><a id="orgc8d11c1"></a>Eclim<br /><div class="outline-text-5" id="text-eclim-1">
+<li><a id="eclim-1"></a><a id="orgc70cf21"></a>Eclim<br /><div class="outline-text-5" id="text-eclim-1">
 <p>
 For installation of Eclim check the <a href="http://eclim.org/install.html#download">official page</a> to download the installer
 then double click on it or launch it in the command line with the following
@@ -515,8 +515,8 @@ your correct location as well as the current version of eclim):
 </div></li></ol>
 </div>
 
-<div id="outline-container-org6226d26" class="outline-4">
-<h4 id="configuration"><a id="org6226d26"></a><span class="section-number-4">3.2.2</span> Configuration</h4>
+<div id="outline-container-org59ba208" class="outline-4">
+<h4 id="configuration"><a id="org59ba208"></a><span class="section-number-4">3.2.2</span> Configuration</h4>
 <div class="outline-text-4" id="text-configuration">
 <p>
 You may need to set the Eclipse and Eclim paths in your dotfile as layer
@@ -525,9 +525,9 @@ variables:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>java <span class="org-builtin">:variables</span> java-backend 'eclim
-                 eclim-eclipse-dirs '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"/Applications/Eclipse.app/Contents/Eclipse/"</span><span class="org-rainbow-delimiters-depth-2">)</span>
-                 eclim-executable <span class="org-string">"/Applications/Eclipse.app/Contents/Eclipse/eclim"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(java :variables java-backend 'eclim
+                 eclim-eclipse-dirs '("/Applications/Eclipse.app/Contents/Eclipse/")
+                 eclim-executable "/Applications/Eclipse.app/Contents/Eclipse/eclim")
 </pre>
 </div>
 
@@ -537,20 +537,20 @@ Eclim workspace (default value is <code>~/workspace</code>), as shown below:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span>
- <span class="org-comment-delimiter">;; </span><span class="org-comment">Specify the workspace to use by default</span>
- eclimd-default-workspace <span class="org-string">"/path/to/default/eclipse/workspace"</span>
- <span class="org-comment-delimiter">;; </span><span class="org-comment">wether autostarting eclimd or not (default nil)</span>
+<pre class="src src-elisp">(setq
+ ;; Specify the workspace to use by default
+ eclimd-default-workspace "/path/to/default/eclipse/workspace"
+ ;; wether autostarting eclimd or not (default nil)
  eclimd-autostart t
- <span class="org-comment-delimiter">;; </span><span class="org-comment">Whether or not to block emacs until eclimd is ready (default nil)</span>
- eclimd-wait-for-process t<span class="org-rainbow-delimiters-depth-1">)</span>
+ ;; Whether or not to block emacs until eclimd is ready (default nil)
+ eclimd-wait-for-process t)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0ebe1d4" class="outline-4">
-<h4 id="usage"><a id="org0ebe1d4"></a><span class="section-number-4">3.2.3</span> Usage</h4>
+<div id="outline-container-org16aa42e" class="outline-4">
+<h4 id="usage"><a id="org16aa42e"></a><span class="section-number-4">3.2.3</span> Usage</h4>
 <div class="outline-text-4" id="text-usage">
 <p>
 Start the eclim daemon with <code>SPC m D s</code> and stop it with <code>SPC m D k</code>. (See
@@ -570,8 +570,8 @@ atlernatively you can set <code>dotspacemacs-auto-save-file-location</code> to n
 </div>
 </div>
 
-<div id="outline-container-org319e14b" class="outline-3">
-<h3 id="ensime"><a id="org319e14b"></a><span class="section-number-3">3.3</span> ENSIME</h3>
+<div id="outline-container-org12dd2b9" class="outline-3">
+<h3 id="ensime"><a id="org12dd2b9"></a><span class="section-number-3">3.3</span> ENSIME</h3>
 <div class="outline-text-3" id="text-ensime">
 <p>
 Another backend option is the ENSIME server, which is a lot more responsive than
@@ -580,8 +580,8 @@ Java projects as well.
 </p>
 </div>
 
-<div id="outline-container-org30483b5" class="outline-4">
-<h4 id="installation-2"><a id="org30483b5"></a><span class="section-number-4">3.3.1</span> Installation</h4>
+<div id="outline-container-orgc58382d" class="outline-4">
+<h4 id="installation-2"><a id="orgc58382d"></a><span class="section-number-4">3.3.1</span> Installation</h4>
 <div class="outline-text-4" id="text-installation-2">
 <p>
 Find it with your favourite package manager, eg:
@@ -596,8 +596,8 @@ or refer to <a href="http://www.scala-sbt.org/download.html">the sbt installatio
 </div>
 </div>
 
-<div id="outline-container-orgea270be" class="outline-4">
-<h4 id="configuration-1"><a id="orgea270be"></a><span class="section-number-4">3.3.2</span> Configuration</h4>
+<div id="outline-container-org12077fe" class="outline-4">
+<h4 id="configuration-1"><a id="org12077fe"></a><span class="section-number-4">3.3.2</span> Configuration</h4>
 <div class="outline-text-4" id="text-configuration-1">
 <p>
 Follow <a href="https://ensime.github.io/build_tools/sbt/">the ENSIME configuration instructions</a>. Spacemacs uses
@@ -616,8 +616,8 @@ For example,
 </div>
 </div>
 
-<div id="outline-container-org3445da2" class="outline-4">
-<h4 id="usage-1"><a id="org3445da2"></a><span class="section-number-4">3.3.3</span> Usage</h4>
+<div id="outline-container-orgeaf800d" class="outline-4">
+<h4 id="usage-1"><a id="orgeaf800d"></a><span class="section-number-4">3.3.3</span> Usage</h4>
 <div class="outline-text-4" id="text-usage-1">
 <p>
 <code>SPC SPC spacemacs/ensime-gen-and-restart</code> or <code>SPC m D r</code> generates a new config
@@ -627,8 +627,8 @@ will suffice do the trick.
 </div>
 </div>
 
-<div id="outline-container-org957289c" class="outline-4">
-<h4 id="issues"><a id="org957289c"></a><span class="section-number-4">3.3.4</span> Issues</h4>
+<div id="outline-container-orgcfac398" class="outline-4">
+<h4 id="issues"><a id="orgcfac398"></a><span class="section-number-4">3.3.4</span> Issues</h4>
 <div class="outline-text-4" id="text-issues">
 <p>
 ENSIME is originally built for Scala, so support for java is not complete, in
@@ -639,18 +639,18 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-orgb5fa21f" class="outline-2">
-<h2 id="key-bindings"><a id="orgb5fa21f"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org387ff91" class="outline-2">
+<h2 id="key-bindings"><a id="org387ff91"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org28f8e92" class="outline-3">
-<h3 id="meghanada-1"><a id="org28f8e92"></a><span class="section-number-3">4.1</span> Meghanada</h3>
+<div id="outline-container-orgdecf619" class="outline-3">
+<h3 id="meghanada-1"><a id="orgdecf619"></a><span class="section-number-3">4.1</span> Meghanada</h3>
 <div class="outline-text-3" id="text-meghanada-1">
 </div>
 
-<div id="outline-container-orgb84f05d" class="outline-4">
-<h4 id="server"><a id="orgb84f05d"></a><span class="section-number-4">4.1.1</span> Server</h4>
+<div id="outline-container-orgcc5f529" class="outline-4">
+<h4 id="server"><a id="orgcc5f529"></a><span class="section-number-4">4.1.1</span> Server</h4>
 <div class="outline-text-4" id="text-server">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -721,8 +721,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-org9d61a12" class="outline-4">
-<h4 id="navigation"><a id="org9d61a12"></a><span class="section-number-4">4.1.2</span> Navigation</h4>
+<div id="outline-container-org64e30b1" class="outline-4">
+<h4 id="navigation"><a id="org64e30b1"></a><span class="section-number-4">4.1.2</span> Navigation</h4>
 <div class="outline-text-4" id="text-navigation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -753,8 +753,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-org764ee75" class="outline-4">
-<h4 id="compilation"><a id="org764ee75"></a><span class="section-number-4">4.1.3</span> Compilation</h4>
+<div id="outline-container-org5a07938" class="outline-4">
+<h4 id="compilation"><a id="org5a07938"></a><span class="section-number-4">4.1.3</span> Compilation</h4>
 <div class="outline-text-4" id="text-compilation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -785,8 +785,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-org1a750e7" class="outline-4">
-<h4 id="tests-junit"><a id="org1a750e7"></a><span class="section-number-4">4.1.4</span> Tests (junit)</h4>
+<div id="outline-container-orgbeb4af3" class="outline-4">
+<h4 id="tests-junit"><a id="orgbeb4af3"></a><span class="section-number-4">4.1.4</span> Tests (junit)</h4>
 <div class="outline-text-4" id="text-tests-junit">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -827,8 +827,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-org96027ea" class="outline-4">
-<h4 id="refactoring"><a id="org96027ea"></a><span class="section-number-4">4.1.5</span> Refactoring</h4>
+<div id="outline-container-org20eaa6e" class="outline-4">
+<h4 id="refactoring"><a id="org20eaa6e"></a><span class="section-number-4">4.1.5</span> Refactoring</h4>
 <div class="outline-text-4" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -869,8 +869,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-org50c521a" class="outline-4">
-<h4 id="tasks"><a id="org50c521a"></a><span class="section-number-4">4.1.6</span> Tasks</h4>
+<div id="outline-container-org4d93b9e" class="outline-4">
+<h4 id="tasks"><a id="org4d93b9e"></a><span class="section-number-4">4.1.6</span> Tasks</h4>
 <div class="outline-text-4" id="text-tasks">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -897,18 +897,17 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-org6e65040" class="outline-3">
-<h3 id="eclim-2"><a id="org6e65040"></a><span class="section-number-3">4.2</span> Eclim</h3>
+<div id="outline-container-org874b976" class="outline-3">
+<h3 id="eclim-2"><a id="org874b976"></a><span class="section-number-3">4.2</span> Eclim</h3>
 <div class="outline-text-3" id="text-eclim-2">
 </div>
 
-<div id="outline-container-orge933448" class="outline-4">
-<h4 id="java-mode"><a id="orge933448"></a><span class="section-number-4">4.2.1</span> Java-mode</h4>
+<div id="outline-container-orgf86972d" class="outline-4">
+<h4 id="java-mode"><a id="orgf86972d"></a><span class="section-number-4">4.2.1</span> Java-mode</h4>
 <div class="outline-text-4" id="text-java-mode">
 </div>
 
-
-<ol class="org-ol"><li><a id="ant"></a><a id="orge53a7fb"></a>Ant<br /><div class="outline-text-5" id="text-ant">
+<ol class="org-ol"><li><a id="ant"></a><a id="org53407d7"></a>Ant<br /><div class="outline-text-5" id="text-ant">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -947,7 +946,7 @@ particular refactoring doesn't work.
 </table>
 </div></li>
 
-<li><a id="project-management"></a><a id="org2b65173"></a>Project management<br /><div class="outline-text-5" id="text-project-management">
+<li><a id="project-management"></a><a id="org1109468"></a>Project management<br /><div class="outline-text-5" id="text-project-management">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1021,7 +1020,7 @@ particular refactoring doesn't work.
 </table>
 </div></li>
 
-<li><a id="eclim-daemon"></a><a id="org39b943f"></a>Eclim daemon<br /><div class="outline-text-5" id="text-eclim-daemon">
+<li><a id="eclim-daemon"></a><a id="orgd9de3a4"></a>Eclim daemon<br /><div class="outline-text-5" id="text-eclim-daemon">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1050,7 +1049,7 @@ particular refactoring doesn't work.
 </table>
 </div></li>
 
-<li><a id="maven"></a><a id="org8915f38"></a>Maven<br /><div class="outline-text-5" id="text-maven">
+<li><a id="maven"></a><a id="org3c40cca"></a>Maven<br /><div class="outline-text-5" id="text-maven">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1099,7 +1098,7 @@ particular refactoring doesn't work.
 </table>
 </div></li>
 
-<li><a id="goto"></a><a id="orgef6888b"></a>Goto<br /><div class="outline-text-5" id="text-goto">
+<li><a id="goto"></a><a id="org8f5034c"></a>Goto<br /><div class="outline-text-5" id="text-goto">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1133,7 +1132,7 @@ particular refactoring doesn't work.
 </table>
 </div></li>
 
-<li><a id="refactoring-1"></a><a id="org96b6c3c"></a>Refactoring<br /><div class="outline-text-5" id="text-refactoring-1">
+<li><a id="refactoring-1"></a><a id="org8399861"></a>Refactoring<br /><div class="outline-text-5" id="text-refactoring-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1187,7 +1186,7 @@ particular refactoring doesn't work.
 </table>
 </div></li>
 
-<li><a id="documentation-find"></a><a id="orge5728f4"></a>Documentation, Find<br /><div class="outline-text-5" id="text-documentation-find">
+<li><a id="documentation-find"></a><a id="org07d80ae"></a>Documentation, Find<br /><div class="outline-text-5" id="text-documentation-find">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1231,7 +1230,7 @@ particular refactoring doesn't work.
 </table>
 </div></li>
 
-<li><a id="errors-problems"></a><a id="org353cd77"></a>Errors (problems)<br /><div class="outline-text-5" id="text-errors-problems">
+<li><a id="errors-problems"></a><a id="orge70432d"></a>Errors (problems)<br /><div class="outline-text-5" id="text-errors-problems">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1275,7 +1274,7 @@ particular refactoring doesn't work.
 </table>
 </div></li>
 
-<li><a id="tests"></a><a id="org16cb2a9"></a>Tests<br /><div class="outline-text-5" id="text-tests">
+<li><a id="tests"></a><a id="orga6bff15"></a>Tests<br /><div class="outline-text-5" id="text-tests">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1300,8 +1299,8 @@ particular refactoring doesn't work.
 </div></li></ol>
 </div>
 
-<div id="outline-container-org86b00eb" class="outline-4">
-<h4 id="errors-problems-buffer"><a id="org86b00eb"></a><span class="section-number-4">4.2.2</span> Errors (problems) buffer</h4>
+<div id="outline-container-org6fc2850" class="outline-4">
+<h4 id="errors-problems-buffer"><a id="org6fc2850"></a><span class="section-number-4">4.2.2</span> Errors (problems) buffer</h4>
 <div class="outline-text-4" id="text-errors-problems-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1357,8 +1356,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-org721830a" class="outline-4">
-<h4 id="projects-buffer"><a id="org721830a"></a><span class="section-number-4">4.2.3</span> Projects buffer</h4>
+<div id="outline-container-orge26187a" class="outline-4">
+<h4 id="projects-buffer"><a id="orge26187a"></a><span class="section-number-4">4.2.3</span> Projects buffer</h4>
 <div class="outline-text-4" id="text-projects-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1455,13 +1454,13 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-orgd251185" class="outline-3">
-<h3 id="ensime-key-bindings"><a id="orgd251185"></a><span class="section-number-3">4.3</span> Ensime key bindings</h3>
+<div id="outline-container-org7f75f4d" class="outline-3">
+<h3 id="ensime-key-bindings"><a id="org7f75f4d"></a><span class="section-number-3">4.3</span> Ensime key bindings</h3>
 <div class="outline-text-3" id="text-ensime-key-bindings">
 </div>
 
-<div id="outline-container-orga60a9b7" class="outline-4">
-<h4 id="search"><a id="orga60a9b7"></a><span class="section-number-4">4.3.1</span> Search</h4>
+<div id="outline-container-orgbdef555" class="outline-4">
+<h4 id="search"><a id="orgbdef555"></a><span class="section-number-4">4.3.1</span> Search</h4>
 <div class="outline-text-4" id="text-search">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1492,8 +1491,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-org31aea47" class="outline-4">
-<h4 id="ensime-search-mode"><a id="org31aea47"></a><span class="section-number-4">4.3.2</span> Ensime Search Mode</h4>
+<div id="outline-container-org1ebc122" class="outline-4">
+<h4 id="ensime-search-mode"><a id="org1ebc122"></a><span class="section-number-4">4.3.2</span> Ensime Search Mode</h4>
 <div class="outline-text-4" id="text-ensime-search-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1539,8 +1538,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-orgb042804" class="outline-4">
-<h4 id="sbt"><a id="orgb042804"></a><span class="section-number-4">4.3.3</span> sbt</h4>
+<div id="outline-container-orgccd3b43" class="outline-4">
+<h4 id="sbt"><a id="orgccd3b43"></a><span class="section-number-4">4.3.3</span> sbt</h4>
 <div class="outline-text-4" id="text-sbt">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1596,8 +1595,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-org2f92245" class="outline-4">
-<h4 id="typecheck"><a id="org2f92245"></a><span class="section-number-4">4.3.4</span> Typecheck</h4>
+<div id="outline-container-orgb21a14d" class="outline-4">
+<h4 id="typecheck"><a id="orgb21a14d"></a><span class="section-number-4">4.3.4</span> Typecheck</h4>
 <div class="outline-text-4" id="text-typecheck">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1628,8 +1627,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-org71b76d1" class="outline-4">
-<h4 id="debug"><a id="org71b76d1"></a><span class="section-number-4">4.3.5</span> Debug</h4>
+<div id="outline-container-org9fda20c" class="outline-4">
+<h4 id="debug"><a id="org9fda20c"></a><span class="section-number-4">4.3.5</span> Debug</h4>
 <div class="outline-text-4" id="text-debug">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1714,8 +1713,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-org11bae44" class="outline-4">
-<h4 id="errors"><a id="org11bae44"></a><span class="section-number-4">4.3.6</span> Errors</h4>
+<div id="outline-container-orge40d87a" class="outline-4">
+<h4 id="errors"><a id="orge40d87a"></a><span class="section-number-4">4.3.6</span> Errors</h4>
 <div class="outline-text-4" id="text-errors">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1751,8 +1750,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-orgc6e3b04" class="outline-4">
-<h4 id="goto-1"><a id="orgc6e3b04"></a><span class="section-number-4">4.3.7</span> Goto</h4>
+<div id="outline-container-orgf5a55fa" class="outline-4">
+<h4 id="goto-1"><a id="orgf5a55fa"></a><span class="section-number-4">4.3.7</span> Goto</h4>
 <div class="outline-text-4" id="text-goto-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1788,8 +1787,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-org8e4a6e1" class="outline-4">
-<h4 id="print-and-yank-types"><a id="org8e4a6e1"></a><span class="section-number-4">4.3.8</span> Print and yank types</h4>
+<div id="outline-container-org4c10889" class="outline-4">
+<h4 id="print-and-yank-types"><a id="org4c10889"></a><span class="section-number-4">4.3.8</span> Print and yank types</h4>
 <div class="outline-text-4" id="text-print-and-yank-types">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1824,8 +1823,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-org50ef4da" class="outline-4">
-<h4 id="documentation-inspect"><a id="org50ef4da"></a><span class="section-number-4">4.3.9</span> Documentation, Inspect</h4>
+<div id="outline-container-orgc042b7b" class="outline-4">
+<h4 id="documentation-inspect"><a id="orgc042b7b"></a><span class="section-number-4">4.3.9</span> Documentation, Inspect</h4>
 <div class="outline-text-4" id="text-documentation-inspect">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1871,8 +1870,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-org0db858b" class="outline-4">
-<h4 id="server-1"><a id="org0db858b"></a><span class="section-number-4">4.3.10</span> Server</h4>
+<div id="outline-container-org406347f" class="outline-4">
+<h4 id="server-1"><a id="org406347f"></a><span class="section-number-4">4.3.10</span> Server</h4>
 <div class="outline-text-4" id="text-server-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1908,8 +1907,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-orgd6e3f49" class="outline-4">
-<h4 id="refactoring-2"><a id="orgd6e3f49"></a><span class="section-number-4">4.3.11</span> Refactoring</h4>
+<div id="outline-container-org8000255" class="outline-4">
+<h4 id="refactoring-2"><a id="org8000255"></a><span class="section-number-4">4.3.11</span> Refactoring</h4>
 <div class="outline-text-4" id="text-refactoring-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1980,8 +1979,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-orga7e57cd" class="outline-4">
-<h4 id="tests-1"><a id="orga7e57cd"></a><span class="section-number-4">4.3.12</span> Tests</h4>
+<div id="outline-container-orgc6afaa5" class="outline-4">
+<h4 id="tests-1"><a id="orgc6afaa5"></a><span class="section-number-4">4.3.12</span> Tests</h4>
 <div class="outline-text-4" id="text-tests-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -2017,8 +2016,8 @@ particular refactoring doesn't work.
 </div>
 </div>
 
-<div id="outline-container-orga1e6ecb" class="outline-4">
-<h4 id="repl"><a id="orga1e6ecb"></a><span class="section-number-4">4.3.13</span> REPL</h4>
+<div id="outline-container-org78ffa23" class="outline-4">
+<h4 id="repl"><a id="org78ffa23"></a><span class="section-number-4">4.3.13</span> REPL</h4>
 <div class="outline-text-4" id="text-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -2073,7 +2072,7 @@ particular refactoring doesn't work.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-08-13 Sun 17:36</p>
+<p class="date">Created: 2017-08-19 Sat 14:21</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
