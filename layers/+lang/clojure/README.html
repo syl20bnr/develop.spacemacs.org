@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-20 Sun 12:57 -->
+<!-- 2017-08-30 Wed 21:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Clojure layer</title>
@@ -263,57 +263,60 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#description">1. Description</a></li>
-<li><a href="#features">2. Features</a></li>
-<li><a href="#install">3. Install</a>
+<li><a href="#description">1. Description</a>
 <ul>
-<li><a href="#layer">3.1. Layer</a></li>
-<li><a href="#pretty-symbols">3.2. Pretty Symbols</a></li>
-<li><a href="#cider-and-clj-refactor">3.3. CIDER and clj-refactor</a>
+<li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
+<li><a href="#install">2. Install</a>
 <ul>
-<li><a href="#quick-start-with-boot">3.3.1. Quick Start with boot</a></li>
-<li><a href="#quick-start-with-lein">3.3.2. Quick Start with lein</a></li>
-<li><a href="#more-details">3.3.3. More details</a></li>
+<li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#pretty-symbols">2.2. Pretty Symbols</a></li>
+<li><a href="#cider-and-clj-refactor">2.3. CIDER and clj-refactor</a>
+<ul>
+<li><a href="#quick-start-with-boot">2.3.1. Quick Start with boot</a></li>
+<li><a href="#quick-start-with-lein">2.3.2. Quick Start with lein</a></li>
+<li><a href="#more-details">2.3.3. More details</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#key-bindings">4. Key Bindings</a>
+<li><a href="#key-bindings">3. Key Bindings</a>
 <ul>
-<li><a href="#working-with-clojure-files-barfage-slurpage--more">4.1. Working with clojure files (barfage, slurpage &amp; more)</a></li>
-<li><a href="#leader">4.2. Leader</a>
+<li><a href="#working-with-clojure-files-barfage-slurpage--more">3.1. Working with clojure files (barfage, slurpage &amp; more)</a></li>
+<li><a href="#leader">3.2. Leader</a>
 <ul>
-<li><a href="#documentation">4.2.1. Documentation</a></li>
-<li><a href="#evaluation">4.2.2. Evaluation</a></li>
-<li><a href="#goto">4.2.3. Goto</a></li>
-<li><a href="#repl">4.2.4. REPL</a></li>
-<li><a href="#tests">4.2.5. Tests</a></li>
-<li><a href="#toggles">4.2.6. Toggles</a></li>
-<li><a href="#debugging">4.2.7. Debugging</a></li>
-<li><a href="#refactoring">4.2.8. Refactoring</a></li>
-<li><a href="#reformatting">4.2.9. Reformatting</a></li>
+<li><a href="#documentation">3.2.1. Documentation</a></li>
+<li><a href="#evaluation">3.2.2. Evaluation</a></li>
+<li><a href="#goto">3.2.3. Goto</a></li>
+<li><a href="#repl">3.2.4. REPL</a></li>
+<li><a href="#tests">3.2.5. Tests</a></li>
+<li><a href="#toggles">3.2.6. Toggles</a></li>
+<li><a href="#debugging">3.2.7. Debugging</a></li>
+<li><a href="#refactoring">3.2.8. Refactoring</a></li>
+<li><a href="#reformatting">3.2.9. Reformatting</a></li>
 </ul>
 </li>
-<li><a href="#cider-buffers">4.3. CIDER Buffers</a>
+<li><a href="#cider-buffers">3.3. CIDER Buffers</a>
 <ul>
-<li><a href="#stacktrace-mode">4.3.1. stacktrace-mode</a></li>
-<li><a href="#inspector-mode">4.3.2. inspector-mode</a></li>
-<li><a href="#test-report-mode">4.3.3. test-report-mode</a></li>
+<li><a href="#stacktrace-mode">3.3.1. stacktrace-mode</a></li>
+<li><a href="#inspector-mode">3.3.2. inspector-mode</a></li>
+<li><a href="#test-report-mode">3.3.3. test-report-mode</a></li>
 </ul>
 </li>
-<li><a href="#sayid-buffers">4.4. Sayid Buffers</a>
+<li><a href="#sayid-buffers">3.4. Sayid Buffers</a>
 <ul>
-<li><a href="#sayid-mode">4.4.1. sayid-mode</a></li>
-<li><a href="#sayid-traced-mode">4.4.2. sayid-traced-mode</a></li>
-<li><a href="#sayid-pprint">4.4.3. sayid-pprint</a></li>
-<li><a href="#cider-repl-mode">4.4.4. cider-repl-mode</a></li>
+<li><a href="#sayid-mode">3.4.1. sayid-mode</a></li>
+<li><a href="#sayid-traced-mode">3.4.2. sayid-traced-mode</a></li>
+<li><a href="#sayid-pprint">3.4.3. sayid-pprint</a></li>
+<li><a href="#cider-repl-mode">3.4.4. cider-repl-mode</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#development-notes">5. Development Notes</a>
+<li><a href="#development-notes">4. Development Notes</a>
 <ul>
-<li><a href="#indentation">5.1. Indentation</a></li>
+<li><a href="#indentation">4.1. Indentation</a></li>
 </ul>
 </li>
 </ul>
@@ -323,18 +326,17 @@ for the JavaScript code in this tag.
 <img src="img/clojure.png" alt="clojure.png" /> <img src="img/cider.png" alt="cider.png" />
 </p>
 
-<div id="outline-container-orgaf803b0" class="outline-2">
-<h2 id="description"><a id="orgaf803b0"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org3f44c66" class="outline-2">
+<h2 id="description"><a id="org3f44c66"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for <a href="https://clojure.org/">Clojure</a> language using <a href="https://github.com/clojure-emacs/cider">CIDER</a>.
 </p>
 </div>
-</div>
 
-<div id="outline-container-orge109f7a" class="outline-2">
-<h2 id="features"><a id="orge109f7a"></a><span class="section-number-2">2</span> Features</h2>
-<div class="outline-text-2" id="text-features">
+<div id="outline-container-org9c1f37f" class="outline-3">
+<h3 id="features"><a id="org9c1f37f"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>REPL via <a href="https://github.com/clojure-emacs/cider">CIDER</a></li>
 <li>Code formatting via <a href="https://github.com/clojure-emacs/cider">CIDER</a> using <a href="https://github.com/weavejester/cljfmt">Cljfmt</a></li>
@@ -344,14 +346,15 @@ This layer adds support for <a href="https://clojure.org/">Clojure</a> language 
 </ul>
 </div>
 </div>
+</div>
 
-<div id="outline-container-org15519a6" class="outline-2">
-<h2 id="install"><a id="org15519a6"></a><span class="section-number-2">3</span> Install</h2>
+<div id="outline-container-org5576efc" class="outline-2">
+<h2 id="install"><a id="org5576efc"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org50ef235" class="outline-3">
-<h3 id="layer"><a id="org50ef235"></a><span class="section-number-3">3.1</span> Layer</h3>
+<div id="outline-container-org4ebfbbc" class="outline-3">
+<h3 id="layer"><a id="org4ebfbbc"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -361,8 +364,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org6941192" class="outline-3">
-<h3 id="pretty-symbols"><a id="org6941192"></a><span class="section-number-3">3.2</span> Pretty Symbols</h3>
+<div id="outline-container-orga4b7261" class="outline-3">
+<h3 id="pretty-symbols"><a id="orga4b7261"></a><span class="section-number-3">2.2</span> Pretty Symbols</h3>
 <div class="outline-text-3" id="text-pretty-symbols">
 <p>
 Pretty symbols for anonymous functions, set literals and partial, like <code>(λ [a]
@@ -390,8 +393,8 @@ Or set this variable when loading the configuration layer:
 </div>
 </div>
 
-<div id="outline-container-orgc7b8cfe" class="outline-3">
-<h3 id="cider-and-clj-refactor"><a id="orgc7b8cfe"></a><span class="section-number-3">3.3</span> CIDER and clj-refactor</h3>
+<div id="outline-container-org9e3464e" class="outline-3">
+<h3 id="cider-and-clj-refactor"><a id="org9e3464e"></a><span class="section-number-3">2.3</span> CIDER and clj-refactor</h3>
 <div class="outline-text-3" id="text-cider-and-clj-refactor">
 <p>
 Note that recent versions of CIDER automatically inject the required
@@ -402,8 +405,8 @@ REPL and skip the rest of this section.
 </p>
 </div>
 
-<div id="outline-container-orgd85069f" class="outline-4">
-<h4 id="quick-start-with-boot"><a id="orgd85069f"></a><span class="section-number-4">3.3.1</span> Quick Start with boot</h4>
+<div id="outline-container-org4ffaf02" class="outline-4">
+<h4 id="quick-start-with-boot"><a id="org4ffaf02"></a><span class="section-number-4">2.3.1</span> Quick Start with boot</h4>
 <div class="outline-text-4" id="text-quick-start-with-boot">
 <ul class="org-ul">
 <li>Install <code>boot</code> (see <a href="https://github.com/boot-clj/boot#user-content-install">https://github.com/boot-clj/boot#user-content-install</a>)</li>
@@ -430,8 +433,8 @@ for Cider to recognize the presence of boot.</li>
 </div>
 </div>
 
-<div id="outline-container-orgb559d42" class="outline-4">
-<h4 id="quick-start-with-lein"><a id="orgb559d42"></a><span class="section-number-4">3.3.2</span> Quick Start with lein</h4>
+<div id="outline-container-orgf3df6e9" class="outline-4">
+<h4 id="quick-start-with-lein"><a id="orgf3df6e9"></a><span class="section-number-4">2.3.2</span> Quick Start with lein</h4>
 <div class="outline-text-4" id="text-quick-start-with-lein">
 <ul class="org-ul">
 <li>Install <code>lein</code> version 2.5.2 or newer (see <a href="https://leiningen.org/#install">https://leiningen.org/#install</a>)</li>
@@ -454,8 +457,8 @@ source files to connect to the CIDER REPL.</li>
 </div>
 </div>
 
-<div id="outline-container-orgbceb228" class="outline-4">
-<h4 id="more-details"><a id="orgbceb228"></a><span class="section-number-4">3.3.3</span> More details</h4>
+<div id="outline-container-org5bb0346" class="outline-4">
+<h4 id="more-details"><a id="org5bb0346"></a><span class="section-number-4">2.3.3</span> More details</h4>
 <div class="outline-text-4" id="text-more-details">
 <p>
 More info regarding installation of nREPL middleware can be found here:
@@ -469,13 +472,13 @@ More info regarding installation of nREPL middleware can be found here:
 </div>
 </div>
 
-<div id="outline-container-org11f9321" class="outline-2">
-<h2 id="key-bindings"><a id="org11f9321"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org0cbe0cb" class="outline-2">
+<h2 id="key-bindings"><a id="org0cbe0cb"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgbd97d92" class="outline-3">
-<h3 id="working-with-clojure-files-barfage-slurpage--more"><a id="orgbd97d92"></a><span class="section-number-3">4.1</span> Working with clojure files (barfage, slurpage &amp; more)</h3>
+<div id="outline-container-orgb8ccd39" class="outline-3">
+<h3 id="working-with-clojure-files-barfage-slurpage--more"><a id="orgb8ccd39"></a><span class="section-number-3">3.1</span> Working with clojure files (barfage, slurpage &amp; more)</h3>
 <div class="outline-text-3" id="text-working-with-clojure-files-barfage-slurpage--more">
 <p>
 Spacemacs comes with a special <code>lisp-state</code> for working with lisp code that
@@ -490,13 +493,13 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org5ebbfa8" class="outline-3">
-<h3 id="leader"><a id="org5ebbfa8"></a><span class="section-number-3">4.2</span> Leader</h3>
+<div id="outline-container-orge6862e5" class="outline-3">
+<h3 id="leader"><a id="orge6862e5"></a><span class="section-number-3">3.2</span> Leader</h3>
 <div class="outline-text-3" id="text-leader">
 </div>
 
-<div id="outline-container-org92be485" class="outline-4">
-<h4 id="documentation"><a id="org92be485"></a><span class="section-number-4">4.2.1</span> Documentation</h4>
+<div id="outline-container-orgb3b8993" class="outline-4">
+<h4 id="documentation"><a id="orgb3b8993"></a><span class="section-number-4">3.2.1</span> Documentation</h4>
 <div class="outline-text-4" id="text-documentation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -542,8 +545,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org6dedc07" class="outline-4">
-<h4 id="evaluation"><a id="org6dedc07"></a><span class="section-number-4">4.2.2</span> Evaluation</h4>
+<div id="outline-container-org0b32826" class="outline-4">
+<h4 id="evaluation"><a id="org0b32826"></a><span class="section-number-4">3.2.2</span> Evaluation</h4>
 <div class="outline-text-4" id="text-evaluation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -614,8 +617,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org717d0ac" class="outline-4">
-<h4 id="goto"><a id="org717d0ac"></a><span class="section-number-4">4.2.3</span> Goto</h4>
+<div id="outline-container-orge831c86" class="outline-4">
+<h4 id="goto"><a id="orge831c86"></a><span class="section-number-4">3.2.3</span> Goto</h4>
 <div class="outline-text-4" id="text-goto">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -671,8 +674,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-orgd9c258d" class="outline-4">
-<h4 id="repl"><a id="orgd9c258d"></a><span class="section-number-4">4.2.4</span> REPL</h4>
+<div id="outline-container-org6f1c223" class="outline-4">
+<h4 id="repl"><a id="org6f1c223"></a><span class="section-number-4">3.2.4</span> REPL</h4>
 <div class="outline-text-4" id="text-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -793,8 +796,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org79a5e72" class="outline-4">
-<h4 id="tests"><a id="org79a5e72"></a><span class="section-number-4">4.2.5</span> Tests</h4>
+<div id="outline-container-org6d87f96" class="outline-4">
+<h4 id="tests"><a id="org6d87f96"></a><span class="section-number-4">3.2.5</span> Tests</h4>
 <div class="outline-text-4" id="text-tests">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -830,8 +833,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-orgc4ccb3a" class="outline-4">
-<h4 id="toggles"><a id="orgc4ccb3a"></a><span class="section-number-4">4.2.6</span> Toggles</h4>
+<div id="outline-container-org9742b05" class="outline-4">
+<h4 id="toggles"><a id="org9742b05"></a><span class="section-number-4">3.2.6</span> Toggles</h4>
 <div class="outline-text-4" id="text-toggles">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -882,8 +885,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org21f38fa" class="outline-4">
-<h4 id="debugging"><a id="org21f38fa"></a><span class="section-number-4">4.2.7</span> Debugging</h4>
+<div id="outline-container-org7c548b5" class="outline-4">
+<h4 id="debugging"><a id="org7c548b5"></a><span class="section-number-4">3.2.7</span> Debugging</h4>
 <div class="outline-text-4" id="text-debugging">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1034,8 +1037,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org0b3fbff" class="outline-4">
-<h4 id="refactoring"><a id="org0b3fbff"></a><span class="section-number-4">4.2.8</span> Refactoring</h4>
+<div id="outline-container-org7fe450e" class="outline-4">
+<h4 id="refactoring"><a id="org7fe450e"></a><span class="section-number-4">3.2.8</span> Refactoring</h4>
 <div class="outline-text-4" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1286,8 +1289,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org39e2a0c" class="outline-4">
-<h4 id="reformatting"><a id="org39e2a0c"></a><span class="section-number-4">4.2.9</span> Reformatting</h4>
+<div id="outline-container-orgb0b6f25" class="outline-4">
+<h4 id="reformatting"><a id="orgb0b6f25"></a><span class="section-number-4">3.2.9</span> Reformatting</h4>
 <div class="outline-text-4" id="text-reformatting">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1319,16 +1322,16 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-orgb501323" class="outline-3">
-<h3 id="cider-buffers"><a id="orgb501323"></a><span class="section-number-3">4.3</span> CIDER Buffers</h3>
+<div id="outline-container-orga48c91d" class="outline-3">
+<h3 id="cider-buffers"><a id="orga48c91d"></a><span class="section-number-3">3.3</span> CIDER Buffers</h3>
 <div class="outline-text-3" id="text-cider-buffers">
 <p>
 In general, <code>q</code> should always quit the popped up buffer.
 </p>
 </div>
 
-<div id="outline-container-org8b0c082" class="outline-4">
-<h4 id="stacktrace-mode"><a id="org8b0c082"></a><span class="section-number-4">4.3.1</span> stacktrace-mode</h4>
+<div id="outline-container-orgf8fa550" class="outline-4">
+<h4 id="stacktrace-mode"><a id="orgf8fa550"></a><span class="section-number-4">3.3.1</span> stacktrace-mode</h4>
 <div class="outline-text-4" id="text-stacktrace-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1424,8 +1427,8 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-orgb5b92ca" class="outline-4">
-<h4 id="inspector-mode"><a id="orgb5b92ca"></a><span class="section-number-4">4.3.2</span> inspector-mode</h4>
+<div id="outline-container-orgdd0e9fc" class="outline-4">
+<h4 id="inspector-mode"><a id="orgdd0e9fc"></a><span class="section-number-4">3.3.2</span> inspector-mode</h4>
 <div class="outline-text-4" id="text-inspector-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1486,8 +1489,8 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org8acf227" class="outline-4">
-<h4 id="test-report-mode"><a id="org8acf227"></a><span class="section-number-4">4.3.3</span> test-report-mode</h4>
+<div id="outline-container-org3a1c44d" class="outline-4">
+<h4 id="test-report-mode"><a id="org3a1c44d"></a><span class="section-number-4">3.3.3</span> test-report-mode</h4>
 <div class="outline-text-4" id="text-test-report-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1549,13 +1552,13 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-orgdfae830" class="outline-3">
-<h3 id="sayid-buffers"><a id="orgdfae830"></a><span class="section-number-3">4.4</span> Sayid Buffers</h3>
+<div id="outline-container-org455a406" class="outline-3">
+<h3 id="sayid-buffers"><a id="org455a406"></a><span class="section-number-3">3.4</span> Sayid Buffers</h3>
 <div class="outline-text-3" id="text-sayid-buffers">
 </div>
 
-<div id="outline-container-orge97657d" class="outline-4">
-<h4 id="sayid-mode"><a id="orge97657d"></a><span class="section-number-4">4.4.1</span> sayid-mode</h4>
+<div id="outline-container-org8710149" class="outline-4">
+<h4 id="sayid-mode"><a id="org8710149"></a><span class="section-number-4">3.4.1</span> sayid-mode</h4>
 <div class="outline-text-4" id="text-sayid-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1661,8 +1664,8 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org45e7eab" class="outline-4">
-<h4 id="sayid-traced-mode"><a id="org45e7eab"></a><span class="section-number-4">4.4.2</span> sayid-traced-mode</h4>
+<div id="outline-container-org1d859c9" class="outline-4">
+<h4 id="sayid-traced-mode"><a id="org1d859c9"></a><span class="section-number-4">3.4.2</span> sayid-traced-mode</h4>
 <div class="outline-text-4" id="text-sayid-traced-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1733,8 +1736,8 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org78dec9d" class="outline-4">
-<h4 id="sayid-pprint"><a id="org78dec9d"></a><span class="section-number-4">4.4.3</span> sayid-pprint</h4>
+<div id="outline-container-org3a1c51b" class="outline-4">
+<h4 id="sayid-pprint"><a id="org3a1c51b"></a><span class="section-number-4">3.4.3</span> sayid-pprint</h4>
 <div class="outline-text-4" id="text-sayid-pprint">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1780,8 +1783,8 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org47e7cf7" class="outline-4">
-<h4 id="cider-repl-mode"><a id="org47e7cf7"></a><span class="section-number-4">4.4.4</span> cider-repl-mode</h4>
+<div id="outline-container-orgac1792b" class="outline-4">
+<h4 id="cider-repl-mode"><a id="orgac1792b"></a><span class="section-number-4">3.4.4</span> cider-repl-mode</h4>
 <div class="outline-text-4" id="text-cider-repl-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1814,13 +1817,13 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org980f0e8" class="outline-2">
-<h2 id="development-notes"><a id="org980f0e8"></a><span class="section-number-2">5</span> Development Notes</h2>
+<div id="outline-container-org708ffc4" class="outline-2">
+<h2 id="development-notes"><a id="org708ffc4"></a><span class="section-number-2">4</span> Development Notes</h2>
 <div class="outline-text-2" id="text-development-notes">
 </div>
 
-<div id="outline-container-org42f68bb" class="outline-3">
-<h3 id="indentation"><a id="org42f68bb"></a><span class="section-number-3">5.1</span> Indentation</h3>
+<div id="outline-container-orgadc715b" class="outline-3">
+<h3 id="indentation"><a id="orgadc715b"></a><span class="section-number-3">4.1</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
 With a <a href="https://github.com/clojure-emacs/cider/blob/master/doc/indent_spec.md">new</a> functionality of Cider to read the custom indentation rules from the
@@ -1834,7 +1837,7 @@ specific vars.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-08-20 Sun 12:57</p>
+<p class="date">Created: 2017-08-30 Wed 21:30</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
