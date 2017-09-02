@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-30 Wed 21:29 -->
+<!-- 2017-09-02 Sat 10:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Theming layer</title>
@@ -278,8 +278,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org58d2918" class="outline-2">
-<h2 id="description"><a id="org58d2918"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org10aefb8" class="outline-2">
+<h2 id="description"><a id="org10aefb8"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer allows for a simple way of modifying themes.
@@ -287,8 +287,8 @@ This layer allows for a simple way of modifying themes.
 </div>
 </div>
 
-<div id="outline-container-orgfae43ea" class="outline-2">
-<h2 id="install"><a id="orgfae43ea"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org5ff773d" class="outline-2">
+<h2 id="install"><a id="org5ff773d"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -298,8 +298,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org23f5b70" class="outline-2">
-<h2 id="usage"><a id="org23f5b70"></a><span class="section-number-2">3</span> Usage</h2>
+<div id="outline-container-org2ea2dc3" class="outline-2">
+<h2 id="usage"><a id="org2ea2dc3"></a><span class="section-number-2">3</span> Usage</h2>
 <div class="outline-text-2" id="text-usage">
 <p>
 To use this layer, set the value of <code>theming-modifications</code> (a good place is
@@ -308,33 +308,33 @@ It should be a list of the following form:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">((theme1 (face1 attributes...)
-         (face2 attributes...)
-         ...)
- (theme2 (face1 attributes...)
-         (face2 attributes...)
-         ...)
- ...)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>theme1 <span class="org-rainbow-delimiters-depth-3">(</span>face1 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
+         <span class="org-rainbow-delimiters-depth-3">(</span>face2 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
+         ...<span class="org-rainbow-delimiters-depth-2">)</span>
+ <span class="org-rainbow-delimiters-depth-2">(</span>theme2 <span class="org-rainbow-delimiters-depth-3">(</span>face1 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
+         <span class="org-rainbow-delimiters-depth-3">(</span>face2 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
+         ...<span class="org-rainbow-delimiters-depth-2">)</span>
+ ...<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org2a6f16d" class="outline-3">
-<h3 id="example"><a id="org2a6f16d"></a><span class="section-number-3">3.1</span> Example</h3>
+<div id="outline-container-org306a0f9" class="outline-3">
+<h3 id="example"><a id="org306a0f9"></a><span class="section-number-3">3.1</span> Example</h3>
 <div class="outline-text-3" id="text-example">
 <div class="org-src-container">
-<pre class="src src-lisp">(defun dotspacemacs/user-init ()
-  (setq theming-modifications
-        '((monokai
-           ;; Font locking
-           (font-lock-comment-face :slant italic)
-           (web-mode-html-attr-name-face :inherit font-lock-variable-name-face
-                                         :foreground nil)
-           ;; Modeline
-           (powerline-active1 :box (:color "#999999"
-                                    :line-width 1
-                                    :style released-button)
-                              :background "#5a5a5a")))))
+<pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-init</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>setq theming-modifications
+        '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>monokai
+           <span class="org-comment-delimiter">;; </span><span class="org-comment">Font locking</span>
+           <span class="org-rainbow-delimiters-depth-5">(</span>font-lock-comment-face <span class="org-builtin">:slant</span> italic<span class="org-rainbow-delimiters-depth-5">)</span>
+           <span class="org-rainbow-delimiters-depth-5">(</span>web-mode-html-attr-name-face <span class="org-builtin">:inherit</span> font-lock-variable-name-face
+                                         <span class="org-builtin">:foreground</span> nil<span class="org-rainbow-delimiters-depth-5">)</span>
+           <span class="org-comment-delimiter">;; </span><span class="org-comment">Modeline</span>
+           <span class="org-rainbow-delimiters-depth-5">(</span>powerline-active1 <span class="org-builtin">:box</span> <span class="org-rainbow-delimiters-depth-6">(</span><span class="org-builtin">:color</span> <span class="org-string">"#999999"</span>
+                                    <span class="org-builtin">:line-width</span> <span class="org-highlight-numbers-number">1</span>
+                                    <span class="org-builtin">:style</span> released-button<span class="org-rainbow-delimiters-depth-6">)</span>
+                              <span class="org-builtin">:background</span> <span class="org-string">"#5a5a5a"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 <p>
@@ -350,8 +350,8 @@ spacemacs/update-theme</code>.
 </div>
 </div>
 
-<div id="outline-container-orge2a1053" class="outline-2">
-<h2 id="attributes"><a id="orge2a1053"></a><span class="section-number-2">4</span> Attributes</h2>
+<div id="outline-container-org0b548ee" class="outline-2">
+<h2 id="attributes"><a id="org0b548ee"></a><span class="section-number-2">4</span> Attributes</h2>
 <div class="outline-text-2" id="text-attributes">
 <p>
 See <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Face-Attributes.html#Face-Attributes">face attributes</a> in the Emacs manual for more information. Some of the more
@@ -371,8 +371,8 @@ the underlying face)</dd>
 </div>
 </div>
 
-<div id="outline-container-org1c601a8" class="outline-2">
-<h2 id="faces"><a id="org1c601a8"></a><span class="section-number-2">5</span> Faces</h2>
+<div id="outline-container-org12309b0" class="outline-2">
+<h2 id="faces"><a id="org12309b0"></a><span class="section-number-2">5</span> Faces</h2>
 <div class="outline-text-2" id="text-faces">
 <p>
 To see a list over all loaded faces and what they look like, use <code>SPC SPC
@@ -412,8 +412,8 @@ As well as the mode-line faces for the active and inactive windows:
 </div>
 </div>
 
-<div id="outline-container-org1ca9b21" class="outline-2">
-<h2 id="headers"><a id="org1ca9b21"></a><span class="section-number-2">6</span> Headers</h2>
+<div id="outline-container-org24f28e2" class="outline-2">
+<h2 id="headers"><a id="org24f28e2"></a><span class="section-number-2">6</span> Headers</h2>
 <div class="outline-text-2" id="text-headers">
 <p>
 This layer includes three additional layer variables for tweaking headings.
@@ -432,25 +432,25 @@ headings</dd>
 </div>
 </div>
 
-<div id="outline-container-org90ff5a1" class="outline-2">
-<h2 id="example-1"><a id="org90ff5a1"></a><span class="section-number-2">7</span> Example</h2>
+<div id="outline-container-org49ecc34" class="outline-2">
+<h2 id="example-1"><a id="org49ecc34"></a><span class="section-number-2">7</span> Example</h2>
 <div class="outline-text-2" id="text-example-1">
 <p>
 An example of how to set the default font colour to be black in a custom theme leuven:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(defun dotspacemacs/user-init ()
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-init</span> <span class="org-rainbow-delimiters-depth-2">()</span>
 
-  ; custom theme modification - overriding default font colour
-  (setq-default
+  <span class="org-comment-delimiter">; </span><span class="org-comment">custom theme modification - overriding default font colour</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq-default</span>
     theming-modifications
-      '((leuven
-          (default :foreground "#000000")
-       ))
-  )
+      '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>leuven
+          <span class="org-rainbow-delimiters-depth-5">(</span>default <span class="org-builtin">:foreground</span> <span class="org-string">"#000000"</span><span class="org-rainbow-delimiters-depth-5">)</span>
+       <span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+  <span class="org-rainbow-delimiters-depth-2">)</span>
 
-)
+<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -458,7 +458,7 @@ An example of how to set the default font colour to be black in a custom theme l
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-08-30 Wed 21:29</p>
+<p class="date">Created: 2017-09-02 Sat 10:44</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-30 Wed 21:30 -->
+<!-- 2017-09-02 Sat 10:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Scala layer</title>
@@ -283,8 +283,8 @@ for the JavaScript code in this tag.
 <img src="img/scala.png" alt="scala.png" /> with <img src="img/ensime.png" alt="ensime.png" />
 </p>
 
-<div id="outline-container-org521f831" class="outline-2">
-<h2 id="description"><a id="org521f831"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgf10f82d" class="outline-2">
+<h2 id="description"><a id="orgf10f82d"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for the Scala language using the excellent <a href="http://ensime.org/">ENSIME</a>
@@ -293,8 +293,8 @@ client/server.
 </div>
 </div>
 
-<div id="outline-container-org055c715" class="outline-2">
-<h2 id="layer-installation"><a id="org055c715"></a><span class="section-number-2">2</span> Layer Installation</h2>
+<div id="outline-container-org5e10b0a" class="outline-2">
+<h2 id="layer-installation"><a id="org5e10b0a"></a><span class="section-number-2">2</span> Layer Installation</h2>
 <div class="outline-text-2" id="text-layer-installation">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -307,15 +307,15 @@ Then, you should modify your <code>~/.spacemacs</code> to use the recommended En
 version (Stable). Please add the following lines to <code>dotspacemacs/user-init</code>:
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
-(push '(ensime . "melpa-stable") package-pinned-packages)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">push</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"melpa-stable"</span> . <span class="org-string">"stable.melpa.org/packages/"</span><span class="org-rainbow-delimiters-depth-2">)</span> configuration-layer--elpa-archives<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">push</span> '<span class="org-rainbow-delimiters-depth-2">(</span>ensime . <span class="org-string">"melpa-stable"</span><span class="org-rainbow-delimiters-depth-2">)</span> package-pinned-packages<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org82c9f00" class="outline-2">
-<h2 id="ensime"><a id="org82c9f00"></a><span class="section-number-2">3</span> Ensime</h2>
+<div id="outline-container-org81527b0" class="outline-2">
+<h2 id="ensime"><a id="org81527b0"></a><span class="section-number-2">3</span> Ensime</h2>
 <div class="outline-text-2" id="text-ensime">
 <p>
 <a href="http://ensime.org/">ENSIME</a> provides IDE-like features, such as refactoring, incremental compilation
@@ -334,8 +334,8 @@ Installation instructions and usage can be found in the <code>Java</code> layer
 </div>
 </div>
 
-<div id="outline-container-orgf3f6fa3" class="outline-2">
-<h2 id="scalastyle"><a id="orgf3f6fa3"></a><span class="section-number-2">4</span> Scalastyle</h2>
+<div id="outline-container-orgc7c8249" class="outline-2">
+<h2 id="scalastyle"><a id="orgc7c8249"></a><span class="section-number-2">4</span> Scalastyle</h2>
 <div class="outline-text-2" id="text-scalastyle">
 <p>
 <a href="http://www.scalastyle.org/">Scalastyle</a> provides style-checking and linting. The Emacs functionality is
@@ -357,8 +357,8 @@ terminal, it should output something like:
 </p>
 <div class="org-src-container">
 <pre class="src src-bash">$ scalastyle
-scalastyle 0.8.0
-Usage: scalastyle [options] &lt;source directory&gt;
+scalastyle <span class="org-highlight-numbers-number">0.8.0</span>
+Usage: scalastyle <span class="org-rainbow-delimiters-depth-1">[</span>options<span class="org-rainbow-delimiters-depth-1">]</span> &lt;source directory&gt;
 ...
 </pre>
 </div>
@@ -368,7 +368,7 @@ Finally, enable the <code>syntax-checking</code> layer and set the <code>flychec
 variable to a valid location.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(setq-default flycheck-scalastylerc "/usr/local/etc/scalastyle_config.xml")
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> flycheck-scalastylerc <span class="org-string">"/usr/local/etc/scalastyle_config.xml"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -378,8 +378,8 @@ configuration instructions.
 </p>
 </div>
 
-<div id="outline-container-org135bee6" class="outline-3">
-<h3 id="use-java-doc-style"><a id="org135bee6"></a><span class="section-number-3">4.1</span> Use Java doc-style</h3>
+<div id="outline-container-org2498b56" class="outline-3">
+<h3 id="use-java-doc-style"><a id="org2498b56"></a><span class="section-number-3">4.1</span> Use Java doc-style</h3>
 <div class="outline-text-3" id="text-use-java-doc-style">
 <p>
 To enable <code>java-doc-style</code>, set the variable <code>scala-indent:use-javadoc-style</code> to
@@ -387,16 +387,16 @@ To enable <code>java-doc-style</code>, set the variable <code>scala-indent:use-j
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(setq-default dotspacemacs-configuration-layers '(
-  (scala :variables scala-indent:use-javadoc-style t)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>scala <span class="org-builtin">:variables</span> scala-indent:use-javadoc-style t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org33e6b2f" class="outline-2">
-<h2 id="automatically-show-the-type-of-the-symbol-under-the-cursor"><a id="org33e6b2f"></a><span class="section-number-2">5</span> Automatically show the type of the symbol under the cursor</h2>
+<div id="outline-container-orgcdd27de" class="outline-2">
+<h2 id="automatically-show-the-type-of-the-symbol-under-the-cursor"><a id="orgcdd27de"></a><span class="section-number-2">5</span> Automatically show the type of the symbol under the cursor</h2>
 <div class="outline-text-2" id="text-automatically-show-the-type-of-the-symbol-under-the-cursor">
 <p>
 To enable the feature <code>ensime-type-at-point</code> when cursor moves, set the
@@ -404,8 +404,8 @@ variable <code>scala-enable-eldoc</code> to <code>t</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(setq-default dotspacemacs-configuration-layers '(
-  (scala :variables scala-enable-eldoc t)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>scala <span class="org-builtin">:variables</span> scala-enable-eldoc t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -415,8 +415,8 @@ Enabling this option can cause slow editor performance.
 </div>
 </div>
 
-<div id="outline-container-org9dc6e59" class="outline-2">
-<h2 id="automatically-insert-asterisk-in-multiline-comments"><a id="org9dc6e59"></a><span class="section-number-2">6</span> Automatically insert asterisk in multiline comments</h2>
+<div id="outline-container-orgdf9bddc" class="outline-2">
+<h2 id="automatically-insert-asterisk-in-multiline-comments"><a id="orgdf9bddc"></a><span class="section-number-2">6</span> Automatically insert asterisk in multiline comments</h2>
 <div class="outline-text-2" id="text-automatically-insert-asterisk-in-multiline-comments">
 <p>
 To insert a leading asterisk in multiline comments automatically, set the
@@ -424,15 +424,15 @@ variable <code>scala-auto-insert-asterisk-in-comments</code> to <code>t</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(setq-default dotspacemacs-configuration-layers '(
-  (scala :variables scala-auto-insert-asterisk-in-comments t)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>scala <span class="org-builtin">:variables</span> scala-auto-insert-asterisk-in-comments t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org4f4325d" class="outline-2">
-<h2 id="automatically-replace-arrows-with-unicode-ones"><a id="org4f4325d"></a><span class="section-number-2">7</span> Automatically replace arrows with unicode ones</h2>
+<div id="outline-container-org8cc1eba" class="outline-2">
+<h2 id="automatically-replace-arrows-with-unicode-ones"><a id="org8cc1eba"></a><span class="section-number-2">7</span> Automatically replace arrows with unicode ones</h2>
 <div class="outline-text-2" id="text-automatically-replace-arrows-with-unicode-ones">
 <p>
 To replace <code>=&gt;</code>, <code>-&gt;</code> and <code>&lt;-</code> with unicode arrows <code>⇒</code>, <code>→</code> and <code>←</code>, set the
@@ -446,15 +446,15 @@ the ascii arrows back.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(setq-default dotspacemacs-configuration-layers '(
-  (scala :variables scala-use-unicode-arrows t)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>scala <span class="org-builtin">:variables</span> scala-use-unicode-arrows t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1472632" class="outline-2">
-<h2 id="auto-start"><a id="org1472632"></a><span class="section-number-2">8</span> Auto-start</h2>
+<div id="outline-container-orgfdc4abd" class="outline-2">
+<h2 id="auto-start"><a id="orgfdc4abd"></a><span class="section-number-2">8</span> Auto-start</h2>
 <div class="outline-text-2" id="text-auto-start">
 <p>
 If you prefer to have Ensime start when you load a scala file, you can enable it
@@ -462,15 +462,15 @@ with
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(setq-default dotspacemacs-configuration-layers '(
-    (scala :variables scala-auto-start-ensime t)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>scala <span class="org-builtin">:variables</span> scala-auto-start-ensime t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5d6544a" class="outline-2">
-<h2 id="key-bindings"><a id="org5d6544a"></a><span class="section-number-2">9</span> Key bindings</h2>
+<div id="outline-container-org363c022" class="outline-2">
+<h2 id="key-bindings"><a id="org363c022"></a><span class="section-number-2">9</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
 All ensime key bindings are listed in the <code>java</code> layer <a href="https://github.com/syl20bnr/spacemacs/tree/develop/layers/+lang/java/README.org#ensime-key-bindings">README.org</a>.
@@ -480,7 +480,7 @@ All ensime key bindings are listed in the <code>java</code> layer <a href="https
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-08-30 Wed 21:30</p>
+<p class="date">Created: 2017-09-02 Sat 10:44</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
