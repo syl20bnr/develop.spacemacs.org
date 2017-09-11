@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-02 Sat 10:44 -->
+<!-- 2017-09-11 Mon 19:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gnus layer</title>
@@ -68,6 +68,7 @@
   pre.src-fortran:before { content: 'Fortran'; }
   pre.src-gnuplot:before { content: 'gnuplot'; }
   pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
   pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
@@ -278,8 +279,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org95271d2" class="outline-2">
-<h2 id="install"><a id="org95271d2"></a><span class="section-number-2">1</span> Install</h2>
+<div id="outline-container-orga9d6748" class="outline-2">
+<h2 id="install"><a id="orga9d6748"></a><span class="section-number-2">1</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -289,8 +290,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgdec144b" class="outline-2">
-<h2 id="basic-concepts"><a id="orgdec144b"></a><span class="section-number-2">2</span> Basic Concepts</h2>
+<div id="outline-container-org7414a78" class="outline-2">
+<h2 id="basic-concepts"><a id="org7414a78"></a><span class="section-number-2">2</span> Basic Concepts</h2>
 <div class="outline-text-2" id="text-basic-concepts">
 <p>
 Gnus is a news reading application. The Gnus terminology can be confusing for
@@ -305,8 +306,8 @@ the Group Buffer if Topic Mode is enabled(default).</dd>
 </div>
 </div>
 
-<div id="outline-container-org6e6167d" class="outline-2">
-<h2 id="adding-news-sources"><a id="org6e6167d"></a><span class="section-number-2">3</span> Adding news sources</h2>
+<div id="outline-container-orgf6701e3" class="outline-2">
+<h2 id="adding-news-sources"><a id="orgf6701e3"></a><span class="section-number-2">3</span> Adding news sources</h2>
 <div class="outline-text-2" id="text-adding-news-sources">
 <p>
 Adding news sources can be done in your <code>.spacemacs</code> file by adding the
@@ -314,7 +315,7 @@ following:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Get email, and store in nnml</span>
+<pre><code class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Get email, and store in nnml</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gnus-secondary-select-methods
   '<span class="org-rainbow-delimiters-depth-2">(</span>
     <span class="org-rainbow-delimiters-depth-3">(</span>nntp <span class="org-string">"gmane"</span>
@@ -323,7 +324,7 @@ following:
     <span class="org-rainbow-delimiters-depth-3">(</span>nntp <span class="org-string">"nntp.aioe.org"</span><span class="org-rainbow-delimiters-depth-3">)</span>
     <span class="org-rainbow-delimiters-depth-3">(</span>nntp <span class="org-string">"news.gwene.org"</span><span class="org-rainbow-delimiters-depth-3">)</span>
     <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -332,8 +333,8 @@ For adding RSS Feeds please see the <a href="#keybindings">keybindings section</
 </div>
 </div>
 
-<div id="outline-container-org9c8b55e" class="outline-2">
-<h2 id="configuring-gmail"><a id="org9c8b55e"></a><span class="section-number-2">4</span> Configuring gmail</h2>
+<div id="outline-container-orgc1812e1" class="outline-2">
+<h2 id="configuring-gmail"><a id="orgc1812e1"></a><span class="section-number-2">4</span> Configuring gmail</h2>
 <div class="outline-text-2" id="text-configuring-gmail">
 <p>
 To configure Gnus with gmail support you can add the following to your
@@ -341,7 +342,7 @@ To configure Gnus with gmail support you can add the following to your
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Get email, and store in nnml</span>
+<pre><code class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Get email, and store in nnml</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gnus-secondary-select-methods
 '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>nnimap <span class="org-string">"gmail"</span>
@@ -369,7 +370,7 @@ To configure Gnus with gmail support you can add the following to your
 <span class="org-comment-delimiter">;; </span><span class="org-comment">store email in ~/gmail directory</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> nnml-directory <span class="org-string">"~/gmail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> message-directory <span class="org-string">"~/gmail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -389,8 +390,8 @@ password</a>.
 </div>
 </div>
 
-<div id="outline-container-orge8b2d5b" class="outline-2">
-<h2 id="org-mime-in-org-layer"><a id="orge8b2d5b"></a><span class="section-number-2">5</span> Org MIME in Org layer</h2>
+<div id="outline-container-org0207dde" class="outline-2">
+<h2 id="org-mime-in-org-layer"><a id="org0207dde"></a><span class="section-number-2">5</span> Org MIME in Org layer</h2>
 <div class="outline-text-2" id="text-org-mime-in-org-layer">
 <p>
 It is possible to send beautiful HTML emails using org mode.
@@ -404,8 +405,8 @@ from org mode to html.  An org mode buffer can be sent via html email by pressin
 </div>
 </div>
 
-<div id="outline-container-org9a0f8a4" class="outline-2">
-<h2 id="keybindings"><a id="org9a0f8a4"></a><span class="section-number-2">6</span> Keybindings</h2>
+<div id="outline-container-org6681eeb" class="outline-2">
+<h2 id="keybindings"><a id="org6681eeb"></a><span class="section-number-2">6</span> Keybindings</h2>
 <div class="outline-text-2" id="text-keybindings">
 <p>
 Gnus has very modal default keybindings.
@@ -487,7 +488,7 @@ Basic and Spacemacs specific keybindings can be found in the following table.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-09-02 Sat 10:44</p>
+<p class="date">Created: 2017-09-11 Mon 19:40</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

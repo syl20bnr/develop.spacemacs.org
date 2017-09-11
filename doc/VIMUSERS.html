@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-02 Sat 10:43 -->
+<!-- 2017-09-11 Mon 19:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Migrating from Vim</title>
@@ -68,6 +68,7 @@
   pre.src-fortran:before { content: 'Fortran'; }
   pre.src-gnuplot:before { content: 'gnuplot'; }
   pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
   pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
@@ -322,8 +323,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orge4f5a5a" class="outline-2">
-<h2 id="purpose-of-this-document"><a id="orge4f5a5a"></a><span class="section-number-2">1</span> Purpose of this document</h2>
+<div id="outline-container-org01a5754" class="outline-2">
+<h2 id="purpose-of-this-document"><a id="org01a5754"></a><span class="section-number-2">1</span> Purpose of this document</h2>
 <div class="outline-text-2" id="text-purpose-of-this-document">
 <p>
 This document is intended to supplement the Spacemacs documentation by bridging
@@ -338,8 +339,8 @@ read both files to fully understand Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-orgfc14405" class="outline-2">
-<h2 id="philosophy"><a id="orgfc14405"></a><span class="section-number-2">2</span> Philosophy</h2>
+<div id="outline-container-org66f2952" class="outline-2">
+<h2 id="philosophy"><a id="org66f2952"></a><span class="section-number-2">2</span> Philosophy</h2>
 <div class="outline-text-2" id="text-philosophy">
 <p>
 One misconception many vim users have is that Spacemacs is an Emacs <i>clone</i> of
@@ -353,13 +354,13 @@ vim and the nicer configuration language of Emacs.
 </div>
 </div>
 
-<div id="outline-container-org6d2e841" class="outline-2">
-<h2 id="basic-orientation"><a id="org6d2e841"></a><span class="section-number-2">3</span> Basic orientation</h2>
+<div id="outline-container-org246bb42" class="outline-2">
+<h2 id="basic-orientation"><a id="org246bb42"></a><span class="section-number-2">3</span> Basic orientation</h2>
 <div class="outline-text-2" id="text-basic-orientation">
 </div>
 
-<div id="outline-container-org99fe908" class="outline-3">
-<h3 id="terms"><a id="org99fe908"></a><span class="section-number-3">3.1</span> Terms</h3>
+<div id="outline-container-org3cf339e" class="outline-3">
+<h3 id="terms"><a id="org3cf339e"></a><span class="section-number-3">3.1</span> Terms</h3>
 <div class="outline-text-3" id="text-terms">
 <p>
 Spacemacs uses some different terminology than vim, which can cause confusion
@@ -367,8 +368,8 @@ for new users. This section attempts to clear up any confusion.
 </p>
 </div>
 
-<div id="outline-container-orgcf63f3f" class="outline-4">
-<h4 id="modes-vs-states"><a id="orgcf63f3f"></a><span class="section-number-4">3.1.1</span> Modes vs. States</h4>
+<div id="outline-container-org7c2bf0a" class="outline-4">
+<h4 id="modes-vs-states"><a id="org7c2bf0a"></a><span class="section-number-4">3.1.1</span> Modes vs. States</h4>
 <div class="outline-text-4" id="text-modes-vs-states">
 <p>
 In vim you have various editing modes like <code>insert mode</code> and <code>visual mode</code> to
@@ -389,8 +390,8 @@ only one <code>major-mode</code> per buffer.
 </div>
 </div>
 
-<div id="outline-container-orgfbe6e31" class="outline-4">
-<h4 id="layers"><a id="orgfbe6e31"></a><span class="section-number-4">3.1.2</span> Layers</h4>
+<div id="outline-container-org8ddc5de" class="outline-4">
+<h4 id="layers"><a id="org8ddc5de"></a><span class="section-number-4">3.1.2</span> Layers</h4>
 <div class="outline-text-4" id="text-layers">
 <p>
 Spacemacs has the concept of layers. Layers are similar to vim plugins. They
@@ -405,8 +406,8 @@ More information on layers can be found in the <a href="#customization">customiz
 </div>
 </div>
 
-<div id="outline-container-orgf8621af" class="outline-4">
-<h4 id="transient-states"><a id="orgf8621af"></a><span class="section-number-4">3.1.3</span> Transient-states</h4>
+<div id="outline-container-orge242cd2" class="outline-4">
+<h4 id="transient-states"><a id="orge242cd2"></a><span class="section-number-4">3.1.3</span> Transient-states</h4>
 <div class="outline-text-4" id="text-transient-states">
 <p>
 Spacemacs provides a special functionality called transient-states. Transient-states
@@ -426,8 +427,8 @@ bottom of your window. To exit a transient-state press <code>q</code>.
 </div>
 </div>
 
-<div id="outline-container-orge2fdb2f" class="outline-3">
-<h3 id="keybinding-conventions"><a id="orge2fdb2f"></a><span class="section-number-3">3.2</span> Keybinding conventions</h3>
+<div id="outline-container-orgc365e19" class="outline-3">
+<h3 id="keybinding-conventions"><a id="orgc365e19"></a><span class="section-number-3">3.2</span> Keybinding conventions</h3>
 <div class="outline-text-3" id="text-keybinding-conventions">
 <p>
 Spacemacs uses <code>SPC</code> as its <code>&lt;Leader&gt;</code> key. This document will use <code>SPC</code> to refer to
@@ -449,8 +450,8 @@ Spacemacs uses <a href="https://github.com/justbur/emacs-which-key">which-key</a
 </div>
 </div>
 
-<div id="outline-container-org9a9ccc9" class="outline-3">
-<h3 id="running-commands"><a id="org9a9ccc9"></a><span class="section-number-3">3.3</span> Running commands</h3>
+<div id="outline-container-orge8e305d" class="outline-3">
+<h3 id="running-commands"><a id="orge8e305d"></a><span class="section-number-3">3.3</span> Running commands</h3>
 <div class="outline-text-3" id="text-running-commands">
 <p>
 Emacs commands can be run using <code>SPC SPC</code>. This will pop up a buffer using <a href="https://github.com/emacs-helm/helm">Helm</a>
@@ -465,13 +466,13 @@ commands using <code>SPC SPC</code>.
 </div>
 </div>
 
-<div id="outline-container-org2423e0d" class="outline-3">
-<h3 id="buffer-and-window-management"><a id="org2423e0d"></a><span class="section-number-3">3.4</span> Buffer and window management</h3>
+<div id="outline-container-org8e200b4" class="outline-3">
+<h3 id="buffer-and-window-management"><a id="org8e200b4"></a><span class="section-number-3">3.4</span> Buffer and window management</h3>
 <div class="outline-text-3" id="text-buffer-and-window-management">
 </div>
 
-<div id="outline-container-org8142359" class="outline-4">
-<h4 id="buffers"><a id="org8142359"></a><span class="section-number-4">3.4.1</span> Buffers</h4>
+<div id="outline-container-org5721a26" class="outline-4">
+<h4 id="buffers"><a id="org5721a26"></a><span class="section-number-4">3.4.1</span> Buffers</h4>
 <div class="outline-text-4" id="text-buffers">
 <p>
 Buffers in Emacs and vim are essentially the same. The keybindings for buffers
@@ -536,8 +537,8 @@ are located under the <code>SPC b</code> prefix.
 </table>
 </div>
 
-<div id="outline-container-org47bd09f" class="outline-5">
-<h5 id="special-buffers"><a id="org47bd09f"></a><span class="section-number-5">3.4.1.1</span> Special buffers</h5>
+<div id="outline-container-org4decfe5" class="outline-5">
+<h5 id="special-buffers"><a id="org4decfe5"></a><span class="section-number-5">3.4.1.1</span> Special buffers</h5>
 <div class="outline-text-5" id="text-special-buffers">
 <p>
 By default Emacs creates a lot of buffers that most people will never need, like
@@ -548,8 +549,8 @@ key bindings. More information can be found <a href="DOCUMENTATION.html#special-
 </div>
 </div>
 
-<div id="outline-container-org23066f9" class="outline-4">
-<h4 id="windows"><a id="org23066f9"></a><span class="section-number-4">3.4.2</span> Windows</h4>
+<div id="outline-container-orgb2b00ad" class="outline-4">
+<h4 id="windows"><a id="orgb2b00ad"></a><span class="section-number-4">3.4.2</span> Windows</h4>
 <div class="outline-text-4" id="text-windows">
 <p>
 Windows are like splits in vim. They are useful for editing multiple files at
@@ -601,8 +602,8 @@ once. All window keybindings are under the <code>SPC w</code> prefix.
 </div>
 </div>
 
-<div id="outline-container-org7f61acd" class="outline-3">
-<h3 id="files"><a id="org7f61acd"></a><span class="section-number-3">3.5</span> Files</h3>
+<div id="outline-container-org5904bbd" class="outline-3">
+<h3 id="files"><a id="org5904bbd"></a><span class="section-number-3">3.5</span> Files</h3>
 <div class="outline-text-3" id="text-files">
 <p>
 All file commands in Spacemacs are available under the <code>SPC f</code> prefix.
@@ -652,8 +653,8 @@ All file commands in Spacemacs are available under the <code>SPC f</code> prefix
 </div>
 </div>
 
-<div id="outline-container-org579b2ad" class="outline-3">
-<h3 id="the-help-system"><a id="org579b2ad"></a><span class="section-number-3">3.6</span> The Help System</h3>
+<div id="outline-container-org83dcb00" class="outline-3">
+<h3 id="the-help-system"><a id="org83dcb00"></a><span class="section-number-3">3.6</span> The Help System</h3>
 <div class="outline-text-3" id="text-the-help-system">
 <p>
 Emacs has an extensive help system. All keybindings under the <code>SPC h d</code> prefix
@@ -706,8 +707,8 @@ functions are the first thing you should refer to.
 </div>
 </div>
 
-<div id="outline-container-org12daaee" class="outline-3">
-<h3 id="exploring"><a id="org12daaee"></a><span class="section-number-3">3.7</span> Exploring</h3>
+<div id="outline-container-org639f57b" class="outline-3">
+<h3 id="exploring"><a id="org639f57b"></a><span class="section-number-3">3.7</span> Exploring</h3>
 <div class="outline-text-3" id="text-exploring">
 <p>
 There are a few ways to explore the functionality of Spacemacs. One is to read
@@ -746,13 +747,13 @@ explore:
 </div>
 </div>
 
-<div id="outline-container-orgfd06de7" class="outline-2">
-<h2 id="customization"><a id="orgfd06de7"></a><span class="section-number-2">4</span> Customization</h2>
+<div id="outline-container-org3c2d9cd" class="outline-2">
+<h2 id="customization"><a id="org3c2d9cd"></a><span class="section-number-2">4</span> Customization</h2>
 <div class="outline-text-2" id="text-customization">
 </div>
 
-<div id="outline-container-org89d2c87" class="outline-3">
-<h3 id="the-spacemacs-file"><a id="org89d2c87"></a><span class="section-number-3">4.1</span> The .spacemacs file</h3>
+<div id="outline-container-orge3f9f12" class="outline-3">
+<h3 id="the-spacemacs-file"><a id="orge3f9f12"></a><span class="section-number-3">4.1</span> The .spacemacs file</h3>
 <div class="outline-text-3" id="text-the-spacemacs-file">
 <p>
 When you first start spacemacs, you will be prompted to choose an editing style.
@@ -802,8 +803,8 @@ is the one you will use the most. This is where you define any user configuratio
 </div>
 </div>
 
-<div id="outline-container-org81c9639" class="outline-3">
-<h3 id="emacs-lisp"><a id="org81c9639"></a><span class="section-number-3">4.2</span> Emacs Lisp</h3>
+<div id="outline-container-orgab662ed" class="outline-3">
+<h3 id="emacs-lisp"><a id="orgab662ed"></a><span class="section-number-3">4.2</span> Emacs Lisp</h3>
 <div class="outline-text-3" id="text-emacs-lisp">
 <p>
 This section introduces a few emacs lisp functions that are needed to configure
@@ -813,8 +814,8 @@ found at <code>SPC h i elisp RET</code> .
 </p>
 </div>
 
-<div id="outline-container-orgc4c4dc3" class="outline-4">
-<h4 id="variables"><a id="orgc4c4dc3"></a><span class="section-number-4">4.2.1</span> Variables</h4>
+<div id="outline-container-org029182e" class="outline-4">
+<h4 id="variables"><a id="org029182e"></a><span class="section-number-4">4.2.1</span> Variables</h4>
 <div class="outline-text-4" id="text-variables">
 <p>
 Setting variables is the most common way to customize the behavior of Spacemacs.
@@ -822,18 +823,18 @@ The syntax is simple:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> variable value<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">Syntax</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> variable value<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">Syntax</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Setting variables example</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> variable1 t <span class="org-comment-delimiter">; </span><span class="org-comment">True</span>
       variable2 nil <span class="org-comment-delimiter">; </span><span class="org-comment">False</span>
       variable3 '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"A"</span> <span class="org-string">"list"</span> <span class="org-string">"of"</span> <span class="org-string">"things"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org029d865" class="outline-4">
-<h4 id="keybindings"><a id="org029d865"></a><span class="section-number-4">4.2.2</span> Keybindings</h4>
+<div id="outline-container-orgaa6262f" class="outline-4">
+<h4 id="keybindings"><a id="orgaa6262f"></a><span class="section-number-4">4.2.2</span> Keybindings</h4>
 <div class="outline-text-4" id="text-keybindings">
 <p>
 Defining keybindings is something that almost everyone will want to do. The
@@ -841,12 +842,12 @@ built-in <code>define-key</code> function is the best way to do that.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>define-key map new-keybinding function<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">Syntax</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>define-key map new-keybinding function<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">Syntax</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Map H to go to the previous buffer in normal mode</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>define-key evil-normal-state-map <span class="org-rainbow-delimiters-depth-2">(</span>kbd <span class="org-string">"H"</span><span class="org-rainbow-delimiters-depth-2">)</span> 'previous-buffer<span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Mapping keybinding to another keybinding</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>define-key evil-normal-state-map <span class="org-rainbow-delimiters-depth-2">(</span>kbd <span class="org-string">"H"</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>kbd <span class="org-string">"^"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">H goes to beginning of the line</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -860,19 +861,19 @@ To map <code>&lt;Leader&gt;</code> keybindings, use the <code>spacemacs/set-lead
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/set-leader-keys key function<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">Syntax</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/set-leader-keys key function<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">Syntax</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Map killing a buffer to &lt;Leader&gt; b c</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/set-leader-keys <span class="org-string">"bc"</span> 'spacemacs/kill-this-buffer<span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Map opening a link to &lt;Leader&gt; o l only in org-mode (works for any major-mode)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/set-leader-keys-for-major-mode 'org-mode
   <span class="org-string">"ol"</span> 'org-open-at-point<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org9ca72d2" class="outline-4">
-<h4 id="functions"><a id="org9ca72d2"></a><span class="section-number-4">4.2.3</span> Functions</h4>
+<div id="outline-container-orgedaff12" class="outline-4">
+<h4 id="functions"><a id="orgedaff12"></a><span class="section-number-4">4.2.3</span> Functions</h4>
 <div class="outline-text-4" id="text-functions">
 <p>
 You may occasionally want to define a function to do a more complex
@@ -880,14 +881,14 @@ customization. The syntax is simple:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">func-name</span> <span class="org-rainbow-delimiters-depth-2">(</span>arg1 arg2<span class="org-rainbow-delimiters-depth-2">)</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">func-name</span> <span class="org-rainbow-delimiters-depth-2">(</span>arg1 arg2<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-doc">"docstring"</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">Body</span>
   <span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Calling a function</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>func-name arg1 arg2<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -895,7 +896,7 @@ Here is an example of a function that is useful in real life:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">This snippet allows you to run clang-format before saving</span>
+<pre><code class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">This snippet allows you to run clang-format before saving</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">given the current file as the correct filetype.</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">This relies on the c-c++ layer being enabled.</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">clang-format-for-filetype</span> <span class="org-rainbow-delimiters-depth-2">()</span>
@@ -908,14 +909,14 @@ Here is an example of a function that is useful in real life:
 <span class="org-comment-delimiter">;; </span><span class="org-comment">See http://www.gnu.org/software/emacs/manual/html_node/emacs/Hooks.html for</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">what this line means</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'before-save-hook 'clang-format-for-filetype<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc892965" class="outline-3">
-<h3 id="activating-a-layer"><a id="orgc892965"></a><span class="section-number-3">4.3</span> Activating a Layer</h3>
+<div id="outline-container-orgf8d0378" class="outline-3">
+<h3 id="activating-a-layer"><a id="orgf8d0378"></a><span class="section-number-3">4.3</span> Activating a Layer</h3>
 <div class="outline-text-3" id="text-activating-a-layer">
 <p>
 As said in the terms section, layers provide an easy way to add features.
@@ -925,7 +926,7 @@ this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq-default</span>
    <span class="org-comment-delimiter">;; </span><span class="org-comment">...</span>
    dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-comment-delimiter">;; </span><span class="org-comment">auto-completion</span>
@@ -937,7 +938,7 @@ this:
                                        <span class="org-comment-delimiter">;; </span><span class="org-comment">org</span>
                                        <span class="org-comment-delimiter">;; </span><span class="org-comment">syntax-checking</span>
                                        <span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -949,8 +950,8 @@ Emacs or press <code>SPC f e R</code> . To view all layers and their documentati
 </div>
 </div>
 
-<div id="outline-container-org8bbc1ba" class="outline-3">
-<h3 id="creating-a-layer"><a id="org8bbc1ba"></a><span class="section-number-3">4.4</span> Creating a Layer</h3>
+<div id="outline-container-org0bb5296" class="outline-3">
+<h3 id="creating-a-layer"><a id="org0bb5296"></a><span class="section-number-3">4.4</span> Creating a Layer</h3>
 <div class="outline-text-3" id="text-creating-a-layer">
 <p>
 To group configuration or when configuration doesn't fit well in your
@@ -987,7 +988,7 @@ execute code before or after a package loads. It would look like this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> layer-name-packages '<span class="org-rainbow-delimiters-depth-2">(</span>example-package
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> layer-name-packages '<span class="org-rainbow-delimiters-depth-2">(</span>example-package
                             <span class="org-comment-delimiter">;; </span><span class="org-comment">This layer uninstalls example-package-2</span>
                             <span class="org-comment-delimiter">;; </span><span class="org-comment">by setting the :excluded property to true (t)</span>
                             <span class="org-rainbow-delimiters-depth-3">(</span>example-package-2 <span class="org-builtin">:excluded</span> t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -999,7 +1000,7 @@ execute code before or after a package loads. It would look like this:
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">layer-name/init-example-package</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">Configuration for example-package goes here</span>
   <span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -1025,8 +1026,8 @@ the <a href="LAYERS.html">configuration layers documentation.</a>
 </div>
 </div>
 
-<div id="outline-container-org0505e1e" class="outline-3">
-<h3 id="installing-a-single-package"><a id="org0505e1e"></a><span class="section-number-3">4.5</span> Installing a single package</h3>
+<div id="outline-container-org66abe36" class="outline-3">
+<h3 id="installing-a-single-package"><a id="org66abe36"></a><span class="section-number-3">4.5</span> Installing a single package</h3>
 <div class="outline-text-3" id="text-installing-a-single-package">
 <p>
 Sometimes creating a layer is a bit overkill. Maybe you just want one package
@@ -1039,8 +1040,8 @@ will be installed when you restart. Loading the package is covered in the next
 </div>
 </div>
 
-<div id="outline-container-org95bb45d" class="outline-3">
-<h3 id="loading-packages"><a id="org95bb45d"></a><span class="section-number-3">4.6</span> Loading packages</h3>
+<div id="outline-container-org90ae6d6" class="outline-3">
+<h3 id="loading-packages"><a id="org90ae6d6"></a><span class="section-number-3">4.6</span> Loading packages</h3>
 <div class="outline-text-3" id="text-loading-packages">
 <p>
 Ever wonder how Spacemacs can load over a 100 packages in just a few seconds?
@@ -1051,7 +1052,7 @@ to using it:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Basic form of use-package declaration. The :defer t tells use-package to</span>
+<pre><code class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Basic form of use-package declaration. The :defer t tells use-package to</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">try to lazy load the package.</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">package-name</span>
   <span class="org-builtin">:defer</span> t<span class="org-rainbow-delimiters-depth-1">)</span>
@@ -1070,7 +1071,7 @@ to using it:
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">progn</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">Calling a function that is defined when the package loads</span>
     <span class="org-rainbow-delimiters-depth-3">(</span>function-defined-when-package-loads<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -1080,8 +1081,8 @@ to control how a package loads using it that aren't covered here.
 </div>
 </div>
 
-<div id="outline-container-orgd636c1f" class="outline-3">
-<h3 id="uninstalling-a-package"><a id="orgd636c1f"></a><span class="section-number-3">4.7</span> Uninstalling a package</h3>
+<div id="outline-container-org234b8f8" class="outline-3">
+<h3 id="uninstalling-a-package"><a id="org234b8f8"></a><span class="section-number-3">4.7</span> Uninstalling a package</h3>
 <div class="outline-text-3" id="text-uninstalling-a-package">
 <p>
 Spacemacs provides a variable in the <code>dotspacemacs/init</code> function in
@@ -1091,8 +1092,8 @@ the list and it will be uninstalled when you restart.
 </div>
 </div>
 
-<div id="outline-container-orgea3f25c" class="outline-3">
-<h3 id="common-tweaks"><a id="orgea3f25c"></a><span class="section-number-3">4.8</span> Common tweaks</h3>
+<div id="outline-container-org5ea4b6b" class="outline-3">
+<h3 id="common-tweaks"><a id="org5ea4b6b"></a><span class="section-number-3">4.8</span> Common tweaks</h3>
 <div class="outline-text-3" id="text-common-tweaks">
 <p>
 This section is for things many will want to change. All of these settings go in
@@ -1100,8 +1101,8 @@ the <code>dotspacemacs/user-config</code> function in your <code>.spacemacs</cod
 </p>
 </div>
 
-<div id="outline-container-orgbf54e04" class="outline-4">
-<h4 id="changing-the-escape-key"><a id="orgbf54e04"></a><span class="section-number-4">4.8.1</span> Changing the escape key</h4>
+<div id="outline-container-org7d69a54" class="outline-4">
+<h4 id="changing-the-escape-key"><a id="org7d69a54"></a><span class="section-number-4">4.8.1</span> Changing the escape key</h4>
 <div class="outline-text-4" id="text-changing-the-escape-key">
 <p>
 Spacemacs uses <a href="https://github.com/syl20bnr/evil-escape">evil-escape</a> to
@@ -1110,11 +1111,11 @@ the variable in your <code>dotspacemacs/user-config</code> like this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">...</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">Set escape keybinding to "jk"</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq-default</span> evil-escape-key-sequence <span class="org-string">"jk"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -1123,8 +1124,8 @@ More documentation is found in the <code>evil-escape</code> <a href="https://git
 </div>
 </div>
 
-<div id="outline-container-org562331b" class="outline-4">
-<h4 id="changing-the-colorscheme"><a id="org562331b"></a><span class="section-number-4">4.8.2</span> Changing the colorscheme</h4>
+<div id="outline-container-orgc8608ba" class="outline-4">
+<h4 id="changing-the-colorscheme"><a id="orgc8608ba"></a><span class="section-number-4">4.8.2</span> Changing the colorscheme</h4>
 <div class="outline-text-4" id="text-changing-the-colorscheme">
 <p>
 The <code>.spacemacs</code> file contains the <code>dotspacemacs-themes</code> variable in the
@@ -1134,7 +1135,7 @@ that is loaded at startup. Here is an example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/init</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/init</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">Darktooth theme is the default theme</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">Each theme is automatically installed.</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">Note that we drop the -theme from the package name.</span>
@@ -1142,7 +1143,7 @@ that is loaded at startup. Here is an example:
     <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq-default</span> dotspacemacs-themes '<span class="org-rainbow-delimiters-depth-3">(</span>darktooth
                                         soothe
                                         gotham<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -1151,8 +1152,8 @@ All installed themes can be listed and chosen using the <code>SPC T h</code> key
 </div>
 </div>
 
-<div id="outline-container-orgf327366" class="outline-4">
-<h4 id="nohlsearch"><a id="orgf327366"></a><span class="section-number-4">4.8.3</span> Nohlsearch</h4>
+<div id="outline-container-orgfc527a3" class="outline-4">
+<h4 id="nohlsearch"><a id="orgfc527a3"></a><span class="section-number-4">4.8.3</span> Nohlsearch</h4>
 <div class="outline-text-4" id="text-nohlsearch">
 <p>
 Spacemacs emulates the default vim behavior which highlights search results even
@@ -1167,8 +1168,8 @@ you can <a href="#uninstalling-a-package">uninstall</a> the <code>evil-search-hi
 </div>
 </div>
 
-<div id="outline-container-org3d4ff33" class="outline-4">
-<h4 id="sessions"><a id="org3d4ff33"></a><span class="section-number-4">4.8.4</span> Sessions</h4>
+<div id="outline-container-orgc04bc56" class="outline-4">
+<h4 id="sessions"><a id="orgc04bc56"></a><span class="section-number-4">4.8.4</span> Sessions</h4>
 <div class="outline-text-4" id="text-sessions">
 <p>
 Spacemacs does not automatically restore your windows and buffers when you
@@ -1178,8 +1179,8 @@ reopen it. If you use vim sessions regularly you may want to set
 </div>
 </div>
 
-<div id="outline-container-org55fd00f" class="outline-4">
-<h4 id="navigating-using-visual-lines"><a id="org55fd00f"></a><span class="section-number-4">4.8.5</span> Navigating using visual lines</h4>
+<div id="outline-container-org4b9c8b0" class="outline-4">
+<h4 id="navigating-using-visual-lines"><a id="org4b9c8b0"></a><span class="section-number-4">4.8.5</span> Navigating using visual lines</h4>
 <div class="outline-text-4" id="text-navigating-using-visual-lines">
 <p>
 Spacemacs uses the vim default of navigating by actual lines, even if they are
@@ -1188,17 +1189,17 @@ your <code>.spacemacs</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>define-key evil-normal-state-map <span class="org-rainbow-delimiters-depth-2">(</span>kbd <span class="org-string">"j"</span><span class="org-rainbow-delimiters-depth-2">)</span> 'evil-next-visual-line<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>define-key evil-normal-state-map <span class="org-rainbow-delimiters-depth-2">(</span>kbd <span class="org-string">"j"</span><span class="org-rainbow-delimiters-depth-2">)</span> 'evil-next-visual-line<span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>define-key evil-normal-state-map <span class="org-rainbow-delimiters-depth-2">(</span>kbd <span class="org-string">"k"</span><span class="org-rainbow-delimiters-depth-2">)</span> 'evil-previous-visual-line<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org6179745" class="outline-2">
-<h2 id="other-useful-links"><a id="org6179745"></a><span class="section-number-2">5</span> Other useful links</h2>
+<div id="outline-container-orge51547d" class="outline-2">
+<h2 id="other-useful-links"><a id="orge51547d"></a><span class="section-number-2">5</span> Other useful links</h2>
 <div class="outline-text-2" id="text-other-useful-links">
 <ul class="org-ul">
 <li><a href="https://www.gnu.org/software/emacs/manual/emacs.html">Emacs Manual</a></li>
@@ -1216,7 +1217,7 @@ It is <code>SPC b b</code></li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-09-02 Sat 10:43</p>
+<p class="date">Created: 2017-09-11 Mon 19:40</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

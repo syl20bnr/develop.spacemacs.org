@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-02 Sat 10:44 -->
+<!-- 2017-09-11 Mon 19:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sphinx layer</title>
@@ -68,6 +68,7 @@
   pre.src-fortran:before { content: 'Fortran'; }
   pre.src-gnuplot:before { content: 'gnuplot'; }
   pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
   pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
@@ -281,8 +282,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgfbcf035" class="outline-2">
-<h2 id="description"><a id="orgfbcf035"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgb60ec7b" class="outline-2">
+<h2 id="description"><a id="orgb60ec7b"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 The layer adds <code>Sphinx</code> support to Spacemacs. It will automatically also install
@@ -291,8 +292,8 @@ the <code>restructuredtext</code> layer.
 </div>
 </div>
 
-<div id="outline-container-org73aa19b" class="outline-2">
-<h2 id="install"><a id="org73aa19b"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org29aa986" class="outline-2">
+<h2 id="install"><a id="org29aa986"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -302,13 +303,13 @@ in this file.
 </div>
 </div>
 
-<div id="outline-container-orgffab54e" class="outline-2">
-<h2 id="configuration"><a id="orgffab54e"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org425cc78" class="outline-2">
+<h2 id="configuration"><a id="org425cc78"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-orgb33d632" class="outline-3">
-<h3 id="sphinx-target"><a id="orgb33d632"></a><span class="section-number-3">3.1</span> Sphinx target</h3>
+<div id="outline-container-orgddaeccc" class="outline-3">
+<h3 id="sphinx-target"><a id="orgddaeccc"></a><span class="section-number-3">3.1</span> Sphinx target</h3>
 <div class="outline-text-3" id="text-sphinx-target">
 <p>
 To use the layer's Sphinx feature, the following variables should be set.
@@ -319,8 +320,8 @@ A parent directory is needed for all Sphinx projects' builds.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> rst-sphinx-target-parent <span class="org-string">"/your/path/of/build/"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> rst-sphinx-target-parent <span class="org-string">"/your/path/of/build/"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -328,17 +329,17 @@ Set a directory in the parent directory for each Sphinx project.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> rst-sphinx-target-projects
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> rst-sphinx-target-projects
       '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"project1"</span> . <span class="org-rainbow-delimiters-depth-4">(</span>latex <span class="org-string">"folder/in/target/parent"</span> t<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
         <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"project2"</span> . <span class="org-rainbow-delimiters-depth-4">(</span>html  <span class="org-string">"folder/in/target/parent"</span> nil<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
         <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgb751ccf" class="outline-3">
-<h3 id="web-browser"><a id="orgb751ccf"></a><span class="section-number-3">3.2</span> Web browser</h3>
+<div id="outline-container-org49f93d3" class="outline-3">
+<h3 id="web-browser"><a id="org49f93d3"></a><span class="section-number-3">3.2</span> Web browser</h3>
 <div class="outline-text-3" id="text-web-browser">
 <p>
 Set the browser for viewing the HTML page of current rst file. This one
@@ -346,15 +347,15 @@ is optional. If not set, the default browser will be used.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> rst-slides-program <span class="org-string">"chromium"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> rst-slides-program <span class="org-string">"chromium"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org47c8d8b" class="outline-2">
-<h2 id="key-bindings"><a id="org47c8d8b"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org42563fa" class="outline-2">
+<h2 id="key-bindings"><a id="org42563fa"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -402,7 +403,7 @@ is optional. If not set, the default browser will be used.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-09-02 Sat 10:44</p>
+<p class="date">Created: 2017-09-11 Mon 19:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

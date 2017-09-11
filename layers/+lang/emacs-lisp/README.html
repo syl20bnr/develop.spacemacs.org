@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-02 Sat 10:44 -->
+<!-- 2017-09-11 Mon 19:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs Lisp layer</title>
@@ -68,6 +68,7 @@
   pre.src-fortran:before { content: 'Fortran'; }
   pre.src-gnuplot:before { content: 'gnuplot'; }
   pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
   pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
@@ -284,8 +285,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org053f9b6" class="outline-2">
-<h2 id="description"><a id="org053f9b6"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orga0d1025" class="outline-2">
+<h2 id="description"><a id="orga0d1025"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer gathers all the configuration related to emacs-lisp. This should
@@ -294,8 +295,8 @@ always be in your dotfile, it is not recommended to uninstall it.
 </div>
 </div>
 
-<div id="outline-container-orgc23e2a9" class="outline-2">
-<h2 id="install"><a id="orgc23e2a9"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgd063c5b" class="outline-2">
+<h2 id="install"><a id="orgd063c5b"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -305,8 +306,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orge7e377b" class="outline-2">
-<h2 id="auto-compile"><a id="orge7e377b"></a><span class="section-number-2">3</span> Auto-compile</h2>
+<div id="outline-container-org82b5a61" class="outline-2">
+<h2 id="auto-compile"><a id="org82b5a61"></a><span class="section-number-2">3</span> Auto-compile</h2>
 <div class="outline-text-2" id="text-auto-compile">
 <p>
 This layer adds the <a href="https://github.com/tarsius/auto-compile">auto-compile</a> package to automatically keep the byte-compiled
@@ -318,8 +319,8 @@ feature use this line in your <code>dotspacemacs/user-config</code> function.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>remove-hook 'emacs-lisp-mode-hook 'auto-compile-mode<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>remove-hook 'emacs-lisp-mode-hook 'auto-compile-mode<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -328,8 +329,8 @@ You can also exclude the <code>auto-compile</code> package.
 </div>
 </div>
 
-<div id="outline-container-orgca1a836" class="outline-2">
-<h2 id="working-with-lisp-files-barfage-slurpage--more"><a id="orgca1a836"></a><span class="section-number-2">4</span> Working with lisp files (barfage, slurpage &amp; more)</h2>
+<div id="outline-container-org1525f82" class="outline-2">
+<h2 id="working-with-lisp-files-barfage-slurpage--more"><a id="org1525f82"></a><span class="section-number-2">4</span> Working with lisp files (barfage, slurpage &amp; more)</h2>
 <div class="outline-text-2" id="text-working-with-lisp-files-barfage-slurpage--more">
 <p>
 Spacemacs comes with a special <code>lisp-state</code> for working with lisp code that
@@ -344,8 +345,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-orgb1beee1" class="outline-2">
-<h2 id="debugging-elisp"><a id="orgb1beee1"></a><span class="section-number-2">5</span> Debugging Elisp</h2>
+<div id="outline-container-orga20ade7" class="outline-2">
+<h2 id="debugging-elisp"><a id="orga20ade7"></a><span class="section-number-2">5</span> Debugging Elisp</h2>
 <div class="outline-text-2" id="text-debugging-elisp">
 <p>
 Here is an interactive quick start to debug Emacs Lisp.
@@ -357,7 +358,7 @@ block to be interactively opened as Emacs Lisp.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">helloworld</span> <span class="org-rainbow-delimiters-depth-2">(</span>name<span class="org-rainbow-delimiters-depth-2">)</span>
+<pre><code class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">helloworld</span> <span class="org-rainbow-delimiters-depth-2">(</span>name<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>n <span class="org-rainbow-delimiters-depth-5">(</span>subroutine name<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
     <span class="org-rainbow-delimiters-depth-3">(</span>message <span class="org-rainbow-delimiters-depth-4">(</span>format <span class="org-string">"Hello world, %s!"</span> name<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
@@ -365,7 +366,7 @@ block to be interactively opened as Emacs Lisp.
   <span class="org-rainbow-delimiters-depth-2">(</span>concat <span class="org-string">"my dear "</span> s<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-rainbow-delimiters-depth-1">(</span>helloworld <span class="org-string">"Spacemacs"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <ol class="org-ol">
@@ -411,8 +412,8 @@ function or press <code>o</code> to go out of it.
 </div>
 </div>
 
-<div id="outline-container-org6d6312f" class="outline-2">
-<h2 id="key-bindings"><a id="org6d6312f"></a><span class="section-number-2">6</span> Key bindings</h2>
+<div id="outline-container-org586c7b7" class="outline-2">
+<h2 id="key-bindings"><a id="org586c7b7"></a><span class="section-number-2">6</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -507,8 +508,8 @@ function or press <code>o</code> to go out of it.
 </table>
 </div>
 
-<div id="outline-container-orgd48e5a4" class="outline-3">
-<h3 id="additional-evaluation-functions"><a id="orgd48e5a4"></a><span class="section-number-3">6.1</span> Additional evaluation functions</h3>
+<div id="outline-container-org0d645fa" class="outline-3">
+<h3 id="additional-evaluation-functions"><a id="org0d645fa"></a><span class="section-number-3">6.1</span> Additional evaluation functions</h3>
 <div class="outline-text-3" id="text-additional-evaluation-functions">
 <p>
 If <code>smartparens</code> is used the following additional key bindings are available:
@@ -543,8 +544,8 @@ If <code>smartparens</code> is used the following additional key bindings are av
 </div>
 </div>
 
-<div id="outline-container-org5d442e5" class="outline-3">
-<h3 id="format-code"><a id="org5d442e5"></a><span class="section-number-3">6.2</span> Format code</h3>
+<div id="outline-container-orgc7a7972" class="outline-3">
+<h3 id="format-code"><a id="orgc7a7972"></a><span class="section-number-3">6.2</span> Format code</h3>
 <div class="outline-text-3" id="text-format-code">
 <p>
 The <a href="../../%2Bemacs/semantic/README.html">semantic</a> layer should be installed for these key bindings to become active.
@@ -589,8 +590,8 @@ The <a href="../../%2Bemacs/semantic/README.html">semantic</a> layer should be i
 </div>
 </div>
 
-<div id="outline-container-org0ab6d60" class="outline-3">
-<h3 id="debugging"><a id="org0ab6d60"></a><span class="section-number-3">6.3</span> Debugging</h3>
+<div id="outline-container-org168925e" class="outline-3">
+<h3 id="debugging"><a id="org168925e"></a><span class="section-number-3">6.3</span> Debugging</h3>
 <div class="outline-text-3" id="text-debugging">
 <p>
 To start debugging:
@@ -651,7 +652,7 @@ TODO
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-09-02 Sat 10:44</p>
+<p class="date">Created: 2017-09-11 Mon 19:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

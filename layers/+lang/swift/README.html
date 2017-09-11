@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-02 Sat 10:44 -->
+<!-- 2017-09-11 Mon 19:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Swift layer</title>
@@ -68,6 +68,7 @@
   pre.src-fortran:before { content: 'Fortran'; }
   pre.src-gnuplot:before { content: 'gnuplot'; }
   pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
   pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
@@ -263,7 +264,11 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#description">1. Description</a></li>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
 <li><a href="#install">2. Install</a></li>
 <li><a href="#usage-information">3. Usage information</a></li>
 <li><a href="#key-bindings">4. Key bindings</a>
@@ -281,21 +286,20 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org429b90f" class="outline-2">
-<h2 id="description"><a id="org429b90f"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org17edf0d" class="outline-2">
+<h2 id="description"><a id="org17edf0d"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for Apple's Swift programming language, used as a
 general purpose scripting language.
 </p>
+</div>
 
-<p>
-It relies on the <a href="https://github.com/swift-emacs/swift-mode">swift-mode</a> major-mode* for Emacs 24.4 or later, to provide the
-following features:
-</p>
-
+<div id="outline-container-org7766074" class="outline-3">
+<h3 id="features"><a id="org7766074"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Syntax highlighting</li>
+<li>Syntax highlighting with <a href="https://github.com/swift-emacs/swift-mode">swift-mode</a></li>
 <li>Indentation</li>
 <li>Code navigation using <code>imenu</code> (built-in)</li>
 <li>Automatic syntax checking with <code>flycheck</code> (available with the
@@ -303,9 +307,10 @@ following features:
 </ul>
 </div>
 </div>
+</div>
 
-<div id="outline-container-org0605f5c" class="outline-2">
-<h2 id="install"><a id="org0605f5c"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org6b5246c" class="outline-2">
+<h2 id="install"><a id="org6b5246c"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 First check that you are able to run this from the command line:
@@ -315,8 +320,8 @@ First check that you are able to run this from the command line:
 On OS X:
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">xcrun swift
-</pre>
+<pre><code class="src src-sh">xcrun swift
+</code></pre>
 </div>
 
 <p>
@@ -327,8 +332,8 @@ this file.
 </div>
 </div>
 
-<div id="outline-container-org71c4750" class="outline-2">
-<h2 id="usage-information"><a id="org71c4750"></a><span class="section-number-2">3</span> Usage information</h2>
+<div id="outline-container-org422dca5" class="outline-2">
+<h2 id="usage-information"><a id="org422dca5"></a><span class="section-number-2">3</span> Usage information</h2>
 <div class="outline-text-2" id="text-usage-information">
 <p>
 Unless configured by the user, the REPL will be invoked using the command <code>xcrun
@@ -339,13 +344,13 @@ The universal prefix <code>SPC u</code> (<code>C-u</code>) may be used to modify
 </div>
 </div>
 
-<div id="outline-container-orgbf4b004" class="outline-2">
-<h2 id="key-bindings"><a id="orgbf4b004"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org3455aa8" class="outline-2">
+<h2 id="key-bindings"><a id="org3455aa8"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgaad9222" class="outline-3">
-<h3 id="swift-mode"><a id="orgaad9222"></a><span class="section-number-3">4.1</span> swift-mode</h3>
+<div id="outline-container-org982fef7" class="outline-3">
+<h3 id="swift-mode"><a id="org982fef7"></a><span class="section-number-3">4.1</span> swift-mode</h3>
 <div class="outline-text-3" id="text-swift-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -390,8 +395,8 @@ Notes:
 </div>
 </div>
 
-<div id="outline-container-org7a105a3" class="outline-3">
-<h3 id="swift-repl-mode"><a id="org7a105a3"></a><span class="section-number-3">4.2</span> swift-repl-mode</h3>
+<div id="outline-container-orgedd74dc" class="outline-3">
+<h3 id="swift-repl-mode"><a id="orgedd74dc"></a><span class="section-number-3">4.2</span> swift-repl-mode</h3>
 <div class="outline-text-3" id="text-swift-repl-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -420,7 +425,7 @@ Notes:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-09-02 Sat 10:44</p>
+<p class="date">Created: 2017-09-11 Mon 19:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

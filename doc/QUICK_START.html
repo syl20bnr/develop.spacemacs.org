@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-02 Sat 10:43 -->
+<!-- 2017-09-11 Mon 19:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Quick start</title>
@@ -68,6 +68,7 @@
   pre.src-fortran:before { content: 'Fortran'; }
   pre.src-gnuplot:before { content: 'gnuplot'; }
   pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
   pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
@@ -282,8 +283,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org9a4ef45" class="outline-2">
-<h2 id="configuration-layers"><a id="org9a4ef45"></a><span class="section-number-2">1</span> Configuration layers</h2>
+<div id="outline-container-orgd28bf2f" class="outline-2">
+<h2 id="configuration-layers"><a id="orgd28bf2f"></a><span class="section-number-2">1</span> Configuration layers</h2>
 <div class="outline-text-2" id="text-configuration-layers">
 <p>
 Spacemacs divides its configuration into self-contained units called
@@ -327,8 +328,8 @@ the <a href="DOCUMENTATION.html">documentation</a>.
 </div>
 </div>
 
-<div id="outline-container-orga18c885" class="outline-2">
-<h2 id="dotfile-spacemacs"><a id="orga18c885"></a><span class="section-number-2">2</span> Dotfile (.spacemacs)</h2>
+<div id="outline-container-org97e5773" class="outline-2">
+<h2 id="dotfile-spacemacs"><a id="org97e5773"></a><span class="section-number-2">2</span> Dotfile (.spacemacs)</h2>
 <div class="outline-text-2" id="text-dotfile-spacemacs">
 <p>
 As mentioned <code>.spacemacs</code> controls which configuration layers to load and
@@ -357,9 +358,9 @@ To load some configuration layers using the variable
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">List of configuration layers to load.</span>
+<pre><code class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">List of configuration layers to load.</span>
 dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-1">(</span>auto-completion smex<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -369,12 +370,12 @@ Variables can be directly set within <code>dotspacemacs-configuration-layers</co
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">List of configuration layers to load.</span>
+<pre><code class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">List of configuration layers to load.</span>
 dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-1">(</span>auto-completion
                                     <span class="org-rainbow-delimiters-depth-2">(</span>git <span class="org-builtin">:variables</span>
                                          git-magit-status-fullscreen t<span class="org-rainbow-delimiters-depth-2">)</span>
                                     smex<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -390,8 +391,8 @@ more details.
 </div>
 </div>
 
-<div id="outline-container-orgf97dd01" class="outline-2">
-<h2 id="dotdirectory-spacemacsd"><a id="orgf97dd01"></a><span class="section-number-2">3</span> Dotdirectory (~/.spacemacs.d)</h2>
+<div id="outline-container-org5d4542c" class="outline-2">
+<h2 id="dotdirectory-spacemacsd"><a id="org5d4542c"></a><span class="section-number-2">3</span> Dotdirectory (~/.spacemacs.d)</h2>
 <div class="outline-text-2" id="text-dotdirectory-spacemacsd">
 <p>
 Like <code>Emacs</code>, Spacemacs initialization can also be contained in an <code>init.el</code> file
@@ -419,13 +420,13 @@ side-by-side without the need to rename and backup <code>~/.emacs.d/</code>.
 </div>
 </div>
 
-<div id="outline-container-orgb6dfd82" class="outline-2">
-<h2 id="learning-spacemacs"><a id="orgb6dfd82"></a><span class="section-number-2">4</span> Learning Spacemacs</h2>
+<div id="outline-container-orgec0121f" class="outline-2">
+<h2 id="learning-spacemacs"><a id="orgec0121f"></a><span class="section-number-2">4</span> Learning Spacemacs</h2>
 <div class="outline-text-2" id="text-learning-spacemacs">
 </div>
 
-<div id="outline-container-org0479a88" class="outline-3">
-<h3 id="editing-styles"><a id="org0479a88"></a><span class="section-number-3">4.1</span> Editing Styles</h3>
+<div id="outline-container-org2c183c6" class="outline-3">
+<h3 id="editing-styles"><a id="org2c183c6"></a><span class="section-number-3">4.1</span> Editing Styles</h3>
 <div class="outline-text-3" id="text-editing-styles">
 <p>
 Spacemacs can be used by Vim users or Emacs users by setting the
@@ -435,8 +436,8 @@ in the dotfile <code>~/.spacemacs</code>.
 </div>
 </div>
 
-<div id="outline-container-org00a44fa" class="outline-3">
-<h3 id="the-leader-keys"><a id="org00a44fa"></a><span class="section-number-3">4.2</span> The leader keys</h3>
+<div id="outline-container-orgbdf549d" class="outline-3">
+<h3 id="the-leader-keys"><a id="orgbdf549d"></a><span class="section-number-3">4.2</span> The leader keys</h3>
 <div class="outline-text-3" id="text-the-leader-keys">
 <p>
 Spacemacs key bindings use a leader key which is by default bound to
@@ -463,8 +464,8 @@ where all the major-mode specific commands are bound.
 </div>
 </div>
 
-<div id="outline-container-orgd38e4a8" class="outline-3">
-<h3 id="evil-tutor"><a id="orgd38e4a8"></a><span class="section-number-3">4.3</span> Evil-tutor</h3>
+<div id="outline-container-orgc51145f" class="outline-3">
+<h3 id="evil-tutor"><a id="orgc51145f"></a><span class="section-number-3">4.3</span> Evil-tutor</h3>
 <div class="outline-text-3" id="text-evil-tutor">
 <p>
 If you are willing to learn the Vim key bindings (highly recommended since
@@ -474,8 +475,8 @@ to begin an Evil-adapted Vimtutor.
 </div>
 </div>
 
-<div id="outline-container-org465a73a" class="outline-3">
-<h3 id="universal-argument"><a id="org465a73a"></a><span class="section-number-3">4.4</span> Universal argument</h3>
+<div id="outline-container-org78dc8fb" class="outline-3">
+<h3 id="universal-argument"><a id="org78dc8fb"></a><span class="section-number-3">4.4</span> Universal argument</h3>
 <div class="outline-text-3" id="text-universal-argument">
 <p>
 In <code>vim</code> editing style the universal argument defaults to <code>SPC u</code>
@@ -484,8 +485,8 @@ instead of <code>C-u</code> because the latter is used to scroll up as in Vim.
 </div>
 </div>
 
-<div id="outline-container-org9391ca4" class="outline-3">
-<h3 id="configuration-layers-and-package-discovery"><a id="org9391ca4"></a><span class="section-number-3">4.5</span> Configuration layers and Package discovery</h3>
+<div id="outline-container-orgaa2657f" class="outline-3">
+<h3 id="configuration-layers-and-package-discovery"><a id="orgaa2657f"></a><span class="section-number-3">4.5</span> Configuration layers and Package discovery</h3>
 <div class="outline-text-3" id="text-configuration-layers-and-package-discovery">
 <p>
 By using <code>helm-spacemacs-help</code> with <code>SPC h SPC</code> you can quickly search
@@ -499,8 +500,8 @@ function of a package.
 </div>
 </div>
 
-<div id="outline-container-org5141f49" class="outline-3">
-<h3 id="key-bindings-discovery"><a id="org5141f49"></a><span class="section-number-3">4.6</span> Key bindings discovery</h3>
+<div id="outline-container-orgbede5e3" class="outline-3">
+<h3 id="key-bindings-discovery"><a id="orgbede5e3"></a><span class="section-number-3">4.6</span> Key bindings discovery</h3>
 <div class="outline-text-3" id="text-key-bindings-discovery">
 <p>
 Thanks to <a href="https://github.com/justbur/emacs-which-key">which-key</a>, whenever a prefix command is pressed (like <code>SPC</code>)
@@ -532,8 +533,8 @@ backslash, an actual space and a lowercase <code>b</code>.
 </div>
 </div>
 
-<div id="outline-container-org13da4ff" class="outline-3">
-<h3 id="describe-functions"><a id="org13da4ff"></a><span class="section-number-3">4.7</span> Describe functions</h3>
+<div id="outline-container-orge4caf9c" class="outline-3">
+<h3 id="describe-functions"><a id="orge4caf9c"></a><span class="section-number-3">4.7</span> Describe functions</h3>
 <div class="outline-text-3" id="text-describe-functions">
 <p>
 <code>Describe functions</code> are powerful Emacs introspection commands to get information
@@ -580,8 +581,8 @@ about functions, variables, modes etc. These commands are bound thusly:
 </div>
 </div>
 
-<div id="outline-container-org3722408" class="outline-2">
-<h2 id="how-tos"><a id="org3722408"></a><span class="section-number-2">5</span> How-To's</h2>
+<div id="outline-container-orgb62caa5" class="outline-2">
+<h2 id="how-tos"><a id="orgb62caa5"></a><span class="section-number-2">5</span> How-To's</h2>
 <div class="outline-text-2" id="text-how-tos">
 <p>
 Some quick <code>how-to's</code> are compiled in the <a href="FAQ.html#how-do-i">FAQ.</a>
@@ -591,7 +592,7 @@ Some quick <code>how-to's</code> are compiled in the <a href="FAQ.html#how-do-i"
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-09-02 Sat 10:43</p>
+<p class="date">Created: 2017-09-11 Mon 19:40</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

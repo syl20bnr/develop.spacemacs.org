@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-02 Sat 10:44 -->
+<!-- 2017-09-11 Mon 19:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ruby layer</title>
@@ -68,6 +68,7 @@
   pre.src-fortran:before { content: 'Fortran'; }
   pre.src-gnuplot:before { content: 'gnuplot'; }
   pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
   pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
@@ -263,7 +264,11 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#description">1. Description</a></li>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#prerequisites">2.1. Prerequisites</a></li>
@@ -297,25 +302,31 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgbfacdbb" class="outline-2">
-<h2 id="description"><a id="orgbfacdbb"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org41da40d" class="outline-2">
+<h2 id="description"><a id="org41da40d"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer provides support for the Ruby language with the following features:
+This layer provides support for the Ruby programming language.
 </p>
+</div>
+
+<div id="outline-container-org44c35e5" class="outline-3">
+<h3 id="features"><a id="org44c35e5"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>version manager (rbenv, rvm or chruby)</li>
-<li>integration with bundler</li>
-<li>test runner (ruby-test and rspec)</li>
-<li>rake runner</li>
-<li>linter (rubocop)</li>
-<li>interactive REPL and code navigation (robe)</li>
+<li>Version manager (rbenv, rvm or chruby)</li>
+<li>Integration with bundler</li>
+<li>Test runner (ruby-test and rspec)</li>
+<li>Rake runner</li>
+<li>Linter (rubocop)</li>
+<li>Interactive REPL and code navigation (robe)</li>
 </ul>
 </div>
 </div>
+</div>
 
-<div id="outline-container-org238189d" class="outline-2">
-<h2 id="install"><a id="org238189d"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org625d27c" class="outline-2">
+<h2 id="install"><a id="org625d27c"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -330,14 +341,14 @@ This layer supports two different Ruby modes: Emacs' built-in Ruby Mode and
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
    '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>ruby <span class="org-builtin">:variables</span> ruby-enable-enh-ruby-mode t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 
-<div id="outline-container-org1638df5" class="outline-3">
-<h3 id="prerequisites"><a id="org1638df5"></a><span class="section-number-3">2.1</span> Prerequisites</h3>
+<div id="outline-container-orge07dbc3" class="outline-3">
+<h3 id="prerequisites"><a id="orge07dbc3"></a><span class="section-number-3">2.1</span> Prerequisites</h3>
 <div class="outline-text-3" id="text-prerequisites">
 <p>
 Some of the advanced features supported by this layer depend on external gems
@@ -357,8 +368,8 @@ adding them to the <code>Gemfile</code>, e.g.:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ruby">gem <span class="org-string">'pry'</span>
-</pre>
+<pre><code class="src src-ruby">gem <span class="org-string">'pry'</span>
+</code></pre>
 </div>
 
 <p>
@@ -367,14 +378,14 @@ specific documentation for details and caveats):
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">gem install pry
-</pre>
+<pre><code class="src src-sh">gem install pry
+</code></pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5d9e7e4" class="outline-3">
-<h3 id="ruby-version-management"><a id="org5d9e7e4"></a><span class="section-number-3">2.2</span> Ruby version management</h3>
+<div id="outline-container-org99fdf73" class="outline-3">
+<h3 id="ruby-version-management"><a id="org99fdf73"></a><span class="section-number-3">2.2</span> Ruby version management</h3>
 <div class="outline-text-3" id="text-ruby-version-management">
 <p>
 This layer supports <a href="https://rvm.io/">RVM</a>, <a href="https://github.com/rbenv/rbenv">Rbenv</a>, and <a href="https://github.com/postmodern/chruby">Chruby</a>. You can choose the default version
@@ -383,9 +394,9 @@ example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
    '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>ruby <span class="org-builtin">:variables</span> ruby-version-manager 'rvm<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -402,8 +413,8 @@ Note: Only one version manager at a time can be enabled.
 </div>
 </div>
 
-<div id="outline-container-org0712e36" class="outline-3">
-<h3 id="test-runner"><a id="org0712e36"></a><span class="section-number-3">2.3</span> Test runner</h3>
+<div id="outline-container-org226d473" class="outline-3">
+<h3 id="test-runner"><a id="org226d473"></a><span class="section-number-3">2.3</span> Test runner</h3>
 <div class="outline-text-3" id="text-test-runner">
 <p>
 This layer supports <code>RSpec</code>, <code>ruby-test</code> and <code>minitest</code> test runners
@@ -416,9 +427,9 @@ Example to set the test runner to <code>RSpec</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
    '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>ruby <span class="org-builtin">:variables</span> ruby-test-runner 'rspec<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -429,13 +440,13 @@ directory local variables.
 </div>
 </div>
 
-<div id="outline-container-org1e52323" class="outline-2">
-<h2 id="key-bindings"><a id="org1e52323"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-orgb08febf" class="outline-2">
+<h2 id="key-bindings"><a id="orgb08febf"></a><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org3740fae" class="outline-3">
-<h3 id="ruby-enh-ruby-mode-robe-inf-ruby-ruby-tools"><a id="org3740fae"></a><span class="section-number-3">3.1</span> Ruby (enh-ruby-mode, robe, inf-ruby, ruby-tools)</h3>
+<div id="outline-container-org1125e0b" class="outline-3">
+<h3 id="ruby-enh-ruby-mode-robe-inf-ruby-ruby-tools"><a id="org1125e0b"></a><span class="section-number-3">3.1</span> Ruby (enh-ruby-mode, robe, inf-ruby, ruby-tools)</h3>
 <div class="outline-text-3" id="text-ruby-enh-ruby-mode-robe-inf-ruby-ruby-tools">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -526,8 +537,8 @@ directory local variables.
 </div>
 </div>
 
-<div id="outline-container-org7de76e9" class="outline-3">
-<h3 id="bundler"><a id="org7de76e9"></a><span class="section-number-3">3.2</span> Bundler</h3>
+<div id="outline-container-orgae0fd03" class="outline-3">
+<h3 id="bundler"><a id="orgae0fd03"></a><span class="section-number-3">3.2</span> Bundler</h3>
 <div class="outline-text-3" id="text-bundler">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -578,8 +589,8 @@ directory local variables.
 </div>
 </div>
 
-<div id="outline-container-org80f6db7" class="outline-3">
-<h3 id="rubocop"><a id="org80f6db7"></a><span class="section-number-3">3.3</span> RuboCop</h3>
+<div id="outline-container-org57366df" class="outline-3">
+<h3 id="rubocop"><a id="org57366df"></a><span class="section-number-3">3.3</span> RuboCop</h3>
 <div class="outline-text-3" id="text-rubocop">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -630,13 +641,13 @@ directory local variables.
 </div>
 </div>
 
-<div id="outline-container-org3dec51f" class="outline-3">
-<h3 id="tests"><a id="org3dec51f"></a><span class="section-number-3">3.4</span> Tests</h3>
+<div id="outline-container-org62f2fd8" class="outline-3">
+<h3 id="tests"><a id="org62f2fd8"></a><span class="section-number-3">3.4</span> Tests</h3>
 <div class="outline-text-3" id="text-tests">
 </div>
 
-<div id="outline-container-org0c3581a" class="outline-4">
-<h4 id="rspec-mode"><a id="org0c3581a"></a><span class="section-number-4">3.4.1</span> RSpec-mode</h4>
+<div id="outline-container-org54a2959" class="outline-4">
+<h4 id="rspec-mode"><a id="org54a2959"></a><span class="section-number-4">3.4.1</span> RSpec-mode</h4>
 <div class="outline-text-4" id="text-rspec-mode">
 <p>
 When <code>ruby-test-runner</code> equals <code>rspec</code>.
@@ -721,8 +732,8 @@ When <code>ruby-test-runner</code> equals <code>rspec</code>.
 </div>
 </div>
 
-<div id="outline-container-orgdd770f7" class="outline-4">
-<h4 id="ruby-test-mode"><a id="orgdd770f7"></a><span class="section-number-4">3.4.2</span> Ruby-test-mode</h4>
+<div id="outline-container-org6cc5861" class="outline-4">
+<h4 id="ruby-test-mode"><a id="org6cc5861"></a><span class="section-number-4">3.4.2</span> Ruby-test-mode</h4>
 <div class="outline-text-4" id="text-ruby-test-mode">
 <p>
 When <code>ruby-test-runner</code> equals <code>ruby-test</code>.
@@ -757,8 +768,8 @@ When <code>ruby-test-runner</code> equals <code>ruby-test</code>.
 </div>
 </div>
 
-<div id="outline-container-orgd92e34e" class="outline-4">
-<h4 id="minitest-mode"><a id="orgd92e34e"></a><span class="section-number-4">3.4.3</span> minitest-mode</h4>
+<div id="outline-container-org7ad46b4" class="outline-4">
+<h4 id="minitest-mode"><a id="org7ad46b4"></a><span class="section-number-4">3.4.3</span> minitest-mode</h4>
 <div class="outline-text-4" id="text-minitest-mode">
 <p>
 When <code>ruby-test-runner</code> equals <code>minitest</code>.
@@ -804,8 +815,8 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-orgd62967a" class="outline-3">
-<h3 id="rake"><a id="orgd62967a"></a><span class="section-number-3">3.5</span> Rake</h3>
+<div id="outline-container-org0a39a72" class="outline-3">
+<h3 id="rake"><a id="org0a39a72"></a><span class="section-number-3">3.5</span> Rake</h3>
 <div class="outline-text-3" id="text-rake">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -846,8 +857,8 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-org533fb98" class="outline-3">
-<h3 id="refactor"><a id="org533fb98"></a><span class="section-number-3">3.6</span> Refactor</h3>
+<div id="outline-container-orge48405e" class="outline-3">
+<h3 id="refactor"><a id="orge48405e"></a><span class="section-number-3">3.6</span> Refactor</h3>
 <div class="outline-text-3" id="text-refactor">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -889,8 +900,8 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-orgb3ae2f9" class="outline-2">
-<h2 id="layer-options"><a id="orgb3ae2f9"></a><span class="section-number-2">4</span> Layer options</h2>
+<div id="outline-container-org73b0295" class="outline-2">
+<h2 id="layer-options"><a id="org73b0295"></a><span class="section-number-2">4</span> Layer options</h2>
 <div class="outline-text-2" id="text-layer-options">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -940,7 +951,7 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-09-02 Sat 10:44</p>
+<p class="date">Created: 2017-09-11 Mon 19:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
