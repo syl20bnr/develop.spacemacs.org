@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-02 Sat 10:44 -->
+<!-- 2017-09-11 Mon 19:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Colors layer</title>
@@ -68,6 +68,7 @@
   pre.src-fortran:before { content: 'Fortran'; }
   pre.src-gnuplot:before { content: 'gnuplot'; }
   pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
   pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
@@ -287,8 +288,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgc55f779" class="outline-2">
-<h2 id="description"><a id="orgc55f779"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org69e03ee" class="outline-2">
+<h2 id="description"><a id="org69e03ee"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer colors your life with the help of the following packages:
@@ -304,8 +305,8 @@ represent as background.</li>
 </div>
 </div>
 
-<div id="outline-container-orgb14306b" class="outline-2">
-<h2 id="install"><a id="orgb14306b"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org1d1ff2c" class="outline-2">
+<h2 id="install"><a id="org1d1ff2c"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -315,13 +316,13 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org57c341b" class="outline-2">
-<h2 id="configuration"><a id="org57c341b"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org54a568a" class="outline-2">
+<h2 id="configuration"><a id="org54a568a"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-orgef933e2" class="outline-3">
-<h3 id="colorize-identifiers"><a id="orgef933e2"></a><span class="section-number-3">3.1</span> Colorize identifiers</h3>
+<div id="outline-container-org443cb27" class="outline-3">
+<h3 id="colorize-identifiers"><a id="org443cb27"></a><span class="section-number-3">3.1</span> Colorize identifiers</h3>
 <div class="outline-text-3" id="text-colorize-identifiers">
 <p>
 To colorize variable identifiers using color-identifiers and its supported languages,
@@ -334,9 +335,9 @@ method instead, set the layer variable <code>colors-colorize-identifiers</code> 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>colors <span class="org-builtin">:variables</span> colors-colorize-identifiers 'all<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -361,13 +362,13 @@ Example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">add per-theme sat&amp;light overrides and refresh values for your current theme</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>colors/add-theme-sat&amp;light 'mytheme '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-highlight-numbers-number">50</span> <span class="org-highlight-numbers-number">50</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>colors/add-theme-sat&amp;light 'anothertheme '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-highlight-numbers-number">90</span> <span class="org-highlight-numbers-number">40</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>colors/refresh-theme-look<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -377,19 +378,19 @@ and <code>colors-default-rainbow-identifiers-light</code>, which can be set via 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>colors <span class="org-builtin">:variables</span>
     colors-colorize-identifiers 'all
     colors-default-rainbow-identifiers-sat <span class="org-highlight-numbers-number">42</span>
     colors-default-rainbow-identifiers-light <span class="org-highlight-numbers-number">86</span><span class="org-rainbow-delimiters-depth-3">)</span>
   <span class="org-rainbow-delimiters-depth-2">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7459903" class="outline-3">
-<h3 id="enable-nyan-cat"><a id="org7459903"></a><span class="section-number-3">3.2</span> Enable Nyan cat</h3>
+<div id="outline-container-orgf20db1f" class="outline-3">
+<h3 id="enable-nyan-cat"><a id="orgf20db1f"></a><span class="section-number-3">3.2</span> Enable Nyan cat</h3>
 <div class="outline-text-3" id="text-enable-nyan-cat">
 <p>
 To enable the package <code>nyan-mode</code> just set the variable
@@ -397,9 +398,9 @@ To enable the package <code>nyan-mode</code> just set the variable
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>colors <span class="org-builtin">:variables</span> colors-enable-nyan-cat-progress-bar t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -408,22 +409,22 @@ You can do that by using a quasi-quoted list which checks the Emacs mode:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>colors <span class="org-builtin">:variables</span>
           colors-enable-nyan-cat-progress-bar <span class="org-rainbow-delimiters-depth-4">(</span>display-graphic-p<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org3ac5ef5" class="outline-2">
-<h2 id="key-bindings"><a id="org3ac5ef5"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-orgdf15b76" class="outline-2">
+<h2 id="key-bindings"><a id="orgdf15b76"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgb3a5e86" class="outline-3">
-<h3 id="colorize-identifiers-1"><a id="orgb3a5e86"></a><span class="section-number-3">4.1</span> Colorize Identifiers</h3>
+<div id="outline-container-orgd6ac815" class="outline-3">
+<h3 id="colorize-identifiers-1"><a id="orgd6ac815"></a><span class="section-number-3">4.1</span> Colorize Identifiers</h3>
 <div class="outline-text-3" id="text-colorize-identifiers-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -516,8 +517,8 @@ can be adjusted live via the following transient-state:
 </div>
 </div>
 
-<div id="outline-container-org4a7922a" class="outline-3">
-<h3 id="rainbow-mode"><a id="org4a7922a"></a><span class="section-number-3">4.2</span> Rainbow Mode</h3>
+<div id="outline-container-orge1bb9cb" class="outline-3">
+<h3 id="rainbow-mode"><a id="orge1bb9cb"></a><span class="section-number-3">4.2</span> Rainbow Mode</h3>
 <div class="outline-text-3" id="text-rainbow-mode">
 
 <div class="figure">
@@ -546,8 +547,8 @@ To enable, you must manually toggle it on and off on a per-buffer basis with:
 </div>
 </div>
 
-<div id="outline-container-orgb6a522a" class="outline-3">
-<h3 id="nyan-mode"><a id="orgb6a522a"></a><span class="section-number-3">4.3</span> Nyan Mode</h3>
+<div id="outline-container-org581393b" class="outline-3">
+<h3 id="nyan-mode"><a id="org581393b"></a><span class="section-number-3">4.3</span> Nyan Mode</h3>
 <div class="outline-text-3" id="text-nyan-mode">
 <p>
 <code>nyan-mode</code> mode can be toggled on and off with:
@@ -566,7 +567,7 @@ Note that the toggle is local to the current buffer.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-09-02 Sat 10:44</p>
+<p class="date">Created: 2017-09-11 Mon 19:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

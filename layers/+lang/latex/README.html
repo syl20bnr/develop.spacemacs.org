@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-02 Sat 10:44 -->
+<!-- 2017-09-11 Mon 19:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LaTeX layer</title>
@@ -68,6 +68,7 @@
   pre.src-fortran:before { content: 'Fortran'; }
   pre.src-gnuplot:before { content: 'gnuplot'; }
   pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
   pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
@@ -295,16 +296,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org68c8cd8" class="outline-2">
-<h2 id="description"><a id="org68c8cd8"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgf87208b" class="outline-2">
+<h2 id="description"><a id="orgf87208b"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for LaTeX files with <a href="https://savannah.gnu.org/projects/auctex/">AucTeX</a>.
 </p>
 </div>
 
-<div id="outline-container-orgce7825c" class="outline-3">
-<h3 id="features"><a id="orgce7825c"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org5253b55" class="outline-3">
+<h3 id="features"><a id="org5253b55"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Auto-build with <a href="https://github.com/tom-tan/auctex-latexmk/">auctex-latexmk</a></li>
@@ -315,8 +316,8 @@ This layer adds support for LaTeX files with <a href="https://savannah.gnu.org/p
 </div>
 </div>
 
-<div id="outline-container-org9b2e0c4" class="outline-3">
-<h3 id="bibtex"><a id="org9b2e0c4"></a><span class="section-number-3">1.2</span> BibTeX</h3>
+<div id="outline-container-org146cd8d" class="outline-3">
+<h3 id="bibtex"><a id="org146cd8d"></a><span class="section-number-3">1.2</span> BibTeX</h3>
 <div class="outline-text-3" id="text-bibtex">
 <p>
 For more extensive support of BibTeX files than RefTeX provides, have a look at
@@ -326,13 +327,13 @@ the <a href="../../%2Blang/bibtex/README.html">BibTeX layer</a>.
 </div>
 </div>
 
-<div id="outline-container-org4b7e2bd" class="outline-2">
-<h2 id="install"><a id="org4b7e2bd"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org45973b9" class="outline-2">
+<h2 id="install"><a id="org45973b9"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org465ba52" class="outline-3">
-<h3 id="layer"><a id="org465ba52"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org61ab9fe" class="outline-3">
+<h3 id="layer"><a id="org61ab9fe"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -342,8 +343,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org7de566b" class="outline-3">
-<h3 id="auto-completion"><a id="org7de566b"></a><span class="section-number-3">2.2</span> Auto-completion</h3>
+<div id="outline-container-org3823040" class="outline-3">
+<h3 id="auto-completion"><a id="org3823040"></a><span class="section-number-3">2.2</span> Auto-completion</h3>
 <div class="outline-text-3" id="text-auto-completion">
 <p>
 Add the layer <code>auto-completion</code> to the variable
@@ -352,8 +353,8 @@ Add the layer <code>auto-completion</code> to the variable
 </div>
 </div>
 
-<div id="outline-container-org6da8319" class="outline-3">
-<h3 id="previewing"><a id="org6da8319"></a><span class="section-number-3">2.3</span> Previewing</h3>
+<div id="outline-container-orgfe97804" class="outline-3">
+<h3 id="previewing"><a id="orgfe97804"></a><span class="section-number-3">2.3</span> Previewing</h3>
 <div class="outline-text-3" id="text-previewing">
 <p>
 To perform full-document previews (that is, aside from the inline previewing
@@ -362,8 +363,8 @@ under <code>SPC m p</code>), add the following to your <code>.spacemacs</code> u
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'doc-view-mode-hook 'auto-revert-mode<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'doc-view-mode-hook 'auto-revert-mode<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -373,8 +374,8 @@ you recompile.
 </div>
 </div>
 
-<div id="outline-container-orgcadf546" class="outline-3">
-<h3 id="build-command"><a id="orgcadf546"></a><span class="section-number-3">2.4</span> Build command</h3>
+<div id="outline-container-org65086fd" class="outline-3">
+<h3 id="build-command"><a id="org65086fd"></a><span class="section-number-3">2.4</span> Build command</h3>
 <div class="outline-text-3" id="text-build-command">
 <p>
 A build command can be specified via the layer variable <code>latex-build-command</code>.
@@ -389,15 +390,15 @@ entries you may have added there. To use the regular <code>AucTeX</code> command
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-1">(</span>
+<pre><code class="src src-emacs-lisp">dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-1">(</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>latex <span class="org-builtin">:variables</span> latex-build-command <span class="org-string">"LaTeX"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2cde763" class="outline-3">
-<h3 id="auto-fill"><a id="org2cde763"></a><span class="section-number-3">2.5</span> Auto-fill</h3>
+<div id="outline-container-org52d4ea3" class="outline-3">
+<h3 id="auto-fill"><a id="org52d4ea3"></a><span class="section-number-3">2.5</span> Auto-fill</h3>
 <div class="outline-text-3" id="text-auto-fill">
 <p>
 To enable auto-fill set the variable <code>latex-enable-auto-fill</code> to <code>t</code>.
@@ -409,15 +410,15 @@ The variable <code>latex-nofill-env</code> provide the list of environment names
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-1">(</span>
+<pre><code class="src src-emacs-lisp">dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-1">(</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>latex <span class="org-builtin">:variables</span> latex-enable-auto-fill t<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2247952" class="outline-3">
-<h3 id="folding"><a id="org2247952"></a><span class="section-number-3">2.6</span> Folding</h3>
+<div id="outline-container-org93d3590" class="outline-3">
+<h3 id="folding"><a id="org93d3590"></a><span class="section-number-3">2.6</span> Folding</h3>
 <div class="outline-text-3" id="text-folding">
 <p>
 Enable folding of text by setting <code>latex-enable-folding</code> to <code>t</code>. Default value
@@ -425,15 +426,15 @@ is nil.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-1">(</span>
+<pre><code class="src src-emacs-lisp">dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-1">(</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>latex <span class="org-builtin">:variables</span> latex-enable-folding t<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org47a55a9" class="outline-3">
-<h3 id="magic-latex-buffer"><a id="org47a55a9"></a><span class="section-number-3">2.7</span> Magic latex buffer</h3>
+<div id="outline-container-orgddbe03d" class="outline-3">
+<h3 id="magic-latex-buffer"><a id="orgddbe03d"></a><span class="section-number-3">2.7</span> Magic latex buffer</h3>
 <div class="outline-text-3" id="text-magic-latex-buffer">
 <p>
 To enable “magic” symbols in latex buffers, set the variable
@@ -441,9 +442,9 @@ To enable “magic” symbols in latex buffers, set the variable
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-1">(</span>
+<pre><code class="src src-emacs-lisp">dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-1">(</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>latex <span class="org-builtin">:variables</span> latex-enable-magic t<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -469,8 +470,8 @@ By default, the underlying latex code is echoed in the echo area.
 </div>
 </div>
 
-<div id="outline-container-org864aaaa" class="outline-2">
-<h2 id="keybindings"><a id="org864aaaa"></a><span class="section-number-2">3</span> Keybindings</h2>
+<div id="outline-container-org1013955" class="outline-2">
+<h2 id="keybindings"><a id="org1013955"></a><span class="section-number-2">3</span> Keybindings</h2>
 <div class="outline-text-2" id="text-keybindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -705,8 +706,8 @@ By default, the underlying latex code is echoed in the echo area.
 </table>
 </div>
 
-<div id="outline-container-orga29b2f5" class="outline-3">
-<h3 id="folding-1"><a id="orga29b2f5"></a><span class="section-number-3">3.1</span> Folding</h3>
+<div id="outline-container-org9db57b1" class="outline-3">
+<h3 id="folding-1"><a id="org9db57b1"></a><span class="section-number-3">3.1</span> Folding</h3>
 <div class="outline-text-3" id="text-folding-1">
 <p>
 Available only when <code>latex-enable-folding</code> is non nil.
@@ -756,8 +757,8 @@ Available only when <code>latex-enable-folding</code> is non nil.
 </div>
 </div>
 
-<div id="outline-container-orgd25fb86" class="outline-3">
-<h3 id="reftex"><a id="orgd25fb86"></a><span class="section-number-3">3.2</span> RefTeX</h3>
+<div id="outline-container-org513f44a" class="outline-3">
+<h3 id="reftex"><a id="org513f44a"></a><span class="section-number-3">3.2</span> RefTeX</h3>
 <div class="outline-text-3" id="text-reftex">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -846,7 +847,7 @@ Available only when <code>latex-enable-folding</code> is non nil.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-09-02 Sat 10:44</p>
+<p class="date">Created: 2017-09-11 Mon 19:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

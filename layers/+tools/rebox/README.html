@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-02 Sat 10:44 -->
+<!-- 2017-09-11 Mon 19:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rebox layer</title>
@@ -68,6 +68,7 @@
   pre.src-fortran:before { content: 'Fortran'; }
   pre.src-gnuplot:before { content: 'gnuplot'; }
   pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
   pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
@@ -294,8 +295,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgd0eb825" class="outline-2">
-<h2 id="description"><a id="orgd0eb825"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org93946f8" class="outline-2">
+<h2 id="description"><a id="org93946f8"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for <a href="https://github.com/lewang/rebox2">rebox2</a> package which is a minor-mode allowing
@@ -307,8 +308,8 @@ A nice video demonstration by the package author can be found <a href="https://w
 </p>
 </div>
 
-<div id="outline-container-orgd334d3b" class="outline-3">
-<h3 id="features"><a id="orgd334d3b"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org257164f" class="outline-3">
+<h3 id="features"><a id="org257164f"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Auto-wrap correctly in comments,</li>
@@ -322,13 +323,13 @@ A nice video demonstration by the package author can be found <a href="https://w
 </div>
 </div>
 
-<div id="outline-container-orgbd8bb76" class="outline-2">
-<h2 id="install"><a id="orgbd8bb76"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org6f8dc7e" class="outline-2">
+<h2 id="install"><a id="org6f8dc7e"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgfced8c0" class="outline-3">
-<h3 id="layer"><a id="orgfced8c0"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org9b62c20" class="outline-3">
+<h3 id="layer"><a id="org9b62c20"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -338,13 +339,13 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgc260d93" class="outline-3">
-<h3 id="configuration"><a id="orgc260d93"></a><span class="section-number-3">2.2</span> Configuration</h3>
+<div id="outline-container-orgc281f3b" class="outline-3">
+<h3 id="configuration"><a id="orgc281f3b"></a><span class="section-number-3">2.2</span> Configuration</h3>
 <div class="outline-text-3" id="text-configuration">
 </div>
 
-<div id="outline-container-org0d419c1" class="outline-4">
-<h4 id="styles-cycling"><a id="org0d419c1"></a><span class="section-number-4">2.2.1</span> Styles cycling</h4>
+<div id="outline-container-orgf25fd36" class="outline-4">
+<h4 id="styles-cycling"><a id="orgf25fd36"></a><span class="section-number-4">2.2.1</span> Styles cycling</h4>
 <div class="outline-text-4" id="text-styles-cycling">
 <p>
 Box styles are identified by numbers, it is possible to cycle through a list
@@ -353,14 +354,14 @@ of styles using <code>SPC x b n</code>. This list can be customized by setting t
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> rebox-style-loop '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-highlight-numbers-number">71</span> <span class="org-highlight-numbers-number">72</span> <span class="org-highlight-numbers-number">73</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> rebox-style-loop '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-highlight-numbers-number">71</span> <span class="org-highlight-numbers-number">72</span> <span class="org-highlight-numbers-number">73</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orga785d67" class="outline-4">
-<h4 id="text-mode"><a id="orga785d67"></a><span class="section-number-4">2.2.2</span> Text mode</h4>
+<div id="outline-container-org3a42831" class="outline-4">
+<h4 id="text-mode"><a id="org3a42831"></a><span class="section-number-4">2.2.2</span> Text mode</h4>
 <div class="outline-text-4" id="text-text-mode">
 <p>
 As text mode usage could surprise some users (e.g., when they enter M-q to fill
@@ -369,22 +370,22 @@ need to set the layer variable <code>rebox-enable-in-text-mode</code> to <code>t
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
     <span class="org-rainbow-delimiters-depth-3">(</span>rebox <span class="org-builtin">:variables</span> rebox-enable-in-text-mode t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org77825f4" class="outline-2">
-<h2 id="style-templates"><a id="org77825f4"></a><span class="section-number-2">3</span> Style Templates</h2>
+<div id="outline-container-org8612cdd" class="outline-2">
+<h2 id="style-templates"><a id="org8612cdd"></a><span class="section-number-2">3</span> Style Templates</h2>
 <div class="outline-text-2" id="text-style-templates">
 </div>
 
-<div id="outline-container-orge8600eb" class="outline-3">
-<h3 id="standard-packaged-templates"><a id="orge8600eb"></a><span class="section-number-3">3.1</span> Standard packaged templates</h3>
+<div id="outline-container-org9fd679a" class="outline-3">
+<h3 id="standard-packaged-templates"><a id="org9fd679a"></a><span class="section-number-3">3.1</span> Standard packaged templates</h3>
 <div class="outline-text-3" id="text-standard-packaged-templates">
 <p>
 You can find the full list of templates in
@@ -392,8 +393,8 @@ You can find the full list of templates in
 </p>
 </div>
 
-<div id="outline-container-orge6a9ac1" class="outline-4">
-<h4 id="comments"><a id="orge6a9ac1"></a><span class="section-number-4">3.1.1</span> Comments</h4>
+<div id="outline-container-org82cef05" class="outline-4">
+<h4 id="comments"><a id="org82cef05"></a><span class="section-number-4">3.1.1</span> Comments</h4>
 <div class="outline-text-4" id="text-comments">
 <p>
 These templates are single line comments styles. A <code>#</code> is used here for
@@ -404,15 +405,15 @@ different (e.g., lisp's <code>;</code> comment character).
 </div>
 </div>
 
-<div id="outline-container-org8df03eb" class="outline-3">
-<h3 id="additional-templates"><a id="org8df03eb"></a><span class="section-number-3">3.2</span> Additional Templates</h3>
+<div id="outline-container-orgc0ad8fd" class="outline-3">
+<h3 id="additional-templates"><a id="orgc0ad8fd"></a><span class="section-number-3">3.2</span> Additional Templates</h3>
 <div class="outline-text-3" id="text-additional-templates">
 <p>
 These templates are added by the Spacemacs layer.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><span class="org-comment-delimiter">#</span>
+<pre><code class="src src-sh"><span class="org-comment-delimiter">#</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">box style 71</span>
 <span class="org-comment-delimiter">#</span>
 
@@ -459,14 +460,14 @@ These templates are added by the Spacemacs layer.
 <span class="org-comment-delimiter">##</span><span class="org-comment">==============</span>
 <span class="org-comment-delimiter">## </span><span class="org-comment">box style 86</span>
 <span class="org-comment-delimiter">##</span><span class="org-comment">==============</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org45b54db" class="outline-2">
-<h2 id="key-bindings"><a id="org45b54db"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org9ada344" class="outline-2">
+<h2 id="key-bindings"><a id="org9ada344"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
 <b>Note:</b> Use a numerical prefix argument to choose a specific style for instance
@@ -524,7 +525,7 @@ These templates are added by the Spacemacs layer.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-09-02 Sat 10:44</p>
+<p class="date">Created: 2017-09-11 Mon 19:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
