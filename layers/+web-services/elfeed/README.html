@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-11 Mon 19:41 -->
+<!-- 2017-09-26 Tue 04:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elfeed layer</title>
@@ -293,8 +293,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org8ccf508" class="outline-2">
-<h2 id="description"><a id="org8ccf508"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org98e01b2" class="outline-2">
+<h2 id="description"><a id="org98e01b2"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer enables <a href="https://github.com/skeeto/elfeed">Elfeed</a>, a web feeds client which supports both Atom and RSS
@@ -304,13 +304,13 @@ feeds. It'll optionally enable supporting packages, such as <code>elfeed-web</co
 </div>
 </div>
 
-<div id="outline-container-org720e098" class="outline-2">
-<h2 id="install"><a id="org720e098"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgc2a506a" class="outline-2">
+<h2 id="install"><a id="orgc2a506a"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org4759dba" class="outline-3">
-<h3 id="layer"><a id="org4759dba"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-orgc0d73e0" class="outline-3">
+<h3 id="layer"><a id="orgc0d73e0"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -324,13 +324,13 @@ By default, <code>elfeed</code> stores its database under <code>~/.elfeed</code>
 </div>
 </div>
 
-<div id="outline-container-org0cb6506" class="outline-3">
-<h3 id="setup-feeds"><a id="org0cb6506"></a><span class="section-number-3">2.2</span> Setup feeds</h3>
+<div id="outline-container-org6735b3c" class="outline-3">
+<h3 id="setup-feeds"><a id="org6735b3c"></a><span class="section-number-3">2.2</span> Setup feeds</h3>
 <div class="outline-text-3" id="text-setup-feeds">
 </div>
 
-<div id="outline-container-orgde7be04" class="outline-4">
-<h4 id="with-org"><a id="orgde7be04"></a><span class="section-number-4">2.2.1</span> With Org</h4>
+<div id="outline-container-org8b1141b" class="outline-4">
+<h4 id="with-org"><a id="org8b1141b"></a><span class="section-number-4">2.2.1</span> With Org</h4>
 <div class="outline-text-4" id="text-with-org">
 <p>
 It is recommended to manage your feeds list and tags via org files, this is
@@ -338,9 +338,9 @@ possible thanks to <a href="https://github.com/remyhonig/elfeed-org">elfeed-org<
 </p>
 
 <div class="org-src-container">
-<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elfeed <span class="org-builtin">:variables</span> rmh-elfeed-org-files <span class="org-rainbow-delimiters-depth-2">(</span>list <span class="org-string">"~/.emacs.d/private/elfeed1.org"</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elfeed <span class="org-builtin">:variables</span> rmh-elfeed-org-files <span class="org-rainbow-delimiters-depth-2">(</span>list <span class="org-string">"~/.emacs.d/private/elfeed1.org"</span>
                                               <span class="org-string">"~/.emacs.d/private/elfeed2.org"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -352,7 +352,7 @@ Here is an example of such a file (note the usage of org tags to tag your feeds)
 </p>
 
 <div class="org-src-container">
-<pre><code class="src src-org">* Blogs                                                              :elfeed:
+<pre class="src src-org">* Blogs                                                              :elfeed:
 ** entry-title: \(linux\|linus\|ubuntu\|kde\|gnome\)                  :linux:
 ** http://git-annex.branchable.com/design/assistant/blog/index.rss :mustread:
 ** http://feeds.feedburner.com/InformationIsBeautiful
@@ -371,13 +371,13 @@ Here is an example of such a file (note the usage of org tags to tag your feeds)
 **** http://ed-merks.blogspot.com/feeds/posts/default
 **** http://feeds.feedburner.com/eclipselive
 **** http://www.fosslc.org/drupal/rss.xml                             :video:
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7d856a3" class="outline-4">
-<h4 id="manually"><a id="org7d856a3"></a><span class="section-number-4">2.2.2</span> Manually</h4>
+<div id="outline-container-org46078ee" class="outline-4">
+<h4 id="manually"><a id="org46078ee"></a><span class="section-number-4">2.2.2</span> Manually</h4>
 <div class="outline-text-4" id="text-manually">
 <p>
 To explicitly setup the list of feeds, set the value of <code>elfeed-feeds</code> variable
@@ -385,11 +385,11 @@ in your <code>.spacemacs</code> file.
 </p>
 
 <div class="org-src-container">
-<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elfeed <span class="org-builtin">:variables</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elfeed <span class="org-builtin">:variables</span>
    elfeed-feeds '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"http://nullprogram.com/feed/"</span> blog emacs<span class="org-rainbow-delimiters-depth-3">)</span>
                   <span class="org-string">"http://www.50ply.com/atom.xml"</span>  <span class="org-comment-delimiter">; </span><span class="org-comment">no autotagging</span>
                   <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"http://nedroid.com/feed/"</span> webcomic<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -400,8 +400,8 @@ Check documentation for <code>elfeed-feeds</code> for more information about thi
 </div>
 </div>
 
-<div id="outline-container-orgb637a0f" class="outline-3">
-<h3 id="server"><a id="orgb637a0f"></a><span class="section-number-3">2.3</span> Server</h3>
+<div id="outline-container-org6a9dc46" class="outline-3">
+<h3 id="server"><a id="org6a9dc46"></a><span class="section-number-3">2.3</span> Server</h3>
 <div class="outline-text-3" id="text-server">
 <p>
 Elfeed comes with a simple <a href="https://github.com/skeeto/elfeed#web-interface">web interface</a> to browse its database. You can manually
@@ -410,8 +410,8 @@ to <code>t</code> which will start the web automatically when Emacs starts.
 </p>
 
 <div class="org-src-container">
-<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elfeed <span class="org-builtin">:variables</span> elfeed-enable-web-interface t<span class="org-rainbow-delimiters-depth-1">)</span>
-</code></pre>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elfeed <span class="org-builtin">:variables</span> elfeed-enable-web-interface t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 
 <p>
@@ -422,8 +422,8 @@ the default port by changing the value of <code>httpd-port</code>.
 </div>
 </div>
 
-<div id="outline-container-org3f472bd" class="outline-2">
-<h2 id="key-bindings"><a id="org3f472bd"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-org63e115c" class="outline-2">
+<h2 id="key-bindings"><a id="org63e115c"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -546,13 +546,13 @@ In <code>elfeed-show</code> mode, you can use the following bindings:
 </div>
 </div>
 
-<div id="outline-container-org590287f" class="outline-2">
-<h2 id="troubleshooting"><a id="org590287f"></a><span class="section-number-2">4</span> Troubleshooting</h2>
+<div id="outline-container-org203302d" class="outline-2">
+<h2 id="troubleshooting"><a id="org203302d"></a><span class="section-number-2">4</span> Troubleshooting</h2>
 <div class="outline-text-2" id="text-troubleshooting">
 </div>
 
-<div id="outline-container-org6b95106" class="outline-3">
-<h3 id="database-empty-at-first-start"><a id="org6b95106"></a><span class="section-number-3">4.1</span> Database empty at first start</h3>
+<div id="outline-container-org7197e28" class="outline-3">
+<h3 id="database-empty-at-first-start"><a id="org7197e28"></a><span class="section-number-3">4.1</span> Database empty at first start</h3>
 <div class="outline-text-3" id="text-database-empty-at-first-start">
 <p>
 Be sure that you added some feeds first then load your feeds with <code>gr</code>
@@ -561,8 +561,8 @@ in evilified buffer. Or <code>M-x elfeed-update</code>.
 </div>
 </div>
 
-<div id="outline-container-orgfcf9c2c" class="outline-3">
-<h3 id="queue-timeout-exceeded"><a id="orgfcf9c2c"></a><span class="section-number-3">4.2</span> Queue timeout exceeded</h3>
+<div id="outline-container-org6f4986e" class="outline-3">
+<h3 id="queue-timeout-exceeded"><a id="org6f4986e"></a><span class="section-number-3">4.2</span> Queue timeout exceeded</h3>
 <div class="outline-text-3" id="text-queue-timeout-exceeded">
 <p>
 If you are getting "Queue timeout exceeded" errors, try increasing
@@ -570,8 +570,8 @@ the value of <code>url-queue-timeout</code>.
 </p>
 
 <div class="org-src-container">
-<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elfeed <span class="org-builtin">:variables</span> url-queue-timeout <span class="org-highlight-numbers-number">30</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</code></pre>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elfeed <span class="org-builtin">:variables</span> url-queue-timeout <span class="org-highlight-numbers-number">30</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 </div>
 </div>
@@ -579,7 +579,7 @@ the value of <code>url-queue-timeout</code>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-09-11 Mon 19:41</p>
+<p class="date">Created: 2017-09-26 Tue 04:45</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

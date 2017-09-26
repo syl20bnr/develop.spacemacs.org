@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-11 Mon 19:41 -->
+<!-- 2017-09-26 Tue 04:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GO layer</title>
@@ -299,16 +299,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org309b962" class="outline-2">
-<h2 id="description"><a id="org309b962"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org31df7ef" class="outline-2">
+<h2 id="description"><a id="org31df7ef"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds extensive support for go.
 </p>
 </div>
 
-<div id="outline-container-orgd0e69b5" class="outline-3">
-<h3 id="features"><a id="orgd0e69b5"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org525277e" class="outline-3">
+<h3 id="features"><a id="org525277e"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>gofmt/goimports on file save</li>
@@ -322,25 +322,25 @@ This layer adds extensive support for go.
 </div>
 </div>
 
-<div id="outline-container-orgfc8ba62" class="outline-2">
-<h2 id="install"><a id="orgfc8ba62"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgdefbd74" class="outline-2">
+<h2 id="install"><a id="orgdefbd74"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgbbcc0c4" class="outline-3">
-<h3 id="pre-requisites"><a id="orgbbcc0c4"></a><span class="section-number-3">2.1</span> Pre-requisites</h3>
+<div id="outline-container-orgbc9ed84" class="outline-3">
+<h3 id="pre-requisites"><a id="orgbc9ed84"></a><span class="section-number-3">2.1</span> Pre-requisites</h3>
 <div class="outline-text-3" id="text-pre-requisites">
 <p>
 You will need <code>gocode</code>, <code>godef</code> and <code>godoctor</code>:
 </p>
 
 <div class="org-src-container">
-<pre><code class="src src-sh">go get -u -v github.com/nsf/gocode
+<pre class="src src-sh">go get -u -v github.com/nsf/gocode
 go get -u -v github.com/rogpeppe/godef
 go get -u -v golang.org/x/tools/cmd/guru
 go get -u -v golang.org/x/tools/cmd/gorename
 go get -u -v golang.org/x/tools/cmd/goimports
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -348,8 +348,8 @@ If you wish to use <code>gometalinter</code> set the value of <code>go-use-gomet
 </p>
 
 <div class="org-src-container">
-<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-use-gometalinter t<span class="org-rainbow-delimiters-depth-1">)</span>
-</code></pre>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-use-gometalinter t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 
 <p>
@@ -357,9 +357,9 @@ and install the tool:
 </p>
 
 <div class="org-src-container">
-<pre><code class="src src-sh">go get -u -v github.com/alecthomas/gometalinter
+<pre class="src src-sh">go get -u -v github.com/alecthomas/gometalinter
 gometalinter --install --update
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -372,9 +372,9 @@ If you wish to use <code>godoctor</code> for refactoring, install it too:
 </p>
 
 <div class="org-src-container">
-<pre><code class="src src-sh">go get -u -v github.com/godoctor/godoctor
+<pre class="src src-sh">go get -u -v github.com/godoctor/godoctor
 go install github.com/godoctor/godoctor
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -390,8 +390,8 @@ layers are enabled as well.
 </div>
 </div>
 
-<div id="outline-container-org0d30f5d" class="outline-3">
-<h3 id="layer"><a id="org0d30f5d"></a><span class="section-number-3">2.2</span> Layer</h3>
+<div id="outline-container-org6b45597" class="outline-3">
+<h3 id="layer"><a id="org6b45597"></a><span class="section-number-3">2.2</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -402,8 +402,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgce0e77b" class="outline-2">
-<h2 id="configuration"><a id="orgce0e77b"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org4c600f1" class="outline-2">
+<h2 id="configuration"><a id="org4c600f1"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 By default, go buffers are run through <code>gofmt</code> on save. To use a different
@@ -411,8 +411,8 @@ formatter, set the value of <code>gofmt-command</code>, e.g.
 </p>
 
 <div class="org-src-container">
-<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gofmt-command <span class="org-string">"goimports"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</code></pre>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gofmt-command <span class="org-string">"goimports"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 
 <p>
@@ -420,13 +420,13 @@ or
 </p>
 
 <div class="org-src-container">
-<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> gofmt-command <span class="org-string">"goimports"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</code></pre>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> gofmt-command <span class="org-string">"goimports"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 </div>
 
-<div id="outline-container-org536249a" class="outline-3">
-<h3 id="indentation"><a id="org536249a"></a><span class="section-number-3">3.1</span> Indentation</h3>
+<div id="outline-container-orgd0ac08f" class="outline-3">
+<h3 id="indentation"><a id="orgd0ac08f"></a><span class="section-number-3">3.1</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
 By default, the tab width in Go mode is 8 spaces. To use a different value set
@@ -434,14 +434,14 @@ the layer variable <code>go-tab-width</code>, e.g.
 </p>
 
 <div class="org-src-container">
-<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-tab-width <span class="org-highlight-numbers-number">4</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</code></pre>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-tab-width <span class="org-highlight-numbers-number">4</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org46acdcf" class="outline-3">
-<h3 id="tests"><a id="org46acdcf"></a><span class="section-number-3">3.2</span> Tests</h3>
+<div id="outline-container-orga78150b" class="outline-3">
+<h3 id="tests"><a id="orga78150b"></a><span class="section-number-3">3.2</span> Tests</h3>
 <div class="outline-text-3" id="text-tests">
 <p>
 If you're using <code>gocheck</code> in your project you can use the
@@ -465,14 +465,14 @@ closed by pressing <code>C-g</code> from any other window. The variable
 To provide additional arguments to go test, specify <code>go-use-test-args</code>.
 </p>
 <div class="org-src-container">
-<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-use-test-args <span class="org-string">"-race -timeout 10s"</span>
-</code></pre>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-use-test-args <span class="org-string">"-race -timeout 10s"</span>
+</pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5535f16" class="outline-3">
-<h3 id="guru"><a id="org5535f16"></a><span class="section-number-3">3.3</span> Guru</h3>
+<div id="outline-container-orgef4bc05" class="outline-3">
+<h3 id="guru"><a id="orgef4bc05"></a><span class="section-number-3">3.3</span> Guru</h3>
 <div class="outline-text-3" id="text-guru">
 <p>
 Go Oracle has been deprecated as of October 1, 2016, it's replacement is <code>go-guru</code>.
@@ -492,8 +492,8 @@ In addition, <code>GOPATH</code> must be set prior to <code>go-guru</code> initi
 </div>
 </div>
 
-<div id="outline-container-org8ccbf60" class="outline-3">
-<h3 id="autocomplete"><a id="org8ccbf60"></a><span class="section-number-3">3.4</span> Autocomplete</h3>
+<div id="outline-container-orga79aafe" class="outline-3">
+<h3 id="autocomplete"><a id="orga79aafe"></a><span class="section-number-3">3.4</span> Autocomplete</h3>
 <div class="outline-text-3" id="text-autocomplete">
 <p>
 <code>gocode</code> uses the output from installed binary files to provide its suggestions.
@@ -511,13 +511,13 @@ file change.</li>
 </div>
 </div>
 
-<div id="outline-container-orgcee6be7" class="outline-2">
-<h2 id="working-with-go"><a id="orgcee6be7"></a><span class="section-number-2">4</span> Working with Go</h2>
+<div id="outline-container-orgfc3015c" class="outline-2">
+<h2 id="working-with-go"><a id="orgfc3015c"></a><span class="section-number-2">4</span> Working with Go</h2>
 <div class="outline-text-2" id="text-working-with-go">
 </div>
 
-<div id="outline-container-orgb6147d8" class="outline-3">
-<h3 id="go-commands-start-with-m"><a id="orgb6147d8"></a><span class="section-number-3">4.1</span> Go commands (start with <code>m</code>):</h3>
+<div id="outline-container-orgac8d723" class="outline-3">
+<h3 id="go-commands-start-with-m"><a id="orgac8d723"></a><span class="section-number-3">4.1</span> Go commands (start with <code>m</code>):</h3>
 <div class="outline-text-3" id="text-go-commands-start-with-m">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -618,8 +618,8 @@ file change.</li>
 </div>
 </div>
 
-<div id="outline-container-orgb049a9d" class="outline-3">
-<h3 id="go-guru"><a id="orgb049a9d"></a><span class="section-number-3">4.2</span> Go Guru</h3>
+<div id="outline-container-orgd9ddff4" class="outline-3">
+<h3 id="go-guru"><a id="orgd9ddff4"></a><span class="section-number-3">4.2</span> Go Guru</h3>
 <div class="outline-text-3" id="text-go-guru">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -700,8 +700,8 @@ file change.</li>
 </div>
 </div>
 
-<div id="outline-container-org1e18eb6" class="outline-3">
-<h3 id="refactoring"><a id="org1e18eb6"></a><span class="section-number-3">4.3</span> Refactoring</h3>
+<div id="outline-container-org376d744" class="outline-3">
+<h3 id="refactoring"><a id="org376d744"></a><span class="section-number-3">4.3</span> Refactoring</h3>
 <div class="outline-text-3" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -750,7 +750,7 @@ file change.</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-09-11 Mon 19:41</p>
+<p class="date">Created: 2017-09-26 Tue 04:45</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
