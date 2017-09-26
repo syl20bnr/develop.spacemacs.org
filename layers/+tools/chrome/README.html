@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-11 Mon 19:41 -->
+<!-- 2017-09-26 Tue 04:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Chrome layer</title>
@@ -286,16 +286,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgd280108" class="outline-2">
-<h2 id="description"><a id="orgd280108"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org9a8c18f" class="outline-2">
+<h2 id="description"><a id="org9a8c18f"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer provides some integration with the Google Chrome browser.
 </p>
 </div>
 
-<div id="outline-container-org9b08465" class="outline-3">
-<h3 id="features"><a id="org9b08465"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orgc0a248d" class="outline-3">
+<h3 id="features"><a id="orgc0a248d"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Edit text boxes with Emacs using <a href="https://github.com/stsquad/emacs_chrome">edit-server</a></li>
@@ -306,13 +306,13 @@ This layer provides some integration with the Google Chrome browser.
 </div>
 </div>
 
-<div id="outline-container-org52b7d0d" class="outline-2">
-<h2 id="install"><a id="org52b7d0d"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org6797c04" class="outline-2">
+<h2 id="install"><a id="org6797c04"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org91d02d0" class="outline-3">
-<h3 id="layer"><a id="org91d02d0"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-orgc826c33" class="outline-3">
+<h3 id="layer"><a id="orgc826c33"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -322,8 +322,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orge1a1fec" class="outline-3">
-<h3 id="chrome-extension"><a id="orge1a1fec"></a><span class="section-number-3">2.2</span> Chrome extension</h3>
+<div id="outline-container-orgf1f68ab" class="outline-3">
+<h3 id="chrome-extension"><a id="orgf1f68ab"></a><span class="section-number-3">2.2</span> Chrome extension</h3>
 <div class="outline-text-3" id="text-chrome-extension">
 <p>
 <a href="https://github.com/stsquad/emacs_chrome">edit-server</a> is a server that responds to edit requests sent Chrome via the
@@ -341,8 +341,8 @@ The edit server is configured to start automatically when Spacemacs starts.
 </div>
 </div>
 
-<div id="outline-container-org282db9e" class="outline-2">
-<h2 id="configuration"><a id="org282db9e"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-orgaf2a10e" class="outline-2">
+<h2 id="configuration"><a id="orgaf2a10e"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 Use <code>edit-server-url-major-mode-alist</code> to choose a major mode initialization
@@ -351,12 +351,12 @@ function based on <code>edit-server-url</code>, or fall back to
 </p>
 
 <div class="org-src-container">
-<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Open github text areas as org buffers</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">currently they are opened as markdown</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq</span> edit-server-url-major-mode-alist
       '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">"github\\.com"</span> . org-mode<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -364,9 +364,9 @@ To change frame defaults (width, height, etc. use <code>edit-server-new-frame-al
 </p>
 
 <div class="org-src-container">
-<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'edit-server-new-frame-alist '<span class="org-rainbow-delimiters-depth-2">(</span>width  . <span class="org-highlight-numbers-number">140</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'edit-server-new-frame-alist '<span class="org-rainbow-delimiters-depth-2">(</span>width  . <span class="org-highlight-numbers-number">140</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'edit-server-new-frame-alist '<span class="org-rainbow-delimiters-depth-2">(</span>height . <span class="org-highlight-numbers-number">60</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -384,14 +384,14 @@ The following example works on OS X:
 </p>
 
 <div class="org-src-container">
-<pre><code class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'edit-server-done-hook <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>shell-command <span class="org-string">"open -a \"Google Chrome\""</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</code></pre>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'edit-server-done-hook <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>shell-command <span class="org-string">"open -a \"Google Chrome\""</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2aa3f8a" class="outline-2">
-<h2 id="key-bindings"><a id="org2aa3f8a"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org1b6abb8" class="outline-2">
+<h2 id="key-bindings"><a id="org1b6abb8"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -423,7 +423,7 @@ The following example works on OS X:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-09-11 Mon 19:41</p>
+<p class="date">Created: 2017-09-26 Tue 04:45</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

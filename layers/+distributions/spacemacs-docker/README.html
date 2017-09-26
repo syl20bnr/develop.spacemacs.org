@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-11 Mon 19:40 -->
+<!-- 2017-09-26 Tue 04:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>spacemacs-docker distribution</title>
@@ -290,8 +290,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orga77075a" class="outline-2">
-<h2 id="description"><a id="orga77075a"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org0405b8d" class="outline-2">
+<h2 id="description"><a id="org0405b8d"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 Spacemacs distribution that aims to automate dependency installation for
@@ -300,8 +300,8 @@ with GUI support on all major platforms and even <a href="https://i.imgur.com/wD
 </p>
 </div>
 
-<div id="outline-container-orgf3dafbb" class="outline-3">
-<h3 id="screenshots"><a id="orgf3dafbb"></a><span class="section-number-3">1.1</span> Screenshots</h3>
+<div id="outline-container-org3167774" class="outline-3">
+<h3 id="screenshots"><a id="org3167774"></a><span class="section-number-3">1.1</span> Screenshots</h3>
 <div class="outline-text-3" id="text-screenshots">
 
 <div class="figure">
@@ -336,8 +336,8 @@ with GUI support on all major platforms and even <a href="https://i.imgur.com/wD
 </div>
 </div>
 
-<div id="outline-container-orgc089285" class="outline-3">
-<h3 id="features"><a id="orgc089285"></a><span class="section-number-3">1.2</span> Features:</h3>
+<div id="outline-container-org8903ccc" class="outline-3">
+<h3 id="features"><a id="org8903ccc"></a><span class="section-number-3">1.2</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Automatically get Spacemacs layers dependency installed with <a href="../../%2Bdistributions/spacemacs-docker/deps-install/README.html">installer scripts</a></li>
@@ -357,8 +357,8 @@ with GUI support on all major platforms and even <a href="https://i.imgur.com/wD
 </div>
 </div>
 
-<div id="outline-container-org2fce4a9" class="outline-2">
-<h2 id="how-to-setup"><a id="org2fce4a9"></a><span class="section-number-2">2</span> How to setup</h2>
+<div id="outline-container-org850234a" class="outline-2">
+<h2 id="how-to-setup"><a id="org850234a"></a><span class="section-number-2">2</span> How to setup</h2>
 <div class="outline-text-2" id="text-how-to-setup">
 <p>
 The idea is to build your own image <a href="https://docs.docker.com/engine/reference/builder/#from">FROM</a> the one of the provided base images
@@ -370,8 +370,8 @@ the machine that will run development environment and then use
 </div>
 </div>
 
-<div id="outline-container-org088aebe" class="outline-2">
-<h2 id="how-to-use"><a id="org088aebe"></a><span class="section-number-2">3</span> How to use</h2>
+<div id="outline-container-org954b388" class="outline-2">
+<h2 id="how-to-use"><a id="org954b388"></a><span class="section-number-2">3</span> How to use</h2>
 <div class="outline-text-2" id="text-how-to-use">
 <p>
 With one of the methods below replace <code>spacemacs/emacs25:develop</code> with your images.
@@ -380,22 +380,22 @@ the same machine.
 </p>
 </div>
 
-<div id="outline-container-orgda3a4c8" class="outline-3">
-<h3 id="macos"><a id="orgda3a4c8"></a><span class="section-number-3">3.1</span> MacOS</h3>
+<div id="outline-container-org7c14eb9" class="outline-3">
+<h3 id="macos"><a id="org7c14eb9"></a><span class="section-number-3">3.1</span> MacOS</h3>
 <div class="outline-text-3" id="text-macos">
 <p>
 Get <a href="https://www.xquartz.org">XQuartz</a> and <code>open -a XQuartz</code> In the XQuartz preferences go to the "Security"
 tab and make sure you’ve got "Allow connections from network clients" ticked
 </p>
 <div class="org-src-container">
-<pre><code class="src src-sh"><span class="org-variable-name">ip</span>=$<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-sh-quoted-exec">ifconfig</span> en0 | grep inet | awk <span class="org-string">'$1=="inet" {print $2}'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-sh"><span class="org-variable-name">ip</span>=$<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-sh-quoted-exec">ifconfig</span> en0 | grep inet | awk <span class="org-string">'$1=="inet" {print $2}'</span><span class="org-rainbow-delimiters-depth-1">)</span>
 xhost + $<span class="org-variable-name">ip</span>
 docker run -ti --name spacemacs <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">DISPLAY</span>=$<span class="org-variable-name">ip</span>:0 <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">TZ</span>=&lt;your_time_zone&gt; <span class="org-sh-escaped-newline">\</span>
  -v &lt;path_to_your_workspace&gt;:/mnt/workspace <span class="org-sh-escaped-newline">\</span>
  spacemacs/emacs25:develop
-</code></pre>
+</pre>
 </div>
 <p>
 <a href="https://fredrikaverpil.github.io/2016/07/31/docker-for-mac-and-gui-applications">source</a>,
@@ -404,35 +404,35 @@ docker run -ti --name spacemacs <span class="org-sh-escaped-newline">\</span>
 </div>
 </div>
 
-<div id="outline-container-org6452050" class="outline-3">
-<h3 id="windows"><a id="org6452050"></a><span class="section-number-3">3.2</span> Windows</h3>
+<div id="outline-container-orgd6c2ce2" class="outline-3">
+<h3 id="windows"><a id="orgd6c2ce2"></a><span class="section-number-3">3.2</span> Windows</h3>
 <div class="outline-text-3" id="text-windows">
 <p>
 Get <a href="https://www.cygwin.com">Cygwin</a> with <code>xinit</code>, <code>xorg-server</code> and optionaly <a href="https://github.com/rprichard/winpty">winpty</a>(to run Emacs container with <code>-t</code>)
 </p>
 <div class="org-src-container">
-<pre><code class="src src-sh"><span class="org-builtin">export</span> <span class="org-variable-name">DISPLAY</span>=&lt;your-machine-ip&gt;:0.0
+<pre class="src src-sh"><span class="org-builtin">export</span> <span class="org-variable-name">DISPLAY</span>=&lt;your-machine-ip&gt;:0.0
 startxwin -- -listen tcp &amp;
 xhost + &lt;your-machine-ip&gt;
-</code></pre>
+</pre>
 </div>
 <div class="org-src-container">
-<pre><code class="src src-sh">docker run --name spacemacs <span class="org-sh-escaped-newline">\</span>
+<pre class="src src-sh">docker run --name spacemacs <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">DISPLAY</span>=<span class="org-string">"unix$DISPLAY"</span> <span class="org-sh-escaped-newline">\</span>
  -v &lt;path_to_your_workspace&gt;:/mnt/workspace <span class="org-sh-escaped-newline">\</span>
  spacemacs/emacs25:develop
-</code></pre>
+</pre>
 </div>
 
 <p>
 Or with <code>-ti</code> via <code>winpty</code>
 </p>
 <div class="org-src-container">
-<pre><code class="src src-sh">winpty docker run -ti --name spacemacs <span class="org-sh-escaped-newline">\</span>
+<pre class="src src-sh">winpty docker run -ti --name spacemacs <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">DISPLAY</span>=<span class="org-string">"unix$DISPLAY"</span> <span class="org-sh-escaped-newline">\</span>
  -v &lt;path_to_your_workspace&gt;:/mnt/workspace <span class="org-sh-escaped-newline">\</span>
  spacemacs/emacs25:develop
-</code></pre>
+</pre>
 </div>
 <p>
 <a href="http://manomarks.github.io/2015/12/03/docker-gui-windows.html">source</a>
@@ -441,14 +441,14 @@ Also You can use <a href="https://github.com/JAremko/docker-emacs/issues/2#issue
 </div>
 </div>
 
-<div id="outline-container-org77f7e1b" class="outline-3">
-<h3 id="gnulinux"><a id="org77f7e1b"></a><span class="section-number-3">3.3</span> GNU/Linux</h3>
+<div id="outline-container-org58e4ee1" class="outline-3">
+<h3 id="gnulinux"><a id="org58e4ee1"></a><span class="section-number-3">3.3</span> GNU/Linux</h3>
 <div class="outline-text-3" id="text-gnulinux">
 <p>
 Make sure that <code>$DISPLAY</code> variable is set
 </p>
 <div class="org-src-container">
-<pre><code class="src src-sh">docker run -ti --name spacemacs <span class="org-sh-escaped-newline">\</span>
+<pre class="src src-sh">docker run -ti --name spacemacs <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">DISPLAY</span>=<span class="org-string">"unix$DISPLAY"</span> <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">UNAME</span>=<span class="org-string">"spacemacser"</span> <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">UID</span>=<span class="org-string">"1000"</span> <span class="org-sh-escaped-newline">\</span>
@@ -459,7 +459,7 @@ Make sure that <code>$DISPLAY</code> variable is set
  -v /var/run/dbus:/var/run/dbus <span class="org-sh-escaped-newline">\</span>
  -v &lt;path_to_your_workspace&gt;:/mnt/workspace <span class="org-sh-escaped-newline">\</span>
  spacemacs/emacs25:develop
-</code></pre>
+</pre>
 </div>
 <p>
 <code>UID</code> and preferably <code>UNAME</code> should match the host's user id. You can set them
@@ -468,15 +468,15 @@ That's it! Now you should see Emacs window.
 But if it doesn't work You may need to allow local connection for the user
 </p>
 <div class="org-src-container">
-<pre><code class="src src-sh">xhost +si:localuser:&lt;UNAME&gt;
-</code></pre>
+<pre class="src src-sh">xhost +si:localuser:&lt;UNAME&gt;
+</pre>
 </div>
 <p>
 Or allow local connection from the container's host-name
 </p>
 <div class="org-src-container">
-<pre><code class="src src-sh">xhost +local:<span class="org-sh-quoted-exec">`docker inspect --format='{{ .Config.Hostname }}' spacemacs`</span>
-</code></pre>
+<pre class="src src-sh">xhost +local:<span class="org-sh-quoted-exec">`docker inspect --format='{{ .Config.Hostname }}' spacemacs`</span>
+</pre>
 </div>
 <p>
 <a href="http://stackoverflow.com/questions/25281992/alternatives-to-ssh-x11-forwarding-for-docker-containers">source</a>
@@ -484,13 +484,13 @@ Or allow local connection from the container's host-name
 </div>
 </div>
 
-<div id="outline-container-org434b8a2" class="outline-3">
-<h3 id="with-xpra-on-any-of-the-oses-and-via-web-browser"><a id="org434b8a2"></a><span class="section-number-3">3.4</span> With Xpra on any of the OSes and via web-browser</h3>
+<div id="outline-container-org819206c" class="outline-3">
+<h3 id="with-xpra-on-any-of-the-oses-and-via-web-browser"><a id="org819206c"></a><span class="section-number-3">3.4</span> With Xpra on any of the OSes and via web-browser</h3>
 <div class="outline-text-3" id="text-with-xpra-on-any-of-the-oses-and-via-web-browser">
 </div>
 
-<div id="outline-container-orgcf93282" class="outline-4">
-<h4 id="pros"><a id="orgcf93282"></a><span class="section-number-4">3.4.1</span> Pros</h4>
+<div id="outline-container-org6bb5ff8" class="outline-4">
+<h4 id="pros"><a id="org6bb5ff8"></a><span class="section-number-4">3.4.1</span> Pros</h4>
 <div class="outline-text-4" id="text-pros">
 <ul class="org-ul">
 <li>Xpra has a client for GNU/Linux, Windows and MacOS + can work via web browser</li>
@@ -501,8 +501,8 @@ Or allow local connection from the container's host-name
 </div>
 </div>
 
-<div id="outline-container-org415e807" class="outline-4">
-<h4 id="cons"><a id="org415e807"></a><span class="section-number-4">3.4.2</span> Cons</h4>
+<div id="outline-container-orgd887ccb" class="outline-4">
+<h4 id="cons"><a id="orgd887ccb"></a><span class="section-number-4">3.4.2</span> Cons</h4>
 <div class="outline-text-4" id="text-cons">
 <ul class="org-ul">
 <li>Lag spikes with some OSes</li>
@@ -510,8 +510,8 @@ Or allow local connection from the container's host-name
 </div>
 </div>
 
-<div id="outline-container-orgadad946" class="outline-4">
-<h4 id="instruction"><a id="orgadad946"></a><span class="section-number-4">3.4.3</span> Instruction</h4>
+<div id="outline-container-orgcd33961" class="outline-4">
+<h4 id="instruction"><a id="orgcd33961"></a><span class="section-number-4">3.4.3</span> Instruction</h4>
 <div class="outline-text-4" id="text-instruction">
 <p>
 It's a good idea to read <a href="https://github.com/JAremko/docker-x11-bridge">docker-x11-bridge</a> and <a href="https://www.xpra.org/trac/">Xpra</a> documentations, but
@@ -520,13 +520,13 @@ here is a short instruction:
 </div>
 
 <ol class="org-ol">
-<li><a id="with-xpra-desktop-client"></a><a id="org225b898"></a>With Xpra desktop client<br />
+<li><a id="with-xpra-desktop-client"></a><a id="org64bd974"></a>With Xpra desktop client<br />
 <div class="outline-text-5" id="text-with-xpra-desktop-client">
 <p>
 Get <a href="https://xpra.org/">Xpra</a> client for your OS. then
 </p>
 <div class="org-src-container">
-<pre><code class="src src-sh">docker run -ti --rm --name x11-bridge <span class="org-sh-escaped-newline">\</span>
+<pre class="src src-sh">docker run -ti --rm --name x11-bridge <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">MODE</span>=<span class="org-string">"ssh"</span> <span class="org-sh-escaped-newline">\</span>
  --net=host <span class="org-sh-escaped-newline">\</span>
  -v ~/.ssh/pub_rsa:/etc/pub-keys/me.pub <span class="org-sh-escaped-newline">\</span>
@@ -538,24 +538,24 @@ docker run -ti --rm --name spacemacs <span class="org-sh-escaped-newline">\</spa
  -e <span class="org-variable-name">DISPLAY</span>=:14 <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">TZ</span>=&lt;your_time_zone&gt; <span class="org-sh-escaped-newline">\</span>
  spacemacs/emacs25:develop
-</code></pre>
+</pre>
 </div>
 <p>
 Now you can connect to it with Xpra desktop client
 </p>
 <div class="org-src-container">
-<pre><code class="src src-sh">&lt;XPRA EXECUTABLE&gt; attach --encoding=rgb <span class="org-sh-escaped-newline">\</span>
+<pre class="src src-sh">&lt;XPRA EXECUTABLE&gt; attach --encoding=rgb <span class="org-sh-escaped-newline">\</span>
  --ssh=<span class="org-string">"ssh -o StrictHostKeyChecking=no -p 22"</span> <span class="org-sh-escaped-newline">\</span>
  ssh:xpra@localhost:14
-</code></pre>
+</pre>
 </div>
 </div>
 </li>
 
-<li><a id="via-web-browser"></a><a id="org2030afb"></a>Via web-browser<br />
+<li><a id="via-web-browser"></a><a id="orgf4a084d"></a>Via web-browser<br />
 <div class="outline-text-5" id="text-via-web-browser">
 <div class="org-src-container">
-<pre><code class="src src-sh">docker run -ti --rm --name x11-bridge <span class="org-sh-escaped-newline">\</span>
+<pre class="src src-sh">docker run -ti --rm --name x11-bridge <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">MODE</span>=<span class="org-string">"html"</span> <span class="org-sh-escaped-newline">\</span>
  --net=host <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">XPRA_PASSWORD</span>=&lt;PASSWORD&gt; <span class="org-sh-escaped-newline">\</span>
@@ -567,7 +567,7 @@ docker run -ti --rm --name spacemacs <span class="org-sh-escaped-newline">\</spa
  -e <span class="org-variable-name">TZ</span>=&lt;your_time_zone&gt; <span class="org-sh-escaped-newline">\</span>
  -e <span class="org-variable-name">DISPLAY</span>=:14 <span class="org-sh-escaped-newline">\</span>
  spacemacs/emacs25:develop
-</code></pre>
+</pre>
 </div>
 <p>
 Now visit <a href="http://localhost:10000/index.html?encoding=png&amp;password">http://localhost:10000/index.html?encoding=png&amp;password</a>=&lt;PASSWORD&gt;
@@ -579,8 +579,8 @@ Now visit <a href="http://localhost:10000/index.html?encoding=png&amp;password">
 </div>
 </div>
 
-<div id="outline-container-org819fee3" class="outline-2">
-<h2 id="some-basic-docker-commands-to-get-you-going"><a id="org819fee3"></a><span class="section-number-2">4</span> Some basic docker commands to get you going</h2>
+<div id="outline-container-org27e7958" class="outline-2">
+<h2 id="some-basic-docker-commands-to-get-you-going"><a id="org27e7958"></a><span class="section-number-2">4</span> Some basic docker commands to get you going</h2>
 <div class="outline-text-2" id="text-some-basic-docker-commands-to-get-you-going">
 <ul class="org-ul">
 <li><code>docker rm -f spacemacs</code> - remove <code>spacemacs</code> container</li>
@@ -612,7 +612,7 @@ With the running <code>spacemacs</code> container
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-09-11 Mon 19:40</p>
+<p class="date">Created: 2017-09-26 Tue 04:45</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
