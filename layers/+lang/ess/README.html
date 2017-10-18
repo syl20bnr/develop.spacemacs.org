@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-10-05 Thu 08:19 -->
+<!-- 2017-10-18 Wed 14:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ESS (R) layer</title>
@@ -264,14 +264,19 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#install">1. Install</a></li>
-<li><a href="#key-bindings">2. Key Bindings</a>
+<li><a href="#description">1. Description</a>
 <ul>
-<li><a href="#inferior-repl-process">2.1. Inferior REPL process</a></li>
-<li><a href="#helpers">2.2. Helpers</a></li>
+<li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#options">3. Options</a></li>
+<li><a href="#install">2. Install</a></li>
+<li><a href="#key-bindings">3. Key Bindings</a>
+<ul>
+<li><a href="#inferior-repl-process">3.1. Inferior REPL process</a></li>
+<li><a href="#helpers">3.2. Helpers</a></li>
+</ul>
+</li>
+<li><a href="#options">4. Options</a></li>
 </ul>
 </div>
 </div>
@@ -281,8 +286,29 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org2145e5b" class="outline-2">
-<h2 id="install"><a id="org2145e5b"></a><span class="section-number-2">1</span> Install</h2>
+<div id="outline-container-org7eb8660" class="outline-2">
+<h2 id="description"><a id="org7eb8660"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
+<p>
+This layer adds support for statistical analysis through <a href="https://ess.r-project.org/">ESS</a>.
+</p>
+</div>
+
+<div id="outline-container-org31fe1a1" class="outline-3">
+<h3 id="features"><a id="org31fe1a1"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
+<ul class="org-ul">
+<li>All <a href="https://ess.r-project.org/Manual/ess.html#Current-Features">ESS features</a></li>
+<li>Additional data viewer for R via <a href="https://github.com/myuhe/ess-R-data-view.el">ess-R-data-view</a></li>
+<li>Support for Org-Babel</li>
+<li>Better 'equals' behavior via <a href="https://github.com/genovese/ess-smart-equals">ess-smart-equals</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb69e552" class="outline-2">
+<h2 id="install"><a id="orgb69e552"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -292,13 +318,13 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgfcb64d2" class="outline-2">
-<h2 id="key-bindings"><a id="orgfcb64d2"></a><span class="section-number-2">2</span> Key Bindings</h2>
+<div id="outline-container-org9b0661b" class="outline-2">
+<h2 id="key-bindings"><a id="org9b0661b"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgac34e1d" class="outline-3">
-<h3 id="inferior-repl-process"><a id="orgac34e1d"></a><span class="section-number-3">2.1</span> Inferior REPL process</h3>
+<div id="outline-container-org0389cf7" class="outline-3">
+<h3 id="inferior-repl-process"><a id="org0389cf7"></a><span class="section-number-3">3.1</span> Inferior REPL process</h3>
 <div class="outline-text-3" id="text-inferior-repl-process">
 <p>
 Send code to inferior process with these commands:
@@ -418,8 +444,8 @@ Send code to inferior process with these commands:
 </div>
 </div>
 
-<div id="outline-container-orgdcf112d" class="outline-3">
-<h3 id="helpers"><a id="orgdcf112d"></a><span class="section-number-3">2.2</span> Helpers</h3>
+<div id="outline-container-org1112ef8" class="outline-3">
+<h3 id="helpers"><a id="org1112ef8"></a><span class="section-number-3">3.2</span> Helpers</h3>
 <div class="outline-text-3" id="text-helpers">
 <p>
 Helpers for inspecting objects at point are available in R buffers only.
@@ -446,11 +472,6 @@ Helpers for inspecting objects at point are available in R buffers only.
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m h i</code></td>
-<td class="org-left">object introspection popup [ess-R-object-popup][ess-R-object-popup]</td>
-</tr>
-
-<tr>
 <td class="org-left"><code>SPC m h t</code></td>
 <td class="org-left">view table using [ess-R-data-view][ess-R-data-view]</td>
 </tr>
@@ -460,8 +481,8 @@ Helpers for inspecting objects at point are available in R buffers only.
 </div>
 </div>
 
-<div id="outline-container-org1bd09d6" class="outline-2">
-<h2 id="options"><a id="org1bd09d6"></a><span class="section-number-2">3</span> Options</h2>
+<div id="outline-container-org0f37901" class="outline-2">
+<h2 id="options"><a id="org0f37901"></a><span class="section-number-2">4</span> Options</h2>
 <div class="outline-text-2" id="text-options">
 <p>
 To turn off the automatic replacement of underscores by <code>&lt;-</code>, set in your
@@ -490,7 +511,7 @@ appropriate:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-10-05 Thu 08:19</p>
+<p class="date">Created: 2017-10-18 Wed 14:59</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
