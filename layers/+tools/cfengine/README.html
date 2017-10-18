@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-10-05 Thu 08:19 -->
+<!-- 2017-10-18 Wed 14:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CFEngine layer</title>
@@ -272,7 +272,8 @@ for the JavaScript code in this tag.
 <li><a href="#indendation">3.2. Indendation</a></li>
 </ul>
 </li>
-<li><a href="#key-bindings">4. Key bindings</a></li>
+<li><a href="#execution-of-cfengine3-src-blocks">4. Execution of <code>cfengine3</code> SRC blocks</a></li>
+<li><a href="#key-bindings">5. Key bindings</a></li>
 </ul>
 </div>
 </div>
@@ -282,22 +283,24 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org30f2736" class="outline-2">
-<h2 id="description"><a id="org30f2736"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgc182b70" class="outline-2">
+<h2 id="description"><a id="orgc182b70"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer makes working with CFEngine policy easier:
 </p>
+
 <ul class="org-ul">
 <li>Syntax highlighting</li>
 <li>On the fly syntax checks (via <code>syntax-checking</code> layer)</li>
 <li>Auto completion (via <code>auto-completion</code> layer)</li>
+<li>Execution of <code>cfengine3</code> <code>SRC</code> blocks in <code>org-mode</code> (via ob-cfengine3 package)</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8b96d55" class="outline-2">
-<h2 id="install"><a id="org8b96d55"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgd920b01" class="outline-2">
+<h2 id="install"><a id="orgd920b01"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 Add <code>cfengine</code> to the <code>dotspacemacs-configuration-layers</code> in your <code>~/.spacemacs</code>
@@ -306,13 +309,13 @@ to use this layer.
 </div>
 </div>
 
-<div id="outline-container-orgd140e9e" class="outline-2">
-<h2 id="configuration"><a id="orgd140e9e"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-orgd973395" class="outline-2">
+<h2 id="configuration"><a id="orgd973395"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org397881c" class="outline-3">
-<h3 id="set-file-permission-on-save"><a id="org397881c"></a><span class="section-number-3">3.1</span> Set file permission on save</h3>
+<div id="outline-container-org6fb7525" class="outline-3">
+<h3 id="set-file-permission-on-save"><a id="org6fb7525"></a><span class="section-number-3">3.1</span> Set file permission on save</h3>
 <div class="outline-text-3" id="text-set-file-permission-on-save">
 <p>
 Here is a function to set permissions to 600 on save, this can help avoid
@@ -336,8 +339,8 @@ errors like:
 </div>
 </div>
 
-<div id="outline-container-org3195355" class="outline-3">
-<h3 id="indendation"><a id="org3195355"></a><span class="section-number-3">3.2</span> Indendation</h3>
+<div id="outline-container-org569a6a2" class="outline-3">
+<h3 id="indendation"><a id="org569a6a2"></a><span class="section-number-3">3.2</span> Indendation</h3>
 <div class="outline-text-3" id="text-indendation">
 <p>
 If you like attributes to be intended from the promiser set <code>Indentation amount
@@ -359,8 +362,39 @@ from anchor</code> to <code>2</code>. For example:
 </div>
 </div>
 
-<div id="outline-container-orgf56fd4e" class="outline-2">
-<h2 id="key-bindings"><a id="orgf56fd4e"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org7ef2965" class="outline-2">
+<h2 id="execution-of-cfengine3-src-blocks"><a id="org7ef2965"></a><span class="section-number-2">4</span> Execution of <code>cfengine3</code> SRC blocks</h2>
+<div class="outline-text-2" id="text-execution-of-cfengine3-src-blocks">
+<p>
+This layers add support for <code>cfengine3</code> source blocks in org files.
+With the insertion point inside the SRC block press <code>,,</code> or <code>CTRL-c Ctrl-c</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cfengine3"><span class="org-builtin">bundle</span> <span class="org-constant">agent</span> <span class="org-function-name">main</span>
+<span class="org-rainbow-delimiters-depth-1">{</span>
+  <span class="org-builtin">reports</span>:
+
+      <span class="org-string">"Hello World!"</span>;
+<span class="org-rainbow-delimiters-depth-1">}</span>
+</pre>
+</div>
+
+<p>
+See the ob-cfengine3 <a href="https://github.com/nickanderson/ob-cfengine3/blob/master/README.org">README</a> for information on controlling inclusion of the
+stdlib, definition of classes and controlling the <code>bundlesequence</code> using header
+args.
+</p>
+
+<p>
+To suppress the confirmation when executing a block set
+<code>(setq org-confirm-babel-evaluate nil)</code> in <code>dotspacemacs/user-config()</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0c91af6" class="outline-2">
+<h2 id="key-bindings"><a id="org0c91af6"></a><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -388,7 +422,7 @@ from anchor</code> to <code>2</code>. For example:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-10-05 Thu 08:19</p>
+<p class="date">Created: 2017-10-18 Wed 14:59</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
