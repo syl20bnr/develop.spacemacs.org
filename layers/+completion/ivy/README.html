@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-10-21 Sat 13:38 -->
+<!-- 2018-01-27 Sat 16:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ivy layer</title>
@@ -214,7 +214,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2017 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -264,9 +264,18 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#description">1. Description</a></li>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#configuration">3. Configuration</a></li>
+<li><a href="#configuration">3. Configuration</a>
+<ul>
+<li><a href="#general">3.1. General</a></li>
+<li><a href="#advanced-buffer-information">3.2. Advanced buffer information</a></li>
+</ul>
+</li>
 <li><a href="#key-bindings">4. Key Bindings</a>
 <ul>
 <li><a href="#transient-state">4.1. Transient state</a></li>
@@ -276,8 +285,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org7e4d079" class="outline-2">
-<h2 id="description"><a id="org7e4d079"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org157050e" class="outline-2">
+<h2 id="description"><a id="org157050e"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer enables Ivy for completion. It will replace the default completion by
@@ -294,10 +303,24 @@ and more&#x2026;
 Mastering your choice of completion system will make you a Spacemacs power user.
 </p>
 </div>
+
+<div id="outline-container-org9ab0802" class="outline-3">
+<h3 id="features"><a id="org9ab0802"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
+<ul class="org-ul">
+<li>Project wide <code>grep</code> like text search via <code>search-auto</code></li>
+<li>Project wide text replacements using <code>counsel-imenu</code></li>
+<li>Buffer wide dynamic text search via <code>swiper</code></li>
+<li>Detailed configuration parameters for ivy appearance</li>
+<li>Intuitive <code>transient state</code></li>
+<li>Advanced buffer information with <code>ivy-rich</code></li>
+</ul>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orge0145ad" class="outline-2">
-<h2 id="install"><a id="orge0145ad"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org35c0334" class="outline-2">
+<h2 id="install"><a id="org35c0334"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -307,9 +330,14 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org980781b" class="outline-2">
-<h2 id="configuration"><a id="org980781b"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-orge836796" class="outline-2">
+<h2 id="configuration"><a id="orge836796"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
+</div>
+
+<div id="outline-container-orgea4a9dd" class="outline-3">
+<h3 id="general"><a id="orgea4a9dd"></a><span class="section-number-3">3.1</span> General</h3>
+<div class="outline-text-3" id="text-general">
 <p>
 You can customize ivy with the following variables:
 </p>
@@ -329,8 +357,30 @@ a candidate. The Spacemacs default value is <code>t</code>.</li>
 </div>
 </div>
 
-<div id="outline-container-org68a2e98" class="outline-2">
-<h2 id="key-bindings"><a id="org68a2e98"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org7d93003" class="outline-3">
+<h3 id="advanced-buffer-information"><a id="org7d93003"></a><span class="section-number-3">3.2</span> Advanced buffer information</h3>
+<div class="outline-text-3" id="text-advanced-buffer-information">
+<p>
+To display more information about buffers set the layer variable
+<code>ivy-enable-advanced-buffer-information</code> to <code>t</code> which will enable <code>ivy-rich</code>.
+</p>
+
+<p>
+Note that <code>ivy-rich</code> has been reported to be very slow on <code>macOS</code>. This feature
+is disabled by default.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>ivy <span class="org-builtin">:variables</span> ivy-enable-advanced-buffer-information t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfab92b4" class="outline-2">
+<h2 id="key-bindings"><a id="orgfab92b4"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
 If you choose <code>ivy</code> as completion system, make sure to read the <a href="http://oremacs.com/swiper/">official manual</a>.
@@ -400,8 +450,8 @@ Some useful key bindings are presented in the following table.
 </table>
 </div>
 
-<div id="outline-container-orgaaaff23" class="outline-3">
-<h3 id="transient-state"><a id="orgaaaff23"></a><span class="section-number-3">4.1</span> Transient state</h3>
+<div id="outline-container-org68027c7" class="outline-3">
+<h3 id="transient-state"><a id="org68027c7"></a><span class="section-number-3">4.1</span> Transient state</h3>
 <div class="outline-text-3" id="text-transient-state">
 <p>
 Press <code>M-SPC</code> anytime in Ivy to get into the transient state.
@@ -454,7 +504,7 @@ Press <code>M-SPC</code> anytime in Ivy to get into the transient state.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-10-21 Sat 13:38</p>
+<p class="date">Created: 2018-01-27 Sat 16:03</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

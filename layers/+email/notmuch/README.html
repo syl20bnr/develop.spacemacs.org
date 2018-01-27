@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-01-27 Sat 16:03 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Notmuch layer</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Travis CI User" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+                 href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script>
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
+          </script>
+<link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
+<h1 class="title">Notmuch layer</h1>
+<div id="table-of-contents">
+<h2>Table of Contents<a href="#">Close</a></h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
+<li><a href="#install">2. Install</a></li>
+<li><a href="#configuration">3. Configuration</a>
+<ul>
+<li><a href="#sending-and-receiving-emails">3.1. Sending and Receiving emails</a>
+<ul>
+<li><a href="#receiving-emails">3.1.1. Receiving emails</a></li>
+<li><a href="#sending-emails-with-thunderbird">3.1.2. Sending emails with Thunderbird</a></li>
+<li><a href="#sending-emails-with-msmtp">3.1.3. Sending emails with msmtp</a></li>
+</ul>
+</li>
+<li><a href="#tags-to-apply-when-deleting">3.2. Tags to apply when deleting</a></li>
+<li><a href="#see-also">3.3. See also</a></li>
+</ul>
+</li>
+<li><a href="#key-bindings">4. Key bindings</a>
+<ul>
+<li><a href="#global-bindings">4.1. Global bindings</a></li>
+<li><a href="#show-mode">4.2. Show mode</a></li>
+<li><a href="#evilified-key-bindings">4.3. Evilified key bindings</a>
+<ul>
+<li><a href="#hello-mode">4.3.1. Hello mode</a></li>
+<li><a href="#search-mode">4.3.2. Search mode</a></li>
+<li><a href="#show-mode-1">4.3.3. Show mode</a></li>
+<li><a href="#tree-mode">4.3.4. Tree mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#spacemacs-layout-integration">5. Spacemacs layout integration</a></li>
+</ul>
+</div>
+</div>
+
+<div class="figure">
+<p><img src="img/notmuch.png" alt="notmuch.png" />
+</p>
+</div>
+
+<div id="outline-container-orgdab0827" class="outline-2">
+<h2 id="description"><a id="orgdab0827"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
+<p>
+Notmuch offers a fast, global-search and tag-based email system to
+use within your text editor or in a terminal.
+</p>
+
+<p>
+This layer integrates notmuch emacs package into spacemacs.
+</p>
+</div>
+
+<div id="outline-container-orgd9d8227" class="outline-3">
+<h3 id="features"><a id="orgd9d8227"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
+<ul class="org-ul">
+<li>Email searching</li>
+<li>Email tagging</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1bf4bcc" class="outline-2">
+<h2 id="install"><a id="org1bf4bcc"></a><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+<p>
+In order to use this layer you must install notmuch separately.
+</p>
+
+<p>
+To install not much follow the instructions in <a href="https://notmuchmail.org/notmuch-emacs/#index2h2">installation instructions</a>.
+</p>
+
+<p>
+Then add this layer to your <code>~/.spacemacs</code>. You will need to add <code>notmuch</code> to
+the existing <code>dotspacemacs-configuration-layers</code> list in this file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf0cbb3e" class="outline-2">
+<h2 id="configuration"><a id="orgf0cbb3e"></a><span class="section-number-2">3</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+</div>
+
+<div id="outline-container-org36d9e4d" class="outline-3">
+<h3 id="sending-and-receiving-emails"><a id="org36d9e4d"></a><span class="section-number-3">3.1</span> Sending and Receiving emails</h3>
+<div class="outline-text-3" id="text-sending-and-receiving-emails">
+<p>
+For this you will need an external program.
+</p>
+</div>
+
+<div id="outline-container-org314df34" class="outline-4">
+<h4 id="receiving-emails"><a id="org314df34"></a><span class="section-number-4">3.1.1</span> Receiving emails</h4>
+<div class="outline-text-4" id="text-receiving-emails">
+<p>
+To be able to receive email you will need to configure an external program to do
+it. See the <a href="https://notmuchmail.org/howto/">receive mail</a> section.
+</p>
+
+<p>
+After you configured your email fetcher program, maybe you would like to
+synchronize the email each time you call <code>notmuch</code>, in order to do that you
+could customize the variable <code>notmuch-hello-mode-hook</code> to call a lisp function
+that calls your email syncing utility.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org84a8625" class="outline-4">
+<h4 id="sending-emails-with-thunderbird"><a id="org84a8625"></a><span class="section-number-4">3.1.2</span> Sending emails with Thunderbird</h4>
+<div class="outline-text-4" id="text-sending-emails-with-thunderbird">
+<p>
+You could use thunderbird
+<a href="http://pragmaticemacs.com/emacs/use-emacs-for-thunderbird-emails/">http://pragmaticemacs.com/emacs/use-emacs-for-thunderbird-emails/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd7cc188" class="outline-4">
+<h4 id="sending-emails-with-msmtp"><a id="orgd7cc188"></a><span class="section-number-4">3.1.3</span> Sending emails with msmtp</h4>
+<div class="outline-text-4" id="text-sending-emails-with-msmtp">
+<p>
+Download and Install <a href="http://msmtp.sourceforge.net/download.html">msmtp</a>
+</p>
+
+<p>
+Configure <code>~/.mailrc</code> with the path where <code>msmtp</code> is found.
+</p>
+
+<p>
+For example:
+</p>
+<pre class="example" id="orgf5e746c">
+set sendmail="/usr/local/bin/msmtp"
+</pre>
+
+<p>
+Configure <code>~/.msmtprc</code> <a href="http://msmtp.sourceforge.net/doc/msmtprc.txt">example</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org40016f1" class="outline-3">
+<h3 id="tags-to-apply-when-deleting"><a id="org40016f1"></a><span class="section-number-3">3.2</span> Tags to apply when deleting</h3>
+<div class="outline-text-3" id="text-tags-to-apply-when-deleting">
+<p>
+You can specifiy which tags you want to apply when you delete an email by
+setting the layer variable <code>notmuch-message-deleted-tags</code>.
+</p>
+
+<p>
+Default value is to add the <code>deleted</code> tag and remove both <code>inbox</code> and
+<code>unread</code> tags.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>notmuch <span class="org-builtin">:variables</span> notmuch-message-deleted-tags '<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">"+deleted"</span> <span class="org-string">"-inbox"</span> <span class="org-string">"-unread"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5da238e" class="outline-3">
+<h3 id="see-also"><a id="org5da238e"></a><span class="section-number-3">3.3</span> See also</h3>
+<div class="outline-text-3" id="text-see-also">
+<p>
+Refer to the official notmuch website for more information:
+<a href="https://notmuchmail.org/">https://notmuchmail.org/</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2932f9c" class="outline-2">
+<h2 id="key-bindings"><a id="org2932f9c"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+</div>
+
+<div id="outline-container-orgc4f5c86" class="outline-3">
+<h3 id="global-bindings"><a id="orgc4f5c86"></a><span class="section-number-3">4.1</span> Global bindings</h3>
+<div class="outline-text-3" id="text-global-bindings">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keybinding</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC a N N</code></td>
+<td class="org-left">Start notmuch</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a N n</code></td>
+<td class="org-left">Start helm notmuch</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a N j</code></td>
+<td class="org-left">Start a notmuch jump search</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a N s</code></td>
+<td class="org-left">Start a notmuch search</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l o n</code></td>
+<td class="org-left">Start notmuch in a custom layout, "@Notmuch"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org45014db" class="outline-3">
+<h3 id="show-mode"><a id="org45014db"></a><span class="section-number-3">4.2</span> Show mode</h3>
+<div class="outline-text-3" id="text-show-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keybinding</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m a</code></td>
+<td class="org-left">[ATTACHMENTS] Save all attachments</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m P o</code></td>
+<td class="org-left">[PATCH] Open github patch in a new buffer</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m p m</code></td>
+<td class="org-left">[PART] Choose the mime type to use for displaying</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m p \vert</code></td>
+<td class="org-left">[PART] Pipe part at point to an external command</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m p o</code></td>
+<td class="org-left">[PART] View part at point (prompt for a viewer)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m p v</code></td>
+<td class="org-left">[PART] View part at point in an external viewer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m p s</code></td>
+<td class="org-left">[PART] Save part at point to a file</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m s c</code></td>
+<td class="org-left">[STASH] Copy <code>CC</code> to kill-ring</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s d</code></td>
+<td class="org-left">[STASH] Copy <code>timestamp</code> to kill-ring</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s G</code></td>
+<td class="org-left">[STASH] Copy <code>From/To/Cc/Message-Id</code> of current message to kill-ring</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s l</code></td>
+<td class="org-left">[STASH] [Mailing List Archive] Copy <code>ML Archive URI</code> to kill-ring</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s L</code></td>
+<td class="org-left">[STASH] [Mailing List Archive] Copy <code>ML Archive URI</code> to kill-ring and visit it</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s i</code></td>
+<td class="org-left">[STASH] Copy <code>message-id</code> to kill-ring</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s I</code></td>
+<td class="org-left">[STASH] Copy <code>message-id</code> without <code>id:</code> prefix to kill-ring</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s f</code></td>
+<td class="org-left">[STASH] Copy <code>From address</code> to kill-ring</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s F</code></td>
+<td class="org-left">[STASH] Copy <code>filename</code> to kill-ring</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s s</code></td>
+<td class="org-left">[STASH] Copy <code>Subject</code> to kill-ring</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s t</code></td>
+<td class="org-left">[STASH] Copy <code>To address</code> to kill-ring</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s T</code></td>
+<td class="org-left">[STASH] Copy <code>tags</code> to kill-ring</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgcb87db2" class="outline-3">
+<h3 id="evilified-key-bindings"><a id="orgcb87db2"></a><span class="section-number-3">4.3</span> Evilified key bindings</h3>
+<div class="outline-text-3" id="text-evilified-key-bindings">
+</div>
+
+<div id="outline-container-org735da8f" class="outline-4">
+<h4 id="hello-mode"><a id="org735da8f"></a><span class="section-number-4">4.3.1</span> Hello mode</h4>
+<div class="outline-text-4" id="text-hello-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keybinding</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>J</code></td>
+<td class="org-left">Jump to a saved search</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s</code></td>
+<td class="org-left">Show threads matching QUERY</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org556d576" class="outline-4">
+<h4 id="search-mode"><a id="org556d576"></a><span class="section-number-4">4.3.2</span> Search mode</h4>
+<div class="outline-text-4" id="text-search-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keybinding</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>J</code></td>
+<td class="org-left">Jump to saved search</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>*</code></td>
+<td class="org-left">[Thread]  Add/Remove tags</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>+</code></td>
+<td class="org-left">[Message] Add tags</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>-</code></td>
+<td class="org-left">[Message] Remove tags</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a</code></td>
+<td class="org-left">[Message] Archive</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org16cc74e" class="outline-4">
+<h4 id="show-mode-1"><a id="org16cc74e"></a><span class="section-number-4">4.3.3</span> Show mode</h4>
+<div class="outline-text-4" id="text-show-mode-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keybinding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>o</code></td>
+<td class="org-left">Open all messages</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>O</code></td>
+<td class="org-left">Close all messages</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>n</code></td>
+<td class="org-left">Show next open message</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>N</code></td>
+<td class="org-left">Show next message</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>p</code></td>
+<td class="org-left">Show previous open message</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>P</code></td>
+<td class="org-left">Show previous message</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-n</code></td>
+<td class="org-left">Show next thread</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-p</code></td>
+<td class="org-left">Show previous thread</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>d</code></td>
+<td class="org-left">Delete messages down</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>D</code></td>
+<td class="org-left">Delete messages up</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>J</code></td>
+<td class="org-left">Jump search</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>L</code></td>
+<td class="org-left">Filter current search</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gf</code></td>
+<td class="org-left">Find file or URL at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gg</code></td>
+<td class="org-left">Jump to top</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>G</code></td>
+<td class="org-left">Jump to bottom</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gr</code></td>
+<td class="org-left">Refresh buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gR</code></td>
+<td class="org-left">Refresh all buffers</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m</code></td>
+<td class="org-left">Compose mail</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org02d3ae7" class="outline-4">
+<h4 id="tree-mode"><a id="org02d3ae7"></a><span class="section-number-4">4.3.4</span> Tree mode</h4>
+<div class="outline-text-4" id="text-tree-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keybinding</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>*</code></td>
+<td class="org-left">[Thread]  Add/Remove tags</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>+</code></td>
+<td class="org-left">[Message] Add tags</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>-</code></td>
+<td class="org-left">[Message] Remove tags</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a</code></td>
+<td class="org-left">[Message] Archive</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdd74abe" class="outline-2">
+<h2 id="spacemacs-layout-integration"><a id="orgdd74abe"></a><span class="section-number-2">5</span> Spacemacs layout integration</h2>
+<div class="outline-text-2" id="text-spacemacs-layout-integration">
+<p>
+This layer defines a <a href="../../../doc/DOCUMENTATION.html#layouts-and-workspaces">Spacemacs custom layout</a> and automatically adds notmuch
+buffers to this layout.  The name and the key binding for the layout can be
+customized with the following layer variables:
+</p>
+<ul class="org-ul">
+<li><code>notmuch-spacemacs-layout-name</code> for the layout name,</li>
+<li><code>notmuch-spacemacs-layout-binding</code> for the key binding.</li>
+</ul>
+
+<p>
+The following example configures the layout with the default name and binding:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>notmuch <span class="org-builtin">:variables</span> notmuch-spacemacs-layout-name <span class="org-string">"@Notmuch"</span>
+                      notmuch-spacemacs-layout-binding <span class="org-string">"n"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Travis CI User</p>
+<p class="date">Created: 2018-01-27 Sat 16:03</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

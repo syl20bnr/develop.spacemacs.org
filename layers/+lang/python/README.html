@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-10-21 Sat 13:38 -->
+<!-- 2018-01-27 Sat 16:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python layer</title>
@@ -214,7 +214,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2017 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -280,36 +280,38 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#test-runner">2.3. Test runner</a></li>
 <li><a href="#automatic-buffer-formatting-on-save">2.4. Automatic buffer formatting on save</a></li>
-<li><a href="#autoflake">2.5. autoflake</a></li>
-<li><a href="#pylookup">2.6. pylookup</a></li>
-<li><a href="#hy-mode">2.7. Hy-mode</a></li>
+<li><a href="#automatic-save-of-buffer-when-testing">2.5. Automatic save of buffer when testing</a></li>
+<li><a href="#autoflake">2.6. autoflake</a></li>
+<li><a href="#pylookup">2.7. pylookup</a></li>
+<li><a href="#hy-mode">2.8. Hy-mode</a></li>
 </ul>
 </li>
-<li><a href="#management-of-python-versions-and-virtual-environments">3. Management of Python versions and virtual environments</a>
+<li><a href="#configuration">3. Configuration</a>
 <ul>
-<li><a href="#manage-virtual-environments-with-pyvenv">3.1. Manage virtual environments with pyvenv</a></li>
-<li><a href="#manage-multiple-python-versions-with-pyenv">3.2. Manage multiple Python versions with pyenv</a>
+<li><a href="#fill-column">3.1. Fill column</a></li>
+<li><a href="#sort-imports">3.2. Sort imports</a></li>
+</ul>
+</li>
+<li><a href="#management-of-python-versions-and-virtual-environments">4. Management of Python versions and virtual environments</a>
 <ul>
-<li><a href="#automatic-activation-of-local-pyenv-version">3.2.1. Automatic activation of local pyenv version</a></li>
+<li><a href="#manage-virtual-environments-with-pyvenv">4.1. Manage virtual environments with pyvenv</a></li>
+<li><a href="#manage-multiple-python-versions-with-pyenv">4.2. Manage multiple Python versions with pyenv</a>
+<ul>
+<li><a href="#automatic-activation-of-local-pyenv-version">4.2.1. Automatic activation of local pyenv version</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#key-bindings">4. Key Bindings</a>
+<li><a href="#key-bindings">5. Key Bindings</a>
 <ul>
-<li><a href="#inferior-repl-process">4.1. Inferior REPL process</a></li>
-<li><a href="#running-python-script-in-shell">4.2. Running Python Script in shell</a></li>
-<li><a href="#testing">4.3. Testing</a></li>
-<li><a href="#refactoring">4.4. Refactoring</a></li>
-<li><a href="#live-coding">4.5. Live coding</a></li>
-<li><a href="#hy-repl-process">4.6. Hy REPL process</a></li>
-<li><a href="#other-python-commands">4.7. Other Python commands</a></li>
-</ul>
-</li>
-<li><a href="#configuration">5. Configuration</a>
-<ul>
-<li><a href="#fill-column">5.1. Fill column</a></li>
-<li><a href="#sort-imports">5.2. Sort imports</a></li>
+<li><a href="#inferior-repl-process">5.1. Inferior REPL process</a></li>
+<li><a href="#running-python-script-in-shell">5.2. Running Python Script in shell</a></li>
+<li><a href="#testing">5.3. Testing</a></li>
+<li><a href="#refactoring">5.4. Refactoring</a></li>
+<li><a href="#pip-package-management">5.5. Pip package management</a></li>
+<li><a href="#live-coding">5.6. Live coding</a></li>
+<li><a href="#hy-repl-process">5.7. Hy REPL process</a></li>
+<li><a href="#other-python-commands">5.8. Other Python commands</a></li>
 </ul>
 </li>
 </ul>
@@ -321,16 +323,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org06aa0a1" class="outline-2">
-<h2 id="description"><a id="org06aa0a1"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org77114aa" class="outline-2">
+<h2 id="description"><a id="org77114aa"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for the Python language.
 </p>
 </div>
 
-<div id="outline-container-org7326d42" class="outline-3">
-<h3 id="features"><a id="org7326d42"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org3f1d0a8" class="outline-3">
+<h3 id="features"><a id="org3f1d0a8"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Auto-completion using <a href="https://github.com/proofit404/anaconda-mode">anaconda-mode</a></li>
@@ -344,18 +346,20 @@ This layer adds support for the Python language.
 <li>Suppression of unused import with <a href="https://github.com/myint/autoflake">autoflake</a></li>
 <li>Use the <code>%</code> key to jump between blocks with <a href="https://github.com/redguardtoo/evil-matchit">evil-matchit</a></li>
 <li>Sort imports with <a href="https://pypi.python.org/pypi/isort">isort</a></li>
+<li>Fix a missing import statement with <a href="https://github.com/anachronic/importmagic.el">importmagic</a></li>
+<li>Pip package manager with <a href="https://github.com/brotzeit/pippel">pippel</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org9eec4d1" class="outline-2">
-<h2 id="install"><a id="org9eec4d1"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org21548ff" class="outline-2">
+<h2 id="install"><a id="org21548ff"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orge63feed" class="outline-3">
-<h3 id="layer"><a id="orge63feed"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org7a1bffb" class="outline-3">
+<h3 id="layer"><a id="org7a1bffb"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -365,13 +369,13 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org7f4fcb2" class="outline-3">
-<h3 id="dependencies"><a id="org7f4fcb2"></a><span class="section-number-3">2.2</span> Dependencies</h3>
+<div id="outline-container-org55e947f" class="outline-3">
+<h3 id="dependencies"><a id="org55e947f"></a><span class="section-number-3">2.2</span> Dependencies</h3>
 <div class="outline-text-3" id="text-dependencies">
 </div>
 
-<div id="outline-container-org35ea14f" class="outline-4">
-<h4 id="auto-completion-anaconda-dependencies"><a id="org35ea14f"></a><span class="section-number-4">2.2.1</span> Auto-completion: Anaconda dependencies</h4>
+<div id="outline-container-orgf32fb5d" class="outline-4">
+<h4 id="auto-completion-anaconda-dependencies"><a id="orgf32fb5d"></a><span class="section-number-4">2.2.1</span> Auto-completion: Anaconda dependencies</h4>
 <div class="outline-text-4" id="text-auto-completion-anaconda-dependencies">
 <p>
 <code>anaconda-mode</code> tries to install the dependencies itself but sometimes
@@ -409,8 +413,8 @@ setting your <code>PYTHONPATH</code> as explained at
 </div>
 </div>
 
-<div id="outline-container-orga7b2daf" class="outline-4">
-<h4 id="syntax-checking"><a id="orga7b2daf"></a><span class="section-number-4">2.2.2</span> Syntax checking</h4>
+<div id="outline-container-orgd5da3dd" class="outline-4">
+<h4 id="syntax-checking"><a id="orgd5da3dd"></a><span class="section-number-4">2.2.2</span> Syntax checking</h4>
 <div class="outline-text-4" id="text-syntax-checking">
 <p>
 Syntax checking uses <code>flake8</code> package:
@@ -424,8 +428,8 @@ Syntax checking uses <code>flake8</code> package:
 </div>
 </div>
 
-<div id="outline-container-org1f43da9" class="outline-3">
-<h3 id="test-runner"><a id="org1f43da9"></a><span class="section-number-3">2.3</span> Test runner</h3>
+<div id="outline-container-org60ac945" class="outline-3">
+<h3 id="test-runner"><a id="org60ac945"></a><span class="section-number-3">2.3</span> Test runner</h3>
 <div class="outline-text-3" id="text-test-runner">
 <p>
 Both <code>nose</code> and <code>pytest</code> are supported. By default <code>nose</code> is used.
@@ -466,8 +470,8 @@ The root of the project is detected with a <code>.git</code> directory or a <cod
 </div>
 </div>
 
-<div id="outline-container-org4a9b291" class="outline-3">
-<h3 id="automatic-buffer-formatting-on-save"><a id="org4a9b291"></a><span class="section-number-3">2.4</span> Automatic buffer formatting on save</h3>
+<div id="outline-container-org0399e11" class="outline-3">
+<h3 id="automatic-buffer-formatting-on-save"><a id="org0399e11"></a><span class="section-number-3">2.4</span> Automatic buffer formatting on save</h3>
 <div class="outline-text-3" id="text-automatic-buffer-formatting-on-save">
 <p>
 To enable automatic buffer formatting on save with  <a href="https://github.com/google/yapf">YAPF</a> set the variable
@@ -482,8 +486,24 @@ To enable automatic buffer formatting on save with  <a href="https://github.com/
 </div>
 </div>
 
-<div id="outline-container-org6766c2b" class="outline-3">
-<h3 id="autoflake"><a id="org6766c2b"></a><span class="section-number-3">2.5</span> autoflake</h3>
+<div id="outline-container-org98d0f4b" class="outline-3">
+<h3 id="automatic-save-of-buffer-when-testing"><a id="org98d0f4b"></a><span class="section-number-3">2.5</span> Automatic save of buffer when testing</h3>
+<div class="outline-text-3" id="text-automatic-save-of-buffer-when-testing">
+<p>
+By default a buffer is automatically saved before tests are executed upon it,
+you can disable this feature by setting <code>python-save-before-test</code> to <code>nil</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-save-before-test nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org614b0a5" class="outline-3">
+<h3 id="autoflake"><a id="org614b0a5"></a><span class="section-number-3">2.6</span> autoflake</h3>
 <div class="outline-text-3" id="text-autoflake">
 <p>
 To be able to suppress unused imports easily, install <a href="https://github.com/myint/autoflake">autoflake</a>:
@@ -496,8 +516,8 @@ To be able to suppress unused imports easily, install <a href="https://github.co
 </div>
 </div>
 
-<div id="outline-container-org249bb86" class="outline-3">
-<h3 id="pylookup"><a id="org249bb86"></a><span class="section-number-3">2.6</span> pylookup</h3>
+<div id="outline-container-orgb4f712b" class="outline-3">
+<h3 id="pylookup"><a id="orgb4f712b"></a><span class="section-number-3">2.7</span> pylookup</h3>
 <div class="outline-text-3" id="text-pylookup">
 <p>
 To use <code>pylookup</code> on <code>SPC m h H</code>, make sure you update the database first, using
@@ -506,8 +526,8 @@ To use <code>pylookup</code> on <code>SPC m h H</code>, make sure you update the
 </div>
 </div>
 
-<div id="outline-container-orga80e1fa" class="outline-3">
-<h3 id="hy-mode"><a id="orga80e1fa"></a><span class="section-number-3">2.7</span> Hy-mode</h3>
+<div id="outline-container-orgb93f306" class="outline-3">
+<h3 id="hy-mode"><a id="orgb93f306"></a><span class="section-number-3">2.8</span> Hy-mode</h3>
 <div class="outline-text-3" id="text-hy-mode">
 <p>
 To be able to connect to an inferior lisp repl in <code>hy-mode</code>, you need to make sure
@@ -522,13 +542,56 @@ that hy is installed.
 </div>
 </div>
 
-<div id="outline-container-org7b1f226" class="outline-2">
-<h2 id="management-of-python-versions-and-virtual-environments"><a id="org7b1f226"></a><span class="section-number-2">3</span> Management of Python versions and virtual environments</h2>
+<div id="outline-container-org8f8c545" class="outline-2">
+<h2 id="configuration"><a id="org8f8c545"></a><span class="section-number-2">3</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+</div>
+
+<div id="outline-container-org34fd33a" class="outline-3">
+<h3 id="fill-column"><a id="org34fd33a"></a><span class="section-number-3">3.1</span> Fill column</h3>
+<div class="outline-text-3" id="text-fill-column">
+<p>
+If you want to customize the fill column value, use something like this inside
+the <code>user-init</code> function in your <code>.spacemacs</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-fill-column <span class="org-highlight-numbers-number">99</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org85d1807" class="outline-3">
+<h3 id="sort-imports"><a id="org85d1807"></a><span class="section-number-3">3.2</span> Sort imports</h3>
+<div class="outline-text-3" id="text-sort-imports">
+<p>
+If you want imports to be automatically sorted when you save a file (using
+<a href="https://pypi.python.org/pypi/isort">isort</a>), set the <code>python-sort-imports-on-save</code> variable in the python layer
+config section:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-sort-imports-on-save t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+or as a directory-local variable (for per-project settings).
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1c32e51" class="outline-2">
+<h2 id="management-of-python-versions-and-virtual-environments"><a id="org1c32e51"></a><span class="section-number-2">4</span> Management of Python versions and virtual environments</h2>
 <div class="outline-text-2" id="text-management-of-python-versions-and-virtual-environments">
 </div>
 
-<div id="outline-container-orged1b072" class="outline-3">
-<h3 id="manage-virtual-environments-with-pyvenv"><a id="orged1b072"></a><span class="section-number-3">3.1</span> Manage virtual environments with pyvenv</h3>
+<div id="outline-container-org631255c" class="outline-3">
+<h3 id="manage-virtual-environments-with-pyvenv"><a id="org631255c"></a><span class="section-number-3">4.1</span> Manage virtual environments with pyvenv</h3>
 <div class="outline-text-3" id="text-manage-virtual-environments-with-pyvenv">
 <p>
 A virtual environment provides isolation of your Python package versions. For a
@@ -576,8 +639,8 @@ by the <a href="https://github.com/jorgenschaefer/pyvenv">pyvenv</a> package. It
 </div>
 </div>
 
-<div id="outline-container-org2ef037f" class="outline-3">
-<h3 id="manage-multiple-python-versions-with-pyenv"><a id="org2ef037f"></a><span class="section-number-3">3.2</span> Manage multiple Python versions with pyenv</h3>
+<div id="outline-container-org97bc966" class="outline-3">
+<h3 id="manage-multiple-python-versions-with-pyenv"><a id="org97bc966"></a><span class="section-number-3">4.2</span> Manage multiple Python versions with pyenv</h3>
 <div class="outline-text-3" id="text-manage-multiple-python-versions-with-pyenv">
 <p>
 If you need multiple Python versions (e.g. Python 2 and Python 3) then take a
@@ -620,8 +683,8 @@ has installed. Those will be listed alongside your Python versions.
 </p>
 </div>
 
-<div id="outline-container-org2cf312b" class="outline-4">
-<h4 id="automatic-activation-of-local-pyenv-version"><a id="org2cf312b"></a><span class="section-number-4">3.2.1</span> Automatic activation of local pyenv version</h4>
+<div id="outline-container-org04f58d2" class="outline-4">
+<h4 id="automatic-activation-of-local-pyenv-version"><a id="org04f58d2"></a><span class="section-number-4">4.2.1</span> Automatic activation of local pyenv version</h4>
 <div class="outline-text-4" id="text-automatic-activation-of-local-pyenv-version">
 <p>
 A project-specific pyenv version may be written to a file called
@@ -653,13 +716,13 @@ can be set with the variable <code>python-auto-set-local-pyvenv-virtualenv=</cod
 </div>
 </div>
 
-<div id="outline-container-org75d35c0" class="outline-2">
-<h2 id="key-bindings"><a id="org75d35c0"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-orgee6874f" class="outline-2">
+<h2 id="key-bindings"><a id="orgee6874f"></a><span class="section-number-2">5</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org62ebd08" class="outline-3">
-<h3 id="inferior-repl-process"><a id="org62ebd08"></a><span class="section-number-3">4.1</span> Inferior REPL process</h3>
+<div id="outline-container-org9b3f395" class="outline-3">
+<h3 id="inferior-repl-process"><a id="org9b3f395"></a><span class="section-number-3">5.1</span> Inferior REPL process</h3>
 <div class="outline-text-3" id="text-inferior-repl-process">
 <p>
 Start a Python or iPython inferior REPL process with <code>SPC m s i</code>.
@@ -737,8 +800,8 @@ Send code to inferior process commands:
 </div>
 </div>
 
-<div id="outline-container-org50db1fe" class="outline-3">
-<h3 id="running-python-script-in-shell"><a id="org50db1fe"></a><span class="section-number-3">4.2</span> Running Python Script in shell</h3>
+<div id="outline-container-org84a40f6" class="outline-3">
+<h3 id="running-python-script-in-shell"><a id="org84a40f6"></a><span class="section-number-3">5.2</span> Running Python Script in shell</h3>
 <div class="outline-text-3" id="text-running-python-script-in-shell">
 <p>
 To run a Python script like you would in the shell press <code>SPC m c c</code>
@@ -781,8 +844,8 @@ compilation command.
 </div>
 </div>
 
-<div id="outline-container-org583a19f" class="outline-3">
-<h3 id="testing"><a id="org583a19f"></a><span class="section-number-3">4.3</span> Testing</h3>
+<div id="outline-container-org74a11f2" class="outline-3">
+<h3 id="testing"><a id="org74a11f2"></a><span class="section-number-3">5.3</span> Testing</h3>
 <div class="outline-text-3" id="text-testing">
 <p>
 Test commands start with <code>m t</code>. To use the secondary test runner call the
@@ -875,8 +938,8 @@ function with a prefix argument, for example <code>SPC u SPC m t a</code>.
 </div>
 </div>
 
-<div id="outline-container-orge67cf70" class="outline-3">
-<h3 id="refactoring"><a id="orge67cf70"></a><span class="section-number-3">4.4</span> Refactoring</h3>
+<div id="outline-container-orgf833a7b" class="outline-3">
+<h3 id="refactoring"><a id="orgf833a7b"></a><span class="section-number-3">5.4</span> Refactoring</h3>
 <div class="outline-text-3" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -894,6 +957,11 @@ function with a prefix argument, for example <code>SPC u SPC m t a</code>.
 </thead>
 <tbody>
 <tr>
+<td class="org-left"><code>SPC m r f</code></td>
+<td class="org-left">fix a missing import statement with <a href="https://pypi.python.org/pypi/importmagic">importmagic</a></td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m r i</code></td>
 <td class="org-left">remove unused imports with <a href="https://github.com/myint/autoflake">autoflake</a></td>
 </tr>
@@ -907,8 +975,84 @@ function with a prefix argument, for example <code>SPC u SPC m t a</code>.
 </div>
 </div>
 
-<div id="outline-container-org5951154" class="outline-3">
-<h3 id="live-coding"><a id="org5951154"></a><span class="section-number-3">4.5</span> Live coding</h3>
+<div id="outline-container-org55593cf" class="outline-3">
+<h3 id="pip-package-management"><a id="org55593cf"></a><span class="section-number-3">5.5</span> Pip package management</h3>
+<div class="outline-text-3" id="text-pip-package-management">
+<p>
+In python buffer type <code>SPC m P</code> to open buffer listing all installed <code>pip</code>
+packages in the currently activated virtual environment.
+</p>
+
+<p>
+<b>Note:</b> To open this menu from outside a python buffer type
+<code>SPC SPC pippel-list-packages RET</code> .
+</p>
+
+<p>
+In the package list buffer:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>RET</code></td>
+<td class="org-left">follow link (<code>pippel-menu-visit-homepage</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>d</code></td>
+<td class="org-left">mark for deletion (<code>pippel-menu-mark-delete</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>i</code></td>
+<td class="org-left">prompt user for packages (<code>pippel-install-package</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m</code></td>
+<td class="org-left">remove mark (<code>pippel-menu-mark-unmark</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>r</code></td>
+<td class="org-left">refresh package list (<code>pippel-list-packages</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>U</code></td>
+<td class="org-left">mark all upgradable (<code>pippel-menu-mark-all-upgrades</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>u</code></td>
+<td class="org-left">mark for upgrade (<code>pippel-menu-mark-upgrade</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>x</code></td>
+<td class="org-left">perform marked package menu actions (<code>pippel-menu-execute</code>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org779fb03" class="outline-3">
+<h3 id="live-coding"><a id="org779fb03"></a><span class="section-number-3">5.6</span> Live coding</h3>
 <div class="outline-text-3" id="text-live-coding">
 <p>
 Live coding is provided by the <a href="https://github.com/donkirkby/live-py-plugin">live-py-plugin.</a>
@@ -938,8 +1082,8 @@ Live coding is provided by the <a href="https://github.com/donkirkby/live-py-plu
 </div>
 </div>
 
-<div id="outline-container-org19d9717" class="outline-3">
-<h3 id="hy-repl-process"><a id="org19d9717"></a><span class="section-number-3">4.6</span> Hy REPL process</h3>
+<div id="outline-container-orgd8f9d7f" class="outline-3">
+<h3 id="hy-repl-process"><a id="orgd8f9d7f"></a><span class="section-number-3">5.7</span> Hy REPL process</h3>
 <div class="outline-text-3" id="text-hy-repl-process">
 <p>
 Start a Hy inferior repel process with <code>SPC m s i</code>. If <code>hy</code> is
@@ -1011,8 +1155,8 @@ Send code to hy REPL commands:
 </div>
 </div>
 
-<div id="outline-container-orge1d0c7b" class="outline-3">
-<h3 id="other-python-commands"><a id="orge1d0c7b"></a><span class="section-number-3">4.7</span> Other Python commands</h3>
+<div id="outline-container-org16b5d45" class="outline-3">
+<h3 id="other-python-commands"><a id="org16b5d45"></a><span class="section-number-3">5.8</span> Other Python commands</h3>
 <div class="outline-text-3" id="text-other-python-commands">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1103,53 +1247,10 @@ Send code to hy REPL commands:
 </div>
 </div>
 </div>
-
-<div id="outline-container-org9d56191" class="outline-2">
-<h2 id="configuration"><a id="org9d56191"></a><span class="section-number-2">5</span> Configuration</h2>
-<div class="outline-text-2" id="text-configuration">
-</div>
-
-<div id="outline-container-orgcee9ce0" class="outline-3">
-<h3 id="fill-column"><a id="orgcee9ce0"></a><span class="section-number-3">5.1</span> Fill column</h3>
-<div class="outline-text-3" id="text-fill-column">
-<p>
-If you want to customize the fill column value, use something like this inside
-the <code>user-init</code> function in your <code>.spacemacs</code>:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-fill-column <span class="org-highlight-numbers-number">99</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgcaac456" class="outline-3">
-<h3 id="sort-imports"><a id="orgcaac456"></a><span class="section-number-3">5.2</span> Sort imports</h3>
-<div class="outline-text-3" id="text-sort-imports">
-<p>
-If you want imports to be automatically sorted when you save a file (using
-<a href="https://pypi.python.org/pypi/isort">isort</a>), set the <code>python-sort-imports-on-save</code> variable in the python layer
-config section:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-sort-imports-on-save t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-or as a directory-local variable (for per-project settings).
-</p>
-</div>
-</div>
-</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-10-21 Sat 13:38</p>
+<p class="date">Created: 2018-01-27 Sat 16:04</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-10-21 Sat 13:38 -->
+<!-- 2018-01-27 Sat 16:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Racket layer</title>
@@ -214,7 +214,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2017 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -270,13 +270,14 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#key-bindings">3. Key Bindings</a>
+<li><a href="#structuraly-safe-editing">3. Structuraly safe editing</a></li>
+<li><a href="#key-bindings">4. Key Bindings</a>
 <ul>
-<li><a href="#navigation">3.1. Navigation</a></li>
-<li><a href="#documentation">3.2. Documentation</a></li>
-<li><a href="#tests">3.3. Tests</a></li>
-<li><a href="#repl">3.4. REPL</a></li>
-<li><a href="#other-key-bindings">3.5. Other key bindings</a></li>
+<li><a href="#navigation">4.1. Navigation</a></li>
+<li><a href="#documentation">4.2. Documentation</a></li>
+<li><a href="#tests">4.3. Tests</a></li>
+<li><a href="#repl">4.4. REPL</a></li>
+<li><a href="#other-key-bindings">4.5. Other key bindings</a></li>
 </ul>
 </li>
 </ul>
@@ -288,29 +289,30 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgf356ddc" class="outline-2">
-<h2 id="description"><a id="orgf356ddc"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org718f227" class="outline-2">
+<h2 id="description"><a id="org718f227"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 Adds support for the <a href="http://racket-lang.org/">Racket</a> programming language.
 </p>
 </div>
 
-<div id="outline-container-org2507814" class="outline-3">
-<h3 id="features"><a id="org2507814"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org9badfc2" class="outline-3">
+<h3 id="features"><a id="org9badfc2"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Syntax highlighting with <code>racket-mode</code></li>
 <li>Test runner</li>
 <li>Interactive REPL</li>
 <li>Code navigation with <code>gtags</code></li>
+<li>Structuraly safe editing using optional <a href="https://github.com/luxbock/evil-cleverparens">evil-cleverparens</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org6b185f3" class="outline-2">
-<h2 id="install"><a id="org6b185f3"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org97faf1a" class="outline-2">
+<h2 id="install"><a id="org97faf1a"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -326,13 +328,51 @@ file. You will also need DrRacket installed. Alternatively, one can use the
 </div>
 </div>
 
-<div id="outline-container-org312a1ab" class="outline-2">
-<h2 id="key-bindings"><a id="org312a1ab"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-orgdee52e3" class="outline-2">
+<h2 id="structuraly-safe-editing"><a id="orgdee52e3"></a><span class="section-number-2">3</span> Structuraly safe editing</h2>
+<div class="outline-text-2" id="text-structuraly-safe-editing">
+<p>
+This layer adds support for <code>evil-cleverparens</code> which allows to safely edit
+lisp code by keeping the s-expressions balanced.
+</p>
+
+<p>
+By default this mode is not activated. You can turn it on locally on the
+active buffer with <code>SPC m T s</code> (<code>s</code> for safe).
+</p>
+
+<p>
+To turn it on automatically for all <code>racket</code> buffers call the following
+function in your <code>dotspacemacs/user-config</code> function:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-racket-mode<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+or to enable it for all supported modes:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge752d1b" class="outline-2">
+<h2 id="key-bindings"><a id="orge752d1b"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org55631aa" class="outline-3">
-<h3 id="navigation"><a id="org55631aa"></a><span class="section-number-3">3.1</span> Navigation</h3>
+<div id="outline-container-org108d1e9" class="outline-3">
+<h3 id="navigation"><a id="org108d1e9"></a><span class="section-number-3">4.1</span> Navigation</h3>
 <div class="outline-text-3" id="text-navigation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -373,8 +413,8 @@ file. You will also need DrRacket installed. Alternatively, one can use the
 </div>
 </div>
 
-<div id="outline-container-orgd1a84c3" class="outline-3">
-<h3 id="documentation"><a id="orgd1a84c3"></a><span class="section-number-3">3.2</span> Documentation</h3>
+<div id="outline-container-orgfca45ef" class="outline-3">
+<h3 id="documentation"><a id="orgfca45ef"></a><span class="section-number-3">4.2</span> Documentation</h3>
 <div class="outline-text-3" id="text-documentation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -405,8 +445,8 @@ file. You will also need DrRacket installed. Alternatively, one can use the
 </div>
 </div>
 
-<div id="outline-container-orgb777695" class="outline-3">
-<h3 id="tests"><a id="orgb777695"></a><span class="section-number-3">3.3</span> Tests</h3>
+<div id="outline-container-orgaca9a73" class="outline-3">
+<h3 id="tests"><a id="orgaca9a73"></a><span class="section-number-3">4.3</span> Tests</h3>
 <div class="outline-text-3" id="text-tests">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -437,8 +477,8 @@ file. You will also need DrRacket installed. Alternatively, one can use the
 </div>
 </div>
 
-<div id="outline-container-org4360e55" class="outline-3">
-<h3 id="repl"><a id="org4360e55"></a><span class="section-number-3">3.4</span> REPL</h3>
+<div id="outline-container-org29c5e55" class="outline-3">
+<h3 id="repl"><a id="org29c5e55"></a><span class="section-number-3">4.4</span> REPL</h3>
 <div class="outline-text-3" id="text-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -509,8 +549,8 @@ file. You will also need DrRacket installed. Alternatively, one can use the
 </div>
 </div>
 
-<div id="outline-container-org4ad6cf2" class="outline-3">
-<h3 id="other-key-bindings"><a id="org4ad6cf2"></a><span class="section-number-3">3.5</span> Other key bindings</h3>
+<div id="outline-container-org4c5ee30" class="outline-3">
+<h3 id="other-key-bindings"><a id="org4c5ee30"></a><span class="section-number-3">4.5</span> Other key bindings</h3>
 <div class="outline-text-3" id="text-other-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -544,7 +584,7 @@ file. You will also need DrRacket installed. Alternatively, one can use the
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-10-21 Sat 13:38</p>
+<p class="date">Created: 2018-01-27 Sat 16:04</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

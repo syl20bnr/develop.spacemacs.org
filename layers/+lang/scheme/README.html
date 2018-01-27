@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-10-21 Sat 13:38 -->
+<!-- 2018-01-27 Sat 16:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Scheme layer</title>
@@ -214,7 +214,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2017 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -270,42 +270,44 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#key-bindings">3. Key Bindings</a>
+<li><a href="#structuraly-safe-editing">3. Structuraly safe editing</a></li>
+<li><a href="#key-bindings">4. Key Bindings</a>
 <ul>
-<li><a href="#compiling">3.1. Compiling</a></li>
-<li><a href="#navigation">3.2. Navigation</a></li>
-<li><a href="#documentation">3.3. Documentation</a></li>
-<li><a href="#insertion">3.4. Insertion</a></li>
-<li><a href="#macroexpansion">3.5. Macroexpansion</a></li>
-<li><a href="#repl">3.6. REPL</a></li>
-<li><a href="#evaluation">3.7. Evaluation</a></li>
+<li><a href="#compiling">4.1. Compiling</a></li>
+<li><a href="#navigation">4.2. Navigation</a></li>
+<li><a href="#documentation">4.3. Documentation</a></li>
+<li><a href="#insertion">4.4. Insertion</a></li>
+<li><a href="#macroexpansion">4.5. Macroexpansion</a></li>
+<li><a href="#repl">4.6. REPL</a></li>
+<li><a href="#evaluation">4.7. Evaluation</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgeb9ae20" class="outline-2">
-<h2 id="description"><a id="orgeb9ae20"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org7f19cea" class="outline-2">
+<h2 id="description"><a id="org7f19cea"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds support for Scheme via <a href="http://www.nongnu.org/geiser/">Geiser</a>. Note that combined usage of racket-mode and geiser has not been tested.
+This layer adds support for Scheme via <a href="http://geiser.nongnu.org">Geiser</a>. Note that combined usage of racket-mode and geiser has not been tested.
 </p>
 </div>
 
-<div id="outline-container-orgd7ea856" class="outline-3">
-<h3 id="features"><a id="orgd7ea856"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orgda47c87" class="outline-3">
+<h3 id="features"><a id="orgda47c87"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Support the Scheme compiler <a href="https://www.call-cc.org/">Chicken</a></li>
 <li>Support for the extension language platform <a href="https://www.gnu.org/software/guile/">Guile</a></li>
+<li>Structuraly safe editing using optional <a href="https://github.com/luxbock/evil-cleverparens">evil-cleverparens</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org75e7ac6" class="outline-2">
-<h2 id="install"><a id="org75e7ac6"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orga9ed602" class="outline-2">
+<h2 id="install"><a id="orga9ed602"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -326,13 +328,51 @@ $ curl https://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
 </div>
 </div>
 
-<div id="outline-container-org4a7c0b2" class="outline-2">
-<h2 id="key-bindings"><a id="org4a7c0b2"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-org0105611" class="outline-2">
+<h2 id="structuraly-safe-editing"><a id="org0105611"></a><span class="section-number-2">3</span> Structuraly safe editing</h2>
+<div class="outline-text-2" id="text-structuraly-safe-editing">
+<p>
+This layer adds support for <code>evil-cleverparens</code> which allows to safely edit
+lisp code by keeping the s-expressions balanced.
+</p>
+
+<p>
+By default this mode is not activated. You can turn it on locally on the active
+buffer with <code>SPC m T s</code> (<code>s</code> for safe).
+</p>
+
+<p>
+To turn it on automatically for all <code>scheme</code> buffers call the following
+function in your <code>dotspacemacs/user-config</code> function:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-scheme-mode<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+or to enable it for all supported modes:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc47eff9" class="outline-2">
+<h2 id="key-bindings"><a id="orgc47eff9"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org3f781cf" class="outline-3">
-<h3 id="compiling"><a id="org3f781cf"></a><span class="section-number-3">3.1</span> Compiling</h3>
+<div id="outline-container-org00c590a" class="outline-3">
+<h3 id="compiling"><a id="org00c590a"></a><span class="section-number-3">4.1</span> Compiling</h3>
 <div class="outline-text-3" id="text-compiling">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -363,8 +403,8 @@ $ curl https://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
 </div>
 </div>
 
-<div id="outline-container-orgb071b4f" class="outline-3">
-<h3 id="navigation"><a id="orgb071b4f"></a><span class="section-number-3">3.2</span> Navigation</h3>
+<div id="outline-container-orgd03724b" class="outline-3">
+<h3 id="navigation"><a id="orgd03724b"></a><span class="section-number-3">4.2</span> Navigation</h3>
 <div class="outline-text-3" id="text-navigation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -410,8 +450,8 @@ $ curl https://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
 </div>
 </div>
 
-<div id="outline-container-org513011e" class="outline-3">
-<h3 id="documentation"><a id="org513011e"></a><span class="section-number-3">3.3</span> Documentation</h3>
+<div id="outline-container-org62e2c96" class="outline-3">
+<h3 id="documentation"><a id="org62e2c96"></a><span class="section-number-3">4.3</span> Documentation</h3>
 <div class="outline-text-3" id="text-documentation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -457,8 +497,8 @@ $ curl https://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
 </div>
 </div>
 
-<div id="outline-container-orgf497686" class="outline-3">
-<h3 id="insertion"><a id="orgf497686"></a><span class="section-number-3">3.4</span> Insertion</h3>
+<div id="outline-container-org0ff5c8c" class="outline-3">
+<h3 id="insertion"><a id="org0ff5c8c"></a><span class="section-number-3">4.4</span> Insertion</h3>
 <div class="outline-text-3" id="text-insertion">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -484,8 +524,8 @@ $ curl https://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
 </div>
 </div>
 
-<div id="outline-container-org2484933" class="outline-3">
-<h3 id="macroexpansion"><a id="org2484933"></a><span class="section-number-3">3.5</span> Macroexpansion</h3>
+<div id="outline-container-org7f1a897" class="outline-3">
+<h3 id="macroexpansion"><a id="org7f1a897"></a><span class="section-number-3">4.5</span> Macroexpansion</h3>
 <div class="outline-text-3" id="text-macroexpansion">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -521,8 +561,8 @@ $ curl https://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
 </div>
 </div>
 
-<div id="outline-container-org755c37c" class="outline-3">
-<h3 id="repl"><a id="org755c37c"></a><span class="section-number-3">3.6</span> REPL</h3>
+<div id="outline-container-orge573113" class="outline-3">
+<h3 id="repl"><a id="orge573113"></a><span class="section-number-3">4.6</span> REPL</h3>
 <div class="outline-text-3" id="text-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -588,8 +628,8 @@ $ curl https://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
 </div>
 </div>
 
-<div id="outline-container-orga8c472e" class="outline-3">
-<h3 id="evaluation"><a id="orga8c472e"></a><span class="section-number-3">3.7</span> Evaluation</h3>
+<div id="outline-container-orgf494283" class="outline-3">
+<h3 id="evaluation"><a id="orgf494283"></a><span class="section-number-3">4.7</span> Evaluation</h3>
 <div class="outline-text-3" id="text-evaluation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -638,7 +678,7 @@ $ curl https://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-10-21 Sat 13:38</p>
+<p class="date">Created: 2018-01-27 Sat 16:04</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
