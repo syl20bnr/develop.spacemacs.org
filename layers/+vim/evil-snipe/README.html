@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-10-21 Sat 13:38 -->
+<!-- 2018-01-27 Sat 16:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Evil-snipe layer</title>
@@ -214,7 +214,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2017 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -264,7 +264,11 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#description">1. Description</a></li>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
@@ -274,7 +278,7 @@ for the JavaScript code in this tag.
 <li><a href="#symbol-groups">2.5. Symbol groups</a></li>
 </ul>
 </li>
-<li><a href="#todo-key-bindings">3. <span class="todo TODO">TODO</span> Key bindings</a></li>
+<li><a href="#key-bindings">3. Key bindings</a></li>
 </ul>
 </div>
 </div>
@@ -284,37 +288,34 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orga0d8b3b" class="outline-2">
-<h2 id="description"><a id="orga0d8b3b"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgcf7ab78" class="outline-2">
+<h2 id="description"><a id="orgcf7ab78"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-The package <a href="https://github.com/hlissner/evil-snipe">evil-snipe</a>
+This layer adds various replacements for vim's default search functions.
 </p>
+</div>
+
+<div id="outline-container-org1dd716c" class="outline-3">
+<h3 id="features"><a id="org1dd716c"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>enables more efficient searches with <code>f</code> / <code>F</code> / <code>t</code> / <code>T</code>.</li>
-<li>adds a new, more precise search with <code>s/S</code></li>
+<li>Alternative implementation of vim's default search operations.</li>
+<li>Replacement of evil-surround with a two-character search.</li>
+<li>Support for alternative scopes for default search operations.</li>
+<li>Support for alternative motions based on configurable regexps.</li>
 </ul>
-
-<p>
-Evil-snipe allows you to search more quickly and precisely in the buffer. It
-does so by improving on the built in <code>f</code> / <code>F</code> / <code>t</code> / <code>T</code> searches and adding another
-search command, namely <code>s</code> / <code>S</code>.
-</p>
-
-<p>
-<code>evil-snipe</code> changes <code>s/S</code> behavior in order to search forward/backwards in the
-buffer with two chars.
-</p>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org3d999b3" class="outline-2">
-<h2 id="install"><a id="org3d999b3"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgde39c8c" class="outline-2">
+<h2 id="install"><a id="orgde39c8c"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org170295b" class="outline-3">
-<h3 id="layer"><a id="org170295b"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org235ccb2" class="outline-3">
+<h3 id="layer"><a id="org235ccb2"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -324,8 +325,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgd425101" class="outline-3">
-<h3 id="improved-f-and-t-search-behavior"><a id="orgd425101"></a><span class="section-number-3">2.2</span> Improved f and t search behavior</h3>
+<div id="outline-container-orgff9d622" class="outline-3">
+<h3 id="improved-f-and-t-search-behavior"><a id="orgff9d622"></a><span class="section-number-3">2.2</span> Improved f and t search behavior</h3>
 <div class="outline-text-3" id="text-improved-f-and-t-search-behavior">
 <p>
 With evil-snipe you can define your own search scope for <code>f</code> and <code>t</code> searches
@@ -347,8 +348,8 @@ layer variable <code>evil-snipe-enable-alternate-f-and-t-behaviors</code> to <co
 </div>
 </div>
 
-<div id="outline-container-orgf9b6a56" class="outline-3">
-<h3 id="two-character-search-with-s"><a id="orgf9b6a56"></a><span class="section-number-3">2.3</span> Two-character search with s</h3>
+<div id="outline-container-orgdf921ec" class="outline-3">
+<h3 id="two-character-search-with-s"><a id="orgdf921ec"></a><span class="section-number-3">2.3</span> Two-character search with s</h3>
 <div class="outline-text-3" id="text-two-character-search-with-s">
 <p>
 With the <code>s~/~S</code> keys you can do a simple search like <code>f~/~t</code>, but instead of
@@ -361,8 +362,8 @@ purposes.
 </div>
 </div>
 
-<div id="outline-container-org5cbf360" class="outline-3">
-<h3 id="more-scopes"><a id="org5cbf360"></a><span class="section-number-3">2.4</span> More scopes</h3>
+<div id="outline-container-org2306f36" class="outline-3">
+<h3 id="more-scopes"><a id="org2306f36"></a><span class="section-number-3">2.4</span> More scopes</h3>
 <div class="outline-text-3" id="text-more-scopes">
 <p>
 Evil-snipe also adds several scope options for searches (set <code>evil-snipe-scope</code>
@@ -424,8 +425,8 @@ remove this line from <code>evil-snipe/packages.el</code>:
 </div>
 </div>
 
-<div id="outline-container-orgf5d9f7a" class="outline-3">
-<h3 id="symbol-groups"><a id="orgf5d9f7a"></a><span class="section-number-3">2.5</span> Symbol groups</h3>
+<div id="outline-container-org711d466" class="outline-3">
+<h3 id="symbol-groups"><a id="org711d466"></a><span class="section-number-3">2.5</span> Symbol groups</h3>
 <div class="outline-text-3" id="text-symbol-groups">
 <p>
 With symbol groups you can let a character stand for a regex, for example a
@@ -463,15 +464,61 @@ quickly cycle through all function definitions in a buffer!</li>
 </div>
 </div>
 
-<div id="outline-container-orgf6f2d77" class="outline-2">
-<h2 id="todo-key-bindings"><a id="orgf6f2d77"></a><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Key bindings</h2>
-<div class="outline-text-2" id="text-todo-key-bindings">
+<div id="outline-container-org4dbfda1" class="outline-2">
+<h2 id="key-bindings"><a id="org4dbfda1"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>f</code></td>
+<td class="org-left">search forward for the next entered character and set the cursor to it's position</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>F</code></td>
+<td class="org-left">search backward for the next entered character and set the cursor to it's position</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>t</code></td>
+<td class="org-left">search forward for the next entered character and set the cursor before it's position</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>T</code></td>
+<td class="org-left">search backward for the next entered character and set the cursor before it's position</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s</code></td>
+<td class="org-left">search forward for the next entered two characters and set the cursor to it's position</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>S</code></td>
+<td class="org-left">search backward for the next entered two characters and set the cursor to it's position</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-10-21 Sat 13:38</p>
+<p class="date">Created: 2018-01-27 Sat 16:04</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-10-21 Sat 13:38 -->
+<!-- 2018-01-27 Sat 16:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ESS (R) layer</title>
@@ -214,7 +214,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2017 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -270,13 +270,17 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#key-bindings">3. Key Bindings</a>
+<li><a href="#options">3. Options</a></li>
+<li><a href="#key-bindings">4. Key Bindings</a>
 <ul>
-<li><a href="#inferior-repl-process">3.1. Inferior REPL process</a></li>
-<li><a href="#helpers">3.2. Helpers</a></li>
+<li><a href="#inferior-repl-process">4.1. Inferior REPL process</a></li>
+<li><a href="#help">4.2. Help</a></li>
+<li><a href="#more-interaction-with-the-repl">4.3. More interaction with the REPL</a></li>
+<li><a href="#r-devtools">4.4. R devtools</a></li>
+<li><a href="#debugging">4.5. Debugging</a></li>
+<li><a href="#editing-markdown">4.6. Editing Markdown</a></li>
 </ul>
 </li>
-<li><a href="#options">4. Options</a></li>
 </ul>
 </div>
 </div>
@@ -286,203 +290,56 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org2841806" class="outline-2">
-<h2 id="description"><a id="org2841806"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org6092b81" class="outline-2">
+<h2 id="description"><a id="org6092b81"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds support for statistical analysis through <a href="https://ess.r-project.org/">ESS</a>.
+This layer adds support for statistical programming languages to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-org74e32c5" class="outline-3">
-<h3 id="features"><a id="org74e32c5"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org1471dc9" class="outline-3">
+<h3 id="features"><a id="org1471dc9"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>All <a href="https://ess.r-project.org/Manual/ess.html#Current-Features">ESS features</a></li>
+<li>Syntax highlighting</li>
+<li>Auto-completion</li>
+<li>Syntax-checking via <a href="https://github.com/jimhester/lintr">lintr</a></li>
 <li>Additional data viewer for R via <a href="https://github.com/myuhe/ess-R-data-view.el">ess-R-data-view</a></li>
 <li>Support for Org-Babel</li>
 <li>Better 'equals' behavior via <a href="https://github.com/genovese/ess-smart-equals">ess-smart-equals</a></li>
+<li>Showing of inline help for <code>R</code> constructs</li>
+<li>Repl support via <code>R terminal</code></li>
+<li>Support for <code>S</code>, <code>SAS</code> and <code>R</code></li>
+<li>Much more via the <a href="https://ess.r-project.org/Manual/ess.html#Current-Features">ESS Project</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgcd5ff19" class="outline-2">
-<h2 id="install"><a id="orgcd5ff19"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgff5caa1" class="outline-2">
+<h2 id="install"><a id="orgff5caa1"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>ess</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
 file.
 </p>
-</div>
-</div>
 
-<div id="outline-container-orgf412ae2" class="outline-2">
-<h2 id="key-bindings"><a id="orgf412ae2"></a><span class="section-number-2">3</span> Key Bindings</h2>
-<div class="outline-text-2" id="text-key-bindings">
-</div>
-
-<div id="outline-container-org9f83106" class="outline-3">
-<h3 id="inferior-repl-process"><a id="org9f83106"></a><span class="section-number-3">3.1</span> Inferior REPL process</h3>
-<div class="outline-text-3" id="text-inferior-repl-process">
 <p>
-Send code to inferior process with these commands:
+Also install <a href="https://github.com/jimhester/lintr">lintr</a> library via the R terminal to enable syntax checking.
+To do so start the R terminal and type below code.
 </p>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m c c</code></td>
-<td class="org-left">send knitr/sweave chunk and keep buffer focused</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c C</code></td>
-<td class="org-left">send knitr/sweave chunk and switch to REPL in insert mode</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c d</code></td>
-<td class="org-left">send knitr/sweave chunk and step to next chunk</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c m</code></td>
-<td class="org-left">mark knitr/sweave chunk around point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c n</code></td>
-<td class="org-left">next knitr/sweave chunk</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c N</code></td>
-<td class="org-left">previous knitr/sweave chunk</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s b</code></td>
-<td class="org-left">send buffer and keep code buffer focused</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s B</code></td>
-<td class="org-left">send buffer and switch to REPL in insert mode</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s d</code></td>
-<td class="org-left">send region or line and step (debug)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s D</code></td>
-<td class="org-left">send function or paragraph and step (debug)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s i</code></td>
-<td class="org-left">start an inferior REPL process</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s l</code></td>
-<td class="org-left">send line and keep code buffer focused</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s L</code></td>
-<td class="org-left">send line and switch to REPL in insert mode</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s r</code></td>
-<td class="org-left">send region and keep code buffer focused</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s R</code></td>
-<td class="org-left">send region and switch to REPL in insert mode</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s f</code></td>
-<td class="org-left">send thing at point (function) and keep code buffer focused</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s F</code></td>
-<td class="org-left">send thing at point (function) and switch to REPL in insert mode</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>CTRL+j</code></td>
-<td class="org-left">next item in REPL history</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>CTRL+k</code></td>
-<td class="org-left">previous item in REPL history</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-org62a320b" class="outline-3">
-<h3 id="helpers"><a id="org62a320b"></a><span class="section-number-3">3.2</span> Helpers</h3>
-<div class="outline-text-3" id="text-helpers">
-<p>
-Helpers for inspecting objects at point are available in R buffers only.
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m h d</code></td>
-<td class="org-left">view data under point using [ess-R-data-view][ess-R-data-view]</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m h t</code></td>
-<td class="org-left">view table using [ess-R-data-view][ess-R-data-view]</td>
-</tr>
-</tbody>
-</table>
+<div class="org-src-container">
+<pre class="src src-R">install.packages("lintr")
+</pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgd3ab65b" class="outline-2">
-<h2 id="options"><a id="orgd3ab65b"></a><span class="section-number-2">4</span> Options</h2>
+<div id="outline-container-orgd38a598" class="outline-2">
+<h2 id="options"><a id="orgd38a598"></a><span class="section-number-2">3</span> Options</h2>
 <div class="outline-text-2" id="text-options">
 <p>
 To turn off the automatic replacement of underscores by <code>&lt;-</code>, set in your
@@ -508,10 +365,543 @@ appropriate:
 </div>
 </div>
 </div>
+
+<div id="outline-container-org528ab02" class="outline-2">
+<h2 id="key-bindings"><a id="org528ab02"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+</div>
+
+<div id="outline-container-org4e83e0a" class="outline-3">
+<h3 id="inferior-repl-process"><a id="org4e83e0a"></a><span class="section-number-3">4.1</span> Inferior REPL process</h3>
+<div class="outline-text-3" id="text-inferior-repl-process">
+<p>
+Send code to inferior process with these commands:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m '​</code></td>
+<td class="org-left">start REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m ,​</code></td>
+<td class="org-left">send region, current function, or paragraph and step</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s i</code></td>
+<td class="org-left">start REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s s</code></td>
+<td class="org-left">switch between file and REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s S</code></td>
+<td class="org-left">switch the process associate with file</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m s b</code></td>
+<td class="org-left">send buffer and keep code buffer focused</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s B</code></td>
+<td class="org-left">send buffer and switch to REPL in insert mode</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s d</code></td>
+<td class="org-left">send region or line and step</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s D</code></td>
+<td class="org-left">send function or paragraph and step</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s f</code></td>
+<td class="org-left">send function and keep code buffer focused</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s F</code></td>
+<td class="org-left">send function and focus REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s l</code></td>
+<td class="org-left">send line and keep code buffer focused</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s L</code></td>
+<td class="org-left">send line and focus REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s r</code></td>
+<td class="org-left">send region and keep code buffer focused</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s R</code></td>
+<td class="org-left">send region and focus REPL</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgd4654ce" class="outline-3">
+<h3 id="help"><a id="orgd4654ce"></a><span class="section-number-3">4.2</span> Help</h3>
+<div class="outline-text-3" id="text-help">
+<p>
+Get help and helpers for inspecting objects at point are available in R buffers only.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m h a</code></td>
+<td class="org-left">help apropos</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h d</code></td>
+<td class="org-left">display help on object</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h e</code></td>
+<td class="org-left">describe object</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h h</code></td>
+<td class="org-left">display help on object</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h i</code></td>
+<td class="org-left">display index for package</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h m</code></td>
+<td class="org-left">manual lookup</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h o</code></td>
+<td class="org-left">display demos</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h p</code></td>
+<td class="org-left">view data under point using [ess-R-data-view][ess-R-data-view]</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h r</code></td>
+<td class="org-left">lookup reference</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h t</code></td>
+<td class="org-left">view table using [ess-R-data-view][ess-R-data-view]</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h v</code></td>
+<td class="org-left">display vignettes</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h w</code></td>
+<td class="org-left">help web search</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-j</code></td>
+<td class="org-left">next item in REPL history</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-k</code></td>
+<td class="org-left">previous item in REPL history</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org91c93aa" class="outline-3">
+<h3 id="more-interaction-with-the-repl"><a id="org91c93aa"></a><span class="section-number-3">4.3</span> More interaction with the REPL</h3>
+<div class="outline-text-3" id="text-more-interaction-with-the-repl">
+<p>
+Helpers that provide further interaction with the REPL.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m r /</code></td>
+<td class="org-left">set working directory</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r TAB</code></td>
+<td class="org-left">install package</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r d</code></td>
+<td class="org-left">edit object source or dump() object into a new buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r e</code></td>
+<td class="org-left">execute a command in the ESS process</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r i</code></td>
+<td class="org-left">install package</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r l</code></td>
+<td class="org-left">load installed package</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r r</code></td>
+<td class="org-left">reload ESS process</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r s</code></td>
+<td class="org-left">set source style</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r t</code></td>
+<td class="org-left">build tags for directory</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r w</code></td>
+<td class="org-left">set "width" option</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org161a117" class="outline-3">
+<h3 id="r-devtools"><a id="org161a117"></a><span class="section-number-3">4.4</span> R devtools</h3>
+<div class="outline-text-3" id="text-r-devtools">
+<p>
+Interaction with the <code>R</code> <code>devtools</code> package.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m w TAB</code></td>
+<td class="org-left">interface for <code>devtools::install()</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m w a</code></td>
+<td class="org-left">ask for a devtools command and runs it</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m w c</code></td>
+<td class="org-left">interface for <code>devtools::check()</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m w d</code></td>
+<td class="org-left">interface for <code>devtools::document()</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m w i</code></td>
+<td class="org-left">interface for <code>devtools::install()</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m w l</code></td>
+<td class="org-left">interface for <code>devtools::load_all()</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m w r</code></td>
+<td class="org-left">interface for <code>devtools::revdep_check()</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m w s</code></td>
+<td class="org-left">set a package for ESS r-package commands</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m w t</code></td>
+<td class="org-left">interface for <code>devtools::tests()</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m w u</code></td>
+<td class="org-left">interface for <code>devtools::unload()</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orga086fe1" class="outline-3">
+<h3 id="debugging"><a id="orga086fe1"></a><span class="section-number-3">4.5</span> Debugging</h3>
+<div class="outline-text-3" id="text-debugging">
+<p>
+Tools for debugging
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d ?</code></td>
+<td class="org-left">'ess-tracebug-show-help</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d `</code></td>
+<td class="org-left">show traceback and last error message</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d \~</code></td>
+<td class="org-left">display call current call stack</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b</code></td>
+<td class="org-left">set breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d B</code></td>
+<td class="org-left">set conditional breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d d</code></td>
+<td class="org-left">set debugging flag for function</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d e</code></td>
+<td class="org-left">toggle the `on-error` action</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d i</code></td>
+<td class="org-left">jump to point where the last debugger or traceback event occurred</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d k</code></td>
+<td class="org-left">kill breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d K</code></td>
+<td class="org-left">kill all breakpoints in buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d l</code></td>
+<td class="org-left">Set breakpoint logger</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d n</code></td>
+<td class="org-left">go to next breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d N</code></td>
+<td class="org-left">go to previous breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d p</code></td>
+<td class="org-left">go to previous breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d o</code></td>
+<td class="org-left">toggle breakpoint state</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d s</code></td>
+<td class="org-left">set environment for evaluation</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d t</code></td>
+<td class="org-left">toggle tracebug</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d u</code></td>
+<td class="org-left">unflag function for debug</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d w</code></td>
+<td class="org-left">trigger ESS watch mode</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgb402830" class="outline-3">
+<h3 id="editing-markdown"><a id="orgb402830"></a><span class="section-number-3">4.6</span> Editing Markdown</h3>
+<div class="outline-text-3" id="text-editing-markdown">
+<p>
+Edit Markdown files
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m c C</code></td>
+<td class="org-left">send knitr/sweave chunk and switch to REPL in insert mode</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c c</code></td>
+<td class="org-left">send knitr/sweave chunk and keep buffer focused</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c d</code></td>
+<td class="org-left">send knitr/sweave chunk and step to next chunk</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c m</code></td>
+<td class="org-left">mark knitr/sweave chunk around point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c n</code></td>
+<td class="org-left">next knitr/sweave chunk</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c N</code></td>
+<td class="org-left">previous knitr/sweave chunk</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-10-21 Sat 13:38</p>
+<p class="date">Created: 2018-01-27 Sat 16:03</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

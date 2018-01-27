@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-10-21 Sat 13:38 -->
+<!-- 2018-01-27 Sat 16:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs Lisp layer</title>
@@ -214,7 +214,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2017 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -273,11 +273,18 @@ for the JavaScript code in this tag.
 <li><a href="#auto-compile">3. Auto-compile</a></li>
 <li><a href="#working-with-lisp-files-barfage-slurpage--more">4. Working with lisp files (barfage, slurpage &amp; more)</a></li>
 <li><a href="#debugging-elisp">5. Debugging Elisp</a></li>
-<li><a href="#key-bindings">6. Key bindings</a>
+<li><a href="#nameless">6. Nameless</a>
 <ul>
-<li><a href="#additional-evaluation-functions">6.1. Additional evaluation functions</a></li>
-<li><a href="#format-code">6.2. Format code</a></li>
-<li><a href="#debugging">6.3. Debugging</a></li>
+<li><a href="#aliases">6.1. Aliases</a></li>
+</ul>
+</li>
+<li><a href="#structuraly-safe-editing">7. Structuraly safe editing</a></li>
+<li><a href="#key-bindings">8. Key bindings</a>
+<ul>
+<li><a href="#additional-testing-functions-with-overseer">8.1. Additional testing functions with overseer</a></li>
+<li><a href="#additional-evaluation-functions">8.2. Additional evaluation functions</a></li>
+<li><a href="#format-code">8.3. Format code</a></li>
+<li><a href="#debugging">8.4. Debugging</a></li>
 </ul>
 </li>
 </ul>
@@ -289,8 +296,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org9b48f41" class="outline-2">
-<h2 id="description"><a id="org9b48f41"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org4d4353b" class="outline-2">
+<h2 id="description"><a id="org4d4353b"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer gathers all the configuration related to emacs-lisp. This should
@@ -298,8 +305,8 @@ always be in your dotfile, it is not recommended to uninstall it.
 </p>
 </div>
 
-<div id="outline-container-org758574c" class="outline-3">
-<h3 id="features"><a id="org758574c"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org8c81cd4" class="outline-3">
+<h3 id="features"><a id="org8c81cd4"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Auto-completion using company</li>
@@ -308,13 +315,16 @@ always be in your dotfile, it is not recommended to uninstall it.
 <li>Support for specific lisp navigation styles via <code>emacs-lisp-mode</code></li>
 <li>Auto-compile via <a href="https://github.com/tarsius/auto-compile">auto-compile</a> package</li>
 <li>Debuggin via <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Edebug.html#Edebug">edebug</a></li>
+<li>Ert test runner with <a href="https://github.com/tonini/overseer.el">overseer</a></li>
+<li>Nameless package prefix with optional <a href="https://github.com/Malabarba/Nameless">nameless</a></li>
+<li>Structuraly safe editing using optional <a href="https://github.com/luxbock/evil-cleverparens">evil-cleverparens</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orga97817f" class="outline-2">
-<h2 id="install"><a id="orga97817f"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgfa32a44" class="outline-2">
+<h2 id="install"><a id="orgfa32a44"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -324,8 +334,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org8d6d09b" class="outline-2">
-<h2 id="auto-compile"><a id="org8d6d09b"></a><span class="section-number-2">3</span> Auto-compile</h2>
+<div id="outline-container-org8e2b888" class="outline-2">
+<h2 id="auto-compile"><a id="org8e2b888"></a><span class="section-number-2">3</span> Auto-compile</h2>
 <div class="outline-text-2" id="text-auto-compile">
 <p>
 This layer adds the <a href="https://github.com/tarsius/auto-compile">auto-compile</a> package to automatically keep the byte-compiled
@@ -347,8 +357,8 @@ You can also exclude the <code>auto-compile</code> package.
 </div>
 </div>
 
-<div id="outline-container-org91e83bd" class="outline-2">
-<h2 id="working-with-lisp-files-barfage-slurpage--more"><a id="org91e83bd"></a><span class="section-number-2">4</span> Working with lisp files (barfage, slurpage &amp; more)</h2>
+<div id="outline-container-org379d437" class="outline-2">
+<h2 id="working-with-lisp-files-barfage-slurpage--more"><a id="org379d437"></a><span class="section-number-2">4</span> Working with lisp files (barfage, slurpage &amp; more)</h2>
 <div class="outline-text-2" id="text-working-with-lisp-files-barfage-slurpage--more">
 <p>
 Spacemacs comes with a special <code>lisp-state</code> for working with lisp code that
@@ -363,8 +373,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org715f730" class="outline-2">
-<h2 id="debugging-elisp"><a id="org715f730"></a><span class="section-number-2">5</span> Debugging Elisp</h2>
+<div id="outline-container-orgae74d22" class="outline-2">
+<h2 id="debugging-elisp"><a id="orgae74d22"></a><span class="section-number-2">5</span> Debugging Elisp</h2>
 <div class="outline-text-2" id="text-debugging-elisp">
 <p>
 Here is an interactive quick start to debug Emacs Lisp.
@@ -430,8 +440,128 @@ function or press <code>o</code> to go out of it.
 </div>
 </div>
 
-<div id="outline-container-org7c136ad" class="outline-2">
-<h2 id="key-bindings"><a id="org7c136ad"></a><span class="section-number-2">6</span> Key bindings</h2>
+<div id="outline-container-org5cbff05" class="outline-2">
+<h2 id="nameless"><a id="org5cbff05"></a><span class="section-number-2">6</span> Nameless</h2>
+<div class="outline-text-2" id="text-nameless">
+<p>
+Nameless hides package namespaces in your emacs-lisp code, and replaces it by
+leading <code>&gt;</code> It can be toggled with <code>SPC m T n</code>.
+</p>
+
+<p>
+By default <code>nameless</code> is deactivated, to enable it set the layer variable
+<code>emacs-lisp-hide-namespace-prefix</code> to <code>t</code>.
+</p>
+
+<p>
+NOTE: <code>nameless</code> is known to cause problems when spacemacs is used inside a
+terminal window, use with caution.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>emacs-lisp <span class="org-builtin">:variables</span> emacs-lisp-hide-namespace-prefix t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org19fffbf" class="outline-3">
+<h3 id="aliases"><a id="org19fffbf"></a><span class="section-number-3">6.1</span> Aliases</h3>
+<div class="outline-text-3" id="text-aliases">
+<p>
+This layer defines some global aliases for Spacemacs:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">alias</th>
+<th scope="col" class="org-left">namespace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">.S</td>
+<td class="org-left">dotspacemacs</td>
+</tr>
+
+<tr>
+<td class="org-left">CL</td>
+<td class="org-left">configuration-layer</td>
+</tr>
+
+<tr>
+<td class="org-left">S</td>
+<td class="org-left">spacemacs</td>
+</tr>
+
+<tr>
+<td class="org-left">SB</td>
+<td class="org-left">spacemacs-buffer</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+You can define additional alias in function <code>dotspacemacs/user-config</code> of your
+dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'nameless-global-aliases '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"N"</span> . <span class="org-string">"nameless"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9dc0935" class="outline-2">
+<h2 id="structuraly-safe-editing"><a id="org9dc0935"></a><span class="section-number-2">7</span> Structuraly safe editing</h2>
+<div class="outline-text-2" id="text-structuraly-safe-editing">
+<p>
+This layer adds support for <code>evil-cleverparens</code> which allows to safely edit
+lisp code by keeping the s-expressions balanced.
+</p>
+
+<p>
+By default this mode is not activated. You can turn it on locally on the active
+buffer with <code>SPC m T s</code> (<code>s</code> for safe).
+</p>
+
+<p>
+To turn it on automatically for all <code>emacs-lisp</code> buffers call the following
+function in your <code>dotspacemacs/user-config</code> function:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-emacs-lisp-mode<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+or to enable it for all supported modes:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9f42479" class="outline-2">
+<h2 id="key-bindings"><a id="org9f42479"></a><span class="section-number-2">8</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -522,12 +652,88 @@ function or press <code>o</code> to go out of it.
 <td class="org-left"><code>SPC m d m</code></td>
 <td class="org-left">open <a href="https://github.com/joddie/macrostep">macrostep</a> transient-state</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>SPC m :</code></td>
+<td class="org-left">toggle nameless minor mode</td>
+</tr>
 </tbody>
 </table>
 </div>
 
-<div id="outline-container-orga0ee587" class="outline-3">
-<h3 id="additional-evaluation-functions"><a id="orga0ee587"></a><span class="section-number-3">6.1</span> Additional evaluation functions</h3>
+<div id="outline-container-orgee5e134" class="outline-3">
+<h3 id="additional-testing-functions-with-overseer"><a id="orgee5e134"></a><span class="section-number-3">8.1</span> Additional testing functions with overseer</h3>
+<div class="outline-text-3" id="text-additional-testing-functions-with-overseer">
+<p>
+Function related to test are present under the <code>SPC m t</code> prefix:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m t a</code></td>
+<td class="org-left">overseer test</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t A</code></td>
+<td class="org-left">test debug</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t t</code></td>
+<td class="org-left">run test</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t b</code></td>
+<td class="org-left">test buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t f</code></td>
+<td class="org-left">test file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t g</code></td>
+<td class="org-left">test tags</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t p</code></td>
+<td class="org-left">test prompt</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t q</code></td>
+<td class="org-left">test quiet</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t h</code></td>
+<td class="org-left">test help</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org761f242" class="outline-3">
+<h3 id="additional-evaluation-functions"><a id="org761f242"></a><span class="section-number-3">8.2</span> Additional evaluation functions</h3>
 <div class="outline-text-3" id="text-additional-evaluation-functions">
 <p>
 If <code>smartparens</code> is used the following additional key bindings are available:
@@ -562,8 +768,8 @@ If <code>smartparens</code> is used the following additional key bindings are av
 </div>
 </div>
 
-<div id="outline-container-orgcfd135b" class="outline-3">
-<h3 id="format-code"><a id="orgcfd135b"></a><span class="section-number-3">6.2</span> Format code</h3>
+<div id="outline-container-org8939ae6" class="outline-3">
+<h3 id="format-code"><a id="org8939ae6"></a><span class="section-number-3">8.3</span> Format code</h3>
 <div class="outline-text-3" id="text-format-code">
 <p>
 The <a href="../../%2Bemacs/semantic/README.html">semantic</a> layer should be installed for these key bindings to become active.
@@ -608,8 +814,8 @@ The <a href="../../%2Bemacs/semantic/README.html">semantic</a> layer should be i
 </div>
 </div>
 
-<div id="outline-container-orgc4cd0c5" class="outline-3">
-<h3 id="debugging"><a id="orgc4cd0c5"></a><span class="section-number-3">6.3</span> Debugging</h3>
+<div id="outline-container-orgaf29709" class="outline-3">
+<h3 id="debugging"><a id="orgaf29709"></a><span class="section-number-3">8.4</span> Debugging</h3>
 <div class="outline-text-3" id="text-debugging">
 <p>
 To start debugging:
@@ -670,7 +876,7 @@ TODO
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-10-21 Sat 13:38</p>
+<p class="date">Created: 2018-01-27 Sat 16:03</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

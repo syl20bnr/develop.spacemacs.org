@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-10-21 Sat 13:38 -->
+<!-- 2018-01-27 Sat 16:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Docker layer</title>
@@ -214,7 +214,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2017 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -264,7 +264,11 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#description">1. Description</a></li>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
 <li><a href="#install">2. Install</a></li>
 <li><a href="#usage">3. Usage</a>
 <ul>
@@ -281,39 +285,51 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org970b9ef" class="outline-2">
-<h2 id="description"><a id="org970b9ef"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org778f074" class="outline-2">
+<h2 id="description"><a id="org778f074"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer provides syntax highlighting and build functionality for Docker files
-as well as TRAMP access to running docker containers.
-</p>
-
-<p>
-It also includes basic Docker container and image management provided by
-<a href="https://github.com/Silex/docker.el">docker.el.</a>
+This layer integrates basic container management into Spacemacs.
 </p>
 </div>
+
+<div id="outline-container-orgceaccdd" class="outline-3">
+<h3 id="features"><a id="orgceaccdd"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
+<ul class="org-ul">
+<li>Syntax highlighting for <code>Docker</code> files</li>
+<li><code>Docker</code> build integration</li>
+<li><code>TRAMP</code> access to running Docker containers</li>
+<li><code>Docker</code> container and image management via <a href="https://github.com/Silex/docker.el">docker.el</a></li>
+<li>Syntax checking via <a href="https://github.com/hadolint/hadolint">hadolint</a></li>
+</ul>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org2f6b9fd" class="outline-2">
-<h2 id="install"><a id="org2f6b9fd"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orge95868d" class="outline-2">
+<h2 id="install"><a id="orge95868d"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>docker</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
 file.
 </p>
+
+<p>
+You will also need the native package <a href="https://www.docker.com/">Docker</a> for the actual container management.
+For syntax checking the external library <code>hadolint</code> is also necessary.
+</p>
 </div>
 </div>
 
-<div id="outline-container-org9388d0f" class="outline-2">
-<h2 id="usage"><a id="org9388d0f"></a><span class="section-number-2">3</span> Usage</h2>
+<div id="outline-container-orgb723db0" class="outline-2">
+<h2 id="usage"><a id="orgb723db0"></a><span class="section-number-2">3</span> Usage</h2>
 <div class="outline-text-2" id="text-usage">
 </div>
 
-<div id="outline-container-org6a7861b" class="outline-3">
-<h3 id="tramp-access-to-docker-containers"><a id="org6a7861b"></a><span class="section-number-3">3.1</span> TRAMP access to docker containers</h3>
+<div id="outline-container-orgbe38225" class="outline-3">
+<h3 id="tramp-access-to-docker-containers"><a id="orgbe38225"></a><span class="section-number-3">3.1</span> TRAMP access to docker containers</h3>
 <div class="outline-text-3" id="text-tramp-access-to-docker-containers">
 <p>
 This relies on the <a href="https://github.com/emacs-pe/docker-tramp.el">docker-tramp</a> package which uses <code>docker exec</code> available in
@@ -322,15 +338,15 @@ docker versions &gt; 1.3.
 
 <p>
 <code>docker-tramp</code> adds a new prefix <code>/docker:</code> that you can use with <code>SPC f f</code>,
-this prefix allows to acces your docker containers and also provides
+this prefix allows to access your docker containers and also provides
 auto-completion of the running containers.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org8345f5a" class="outline-2">
-<h2 id="key-bindings"><a id="org8345f5a"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org2f48324" class="outline-2">
+<h2 id="key-bindings"><a id="org2f48324"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -353,57 +369,57 @@ auto-completion of the running containers.
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC D c</code></td>
+<td class="org-left"><code>SPC a D c</code></td>
 <td class="org-left">list docker containers</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC D d</code></td>
+<td class="org-left"><code>SPC a D d</code></td>
 <td class="org-left">delete image</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC D e</code></td>
+<td class="org-left"><code>SPC a D e</code></td>
 <td class="org-left">unpause container</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC D F</code></td>
+<td class="org-left"><code>SPC a D F</code></td>
 <td class="org-left">pull image</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC D i</code></td>
+<td class="org-left"><code>SPC a D i</code></td>
 <td class="org-left">list docker images</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC D k</code></td>
+<td class="org-left"><code>SPC a D k</code></td>
 <td class="org-left">delete container</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC D o</code></td>
+<td class="org-left"><code>SPC a D o</code></td>
 <td class="org-left">stop container</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC D p</code></td>
+<td class="org-left"><code>SPC a D p</code></td>
 <td class="org-left">pause container</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC D P</code></td>
+<td class="org-left"><code>SPC a D P</code></td>
 <td class="org-left">push image</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC D r</code></td>
+<td class="org-left"><code>SPC a D r</code></td>
 <td class="org-left">restart container</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC D s</code></td>
+<td class="org-left"><code>SPC a D s</code></td>
 <td class="org-left">start container</td>
 </tr>
 </tbody>
@@ -413,7 +429,7 @@ auto-completion of the running containers.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-10-21 Sat 13:38</p>
+<p class="date">Created: 2018-01-27 Sat 16:04</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

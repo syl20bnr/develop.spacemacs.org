@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-10-21 Sat 13:38 -->
+<!-- 2018-01-27 Sat 16:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Version-Control layer</title>
@@ -214,7 +214,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2017 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -281,16 +281,22 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#key-bindings">4. Key Bindings</a>
 <ul>
-<li><a href="#version-control-transient-state">4.1. Version Control Transient-state</a></li>
-<li><a href="#smerge-mode-transient-state">4.2. Smerge Mode Transient-state</a></li>
+<li><a href="#vc-directory-buffer-commands">4.1. VC Directory buffer commands</a></li>
+<li><a href="#commit-message-editing-buffer">4.2. Commit message editing buffer</a></li>
+<li><a href="#diff-buffer">4.3. Diff buffer</a></li>
+<li><a href="#log-view-buffer">4.4. Log view buffer</a></li>
+<li><a href="#annotation-buffer">4.5. Annotation buffer</a></li>
+<li><a href="#version-control-transient-state">4.6. Version Control Transient-state</a></li>
+<li><a href="#smerge-mode-transient-state">4.7. Smerge Mode Transient-state</a></li>
+<li><a href="#toggles">4.8. Toggles</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org52b44e0" class="outline-2">
-<h2 id="description"><a id="org52b44e0"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org1c69aee" class="outline-2">
+<h2 id="description"><a id="org1c69aee"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layers adds general configuration for <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Version-Control.html">Emacs VC</a>.
@@ -298,8 +304,8 @@ It should work with all VC backends such as Git, Mercurial, Bazaar, SVN, etc&#x2
 </p>
 </div>
 
-<div id="outline-container-org37a91df" class="outline-3">
-<h3 id="features"><a id="org37a91df"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orgc4250a5" class="outline-3">
+<h3 id="features"><a id="orgc4250a5"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>highlights uncommitted changes in the fringe or margin with <a href="https://github.com/dgutov/diff-hl">diff-hl</a>, <a href="https://github.com/syohex/emacs-git-gutter">git-gutter</a>, or <a href="https://github.com/nonsequitur/git-gutter-plus">git-gutter+</a></li>
@@ -309,13 +315,13 @@ It should work with all VC backends such as Git, Mercurial, Bazaar, SVN, etc&#x2
 </div>
 </div>
 
-<div id="outline-container-orga1f9728" class="outline-2">
-<h2 id="install"><a id="orga1f9728"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org4642253" class="outline-2">
+<h2 id="install"><a id="org4642253"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org8acb5f5" class="outline-3">
-<h3 id="layer"><a id="org8acb5f5"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-orgfa4bee6" class="outline-3">
+<h3 id="layer"><a id="orgfa4bee6"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -326,8 +332,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org47291cc" class="outline-2">
-<h2 id="configuration"><a id="org47291cc"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org1393d0b" class="outline-2">
+<h2 id="configuration"><a id="org1393d0b"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 You can choose the package to facilitate the diff transient-state and show margins
@@ -362,8 +368,8 @@ To automatically enable diff margins in all buffers, set
 </div>
 </div>
 
-<div id="outline-container-org06a8146" class="outline-3">
-<h3 id="differences-between-margin-programs"><a id="org06a8146"></a><span class="section-number-3">3.1</span> Differences between margin programs</h3>
+<div id="outline-container-orgcab3354" class="outline-3">
+<h3 id="differences-between-margin-programs"><a id="orgcab3354"></a><span class="section-number-3">3.1</span> Differences between margin programs</h3>
 <div class="outline-text-3" id="text-differences-between-margin-programs">
 <p>
 This layer contains generalized mappings for three diff margin packages:
@@ -429,9 +435,13 @@ one over the other:
 </div>
 </div>
 
-<div id="outline-container-org90ec261" class="outline-2">
-<h2 id="key-bindings"><a id="org90ec261"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org000bde5" class="outline-2">
+<h2 id="key-bindings"><a id="org000bde5"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
+<p>
+VC commands:
+</p>
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -458,25 +468,397 @@ one over the other:
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC T d</code></td>
-<td class="org-left">toggle diff margins</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC T C-d</code></td>
-<td class="org-left">toggle diff margins globally</td>
-</tr>
-
-<tr>
 <td class="org-left"><code>SPC g h o</code></td>
 <td class="org-left">browser at remote</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g v =</code></td>
+<td class="org-left">open a hunk under the point in the diff buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g v D</code></td>
+<td class="org-left">compare the entire working tree with head</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g v e</code></td>
+<td class="org-left">show diff against current head using ediff</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g v g</code></td>
+<td class="org-left">visually annotate the current file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g v d</code></td>
+<td class="org-left">open the VC Directory buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g v +</code></td>
+<td class="org-left">update the working copy</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g v i</code></td>
+<td class="org-left">register (add) into a version control system</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g v u</code></td>
+<td class="org-left">revert working copy to their repository contents</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g v l</code></td>
+<td class="org-left">list the change log</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g v L</code></td>
+<td class="org-left">list the change log for the current VC controlled tree</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g v v</code></td>
+<td class="org-left">do the next logical VC operation (<code>vc-next-action</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g v I</code></td>
+<td class="org-left">ignore file (<code>vc-ignore</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g v r</code></td>
+<td class="org-left">resolve conflicts in file</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<div id="outline-container-orgc6268dc" class="outline-3">
-<h3 id="version-control-transient-state"><a id="orgc6268dc"></a><span class="section-number-3">4.1</span> Version Control Transient-state</h3>
+<div id="outline-container-org90fbfc2" class="outline-3">
+<h3 id="vc-directory-buffer-commands"><a id="org90fbfc2"></a><span class="section-number-3">4.1</span> VC Directory buffer commands</h3>
+<div class="outline-text-3" id="text-vc-directory-buffer-commands">
+<p>
+You can hit <code>SPC pv</code> from the current project to open the VC Directory buffer,
+or use <code>SPC g v d</code> for specifying a root directory.
+Then you may mark (<code>m</code> key) files you are interested in, to form a fileset.
+Most commands described above are applicable to filesets too.
+To some of them are given shortcuts:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>=</code></td>
+<td class="org-left">compare selected files with head</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>c</code></td>
+<td class="org-left">open a <code>commit message buffer</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>l</code></td>
+<td class="org-left">list changes</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a</code></td>
+<td class="org-left">annotate selected files</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>i</code></td>
+<td class="org-left">add into a version control system</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>r</code></td>
+<td class="org-left">refresh directory view</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>E</code></td>
+<td class="org-left">ignore file under cursor</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Navigation and interaction commands in the VC Directory buffer:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Bindings</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>j</code> or <code>M-n</code></td>
+<td class="org-left">next file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>k</code> or <code>M-p</code></td>
+<td class="org-left">previous file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gj</code> or <code>TAB</code></td>
+<td class="org-left">next directory</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gk</code> or <code>S-TAB</code></td>
+<td class="org-left">previous directory</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m</code></td>
+<td class="org-left">mark a file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>u</code></td>
+<td class="org-left">unmark a file</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org56619c4" class="outline-3">
+<h3 id="commit-message-editing-buffer"><a id="org56619c4"></a><span class="section-number-3">4.2</span> Commit message editing buffer</h3>
+<div class="outline-text-3" id="text-commit-message-editing-buffer">
+<p>
+In a commit message buffer press <code>C-c C-c</code> to commit the changes with the entered message.
+Pressing <code>C-c C-k</code> will discard the commit message and close this buffer.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgefbee90" class="outline-3">
+<h3 id="diff-buffer"><a id="orgefbee90"></a><span class="section-number-3">4.3</span> Diff buffer</h3>
+<div class="outline-text-3" id="text-diff-buffer">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Bindings</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>C-j</code> or <code>M-n</code></td>
+<td class="org-left">next hunk</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-k</code> or <code>M-p</code></td>
+<td class="org-left">previous hunk</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gj</code> or <code>J</code> or <code>TAB</code></td>
+<td class="org-left">next file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gk</code> or <code>K</code> or <code>S-TAB</code></td>
+<td class="org-left">previous file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a</code></td>
+<td class="org-left">apply a hunk</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>r</code></td>
+<td class="org-left">revert a hunk</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>S</code></td>
+<td class="org-left">split the current hunk at point into two hunks</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>D</code></td>
+<td class="org-left">kill a hunk</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>u</code></td>
+<td class="org-left">undo killing or splitting</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org3bb9752" class="outline-3">
+<h3 id="log-view-buffer"><a id="org3bb9752"></a><span class="section-number-3">4.4</span> Log view buffer</h3>
+<div class="outline-text-3" id="text-log-view-buffer">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Bindings</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>C-j</code> or <code>M-n</code></td>
+<td class="org-left">next message</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-k</code> or <code>M-p</code></td>
+<td class="org-left">previous message</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gj</code> or <code>J</code> or <code>TAB</code></td>
+<td class="org-left">next file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gk</code> or <code>K</code> or <code>S-TAB</code></td>
+<td class="org-left">previous file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>f</code> or <code>ENTER</code></td>
+<td class="org-left">visit the version at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>d</code></td>
+<td class="org-left">display a diff between the revision at point and the next earlier revision</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>o</code></td>
+<td class="org-left">use for jumping to links</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>H</code></td>
+<td class="org-left">toggle hiding of the full message</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org415904e" class="outline-3">
+<h3 id="annotation-buffer"><a id="org415904e"></a><span class="section-number-3">4.5</span> Annotation buffer</h3>
+<div class="outline-text-3" id="text-annotation-buffer">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Bindings</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>J</code></td>
+<td class="org-left">visit the annotation of the revision after this one</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>K</code></td>
+<td class="org-left">visit the annotation of the revision previous to this one</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>L</code></td>
+<td class="org-left">Visit the log of the revision at line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>H</code></td>
+<td class="org-left">toggle whether or not the annotation is visible</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a</code></td>
+<td class="org-left">visit the annotation of the revision identified in the current line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>p</code></td>
+<td class="org-left">visit the annotation of the revision before the revision at line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>d</code></td>
+<td class="org-left">display the diff between the current line’s revision and the previous revision</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>f</code></td>
+<td class="org-left">show in a buffer the file revision indicated by the current line</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgcc5f5b5" class="outline-3">
+<h3 id="version-control-transient-state"><a id="orgcc5f5b5"></a><span class="section-number-3">4.6</span> Version Control Transient-state</h3>
 <div class="outline-text-3" id="text-version-control-transient-state">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -582,8 +964,8 @@ one over the other:
 </div>
 </div>
 
-<div id="outline-container-orgfb814df" class="outline-3">
-<h3 id="smerge-mode-transient-state"><a id="orgfb814df"></a><span class="section-number-3">4.2</span> Smerge Mode Transient-state</h3>
+<div id="outline-container-orgd046527" class="outline-3">
+<h3 id="smerge-mode-transient-state"><a id="orgd046527"></a><span class="section-number-3">4.7</span> Smerge Mode Transient-state</h3>
 <div class="outline-text-3" id="text-smerge-mode-transient-state">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -673,11 +1055,43 @@ one over the other:
 </table>
 </div>
 </div>
+
+<div id="outline-container-org1807465" class="outline-3">
+<h3 id="toggles"><a id="org1807465"></a><span class="section-number-3">4.8</span> Toggles</h3>
+<div class="outline-text-3" id="text-toggles">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC T d</code></td>
+<td class="org-left">toggle diff margins</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC T C-d</code></td>
+<td class="org-left">toggle diff margins globally</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-10-21 Sat 13:38</p>
+<p class="date">Created: 2018-01-27 Sat 16:04</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

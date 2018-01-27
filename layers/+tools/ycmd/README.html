@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-10-21 Sat 13:38 -->
+<!-- 2018-01-27 Sat 16:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>YCMD layer</title>
@@ -214,7 +214,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2017 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -264,7 +264,11 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#description">1. Description</a></li>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
@@ -278,28 +282,38 @@ for the JavaScript code in this tag.
 <li><a href="#getting-the-compilation-flags">3.2. Getting the compilation flags</a></li>
 </ul>
 </li>
-<li><a href="#key-bindings">4. Key Bindings</a></li>
+<li><a href="#functions">4. Functions</a></li>
+<li><a href="#key-bindings">5. Key Bindings</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgea17e76" class="outline-2">
-<h2 id="description"><a id="orgea17e76"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgcf401f2" class="outline-2">
+<h2 id="description"><a id="orgcf401f2"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds <a href="https://github.com/abingham/emacs-ycmd">emacs-ycmd</a> support, including its integrations with company,
-flycheck, and eldoc.
+This layer adds <a href="https://github.com/abingham/emacs-ycmd">emacs-ycmd</a> support.
 </p>
+</div>
+
+<div id="outline-container-orgc7e2f7d" class="outline-3">
+<h3 id="features"><a id="orgc7e2f7d"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
+<ul class="org-ul">
+<li><a href="https://github.com/Valloric/YouCompleteMe">YouCompleteMe</a> based code-completion</li>
+<li>Integrations with company, flycheck, and eldoc</li>
+</ul>
+</div>
 </div>
 </div>
 
-<div id="outline-container-orgb984322" class="outline-2">
-<h2 id="install"><a id="orgb984322"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org8ce1cb1" class="outline-2">
+<h2 id="install"><a id="org8ce1cb1"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org5f212a7" class="outline-3">
-<h3 id="layer"><a id="org5f212a7"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org09c7314" class="outline-3">
+<h3 id="layer"><a id="org09c7314"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -309,8 +323,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgc8108d9" class="outline-3">
-<h3 id="ycmd"><a id="orgc8108d9"></a><span class="section-number-3">2.2</span> YCMD</h3>
+<div id="outline-container-org322770f" class="outline-3">
+<h3 id="ycmd"><a id="org322770f"></a><span class="section-number-3">2.2</span> YCMD</h3>
 <div class="outline-text-3" id="text-ycmd">
 <ol class="org-ol">
 <li>Install the <code>ycm</code> server. Installation instructions can be found <a href="https://github.com/Valloric/ycmd#user-content-building">here</a>.</li>
@@ -352,8 +366,8 @@ The completion is not going to work automatically until we actually force it:
 </div>
 </div>
 
-<div id="outline-container-orgb5b837e" class="outline-3">
-<h3 id="other-requirements"><a id="orgb5b837e"></a><span class="section-number-3">2.3</span> Other Requirements</h3>
+<div id="outline-container-orga14709c" class="outline-3">
+<h3 id="other-requirements"><a id="orga14709c"></a><span class="section-number-3">2.3</span> Other Requirements</h3>
 <div class="outline-text-3" id="text-other-requirements">
 <p>
 This package requires the <code>auto-completion</code> layer in order to get actual
@@ -363,13 +377,13 @@ completion. The <code>syntax-checking</code> layer is required for flycheck supp
 </div>
 </div>
 
-<div id="outline-container-org94a1710" class="outline-2">
-<h2 id="configuration"><a id="org94a1710"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org09c42b1" class="outline-2">
+<h2 id="configuration"><a id="org09c42b1"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-orgcae8089" class="outline-3">
-<h3 id="activating-ycmd-in-a-major-mode"><a id="orgcae8089"></a><span class="section-number-3">3.1</span> Activating ycmd in a major mode</h3>
+<div id="outline-container-org4be31ef" class="outline-3">
+<h3 id="activating-ycmd-in-a-major-mode"><a id="org4be31ef"></a><span class="section-number-3">3.1</span> Activating ycmd in a major mode</h3>
 <div class="outline-text-3" id="text-activating-ycmd-in-a-major-mode">
 <p>
 By default this layer only activates ycmd for <code>c++-mode</code> and <code>c-mode</code>.
@@ -387,8 +401,8 @@ specific languages like:
 </div>
 </div>
 
-<div id="outline-container-orgd721962" class="outline-3">
-<h3 id="getting-the-compilation-flags"><a id="orgd721962"></a><span class="section-number-3">3.2</span> Getting the compilation flags</h3>
+<div id="outline-container-orgb837ef8" class="outline-3">
+<h3 id="getting-the-compilation-flags"><a id="orgb837ef8"></a><span class="section-number-3">3.2</span> Getting the compilation flags</h3>
 <div class="outline-text-3" id="text-getting-the-compilation-flags">
 <p>
 Spacemacs uses its own ycmd global configuration file. If you prefer, you can
@@ -427,8 +441,33 @@ with almost any build system.
 </div>
 </div>
 
-<div id="outline-container-org2ae5098" class="outline-2">
-<h2 id="key-bindings"><a id="org2ae5098"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org615d684" class="outline-2">
+<h2 id="functions"><a id="org615d684"></a><span class="section-number-2">4</span> Functions</h2>
+<div class="outline-text-2" id="text-functions">
+<p>
+If <code>company-ycmd</code> is used, then a function
+<code>ycmd/manual-semantic-company-completer</code> is defined. This function is
+useful if you want to get semantic completions only when you press a
+keybinding; in larger projects ycmd may not be performant for as-you-type
+auto-completion to work well. You can bind it like so:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>global-set-key <span class="org-rainbow-delimiters-depth-2">(</span>kbd <span class="org-string">"&lt;C-tab&gt;"</span><span class="org-rainbow-delimiters-depth-2">)</span> 'ycmd/manual-semantic-company-completer<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+This function will automatically cancel out of any active completers, and offer
+semantic completions. It will automatically make an exception when you are
+completing includes; these do not count as semantic completion so the exception
+is necessary for the keybinding to work when completing includes.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaadb190" class="outline-2">
+<h2 id="key-bindings"><a id="orgaadb190"></a><span class="section-number-2">5</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
 Adds <code>SPC m g g</code> go to definition binding to <code>c++-mode</code> as well as <code>SPC m g G</code>
@@ -439,7 +478,7 @@ for the more imprecise but faster version.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-10-21 Sat 13:38</p>
+<p class="date">Created: 2018-01-27 Sat 16:04</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

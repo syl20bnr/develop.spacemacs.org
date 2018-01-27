@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-10-21 Sat 13:38 -->
+<!-- 2018-01-27 Sat 16:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GO layer</title>
@@ -214,7 +214,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2017 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -299,22 +299,23 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org6c28ede" class="outline-2">
-<h2 id="description"><a id="org6c28ede"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org6d2cd0d" class="outline-2">
+<h2 id="description"><a id="org6d2cd0d"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds extensive support for go.
 </p>
 </div>
 
-<div id="outline-container-org4c0c3d3" class="outline-3">
-<h3 id="features"><a id="org4c0c3d3"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org606ca9e" class="outline-3">
+<h3 id="features"><a id="org606ca9e"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>gofmt/goimports on file save</li>
 <li>Auto-completion using <a href="https://github.com/nsf/gocode/tree/master/emacs">go-autocomplete</a> (with the <code>auto-completion</code> layer)</li>
 <li>Source analysis using <a href="https://docs.google.com/document/d/1_Y9xCEMj5S-7rv2ooHpZNH15JgRT5iM742gJkw5LtmQ">go-guru</a></li>
 <li>Refactoring with <a href="http://gorefactor.org/">godoctor</a></li>
+<li>Edit struct field tag with <a href="https://github.com/fatih/gomodifytags">gomodifytags</a></li>
 <li>Linting with flycheck's built-in checkers or flycheck-gometalinter</li>
 <li>Coverage profile visualization</li>
 </ul>
@@ -322,13 +323,13 @@ This layer adds extensive support for go.
 </div>
 </div>
 
-<div id="outline-container-org57e7231" class="outline-2">
-<h2 id="install"><a id="org57e7231"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgb4c74b1" class="outline-2">
+<h2 id="install"><a id="orgb4c74b1"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgf6056ae" class="outline-3">
-<h3 id="pre-requisites"><a id="orgf6056ae"></a><span class="section-number-3">2.1</span> Pre-requisites</h3>
+<div id="outline-container-org4a22e7f" class="outline-3">
+<h3 id="pre-requisites"><a id="org4a22e7f"></a><span class="section-number-3">2.1</span> Pre-requisites</h3>
 <div class="outline-text-3" id="text-pre-requisites">
 <p>
 You will need <code>gocode</code>, <code>godef</code> and <code>godoctor</code>:
@@ -378,6 +379,15 @@ go install github.com/godoctor/godoctor
 </div>
 
 <p>
+If you want to use <code>gomodifytags</code> to edit field tags, install it too:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">go get -u -v github.com/fatih/gomodifytags
+</pre>
+</div>
+
+<p>
 Make sure that the <code>gocode</code> executable is in your PATH. For information about
 setting up <code>$PATH</code>, check out the corresponding section in the FAQ (<code>SPC h f
 $PATH RET</code>).
@@ -390,8 +400,8 @@ layers are enabled as well.
 </div>
 </div>
 
-<div id="outline-container-orge920fdc" class="outline-3">
-<h3 id="layer"><a id="orge920fdc"></a><span class="section-number-3">2.2</span> Layer</h3>
+<div id="outline-container-org6820d68" class="outline-3">
+<h3 id="layer"><a id="org6820d68"></a><span class="section-number-3">2.2</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -402,8 +412,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgaa8733c" class="outline-2">
-<h2 id="configuration"><a id="orgaa8733c"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-orgfc5b2ad" class="outline-2">
+<h2 id="configuration"><a id="orgfc5b2ad"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 By default, go buffers are run through <code>gofmt</code> on save. To use a different
@@ -425,8 +435,8 @@ or
 </div>
 </div>
 
-<div id="outline-container-org009c374" class="outline-3">
-<h3 id="indentation"><a id="org009c374"></a><span class="section-number-3">3.1</span> Indentation</h3>
+<div id="outline-container-org318b36e" class="outline-3">
+<h3 id="indentation"><a id="org318b36e"></a><span class="section-number-3">3.1</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
 By default, the tab width in Go mode is 8 spaces. To use a different value set
@@ -440,8 +450,8 @@ the layer variable <code>go-tab-width</code>, e.g.
 </div>
 </div>
 
-<div id="outline-container-org25892ae" class="outline-3">
-<h3 id="tests"><a id="org25892ae"></a><span class="section-number-3">3.2</span> Tests</h3>
+<div id="outline-container-org17c4446" class="outline-3">
+<h3 id="tests"><a id="org17c4446"></a><span class="section-number-3">3.2</span> Tests</h3>
 <div class="outline-text-3" id="text-tests">
 <p>
 If you're using <code>gocheck</code> in your project you can use the
@@ -471,8 +481,8 @@ To provide additional arguments to go test, specify <code>go-use-test-args</code
 </div>
 </div>
 
-<div id="outline-container-org06fef1f" class="outline-3">
-<h3 id="guru"><a id="org06fef1f"></a><span class="section-number-3">3.3</span> Guru</h3>
+<div id="outline-container-orge913277" class="outline-3">
+<h3 id="guru"><a id="orge913277"></a><span class="section-number-3">3.3</span> Guru</h3>
 <div class="outline-text-3" id="text-guru">
 <p>
 Go Oracle has been deprecated as of October 1, 2016, it's replacement is <code>go-guru</code>.
@@ -492,8 +502,8 @@ In addition, <code>GOPATH</code> must be set prior to <code>go-guru</code> initi
 </div>
 </div>
 
-<div id="outline-container-orgb3b62a7" class="outline-3">
-<h3 id="autocomplete"><a id="orgb3b62a7"></a><span class="section-number-3">3.4</span> Autocomplete</h3>
+<div id="outline-container-org8b84b17" class="outline-3">
+<h3 id="autocomplete"><a id="org8b84b17"></a><span class="section-number-3">3.4</span> Autocomplete</h3>
 <div class="outline-text-3" id="text-autocomplete">
 <p>
 <code>gocode</code> uses the output from installed binary files to provide its suggestions.
@@ -511,13 +521,13 @@ file change.</li>
 </div>
 </div>
 
-<div id="outline-container-org39af4a9" class="outline-2">
-<h2 id="working-with-go"><a id="org39af4a9"></a><span class="section-number-2">4</span> Working with Go</h2>
+<div id="outline-container-org4a4a776" class="outline-2">
+<h2 id="working-with-go"><a id="org4a4a776"></a><span class="section-number-2">4</span> Working with Go</h2>
 <div class="outline-text-2" id="text-working-with-go">
 </div>
 
-<div id="outline-container-org398f9d2" class="outline-3">
-<h3 id="go-commands-start-with-m"><a id="org398f9d2"></a><span class="section-number-3">4.1</span> Go commands (start with <code>m</code>):</h3>
+<div id="outline-container-orge1bf758" class="outline-3">
+<h3 id="go-commands-start-with-m"><a id="orge1bf758"></a><span class="section-number-3">4.1</span> Go commands (start with <code>m</code>):</h3>
 <div class="outline-text-3" id="text-go-commands-start-with-m">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -535,33 +545,8 @@ file change.</li>
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m h h</code></td>
-<td class="org-left">godoc at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m i g</code></td>
-<td class="org-left">goto imports</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m i a</code></td>
-<td class="org-left">add import</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m i r</code></td>
-<td class="org-left">remove unused import</td>
-</tr>
-
-<tr>
 <td class="org-left"><code>SPC m e b</code></td>
 <td class="org-left">go-play buffer</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m e r</code></td>
-<td class="org-left">go-play region</td>
 </tr>
 
 <tr>
@@ -570,8 +555,8 @@ file change.</li>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m x x</code></td>
-<td class="org-left">run "go run" for the current 'main' package</td>
+<td class="org-left"><code>SPC m e r</code></td>
+<td class="org-left">go-play region</td>
 </tr>
 
 <tr>
@@ -590,6 +575,26 @@ file change.</li>
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC m i a</code></td>
+<td class="org-left">add import</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i g</code></td>
+<td class="org-left">goto imports</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i r</code></td>
+<td class="org-left">remove unused import</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h h</code></td>
+<td class="org-left">godoc at point</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m r n</code></td>
 <td class="org-left">go rename</td>
 </tr>
@@ -605,21 +610,26 @@ file change.</li>
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC m t s</code></td>
+<td class="org-left">run "go test" for the suite you're currently in (requires gocheck)</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m t t</code></td>
 <td class="org-left">run "go test" for the function you're currently in (while you're in a _.test.go file)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m t s</code></td>
-<td class="org-left">run "go test" for the suite you're currently in (requires gocheck)</td>
+<td class="org-left"><code>SPC m x x</code></td>
+<td class="org-left">run "go run" for the current 'main' package</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-orgbb07674" class="outline-3">
-<h3 id="go-guru"><a id="orgbb07674"></a><span class="section-number-3">4.2</span> Go Guru</h3>
+<div id="outline-container-orgd886aab" class="outline-3">
+<h3 id="go-guru"><a id="orgd886aab"></a><span class="section-number-3">4.2</span> Go Guru</h3>
 <div class="outline-text-3" id="text-go-guru">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -637,8 +647,28 @@ file change.</li>
 </thead>
 <tbody>
 <tr>
+<td class="org-left"><code>SPC m f &lt;</code></td>
+<td class="org-left">go-guru show possible callers</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m f &gt;</code></td>
+<td class="org-left">go-guru show call targets</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m f c</code></td>
+<td class="org-left">go-guru show channel sends/receives</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m f d</code></td>
 <td class="org-left">go-guru describe symbol at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m f e</code></td>
+<td class="org-left">go-guru show possible contants/types for error value</td>
 </tr>
 
 <tr>
@@ -652,18 +682,13 @@ file change.</li>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m f c</code></td>
-<td class="org-left">go-guru show channel sends/receives</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m f r</code></td>
-<td class="org-left">go-guru show referrers</td>
-</tr>
-
-<tr>
 <td class="org-left"><code>SPC m f j</code></td>
 <td class="org-left">go-guru jump to symbol definition</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m f o</code></td>
+<td class="org-left">go-guru set analysis scope</td>
 </tr>
 
 <tr>
@@ -672,36 +697,21 @@ file change.</li>
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC m f r</code></td>
+<td class="org-left">go-guru show referrers</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m f s</code></td>
 <td class="org-left">go-guru show callstack</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m f e</code></td>
-<td class="org-left">go-guru show possible contants/types for error value</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m f &lt;</code></td>
-<td class="org-left">go-guru show possible callers</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m f &gt;</code></td>
-<td class="org-left">go-guru show call targets</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m f o</code></td>
-<td class="org-left">go-guru set analysis scope</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-org49d7546" class="outline-3">
-<h3 id="refactoring"><a id="org49d7546"></a><span class="section-number-3">4.3</span> Refactoring</h3>
+<div id="outline-container-orgc89fa83" class="outline-3">
+<h3 id="refactoring"><a id="orgc89fa83"></a><span class="section-number-3">4.3</span> Refactoring</h3>
 <div class="outline-text-3" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -719,13 +729,8 @@ file change.</li>
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m r N</code></td>
-<td class="org-left">Rename (with <code>go-rename</code>)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r n</code></td>
-<td class="org-left">Rename (with <code>godoctor</code>)</td>
+<td class="org-left"><code>SPC m r d</code></td>
+<td class="org-left">Add comment stubs</td>
 </tr>
 
 <tr>
@@ -734,13 +739,28 @@ file change.</li>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r t</code></td>
-<td class="org-left">Toggle declaration and assignment</td>
+<td class="org-left"><code>SPC m r f</code></td>
+<td class="org-left">Add field tags</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r d</code></td>
-<td class="org-left">Add comment stubs</td>
+<td class="org-left"><code>SPC m r F</code></td>
+<td class="org-left">Remove field tags</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r n</code></td>
+<td class="org-left">Rename (with <code>godoctor</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r N</code></td>
+<td class="org-left">Rename (with <code>go-rename</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r t</code></td>
+<td class="org-left">Toggle declaration and assignment</td>
 </tr>
 </tbody>
 </table>
@@ -750,7 +770,7 @@ file change.</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-10-21 Sat 13:38</p>
+<p class="date">Created: 2018-01-27 Sat 16:04</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

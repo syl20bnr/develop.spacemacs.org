@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-10-21 Sat 13:38 -->
+<!-- 2018-01-27 Sat 16:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>C/C++ layer</title>
@@ -214,7 +214,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2017 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -273,39 +273,42 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
 <li><a href="#default-mode-for-header-files">2.2. Default mode for header files</a></li>
-<li><a href="#enable-clang-support">2.3. Enable Clang support</a>
+<li><a href="#clang-configuration">2.3. Clang Configuration</a>
 <ul>
 <li><a href="#clang-format">2.3.1. clang-format</a></li>
 <li><a href="#company-clang-and-flycheck">2.3.2. Company-clang and flycheck</a></li>
 </ul>
 </li>
-<li><a href="#cmake-configuration">2.4. CMake configuration</a></li>
+<li><a href="#rtags-configuration">2.4. RTags configuration</a></li>
+<li><a href="#enable-google-set-c-style">2.5. Enable google-set-c-style</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key Bindings</a>
 <ul>
-<li><a href="#debugger-realgud">3.1. Debugger (realgud)</a></li>
+<li><a href="#debugging-realgud">3.1. Debugging (realgud)</a></li>
+<li><a href="#formatting-clang-format">3.2. Formatting (clang-format)</a></li>
+<li><a href="#rtags">3.3. RTags</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-<img src="img/ccpp.jpg" alt="ccpp.jpg" />
-<img src="img/cmake.png" alt="cmake.png" />
-</p>
 
-<div id="outline-container-org1fd958a" class="outline-2">
-<h2 id="description"><a id="org1fd958a"></a><span class="section-number-2">1</span> Description</h2>
-<div class="outline-text-2" id="text-description">
-<p>
-This layer adds configuration for C/C++ language as well support for <a href="https://cmake.org/">CMake</a>
-scripts.
+<div class="figure">
+<p><img src="img/ccpp.jpg" alt="ccpp.jpg" />
 </p>
 </div>
 
-<div id="outline-container-orgb77e6e5" class="outline-3">
-<h3 id="features"><a id="orgb77e6e5"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orgb93cdfd" class="outline-2">
+<h2 id="description"><a id="orgb93cdfd"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
+<p>
+This layer adds configuration for C/C++ language.
+</p>
+</div>
+
+<div id="outline-container-orge8541c4" class="outline-3">
+<h3 id="features"><a id="orge8541c4"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Support syntax checking via flycheck with Clang.</li>
@@ -322,21 +325,19 @@ demonstration of refactoring features. (when <code>semantic</code> layer is incl
 company-clang (when <code>c-c++-enable-clang-support</code> is turned on), or
 company-ycmd (when <code>ycmd</code> layer is included).</li>
 <li>Support for <a href="https://github.com/realgud/realgud">realgud</a> debugger.</li>
-<li>Support for CMake configure/build (with limited support for other build systems),
-automatic generation of <code>compile_commands.json</code> (compile flags), on-the-fly configuration
-of flycheck, company-clang and RTags (if installed) with <a href="https://github.com/atilaneves/cmake-ide">cmake-ide</a> .</li>
+<li>Support for <a href="https://github.com/Andersbakken/rtags">rtags</a>.</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org387cd6d" class="outline-2">
-<h2 id="install"><a id="org387cd6d"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org34f0975" class="outline-2">
+<h2 id="install"><a id="org34f0975"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org0f574d8" class="outline-3">
-<h3 id="layer"><a id="org0f574d8"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org9eb7f13" class="outline-3">
+<h3 id="layer"><a id="org9eb7f13"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -350,8 +351,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org797bf8f" class="outline-3">
-<h3 id="default-mode-for-header-files"><a id="org797bf8f"></a><span class="section-number-3">2.2</span> Default mode for header files</h3>
+<div id="outline-container-org70969d9" class="outline-3">
+<h3 id="default-mode-for-header-files"><a id="org70969d9"></a><span class="section-number-3">2.2</span> Default mode for header files</h3>
 <div class="outline-text-3" id="text-default-mode-for-header-files">
 <p>
 By default header files are opened in <code>c-mode</code>, you can open them in <code>c++-mode</code>
@@ -360,8 +361,7 @@ by setting the variable <code>c-c++-default-mode-for-headers</code> to <code>c++
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span>
-           c-c++-default-mode-for-headers 'c++-mode<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-default-mode-for-headers 'c++-mode<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -373,11 +373,11 @@ can be found in the <a href="http://www.gnu.org/software/emacs/manual/html_node/
 </div>
 </div>
 
-<div id="outline-container-org304488f" class="outline-3">
-<h3 id="enable-clang-support"><a id="org304488f"></a><span class="section-number-3">2.3</span> Enable Clang support</h3>
-<div class="outline-text-3" id="text-enable-clang-support">
+<div id="outline-container-org615f4f9" class="outline-3">
+<h3 id="clang-configuration"><a id="org615f4f9"></a><span class="section-number-3">2.3</span> Clang Configuration</h3>
+<div class="outline-text-3" id="text-clang-configuration">
 <p>
-To enable Clang support set the layer variable <code>c-c++-enable-clang-support</code>
+To enable Clang support, set the layer variable <code>c-c++-enable-clang-support</code>
 to <code>t</code> in the dotfile:
 </p>
 
@@ -388,32 +388,17 @@ to <code>t</code> in the dotfile:
 </div>
 </div>
 
-<div id="outline-container-org3c9c51a" class="outline-4">
-<h4 id="clang-format"><a id="org3c9c51a"></a><span class="section-number-4">2.3.1</span> clang-format</h4>
+<div id="outline-container-org62e4b91" class="outline-4">
+<h4 id="clang-format"><a id="org62e4b91"></a><span class="section-number-4">2.3.1</span> clang-format</h4>
 <div class="outline-text-4" id="text-clang-format">
 <p>
 <a href="http://clang.llvm.org/docs/ClangFormat.html">clang-format</a> allows reformatting either a selected region of code
-(<code>clang-format-region</code>) or a whole buffer (<code>clang-format-buffer</code>) to make it
-conform to a style defined in a <code>.clang-format</code> file. This file is either
-located in the same directory as the file being edited, or in any of its parent
-directories (otherwise a default style will be used).
+(<code>clang-format-region</code>) or a whole buffer (<code>clang-format-buffer</code>)
+according to a style defined in a <code>.clang-format</code> file. This file
+is either located in the same directory as the file being edited,
+or any of its parent directories. If no <code>.clang-format</code> is found,
+then a default style will be used.
 </p>
-
-<p>
-You can add snippets similar to the following to bind clang-format to either a
-particular mode or all modes in your <code>dotspacemacs/user-config</code> (within your
-<code>~/.spacemacs</code>):
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Bind clang-format-region to C-M-tab in all modes:</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>global-set-key <span class="org-rainbow-delimiters-depth-2">[</span>C-M-tab<span class="org-rainbow-delimiters-depth-2">]</span> 'clang-format-region<span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">Bind clang-format-buffer to tab on the c++-mode only:</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'c++-mode-hook 'clang-format-bindings
-          <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">defun</span> <span class="org-function-name">clang-format-bindings</span> <span class="org-rainbow-delimiters-depth-3">()</span>
-            <span class="org-rainbow-delimiters-depth-3">(</span>define-key c++-mode-map <span class="org-rainbow-delimiters-depth-4">[</span>tab<span class="org-rainbow-delimiters-depth-4">]</span> 'clang-format-buffer<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 
 <p>
 To enable automatic buffer formatting on save, set the variable
@@ -428,8 +413,8 @@ To enable automatic buffer formatting on save, set the variable
 </div>
 </div>
 
-<div id="outline-container-org1098fe4" class="outline-4">
-<h4 id="company-clang-and-flycheck"><a id="org1098fe4"></a><span class="section-number-4">2.3.2</span> Company-clang and flycheck</h4>
+<div id="outline-container-org31aafa7" class="outline-4">
+<h4 id="company-clang-and-flycheck"><a id="org31aafa7"></a><span class="section-number-4">2.3.2</span> Company-clang and flycheck</h4>
 <div class="outline-text-4" id="text-company-clang-and-flycheck">
 <p>
 This layer adds some fancy improvements to <code>company-clang</code>. It includes a hook
@@ -446,40 +431,71 @@ missing header files.
 </div>
 </div>
 
-<div id="outline-container-org8255d0b" class="outline-3">
-<h3 id="cmake-configuration"><a id="org8255d0b"></a><span class="section-number-3">2.4</span> CMake configuration</h3>
-<div class="outline-text-3" id="text-cmake-configuration">
+<div id="outline-container-org2dddf0d" class="outline-3">
+<h3 id="rtags-configuration"><a id="org2dddf0d"></a><span class="section-number-3">2.4</span> RTags configuration</h3>
+<div class="outline-text-3" id="text-rtags-configuration">
 <p>
-<code>cmake-ide</code> plugin works out of the box, but there are few useful configuration
-options.
-</p>
-
-<p>
-To configure project you need to create <code>.dir-locals.el</code> file. In case of using
-make as CMake backend you can use <code>helm-make</code> to select required build target.
-</p>
-
-<p>
-Here is a sample configuration. This configuration forces <code>cmake-ide</code> to use the
-local directory and pass that directory to <code>helm-make</code>. Such config allows to
-build your project with <code>SPC c c</code> key binding.
+To enable support for <code>rtags</code>, set the layer variable
+<code>c-c++-enable-rtags-support</code> to <code>t</code> in your dotfile.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>nil .
-      <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>cmake-ide-project-dir . <span class="org-string">"~/Project"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-       <span class="org-rainbow-delimiters-depth-4">(</span>cmake-ide-build-dir . <span class="org-string">"~/Project/build"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-       <span class="org-rainbow-delimiters-depth-4">(</span>cmake-ide-cmake-opts . <span class="org-string">"-DCMAKE_BUILD_TYPE=Debug"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-       <span class="org-rainbow-delimiters-depth-4">(</span>helm-make-build-dir . <span class="org-string">"build"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-       <span class="org-rainbow-delimiters-depth-4">(</span>helm-make-arguments . <span class="org-string">"-j7"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-enable-rtags-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
+
+<div id="outline-container-orge375bd1" class="outline-3">
+<h3 id="enable-google-set-c-style"><a id="orge375bd1"></a><span class="section-number-3">2.5</span> Enable google-set-c-style</h3>
+<div class="outline-text-3" id="text-enable-google-set-c-style">
+<p>
+If you have clang enabled with <code>clang-format</code> as described earlier in this page
+you may not have a lot of neeed for <code>google-set-c-style</code> if you are already
+using a mode based on Google mode for most of your projects.
+</p>
+
+<p>
+However, if you don't have (or want) <code>clang-format</code>, or if you have to do a lot
+<a href="https://www.emacswiki.org/emacs/TrampMode">Tramp</a> remote editing on systems that don't have <code>clang-format</code> installed, you
+may want <code>google-c-style</code> enabled and added to your common hooks.
+</p>
+
+<p>
+To get <code>google-c-style</code> actually install itself into your C/C++ common hooks,
+you need to have <code>c-c++-enable-google-style</code> defined to true when you load the
+C-C++ lang in Spacemacs. In your <code>~/.spacemacs</code> file, a possible way that this
+would look is that in your list of <code>dostpacemacs-configuration-layers</code> you have
+an entry like
+</p>
+
+<p>
+#+BEGIN<sub>SRC</sub> emacs-lisp
+     (c-c++ :variables
+            c-c++-enable-google-style t)
+#+END<sub>SRC</sub> emacs-lisp
+</p>
+
+<p>
+Additionally, if you have <code>c-c++-enable-google-newline</code> variable set then
+<code>`google-make-newline-indent</code> will be set as a <code>c-mode-common-hook</code>. You would
+set that up like this:
+</p>
+
+<p>
+#+BEGIN<sub>SRC</sub> emacs-lisp
+     (c-c++ :variables
+            c-c++-enable-google-style t
+            c-c++-enable-google-newline t)
+#+END<sub>SRC</sub> emacs-lisp
+</p>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org7f1638b" class="outline-2">
-<h2 id="key-bindings"><a id="org7f1638b"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-orgdbe7efd" class="outline-2">
+<h2 id="key-bindings"><a id="orgdbe7efd"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -525,26 +541,6 @@ build your project with <code>SPC c c</code> key binding.
 <td class="org-left"><code>SPC m r</code></td>
 <td class="org-left">srefactor: refactor thing at point.</td>
 </tr>
-
-<tr>
-<td class="org-left"><code>SPC m p c</code></td>
-<td class="org-left">Run CMake and set compiler flags for auto-completion and flycheck</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m p C</code></td>
-<td class="org-left">Run CMake if compilation database JSON file is not found</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m p d</code></td>
-<td class="org-left">Remove file connected to current buffer and kill buffer, then run CMake</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c c</code></td>
-<td class="org-left">Compile project</td>
-</tr>
 </tbody>
 </table>
 
@@ -553,9 +549,9 @@ build your project with <code>SPC c c</code> key binding.
 </p>
 </div>
 
-<div id="outline-container-org87f1346" class="outline-3">
-<h3 id="debugger-realgud"><a id="org87f1346"></a><span class="section-number-3">3.1</span> Debugger (realgud)</h3>
-<div class="outline-text-3" id="text-debugger-realgud">
+<div id="outline-container-orgcf9593f" class="outline-3">
+<h3 id="debugging-realgud"><a id="orgcf9593f"></a><span class="section-number-3">3.1</span> Debugging (realgud)</h3>
+<div class="outline-text-3" id="text-debugging-realgud">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -634,11 +630,210 @@ build your project with <code>SPC c c</code> key binding.
 </table>
 </div>
 </div>
+
+<div id="outline-container-org986aad5" class="outline-3">
+<h3 id="formatting-clang-format"><a id="org986aad5"></a><span class="section-number-3">3.2</span> Formatting (clang-format)</h3>
+<div class="outline-text-3" id="text-formatting-clang-format">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m = =</code></td>
+<td class="org-left">format current region or buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m = f</code></td>
+<td class="org-left">format current function</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgfb63169" class="outline-3">
+<h3 id="rtags"><a id="orgfb63169"></a><span class="section-number-3">3.3</span> RTags</h3>
+<div class="outline-text-3" id="text-rtags">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m g .</code></td>
+<td class="org-left">find symbol at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g ,</code></td>
+<td class="org-left">find references at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g ;</code></td>
+<td class="org-left">find file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g /</code></td>
+<td class="org-left">find all references at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g [</code></td>
+<td class="org-left">location stack back</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g ]</code></td>
+<td class="org-left">location stack forward</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g &gt;</code></td>
+<td class="org-left">c++ tags find symbol</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g &lt;</code></td>
+<td class="org-left">c++ tags find references</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g B</code></td>
+<td class="org-left">show rtags buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g d</code></td>
+<td class="org-left">print dependencies</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g D</code></td>
+<td class="org-left">diagnostics</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g e</code></td>
+<td class="org-left">reparse file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g E</code></td>
+<td class="org-left">preprocess file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g F</code></td>
+<td class="org-left">fixit</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g G</code></td>
+<td class="org-left">guess function at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g h</code></td>
+<td class="org-left">print class hierarchy</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g I</code></td>
+<td class="org-left">c++ tags imenu</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g L</code></td>
+<td class="org-left">copy and print current location</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g M</code></td>
+<td class="org-left">symbol info</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g O</code></td>
+<td class="org-left">goto offset</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g p</code></td>
+<td class="org-left">set current project</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g R</code></td>
+<td class="org-left">rename symbol</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g s</code></td>
+<td class="org-left">print source arguments</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g S</code></td>
+<td class="org-left">display summary</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g T</code></td>
+<td class="org-left">taglist</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g v</code></td>
+<td class="org-left">find virtuals at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g V</code></td>
+<td class="org-left">print enum value at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g X</code></td>
+<td class="org-left">fix fixit at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g Y</code></td>
+<td class="org-left">cycle overlays on screen</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-10-21 Sat 13:38</p>
+<p class="date">Created: 2018-01-27 Sat 16:03</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

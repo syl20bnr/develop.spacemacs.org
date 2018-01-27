@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-10-21 Sat 13:38 -->
+<!-- 2018-01-27 Sat 16:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Dash layer</title>
@@ -214,7 +214,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2017 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -264,20 +264,23 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#description">1. Description</a></li>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
 <li><a href="#install">2. Install</a>
 <ul>
-<li><a href="#dash-os-x">2.1. Dash (OS X)</a></li>
-<li><a href="#sqlite3">2.2. Sqlite3</a></li>
-<li><a href="#zeal-linux--windows">2.3. Zeal (Linux &amp; Windows)</a></li>
-<li><a href="#check-documentation-for-x-at-point">2.4. Check Documentation for x-at-point</a></li>
-</ul>
-</li>
-<li><a href="#key-bindings">3. Key bindings</a>
+<li><a href="#dash-os-x">2.1. Dash (OS X)</a>
 <ul>
-<li><a href="#helm-dash-and-counsel-dash">3.1. helm-dash and counsel-dash</a></li>
+<li><a href="#sqlite3">2.1.1. Sqlite3</a></li>
 </ul>
 </li>
+<li><a href="#zeal-linux--windows">2.2. Zeal (Linux &amp; Windows)</a></li>
+</ul>
+</li>
+<li><a href="#word-at-point">3. Word at point</a></li>
+<li><a href="#key-bindings">4. Key bindings</a></li>
 </ul>
 </div>
 </div>
@@ -293,29 +296,29 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgb9fe189" class="outline-2">
-<h2 id="description"><a id="orgb9fe189"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgd69af98" class="outline-2">
+<h2 id="description"><a id="orgd69af98"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
-<dl class="org-dl">
-<dt><a href="https://kapeli.com/dash">dash</a></dt><dd>Is a great tool for quick access to various sets of documentation,
-only available in OS X.</dd>
-
-<dt><a href="https://github.com/stanaka/dash-at-point">dash-at-point</a></dt><dd>Is the package used to integrate <code>dash</code> in Emacs. It will try
-to intelligently guess specific docsets to use based off of
-your current mode.</dd>
-
-<dt><a href="https://zealdocs.org/">zeal</a></dt><dd>Zeal is an offline documentation browser inspired by Dash,
-available for Linux and Windows.</dd>
-
-<dt><a href="https://github.com/jinzhu/zeal-at-point">zeal-at-point</a></dt><dd>Run zeal-at-point to search the word at point (or string in
-region), then Zeal is launched and search the word. Use
-prefix argument C-u to edit the search string first.</dd>
-</dl>
-</div>
+<p>
+This layer integrates offline api browsers into emacs. It provides one for OS X, Linux and Windows.
+</p>
 </div>
 
-<div id="outline-container-orgb4ac34f" class="outline-2">
-<h2 id="install"><a id="orgb4ac34f"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org2a0043e" class="outline-3">
+<h3 id="features"><a id="org2a0043e"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
+<ul class="org-ul">
+<li>Searching for word at point in offline api browser's UI.</li>
+<li>Integration of offline api browser search results in helm and ivy.</li>
+<li>Support for <a href="https://kapeli.com/dash">dash</a> offline api browser for OS X.</li>
+<li>Support for <a href="https://zealdocs.org/">zeal</a> offline api browser for Linux.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org26596fe" class="outline-2">
+<h2 id="install"><a id="org26596fe"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -324,8 +327,8 @@ file.
 </p>
 </div>
 
-<div id="outline-container-org4835784" class="outline-3">
-<h3 id="dash-os-x"><a id="org4835784"></a><span class="section-number-3">2.1</span> Dash (OS X)</h3>
+<div id="outline-container-org4bd752d" class="outline-3">
+<h3 id="dash-os-x"><a id="org4bd752d"></a><span class="section-number-3">2.1</span> Dash (OS X)</h3>
 <div class="outline-text-3" id="text-dash-os-x">
 <p>
 You have to install <a href="https://kapeli.com/dash">dash</a> on your machine.
@@ -336,19 +339,19 @@ It is recommended to set the <code>HUD mode</code> in your Dash application pref
 when using this layer.
 </p>
 </div>
-</div>
 
-<div id="outline-container-org1997061" class="outline-3">
-<h3 id="sqlite3"><a id="org1997061"></a><span class="section-number-3">2.2</span> Sqlite3</h3>
-<div class="outline-text-3" id="text-sqlite3">
+<div id="outline-container-org51bd801" class="outline-4">
+<h4 id="sqlite3"><a id="org51bd801"></a><span class="section-number-4">2.1.1</span> Sqlite3</h4>
+<div class="outline-text-4" id="text-sqlite3">
 <p>
 Helm Dash <a href="https://github.com/areina/helm-dash#user-content-requirements">requires</a> sqlite3 to be installed to function properly.
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-orgec0b613" class="outline-3">
-<h3 id="zeal-linux--windows"><a id="orgec0b613"></a><span class="section-number-3">2.3</span> Zeal (Linux &amp; Windows)</h3>
+<div id="outline-container-org29bbd31" class="outline-3">
+<h3 id="zeal-linux--windows"><a id="org29bbd31"></a><span class="section-number-3">2.2</span> Zeal (Linux &amp; Windows)</h3>
 <div class="outline-text-3" id="text-zeal-linux--windows">
 <p>
 You have to install <a href="https://zealdocs.org/">zeal</a> on your machine.
@@ -359,20 +362,40 @@ Then install the docsets you use more frequently
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-org866ab5f" class="outline-3">
-<h3 id="check-documentation-for-x-at-point"><a id="org866ab5f"></a><span class="section-number-3">2.4</span> Check Documentation for x-at-point</h3>
-<div class="outline-text-3" id="text-check-documentation-for-x-at-point">
+<div id="outline-container-org509c3fd" class="outline-2">
+<h2 id="word-at-point"><a id="org509c3fd"></a><span class="section-number-2">3</span> Word at point</h2>
+<div class="outline-text-2" id="text-word-at-point">
 <p>
-See the documentation <a href="https://github.com/stanaka/dash-at-point#Usage">dash-at-point-usage</a> , or <a href="https://github.com/jinzhu/zeal-at-point">zeal-at-point</a> for more
-information on customizing specific docsets for modes.
+<code>dash-at-point</code> and <code>zeal-at-point</code> will search for the word at point in the respective offline api browser.
+The result will be displayed in the offline browser's UI.
+</p>
+
+<p>
+However having to leave emacs to have a look at the search results may be a bit awkward.
+To help with this it is also possible to integrate the search results directly in <code>helm</code> or <code>ivy</code>
+and show the details in a browser. To do so <a href="https://github.com/areina/helm-dash">helm-dash</a> can be used for <code>helm</code> and <a href="https://github.com/nathankot/counsel-dash">counsel-dash</a> for <code>ivy</code>.
+</p>
+
+<p>
+To get them working it is necessary to set <code>helm-dash-docset-newpath</code> to the location of your docsets.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>dash <span class="org-builtin">:variables</span>
+      helm-dash-docset-newpath <span class="org-string">"~/.local/share/Zeal/Zeal/docsets"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+For more details please check <a href="https://github.com/stanaka/dash-at-point#Usage">dash-at-point-usage</a> or <a href="https://github.com/jinzhu/zeal-at-point">zeal-at-point</a>.
 </p>
 </div>
 </div>
-</div>
 
-<div id="outline-container-orgc95827f" class="outline-2">
-<h2 id="key-bindings"><a id="orgc95827f"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-orga02a450" class="outline-2">
+<h2 id="key-bindings"><a id="orga02a450"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -411,28 +434,11 @@ information on customizing specific docsets for modes.
 </tbody>
 </table>
 </div>
-
-<div id="outline-container-orgb372be4" class="outline-3">
-<h3 id="helm-dash-and-counsel-dash"><a id="orgb372be4"></a><span class="section-number-3">3.1</span> helm-dash and counsel-dash</h3>
-<div class="outline-text-3" id="text-helm-dash-and-counsel-dash">
-<p>
-<code>dash-at-point</code> is linked to the GUI app and is only available for OSX. On
-linux, you can use <code>zeal-at-point</code> which is linked to the GUI app too, but it's
-open source.
-</p>
-
-<p>
-Or you can use <a href="https://github.com/areina/helm-dash">helm-dash</a> when using <code>helm</code> and <a href="https://github.com/nathankot/counsel-dash">counsel-dash</a> when using <code>ivy</code>,
-which requires no additional application. You can use
-<code>dash/helm-dash-docset-newpath</code> to set the location path of your docsets.
-</p>
-</div>
-</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2017-10-21 Sat 13:38</p>
+<p class="date">Created: 2018-01-27 Sat 16:04</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
