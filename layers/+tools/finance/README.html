@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-01-27 Sat 16:04 -->
+<!-- 2018-02-19 Mon 05:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Finance layer</title>
@@ -264,7 +264,11 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#description">1. Description</a></li>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
@@ -285,48 +289,60 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org41139d0" class="outline-2">
-<h2 id="description"><a id="org41139d0"></a><span class="section-number-2">1</span> Description</h2>
-<div class="outline-text-2" id="text-description">
-<p>
-This layer adds finance related packages:
-</p>
-<ul class="org-ul">
-<li><a href="https://github.com/ledger/ledger">ledger</a> support via <a href="https://www.emacswiki.org/emacs/LedgerMode">ledger-mode</a></li>
-</ul>
-
-
 <div class="figure">
 <p><img src="img/ledger.png" alt="ledger.png" />
 </p>
 </div>
+
+<div id="outline-container-org445bd3a" class="outline-2">
+<h2 id="description"><a id="org445bd3a"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
+<p>
+This layer integrates a full fledged accounting system into Spacemacs.
+</p>
+</div>
+
+<div id="outline-container-org30939c4" class="outline-3">
+<h3 id="features"><a id="org30939c4"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
+<ul class="org-ul">
+<li>Support for maintaining a double-entry accounting system run by text files via <a href="https://www.emacswiki.org/emacs/LedgerMode">ledger-mode</a>.</li>
+<li>Display of finance reports directly within emacs.</li>
+<li>Integration of emacs calculator mode for editing post amounts.</li>
+<li>Support for easy account reconciliation via <code>Ledger-Reconcile</code>.</li>
+</ul>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org9be629d" class="outline-2">
-<h2 id="install"><a id="org9be629d"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgc28c15d" class="outline-2">
+<h2 id="install"><a id="orgc28c15d"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org666a1e8" class="outline-3">
-<h3 id="layer"><a id="org666a1e8"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org8db69e4" class="outline-3">
+<h3 id="layer"><a id="org8db69e4"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>finance</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
-file. This layer adds support for <a href="http://ledger-cli.org/download.html">ledger</a>, which must be installed separately.
+file.
+</p>
+
+<p>
+For this layer to work properly you also need to install the native package <a href="https://github.com/ledger/ledger">ledger</a>.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org27372e7" class="outline-2">
-<h2 id="configuration"><a id="org27372e7"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org6ab5b58" class="outline-2">
+<h2 id="configuration"><a id="org6ab5b58"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org427aca3" class="outline-3">
-<h3 id="ledger"><a id="org427aca3"></a><span class="section-number-3">3.1</span> Ledger</h3>
+<div id="outline-container-orgebc2e92" class="outline-3">
+<h3 id="ledger"><a id="orgebc2e92"></a><span class="section-number-3">3.1</span> Ledger</h3>
 <div class="outline-text-3" id="text-ledger">
 <p>
 You can set what column transaction posts are aligned to on
@@ -343,13 +359,13 @@ your <code>dotspacemacs/user-config</code>.  The default value, set in the layer
 </div>
 </div>
 
-<div id="outline-container-org7f741d3" class="outline-2">
-<h2 id="key-bindings"><a id="org7f741d3"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-orgd62ee92" class="outline-2">
+<h2 id="key-bindings"><a id="orgd62ee92"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org5df73c6" class="outline-3">
-<h3 id="ledger-1"><a id="org5df73c6"></a><span class="section-number-3">4.1</span> Ledger</h3>
+<div id="outline-container-org51e9d0a" class="outline-3">
+<h3 id="ledger-1"><a id="org51e9d0a"></a><span class="section-number-3">4.1</span> Ledger</h3>
 <div class="outline-text-3" id="text-ledger-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -430,8 +446,8 @@ your <code>dotspacemacs/user-config</code>.  The default value, set in the layer
 </div>
 </div>
 
-<div id="outline-container-org9331e74" class="outline-3">
-<h3 id="ledger-reconcile"><a id="org9331e74"></a><span class="section-number-3">4.2</span> Ledger-Reconcile</h3>
+<div id="outline-container-orged091a2" class="outline-3">
+<h3 id="ledger-reconcile"><a id="orged091a2"></a><span class="section-number-3">4.2</span> Ledger-Reconcile</h3>
 <div class="outline-text-3" id="text-ledger-reconcile">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -480,7 +496,7 @@ your <code>dotspacemacs/user-config</code>.  The default value, set in the layer
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-01-27 Sat 16:04</p>
+<p class="date">Created: 2018-02-19 Mon 05:14</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

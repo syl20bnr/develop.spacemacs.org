@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-01-27 Sat 16:04 -->
+<!-- 2018-02-19 Mon 05:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Evernote layer</title>
@@ -264,12 +264,16 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#description">1. Description</a></li>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
-<li><a href="#geeknote">2.2. geeknote</a></li>
-<li><a href="#geeknoteel">2.3. geeknote.el</a></li>
+<li><a href="#geeknote">2.2. Geeknote</a></li>
+<li><a href="#geeknoteel">2.3. Geeknote.el</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key Bindings</a></li>
@@ -280,33 +284,34 @@ for the JavaScript code in this tag.
 <img src="img/evernote.png" alt="evernote.png" /> with <img src="img/geeknote.png" alt="geeknote.png" />
 </p>
 
-<div id="outline-container-org17d6bd7" class="outline-2">
-<h2 id="description"><a id="org17d6bd7"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org1d15f4b" class="outline-2">
+<h2 id="description"><a id="org1d15f4b"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer groups together packages to work with <a href="https://evernote.com/">Evernote</a>.
-</p>
-
-<p>
-It uses the non official Evernote command line tool <a href="http://www.geeknote.me">geeknote</a> which allows users
-to write notes in markdown, and sync them.
-</p>
-
-<p>
-<a href="https://github.com/avendael/emacs-geeknote">geeknote.el</a> is a wrapper for some of the most used <code>geeknote</code> commands. By
-default, <code>geeknote.el</code> doesn't have key bindings defined. This contribution
-layer provides key bindings for all of geeknote.el's exposed features.
+This layer adds support for the famous <a href="https://evernote.com/">Evernote</a> note taking service to Spacemacs.
+It does so by grouping together various packages to work with <a href="https://evernote.com/">Evernote</a>.
 </p>
 </div>
+
+<div id="outline-container-org49af36f" class="outline-3">
+<h3 id="features"><a id="org49af36f"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
+<ul class="org-ul">
+<li>Create notes in markdown and sync with <a href="https://evernote.com/">Evernote</a> via <a href="http://www.geeknote.me">geeknote</a>.</li>
+<li>Search for notes using keywords</li>
+<li>Move notes between notebooks</li>
+</ul>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgc0e1d93" class="outline-2">
-<h2 id="install"><a id="orgc0e1d93"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org9f40167" class="outline-2">
+<h2 id="install"><a id="org9f40167"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org77543de" class="outline-3">
-<h3 id="layer"><a id="org77543de"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org1afc8c5" class="outline-3">
+<h3 id="layer"><a id="org1afc8c5"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -316,23 +321,27 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgdc202af" class="outline-3">
-<h3 id="geeknote"><a id="orgdc202af"></a><span class="section-number-3">2.2</span> geeknote</h3>
+<div id="outline-container-org87c2ca7" class="outline-3">
+<h3 id="geeknote"><a id="org87c2ca7"></a><span class="section-number-3">2.2</span> Geeknote</h3>
 <div class="outline-text-3" id="text-geeknote">
 <p>
-The command <code>geeknote</code> is expected to be present in your <code>$PATH</code>. To
-obtain this utility, please refer to the official geeknote
-<a href="http://www.geeknote.me/documentation/">documentation</a>.
+This is the non official <code>Evernote</code> command line tool which allows users
+to write notes in markdown, and sync them. The command <a href="http://www.geeknote.me">geeknote</a> is expected
+to be present in your <code>$PATH</code>. To obtain this utility, please refer to the
+official <code>geeknote</code> <a href="http://www.geeknote.me/documentation/">documentation</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org35ebc68" class="outline-3">
-<h3 id="geeknoteel"><a id="org35ebc68"></a><span class="section-number-3">2.3</span> geeknote.el</h3>
+<div id="outline-container-org6a03353" class="outline-3">
+<h3 id="geeknoteel"><a id="org6a03353"></a><span class="section-number-3">2.3</span> Geeknote.el</h3>
 <div class="outline-text-3" id="text-geeknoteel">
 <p>
-<code>geeknote.el</code> relies on having a correctly setup geeknote editor. To set
-this up, run the following command in your terminal after successfully
+<a href="https://github.com/avendael/emacs-geeknote">geeknote.el</a> is a wrapper for some of the most used <code>geeknote</code> commands.
+By default, <code>geeknote.el</code> doesn't have any key bindings defined.
+This layer provides key bindings for all of <code>geeknote.el's</code> exposed features.
+<code>geeknote.el</code> relies on having a correctly setup <code>geeknote</code> editor.
+To set this up, run the following command in your terminal after successfully
 installing <code>geeknote</code>:
 </p>
 
@@ -342,8 +351,8 @@ installing <code>geeknote</code>:
 </div>
 
 <p>
-If you would prefer to customize the geeknote command to be used such as
-specifying the path to the geeknote python script, please refer to the
+If you would prefer to customize the <code>geeknote</code> command to be used such as
+specifying the path to the <code>geeknote</code> python script, please refer to the
 <code>geeknote.el</code> <a href="https://github.com/avendael/emacs-geeknote">documentation</a>. For more information about setting up <code>$PATH</code>,
 check out the corresponding section in the FAQ (<code>SPC h SPC $PATH RET</code>).
 </p>
@@ -351,8 +360,8 @@ check out the corresponding section in the FAQ (<code>SPC h SPC $PATH RET</code>
 </div>
 </div>
 
-<div id="outline-container-orga7d9117" class="outline-2">
-<h2 id="key-bindings"><a id="orga7d9117"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-org6c3a19f" class="outline-2">
+<h2 id="key-bindings"><a id="org6c3a19f"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -405,7 +414,7 @@ check out the corresponding section in the FAQ (<code>SPC h SPC $PATH RET</code>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-01-27 Sat 16:04</p>
+<p class="date">Created: 2018-02-19 Mon 05:14</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

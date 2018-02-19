@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-01-27 Sat 16:03 -->
+<!-- 2018-02-19 Mon 05:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Coq layer</title>
@@ -264,25 +264,29 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#description">1. Description</a></li>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
 <li><a href="#coq">2.2. Coq</a></li>
 </ul>
 </li>
-<li><a href="#key-bindings">3. Key bindings</a>
+<li><a href="#troubleshooting">3. Troubleshooting</a>
 <ul>
-<li><a href="#laying-out-windows">3.1. Laying out windows</a></li>
-<li><a href="#managing-prover-process">3.2. Managing prover process</a></li>
-<li><a href="#prover-queries">3.3. Prover queries</a></li>
-<li><a href="#moving-the-point">3.4. Moving the point</a></li>
-<li><a href="#inserting">3.5. Inserting</a></li>
+<li><a href="#there-are-empty-square-boxes-in-place-of-math-operators">3.1. There are empty square boxes in place of math operators</a></li>
 </ul>
 </li>
-<li><a href="#faq">4. FAQ</a>
+<li><a href="#key-bindings">4. Key bindings</a>
 <ul>
-<li><a href="#there-are-empty-square-boxes-in-place-of-math-operators">4.1. There are empty square boxes in place of math operators</a></li>
+<li><a href="#laying-out-windows">4.1. Laying out windows</a></li>
+<li><a href="#managing-prover-process">4.2. Managing prover process</a></li>
+<li><a href="#prover-queries">4.3. Prover queries</a></li>
+<li><a href="#moving-the-point">4.4. Moving the point</a></li>
+<li><a href="#inserting">4.5. Inserting</a></li>
 </ul>
 </li>
 </ul>
@@ -294,23 +298,36 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org370cab0" class="outline-2">
-<h2 id="description"><a id="org370cab0"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgf1fdd0b" class="outline-2">
+<h2 id="description"><a id="orgf1fdd0b"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds support for the <a href="https://coq.inria.fr/">Coq</a> proof assistant (adapted from
-<a href="https://github.com/tchajed/spacemacs-coq">https://github.com/tchajed/spacemacs-coq</a>).
+This layer adds support for the <a href="https://coq.inria.fr/">Coq</a> proof assistant (adapted from <a href="https://github.com/tchajed/spacemacs-coq">spacemacs-coq</a>) to Spacemacs.
 </p>
+</div>
+
+<div id="outline-container-org7078d07" class="outline-3">
+<h3 id="features"><a id="org7078d07"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
+<ul class="org-ul">
+<li>Syntax highlighting</li>
+<li>Syntax-checking</li>
+<li>Auto-completion</li>
+<li>Debugging of mathematical proofs from within emacs using a special proof layout</li>
+<li>Replacement of certain constants with the correct mathematical signs</li>
+<li>Inserting of certain preconfigured proof elements</li>
+</ul>
+</div>
 </div>
 </div>
 
-<div id="outline-container-orgcb2f6ac" class="outline-2">
-<h2 id="install"><a id="orgcb2f6ac"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org82c009b" class="outline-2">
+<h2 id="install"><a id="org82c009b"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orga691d71" class="outline-3">
-<h3 id="layer"><a id="orga691d71"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org9191cf9" class="outline-3">
+<h3 id="layer"><a id="org9191cf9"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -319,8 +336,8 @@ add <code>coq</code> to the existing <code>dotspacemacs-configuration-layers</co
 </div>
 </div>
 
-<div id="outline-container-orgc817931" class="outline-3">
-<h3 id="coq"><a id="orgc817931"></a><span class="section-number-3">2.2</span> Coq</h3>
+<div id="outline-container-org1fc263b" class="outline-3">
+<h3 id="coq"><a id="org1fc263b"></a><span class="section-number-3">2.2</span> Coq</h3>
 <div class="outline-text-3" id="text-coq">
 <p>
 Official installers for MacOS and Windows are available from:
@@ -334,13 +351,38 @@ Linux users can build from source or consult with their own package managers.
 </div>
 </div>
 
-<div id="outline-container-orgec55c65" class="outline-2">
-<h2 id="key-bindings"><a id="orgec55c65"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-org2d6957b" class="outline-2">
+<h2 id="troubleshooting"><a id="org2d6957b"></a><span class="section-number-2">3</span> Troubleshooting</h2>
+<div class="outline-text-2" id="text-troubleshooting">
+</div>
+
+<div id="outline-container-org51f9a78" class="outline-3">
+<h3 id="there-are-empty-square-boxes-in-place-of-math-operators"><a id="org51f9a78"></a><span class="section-number-3">3.1</span> There are empty square boxes in place of math operators</h3>
+<div class="outline-text-3" id="text-there-are-empty-square-boxes-in-place-of-math-operators">
+<p>
+Math symbols present in your buffer (e.g. forall exists) will attempt to be
+prettified, if you are seeing empty square boxes this means an appropriate math
+symbol cannot be found in your <b>font</b>. You can either install a appropriate math
+font, or disable the feature by adding the following snippet to the your
+<code>dotspacemacs/user-config</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'company-coq
+  <span class="org-rainbow-delimiters-depth-2">(</span>add-to-list 'company-coq-disabled-features 'prettify-symbols<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org11429eb" class="outline-2">
+<h2 id="key-bindings"><a id="org11429eb"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org6997a5e" class="outline-3">
-<h3 id="laying-out-windows"><a id="org6997a5e"></a><span class="section-number-3">3.1</span> Laying out windows</h3>
+<div id="outline-container-org1dc8f59" class="outline-3">
+<h3 id="laying-out-windows"><a id="org1dc8f59"></a><span class="section-number-3">4.1</span> Laying out windows</h3>
 <div class="outline-text-3" id="text-laying-out-windows">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -376,8 +418,8 @@ Linux users can build from source or consult with their own package managers.
 </div>
 </div>
 
-<div id="outline-container-orgb356e3c" class="outline-3">
-<h3 id="managing-prover-process"><a id="orgb356e3c"></a><span class="section-number-3">3.2</span> Managing prover process</h3>
+<div id="outline-container-org0bcd64e" class="outline-3">
+<h3 id="managing-prover-process"><a id="org0bcd64e"></a><span class="section-number-3">4.2</span> Managing prover process</h3>
 <div class="outline-text-3" id="text-managing-prover-process">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -418,8 +460,8 @@ Linux users can build from source or consult with their own package managers.
 </div>
 </div>
 
-<div id="outline-container-org34bad1c" class="outline-3">
-<h3 id="prover-queries"><a id="org34bad1c"></a><span class="section-number-3">3.3</span> Prover queries</h3>
+<div id="outline-container-org1a8e43e" class="outline-3">
+<h3 id="prover-queries"><a id="org1a8e43e"></a><span class="section-number-3">4.3</span> Prover queries</h3>
 <div class="outline-text-3" id="text-prover-queries">
 <p>
 The mnemonic for <code>a</code> is "ask".
@@ -499,8 +541,8 @@ The mnemonic for <code>a</code> is "ask".
 </div>
 </div>
 
-<div id="outline-container-org7ba1186" class="outline-3">
-<h3 id="moving-the-point"><a id="org7ba1186"></a><span class="section-number-3">3.4</span> Moving the point</h3>
+<div id="outline-container-orgb36a44c" class="outline-3">
+<h3 id="moving-the-point"><a id="orgb36a44c"></a><span class="section-number-3">4.4</span> Moving the point</h3>
 <div class="outline-text-3" id="text-moving-the-point">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -541,8 +583,8 @@ The mnemonic for <code>a</code> is "ask".
 </div>
 </div>
 
-<div id="outline-container-org3a82a64" class="outline-3">
-<h3 id="inserting"><a id="org3a82a64"></a><span class="section-number-3">3.5</span> Inserting</h3>
+<div id="outline-container-org1bdbba5" class="outline-3">
+<h3 id="inserting"><a id="org1bdbba5"></a><span class="section-number-3">4.5</span> Inserting</h3>
 <div class="outline-text-3" id="text-inserting">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -595,35 +637,10 @@ company-coq-tutorial</code>.
 </div>
 </div>
 </div>
-
-<div id="outline-container-org0f91a78" class="outline-2">
-<h2 id="faq"><a id="org0f91a78"></a><span class="section-number-2">4</span> FAQ</h2>
-<div class="outline-text-2" id="text-faq">
-</div>
-
-<div id="outline-container-orgb63777f" class="outline-3">
-<h3 id="there-are-empty-square-boxes-in-place-of-math-operators"><a id="orgb63777f"></a><span class="section-number-3">4.1</span> There are empty square boxes in place of math operators</h3>
-<div class="outline-text-3" id="text-there-are-empty-square-boxes-in-place-of-math-operators">
-<p>
-Math symbols present in your buffer (e.g. forall exists) will attempt to be
-prettified, if you are seeing empty square boxes this means an appropriate math
-symbol cannot be found in your <b>font</b>. You can either install a appropriate math
-font, or disable the feature by adding the following snippet to the your
-<code>dotspacemacs/user-config</code>.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'company-coq
-  <span class="org-rainbow-delimiters-depth-2">(</span>add-to-list 'company-coq-disabled-features 'prettify-symbols<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-01-27 Sat 16:03</p>
+<p class="date">Created: 2018-02-19 Mon 05:14</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
