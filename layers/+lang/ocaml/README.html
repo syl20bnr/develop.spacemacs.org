@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-01-27 Sat 16:04 -->
+<!-- 2018-02-19 Mon 05:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ocaml layer</title>
@@ -272,7 +272,8 @@ for the JavaScript code in this tag.
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
-<li><a href="#opam-packages">2.2. OPAM packages</a></li>
+<li><a href="#using-merlin-for-error-reporting">2.2. Using merlin for error reporting</a></li>
+<li><a href="#opam-packages">2.3. OPAM packages</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key Bindings</a>
@@ -296,34 +297,34 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgc142e34" class="outline-2">
-<h2 id="description"><a id="orgc142e34"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org5973681" class="outline-2">
+<h2 id="description"><a id="org5973681"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This is a very basic layer for editing ocaml files.
 </p>
 </div>
 
-<div id="outline-container-org1fce02f" class="outline-3">
-<h3 id="features"><a id="org1fce02f"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org7552709" class="outline-3">
+<h3 id="features"><a id="org7552709"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Syntax highlighting (major-mode) via <a href="https://github.com/ocaml/tuareg">tuareg-mode</a></li>
 <li>Error reporting, completion and type display via <a href="https://github.com/ocaml/merlin">merlin</a></li>
 <li>auto-completion with company mode via <a href="https://github.com/ocaml/merlin">merlin</a></li>
-<li>syntax-checking via <a href="https://github.com/diml/utop">flycheck-ocaml</a></li>
+<li>syntax-checking via <a href="https://github.com/flycheck/flycheck-ocaml">flycheck-ocaml</a> (or alternatively <a href="https://github.com/ocaml/merlin">merlin</a>)</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org18b633a" class="outline-2">
-<h2 id="install"><a id="org18b633a"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org8b0c54d" class="outline-2">
+<h2 id="install"><a id="org8b0c54d"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgb7089b5" class="outline-3">
-<h3 id="layer"><a id="orgb7089b5"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org70bd762" class="outline-3">
+<h3 id="layer"><a id="org70bd762"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -333,8 +334,25 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org95dfab9" class="outline-3">
-<h3 id="opam-packages"><a id="org95dfab9"></a><span class="section-number-3">2.2</span> OPAM packages</h3>
+<div id="outline-container-org9e5e4d4" class="outline-3">
+<h3 id="using-merlin-for-error-reporting"><a id="org9e5e4d4"></a><span class="section-number-3">2.2</span> Using merlin for error reporting</h3>
+<div class="outline-text-3" id="text-using-merlin-for-error-reporting">
+<p>
+By default <a href="https://github.com/flycheck/flycheck-ocaml">flycheck-ocaml</a> is used for error reporting when the
+<code>syntax-checking</code> layer is also enabled as this is common throughout spacemacs.
+You can disable this and switch back to <a href="https://github.com/ocaml/merlin">merlin</a>'s default error reporting method
+by adding <a href="https://github.com/flycheck/flycheck-ocaml">flycheck-ocaml</a> to your excluded packages list in <code>.spacemacs</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">dotspacemacs-excluded-packages '<span class="org-rainbow-delimiters-depth-1">(</span>... flycheck-ocaml ... <span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3f43971" class="outline-3">
+<h3 id="opam-packages"><a id="org3f43971"></a><span class="section-number-3">2.3</span> OPAM packages</h3>
 <div class="outline-text-3" id="text-opam-packages">
 <p>
 This layer requires some <a href="http://opam.ocaml.org">opam</a> packages:
@@ -368,8 +386,8 @@ opam config setup -a
 </div>
 </div>
 
-<div id="outline-container-org42ee06d" class="outline-2">
-<h2 id="key-bindings"><a id="org42ee06d"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-org3a227f3" class="outline-2">
+<h2 id="key-bindings"><a id="org3a227f3"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -484,8 +502,8 @@ opam config setup -a
 </table>
 </div>
 
-<div id="outline-container-orgdefd752" class="outline-3">
-<h3 id="repl-utop"><a id="orgdefd752"></a><span class="section-number-3">3.1</span> REPL (utop)</h3>
+<div id="outline-container-org006d0ac" class="outline-3">
+<h3 id="repl-utop"><a id="org006d0ac"></a><span class="section-number-3">3.1</span> REPL (utop)</h3>
 <div class="outline-text-3" id="text-repl-utop">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -552,25 +570,25 @@ opam config setup -a
 </div>
 </div>
 
-<div id="outline-container-org5a7b9c3" class="outline-2">
-<h2 id="todos"><a id="org5a7b9c3"></a><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> S</h2>
+<div id="outline-container-org4de02e3" class="outline-2">
+<h2 id="todos"><a id="org4de02e3"></a><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> S</h2>
 <div class="outline-text-2" id="text-todos">
 </div>
 
-<div id="outline-container-orgcba8b9e" class="outline-3">
-<h3 id="todo-add-more-proper-spacemacs-key-bindings-for-basic-merlin-tasks"><a id="orgcba8b9e"></a><span class="section-number-3">4.1</span> <span class="todo TODO">TODO</span> Add more proper spacemacs key-bindings for basic merlin tasks</h3>
+<div id="outline-container-org0077cf7" class="outline-3">
+<h3 id="todo-add-more-proper-spacemacs-key-bindings-for-basic-merlin-tasks"><a id="org0077cf7"></a><span class="section-number-3">4.1</span> <span class="todo TODO">TODO</span> Add more proper spacemacs key-bindings for basic merlin tasks</h3>
 <div class="outline-text-3" id="text-todo-add-more-proper-spacemacs-key-bindings-for-basic-merlin-tasks">
 </div>
 </div>
 
-<div id="outline-container-orgb95b01d" class="outline-3">
-<h3 id="todo-add-proper-keybindings-for-ocamldebug"><a id="orgb95b01d"></a><span class="section-number-3">4.2</span> <span class="todo TODO">TODO</span> Add proper keybindings for ocamldebug</h3>
+<div id="outline-container-org07f483d" class="outline-3">
+<h3 id="todo-add-proper-keybindings-for-ocamldebug"><a id="org07f483d"></a><span class="section-number-3">4.2</span> <span class="todo TODO">TODO</span> Add proper keybindings for ocamldebug</h3>
 <div class="outline-text-3" id="text-todo-add-proper-keybindings-for-ocamldebug">
 </div>
 </div>
 
-<div id="outline-container-org42df97c" class="outline-3">
-<h3 id="todo-add-more-keybindings-for-tuareg-mode"><a id="org42df97c"></a><span class="section-number-3">4.3</span> <span class="todo TODO">TODO</span> Add more keybindings for tuareg-mode</h3>
+<div id="outline-container-orgc24118f" class="outline-3">
+<h3 id="todo-add-more-keybindings-for-tuareg-mode"><a id="orgc24118f"></a><span class="section-number-3">4.3</span> <span class="todo TODO">TODO</span> Add more keybindings for tuareg-mode</h3>
 <div class="outline-text-3" id="text-todo-add-more-keybindings-for-tuareg-mode">
 </div>
 </div>
@@ -578,7 +596,7 @@ opam config setup -a
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-01-27 Sat 16:04</p>
+<p class="date">Created: 2018-02-19 Mon 05:14</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

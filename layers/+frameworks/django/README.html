@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-01-27 Sat 16:03 -->
+<!-- 2018-02-19 Mon 05:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Django layer</title>
@@ -264,16 +264,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#description">1. Description</a></li>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
 <li><a href="#install">2. Install</a></li>
 <li><a href="#key-bindings">3. Key Bindings</a>
 <ul>
-<li><a href="#fabric">3.1. Fabric</a></li>
-<li><a href="#files">3.2. Files</a></li>
-<li><a href="#interactive">3.3. Interactive</a></li>
-<li><a href="#server">3.4. Server</a></li>
-<li><a href="#southsyncdb">3.5. South/Syncdb</a></li>
-<li><a href="#test">3.6. Test</a></li>
+<li><a href="#general-managment">3.1. General Managment</a></li>
+<li><a href="#fabric">3.2. Fabric</a></li>
+<li><a href="#files">3.3. Files</a></li>
+<li><a href="#interactive">3.4. Interactive</a></li>
+<li><a href="#server">3.5. Server</a></li>
+<li><a href="#southsyncdb">3.6. South/Syncdb</a></li>
+<li><a href="#test">3.7. Test</a></li>
 </ul>
 </li>
 </ul>
@@ -285,17 +290,31 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgcda58bc" class="outline-2">
-<h2 id="description"><a id="orgcda58bc"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgf606be9" class="outline-2">
+<h2 id="description"><a id="orgf606be9"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds support for the Python <a href="https://www.djangoproject.com/">Django</a> framework via <a href="https://github.com/davidmiller/pony-mode">pony-mode</a>.
+This layer adds support for the Python web framework <a href="https://www.djangoproject.com/">Django</a> to Spacemacs.
 </p>
+</div>
+
+<div id="outline-container-org4eceec2" class="outline-3">
+<h3 id="features"><a id="org4eceec2"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
+<ul class="org-ul">
+<li>Test execution directly from emacs</li>
+<li>Starting/stopping of the Django test server</li>
+<li>Starting of an interactive Python shell in the current project for debugging</li>
+<li>Fixed commands to open various Django specific settings files</li>
+<li>Automatic deployment with <a href="http://www.fabfile.org">Fabric</a> directly from emacs</li>
+<li>Control of <a href="http://south.aeracode.org/">South</a> database migration tool</li>
+</ul>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org74b1b08" class="outline-2">
-<h2 id="install"><a id="org74b1b08"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgc879907" class="outline-2">
+<h2 id="install"><a id="orgc879907"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -305,25 +324,44 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org1977103" class="outline-2">
-<h2 id="key-bindings"><a id="org1977103"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-org183be66" class="outline-2">
+<h2 id="key-bindings"><a id="org183be66"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
-Django related key bindings uses  <a href="https://github.com/davidmiller/pony-mode">pony-mode</a> and are behind the prefix <code>SPC m j</code>.
-</p>
-
-<p>
-Configuration options for pony-mode are documented at
-<a href="http://www.deadpansincerity.com/docs/pony/configuration.html">deadpansincerity.com</a>
-</p>
-
-<p>
-Manage Django with <code>SPC m j m</code>.
+Django related key bindings uses <a href="https://github.com/davidmiller/pony-mode">pony-mode</a> and are behind the prefix <code>SPC m j</code> in <code>Python-mode</code>.
+Various configuration options for <code>pony-mode</code> are documented at <a href="http://www.deadpansincerity.com/docs/pony/configuration.html">deadpansincerity.com</a>.
 </p>
 </div>
 
-<div id="outline-container-orge147bd5" class="outline-3">
-<h3 id="fabric"><a id="orge147bd5"></a><span class="section-number-3">3.1</span> Fabric</h3>
+<div id="outline-container-org0ba2167" class="outline-3">
+<h3 id="general-managment"><a id="org0ba2167"></a><span class="section-number-3">3.1</span> General Managment</h3>
+<div class="outline-text-3" id="text-general-managment">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m j m</code></td>
+<td class="org-left">Start a <code>pony-mode</code> managment session</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgc145d6f" class="outline-3">
+<h3 id="fabric"><a id="orgc145d6f"></a><span class="section-number-3">3.2</span> Fabric</h3>
 <div class="outline-text-3" id="text-fabric">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -354,8 +392,8 @@ Manage Django with <code>SPC m j m</code>.
 </div>
 </div>
 
-<div id="outline-container-orgc096a73" class="outline-3">
-<h3 id="files"><a id="orgc096a73"></a><span class="section-number-3">3.2</span> Files</h3>
+<div id="outline-container-org10e2b86" class="outline-3">
+<h3 id="files"><a id="org10e2b86"></a><span class="section-number-3">3.3</span> Files</h3>
 <div class="outline-text-3" id="text-files">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -396,8 +434,8 @@ Manage Django with <code>SPC m j m</code>.
 </div>
 </div>
 
-<div id="outline-container-orgdf3fa83" class="outline-3">
-<h3 id="interactive"><a id="orgdf3fa83"></a><span class="section-number-3">3.3</span> Interactive</h3>
+<div id="outline-container-org93634aa" class="outline-3">
+<h3 id="interactive"><a id="org93634aa"></a><span class="section-number-3">3.4</span> Interactive</h3>
 <div class="outline-text-3" id="text-interactive">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -421,15 +459,25 @@ Manage Django with <code>SPC m j m</code>.
 
 <tr>
 <td class="org-left"><code>SPC m j i s</code></td>
-<td class="org-left">Open a Python shell with the current pony project's context loaded. If the project has the django<sub>extras</sub> package installed, then use the excellent <code>shell_plus</code> command. Otherwise, fall back to <code>manage.py shell</code></td>
+<td class="org-left">Open a Python shell with the current pony project's context loaded.</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">If the project has the django<sub>extras</sub> package installed, then use the</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">excellent <code>shell_plus</code> command. Otherwise, fall back to <code>manage.py shell</code></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-org93f452c" class="outline-3">
-<h3 id="server"><a id="org93f452c"></a><span class="section-number-3">3.4</span> Server</h3>
+<div id="outline-container-org3b5cb2c" class="outline-3">
+<h3 id="server"><a id="org3b5cb2c"></a><span class="section-number-3">3.5</span> Server</h3>
 <div class="outline-text-3" id="text-server">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -475,8 +523,8 @@ Manage Django with <code>SPC m j m</code>.
 </div>
 </div>
 
-<div id="outline-container-org966a77d" class="outline-3">
-<h3 id="southsyncdb"><a id="org966a77d"></a><span class="section-number-3">3.5</span> South/Syncdb</h3>
+<div id="outline-container-orgbcdd340" class="outline-3">
+<h3 id="southsyncdb"><a id="orgbcdd340"></a><span class="section-number-3">3.6</span> South/Syncdb</h3>
 <div class="outline-text-3" id="text-southsyncdb">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -522,8 +570,8 @@ Manage Django with <code>SPC m j m</code>.
 </div>
 </div>
 
-<div id="outline-container-org315c3f6" class="outline-3">
-<h3 id="test"><a id="org315c3f6"></a><span class="section-number-3">3.6</span> Test</h3>
+<div id="outline-container-org09188db" class="outline-3">
+<h3 id="test"><a id="org09188db"></a><span class="section-number-3">3.7</span> Test</h3>
 <div class="outline-text-3" id="text-test">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -572,7 +620,7 @@ Manage Django with <code>SPC m j m</code>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-01-27 Sat 16:03</p>
+<p class="date">Created: 2018-02-19 Mon 05:14</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
