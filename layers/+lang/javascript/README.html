@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-02-28 Wed 03:02 -->
+<!-- 2018-05-16 Wed 23:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JavaScript layer</title>
@@ -269,79 +269,78 @@ for the JavaScript code in this tag.
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a></li>
-<li><a href="#configuration">3. Configuration</a>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#choosing-a-backend">2.1. Choosing a backend</a></li>
+</ul>
+</li>
+<li><a href="#backends">3. Backends</a>
 <ul>
 <li><a href="#tern">3.1. Tern</a></li>
-<li><a href="#indentation">3.2. Indentation</a></li>
-<li><a href="#repl">3.3. REPL</a></li>
-<li><a href="#node-modules">3.4. Node Modules</a></li>
+<li><a href="#language-server-protocol">3.2. Language Server Protocol</a></li>
 </ul>
 </li>
-<li><a href="#key-bindings">4. Key Bindings</a>
+<li><a href="#configuration">4. Configuration</a>
 <ul>
-<li><a href="#js2-mode">4.1. js2-mode</a></li>
-<li><a href="#folding-js2-mode">4.2. Folding (js2-mode)</a></li>
-<li><a href="#refactoring-js2-refactor">4.3. Refactoring (js2-refactor)</a></li>
-<li><a href="#formatting-web-beautify">4.4. Formatting (web-beautify)</a>
-<ul>
-<li><a href="#documentation-js-doc">4.4.1. Documentation (js-doc)</a></li>
+<li><a href="#indentation">4.1. Indentation</a></li>
+<li><a href="#repl">4.2. REPL</a></li>
+<li><a href="#node-modules">4.3. Node Modules</a></li>
 </ul>
 </li>
-<li><a href="#auto-complete-and-documentation-tern">4.5. Auto-complete and documentation (tern)</a></li>
-<li><a href="#json">4.6. JSON</a></li>
-<li><a href="#repl-skewer-mode">4.7. REPL (skewer-mode)</a></li>
-<li><a href="#coffee-mode">4.8. coffee-mode</a></li>
+<li><a href="#key-bindings">5. Key Bindings</a>
+<ul>
+<li><a href="#js2-mode">5.1. js2-mode</a></li>
+<li><a href="#folding-js2-mode">5.2. Folding (js2-mode)</a></li>
+<li><a href="#refactoring-js2-refactor">5.3. Refactoring (js2-refactor)</a></li>
+<li><a href="#formatting-web-beautify">5.4. Formatting (web-beautify)</a>
+<ul>
+<li><a href="#documentation-js-doc">5.4.1. Documentation (js-doc)</a></li>
+</ul>
+</li>
+<li><a href="#auto-complete-and-documentation-tern">5.5. Auto-complete and documentation (tern)</a></li>
+<li><a href="#repl-skewer-mode">5.6. REPL (skewer-mode)</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-<img src="img/javascript.png" alt="javascript.png" /> <img src="img/coffee.png" alt="coffee.png" />
-</p>
 
-<div id="outline-container-orgd65900d" class="outline-2">
-<h2 id="description"><a id="orgd65900d"></a><span class="section-number-2">1</span> Description</h2>
+<div class="figure">
+<p><img src="img/javascript.png" alt="javascript.png" />
+</p>
+</div>
+
+<div id="outline-container-orgc4000cb" class="outline-2">
+<h2 id="description"><a id="orgc4000cb"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for the JavaScript language using <a href="https://github.com/mooz/js2-mode">js2-mode</a>.
 </p>
 </div>
 
-<div id="outline-container-org1904138" class="outline-3">
-<h3 id="features"><a id="org1904138"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org32c4bab" class="outline-3">
+<h3 id="features"><a id="org32c4bab"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
+<li>Multiple backends support: Tern and LSP</li>
 <li>Smart code folding</li>
 <li>Refactoring: done using <a href="https://github.com/magnars/js2-refactor.el">js2-refactor</a>.</li>
-<li>Auto-completion and documentation: provided by <a href="http://ternjs.net/">tern</a></li>
-<li>CoffeeScript support</li>
+<li>Auto-completion and documentation</li>
 <li>Formatting with <a href="https://github.com/yasuyk/web-beautify">web-beautify</a></li>
-<li>Get the path to a JSON value with <a href="https://github.com/Sterlingg/json-snatcher">json-snatcher</a></li>
 <li>REPL available via <a href="https://github.com/skeeto/skewer-mode">skewer-mode</a> and <a href="https://github.com/pandeiro/livid-mode">livid-mode</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org90cbb8d" class="outline-2">
-<h2 id="install"><a id="org90cbb8d"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org6f2ca1b" class="outline-2">
+<h2 id="install"><a id="org6f2ca1b"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>javascript</code> to the existing <code>dotspacemacs-configuration-layers</code> list in
 this file.
 </p>
-
-<p>
-You will also need to install <code>tern</code> to use the auto-completion and
-documentation features:
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">$ npm install -g tern
-</pre>
-</div>
 
 <p>
 To use the formatting features, install <code>js-beautify</code>:
@@ -370,16 +369,56 @@ If you install these in non-standard locations, then add the following to your <
 </pre>
 </div>
 </div>
+
+<div id="outline-container-orgb412497" class="outline-3">
+<h3 id="choosing-a-backend"><a id="orgb412497"></a><span class="section-number-3">2.1</span> Choosing a backend</h3>
+<div class="outline-text-3" id="text-choosing-a-backend">
+<p>
+To choose a default backend set the layer variable <code>javascript-backend</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span> javascript-backend 'tern<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 
-<div id="outline-container-orgf870130" class="outline-2">
-<h2 id="configuration"><a id="orgf870130"></a><span class="section-number-2">3</span> Configuration</h2>
-<div class="outline-text-2" id="text-configuration">
+<p>
+Backend can be chosen on a per project basis using directory local variables
+(files named <code>.dir-locals.el</code> at the root of a project), an example to use the
+<code>lsp</code> backend:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>js2-mode <span class="org-rainbow-delimiters-depth-3">(</span>javascript-backend . lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 
-<div id="outline-container-org708fa5d" class="outline-3">
-<h3 id="tern"><a id="org708fa5d"></a><span class="section-number-3">3.1</span> Tern</h3>
+<p>
+<b>Note:</b> you can easily add a directory local variable with <code>SPC f v d</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga9f39c8" class="outline-2">
+<h2 id="backends"><a id="orga9f39c8"></a><span class="section-number-2">3</span> Backends</h2>
+<div class="outline-text-2" id="text-backends">
+</div>
+
+<div id="outline-container-org4164910" class="outline-3">
+<h3 id="tern"><a id="org4164910"></a><span class="section-number-3">3.1</span> Tern</h3>
 <div class="outline-text-3" id="text-tern">
+<p>
+Install <code>tern</code> to use the auto-completion and documentation features:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">$ npm install -g tern
+</pre>
+</div>
+
 <p>
 To make tern re-use the server across multiple different editing sessions (thus
 creating multiple <code>.tern-port</code> files for each document you have open <a href="http://ternjs.net/doc/manual.html">see here
@@ -404,14 +443,35 @@ layer:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span> tern-command '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"node"</span> <span class="org-string">"/path/to/tern/bin/tern"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>javascript <span class="org-builtin">:variables</span> tern-command '<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">"node"</span> <span class="org-string">"/path/to/tern/bin/tern"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0b865ab" class="outline-3">
-<h3 id="indentation"><a id="org0b865ab"></a><span class="section-number-3">3.2</span> Indentation</h3>
+<div id="outline-container-orge76fce0" class="outline-3">
+<h3 id="language-server-protocol"><a id="orge76fce0"></a><span class="section-number-3">3.2</span> Language Server Protocol</h3>
+<div class="outline-text-3" id="text-language-server-protocol">
+<p>
+You just have to install javascript and typescript language server packages:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">npm i -g typescript javascript-typescript-langserver flow-language-server
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org637f538" class="outline-2">
+<h2 id="configuration"><a id="org637f538"></a><span class="section-number-2">4</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+</div>
+
+<div id="outline-container-orgfbc78cf" class="outline-3">
+<h3 id="indentation"><a id="orgfbc78cf"></a><span class="section-number-3">4.1</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
 To change how js2-mode indents code, set the variable <code>js2-basic-offset</code>, as
@@ -451,8 +511,8 @@ or when adding the <code>javascript</code> configuration layer:
 </div>
 </div>
 
-<div id="outline-container-orge1a10bd" class="outline-3">
-<h3 id="repl"><a id="orge1a10bd"></a><span class="section-number-3">3.3</span> REPL</h3>
+<div id="outline-container-org2dce521" class="outline-3">
+<h3 id="repl"><a id="org2dce521"></a><span class="section-number-3">4.2</span> REPL</h3>
 <div class="outline-text-3" id="text-repl">
 <p>
 To use the available JS repl, you need a running httpd server and a page loaded
@@ -464,8 +524,8 @@ in the top-right corner - if it turns green, you're good to go).
 </div>
 </div>
 
-<div id="outline-container-org5430622" class="outline-3">
-<h3 id="node-modules"><a id="org5430622"></a><span class="section-number-3">3.4</span> Node Modules</h3>
+<div id="outline-container-org102b0e9" class="outline-3">
+<h3 id="node-modules"><a id="org102b0e9"></a><span class="section-number-3">4.3</span> Node Modules</h3>
 <div class="outline-text-3" id="text-node-modules">
 <p>
 If you would like <code>node_modules/.bin</code> to be automatically added to the buffer
@@ -483,13 +543,13 @@ doing this <a href="https://stackoverflow.com/questions/9679932#comment33532258_
 </div>
 </div>
 
-<div id="outline-container-orgeed6f3a" class="outline-2">
-<h2 id="key-bindings"><a id="orgeed6f3a"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org471edb7" class="outline-2">
+<h2 id="key-bindings"><a id="org471edb7"></a><span class="section-number-2">5</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org47de7fe" class="outline-3">
-<h3 id="js2-mode"><a id="org47de7fe"></a><span class="section-number-3">4.1</span> js2-mode</h3>
+<div id="outline-container-org4badc67" class="outline-3">
+<h3 id="js2-mode"><a id="org4badc67"></a><span class="section-number-3">5.1</span> js2-mode</h3>
 <div class="outline-text-3" id="text-js2-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -520,8 +580,8 @@ doing this <a href="https://stackoverflow.com/questions/9679932#comment33532258_
 </div>
 </div>
 
-<div id="outline-container-org3259d01" class="outline-3">
-<h3 id="folding-js2-mode"><a id="org3259d01"></a><span class="section-number-3">4.2</span> Folding (js2-mode)</h3>
+<div id="outline-container-org456fde8" class="outline-3">
+<h3 id="folding-js2-mode"><a id="org456fde8"></a><span class="section-number-3">5.2</span> Folding (js2-mode)</h3>
 <div class="outline-text-3" id="text-folding-js2-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -572,8 +632,8 @@ doing this <a href="https://stackoverflow.com/questions/9679932#comment33532258_
 </div>
 </div>
 
-<div id="outline-container-orga38ac48" class="outline-3">
-<h3 id="refactoring-js2-refactor"><a id="orga38ac48"></a><span class="section-number-3">4.3</span> Refactoring (js2-refactor)</h3>
+<div id="outline-container-org14b6ba0" class="outline-3">
+<h3 id="refactoring-js2-refactor"><a id="org14b6ba0"></a><span class="section-number-3">5.3</span> Refactoring (js2-refactor)</h3>
 <div class="outline-text-3" id="text-refactoring-js2-refactor">
 <p>
 Bindings should match the plain emacs assignments.
@@ -748,8 +808,8 @@ Bindings should match the plain emacs assignments.
 </div>
 </div>
 
-<div id="outline-container-orgd2d4387" class="outline-3">
-<h3 id="formatting-web-beautify"><a id="orgd2d4387"></a><span class="section-number-3">4.4</span> Formatting (web-beautify)</h3>
+<div id="outline-container-orgc0168c1" class="outline-3">
+<h3 id="formatting-web-beautify"><a id="orgc0168c1"></a><span class="section-number-3">5.4</span> Formatting (web-beautify)</h3>
 <div class="outline-text-3" id="text-formatting-web-beautify">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -774,8 +834,8 @@ Bindings should match the plain emacs assignments.
 </table>
 </div>
 
-<div id="outline-container-org446502e" class="outline-4">
-<h4 id="documentation-js-doc"><a id="org446502e"></a><span class="section-number-4">4.4.1</span> Documentation (js-doc)</h4>
+<div id="outline-container-org25d7f8d" class="outline-4">
+<h4 id="documentation-js-doc"><a id="org25d7f8d"></a><span class="section-number-4">5.4.1</span> Documentation (js-doc)</h4>
 <div class="outline-text-4" id="text-documentation-js-doc">
 <p>
 You can check more <a href="https://github.com/mooz/js-doc/">here</a>
@@ -821,8 +881,8 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 
-<div id="outline-container-org528fc59" class="outline-3">
-<h3 id="auto-complete-and-documentation-tern"><a id="org528fc59"></a><span class="section-number-3">4.5</span> Auto-complete and documentation (tern)</h3>
+<div id="outline-container-orga5f0934" class="outline-3">
+<h3 id="auto-complete-and-documentation-tern"><a id="orga5f0934"></a><span class="section-number-3">5.5</span> Auto-complete and documentation (tern)</h3>
 <div class="outline-text-3" id="text-auto-complete-and-documentation-tern">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -873,35 +933,8 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 
-<div id="outline-container-org81d4c7a" class="outline-3">
-<h3 id="json"><a id="org81d4c7a"></a><span class="section-number-3">4.6</span> JSON</h3>
-<div class="outline-text-3" id="text-json">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m h p</code></td>
-<td class="org-left">Get the path of the value at point</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-org2b6870f" class="outline-3">
-<h3 id="repl-skewer-mode"><a id="org2b6870f"></a><span class="section-number-3">4.7</span> REPL (skewer-mode)</h3>
+<div id="outline-container-org4de8dd1" class="outline-3">
+<h3 id="repl-skewer-mode"><a id="org4de8dd1"></a><span class="section-number-3">5.6</span> REPL (skewer-mode)</h3>
 <div class="outline-text-3" id="text-repl-skewer-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -993,73 +1026,11 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </table>
 </div>
 </div>
-
-<div id="outline-container-org5a1daf7" class="outline-3">
-<h3 id="coffee-mode"><a id="org5a1daf7"></a><span class="section-number-3">4.8</span> coffee-mode</h3>
-<div class="outline-text-3" id="text-coffee-mode">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m '</code></td>
-<td class="org-left">Create or go to REPL</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c c</code></td>
-<td class="org-left">Compile buffer</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c r</code></td>
-<td class="org-left">Compile region</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s b</code></td>
-<td class="org-left">Send buffer to REPL</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s l</code></td>
-<td class="org-left">Send line to REPL</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s i</code></td>
-<td class="org-left">Create or go to REPL</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s r</code></td>
-<td class="org-left">send current region to the REPL and stay in buffer</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m T c</code></td>
-<td class="org-left">Toggle compile on save</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-02-28 Wed 03:02</p>
+<p class="date">Created: 2018-05-16 Wed 23:30</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
