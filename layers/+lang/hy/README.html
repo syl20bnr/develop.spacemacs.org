@@ -6,7 +6,7 @@
 <!-- 2018-05-20 Sun 07:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Theming layer</title>
+<title>Hy layer</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Travis CI User" />
 <style type="text/css">
@@ -259,7 +259,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Theming layer</h1>
+<h1 class="title">Hy layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -269,205 +269,224 @@ for the JavaScript code in this tag.
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a></li>
-<li><a href="#usage">3. Usage</a>
+<li><a href="#install">2. Install</a>
 <ul>
-<li><a href="#example">3.1. Example</a></li>
+<li><a href="#layer">2.1. Layer</a></li>
 </ul>
 </li>
-<li><a href="#attributes">4. Attributes</a></li>
-<li><a href="#faces">5. Faces</a></li>
-<li><a href="#headers">6. Headers</a></li>
-<li><a href="#example-1">7. Example</a></li>
+<li><a href="#key-bindings">3. Key Bindings</a>
+<ul>
+<li><a href="#debug">3.1. Debug</a></li>
+<li><a href="#repl">3.2. REPL</a></li>
+<li><a href="#tests">3.3. Tests</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4ccf7ba" class="outline-2">
-<h2 id="description"><a id="org4ccf7ba"></a><span class="section-number-2">1</span> Description</h2>
+<div class="figure">
+<p><img src="img/hy.png" alt="hy.png" />
+</p>
+</div>
+
+<div id="outline-container-org34f3cec" class="outline-2">
+<h2 id="description"><a id="org34f3cec"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer allows for a simple way of modifying themes.
+This layer adds support for the Hy language based on Python.
 </p>
 </div>
 
-<div id="outline-container-orgda2f66d" class="outline-3">
-<h3 id="features"><a id="orgda2f66d"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org815c25d" class="outline-3">
+<h3 id="features"><a id="org815c25d"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Modify themes from your <code>.spacemacs</code>.</li>
-<li>Tweak face attributes and other aspects of themes.</li>
-<li>Includes three additional layer variables for tweaking headings.</li>
+<li>syntax-highlighting</li>
+<li>Auto-completion</li>
+<li>Code Navigation</li>
+<li>Python test runners (see <a href="../python/README.html">python layer</a>)</li>
+<li>Virtual Environment using <a href="https://github.com/jorgenschaefer/pyvenv">pyvenv</a> and <a href="https://github.com/yyuu/pyenv">pyenv</a></li>
+<li>Org Babel support</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org6213973" class="outline-2">
-<h2 id="install"><a id="org6213973"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org2f28d46" class="outline-2">
+<h2 id="install"><a id="org2f28d46"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-org89de57e" class="outline-3">
+<h3 id="layer"><a id="org89de57e"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>theming</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
-file.
+add <code>hy</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </p>
-</div>
-</div>
 
-<div id="outline-container-orgeff8a7d" class="outline-2">
-<h2 id="usage"><a id="orgeff8a7d"></a><span class="section-number-2">3</span> Usage</h2>
-<div class="outline-text-2" id="text-usage">
 <p>
-To use this layer, set the value of <code>theming-modifications</code> (a good place is
-inside your <code>.spacemacs</code> in <code>dotspacemacs/user-init()</code>).
-It should be a list of the following form:
+To install <code>hy</code> globally:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>theme1 <span class="org-rainbow-delimiters-depth-3">(</span>face1 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
-         <span class="org-rainbow-delimiters-depth-3">(</span>face2 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
-         ...<span class="org-rainbow-delimiters-depth-2">)</span>
- <span class="org-rainbow-delimiters-depth-2">(</span>theme2 <span class="org-rainbow-delimiters-depth-3">(</span>face1 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
-         <span class="org-rainbow-delimiters-depth-3">(</span>face2 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
-         ...<span class="org-rainbow-delimiters-depth-2">)</span>
- ...<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-sh">pip install hy
 </pre>
 </div>
 </div>
-
-<div id="outline-container-org80794af" class="outline-3">
-<h3 id="example"><a id="org80794af"></a><span class="section-number-3">3.1</span> Example</h3>
-<div class="outline-text-3" id="text-example">
-<div class="org-src-container">
-<pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-init</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>setq theming-modifications
-        '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>monokai
-           <span class="org-comment-delimiter">;; </span><span class="org-comment">Font locking</span>
-           <span class="org-rainbow-delimiters-depth-5">(</span>font-lock-comment-face <span class="org-builtin">:slant</span> italic<span class="org-rainbow-delimiters-depth-5">)</span>
-           <span class="org-rainbow-delimiters-depth-5">(</span>web-mode-html-attr-name-face <span class="org-builtin">:inherit</span> font-lock-variable-name-face
-                                         <span class="org-builtin">:foreground</span> nil<span class="org-rainbow-delimiters-depth-5">)</span>
-           <span class="org-comment-delimiter">;; </span><span class="org-comment">Modeline</span>
-           <span class="org-rainbow-delimiters-depth-5">(</span>powerline-active1 <span class="org-builtin">:box</span> <span class="org-rainbow-delimiters-depth-6">(</span><span class="org-builtin">:color</span> <span class="org-string">"#999999"</span>
-                                    <span class="org-builtin">:line-width</span> <span class="org-highlight-numbers-number">1</span>
-                                    <span class="org-builtin">:style</span> released-button<span class="org-rainbow-delimiters-depth-6">)</span>
-                              <span class="org-builtin">:background</span> <span class="org-string">"#5a5a5a"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
 </div>
+</div>
+
+<div id="outline-container-orgb5fda66" class="outline-2">
+<h2 id="key-bindings"><a id="orgb5fda66"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+</div>
+
+<div id="outline-container-orga4323ae" class="outline-3">
+<h3 id="debug"><a id="orga4323ae"></a><span class="section-number-3">3.1</span> Debug</h3>
+<div class="outline-text-3" id="text-debug">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d d</code></td>
+<td class="org-left">insert pdb</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d t</code></td>
+<td class="org-left">insert pdb threaded</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgba3a8f0" class="outline-3">
+<h3 id="repl"><a id="orgba3a8f0"></a><span class="section-number-3">3.2</span> REPL</h3>
+<div class="outline-text-3" id="text-repl">
 <p>
-Source: <a href="https://gist.github.com/TheBB/f25a607b9bda4d5861f2#file-init-el-L274">gist</a>
+Start a Hy inferior repel process with <code>SPC m s i</code>. If <code>hy</code> is
+available in system executable search paths, <code>hy</code> will be used to
+launch the shell. You may change your system executable search path
+by activating a virtual environment.
 </p>
 
 <p>
-This will apply the given attributes to the relevant faces whenever the
-appropriate theme is loaded. To update without changing the theme, use <code>SPC SPC
-spacemacs/update-theme</code>.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org169c01c" class="outline-2">
-<h2 id="attributes"><a id="org169c01c"></a><span class="section-number-2">4</span> Attributes</h2>
-<div class="outline-text-2" id="text-attributes">
-<p>
-See <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Face-Attributes.html#Face-Attributes">face attributes</a> in the Emacs manual for more information. Some of the more
-common attributes you might want to tweak are the following:
+Send code to hy REPL commands:
 </p>
 
-<dl class="org-dl">
-<dt><code>:inherit</code></dt><dd>the name of a face to inherit attributes from</dd>
-<dt><code>:foreground</code> and <code>:background</code></dt><dd>Hexadecimal color strings</dd>
-<dt><code>:height</code></dt><dd>typically a floating point number (1.0 gives the same height as
-the underlying face)</dd>
-<dt><code>:weight</code></dt><dd>typically <code>bold</code> or <code>normal</code></dd>
-<dt><code>:underline</code></dt><dd>typically <code>nil</code> or <code>t</code></dd>
-<dt><code>:slant</code></dt><dd>typically <code>oblique</code>, <code>italic</code> or <code>normal</code></dd>
-<dt><code>:box</code></dt><dd>set to <code>t</code> to draw a box around characters in the foreground</dd>
-</dl>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m s b</code></td>
+<td class="org-left">send buffer to the REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s B</code></td>
+<td class="org-left">send buffer to the REPL and switch to it</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s c</code></td>
+<td class="org-left">send form containing current point to the REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s C</code></td>
+<td class="org-left">send form containing current point to the REPL and switch to it</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s i</code></td>
+<td class="org-left">start and/or switch to REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s r</code></td>
+<td class="org-left">send current region to the REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s R</code></td>
+<td class="org-left">send current region to the REPL and switch to it</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s s</code></td>
+<td class="org-left">start and/or swithc to REPL</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
-<div id="outline-container-org0399b82" class="outline-2">
-<h2 id="faces"><a id="org0399b82"></a><span class="section-number-2">5</span> Faces</h2>
-<div class="outline-text-2" id="text-faces">
-<p>
-To see a list over all loaded faces and what they look like, use <code>SPC SPC
-list-faces-display</code>. You can also use <code>SPC h d c</code> (describe character) on a
-character to see its face.
-</p>
+<div id="outline-container-org16658d0" class="outline-3">
+<h3 id="tests"><a id="org16658d0"></a><span class="section-number-3">3.3</span> Tests</h3>
+<div class="outline-text-3" id="text-tests">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
-<p>
-Some of the most common faces to modify are the syntactical elements:
-</p>
-<ul class="org-ul">
-<li><code>font-lock-builtin-face</code></li>
-<li><code>font-lock-comment-delimiter-face</code></li>
-<li><code>font-lock-comment-face</code></li>
-<li><code>font-lock-constant-face</code></li>
-<li><code>font-lock-doc-face</code></li>
-<li><code>font-lock-function-name-face</code></li>
-<li><code>font-lock-keyword-face</code></li>
-<li><code>font-lock-preprocessor-face</code></li>
-<li><code>font-lock-string-face</code></li>
-<li><code>font-lock-type-face</code></li>
-<li><code>font-lock-variable-name-face</code></li>
-<li><code>font-lock-warning-face</code></li>
-</ul>
 
-<p>
-As well as the mode-line faces for the active and inactive windows:
-</p>
-<ul class="org-ul">
-<li><code>powerline-active1</code></li>
-<li><code>powerline-active2</code></li>
-<li><code>powerline-inactive1</code></li>
-<li><code>powerline-inactive2</code></li>
-<li><code>mode-line</code></li>
-<li><code>mode-line-inactive</code></li>
-</ul>
-</div>
-</div>
+<colgroup>
+<col  class="org-left" />
 
-<div id="outline-container-org4faf0f4" class="outline-2">
-<h2 id="headers"><a id="org4faf0f4"></a><span class="section-number-2">6</span> Headers</h2>
-<div class="outline-text-2" id="text-headers">
-<p>
-This layer includes three additional layer variables for tweaking headings.
-Allowed values are a list of themes in which the given effect should happen, or
-the symbol <code>all</code> to apply it on all themes.
-</p>
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m t a</code></td>
+<td class="org-left">launch all tests of the project</td>
+</tr>
 
-<dl class="org-dl">
-<dt><code>theming-headings-inherit-from-default</code></dt><dd>inherits all headings from the
-default face to avoid non-monospaced fonts</dd>
-<dt><code>theming-headings-same-size</code></dt><dd>sets the <code>:height</code> attribute to one on all
-headings to give them the same size as the rest of the text</dd>
-<dt><code>theming-headings-bold</code></dt><dd>sets the <code>:weight</code> attribute to bold on all
-headings</dd>
-</dl>
-</div>
-</div>
+<tr>
+<td class="org-left"><code>SPC m t A</code></td>
+<td class="org-left">launch all tests of the project in debug mode</td>
+</tr>
 
-<div id="outline-container-org323efe5" class="outline-2">
-<h2 id="example-1"><a id="org323efe5"></a><span class="section-number-2">7</span> Example</h2>
-<div class="outline-text-2" id="text-example-1">
-<p>
-An example of how to set the default font colour to be black in a custom theme leuven:
-</p>
+<tr>
+<td class="org-left"><code>SPC m t m</code></td>
+<td class="org-left">launch all tests of the current module</td>
+</tr>
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-init</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-
-  <span class="org-comment-delimiter">; </span><span class="org-comment">custom theme modification - overriding default font colour</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq-default</span>
-    theming-modifications
-      '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>leuven
-          <span class="org-rainbow-delimiters-depth-5">(</span>default <span class="org-builtin">:foreground</span> <span class="org-string">"#000000"</span><span class="org-rainbow-delimiters-depth-5">)</span>
-       <span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-  <span class="org-rainbow-delimiters-depth-2">)</span>
-
-<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<tr>
+<td class="org-left"><code>SPC m t M</code></td>
+<td class="org-left">launch all tests of the current module in debug mode</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
