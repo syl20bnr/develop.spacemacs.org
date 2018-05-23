@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-05-22 Tue 10:12 -->
+<!-- 2018-05-23 Wed 03:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Configuration layers</title>
@@ -315,8 +315,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orge4d9a24" class="outline-2">
-<h2 id="introduction"><a id="orge4d9a24"></a><span class="section-number-2">1</span> Introduction</h2>
+<div id="outline-container-org4cb62a8" class="outline-2">
+<h2 id="introduction"><a id="org4cb62a8"></a><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-introduction">
 <p>
 This document is intended as a tutorial for users who are interested in writing
@@ -327,8 +327,8 @@ how Spacemacs (and Emacs) loads packages.
 </div>
 </div>
 
-<div id="outline-container-org9689ba2" class="outline-2">
-<h2 id="nomenclature"><a id="org9689ba2"></a><span class="section-number-2">2</span> Nomenclature</h2>
+<div id="outline-container-org1d09591" class="outline-2">
+<h2 id="nomenclature"><a id="org1d09591"></a><span class="section-number-2">2</span> Nomenclature</h2>
 <div class="outline-text-2" id="text-nomenclature">
 <p>
 Layers and packages. What gives?
@@ -356,8 +356,8 @@ write a package first, and then a layer that uses your package.
 </div>
 </div>
 
-<div id="outline-container-org15bce03" class="outline-2">
-<h2 id="the-emacs-loading-process"><a id="org15bce03"></a><span class="section-number-2">3</span> The Emacs loading process</h2>
+<div id="outline-container-org4a1c660" class="outline-2">
+<h2 id="the-emacs-loading-process"><a id="org4a1c660"></a><span class="section-number-2">3</span> The Emacs loading process</h2>
 <div class="outline-text-2" id="text-the-emacs-loading-process">
 <p>
 To understand how to best implement a layer, we have to investigate how Emacs
@@ -365,8 +365,8 @@ loads code.
 </p>
 </div>
 
-<div id="outline-container-orgc09c13a" class="outline-3">
-<h3 id="emacs-lisp-files"><a id="orgc09c13a"></a><span class="section-number-3">3.1</span> Emacs Lisp files</h3>
+<div id="outline-container-orgcb8c707" class="outline-3">
+<h3 id="emacs-lisp-files"><a id="orgcb8c707"></a><span class="section-number-3">3.1</span> Emacs Lisp files</h3>
 <div class="outline-text-3" id="text-emacs-lisp-files">
 <p>
 Emacs Lisp files contains code that can be evaluated. When evaluated, the
@@ -386,8 +386,8 @@ How is this done in Emacs, and how is it done in Spacemacs?
 </p>
 </div>
 
-<div id="outline-container-orgcbae773" class="outline-4">
-<h4 id="loading-a-file"><a id="orgcbae773"></a><span class="section-number-4">3.1.1</span> Loading a file</h4>
+<div id="outline-container-orgcdd97ff" class="outline-4">
+<h4 id="loading-a-file"><a id="orgcdd97ff"></a><span class="section-number-4">3.1.1</span> Loading a file</h4>
 <div class="outline-text-4" id="text-loading-a-file">
 <p>
 The simplest way to load a file is to call <code>load-file</code>.
@@ -407,8 +407,8 @@ byte-compiled <code>.elc</code> file. It will simply load exactly what you tell 
 </div>
 </div>
 
-<div id="outline-container-orgf6efeec" class="outline-3">
-<h3 id="features"><a id="orgf6efeec"></a><span class="section-number-3">3.2</span> Features</h3>
+<div id="outline-container-orgb3e1f29" class="outline-3">
+<h3 id="features"><a id="orgb3e1f29"></a><span class="section-number-3">3.2</span> Features</h3>
 <div class="outline-text-3" id="text-features">
 <p>
 A better way to load what you need is to use <i>features</i>. A feature is a symbol
@@ -456,8 +456,8 @@ loaded before their code runs.
 </p>
 </div>
 
-<div id="outline-container-org79cab89" class="outline-4">
-<h4 id="the-load-path"><a id="org79cab89"></a><span class="section-number-4">3.2.1</span> The load path</h4>
+<div id="outline-container-org269f70c" class="outline-4">
+<h4 id="the-load-path"><a id="org269f70c"></a><span class="section-number-4">3.2.1</span> The load path</h4>
 <div class="outline-text-4" id="text-the-load-path">
 <p>
 When loaded using <code>require</code>, Emacs looks for files in its <i>load path</i>. This is
@@ -474,8 +474,8 @@ simply push to this list, e.g.
 </div>
 </div>
 
-<div id="outline-container-org0425196" class="outline-3">
-<h3 id="auto-loading"><a id="org0425196"></a><span class="section-number-3">3.3</span> Auto-loading</h3>
+<div id="outline-container-org0915257" class="outline-3">
+<h3 id="auto-loading"><a id="org0915257"></a><span class="section-number-3">3.3</span> Auto-loading</h3>
 <div class="outline-text-3" id="text-auto-loading">
 <p>
 Calling <code>require</code> is nothing more than a glorified way of calling <code>load-file</code>.
@@ -569,8 +569,8 @@ loaded when needed instead of right away.
 </div>
 </div>
 
-<div id="outline-container-orgd8fb7e7" class="outline-3">
-<h3 id="eval-after-load"><a id="orgd8fb7e7"></a><span class="section-number-3">3.4</span> Eval after load</h3>
+<div id="outline-container-orgf8db51e" class="outline-3">
+<h3 id="eval-after-load"><a id="orgf8db51e"></a><span class="section-number-3">3.4</span> Eval after load</h3>
 <div class="outline-text-3" id="text-eval-after-load">
 <p>
 Often, we will want to configure packages after loading them. We may want to set
@@ -603,8 +603,8 @@ not have to be quoted.
 </div>
 </div>
 
-<div id="outline-container-orgf22636b" class="outline-3">
-<h3 id="use-package"><a id="orgf22636b"></a><span class="section-number-3">3.5</span> Use-package</h3>
+<div id="outline-container-org3a5ca14" class="outline-3">
+<h3 id="use-package"><a id="org3a5ca14"></a><span class="section-number-3">3.5</span> Use-package</h3>
 <div class="outline-text-3" id="text-use-package">
 <p>
 For <i>end users</i> who are trying to put together an efficient Emacs configuration,
@@ -690,8 +690,8 @@ more.
 </div>
 </div>
 
-<div id="outline-container-orgd62b8d0" class="outline-2">
-<h2 id="anatomy-of-a-layer"><a id="orgd62b8d0"></a><span class="section-number-2">4</span> Anatomy of a layer</h2>
+<div id="outline-container-org46d8692" class="outline-2">
+<h2 id="anatomy-of-a-layer"><a id="org46d8692"></a><span class="section-number-2">4</span> Anatomy of a layer</h2>
 <div class="outline-text-2" id="text-anatomy-of-a-layer">
 <p>
 A layer is simply a folder somewhere in Spacemacs' layer search path that
@@ -714,8 +714,8 @@ path for you.
 </p>
 </div>
 
-<div id="outline-container-org3b1e645" class="outline-3">
-<h3 id="layersel"><a id="org3b1e645"></a><span class="section-number-3">4.1</span> layers.el</h3>
+<div id="outline-container-org53883e5" class="outline-3">
+<h3 id="layersel"><a id="org53883e5"></a><span class="section-number-3">4.1</span> layers.el</h3>
 <div class="outline-text-3" id="text-layersel">
 <p>
 This file is the first file to be loaded and this is the place where additional
@@ -739,8 +739,8 @@ was added to <code>dotspacemacs-configuration-layers</code> variables.
 </div>
 </div>
 
-<div id="outline-container-orgd874796" class="outline-3">
-<h3 id="packagesel"><a id="orgd874796"></a><span class="section-number-3">4.2</span> packages.el</h3>
+<div id="outline-container-org54ce906" class="outline-3">
+<h3 id="packagesel"><a id="org54ce906"></a><span class="section-number-3">4.2</span> packages.el</h3>
 <div class="outline-text-3" id="text-packagesel">
 <p>
 It contains this list of packages of the layer and the actual configuration for
@@ -831,8 +831,8 @@ discuss later.
 </div>
 </div>
 
-<div id="outline-container-orge7ed035" class="outline-3">
-<h3 id="funcsel"><a id="orge7ed035"></a><span class="section-number-3">4.3</span> funcs.el</h3>
+<div id="outline-container-org2dd4ddb" class="outline-3">
+<h3 id="funcsel"><a id="org2dd4ddb"></a><span class="section-number-3">4.3</span> funcs.el</h3>
 <div class="outline-text-3" id="text-funcsel">
 <p>
 It contains all the defined functions used in the layer.
@@ -861,8 +861,8 @@ is not used.
 </div>
 </div>
 
-<div id="outline-container-orgd9b220e" class="outline-3">
-<h3 id="configel"><a id="orgd9b220e"></a><span class="section-number-3">4.4</span> config.el</h3>
+<div id="outline-container-org1f6e682" class="outline-3">
+<h3 id="configel"><a id="org1f6e682"></a><span class="section-number-3">4.4</span> config.el</h3>
 <div class="outline-text-3" id="text-configel">
 <p>
 This file configures the layer by declaring layer variables' default values and
@@ -875,8 +875,8 @@ This file is loaded after <code>funcs.el</code>.
 </div>
 </div>
 
-<div id="outline-container-orgc9fe83d" class="outline-3">
-<h3 id="keybindingsel"><a id="orgc9fe83d"></a><span class="section-number-3">4.5</span> keybindings.el</h3>
+<div id="outline-container-orgf0321a4" class="outline-3">
+<h3 id="keybindingsel"><a id="orgf0321a4"></a><span class="section-number-3">4.5</span> keybindings.el</h3>
 <div class="outline-text-3" id="text-keybindingsel">
 <p>
 It contains general key bindings.
@@ -901,8 +901,8 @@ More on this in the next section.
 </div>
 </div>
 
-<div id="outline-container-org6dba24a" class="outline-2">
-<h2 id="the-spacemacs-loading-process"><a id="org6dba24a"></a><span class="section-number-2">5</span> The Spacemacs loading process</h2>
+<div id="outline-container-org33e008b" class="outline-2">
+<h2 id="the-spacemacs-loading-process"><a id="org33e008b"></a><span class="section-number-2">5</span> The Spacemacs loading process</h2>
 <div class="outline-text-2" id="text-the-spacemacs-loading-process">
 <p>
 The Spacemacs loading process can be summarized as follows:
@@ -956,8 +956,8 @@ ownership of a package that was owned by a previously enabled layer.
 </div>
 </div>
 
-<div id="outline-container-org121f271" class="outline-2">
-<h2 id="case-study-auto-completion"><a id="org121f271"></a><span class="section-number-2">6</span> Case study: auto-completion</h2>
+<div id="outline-container-org9b59a93" class="outline-2">
+<h2 id="case-study-auto-completion"><a id="org9b59a93"></a><span class="section-number-2">6</span> Case study: auto-completion</h2>
 <div class="outline-text-2" id="text-case-study-auto-completion">
 <p>
 Spacemacs provides a layer called <code>auto-completion</code> which provides
@@ -1008,13 +1008,13 @@ which is not what we want.
 </div>
 </div>
 
-<div id="outline-container-org4280b00" class="outline-2">
-<h2 id="layer-tips-and-tricks"><a id="org4280b00"></a><span class="section-number-2">7</span> Layer tips and tricks</h2>
+<div id="outline-container-org7f8ad5a" class="outline-2">
+<h2 id="layer-tips-and-tricks"><a id="org7f8ad5a"></a><span class="section-number-2">7</span> Layer tips and tricks</h2>
 <div class="outline-text-2" id="text-layer-tips-and-tricks">
 </div>
 
-<div id="outline-container-orgd0c2e4a" class="outline-3">
-<h3 id="cross-dependencies"><a id="orgd0c2e4a"></a><span class="section-number-3">7.1</span> Cross-dependencies</h3>
+<div id="outline-container-org389de1b" class="outline-3">
+<h3 id="cross-dependencies"><a id="org389de1b"></a><span class="section-number-3">7.1</span> Cross-dependencies</h3>
 <div class="outline-text-3" id="text-cross-dependencies">
 <p>
 Spacemacs provides a couple of additional useful functions you can use to check
@@ -1040,8 +1040,8 @@ Calls to these functions must go in the <code>layers.el</code> file.
 </div>
 </div>
 
-<div id="outline-container-org8e4b22f" class="outline-3">
-<h3 id="shadowing"><a id="org8e4b22f"></a><span class="section-number-3">7.2</span> Shadowing</h3>
+<div id="outline-container-org074fb35" class="outline-3">
+<h3 id="shadowing"><a id="org074fb35"></a><span class="section-number-3">7.2</span> Shadowing</h3>
 <div class="outline-text-3" id="text-shadowing">
 <p>
 Shadowing is the operation of replacing a used layer by another one. For
@@ -1108,8 +1108,8 @@ We will prefer the first form as it is more intuitive.
 </div>
 </div>
 
-<div id="outline-container-org007e040" class="outline-3">
-<h3 id="use-package-init-and-config"><a id="org007e040"></a><span class="section-number-3">7.3</span> Use-package init and config</h3>
+<div id="outline-container-org6d9cbdd" class="outline-3">
+<h3 id="use-package-init-and-config"><a id="org6d9cbdd"></a><span class="section-number-3">7.3</span> Use-package init and config</h3>
 <div class="outline-text-3" id="text-use-package-init-and-config">
 <p>
 In the vast majority of cases, a package <code>init</code> function should do nothing but
@@ -1140,8 +1140,8 @@ have both!
 </div>
 </div>
 
-<div id="outline-container-org1ad1946" class="outline-3">
-<h3 id="use-package-hooks"><a id="org1ad1946"></a><span class="section-number-3">7.4</span> Use-package hooks</h3>
+<div id="outline-container-orge439f90" class="outline-3">
+<h3 id="use-package-hooks"><a id="orge439f90"></a><span class="section-number-3">7.4</span> Use-package hooks</h3>
 <div class="outline-text-3" id="text-use-package-hooks">
 <p>
 Spacemacs includes a macro for adding more code to the <code>:init</code> or <code>:config</code>
@@ -1175,8 +1175,8 @@ in the <code>init-&lt;package&gt;</code> function, calls to <code>spacemacs|use-
 </div>
 </div>
 
-<div id="outline-container-orgd672e41" class="outline-3">
-<h3 id="best-practices"><a id="orgd672e41"></a><span class="section-number-3">7.5</span> Best practices</h3>
+<div id="outline-container-org5b6aa54" class="outline-3">
+<h3 id="best-practices"><a id="org5b6aa54"></a><span class="section-number-3">7.5</span> Best practices</h3>
 <div class="outline-text-3" id="text-best-practices">
 <p>
 If you break any of these rules, you should know what you are doing and have a
@@ -1184,8 +1184,8 @@ good reason for doing it.
 </p>
 </div>
 
-<div id="outline-container-orgae6f3fb" class="outline-4">
-<h4 id="package-ownership"><a id="orgae6f3fb"></a><span class="section-number-4">7.5.1</span> Package ownership</h4>
+<div id="outline-container-org52757b4" class="outline-4">
+<h4 id="package-ownership"><a id="org52757b4"></a><span class="section-number-4">7.5.1</span> Package ownership</h4>
 <div class="outline-text-4" id="text-package-ownership">
 <p>
 Each package should be owned by one layer only. The layer that owns the
@@ -1195,8 +1195,8 @@ package should define its <code>init</code> function. Other layers should rely o
 </div>
 </div>
 
-<div id="outline-container-org06fd0b0" class="outline-4">
-<h4 id="localize-your-configuration"><a id="org06fd0b0"></a><span class="section-number-4">7.5.2</span> Localize your configuration</h4>
+<div id="outline-container-org67f06f1" class="outline-4">
+<h4 id="localize-your-configuration"><a id="org67f06f1"></a><span class="section-number-4">7.5.2</span> Localize your configuration</h4>
 <div class="outline-text-4" id="text-localize-your-configuration">
 <p>
 <b>Each function can only assume the existence of one package.</b> With some
@@ -1216,8 +1216,8 @@ intention to prevent this at all costs.
 </div>
 </div>
 
-<div id="outline-container-org4582a16" class="outline-4">
-<h4 id="load-ordering"><a id="org4582a16"></a><span class="section-number-4">7.5.3</span> Load ordering</h4>
+<div id="outline-container-orgfe6f4e4" class="outline-4">
+<h4 id="load-ordering"><a id="orgfe6f4e4"></a><span class="section-number-4">7.5.3</span> Load ordering</h4>
 <div class="outline-text-4" id="text-load-ordering">
 <p>
 In Spacemacs, layers are loaded in order of inclusion in the dotfile, and
@@ -1235,8 +1235,8 @@ Preferably, write your layer so that it is independent of load ordering. The
 </div>
 </div>
 
-<div id="outline-container-org0e6fa7c" class="outline-4">
-<h4 id="no-require"><a id="org0e6fa7c"></a><span class="section-number-4">7.5.4</span> No require</h4>
+<div id="outline-container-org34147b8" class="outline-4">
+<h4 id="no-require"><a id="org34147b8"></a><span class="section-number-4">7.5.4</span> No require</h4>
 <div class="outline-text-4" id="text-no-require">
 <p>
 Do not use require. If you find yourself using <code>require</code>, you are almost
@@ -1250,8 +1250,8 @@ missing appropriate auto-loads.
 </div>
 </div>
 
-<div id="outline-container-orgcc0b68d" class="outline-4">
-<h4 id="auto-load-everything"><a id="orgcc0b68d"></a><span class="section-number-4">7.5.5</span> Auto-load everything</h4>
+<div id="outline-container-org6316052" class="outline-4">
+<h4 id="auto-load-everything"><a id="org6316052"></a><span class="section-number-4">7.5.5</span> Auto-load everything</h4>
 <div class="outline-text-4" id="text-auto-load-everything">
 <p>
 Defer everything. You should have a very good reason not to defer the loading
@@ -1264,7 +1264,7 @@ of a package.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-05-22 Tue 10:12</p>
+<p class="date">Created: 2018-05-23 Wed 03:03</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
