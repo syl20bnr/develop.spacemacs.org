@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-06-04 Mon 06:23 -->
+<!-- 2018-07-20 Fri 15:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ranger layer</title>
@@ -281,8 +281,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org5d7aec1" class="outline-2">
-<h2 id="description"><a id="org5d7aec1"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org4d73148" class="outline-2">
+<h2 id="description"><a id="org4d73148"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer brings Ranger features to spacemacs from the <code>ranger</code> package.
@@ -297,6 +297,7 @@ file.
 <p>
 To default with preview enabled when entering ranger:
 </p>
+
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
               '<span class="org-rainbow-delimiters-depth-2">(</span>ranger <span class="org-builtin">:variables</span>
@@ -305,8 +306,8 @@ To default with preview enabled when entering ranger:
 </div>
 </div>
 
-<div id="outline-container-orgde28751" class="outline-3">
-<h3 id="features"><a id="orgde28751"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org5dcfbe6" class="outline-3">
+<h3 id="features"><a id="org5dcfbe6"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>use ranger to display dired with ranger like preview and stacked parent windows.</li>
@@ -315,8 +316,8 @@ To default with preview enabled when entering ranger:
 </div>
 </div>
 
-<div id="outline-container-orgdac99fb" class="outline-2">
-<h2 id="configuration"><a id="orgdac99fb"></a><span class="section-number-2">2</span> Configuration</h2>
+<div id="outline-container-orgbb298c6" class="outline-2">
+<h2 id="configuration"><a id="orgbb298c6"></a><span class="section-number-2">2</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 Most parameters can be toggled on and off and stay within the current emacs
@@ -324,12 +325,13 @@ session. Any settings that are desired on startup should be set below.
 </p>
 </div>
 
-<div id="outline-container-orge4cc50c" class="outline-3">
-<h3 id="customizing"><a id="orge4cc50c"></a><span class="section-number-3">2.1</span> Customizing</h3>
+<div id="outline-container-org5358115" class="outline-3">
+<h3 id="customizing"><a id="org5358115"></a><span class="section-number-3">2.1</span> Customizing</h3>
 <div class="outline-text-3" id="text-customizing">
 <p>
 You toggle the use of <code>-</code> to enter ranger with `ranger-enter-with-minus`.
 </p>
+
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-enter-with-minus t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -339,6 +341,7 @@ You toggle the use of <code>-</code> to enter ranger with `ranger-enter-with-min
 When disabling the mode you can choose to kill the buffers that were opened
 while browsing the directories.
 </p>
+
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-cleanup-on-disable t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -348,6 +351,7 @@ while browsing the directories.
 Or you can choose to kill the buffer just after you move to another entry in the
 dired buffer.
 </p>
+
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-cleanup-eagerly t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -356,6 +360,7 @@ dired buffer.
 <p>
 You can choose to show dotfiles at ranger startup, toggled by <code>zh</code>
 </p>
+
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-show-hidden t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -365,6 +370,7 @@ You can choose to show dotfiles at ranger startup, toggled by <code>zh</code>
 Define custom function used to output header of primary ranger window. Must
 return a string that is placed in the header-line.
 </p>
+
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-header-func 'ranger-header-line<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -374,6 +380,7 @@ return a string that is placed in the header-line.
 Define custom function used to output header of parent and preview windows. Must
 return a string that is placed in the header-line.
 </p>
+
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-parent-header-func 'ranger-parent-header-line<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -381,12 +388,13 @@ return a string that is placed in the header-line.
 </div>
 </div>
 
-<div id="outline-container-org6e2ee6d" class="outline-3">
-<h3 id="parent-options"><a id="org6e2ee6d"></a><span class="section-number-3">2.2</span> Parent options</h3>
+<div id="outline-container-org3e2e775" class="outline-3">
+<h3 id="parent-options"><a id="org3e2e775"></a><span class="section-number-3">2.2</span> Parent options</h3>
 <div class="outline-text-3" id="text-parent-options">
 <p>
 You can set the number of folders to nest to the left, adjusted by <code>z-</code> and <code>z+</code>
 </p>
+
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-parent-depth <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -395,6 +403,7 @@ You can set the number of folders to nest to the left, adjusted by <code>z-</cod
 <p>
 You can set the size of the parent windows as a fraction of the frame size
 </p>
+
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-width-parents <span class="org-highlight-numbers-number">0.12</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -404,6 +413,7 @@ You can set the size of the parent windows as a fraction of the frame size
 When increasing number of nested parent folders, set max width as fraction of
 frame size to prevent filling up entire frame with parents.
 </p>
+
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-max-parent-width <span class="org-highlight-numbers-number">0.12</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -411,12 +421,13 @@ frame size to prevent filling up entire frame with parents.
 </div>
 </div>
 
-<div id="outline-container-orga7f5301" class="outline-3">
-<h3 id="preview-options"><a id="orga7f5301"></a><span class="section-number-3">2.3</span> Preview options</h3>
+<div id="outline-container-org90a712a" class="outline-3">
+<h3 id="preview-options"><a id="org90a712a"></a><span class="section-number-3">2.3</span> Preview options</h3>
 <div class="outline-text-3" id="text-preview-options">
 <p>
 You can choose to show previews literally, or through find-file, toggled by <code>zi</code>
 </p>
+
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-show-literal t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -425,6 +436,7 @@ You can choose to show previews literally, or through find-file, toggled by <cod
 <p>
 You can set the size of the preview windows as a fraction of the frame size
 </p>
+
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-width-preview <span class="org-highlight-numbers-number">0.55</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -435,6 +447,7 @@ You probably don't want to open certain files like videos when using preview. To
 ignore certain files when moving over them you can customize the following to
 your liking:
 </p>
+
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-ignored-extensions '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"mkv"</span> <span class="org-string">"iso"</span> <span class="org-string">"mp4"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -443,6 +456,7 @@ your liking:
 <p>
 To set the max files size (in MB), set the following parameter:
 </p>
+
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-max-preview-size <span class="org-highlight-numbers-number">10</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -451,8 +465,8 @@ To set the max files size (in MB), set the following parameter:
 </div>
 </div>
 
-<div id="outline-container-org3c2887c" class="outline-2">
-<h2 id="key-bindings"><a id="org3c2887c"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-orgfcbcb35" class="outline-2">
+<h2 id="key-bindings"><a id="orgfcbcb35"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -625,7 +639,7 @@ To set the max files size (in MB), set the following parameter:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-06-04 Mon 06:23</p>
+<p class="date">Created: 2018-07-20 Fri 15:09</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

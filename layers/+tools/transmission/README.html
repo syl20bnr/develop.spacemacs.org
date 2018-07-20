@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-06-04 Mon 06:23 -->
+<!-- 2018-07-20 Fri 15:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Transmission layer</title>
@@ -293,16 +293,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org2eba0ec" class="outline-2">
-<h2 id="description"><a id="org2eba0ec"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org9788403" class="outline-2">
+<h2 id="description"><a id="org9788403"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer integrates a BitTorrent client into Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-org6a32a2f" class="outline-3">
-<h3 id="features"><a id="org6a32a2f"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orgd912881" class="outline-3">
+<h3 id="features"><a id="orgd912881"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Integration of <a href="https://transmissionbt.com/">Transmission</a> into emacs.</li>
@@ -311,18 +311,20 @@ This layer integrates a BitTorrent client into Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-org1bf045e" class="outline-2">
-<h2 id="install"><a id="org1bf045e"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org22eda25" class="outline-2">
+<h2 id="install"><a id="org22eda25"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 install and configure <code>transmission-daemon</code>. Debian example:
 </p>
+
 <div class="org-src-container">
 <pre class="src src-sh">sudo apt-get -y install transmission-daemon
 sudo service transmission-daemon stop
 </pre>
 </div>
+
 <p>
 Set <code>rpc-authentication-required</code> to false (or 0 if it is numeric)
 in /etc/transmission-daemon/settings.json or
@@ -330,6 +332,7 @@ configure authorization.
 See transmission.el <a href="https://github.com/holomorph/transmission">README.org</a> for details.
 Start the daemon:
 </p>
+
 <div class="org-src-container">
 <pre class="src src-sh">sudo service transmission-daemon start
 </pre>
@@ -337,18 +340,19 @@ Start the daemon:
 </div>
 </div>
 
-<div id="outline-container-org94e4698" class="outline-2">
-<h2 id="faq"><a id="org94e4698"></a><span class="section-number-2">3</span> FAQ</h2>
+<div id="outline-container-org93eedbe" class="outline-2">
+<h2 id="faq"><a id="org93eedbe"></a><span class="section-number-2">3</span> FAQ</h2>
 <div class="outline-text-2" id="text-faq">
 </div>
 
-<div id="outline-container-org04fc4ca" class="outline-3">
-<h3 id="how-to-enable-status-auto-refresh"><a id="org04fc4ca"></a><span class="section-number-3">3.1</span> How to enable status auto refresh?</h3>
+<div id="outline-container-orgd64d318" class="outline-3">
+<h3 id="how-to-enable-status-auto-refresh"><a id="orgd64d318"></a><span class="section-number-3">3.1</span> How to enable status auto refresh?</h3>
 <div class="outline-text-3" id="text-how-to-enable-status-auto-refresh">
 <p>
 Add  <code>(transmission :variables transmission-auto-refresh-all t)</code> to
 <code>dotspacemacs-configuration-layers</code> or pick modes manually:
 </p>
+
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> transmission-refresh-modes '<span class="org-rainbow-delimiters-depth-2">(</span>transmission-mode
                                    transmission-files-mode
@@ -360,13 +364,13 @@ Add  <code>(transmission :variables transmission-auto-refresh-all t)</code> to
 </div>
 </div>
 
-<div id="outline-container-org061e744" class="outline-2">
-<h2 id="key-bindings"><a id="org061e744"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org17fd7ad" class="outline-2">
+<h2 id="key-bindings"><a id="org17fd7ad"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org72d5945" class="outline-3">
-<h3 id="global"><a id="org72d5945"></a><span class="section-number-3">4.1</span> Global</h3>
+<div id="outline-container-org34aec21" class="outline-3">
+<h3 id="global"><a id="org34aec21"></a><span class="section-number-3">4.1</span> Global</h3>
 <div class="outline-text-3" id="text-global">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -392,8 +396,8 @@ Add  <code>(transmission :variables transmission-auto-refresh-all t)</code> to
 </div>
 </div>
 
-<div id="outline-container-org73197d0" class="outline-3">
-<h3 id="transmission-mode"><a id="org73197d0"></a><span class="section-number-3">4.2</span> <code>transmission-mode</code></h3>
+<div id="outline-container-org13a2404" class="outline-3">
+<h3 id="transmission-mode"><a id="org13a2404"></a><span class="section-number-3">4.2</span> <code>transmission-mode</code></h3>
 <div class="outline-text-3" id="text-transmission-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -484,8 +488,8 @@ Add  <code>(transmission :variables transmission-auto-refresh-all t)</code> to
 </div>
 </div>
 
-<div id="outline-container-org5703124" class="outline-3">
-<h3 id="transmission-info-mode"><a id="org5703124"></a><span class="section-number-3">4.3</span> <code>transmission-info-mode</code></h3>
+<div id="outline-container-org95ce19e" class="outline-3">
+<h3 id="transmission-info-mode"><a id="org95ce19e"></a><span class="section-number-3">4.3</span> <code>transmission-info-mode</code></h3>
 <div class="outline-text-3" id="text-transmission-info-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -551,8 +555,8 @@ Add  <code>(transmission :variables transmission-auto-refresh-all t)</code> to
 </div>
 </div>
 
-<div id="outline-container-org793dc7b" class="outline-3">
-<h3 id="transmission-files-mode"><a id="org793dc7b"></a><span class="section-number-3">4.4</span> <code>transmission-files-mode</code></h3>
+<div id="outline-container-orga6822f8" class="outline-3">
+<h3 id="transmission-files-mode"><a id="orga6822f8"></a><span class="section-number-3">4.4</span> <code>transmission-files-mode</code></h3>
 <div class="outline-text-3" id="text-transmission-files-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -613,8 +617,8 @@ Add  <code>(transmission :variables transmission-auto-refresh-all t)</code> to
 </div>
 </div>
 
-<div id="outline-container-org9c18aeb" class="outline-3">
-<h3 id="transmission-peers-mode"><a id="org9c18aeb"></a><span class="section-number-3">4.5</span> <code>transmission-peers-mode</code></h3>
+<div id="outline-container-org8cf5ffa" class="outline-3">
+<h3 id="transmission-peers-mode"><a id="org8cf5ffa"></a><span class="section-number-3">4.5</span> <code>transmission-peers-mode</code></h3>
 <div class="outline-text-3" id="text-transmission-peers-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -643,7 +647,7 @@ Add  <code>(transmission :variables transmission-auto-refresh-all t)</code> to
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-06-04 Mon 06:23</p>
+<p class="date">Created: 2018-07-20 Fri 15:09</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
