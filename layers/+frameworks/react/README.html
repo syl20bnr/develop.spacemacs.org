@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-07-20 Fri 15:09 -->
+<!-- 2018-08-23 Thu 09:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>React layer</title>
@@ -291,8 +291,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgefb8ad8" class="outline-2">
-<h2 id="description"><a id="orgefb8ad8"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org0154e86" class="outline-2">
+<h2 id="description"><a id="org0154e86"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 ES6 and JSX ready configuration layer for React
@@ -300,8 +300,8 @@ It will automatically recognize <code>.jsx</code> files and files with <code>rea
 </p>
 </div>
 
-<div id="outline-container-org36d92ca" class="outline-3">
-<h3 id="features"><a id="org36d92ca"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orge13e5ca" class="outline-3">
+<h3 id="features"><a id="orge13e5ca"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>on-the-fly syntax checking</li>
@@ -315,8 +315,8 @@ It will automatically recognize <code>.jsx</code> files and files with <code>rea
 </div>
 </div>
 
-<div id="outline-container-org05323d9" class="outline-2">
-<h2 id="install"><a id="org05323d9"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org77f4ac2" class="outline-2">
+<h2 id="install"><a id="org77f4ac2"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -345,12 +345,14 @@ try out this one by Airbnb:
 </p>
 
 <p>
-In order to use automatic code formatting you need to install <code>js-beautify</code>
+React layer uses the same formatter defined in javascript layer. Options are
+<code>web-beautify</code> and <code>prettier</code>.
+To use automatic code formatting you need to install <code>js-beautify</code> or <code>prettier</code>
 with:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">$ npm install -g js-beautify
+<pre class="src src-sh">$ npm install -g js-beautify prettier
 </pre>
 </div>
 
@@ -391,15 +393,16 @@ is my configuration as an example:
   "wrap_attributes": "auto",
   "wrap_attributes_indent_size": 2,
   "e4x": true,
-  "end_with_newline": true
+  "end_with_newline": true,
+  "brace_style": "collapse-preserve-inline"
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org46e80ce" class="outline-2">
-<h2 id="optional-configuration"><a id="org46e80ce"></a><span class="section-number-2">3</span> Optional Configuration</h2>
+<div id="outline-container-orgbfae1ef" class="outline-2">
+<h2 id="optional-configuration"><a id="orgbfae1ef"></a><span class="section-number-2">3</span> Optional Configuration</h2>
 <div class="outline-text-2" id="text-optional-configuration">
 <p>
 You may refer to the <code>web-mode</code> configuration for fine tuning the indenting
@@ -439,13 +442,13 @@ concatenations and contiguous function calls:
 </div>
 </div>
 
-<div id="outline-container-org28ee7ab" class="outline-2">
-<h2 id="key-bindings"><a id="org28ee7ab"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-orgae6a827" class="outline-2">
+<h2 id="key-bindings"><a id="orgae6a827"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgc446c61" class="outline-3">
-<h3 id="rjsx-mode"><a id="orgc446c61"></a><span class="section-number-3">4.1</span> rjsx-mode</h3>
+<div id="outline-container-org298a66d" class="outline-3">
+<h3 id="rjsx-mode"><a id="org298a66d"></a><span class="section-number-3">4.1</span> rjsx-mode</h3>
 <div class="outline-text-3" id="text-rjsx-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -481,8 +484,8 @@ concatenations and contiguous function calls:
 </div>
 </div>
 
-<div id="outline-container-org2f2527d" class="outline-3">
-<h3 id="formatting-web-beautify"><a id="org2f2527d"></a><span class="section-number-3">4.2</span> Formatting (web-beautify)</h3>
+<div id="outline-container-orgb3e795f" class="outline-3">
+<h3 id="formatting-web-beautify"><a id="orgb3e795f"></a><span class="section-number-3">4.2</span> Formatting (web-beautify)</h3>
 <div class="outline-text-3" id="text-formatting-web-beautify">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -507,8 +510,8 @@ concatenations and contiguous function calls:
 </table>
 </div>
 
-<div id="outline-container-org1574a8a" class="outline-4">
-<h4 id="documentation-js-doc"><a id="org1574a8a"></a><span class="section-number-4">4.2.1</span> Documentation (js-doc)</h4>
+<div id="outline-container-org91f7c84" class="outline-4">
+<h4 id="documentation-js-doc"><a id="org91f7c84"></a><span class="section-number-4">4.2.1</span> Documentation (js-doc)</h4>
 <div class="outline-text-4" id="text-documentation-js-doc">
 <p>
 You can check more <a href="https://github.com/mooz/js-doc/">here</a>
@@ -554,8 +557,8 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 
-<div id="outline-container-org8d5f835" class="outline-3">
-<h3 id="auto-complete-and-documentation-tern"><a id="org8d5f835"></a><span class="section-number-3">4.3</span> Auto-complete and documentation (tern)</h3>
+<div id="outline-container-org44e282b" class="outline-3">
+<h3 id="auto-complete-and-documentation-tern"><a id="org44e282b"></a><span class="section-number-3">4.3</span> Auto-complete and documentation (tern)</h3>
 <div class="outline-text-3" id="text-auto-complete-and-documentation-tern">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -609,7 +612,7 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-07-20 Fri 15:09</p>
+<p class="date">Created: 2018-08-23 Thu 09:35</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

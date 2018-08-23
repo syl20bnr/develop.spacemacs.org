@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-07-20 Fri 15:09 -->
+<!-- 2018-08-23 Thu 09:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JSON layer</title>
@@ -273,6 +273,8 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#configuration">2.1. Configuration</a></li>
 <li><a href="#web-beautify">2.2. web-beautify</a></li>
+<li><a href="#prettier">2.3. prettier</a></li>
+<li><a href="#choosing-a-formatter">2.4. Choosing a formatter</a></li>
 </ul>
 </li>
 <li><a href="#usage">3. Usage</a>
@@ -295,16 +297,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgcadfb81" class="outline-2">
-<h2 id="description"><a id="orgcadfb81"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org6a5d71a" class="outline-2">
+<h2 id="description"><a id="org6a5d71a"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for JSON files with <a href="https://github.com/joshwnj/json-mode">json-mode</a>
 </p>
 </div>
 
-<div id="outline-container-orge058c67" class="outline-3">
-<h3 id="features"><a id="orge058c67"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org014bae4" class="outline-3">
+<h3 id="features"><a id="org014bae4"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Syntax highlighting</li>
@@ -317,8 +319,8 @@ This layer adds support for JSON files with <a href="https://github.com/joshwnj/
 </div>
 </div>
 
-<div id="outline-container-org30d4ed6" class="outline-2">
-<h2 id="install"><a id="org30d4ed6"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org3bc25dc" class="outline-2">
+<h2 id="install"><a id="org3bc25dc"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -326,8 +328,8 @@ add <code>json</code> to the existing <code>dotspacemacs-configuration-layers</c
 </p>
 </div>
 
-<div id="outline-container-orgc8ba7d8" class="outline-3">
-<h3 id="configuration"><a id="orgc8ba7d8"></a><span class="section-number-3">2.1</span> Configuration</h3>
+<div id="outline-container-org3d89879" class="outline-3">
+<h3 id="configuration"><a id="org3d89879"></a><span class="section-number-3">2.1</span> Configuration</h3>
 <div class="outline-text-3" id="text-configuration">
 <p>
 To define the default indentation set the variable <code>js-indent-level</code>.
@@ -335,23 +337,64 @@ To define the default indentation set the variable <code>js-indent-level</code>.
 </div>
 </div>
 
-<div id="outline-container-org9cf22da" class="outline-3">
-<h3 id="web-beautify"><a id="org9cf22da"></a><span class="section-number-3">2.2</span> web-beautify</h3>
+<div id="outline-container-org3a1e84e" class="outline-3">
+<h3 id="web-beautify"><a id="org3a1e84e"></a><span class="section-number-3">2.2</span> web-beautify</h3>
 <div class="outline-text-3" id="text-web-beautify">
 <p>
 See <a href="../../+tools/web-beautify/README.html">web-beautify layer</a> documentation.
 </p>
 </div>
 </div>
+
+<div id="outline-container-orgcdf2384" class="outline-3">
+<h3 id="prettier"><a id="orgcdf2384"></a><span class="section-number-3">2.3</span> prettier</h3>
+<div class="outline-text-3" id="text-prettier">
+<p>
+See <a href="../../+tools/prettier/README.html">prettier layer</a> documentation.
+</p>
+</div>
 </div>
 
-<div id="outline-container-orge5fae46" class="outline-2">
-<h2 id="usage"><a id="orge5fae46"></a><span class="section-number-2">3</span> Usage</h2>
+<div id="outline-container-org72f6eb6" class="outline-3">
+<h3 id="choosing-a-formatter"><a id="org72f6eb6"></a><span class="section-number-3">2.4</span> Choosing a formatter</h3>
+<div class="outline-text-3" id="text-choosing-a-formatter">
+<p>
+To choose a formatter, set the layer variable <code>json-fmt-tool</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>json <span class="org-builtin">:variables</span> json-fmt-tool 'web-beautify<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Formatter can be chosen on a per project basis using directory local variables
+(files named <code>.dir-locals.el</code> at the root of a project), an example to use the
+<code>prettier</code> formatter:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>json-mode <span class="org-rainbow-delimiters-depth-3">(</span>json-fmt-tool . prettier<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+<b>Note:</b> you can easily add a directory local variable with <code>SPC f v d</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org82d1c8d" class="outline-2">
+<h2 id="usage"><a id="org82d1c8d"></a><span class="section-number-2">3</span> Usage</h2>
 <div class="outline-text-2" id="text-usage">
 </div>
 
-<div id="outline-container-org292c21b" class="outline-3">
-<h3 id="reformat"><a id="org292c21b"></a><span class="section-number-3">3.1</span> Reformat</h3>
+<div id="outline-container-orgb449958" class="outline-3">
+<h3 id="reformat"><a id="orgb449958"></a><span class="section-number-3">3.1</span> Reformat</h3>
 <div class="outline-text-3" id="text-reformat">
 <p>
 <code>SPC m =</code> will reformat the whole buffer or the active region. Use numerical
@@ -377,8 +420,8 @@ Will be reformatted:
 </div>
 </div>
 
-<div id="outline-container-org1bab81b" class="outline-3">
-<h3 id="display-navigable-hierarchy"><a id="org1bab81b"></a><span class="section-number-3">3.2</span> Display navigable hierarchy</h3>
+<div id="outline-container-org3b2665f" class="outline-3">
+<h3 id="display-navigable-hierarchy"><a id="org3b2665f"></a><span class="section-number-3">3.2</span> Display navigable hierarchy</h3>
 <div class="outline-text-3" id="text-display-navigable-hierarchy">
 <p>
 <code>SPC m h h</code> displays the hierarchy for the whole JSON document or the active
@@ -389,8 +432,8 @@ hierarchy for the JSON <b>after</b> the point.
 </div>
 </div>
 
-<div id="outline-container-org9a47e66" class="outline-2">
-<h2 id="key-bindings"><a id="org9a47e66"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-orgba0baa1" class="outline-2">
+<h2 id="key-bindings"><a id="orgba0baa1"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -430,8 +473,8 @@ hierarchy for the JSON <b>after</b> the point.
 </table>
 </div>
 
-<div id="outline-container-orgb7f0dee" class="outline-3">
-<h3 id="json-hierarchy"><a id="orgb7f0dee"></a><span class="section-number-3">4.1</span> JSON hierarchy</h3>
+<div id="outline-container-orgf9ac96e" class="outline-3">
+<h3 id="json-hierarchy"><a id="orgf9ac96e"></a><span class="section-number-3">4.1</span> JSON hierarchy</h3>
 <div class="outline-text-3" id="text-json-hierarchy">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -470,7 +513,7 @@ hierarchy for the JSON <b>after</b> the point.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-07-20 Fri 15:09</p>
+<p class="date">Created: 2018-08-23 Thu 09:35</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

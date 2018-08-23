@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-07-20 Fri 15:09 -->
+<!-- 2018-08-23 Thu 09:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SQL layer</title>
@@ -277,6 +277,7 @@ for the JavaScript code in this tag.
 <li><a href="#blacklisting-keywords">2.1.2. Blacklisting keywords</a></li>
 </ul>
 </li>
+<li><a href="#auto-indent">2.2. Auto-Indent</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key bindings</a>
@@ -300,16 +301,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgae0aaba" class="outline-2">
-<h2 id="description"><a id="orgae0aaba"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgbbb0951" class="outline-2">
+<h2 id="description"><a id="orgbbb0951"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for a wide range of SQL dialects to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-orgd507b4e" class="outline-3">
-<h3 id="features"><a id="orgd507b4e"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org8a0f61f" class="outline-3">
+<h3 id="features"><a id="org8a0f61f"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Syntax highlighting for the following SQL dialects
@@ -338,8 +339,8 @@ This layer adds support for a wide range of SQL dialects to Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-orga3560ef" class="outline-2">
-<h2 id="install"><a id="orga3560ef"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgddc461b" class="outline-2">
+<h2 id="install"><a id="orgddc461b"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -357,8 +358,8 @@ For syntax-checking you also need to install <a href="https://www.ruby-lang.org/
 </div>
 </div>
 
-<div id="outline-container-org8b92f75" class="outline-3">
-<h3 id="sql-keywords-capitalization"><a id="org8b92f75"></a><span class="section-number-3">2.1</span> SQL Keywords Capitalization</h3>
+<div id="outline-container-orgaa92cd9" class="outline-3">
+<h3 id="sql-keywords-capitalization"><a id="orgaa92cd9"></a><span class="section-number-3">2.1</span> SQL Keywords Capitalization</h3>
 <div class="outline-text-3" id="text-sql-keywords-capitalization">
 <p>
 SQL, by convention, uses upper-case keywords, although lower-case works just as
@@ -378,8 +379,8 @@ variable <code>sql-capitalize-keywords</code> to <code>t</code>.
 </div>
 </div>
 
-<div id="outline-container-org032d8d9" class="outline-4">
-<h4 id="sql-interactive-mode"><a id="org032d8d9"></a><span class="section-number-4">2.1.1</span> SQL Interactive Mode</h4>
+<div id="outline-container-orgcc60478" class="outline-4">
+<h4 id="sql-interactive-mode"><a id="orgcc60478"></a><span class="section-number-4">2.1.1</span> SQL Interactive Mode</h4>
 <div class="outline-text-4" id="text-sql-interactive-mode">
 <p>
 If you want capitalization only in <code>sql-mode</code> and not in <code>sql-interactive-mode</code>
@@ -388,8 +389,8 @@ you can set the variable <code>sql-capitalize-keywords-disable-interactive</code
 </div>
 </div>
 
-<div id="outline-container-org1a5dac3" class="outline-4">
-<h4 id="blacklisting-keywords"><a id="org1a5dac3"></a><span class="section-number-4">2.1.2</span> Blacklisting keywords</h4>
+<div id="outline-container-org9a10309" class="outline-4">
+<h4 id="blacklisting-keywords"><a id="org9a10309"></a><span class="section-number-4">2.1.2</span> Blacklisting keywords</h4>
 <div class="outline-text-4" id="text-blacklisting-keywords">
 <p>
 <a href="https://github.com/Trevoke/sqlup-mode.el">sqlup-mode</a> can be configured to ignore certain keywords. For example if you use
@@ -413,15 +414,32 @@ column and NAME is non-reserved SQL keyword.
 </div>
 </div>
 </div>
+
+<div id="outline-container-org1b867cc" class="outline-3">
+<h3 id="auto-indent"><a id="org1b867cc"></a><span class="section-number-3">2.2</span> Auto-Indent</h3>
+<div class="outline-text-3" id="text-auto-indent">
+<p>
+This mode use <a href="https://github.com/alex-hhh/emacs-sql-indent">sql-indent</a> to indent the code. You can check the package's README
+to adjust the rules. If that's not what you want, you can also disable
+auto-indent by setting the variable <code>sql-auto-indent</code> to <code>nil</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>sql <span class="org-builtin">:variables</span> sql-auto-indent nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgb4e642a" class="outline-2">
-<h2 id="key-bindings"><a id="orgb4e642a"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-org14e2115" class="outline-2">
+<h2 id="key-bindings"><a id="org14e2115"></a><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orga02c443" class="outline-3">
-<h3 id="highlighting"><a id="orga02c443"></a><span class="section-number-3">3.1</span> Highlighting</h3>
+<div id="outline-container-orgde06d1d" class="outline-3">
+<h3 id="highlighting"><a id="orgde06d1d"></a><span class="section-number-3">3.1</span> Highlighting</h3>
 <div class="outline-text-3" id="text-highlighting">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -447,8 +465,8 @@ column and NAME is non-reserved SQL keyword.
 </div>
 </div>
 
-<div id="outline-container-orgc55a517" class="outline-3">
-<h3 id="inferior-process-interactions-sqli"><a id="orgc55a517"></a><span class="section-number-3">3.2</span> Inferior Process Interactions (SQLi)</h3>
+<div id="outline-container-org6ef9414" class="outline-3">
+<h3 id="inferior-process-interactions-sqli"><a id="org6ef9414"></a><span class="section-number-3">3.2</span> Inferior Process Interactions (SQLi)</h3>
 <div class="outline-text-3" id="text-inferior-process-interactions-sqli">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -488,8 +506,8 @@ column and NAME is non-reserved SQL keyword.
 </table>
 </div>
 
-<div id="outline-container-orgee828d3" class="outline-4">
-<h4 id="send-sql-queries-to-sqli"><a id="orgee828d3"></a><span class="section-number-4">3.2.1</span> Send SQL queries to SQLi:</h4>
+<div id="outline-container-org30484f2" class="outline-4">
+<h4 id="send-sql-queries-to-sqli"><a id="org30484f2"></a><span class="section-number-4">3.2.1</span> Send SQL queries to SQLi:</h4>
 <div class="outline-text-4" id="text-send-sql-queries-to-sqli">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -556,8 +574,8 @@ column and NAME is non-reserved SQL keyword.
 </div>
 </div>
 
-<div id="outline-container-org837cfa5" class="outline-3">
-<h3 id="sqli-buffer"><a id="org837cfa5"></a><span class="section-number-3">3.3</span> SQLi buffer</h3>
+<div id="outline-container-org8b77835" class="outline-3">
+<h3 id="sqli-buffer"><a id="org8b77835"></a><span class="section-number-3">3.3</span> SQLi buffer</h3>
 <div class="outline-text-3" id="text-sqli-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -588,8 +606,8 @@ column and NAME is non-reserved SQL keyword.
 </div>
 </div>
 
-<div id="outline-container-orgb878f78" class="outline-3">
-<h3 id="code-formatting"><a id="orgb878f78"></a><span class="section-number-3">3.4</span> Code Formatting</h3>
+<div id="outline-container-org8d8097f" class="outline-3">
+<h3 id="code-formatting"><a id="org8d8097f"></a><span class="section-number-3">3.4</span> Code Formatting</h3>
 <div class="outline-text-3" id="text-code-formatting">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -612,7 +630,7 @@ column and NAME is non-reserved SQL keyword.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-07-20 Fri 15:09</p>
+<p class="date">Created: 2018-08-23 Thu 09:35</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

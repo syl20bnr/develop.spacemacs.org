@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-07-20 Fri 15:09 -->
+<!-- 2018-08-23 Thu 09:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Helm Gtags layer</title>
@@ -273,9 +273,10 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#gnu-global-gtags">2.1. GNU Global (gtags)</a>
 <ul>
-<li><a href="#install-on-osx-using-homebrew">2.1.1. Install on OSX using Homebrew</a></li>
-<li><a href="#install-on-nix-from-source">2.1.2. Install on *nix from source</a></li>
-<li><a href="#conflict-between-ctags-and-emacss-etags-binary">2.1.3. Conflict between <code>ctags</code> and emacs's <code>etags</code> binary</a></li>
+<li><a href="#install-on-ubuntu">2.1.1. Install on Ubuntu</a></li>
+<li><a href="#install-on-osx-using-homebrew">2.1.2. Install on OSX using Homebrew</a></li>
+<li><a href="#install-on-nix-from-source">2.1.3. Install on *nix from source</a></li>
+<li><a href="#conflict-between-ctags-and-emacss-etags-binary">2.1.4. Conflict between <code>ctags</code> and emacs's <code>etags</code> binary</a></li>
 </ul>
 </li>
 <li><a href="#emacs-configuration">2.2. Emacs Configuration</a>
@@ -308,8 +309,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org7ce97eb" class="outline-2">
-<h2 id="description"><a id="org7ce97eb"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org8f3cae6" class="outline-2">
+<h2 id="description"><a id="org8f3cae6"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 <code>counsel-gtags</code>, <code>helm-gtags</code> and <code>ggtags</code> are clients for GNU Global. GNU
@@ -319,8 +320,8 @@ both of these modes.
 </p>
 </div>
 
-<div id="outline-container-org287b688" class="outline-3">
-<h3 id="features"><a id="org287b688"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orgc194d6a" class="outline-3">
+<h3 id="features"><a id="orgc194d6a"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Select any tag in a project retrieved by gtags</li>
@@ -343,13 +344,13 @@ both of these modes.
 </div>
 </div>
 
-<div id="outline-container-org3b0b758" class="outline-2">
-<h2 id="install"><a id="org3b0b758"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org9821fbc" class="outline-2">
+<h2 id="install"><a id="org9821fbc"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgaaaa94d" class="outline-3">
-<h3 id="gnu-global-gtags"><a id="orgaaaa94d"></a><span class="section-number-3">2.1</span> GNU Global (gtags)</h3>
+<div id="outline-container-org25411e8" class="outline-3">
+<h3 id="gnu-global-gtags"><a id="org25411e8"></a><span class="section-number-3">2.1</span> GNU Global (gtags)</h3>
 <div class="outline-text-3" id="text-gnu-global-gtags">
 <p>
 To use gtags, you first have to install <a href="https://www.gnu.org/software/global/download.html">GNU Global</a>.
@@ -359,17 +360,22 @@ To use gtags, you first have to install <a href="https://www.gnu.org/software/gl
 You can install <code>global</code> from the software repository of your OS; however, many
 OS distributions are out of date, and you will probably be missing support for
 <code>pygments</code> and <code>exuberant ctags</code>, and thus support for many languages. We
-recommend installing from source. If not for example to install on Ubuntu:
+recommend installing from source.
 </p>
+</div>
 
+<div id="outline-container-orgbc85a78" class="outline-4">
+<h4 id="install-on-ubuntu"><a id="orgbc85a78"></a><span class="section-number-4">2.1.1</span> Install on Ubuntu</h4>
+<div class="outline-text-4" id="text-install-on-ubuntu">
 <div class="org-src-container">
 <pre class="src src-sh">sudo apt-get install global
 </pre>
 </div>
 </div>
+</div>
 
-<div id="outline-container-orgc225a67" class="outline-4">
-<h4 id="install-on-osx-using-homebrew"><a id="orgc225a67"></a><span class="section-number-4">2.1.1</span> Install on OSX using Homebrew</h4>
+<div id="outline-container-orga9c25e7" class="outline-4">
+<h4 id="install-on-osx-using-homebrew"><a id="orga9c25e7"></a><span class="section-number-4">2.1.2</span> Install on OSX using Homebrew</h4>
 <div class="outline-text-4" id="text-install-on-osx-using-homebrew">
 <div class="org-src-container">
 <pre class="src src-sh">brew install global --with-pygments --with-ctags
@@ -378,18 +384,18 @@ recommend installing from source. If not for example to install on Ubuntu:
 </div>
 </div>
 
-<div id="outline-container-org84703a0" class="outline-4">
-<h4 id="install-on-nix-from-source"><a id="org84703a0"></a><span class="section-number-4">2.1.2</span> Install on *nix from source</h4>
+<div id="outline-container-org99e4a23" class="outline-4">
+<h4 id="install-on-nix-from-source"><a id="org99e4a23"></a><span class="section-number-4">2.1.3</span> Install on *nix from source</h4>
 <div class="outline-text-4" id="text-install-on-nix-from-source">
 </div>
 
 <ol class="org-ol">
-<li><a id="install-recommended-dependencies"></a><a id="org8c54ffc"></a>Install recommended dependencies<br />
+<li><a id="install-recommended-dependencies"></a><a id="org4008128"></a>Install recommended dependencies<br />
 <div class="outline-text-5" id="text-install-recommended-dependencies">
 <p>
 To take full advantage of global you should install 2 extra packages in
 addition to global: pygments and ctags (exuberant). You can do this using
-your normal OS package manager, e.g., on Ubuntu
+your normal OS package manager, e.g. on Ubuntu
 </p>
 
 <div class="org-src-container">
@@ -398,7 +404,7 @@ your normal OS package manager, e.g., on Ubuntu
 </div>
 
 <p>
-or e.g., Archlinux:
+or e.g. Archlinux:
 </p>
 
 <div class="org-src-container">
@@ -408,15 +414,15 @@ or e.g., Archlinux:
 </div>
 </li>
 
-<li><a id="install-with-recommended-features"></a><a id="orga58f79a"></a>Install with recommended features<br />
+<li><a id="install-with-recommended-features"></a><a id="org3fd927f"></a>Install with recommended features<br />
 <div class="outline-text-5" id="text-install-with-recommended-features">
 <p>
 Download the latest tar.gz archive, then run these commands:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">tar xvf global-6.5.3.tar.gz
-<span class="org-builtin">cd</span> global-6.5.3
+<pre class="src src-sh">tar xvf global-&lt;version&gt;.tar.gz
+<span class="org-builtin">cd</span> global-&lt;version&gt;
 ./configure --with-exuberant-ctags=/usr/bin/ctags
 make
 sudo make install
@@ -425,7 +431,7 @@ sudo make install
 </div>
 </li>
 
-<li><a id="configure-your-environment-to-use-pygments-and-ctags"></a><a id="org78a11be"></a>Configure your environment to use pygments and ctags<br />
+<li><a id="configure-your-environment-to-use-pygments-and-ctags"></a><a id="org241c912"></a>Configure your environment to use pygments and ctags<br />
 <div class="outline-text-5" id="text-configure-your-environment-to-use-pygments-and-ctags">
 <p>
 To be able to use <code>pygments</code> and <code>ctags</code>, you need to copy the sample
@@ -446,13 +452,22 @@ with sh/ksh:
 <pre class="src src-sh"><span class="org-builtin">echo</span> export <span class="org-variable-name">GTAGSLABEL</span>=pygments &gt;&gt; .profile
 </pre>
 </div>
+
+<p>
+With fish:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span class="org-builtin">echo</span> export set -x GTAGSLABEL pygments &gt;&gt; $<span class="org-rainbow-delimiters-depth-1">{</span><span class="org-variable-name">HOME</span><span class="org-rainbow-delimiters-depth-1">}</span>/.config/fish/config.fish
+</pre>
+</div>
 </div>
 </li>
 </ol>
 </div>
 
-<div id="outline-container-org086a762" class="outline-4">
-<h4 id="conflict-between-ctags-and-emacss-etags-binary"><a id="org086a762"></a><span class="section-number-4">2.1.3</span> Conflict between <code>ctags</code> and emacs's <code>etags</code> binary</h4>
+<div id="outline-container-orgbbeff30" class="outline-4">
+<h4 id="conflict-between-ctags-and-emacss-etags-binary"><a id="orgbbeff30"></a><span class="section-number-4">2.1.4</span> Conflict between <code>ctags</code> and emacs's <code>etags</code> binary</h4>
 <div class="outline-text-4" id="text-conflict-between-ctags-and-emacss-etags-binary">
 <p>
 If you installed <code>emacs</code> from source after <code>ctags</code>, your original <code>ctags</code> binary
@@ -475,18 +490,18 @@ To check if you have the correct version of <code>ctags</code> execute:
 </div>
 
 <p>
-If yo do not get any output then it means you have the wrong <code>ctags</code> and must
-install it again.
+If there is no output you have the wrong <code>ctags</code> executable and you need to
+reinstall <code>ctags</code> from your package manager.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org308e55a" class="outline-3">
-<h3 id="emacs-configuration"><a id="org308e55a"></a><span class="section-number-3">2.2</span> Emacs Configuration</h3>
+<div id="outline-container-org6fd362e" class="outline-3">
+<h3 id="emacs-configuration"><a id="org6fd362e"></a><span class="section-number-3">2.2</span> Emacs Configuration</h3>
 <div class="outline-text-3" id="text-emacs-configuration">
 <p>
-To use this configuration layer, add it to your <code>~/.spacemacs</code>. You
+To use this configuration layer, add it to your <code>~/.spacemacs</code> file. You
 will need to add <code>gtags</code> to the existing <code>dotspacemacs-configuration-layers</code>.
 </p>
 
@@ -500,8 +515,8 @@ will need to add <code>gtags</code> to the existing <code>dotspacemacs-configura
 </div>
 </div>
 
-<div id="outline-container-orga36f06d" class="outline-4">
-<h4 id="disabling-by-default"><a id="orga36f06d"></a><span class="section-number-4">2.2.1</span> Disabling by default</h4>
+<div id="outline-container-orge90737f" class="outline-4">
+<h4 id="disabling-by-default"><a id="orge90737f"></a><span class="section-number-4">2.2.1</span> Disabling by default</h4>
 <div class="outline-text-4" id="text-disabling-by-default">
 <p>
 If <code>ggtags-mode</code> is too intrusive you can disable it by default, by setting the
@@ -516,18 +531,18 @@ layer variable <code>gtags-enable-by-default</code> to <code>nil</code>.
 
 <p>
 This variable can also be set as a file-local or directory-local variable for
-additional control per project.
+additional control on a per project basis.
 </p>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org33c49b7" class="outline-2">
-<h2 id="usage"><a id="org33c49b7"></a><span class="section-number-2">3</span> Usage</h2>
+<div id="outline-container-org7015159" class="outline-2">
+<h2 id="usage"><a id="org7015159"></a><span class="section-number-2">3</span> Usage</h2>
 <div class="outline-text-2" id="text-usage">
 <p>
-Before using the <code>gtags</code>, remember to create a GTAGS database by the following
+Before using <code>gtags</code>, remember to create a GTAGS database by one of the following
 methods:
 </p>
 
@@ -535,35 +550,30 @@ methods:
 <li>From within Emacs, run either <code>counsel-gtags-create-tags</code> or
 <code>helm-gtags-create-tags</code>, which are bound to <code>SPC m g c</code>. If the language is
 not directly supported by GNU Global, you can choose <code>ctags</code> or <code>pygments</code> as
-a backend to generate tag database.</li>
+a backend to generate the database.</li>
 
-<li>From inside terminal, runs gtags at your project root in terminal:</li>
+<li>From inside a terminal:</li>
 </ul>
 
 <div class="org-src-container">
 <pre class="src src-sh"><span class="org-builtin">cd</span> /path/to/project/root
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">If the language is not directly supported and GTAGSLABEL is not set</span>
+gtags --gtagslabel=pygments
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">Otherwise</span>
 gtags
 </pre>
 </div>
-
-<p>
-If the language is not directly supported by <code>gtags</code>, and you have not set the
-GTAGSLABEL environment variable, use this command instead:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-sh">gtags --gtagslabel=pygments
-</pre>
-</div>
 </div>
 
-<div id="outline-container-org1343686" class="outline-3">
-<h3 id="language-support"><a id="org1343686"></a><span class="section-number-3">3.1</span> Language Support</h3>
+<div id="outline-container-org9c036de" class="outline-3">
+<h3 id="language-support"><a id="org9c036de"></a><span class="section-number-3">3.1</span> Language Support</h3>
 <div class="outline-text-3" id="text-language-support">
 </div>
 
-<div id="outline-container-orgd3bc669" class="outline-4">
-<h4 id="built-in-languages"><a id="orgd3bc669"></a><span class="section-number-4">3.1.1</span> Built-in languages</h4>
+<div id="outline-container-org7c4dded" class="outline-4">
+<h4 id="built-in-languages"><a id="org7c4dded"></a><span class="section-number-4">3.1.1</span> Built-in languages</h4>
 <div class="outline-text-4" id="text-built-in-languages">
 <p>
 If you do not have <code>ctags</code> or <code>pygments</code> enabled gtags will only produce
@@ -580,13 +590,13 @@ tags for the following languages:
 </div>
 </div>
 
-<div id="outline-container-org00d6135" class="outline-4">
-<h4 id="exuberant-ctags-languages"><a id="org00d6135"></a><span class="section-number-4">3.1.2</span> Exuberant ctags languages</h4>
+<div id="outline-container-org74ceb25" class="outline-4">
+<h4 id="exuberant-ctags-languages"><a id="org74ceb25"></a><span class="section-number-4">3.1.2</span> Exuberant ctags languages</h4>
 <div class="outline-text-4" id="text-exuberant-ctags-languages">
 <p>
-If you have enabled <code>exuberant ctags</code> and use that as the backend (i.e.,
-<code>GTAGSLABEL=ctags</code> or <code>--gtagslabel=ctags</code>) the following additional languages
-will have tags created for them:
+If you have enabled <code>exuberant ctags</code> and use that as the backend
+(i.e. <code>GTAGSLABEL=ctags</code> or <code>--gtagslabel=ctags</code>) the following additional languages
+are supported:
 </p>
 
 <ul class="org-ul">
@@ -606,13 +616,13 @@ will have tags created for them:
 </div>
 </div>
 
-<div id="outline-container-org5c85600" class="outline-4">
-<h4 id="universal-ctags-languages"><a id="org5c85600"></a><span class="section-number-4">3.1.3</span> Universal ctags languages</h4>
+<div id="outline-container-org9e9dd25" class="outline-4">
+<h4 id="universal-ctags-languages"><a id="org9e9dd25"></a><span class="section-number-4">3.1.3</span> Universal ctags languages</h4>
 <div class="outline-text-4" id="text-universal-ctags-languages">
 <p>
-If instead you installed you the newer/beta <code>universal ctags</code> and use that
-as the backend (i.e., GTAGSLABEL=ctags or &#x2013;gtagslabel=ctags) the following
-additional languages will have tags created for them:
+If you have installed <a href="https://github.com/universal-ctags/ctags">universal ctags</a> and use that as the backend
+(i.e. GTAGSLABEL=ctags or &#x2013;gtagslabel=ctags) the following additional
+languages are supported:
 </p>
 
 <ul class="org-ul">
@@ -624,8 +634,8 @@ additional languages will have tags created for them:
 </div>
 </div>
 
-<div id="outline-container-org5bd00b1" class="outline-4">
-<h4 id="pygments-languages-plus-symbol-and-reference-tags"><a id="org5bd00b1"></a><span class="section-number-4">3.1.4</span> Pygments languages (plus symbol and reference tags)</h4>
+<div id="outline-container-orga367379" class="outline-4">
+<h4 id="pygments-languages-plus-symbol-and-reference-tags"><a id="orga367379"></a><span class="section-number-4">3.1.4</span> Pygments languages (plus symbol and reference tags)</h4>
 <div class="outline-text-4" id="text-pygments-languages-plus-symbol-and-reference-tags">
 <p>
 In order to look up symbol references for any language not in the built in
@@ -635,9 +645,9 @@ functions and variables as well as "other symbols".
 </p>
 
 <p>
-If you enabled pygments (the best choice) and use that as the backend (i.e.,
-<code>GTAGSLABEL=pygments</code> or <code>--gtagslabel=pygments</code>) the following additional
-languages will have tags created for them:
+If you enabled pygments (the best choice) and use that as the backend
+(i.e. <code>GTAGSLABEL=pygments</code> or <code>--gtagslabel=pygments</code>) the following additional
+languages will be supported:
 </p>
 
 <ul class="org-ul">
@@ -654,14 +664,14 @@ languages will have tags created for them:
 </div>
 </div>
 
-<div id="outline-container-orgf0625b3" class="outline-3">
-<h3 id="eldoc-integration"><a id="orgf0625b3"></a><span class="section-number-3">3.2</span> Eldoc integration</h3>
+<div id="outline-container-org580c5f8" class="outline-3">
+<h3 id="eldoc-integration"><a id="org580c5f8"></a><span class="section-number-3">3.2</span> Eldoc integration</h3>
 <div class="outline-text-3" id="text-eldoc-integration">
 <p>
 This layer also integrates <code>ggtags</code> for its Eldoc feature. That means, when
 writing code, you can look at the minibuffer (at the bottom) and see variable
-and function definition of the symbol the cursor is on. However, this feature is
-only activated for programming modes that are not one of these languages:
+and function definitions of the symbol under point. However, this feature is
+only activated for languages which are not:
 </p>
 
 <ul class="org-ul">
@@ -678,17 +688,15 @@ Since these modes have better Eldoc integration already.
 </p>
 
 <p>
-In addition, if output from <code>compile</code> (bound to <code>SPC c C</code>), <code>shell-command</code>
-(bound to <code>SPC !</code> and <code>M-!</code>) or <code>async-shell-command</code> (bound to <code>M-&amp;</code>) commands
-contains symbol in your project, you move cursor on such symbol and use any of
-the gtags commands.
+In addition <code>gtags</code> commands are also supported for symbols in the
+<code>compile</code>, <code>shell-command</code> and <code>async-shell-command</code> buffers.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org209d0c2" class="outline-2">
-<h2 id="key-bindings"><a id="org209d0c2"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org598d227" class="outline-2">
+<h2 id="key-bindings"><a id="org598d227"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -707,14 +715,14 @@ the gtags commands.
 <tbody>
 <tr>
 <td class="org-left"><code>g d</code></td>
-<td class="org-left">jump to the definitions or references of the selected tag</td>
+<td class="org-left">jump to definition or references of selected tag</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<div id="outline-container-org2fa9f1b" class="outline-3">
-<h3 id="helm"><a id="org2fa9f1b"></a><span class="section-number-3">4.1</span> Helm</h3>
+<div id="outline-container-org91c817c" class="outline-3">
+<h3 id="helm"><a id="org91c817c"></a><span class="section-number-3">4.1</span> Helm</h3>
 <div class="outline-text-3" id="text-helm">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -810,8 +818,8 @@ the gtags commands.
 </div>
 </div>
 
-<div id="outline-container-org77095fc" class="outline-3">
-<h3 id="ivy"><a id="org77095fc"></a><span class="section-number-3">4.2</span> Ivy</h3>
+<div id="outline-container-org066cf04" class="outline-3">
+<h3 id="ivy"><a id="org066cf04"></a><span class="section-number-3">4.2</span> Ivy</h3>
 <div class="outline-text-3" id="text-ivy">
 <p>
 <code>counsel-gtags</code> is currently missing a few minor features compared to
@@ -890,7 +898,7 @@ the gtags commands.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-07-20 Fri 15:09</p>
+<p class="date">Created: 2018-08-23 Thu 09:35</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
