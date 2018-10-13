@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-08-23 Thu 09:35 -->
+<!-- 2018-10-13 Sat 21:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>julia layer</title>
@@ -285,16 +285,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgeb6d650" class="outline-2">
-<h2 id="description"><a id="orgeb6d650"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org4c915da" class="outline-2">
+<h2 id="description"><a id="org4c915da"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for <a href="https://julialang.org">Julia</a> to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-orge24bd47" class="outline-3">
-<h3 id="features"><a id="orge24bd47"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org4a20c15" class="outline-3">
+<h3 id="features"><a id="org4a20c15"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Syntax highlighting</li>
@@ -308,8 +308,8 @@ This layer adds support for <a href="https://julialang.org">Julia</a> to Spacema
 </div>
 </div>
 
-<div id="outline-container-orgcd4151d" class="outline-2">
-<h2 id="install"><a id="orgcd4151d"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org2d05755" class="outline-2">
+<h2 id="install"><a id="org2d05755"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -318,8 +318,8 @@ file.
 </p>
 </div>
 
-<div id="outline-container-org6f45ea3" class="outline-3">
-<h3 id="lsp"><a id="org6f45ea3"></a><span class="section-number-3">2.1</span> LSP</h3>
+<div id="outline-container-org430747e" class="outline-3">
+<h3 id="lsp"><a id="org430747e"></a><span class="section-number-3">2.1</span> LSP</h3>
 <div class="outline-text-3" id="text-lsp">
 <p>
 Warning: enabling the LSP functionality within this package can cause emacs to
@@ -328,14 +328,13 @@ using PackageCompiler.jl to mitigate this issue.
 </p>
 
 <p>
-This layer can be used with <a href="https://github.com/JuliaEditorSupport/LanguageServer.jl"><code>LanguageServer.jl</code></a> and emacs <a href="https://github.com/emacs-lsp/lsp-mode"><code>lsp-mode</code></a> to provide
+This layer can be used with <a href="https://github.com/JuliaEditorSupport/LanguageServer.jl"> <code>LanguageServer.jl</code></a> and emacs <a href="https://github.com/emacs-lsp/lsp-mode"> <code>lsp-mode</code></a> to provide
 richer, IDE-like capabilities. To use this layer with lsp, you must do the
 following:
 </p>
-
 <ol class="org-ol">
 <li>Add <code>lsp</code> to <code>dotspacemacs-configuration-layers</code>.</li>
-<li>Install <code>LanguageServer.jl</code> by invoking =Pkg.add("LanguageServer") in the
+<li>Install <code>LanguageServer.jl</code> by invoking <code>Pkg.add("LanguageServer")</code> in the
 Julia REPL.</li>
 <li>Enable layer integration with lsp as described in section below.</li>
 </ol>
@@ -345,20 +344,27 @@ Julia REPL.</li>
 <code>lsp-mode</code> might give up on the language server before its started, but
 regardless usage of <code>lsp-mode</code> with Julia can cause long delays when first
 opening files. To mitigate this issue, you can try compiling <code>LanguageServer.jl</code>
-ahead of time using <a href="https://github.com/JuliaLang/PackageCompiler.jl"><code>PackageCompiler.jl</code></a> this drastically reduces startup time
-if successful.
+ahead of time using <a href="https://github.com/JuliaLang/PackageCompiler.jl"> <code>PackageCompiler.jl</code></a>. This drastically reduces startup time
+if successful:
 </p>
+
+<div class="org-src-container">
+<pre class="src src-julia">julia&gt; Pkg.add("PackageCompiler")
+julia&gt; using PackageCompiler
+julia&gt; compile_package("LanguageServer")
+</pre>
+</div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org47ba09e" class="outline-2">
-<h2 id="options"><a id="org47ba09e"></a><span class="section-number-2">3</span> Options</h2>
+<div id="outline-container-org7162072" class="outline-2">
+<h2 id="options"><a id="org7162072"></a><span class="section-number-2">3</span> Options</h2>
 <div class="outline-text-2" id="text-options">
 <p>
 While <code>julia-mode</code> is perfectly usable without configuration or other packages,
 you can choose to replace the default functionality of using <a href="https://github.com/tpapp/julia-repl/"><code>julia-repl</code></a> as the
-layer's interactive REPL with the ess REPL and other functionality that comes
+layer’s interactive REPL with the ess REPL and other functionality that comes
 with it. To do so, install this layer with:
 </p>
 
@@ -386,8 +392,8 @@ and then install this layer with:
 </div>
 </div>
 
-<div id="outline-container-orgc1a4a59" class="outline-2">
-<h2 id="key-bindings"><a id="orgc1a4a59"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org4ee3c4f" class="outline-2">
+<h2 id="key-bindings"><a id="org4ee3c4f"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -450,7 +456,7 @@ and then install this layer with:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-08-23 Thu 09:35</p>
+<p class="date">Created: 2018-10-13 Sat 21:53</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

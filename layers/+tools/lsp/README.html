@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-08-23 Thu 09:35 -->
+<!-- 2018-10-13 Sat 21:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LSP layer</title>
@@ -269,22 +269,45 @@ for the JavaScript code in this tag.
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#configuration">2. Configuration</a></li>
+<li><a href="#configuration">2. Configuration</a>
+<ul>
+<li><a href="#derived-layers">2.1. Derived layers</a>
+<ul>
+<li><a href="#spacemacslsp-bind-keys-for-mode-mode">2.1.1. <code>spacemacs/lsp-bind-keys-for-mode mode</code></a></li>
+</ul>
+</li>
+<li><a href="#variables">2.2. Variables</a></li>
+<li><a href="#diagnostics">2.3. Diagnostics</a></li>
+</ul>
+</li>
+<li><a href="#future-additionsimprovements">3. Future additions/improvements</a>
+<ul>
+<li><a href="#make-spacemacslsp-bind-keys-for-mode-bind-conditionally">3.1. Make <code>spacemacs/lsp-bind-keys-for-mode</code> bind conditionally</a></li>
+</ul>
+</li>
+<li><a href="#references">4. References</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org0e29b9e" class="outline-2">
-<h2 id="description"><a id="org0e29b9e"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org8249628" class="outline-2">
+<h2 id="description"><a id="org8249628"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for basic language server protocol packages speaking
 <a href="https://microsoft.github.io/language-server-protocol/specification">language server protocol</a>.
 </p>
+
+<p>
+Different language servers may support the language server protocol to varying degrees
+and they may also provide extensions; check the language server’s website for
+details.
+<code>M-x lsp-capabilities</code> in a LSP buffer to list capabilities of the server.
+</p>
 </div>
 
-<div id="outline-container-org1297314" class="outline-3">
-<h3 id="features"><a id="org1297314"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org8ddf677" class="outline-3">
+<h3 id="features"><a id="org8ddf677"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Cross references (definitions, references, document symbol, workspace symbol
@@ -295,20 +318,14 @@ search and others)</li>
 <li>Completion with <code>company-lsp</code></li>
 <li>Signature help with eldoc</li>
 <li>Symbol documentation in a child frame (<code>lsp-ui-doc</code>)</li>
+<li>Navigation using imenu</li>
 </ul>
-
-<p>
-Each language server may support the language server protocol in varying degree
-and they may also provide extensions, check the language server's website for
-details.
-<code>M-x lsp-capabilities</code> in a LSP buffer to list capabilities of the server.
-</p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgde738a8" class="outline-2">
-<h2 id="configuration"><a id="orgde738a8"></a><span class="section-number-2">2</span> Configuration</h2>
+<div id="outline-container-org24c3641" class="outline-2">
+<h2 id="configuration"><a id="org24c3641"></a><span class="section-number-2">2</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 The LSP ecosystem is based on two packages: <a href="https://github.com/emacs-lsp/lsp-mode">lsp-mode</a> and <a href="https://github.com/emacs-lsp/lsp-ui">lsp-ui</a>.
@@ -318,13 +335,301 @@ Please check out their documentation.
 <p>
 If you add <code>lsp-*-enable</code> to major mode hooks for auto initialization of
 language clients, customize <code>lsp-project-whitelist</code> <code>lsp-project-blacklist</code> to
-disable projects you don't want to enable LSP.
+disable projects you don’t want to enable LSP.
 </p>
+</div>
+
+<div id="outline-container-orge27958a" class="outline-3">
+<h3 id="derived-layers"><a id="orge27958a"></a><span class="section-number-3">2.1</span> Derived layers</h3>
+<div class="outline-text-3" id="text-derived-layers">
+<p>
+A number of elisp functions have been added to facilitate development of derived layers.
+</p>
+</div>
+
+<div id="outline-container-org36a2fd8" class="outline-4">
+<h4 id="spacemacslsp-bind-keys-for-mode-mode"><a id="org36a2fd8"></a><span class="section-number-4">2.1.1</span> <code>spacemacs/lsp-bind-keys-for-mode mode</code></h4>
+<div class="outline-text-4" id="text-spacemacslsp-bind-keys-for-mode-mode">
+<p>
+This function binds keys to a number of lsp features useful for all/most modes for the given major mode.
+It also declares some relevant keyboard shortcut prefixes.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="declared-prefixes"></a><a id="org0286abe"></a>Declared prefixes<br />
+<div class="outline-text-5" id="text-declared-prefixes">
+<p>
+The following prefixes have been declared:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">prefix</th>
+<th scope="col" class="org-left">name</th>
+<th scope="col" class="org-left">functional area</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>m =</code></td>
+<td class="org-left">format</td>
+<td class="org-left">Source formatting</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m g</code></td>
+<td class="org-left">goto</td>
+<td class="org-left">Source navigation</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m h</code></td>
+<td class="org-left">help/hierarchy</td>
+<td class="org-left">Help and functions related to hierarchy (class relationships etc.)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m l</code></td>
+<td class="org-left">lsp/backend</td>
+<td class="org-left">Catchall. Restart LSP backend, other implementation-specific functionality</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m r</code></td>
+<td class="org-left">refactor</td>
+<td class="org-left">What it says on the tin</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m T</code></td>
+<td class="org-left">toggle</td>
+<td class="org-left">Toggle LSP backend features (documentation / symbol info overlays etc.)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+
+<li><a id="default-keybindings"></a><a id="org838a063"></a>Default keybindings<br />
+<div class="outline-text-5" id="text-default-keybindings">
+<p>
+The default bindings are listed below. Derived language server layers should extend this list.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">binding</th>
+<th scope="col" class="org-left">function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>m = b</code></td>
+<td class="org-left">format buffer (lsp)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>m g i</code></td>
+<td class="org-left">goto implementation (lsp)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m g t</code></td>
+<td class="org-left">goto type-definition (lsp)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m g k</code></td>
+<td class="org-left">goto viewport symbol (avy)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m g m</code></td>
+<td class="org-left">browse file symbols (lsp-ui-imenu)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m g d</code></td>
+<td class="org-left">find definitions (lsp-ui-peek)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m g l</code></td>
+<td class="org-left">find implementations (lsp-ui-peek)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m g r</code></td>
+<td class="org-left">find references (lsp-ui-peek)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m g s</code></td>
+<td class="org-left">find-workspace-symbol (lsp-ui-peek)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m g p</code></td>
+<td class="org-left">jump prev (lsp-ui-peek stack - see Note 1)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m g n</code></td>
+<td class="org-left">jump next (lsp-ui-peek stack - see Note 1)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m g f</code></td>
+<td class="org-left">jump to flycheck error</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>m h h</code></td>
+<td class="org-left">describe thing at point</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>m l r</code></td>
+<td class="org-left">lsp-restart-workspace</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m l a</code></td>
+<td class="org-left">execute code action</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>m r r</code></td>
+<td class="org-left">rename</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>m T d</code></td>
+<td class="org-left">toggle documentation overlay</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m T F</code></td>
+<td class="org-left">toggle documentation overlay function signature</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m T s</code></td>
+<td class="org-left">toggle symbol info overlay</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m T S</code></td>
+<td class="org-left">toggle symbol info overlay symbol name</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m T I</code></td>
+<td class="org-left">toggle symbol info overlay duplicates</td>
+</tr>
+</tbody>
+</table>
 
 <p>
-If some features doe not work as intended, here is a common check list.
+Note 1: There is a window local jump list dedicated to cross references
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org4a03722" class="outline-3">
+<h3 id="variables"><a id="org4a03722"></a><span class="section-number-3">2.2</span> Variables</h3>
+<div class="outline-text-3" id="text-variables">
+<p>
+A number of configuration variables have been exposed via the LSP layer <code>config.el</code>.
+Sensible defaults have been provided, however they may all be overridden in your .spacemacs, or dynamically using the bindings added
+under the derived mode t prefix by <code>(spacemacs/lsp-bind-keys-for-mode mode)</code>
 </p>
 
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Variable name</th>
+<th scope="col" class="org-left">Default</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>lsp-ui-remap-xref-keybindings</code></td>
+<td class="org-left">nil</td>
+<td class="org-left">When non-nil, xref keybindings remapped to lsp-ui-peek-find-{definition,references}</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lsp-ui-doc-enable</code></td>
+<td class="org-left">t</td>
+<td class="org-left">When non-nil, the documentation overlay is displayed</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lsp-ui-doc-include-signature</code></td>
+<td class="org-left">nil</td>
+<td class="org-left">When nil, signature omitted from lsp-ui-doc overlay (this is usually redundant)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lsp-ui-sideline-enable</code></td>
+<td class="org-left">t</td>
+<td class="org-left">When non-nil, the symbol information overlay is displayed</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lsp-ui-sideline-show-symbol</code></td>
+<td class="org-left">nil</td>
+<td class="org-left">When non-nil, the symbol information overlay includes symbol name (redundant for c-modes)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgae61264" class="outline-3">
+<h3 id="diagnostics"><a id="orgae61264"></a><span class="section-number-3">2.3</span> Diagnostics</h3>
+<div class="outline-text-3" id="text-diagnostics">
+<p>
+If some features do not work as expected, here is a common check list.
+</p>
 <ul class="org-ul">
 <li><code>M-x lsp-capabilities</code> If the LSP workspace is initialized correctly</li>
 <li><code>M-: xref-backend-functions</code> should be <code>(lsp--xref-backend)</code> for cross
@@ -335,9 +640,37 @@ completion</li>
 </div>
 </div>
 </div>
+
+<div id="outline-container-org7ba2772" class="outline-2">
+<h2 id="future-additionsimprovements"><a id="org7ba2772"></a><span class="section-number-2">3</span> Future additions/improvements</h2>
+<div class="outline-text-2" id="text-future-additionsimprovements">
+</div>
+
+<div id="outline-container-org7b2c270" class="outline-3">
+<h3 id="make-spacemacslsp-bind-keys-for-mode-bind-conditionally"><a id="org7b2c270"></a><span class="section-number-3">3.1</span> Make <code>spacemacs/lsp-bind-keys-for-mode</code> bind conditionally</h3>
+<div class="outline-text-3" id="text-make-spacemacslsp-bind-keys-for-mode-bind-conditionally">
+<p>
+i.e. only bind keys if the language server supports the capability (queried using <code>lsp-capabilities</code>).
+<code>lsp-capabilities</code> uses current buffer to determine the language server, so this would probably entail adding the bindings dynamically in
+a mode hook.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org207fe5a" class="outline-2">
+<h2 id="references"><a id="org207fe5a"></a><span class="section-number-2">4</span> References</h2>
+<div class="outline-text-2" id="text-references">
+<ul class="org-ul">
+<li><a href="https://github.com/emacs-lsp/lsp-mode">lsp-mode repo</a></li>
+<li><a href="https://github.com/emacs-lsp/lsp-ui">lsp-ui repo</a></li>
+</ul>
+</div>
+</div>
+</div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-08-23 Thu 09:35</p>
+<p class="date">Created: 2018-10-13 Sat 21:52</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

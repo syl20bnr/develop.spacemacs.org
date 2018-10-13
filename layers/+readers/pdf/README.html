@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-08-23 Thu 09:35 -->
+<!-- 2018-10-13 Sat 21:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PDF layer</title>
@@ -295,8 +295,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgd0bb63d" class="outline-2">
-<h2 id="description"><a id="orgd0bb63d"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orga27ea7c" class="outline-2">
+<h2 id="description"><a id="orga27ea7c"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer enables support for PDF with the <a href="https://github.com/politza/pdf-tools">pdf-tools</a> package.
@@ -308,15 +308,15 @@ According to the official repository:
 
 <blockquote>
 <p>
-"PDF Tools is, among other things, a replacement of DocView for PDF files. The
+“PDF Tools is, among other things, a replacement of DocView for PDF files. The
 key difference is, that pages are not pre-rendered by e.g. ghostscript and
-stored in the file-system, but rather created on-demand and stored in memory."
+stored in the file-system, but rather created on-demand and stored in memory.”
 </p>
 </blockquote>
 </div>
 
-<div id="outline-container-orga8682c4" class="outline-3">
-<h3 id="features"><a id="orga8682c4"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org1cd5094" class="outline-3">
+<h3 id="features"><a id="org1cd5094"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Searching and slicing with <code>occur</code>.</li>
@@ -328,21 +328,21 @@ stored in the file-system, but rather created on-demand and stored in memory."
 </div>
 </div>
 
-<div id="outline-container-orgc04605e" class="outline-2">
-<h2 id="install"><a id="orgc04605e"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org622baf4" class="outline-2">
+<h2 id="install"><a id="org622baf4"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org337afae" class="outline-3">
-<h3 id="prerequisites"><a id="org337afae"></a><span class="section-number-3">2.1</span> Prerequisites</h3>
+<div id="outline-container-org6d16457" class="outline-3">
+<h3 id="prerequisites"><a id="org6d16457"></a><span class="section-number-3">2.1</span> Prerequisites</h3>
 <div class="outline-text-3" id="text-prerequisites">
 <p>
-Linux is the only operating system officially supported, but it's possible to
+Linux is the only operating system officially supported, but it’s possible to
 use <code>pdf-tools</code> on OS X as well, and possibly on other Unix flavors.
 </p>
 
 <p>
-You'll need to install a few libraries. Check the <a href="https://github.com/politza/pdf-tools#server-prerequisites">instructions</a> on
+You’ll need to install a few libraries. Check the <a href="https://github.com/politza/pdf-tools#server-prerequisites">instructions</a> on
 <code>pdf-tools</code> page. Note that compiling from source might not be necessary, as
 the documentation states.
 </p>
@@ -355,8 +355,8 @@ automatically all dependencies using <code>apt-get</code>.
 </div>
 </div>
 
-<div id="outline-container-orgbec4cea" class="outline-3">
-<h3 id="dotfile"><a id="orgbec4cea"></a><span class="section-number-3">2.2</span> Dotfile</h3>
+<div id="outline-container-orgcfa03e2" class="outline-3">
+<h3 id="dotfile"><a id="orgcfa03e2"></a><span class="section-number-3">2.2</span> Dotfile</h3>
 <div class="outline-text-3" id="text-dotfile">
 <p>
 After installing the dependencies, add this to your <code>~/.spacemacs</code>.
@@ -373,7 +373,7 @@ window showing the compilation process.
 </p>
 
 <p>
-If everything goes right, the compilation won't display any error and you will
+If everything goes right, the compilation won’t display any error and you will
 be able to see <i>PDFView</i> (instead of <i>DocView</i>) on the spaceline after opening a
 pdf file.
 </p>
@@ -392,8 +392,8 @@ dependencies are properly installed and run the command <code>pdf-tools-install<
 </div>
 </div>
 
-<div id="outline-container-org8724222" class="outline-2">
-<h2 id="usage"><a id="org8724222"></a><span class="section-number-2">3</span> Usage</h2>
+<div id="outline-container-org7ab5736" class="outline-2">
+<h2 id="usage"><a id="org7ab5736"></a><span class="section-number-2">3</span> Usage</h2>
 <div class="outline-text-2" id="text-usage">
 <p>
 Use <code>SPC m .</code> to activate the pdf-tools transient state.
@@ -419,7 +419,7 @@ Searching with <code>occur</code> can be done by using <code>pdf-occur</code> (<
 Tips:
 </p>
 <ul class="org-ul">
-<li>You'll probably want to use <code>pdf-view-set-slice-from-bounding-box</code> (bound to
+<li>You’ll probably want to use <code>pdf-view-set-slice-from-bounding-box</code> (bound to
 <code>SPC m s b</code>) This command trims the blank parts of the
 lateral margins, making the useful portion larger.</li>
 <li>The last visited page is not saved across Emacs sessions. If you want save it,
@@ -428,11 +428,11 @@ use the bookmarks commands on <code>SPC j b</code> to save and go to a bookmark.
 </div>
 </div>
 
-<div id="outline-container-org9e37416" class="outline-2">
-<h2 id="known-issues"><a id="org9e37416"></a><span class="section-number-2">4</span> Known Issues</h2>
+<div id="outline-container-orged5d2ef" class="outline-2">
+<h2 id="known-issues"><a id="orged5d2ef"></a><span class="section-number-2">4</span> Known Issues</h2>
 <div class="outline-text-2" id="text-known-issues">
 <p>
-Due to <code>image-mode</code>'s behaviour, the <code>pdf-tools</code> buffer might go back to the
+Due to <code>image-mode=’s behaviour, the =pdf-tools</code> buffer might go back to the
 first page after switching windows. If this happens, you can quickly go back to
 the previous page in history with <code>pdf-history-backward</code> (<code>``</code> in Evil state and
 <code>B</code> in Emacs state.)
@@ -440,16 +440,16 @@ the previous page in history with <code>pdf-history-backward</code> (<code>``</c
 </div>
 </div>
 
-<div id="outline-container-org99a4237" class="outline-2">
-<h2 id="key-bindings"><a id="org99a4237"></a><span class="section-number-2">5</span> Key bindings</h2>
+<div id="outline-container-orgfdef906" class="outline-2">
+<h2 id="key-bindings"><a id="orgfdef906"></a><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
 If you use Emacs editing style, check the key bindings at the <a href="https://github.com/politza/pdf-tools#some-keybindings">pdf-tools page</a>.
 </p>
 </div>
 
-<div id="outline-container-org3dbf588" class="outline-3">
-<h3 id="pdf-view"><a id="org3dbf588"></a><span class="section-number-3">5.1</span> PDF View</h3>
+<div id="outline-container-org23d79e9" class="outline-3">
+<h3 id="pdf-view"><a id="org23d79e9"></a><span class="section-number-3">5.1</span> PDF View</h3>
 <div class="outline-text-3" id="text-pdf-view">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -617,8 +617,8 @@ differently from the default Evil search. To go to the next match, use <code>C-s
 </div>
 </div>
 
-<div id="outline-container-orgcdda19b" class="outline-3">
-<h3 id="leader-keys"><a id="orgcdda19b"></a><span class="section-number-3">5.2</span> Leader keys</h3>
+<div id="outline-container-org60a71a8" class="outline-3">
+<h3 id="leader-keys"><a id="org60a71a8"></a><span class="section-number-3">5.2</span> Leader keys</h3>
 <div class="outline-text-3" id="text-leader-keys">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -756,8 +756,8 @@ differently from the default Evil search. To go to the next match, use <code>C-s
 </div>
 </div>
 
-<div id="outline-container-org5a92bc2" class="outline-3">
-<h3 id="outline-buffer-mode"><a id="org5a92bc2"></a><span class="section-number-3">5.3</span> Outline buffer mode</h3>
+<div id="outline-container-orgc57973e" class="outline-3">
+<h3 id="outline-buffer-mode"><a id="orgc57973e"></a><span class="section-number-3">5.3</span> Outline buffer mode</h3>
 <div class="outline-text-3" id="text-outline-buffer-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -832,8 +832,8 @@ Note that you can use also typical Vim keys such as <code>j</code> and <code>G</
 </div>
 </div>
 
-<div id="outline-container-org83c583b" class="outline-3">
-<h3 id="annotation-list-mode"><a id="org83c583b"></a><span class="section-number-3">5.4</span> Annotation list mode</h3>
+<div id="outline-container-orgf901632" class="outline-3">
+<h3 id="annotation-list-mode"><a id="orgf901632"></a><span class="section-number-3">5.4</span> Annotation list mode</h3>
 <div class="outline-text-3" id="text-annotation-list-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -874,8 +874,8 @@ Note that you can use also typical Vim keys such as <code>j</code> and <code>G</
 </div>
 </div>
 
-<div id="outline-container-orgb0cd43f" class="outline-3">
-<h3 id="occur-mode"><a id="orgb0cd43f"></a><span class="section-number-3">5.5</span> Occur mode</h3>
+<div id="outline-container-orgc363b39" class="outline-3">
+<h3 id="occur-mode"><a id="orgc363b39"></a><span class="section-number-3">5.5</span> Occur mode</h3>
 <div class="outline-text-3" id="text-occur-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -914,7 +914,7 @@ Note that you can use also typical Vim keys such as <code>j</code> and <code>G</
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-08-23 Thu 09:35</p>
+<p class="date">Created: 2018-10-13 Sat 21:53</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

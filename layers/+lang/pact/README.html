@@ -6,7 +6,7 @@
 <!-- 2018-10-13 Sat 21:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Extra Languages</title>
+<title>Pact layer</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Travis CI User" />
 <style type="text/css">
@@ -259,7 +259,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Extra Languages</h1>
+<h1 class="title">Pact layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -269,57 +269,91 @@ for the JavaScript code in this tag.
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#key-bindings">2. Key bindings</a>
+<li><a href="#install">2. Install</a>
 <ul>
-<li><a href="#arch-linux-pkgbuilds">2.1. Arch Linux PKGBUILDs</a></li>
-<li><a href="#gentoo-ebuilds">2.2. Gentoo ebuilds</a></li>
+<li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#flycheck">2.2. Flycheck</a></li>
+</ul>
+</li>
+<li><a href="#key-bindings">3. Key bindings</a>
+<ul>
+<li><a href="#repl">3.1. REPL</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org21eaa53" class="outline-2">
-<h2 id="description"><a id="org21eaa53"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org1c96caf" class="outline-2">
+<h2 id="description"><a id="org1c96caf"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds a number of packages for less common languages and major modes.
+This layer adds support for the <a href="https://github.com/kadena-io/pact">Pact Smart Contract Language</a>.
 </p>
 </div>
 
-<div id="outline-container-orge500874" class="outline-3">
-<h3 id="features"><a id="orge500874"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org0c2c662" class="outline-3">
+<h3 id="features"><a id="org0c2c662"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Support for:
-<ul class="org-ul">
-<li>Arch Linux PKGBUILDs</li>
-<li>Arduino</li>
-<li>Android Logcat (not associated with any file types by default)</li>
-<li>Gentoo ebuilds</li>
-<li>Hoon</li>
-<li>Kivy</li>
-<li>MATLAB</li>
-<li>QML</li>
-<li>OpenScad</li>
-<li>Stan</li>
-<li>Thrift</li>
-<li>Vala</li>
-<li>Wolfram Language / Mathematica</li>
-</ul></li>
+<li>Syntax highlighting for <code>.pact</code> source files</li>
+<li>Easy interaction with an embedded Pact REPL</li>
+<li>Flycheck integration</li>
 </ul>
+
+<p>
+<b>Note:</b> You will need a <code>pact</code> binary on your <code>PATH</code> for REPL features to function.
+</p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgfed07e1" class="outline-2">
-<h2 id="key-bindings"><a id="orgfed07e1"></a><span class="section-number-2">2</span> Key bindings</h2>
+<div id="outline-container-orgd0a4678" class="outline-2">
+<h2 id="install"><a id="orgd0a4678"></a><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-orgbefda63" class="outline-3">
+<h3 id="layer"><a id="orgbefda63"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
+<p>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>pact</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7eebb06" class="outline-3">
+<h3 id="flycheck"><a id="org7eebb06"></a><span class="section-number-3">2.2</span> Flycheck</h3>
+<div class="outline-text-3" id="text-flycheck">
+<p>
+To enable flycheck, add the following to your <code>dotspacemacs/user-config</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'pact-mode-hook 'flycheck-mode<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org92e7b3e" class="outline-2">
+<h2 id="key-bindings"><a id="org92e7b3e"></a><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
+<p>
+All Pact specific bindings are prefixed with the major-mode leader <code>SPC m</code>.
+</p>
 </div>
 
-<div id="outline-container-org6509be2" class="outline-3">
-<h3 id="arch-linux-pkgbuilds"><a id="org6509be2"></a><span class="section-number-3">2.1</span> Arch Linux PKGBUILDs</h3>
-<div class="outline-text-3" id="text-arch-linux-pkgbuilds">
+<div id="outline-container-org06a185b" class="outline-3">
+<h3 id="repl"><a id="org06a185b"></a><span class="section-number-3">3.1</span> REPL</h3>
+<div class="outline-text-3" id="text-repl">
+<p>
+REPL commands are prefixed by <code>SPC m s</code>:
+</p>
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -336,75 +370,13 @@ This layer adds a number of packages for less common languages and major modes.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m b</code></td>
-<td class="org-left">Run makepkg</td>
+<td class="org-left"><code>SPC m s '</code></td>
+<td class="org-left">Open a Pact REPL in a new frame</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r</code></td>
-<td class="org-left">Increase the pkgrel number</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m u</code></td>
-<td class="org-left">Browse URL</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m m</code></td>
-<td class="org-left">Update package sums</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m e</code></td>
-<td class="org-left">Build ETAGS file</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m a</code></td>
-<td class="org-left">Make a source tarball</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgc830cd6" class="outline-3">
-<h3 id="gentoo-ebuilds"><a id="orgc830cd6"></a><span class="section-number-3">2.2</span> Gentoo ebuilds</h3>
-<div class="outline-text-3" id="text-gentoo-ebuilds">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m n</code></td>
-<td class="org-left">Insert skeleton ebuild</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m k</code></td>
-<td class="org-left">Edit keywords</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m e</code></td>
-<td class="org-left">Run ebuild command</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m a</code></td>
-<td class="org-left">Add ChangeLog entry</td>
+<td class="org-left"><code>SPC m s b</code></td>
+<td class="org-left">Load or reload the current buffer into the REPL</td>
 </tr>
 </tbody>
 </table>

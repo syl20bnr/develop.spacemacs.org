@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-08-23 Thu 09:35 -->
+<!-- 2018-10-13 Sat 21:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Haskell layer</title>
@@ -330,7 +330,7 @@ for the JavaScript code in this tag.
 <li><a href="#flycheck-doesnt-work">5.8. Flycheck doesn't work</a></li>
 <li><a href="#flycheck-doesnt-work-with-stack">5.9. Flycheck doesn't work with <code>stack</code></a>
 <ul>
-<li><a href="#the-stack-build-directory-is-wrong">5.9.1. The stack build directory is wrong</a></li>
+<li><a href="#the-stack-build-directory-is-wrong">5.9.1. The <code>stack</code> build directory is wrong</a></li>
 <li><a href="#the-project-root-directory-is-not-set-properly">5.9.2. The Project root directory is not set properly</a></li>
 </ul>
 </li>
@@ -348,37 +348,37 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgf4b1ac0" class="outline-2">
-<h2 id="description"><a id="orgf4b1ac0"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orga8eeb16" class="outline-2">
+<h2 id="description"><a id="orga8eeb16"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for the <a href="https://www.haskell.org/">Haskell</a> language.
 </p>
 </div>
 
-<div id="outline-container-orgc7befbd" class="outline-3">
-<h3 id="features"><a id="orgc7befbd"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org7c1086f" class="outline-3">
+<h3 id="features"><a id="org7c1086f"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>syntax highlighting for <a href="https://github.com/haskell/haskell-mode">haskell source</a>, <a href="https://github.com/haskell/haskell-mode">cabal files</a>, <a href="https://github.com/bgamari/cmm-mode">C&#x2013; source</a>,</li>
-<li>auto-completion with one of selected backends (<code>intero</code>, <code>dante</code>, <code>ghci</code> or
+<li>auto-completion with one of the selected backends (<code>intero</code>, <code>dante</code>, <code>ghci</code> or
 <code>ghc-mod</code>).</li>
 </ul>
 
 <p>
-<b>This layer is in construction, it needs your contributions and bug reports.</b>
+<b>This layer is under construction, it needs your contributions and bug reports.</b>
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org34d7ab6" class="outline-2">
-<h2 id="install"><a id="org34d7ab6"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org105e0c2" class="outline-2">
+<h2 id="install"><a id="org105e0c2"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgf83a026" class="outline-3">
-<h3 id="layer"><a id="orgf83a026"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-orgd7c6329" class="outline-3">
+<h3 id="layer"><a id="orgd7c6329"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -388,8 +388,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org1f39415" class="outline-3">
-<h3 id="dependencies"><a id="org1f39415"></a><span class="section-number-3">2.2</span> Dependencies</h3>
+<div id="outline-container-org5f77a99" class="outline-3">
+<h3 id="dependencies"><a id="org5f77a99"></a><span class="section-number-3">2.2</span> Dependencies</h3>
 <div class="outline-text-3" id="text-dependencies">
 <p>
 This layer requires some <a href="https://www.haskell.org/cabal/">cabal</a> packages:
@@ -405,7 +405,7 @@ This layer requires some <a href="https://www.haskell.org/cabal/">cabal</a> pack
 </ul>
 
 <p>
-To install them, use following command (or the <code>stack</code> equivalent):
+To install them, use the following command (or the <code>stack</code> equivalent):
 </p>
 
 <div class="org-src-container">
@@ -415,22 +415,22 @@ To install them, use following command (or the <code>stack</code> equivalent):
 </div>
 </div>
 
-<div id="outline-container-org1711a12" class="outline-3">
-<h3 id="setup-path"><a id="org1711a12"></a><span class="section-number-3">2.3</span> Setup PATH</h3>
+<div id="outline-container-org6bedf98" class="outline-3">
+<h3 id="setup-path"><a id="org6bedf98"></a><span class="section-number-3">2.3</span> Setup PATH</h3>
 <div class="outline-text-3" id="text-setup-path">
 <p>
-First of all make sure that your <code>$PATH</code> contains the installation path for
+First of all, make sure that your <code>$PATH</code> contains the installation path for
 Haskell tools like <code>ghc</code>, <code>ghci</code> etc. It depends on how you have installed
 <code>ghc</code>, but you can always check it by running <code>which ghc</code> in your terminal.
-<code>Stack</code> users should add only the installation path of <code>stack</code> itself. Usually
-it's <code>~/.local/bin</code>.
+<code>Stack</code> users should only add the installation path of <code>stack</code> itself. Usually
+it’s <code>~/.local/bin</code>.
 </p>
 
 <p>
-Then make sure that your <code>$PATH</code> contains the installation path for <code>cabal</code>
+Then make sure that your <code>$PATH</code> contains the installation path for the <code>cabal</code>
 packages. If you are using <code>cabal</code> it should be <code>~/.cabal/bin</code> or
-<code>~/Library/Haskell/bin</code> (for 'Haskell for Mac' users). If you
-are using <code>stack</code> then it should be <code>~/.local/bin</code>.
+<code>~/Library/Haskell/bin</code> (for ’Haskell for Mac’ users). If you are using <code>stack</code>
+then it should be <code>~/.local/bin</code>.
 </p>
 
 <p>
@@ -440,16 +440,16 @@ the FAQ (<code>SPC h SPC $PATH RET</code>).
 </div>
 </div>
 
-<div id="outline-container-orgb819028" class="outline-3">
-<h3 id="completion-support"><a id="orgb819028"></a><span class="section-number-3">2.4</span> Completion support</h3>
+<div id="outline-container-org82ef44a" class="outline-3">
+<h3 id="completion-support"><a id="org82ef44a"></a><span class="section-number-3">2.4</span> Completion support</h3>
 <div class="outline-text-3" id="text-completion-support">
 <p>
 This layer provides several completion backends - <code>intero</code>, <code>dante</code>, <code>ghci</code> and
-<code>ghc-mod</code>. By default <code>ghci</code> (<code>company-ghci</code>) is used as it requires no
-dependencies and works both with <code>stack</code> and pure <code>cabal</code> projects. In order to
-manually set completion backend set value of <code>haskell-completion-backend</code>. Note
-that in order to enable completion you have to enable <code>auto-completion</code> layer as
-well.
+<code>ghc-mod</code>. <code>ghci</code> (<code>company-ghci</code>) is used by default, because it doesn’t
+require any dependencies, and it works with both <code>stack</code> and pure <code>cabal</code>
+projects. The completion backend can be changed manually, by setting the value
+of the <code>haskell-completion-backend</code> variable. Note that in order to enable
+completion, you’ll have to enable the <code>auto-completion</code> layer as well.
 </p>
 
 <div class="org-src-container">
@@ -460,29 +460,29 @@ well.
 </div>
 </div>
 
-<div id="outline-container-org2b6ae79" class="outline-4">
-<h4 id="company-ghci"><a id="org2b6ae79"></a><span class="section-number-4">2.4.1</span> <code>company-ghci</code></h4>
+<div id="outline-container-orgeb087d3" class="outline-4">
+<h4 id="company-ghci"><a id="orgeb087d3"></a><span class="section-number-4">2.4.1</span> <code>company-ghci</code></h4>
 <div class="outline-text-4" id="text-company-ghci">
 <p>
-<a href="https://github.com/juiko/company-ghci">company-ghci</a> communicates directly with <code>ghci</code> in order to provide completion. In
-order to use it you have to call <code>haskell-process-load-or-reload</code> (<code>SPC s b</code>).
+<a href="https://github.com/juiko/company-ghci">company-ghci</a> communicates directly with <code>ghci</code>, in order to provide completion.
+To use it, you have to call <code>haskell-process-load-or-reload</code> (<code>SPC s b</code>).
 </p>
 </div>
 </div>
 
-<div id="outline-container-orge7f1807" class="outline-4">
-<h4 id="intero"><a id="orge7f1807"></a><span class="section-number-4">2.4.2</span> <code>intero</code></h4>
+<div id="outline-container-orge1ecf9b" class="outline-4">
+<h4 id="intero"><a id="orge1ecf9b"></a><span class="section-number-4">2.4.2</span> <code>intero</code></h4>
 <div class="outline-text-4" id="text-intero">
 <p>
-<code>Intero</code> works only for <code>stack</code> users. You can manually install <code>intero</code> executable by
-calling <code>stack install intero</code>, but this step is optional as <code>Intero</code> installs
-itself.
+<code>Intero</code> only works for <code>stack</code> users. You can install the <code>intero</code> executable
+manually, by calling <code>stack install intero</code>, but this step is optional as
+<code>Intero</code> installs itself.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org64c1217" class="outline-4">
-<h4 id="dante"><a id="org64c1217"></a><span class="section-number-4">2.4.3</span> <code>dante</code></h4>
+<div id="outline-container-orgc4f1ac5" class="outline-4">
+<h4 id="dante"><a id="orgc4f1ac5"></a><span class="section-number-4">2.4.3</span> <code>dante</code></h4>
 <div class="outline-text-4" id="text-dante">
 <p>
 <code>dante</code> works for <code>cabal</code>, <code>nix</code>, <code>sytx</code>, and <code>stack</code> users.
@@ -491,49 +491,50 @@ itself.
 </div>
 </div>
 
-<div id="outline-container-orgfc3aade" class="outline-4">
-<h4 id="ghc-mod"><a id="orgfc3aade"></a><span class="section-number-4">2.4.4</span> <code>ghc-mod</code></h4>
+<div id="outline-container-org27f7665" class="outline-4">
+<h4 id="ghc-mod"><a id="org27f7665"></a><span class="section-number-4">2.4.4</span> <code>ghc-mod</code></h4>
 <div class="outline-text-4" id="text-ghc-mod">
 <p>
-<a href="http://www.mew.org/~kazu/proj/ghc-mod/">ghc-mod</a> enhances <code>haskell-mode</code> with for example code completion, templates,
-case-splitting and much more. In order to use it you need to install the
-executable with <code>cabal install ghc-mod</code> (or <code>stack</code> equivalent).
+<a href="http://www.mew.org/~kazu/proj/ghc-mod/">ghc-mod</a> enhances <code>haskell-mode</code>, with for example code completion, templates,
+case-splitting and much more. In order to use it, you need to install the
+executable with <code>cabal install ghc-mod</code> (or the <code>stack</code> equivalent).
 </p>
 
 <p>
-<code>Stack</code> users also should make sure that <code>dist/setup-config</code> doesn't exist in the
-project root. As it will confuse <code>ghc-mod</code>. For more troubleshooting, checkout
-this <a href="https://github.com/DanielG/ghc-mod/wiki#user-content-known-issues-related-to-stack">document</a>.
+<code>Stack</code> users also should make sure that <code>dist/setup-config</code> doesn’t exist in
+the project root. As it will confuse <code>ghc-mod</code>. For more troubleshooting,
+checkout this <a href="https://github.com/DanielG/ghc-mod/wiki#user-content-known-issues-related-to-stack">document</a>.
 </p>
 
 <p>
-Also note that <code>ghc-mod</code> works only with <code>GHC</code> version that was used to build
-<code>ghc-mod</code>. You can check which version was used by calling <code>ghc-mod --version</code>.
+Also note that <code>ghc-mod</code> only works with the <code>GHC</code> version that was used to
+build <code>ghc-mod</code>. You can check which version was used by calling
+<code>ghc-mod --version</code>.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2e8bd74" class="outline-3">
-<h3 id="optional-extras"><a id="org2e8bd74"></a><span class="section-number-3">2.5</span> Optional extras</h3>
+<div id="outline-container-org7e5b2d0" class="outline-3">
+<h3 id="optional-extras"><a id="org7e5b2d0"></a><span class="section-number-3">2.5</span> Optional extras</h3>
 <div class="outline-text-3" id="text-optional-extras">
 <p>
-The Haskell layer supports some extra features that can be enabled through layer
-variables.
+The Haskell layer supports some extra features, which can be enabled through the
+layer variables.
 </p>
 </div>
 
-<div id="outline-container-org2c80e18" class="outline-4">
-<h4 id="structured-haskell-mode"><a id="org2c80e18"></a><span class="section-number-4">2.5.1</span> structured-haskell-mode</h4>
+<div id="outline-container-org2319af9" class="outline-4">
+<h4 id="structured-haskell-mode"><a id="org2319af9"></a><span class="section-number-4">2.5.1</span> structured-haskell-mode</h4>
 <div class="outline-text-4" id="text-structured-haskell-mode">
 <p>
-Currently there is no support for <a href="https://github.com/chrisdone/structured-haskell-mode">structured-haskell-mode</a>, since it doesn't play
-very well with non-emacs editing style (<a href="https://github.com/chrisdone/structured-haskell-mode/issues/81">structured-haskell-mode/#81</a>). Emacs
-editing style users might easily enable it by adding <code>structured-haskell-mode</code> to
-list of <code>dotspacemacs-additional-packages</code> in your <code>.spacemacs</code> file. For more
-installation instructions, please refer to the official documentation at
-<a href="https://github.com/chrisdone/structured-haskell-mode#features">structured-haskell-mode</a> page. In case you are non-emacs editing style user and
-still want to use <code>structured-haskell-mode</code> - use it at your own risk.
+Currently there is no support for <a href="https://github.com/chrisdone/structured-haskell-mode">structured-haskell-mode</a>, since it doesn’t play
+very well with non-emacs editing styles (<a href="https://github.com/chrisdone/structured-haskell-mode/issues/81">structured-haskell-mode/#81</a>). Emacs
+editing style users can easily enable it by adding <code>structured-haskell-mode</code> to
+the list of <code>dotspacemacs-additional-packages</code> in your <code>.spacemacs</code> file. For
+more installation instructions, please refer to the official documentation at
+the <a href="https://github.com/chrisdone/structured-haskell-mode#features">structured-haskell-mode</a> page. In case you are a non-emacs editing style user
+and still want to use <code>structured-haskell-mode</code> - use it at your own risk.
 </p>
 
 <p>
@@ -543,13 +544,13 @@ are warmly welcome!
 </div>
 </div>
 
-<div id="outline-container-org2af07db" class="outline-4">
-<h4 id="hindent"><a id="org2af07db"></a><span class="section-number-4">2.5.2</span> hindent</h4>
+<div id="outline-container-org61dbcfc" class="outline-4">
+<h4 id="hindent"><a id="org61dbcfc"></a><span class="section-number-4">2.5.2</span> hindent</h4>
 <div class="outline-text-4" id="text-hindent">
 <p>
-<a href="https://github.com/commercialhaskell/hindent">hindent</a> is an extensible Haskell pretty printer, which let's you
-reformat your code. You need to install the executable with <code>cabal
-install hindent</code> or <code>stack install hindent</code>
+<a href="https://github.com/commercialhaskell/hindent">hindent</a> is an extensible Haskell pretty printer, which lets you reformat your
+code. You need to install the executable with <code>cabal install hindent</code> or
+<code>stack install hindent</code>.
 </p>
 
 <p>
@@ -570,12 +571,11 @@ See examples <a href="https://github.com/commercialhaskell/hindent/blob/master/T
 </div>
 </div>
 
-<div id="outline-container-orgbfb65f5" class="outline-2">
-<h2 id="key-bindings"><a id="orgbfb65f5"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-org87a4e97" class="outline-2">
+<h2 id="key-bindings"><a id="org87a4e97"></a><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
-All Haskell specific bindings are prefixed with the major-mode leader
-<code>SPC m</code>.
+All Haskell specific bindings are prefixed with the major-mode leader <code>SPC m</code>.
 </p>
 
 <p>
@@ -620,8 +620,8 @@ Top-level commands are prefixed by <code>SPC m</code>:
 </table>
 </div>
 
-<div id="outline-container-orge7019f0" class="outline-3">
-<h3 id="documentation"><a id="orge7019f0"></a><span class="section-number-3">3.1</span> Documentation</h3>
+<div id="outline-container-org0b0fc2b" class="outline-3">
+<h3 id="documentation"><a id="org0b0fc2b"></a><span class="section-number-3">3.1</span> Documentation</h3>
 <div class="outline-text-3" id="text-documentation">
 <p>
 Documentation commands are prefixed by <code>SPC m h</code>
@@ -681,8 +681,8 @@ Documentation commands are prefixed by <code>SPC m h</code>
 </div>
 </div>
 
-<div id="outline-container-org4e03553" class="outline-3">
-<h3 id="debug"><a id="org4e03553"></a><span class="section-number-3">3.2</span> Debug</h3>
+<div id="outline-container-orgd6f096b" class="outline-3">
+<h3 id="debug"><a id="orgd6f096b"></a><span class="section-number-3">3.2</span> Debug</h3>
 <div class="outline-text-3" id="text-debug">
 <p>
 Debug commands are prefixed by <code>SPC m d</code>:
@@ -762,8 +762,8 @@ Debug commands are prefixed by <code>SPC m d</code>:
 </div>
 </div>
 
-<div id="outline-container-org3f892aa" class="outline-3">
-<h3 id="debug-buffer"><a id="org3f892aa"></a><span class="section-number-3">3.3</span> Debug Buffer</h3>
+<div id="outline-container-org2e01b88" class="outline-3">
+<h3 id="debug-buffer"><a id="org2e01b88"></a><span class="section-number-3">3.3</span> Debug Buffer</h3>
 <div class="outline-text-3" id="text-debug-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -834,8 +834,8 @@ Debug commands are prefixed by <code>SPC m d</code>:
 </div>
 </div>
 
-<div id="outline-container-org126832b" class="outline-3">
-<h3 id="repl"><a id="org126832b"></a><span class="section-number-3">3.4</span> REPL</h3>
+<div id="outline-container-org5942b4d" class="outline-3">
+<h3 id="repl"><a id="org5942b4d"></a><span class="section-number-3">3.4</span> REPL</h3>
 <div class="outline-text-3" id="text-repl">
 <p>
 REPL commands are prefixed by <code>SPC m s</code>:
@@ -880,8 +880,8 @@ REPL commands are prefixed by <code>SPC m s</code>:
 </div>
 </div>
 
-<div id="outline-container-orgaa1bf5d" class="outline-3">
-<h3 id="intero-repl"><a id="orgaa1bf5d"></a><span class="section-number-3">3.5</span> Intero REPL</h3>
+<div id="outline-container-org4ce4c09" class="outline-3">
+<h3 id="intero-repl"><a id="org4ce4c09"></a><span class="section-number-3">3.5</span> Intero REPL</h3>
 <div class="outline-text-3" id="text-intero-repl">
 <p>
 Intero REPL commands are prefixed by <code>SPC m i</code>:
@@ -936,8 +936,8 @@ Intero REPL commands are prefixed by <code>SPC m i</code>:
 </div>
 </div>
 
-<div id="outline-container-orgbf1cfa8" class="outline-3">
-<h3 id="cabal-commands"><a id="orgbf1cfa8"></a><span class="section-number-3">3.6</span> Cabal commands</h3>
+<div id="outline-container-org75a7293" class="outline-3">
+<h3 id="cabal-commands"><a id="org75a7293"></a><span class="section-number-3">3.6</span> Cabal commands</h3>
 <div class="outline-text-3" id="text-cabal-commands">
 <p>
 Cabal commands are prefixed by <code>SPC m c</code>:
@@ -982,11 +982,11 @@ Cabal commands are prefixed by <code>SPC m c</code>:
 </div>
 </div>
 
-<div id="outline-container-org8c6de16" class="outline-3">
-<h3 id="cabal-files"><a id="org8c6de16"></a><span class="section-number-3">3.7</span> Cabal files</h3>
+<div id="outline-container-org8b87ad6" class="outline-3">
+<h3 id="cabal-files"><a id="org8b87ad6"></a><span class="section-number-3">3.7</span> Cabal files</h3>
 <div class="outline-text-3" id="text-cabal-files">
 <p>
-This commands are available in a cabal file.
+These commands are available in a cabal file.
 </p>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1031,7 +1031,7 @@ This commands are available in a cabal file.
 
 <tr>
 <td class="org-left"><code>SPC m l</code></td>
-<td class="org-left">go to libary section</td>
+<td class="org-left">go to library section</td>
 </tr>
 
 <tr>
@@ -1078,8 +1078,8 @@ This commands are available in a cabal file.
 </div>
 </div>
 
-<div id="outline-container-orgaa9d04f" class="outline-3">
-<h3 id="refactor"><a id="orgaa9d04f"></a><span class="section-number-3">3.8</span> Refactor</h3>
+<div id="outline-container-orgc83600b" class="outline-3">
+<h3 id="refactor"><a id="orgc83600b"></a><span class="section-number-3">3.8</span> Refactor</h3>
 <div class="outline-text-3" id="text-refactor">
 <p>
 Refactor commands are prefixed by <code>SPC m r</code>:
@@ -1127,14 +1127,17 @@ Only some of the HLint suggestions can be applied.
 </p>
 
 <p>
-To apply the intero suggestions, press `C-c C-c` when the window is open, which
-is also shown in the window that appears.
+To apply the Intero suggestions, press `C-c C-c` when the window is open.
+</p>
+
+<p>
+Both the HLint and Intero suggestions appear in the same window.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org6b18382" class="outline-3">
-<h3 id="ghc-mod-1"><a id="org6b18382"></a><span class="section-number-3">3.9</span> Ghc-mod</h3>
+<div id="outline-container-orgec8e454" class="outline-3">
+<h3 id="ghc-mod-1"><a id="orgec8e454"></a><span class="section-number-3">3.9</span> Ghc-mod</h3>
 <div class="outline-text-3" id="text-ghc-mod-1">
 <p>
 These commands are only available when ghc-mod is enabled.
@@ -1212,8 +1215,8 @@ ghc-mod commands are prefixed by <code>SPC m m</code>:
 </table>
 </div>
 
-<div id="outline-container-orga255835" class="outline-4">
-<h4 id="insert-template"><a id="orga255835"></a><span class="section-number-4">3.9.1</span> Insert template</h4>
+<div id="outline-container-org3d990d0" class="outline-4">
+<h4 id="insert-template"><a id="org3d990d0"></a><span class="section-number-4">3.9.1</span> Insert template</h4>
 <div class="outline-text-4" id="text-insert-template">
 <p>
 <code>SPC m m t</code> inserts a template. What this means is that in the beginning of a
@@ -1221,14 +1224,14 @@ buffer, <code>module Foo where</code> is inserted. On a function without signatu
 inferred type is inserted. On a symbol <code>foo</code> without definition, <code>foo =
 undefined</code> is inserted or a proper module is imported. <code>SPC m m u</code> inserts a
 hole in this case. On a variable, the case is split. When checking with hlint,
-original code is replaced with hlint's suggestion if possible.
+the original code is replaced with hlint’s suggestion if possible.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org20d78df" class="outline-3">
-<h3 id="intero-1"><a id="org20d78df"></a><span class="section-number-3">3.10</span> Intero</h3>
+<div id="outline-container-org71c57e2" class="outline-3">
+<h3 id="intero-1"><a id="org71c57e2"></a><span class="section-number-3">3.10</span> Intero</h3>
 <div class="outline-text-3" id="text-intero-1">
 <p>
 This command is only available when intero is enabled.
@@ -1263,14 +1266,13 @@ This top-level command is prefixed by <code>SPC m</code>:
 </div>
 </div>
 
-<div id="outline-container-org59428c0" class="outline-2">
-<h2 id="syntax-checking"><a id="org59428c0"></a><span class="section-number-2">4</span> Syntax checking</h2>
+<div id="outline-container-org697df1c" class="outline-2">
+<h2 id="syntax-checking"><a id="org697df1c"></a><span class="section-number-2">4</span> Syntax checking</h2>
 <div class="outline-text-2" id="text-syntax-checking">
 <p>
-At the moment there are four components which can check the syntax and indicates
-somehow error and warnings in the code. Those components are
+At the moment there are four components, which can check the syntax and indicate
+errors and warnings in the code. Those components are:
 </p>
-
 <ul class="org-ul">
 <li>flycheck</li>
 <li>hlint (via flycheck)</li>
@@ -1279,47 +1281,48 @@ somehow error and warnings in the code. Those components are
 </ul>
 
 <p>
-As all these components can be active at the same time, it can be tricky to know
-which component is displaying which message, especially when they disagree or
-one is not working. Only flycheck errors (ghc and hlint) are displayed in the
-error list and can be navigated using the standard spacemacs key bindings (under
-<code>SPC e</code>) even though errors from other modes might highlight the actual buffer.
+Since all of these components can be active at the same time, it can be tricky to
+know which component is displaying which message, especially when they disagree,
+or if one isn’t working. Only flycheck errors (ghc and hlint) are displayed in
+the error list and can be navigated between, using the standard Spacemacs key
+bindings (under <code>SPC e</code>) even though errors from other modes might highlight the
+actual buffer.
 </p>
 </div>
 
-<div id="outline-container-org41a328a" class="outline-3">
-<h3 id="flycheck"><a id="org41a328a"></a><span class="section-number-3">4.1</span> Flycheck</h3>
+<div id="outline-container-org97d99f2" class="outline-3">
+<h3 id="flycheck"><a id="org97d99f2"></a><span class="section-number-3">4.1</span> Flycheck</h3>
 <div class="outline-text-3" id="text-flycheck">
 <p>
-This is the standard spacemacs way to do syntax checking and the most elaborate.
-You need the syntax-checking layer to enable this. Please the documentation for
-that layer on how to interact with flycheck.
+This is the standard Spacemacs way of syntax checking, and it’s also the most
+elaborate. You need to install the syntax-checking layer first. Please read the
+layer’s <a href="https://github.com/syl20bnr/spacemacs/tree/develop/layers/+checkers/syntax-checking">documentation</a> on how to interact with flycheck.
 </p>
 
 <p>
 Flycheck has different Haskell checkers: <code>haskell-ghc</code>, <code>haskell-stack-ghc</code> and
-<code>haskell-hlint</code>. Normally it can automatically detect the best one to use, but
-if it doesn't work, you can change it using <code>SPC e s</code>.
+<code>haskell-hlint</code>. Normally it can detect the best one to use automatically, but
+if it doesn’t work, then you can change it with <code>SPC e s</code>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org1340a7f" class="outline-3">
-<h3 id="hlint"><a id="org1340a7f"></a><span class="section-number-3">4.2</span> HLint</h3>
+<div id="outline-container-org9163150" class="outline-3">
+<h3 id="hlint"><a id="org9163150"></a><span class="section-number-3">4.2</span> HLint</h3>
 <div class="outline-text-3" id="text-hlint">
 <p>
-HLint is a linter for Haskell. It doesn't detect errors (as long as it can parse
+HLint is a linter for Haskell. It doesn’t detect errors (as long as it can parse
 the file) but bad coding style and code smell. The HLint checker is called
 <b>after</b> the flycheck GHC checker.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgdb0f4b5" class="outline-3">
-<h3 id="ghc-mod-2"><a id="orgdb0f4b5"></a><span class="section-number-3">4.3</span> ghc-mod</h3>
+<div id="outline-container-orga0ad86c" class="outline-3">
+<h3 id="ghc-mod-2"><a id="orga0ad86c"></a><span class="section-number-3">4.3</span> ghc-mod</h3>
 <div class="outline-text-3" id="text-ghc-mod-2">
 <p>
-Ghc-mod, when enabled, also does syntax checking. It doesn't highlight errors
+Ghc-mod, when enabled, also does syntax checking. It doesn’t highlight errors,
 but instead displays an exclamation point in the fringe. You can navigate
 between errors using <code>ghc-goto-next-error</code> (<code>M-n</code>) and <code>ghc-goto-prev-error</code>
 (<code>M-p</code>).
@@ -1327,31 +1330,31 @@ between errors using <code>ghc-goto-next-error</code> (<code>M-n</code>) and <co
 </div>
 </div>
 
-<div id="outline-container-org99f9414" class="outline-3">
-<h3 id="interactive-haskell-mode"><a id="org99f9414"></a><span class="section-number-3">4.4</span> Interactive haskell-mode</h3>
+<div id="outline-container-org7358b45" class="outline-3">
+<h3 id="interactive-haskell-mode"><a id="org7358b45"></a><span class="section-number-3">4.4</span> Interactive haskell-mode</h3>
 <div class="outline-text-3" id="text-interactive-haskell-mode">
 <p>
 Finally, interactive haskell-mode (<code>SPC m s b</code>) also displays errors. These
-errors can be navigated from the interactive buffer (by clicking on the error)
-or using <code>haskell-goto-next-error</code> (<code>M-n</code>) and <code>haskell-goto-prev-error</code>
+errors can be navigated to, from the interactive buffer (by clicking on the
+error) or using <code>haskell-goto-next-error</code> (<code>M-n</code>) and <code>haskell-goto-prev-error</code>
 (<code>M-p</code>).
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgedf4773" class="outline-3">
-<h3 id="flymake"><a id="orgedf4773"></a><span class="section-number-3">4.5</span> Flymake</h3>
+<div id="outline-container-org03750cb" class="outline-3">
+<h3 id="flymake"><a id="org03750cb"></a><span class="section-number-3">4.5</span> Flymake</h3>
 <div class="outline-text-3" id="text-flymake">
 <p>
-An alternative to syntax checking is to build your project using
-<code>flymake-compile</code>. It doesn't highlight error in the buffer but is more
+An alternative to syntax checking is to build your projects with
+<code>flymake-compile</code>. It doesn’t highlight errors in the buffer, but it’s more
 reliable. The error navigation is similar to interactive haskell-mode.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org3d034cd" class="outline-3">
-<h3 id="troubleshooting"><a id="org3d034cd"></a><span class="section-number-3">4.6</span> Troubleshooting</h3>
+<div id="outline-container-org7f0af35" class="outline-3">
+<h3 id="troubleshooting"><a id="org7f0af35"></a><span class="section-number-3">4.6</span> Troubleshooting</h3>
 <div class="outline-text-3" id="text-troubleshooting">
 <p>
 Flycheck and ghc-mod can fail silently for miscellaneous reasons. See the <a href="#faq">FAQ</a>
@@ -1361,17 +1364,17 @@ for troubleshooting.
 </div>
 </div>
 
-<div id="outline-container-orge280e2a" class="outline-2">
-<h2 id="faq"><a id="orge280e2a"></a><span class="section-number-2">5</span> FAQ</h2>
+<div id="outline-container-orgd1daf64" class="outline-2">
+<h2 id="faq"><a id="orgd1daf64"></a><span class="section-number-2">5</span> FAQ</h2>
 <div class="outline-text-2" id="text-faq">
 </div>
 
-<div id="outline-container-org3cfcabc" class="outline-3">
-<h3 id="the-repl-doesnt-work"><a id="org3cfcabc"></a><span class="section-number-3">5.1</span> The REPL doesn't work</h3>
+<div id="outline-container-orgcf34c60" class="outline-3">
+<h3 id="the-repl-doesnt-work"><a id="orgcf34c60"></a><span class="section-number-3">5.1</span> The REPL doesn't work</h3>
 <div class="outline-text-3" id="text-the-repl-doesnt-work">
 <p>
 Usually <code>haskell-mode</code> is great at figuring out which interactive process to
-bring up. But if you are experiencing problems with it you can help
+bring up. But if you are experiencing problems with it, then you can help
 <code>haskell-mode</code> by setting <code>haskell-process-type</code> as in following code:
 </p>
 
@@ -1384,7 +1387,6 @@ bring up. But if you are experiencing problems with it you can help
 <p>
 Available options are:
 </p>
-
 <ul class="org-ul">
 <li>ghci</li>
 <li>cabal-repl</li>
@@ -1395,15 +1397,16 @@ Available options are:
 </div>
 </div>
 
-<div id="outline-container-orge7a34d6" class="outline-3">
-<h3 id="the-repl-is-stuck"><a id="orge7a34d6"></a><span class="section-number-3">5.2</span> The REPL is stuck</h3>
+<div id="outline-container-orga539de9" class="outline-3">
+<h3 id="the-repl-is-stuck"><a id="orga539de9"></a><span class="section-number-3">5.2</span> The REPL is stuck</h3>
 <div class="outline-text-3" id="text-the-repl-is-stuck">
 <p>
-Make sure that when you are typing anything in REPL there is a space between
-what you type and <code>λ&gt;</code>. When there is no space - REPL will behave as if it's
-stuck. Usually, when you enter normal state, cursor is moved back, so there is
-no required space when you switch to insert mode. There is possible workaround -
-just add following snippet to your <code>dotspacemacs/user-config</code> function:
+Make sure that there’s a space between the REPL’s <code>λ&gt;</code> prompt and the cursor.
+When there is no space, then the REPL will behave as if it’s stuck. Usually,
+when you enter normal state, the cursor moves backwards by one character, so there
+is no required space when you switch to insert mode. There is a possible
+workaround - just add the following snippet to your <code>dotspacemacs/user-config</code>
+function:
 </p>
 
 <div class="org-src-container">
@@ -1415,14 +1418,14 @@ just add following snippet to your <code>dotspacemacs/user-config</code> functio
 </div>
 
 <p>
-It will make cursor stay at the right place in the REPL buffer when you enter
-normal state. Which in most cases helps you to avoid the problem with 'stuck'
+It makes the cursor stay in the right place in the REPL buffer when you enter
+normal state. Which in most cases helps you to avoid the problem with ’stuck’
 REPL.
 </p>
 
 <p>
-Also, some users might want to start REPL in insert mode. For this to happen you
-could place following snippet in your <code>dotspacemacs/user-config</code> function:
+Also, some users might want to start the REPL in insert mode. This is done by
+placing the following snippet in your <code>dotspacemacs/user-config</code> function:
 </p>
 
 <div class="org-src-container">
@@ -1435,48 +1438,49 @@ could place following snippet in your <code>dotspacemacs/user-config</code> func
 </div>
 </div>
 
-<div id="outline-container-org5a99c2b" class="outline-3">
-<h3 id="i-am-using-stack-and-ghc-mod-but-ghc-mod-doesnt-work"><a id="org5a99c2b"></a><span class="section-number-3">5.3</span> I am using <code>stack</code> and <code>ghc-mod</code>, but <code>ghc-mod</code> doesn't work</h3>
+<div id="outline-container-org9e7e428" class="outline-3">
+<h3 id="i-am-using-stack-and-ghc-mod-but-ghc-mod-doesnt-work"><a id="org9e7e428"></a><span class="section-number-3">5.3</span> I am using <code>stack</code> and <code>ghc-mod</code>, but <code>ghc-mod</code> doesn't work</h3>
 <div class="outline-text-3" id="text-i-am-using-stack-and-ghc-mod-but-ghc-mod-doesnt-work">
 <p>
-Make sure that <code>dist</code> directory doesn't exist in your project root. So if it
+Make sure that a <code>dist</code> directory doesn’t exist in your project root. If it
 exists, just remove it and try again.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb58eaf4" class="outline-3">
-<h3 id="ghc-mod-doesnt-work"><a id="orgb58eaf4"></a><span class="section-number-3">5.4</span> <code>ghc-mod</code> doesn't work</h3>
+<div id="outline-container-orgbd74de9" class="outline-3">
+<h3 id="ghc-mod-doesnt-work"><a id="orgbd74de9"></a><span class="section-number-3">5.4</span> <code>ghc-mod</code> doesn't work</h3>
 <div class="outline-text-3" id="text-ghc-mod-doesnt-work">
 <p>
-First of all - make sure that the version of <code>ghc</code> matches the version of <code>ghc</code> that
-was used to build <code>ghc-mod</code>. To get the latter call <code>ghc-mod --version</code> in terminal.
-If they don't match you have to rebuild <code>ghc-mod</code>.
+First of all - make sure that the version of <code>ghc</code> matches the version of <code>ghc</code>
+that was used to build <code>ghc-mod</code>. To get the latter, call <code>ghc-mod --version</code> in
+the terminal. If they don’t match then you’ll have to rebuild <code>ghc-mod</code>.
 </p>
 
 <p>
-<code>Stack</code> provides ability to use different <code>ghc</code> versions across different projects.
-In case you are using this feature you have to rebuild <code>ghc-mod</code> quite often. If
-you use <code>ghc-mod</code> only for completion and don't want to rebuild <code>ghc-mod</code> every time
-you switch project you'd better disable <code>ghc-mod</code> support, so <code>company-ghci</code> will be
-used for completion.
+<code>Stack</code> provides the ability to use different <code>ghc</code> versions across different
+projects. If you’re using this feature, then you’ll have to rebuild <code>ghc-mod</code>
+quite often. If you only use <code>ghc-mod</code> for completion, and don’t want to rebuild
+<code>ghc-mod</code> every time you switch projects, then you’d better disable <code>ghc-mod</code>
+support, so that <code>company-ghci</code> will be used for completion.
 </p>
 
 <p>
-The second thing to do if it's still not working - call <code>ghc-mod debug</code> in the
-root of project you are currently working on. Make sure that it shows no errors.
-If there are errors you can't solve - it's better to report them <a href="https://github.com/DanielG/ghc-mod">upstream</a>.
+The second thing to do if it’s still not working - is to call <code>ghc-mod debug</code> in
+the root of the project that you’re currently working on. Make sure that it
+doesn’t show any errors. If there are errors that you can’t solve - then it’s
+better to report them <a href="https://github.com/DanielG/ghc-mod">upstream</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb2dd4d9" class="outline-3">
-<h3 id="indentation-doesnt-reset-when-pressing-return-after-an-empty-line"><a id="orgb2dd4d9"></a><span class="section-number-3">5.5</span> Indentation doesn't reset when pressing return after an empty line</h3>
+<div id="outline-container-org5d66815" class="outline-3">
+<h3 id="indentation-doesnt-reset-when-pressing-return-after-an-empty-line"><a id="org5d66815"></a><span class="section-number-3">5.5</span> Indentation doesn't reset when pressing return after an empty line</h3>
 <div class="outline-text-3" id="text-indentation-doesnt-reset-when-pressing-return-after-an-empty-line">
 <p>
 This is the intended behavior in <code>haskell-indentation-mode</code>. If you want to
-reset indentation when pressing return after an empty line, add the following
-snippet into your <code>dotspacemacs/user-config</code> function.
+reset the indentation when pressing return after an empty line, add the
+following snippet into your <code>dotspacemacs/user-config</code> function.
 </p>
 
 <div class="org-src-container">
@@ -1494,93 +1498,93 @@ snippet into your <code>dotspacemacs/user-config</code> function.
 </div>
 </div>
 
-<div id="outline-container-orgf8f9986" class="outline-3">
-<h3 id="flycheck-displays-hlint-warnings-but-not-errors"><a id="orgf8f9986"></a><span class="section-number-3">5.6</span> Flycheck displays HLint warnings but not errors</h3>
+<div id="outline-container-orgbc5befd" class="outline-3">
+<h3 id="flycheck-displays-hlint-warnings-but-not-errors"><a id="orgbc5befd"></a><span class="section-number-3">5.6</span> Flycheck displays HLint warnings but not errors</h3>
 <div class="outline-text-3" id="text-flycheck-displays-hlint-warnings-but-not-errors">
 <p>
-The HLint checker is called <b>after</b> normal flycheck checker even if the checker
-fails. Check the <a href="#flycheck-doesnt-work">Flycheck doesn't work</a> section.
+The HLint checker is called <b>after</b> the normal flycheck checker, even if the
+checker fails. Check the <a href="#flycheck-doesnt-work">Flycheck doesn’t work</a> section.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb4e51c2" class="outline-3">
-<h3 id="i-can-see-highlighted-errors-but-they-dont-appear-in-the-error-list"><a id="orgb4e51c2"></a><span class="section-number-3">5.7</span> I can see highlighted errors but they don't appear in the error list</h3>
+<div id="outline-container-org3f094cc" class="outline-3">
+<h3 id="i-can-see-highlighted-errors-but-they-dont-appear-in-the-error-list"><a id="org3f094cc"></a><span class="section-number-3">5.7</span> I can see highlighted errors but they don't appear in the error list</h3>
 <div class="outline-text-3" id="text-i-can-see-highlighted-errors-but-they-dont-appear-in-the-error-list">
 <p>
 The error list is only set by flycheck. You are probably seeing errors
-highlighted by either ghc-mode or haskell-mode. Check the <a href="#flycheck-doesnt-work">Flycheck doesn't work</a>
+highlighted by either ghc-mode or haskell-mode. Check the <a href="#flycheck-doesnt-work">Flycheck doesn’t work</a>
 section.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgbf457c0" class="outline-3">
-<h3 id="flycheck-doesnt-work"><a id="orgbf457c0"></a><span class="section-number-3">5.8</span> Flycheck doesn't work</h3>
+<div id="outline-container-org0b0d0ad" class="outline-3">
+<h3 id="flycheck-doesnt-work"><a id="org0b0d0ad"></a><span class="section-number-3">5.8</span> Flycheck doesn't work</h3>
 <div class="outline-text-3" id="text-flycheck-doesnt-work">
 <p>
-You can check what is wrong with flycheck with the <code>flycheck-compile</code> command.
-This will show you the exact command line used and its output.
+You can use the <code>flycheck-compile</code> command to check what’s wrong with flycheck.
+This will show you the exact command line that’s used, and its output.
 </p>
 
 <p>
-If you are using stack, check the <a href="#flycheck-doesnt-work-with-stack">Flycheck doesn't work with <code>stack</code></a> section.
+If you are using <code>stack</code>, check the <a href="#flycheck-doesnt-work-with-stack">Flycheck doesn’t work with <code>stack</code></a> section.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org8304099" class="outline-3">
-<h3 id="flycheck-doesnt-work-with-stack"><a id="org8304099"></a><span class="section-number-3">5.9</span> Flycheck doesn't work with <code>stack</code></h3>
+<div id="outline-container-org16b02e6" class="outline-3">
+<h3 id="flycheck-doesnt-work-with-stack"><a id="org16b02e6"></a><span class="section-number-3">5.9</span> Flycheck doesn't work with <code>stack</code></h3>
 <div class="outline-text-3" id="text-flycheck-doesnt-work-with-stack">
 <p>
-First check that flycheck uses the correct checker and all the paths are
+First check that flycheck uses the correct checker, and all the paths are
 properly configured using <code>flycheck-verify-setup</code> (<code>SPC e v</code>). You can force the
-checker with <code>flycheck-select-checker</code> (<code>SPC e s</code>) to ensure it uses
-<code>haskell-stack-ghc</code>. If it still doesn't work, it could be one of the following
-problems:
+checker with <code>flycheck-select-checker</code> (<code>SPC e s</code>) to ensure that it uses
+<code>haskell-stack-ghc</code>. If it still doesn’t work, then it could be one of the
+following problems:
 </p>
-
 <ul class="org-ul">
-<li>The stack build directory is wrong</li>
+<li>The <code>stack</code> build directory is wrong</li>
 <li>The project root is not set properly</li>
 </ul>
 </div>
 
-<div id="outline-container-org46e4b6f" class="outline-4">
-<h4 id="the-stack-build-directory-is-wrong"><a id="org46e4b6f"></a><span class="section-number-4">5.9.1</span> The stack build directory is wrong</h4>
+<div id="outline-container-org40a859a" class="outline-4">
+<h4 id="the-stack-build-directory-is-wrong"><a id="org40a859a"></a><span class="section-number-4">5.9.1</span> The <code>stack</code> build directory is wrong</h4>
 <div class="outline-text-4" id="text-the-stack-build-directory-is-wrong">
 <p>
-The path to the build directory containing some generated files is normally
-under <code>.stack-work/install/&lt;os&gt;/Cabal-&lt;version&gt;/build</code>.
+The path to the build directory, which contains some generated files, is
+normally under <code>.stack-work/install/&lt;os&gt;/Cabal-&lt;version&gt;/build</code>.
 </p>
 
 <p>
-However, the version of the cabal library used by stack to generate the
-directory name is not the version of the cabal library installed by stack, but
-the version of cabal associated to the GHC version. This error can happen after
-upgrading cabal or cabal-install. To check if this is the problem, compare the
-path name of the build path used by flycheck using <code>flycheck-compile</code> and
-compare it to to the actual path in the <code>.stack-work</code> directory. If they are
-different you need to reinstall ghc using the command <code>stack setup
---upgrade-cabal</code>.
+However the version of the cabal library that’s used by <code>stack</code> to generate the
+directory name is not the version of the cabal library that’s installed by
+<code>stack</code> but rather the version of cabal that’s associated to the GHC version.
+This error can happen after upgrading cabal or cabal-install. To check if this
+is the problem, compare the path name of the build path that’s used by flycheck
+using <code>flycheck-compile</code> and compare it to the actual path in the <code>.stack-work</code>
+directory. If they are different, then you’ll need to reinstall ghc using the
+command <code>stack setup --upgrade-cabal</code>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org7651160" class="outline-4">
-<h4 id="the-project-root-directory-is-not-set-properly"><a id="org7651160"></a><span class="section-number-4">5.9.2</span> The Project root directory is not set properly</h4>
+<div id="outline-container-org42c23c0" class="outline-4">
+<h4 id="the-project-root-directory-is-not-set-properly"><a id="org42c23c0"></a><span class="section-number-4">5.9.2</span> The Project root directory is not set properly</h4>
 <div class="outline-text-4" id="text-the-project-root-directory-is-not-set-properly">
 <p>
-Flycheck launches the GHC command not from the project root directory but from
-the directory of the file being checked. This is normally not a problem as
-all the paths are set properly, however it could be a problem if some template
-Haskell functions use relative paths (e.g. in Yesod scaffolded projects).
+Flycheck launches the GHC command, not from the project root directory, but from
+the directory of the file that’s being checked. This is normally not a problem,
+as all the paths are set properly, however it could be a problem if some
+template Haskell functions use relative paths (e.g. in Yesod scaffolded
+projects).
 </p>
 
 <p>
-Until it's fixed in flycheck the workaround is to the wrap the stack command to
-run all subcommands from the project root directory. You can do so with the
-following script:
+Until it’s fixed in flycheck, the workaround is to wrap the <code>stack</code> command in
+order to run all subcommands from the project’s root directory. You can do so
+with the following script:
 </p>
 
 <div class="org-src-container">
@@ -1597,19 +1601,19 @@ Make sure you set <code>flycheck-haskell-stack-ghc-executable</code> to this scr
 </div>
 </div>
 
-<div id="outline-container-org25b61a8" class="outline-3">
-<h3 id="haskell-mode-commands-dont-work"><a id="org25b61a8"></a><span class="section-number-3">5.10</span> haskell-mode commands don't work</h3>
+<div id="outline-container-orgf598ede" class="outline-3">
+<h3 id="haskell-mode-commands-dont-work"><a id="orgf598ede"></a><span class="section-number-3">5.10</span> haskell-mode commands don't work</h3>
 <div class="outline-text-3" id="text-haskell-mode-commands-dont-work">
 <p>
-Some (most of) the haskell-mode commands only works when haskell-mode is in
-interactive mode, i.e. as a interactive session associated to it. Load it using
-<code>SPC m s b</code>.
+Some (most) of the haskell-mode commands only work when haskell-mode is in
+interactive mode, i.e. has an interactive session associated with it. Load it
+using <code>SPC m s b</code>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org3542df8" class="outline-3">
-<h3 id="ghc-mod-and-haskell-mode-commands-overlap-how-do-i-know-which-command-belongs-to-what"><a id="org3542df8"></a><span class="section-number-3">5.11</span> <code>ghc-mod</code> and <code>haskell-mode</code> commands overlap. How do I know which command belongs to what?</h3>
+<div id="outline-container-orga8f197e" class="outline-3">
+<h3 id="ghc-mod-and-haskell-mode-commands-overlap-how-do-i-know-which-command-belongs-to-what"><a id="orga8f197e"></a><span class="section-number-3">5.11</span> <code>ghc-mod</code> and <code>haskell-mode</code> commands overlap. How do I know which command belongs to what?</h3>
 <div class="outline-text-3" id="text-ghc-mod-and-haskell-mode-commands-overlap-how-do-i-know-which-command-belongs-to-what">
 <p>
 ghc-mod commands are prefixed with <code>ghc-</code>, haskell-mode ones are prefixed with
@@ -1618,8 +1622,8 @@ ghc-mod commands are prefixed with <code>ghc-</code>, haskell-mode ones are pref
 </div>
 </div>
 
-<div id="outline-container-org8de1be5" class="outline-3">
-<h3 id="some-commands-start-with-ghc--and-some-with-haskell--what-does-that-mean"><a id="org8de1be5"></a><span class="section-number-3">5.12</span> Some commands start with <code>ghc-</code> and some with <code>haskell-</code>. What does that mean?</h3>
+<div id="outline-container-org75eb4cb" class="outline-3">
+<h3 id="some-commands-start-with-ghc--and-some-with-haskell--what-does-that-mean"><a id="org75eb4cb"></a><span class="section-number-3">5.12</span> Some commands start with <code>ghc-</code> and some with <code>haskell-</code>. What does that mean?</h3>
 <div class="outline-text-3" id="text-some-commands-start-with-ghc--and-some-with-haskell--what-does-that-mean">
 <p>
 Commands starting with <code>ghc-</code> are ghc-mod commands. Commands starting with
@@ -1631,7 +1635,7 @@ Commands starting with <code>ghc-</code> are ghc-mod commands. Commands starting
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-08-23 Thu 09:35</p>
+<p class="date">Created: 2018-10-13 Sat 21:53</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
