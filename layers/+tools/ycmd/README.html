@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-08-23 Thu 09:35 -->
+<!-- 2018-10-13 Sat 21:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>YCMD layer</title>
@@ -288,16 +288,16 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orga2c1226" class="outline-2">
-<h2 id="description"><a id="orga2c1226"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org77bede9" class="outline-2">
+<h2 id="description"><a id="org77bede9"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds <a href="https://github.com/abingham/emacs-ycmd">emacs-ycmd</a> support.
 </p>
 </div>
 
-<div id="outline-container-org02afe19" class="outline-3">
-<h3 id="features"><a id="org02afe19"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orgf33dd22" class="outline-3">
+<h3 id="features"><a id="orgf33dd22"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li><a href="https://github.com/Valloric/YouCompleteMe">YouCompleteMe</a> based code-completion</li>
@@ -307,13 +307,13 @@ This layer adds <a href="https://github.com/abingham/emacs-ycmd">emacs-ycmd</a> 
 </div>
 </div>
 
-<div id="outline-container-org051e1fa" class="outline-2">
-<h2 id="install"><a id="org051e1fa"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org30ec2f1" class="outline-2">
+<h2 id="install"><a id="org30ec2f1"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgeaddbc9" class="outline-3">
-<h3 id="layer"><a id="orgeaddbc9"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org2edb99b" class="outline-3">
+<h3 id="layer"><a id="org2edb99b"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -323,26 +323,30 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org3c6ea67" class="outline-3">
-<h3 id="ycmd"><a id="org3c6ea67"></a><span class="section-number-3">2.2</span> YCMD</h3>
+<div id="outline-container-org6608fdf" class="outline-3">
+<h3 id="ycmd"><a id="org6608fdf"></a><span class="section-number-3">2.2</span> YCMD</h3>
 <div class="outline-text-3" id="text-ycmd">
 <ol class="org-ol">
 <li>Install the <code>ycm</code> server. Installation instructions can be found <a href="https://github.com/Valloric/ycmd#user-content-building">here</a>.</li>
 <li><p>
 Set the <code>ycmd-server-command</code> variable to reflect the path to the installation:
 </p>
+
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ycmd-server-command '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"python"</span> <span class="org-string">"/path/to/YouCompleteMe/third_party/ycmd/ycmd"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
+
 <p>
-Note that no filename expansions are done, so <code>~</code>-paths will not work out of the box.
-If you need expansions, you can use Emacs's <code>file-truename</code> like this:
+Note that no filename expansions are done, so <code>~</code> -paths will not work out of the box.
+If you need expansions, you can use Emacs’s <code>file-truename</code> like this:
 </p>
+
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ycmd-server-command <span class="org-rainbow-delimiters-depth-2">(</span>list <span class="org-string">"python"</span> <span class="org-rainbow-delimiters-depth-3">(</span>file-truename <span class="org-string">"~/some/path"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div></li>
+
 <li>By default, spacemacs configures ycmd for getting the compilation flags from either
 a compile<sub>commands.json</sub> or a .clang<sub>complete</sub> file and get additionnal flags from a
 .ycm<sub>extra</sub><sub>flags</sub> file. If you do not like this behaviour, you can write your own
@@ -350,14 +354,17 @@ a compile<sub>commands.json</sub> or a .clang<sub>complete</sub> file and get ad
 <li><p>
 Whitelist the file by adding the following to <code>.spacemacs</code>:
 </p>
+
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">In this example we whitelist everything in the Develop folder</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ycmd-extra-conf-whitelist '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"~/Develop/*"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div></li>
+
 <li><p>
 The completion is not going to work automatically until we actually force it:
 </p>
+
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ycmd-force-semantic-completion t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -366,8 +373,8 @@ The completion is not going to work automatically until we actually force it:
 </div>
 </div>
 
-<div id="outline-container-org90f1e73" class="outline-3">
-<h3 id="other-requirements"><a id="org90f1e73"></a><span class="section-number-3">2.3</span> Other Requirements</h3>
+<div id="outline-container-org46e7efb" class="outline-3">
+<h3 id="other-requirements"><a id="org46e7efb"></a><span class="section-number-3">2.3</span> Other Requirements</h3>
 <div class="outline-text-3" id="text-other-requirements">
 <p>
 This package requires the <code>auto-completion</code> layer in order to get actual
@@ -377,13 +384,13 @@ completion. The <code>syntax-checking</code> layer is required for flycheck supp
 </div>
 </div>
 
-<div id="outline-container-orgdf712e2" class="outline-2">
-<h2 id="configuration"><a id="orgdf712e2"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org1446a84" class="outline-2">
+<h2 id="configuration"><a id="org1446a84"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org7387aa5" class="outline-3">
-<h3 id="activating-ycmd-in-a-major-mode"><a id="org7387aa5"></a><span class="section-number-3">3.1</span> Activating ycmd in a major mode</h3>
+<div id="outline-container-org6f397c6" class="outline-3">
+<h3 id="activating-ycmd-in-a-major-mode"><a id="org6f397c6"></a><span class="section-number-3">3.1</span> Activating ycmd in a major mode</h3>
 <div class="outline-text-3" id="text-activating-ycmd-in-a-major-mode">
 <p>
 By default this layer only activates ycmd for <code>c++-mode</code> and <code>c-mode</code>.
@@ -401,8 +408,8 @@ specific languages like:
 </div>
 </div>
 
-<div id="outline-container-orgbf4e579" class="outline-3">
-<h3 id="getting-the-compilation-flags"><a id="orgbf4e579"></a><span class="section-number-3">3.2</span> Getting the compilation flags</h3>
+<div id="outline-container-org793f839" class="outline-3">
+<h3 id="getting-the-compilation-flags"><a id="org793f839"></a><span class="section-number-3">3.2</span> Getting the compilation flags</h3>
 <div class="outline-text-3" id="text-getting-the-compilation-flags">
 <p>
 Spacemacs uses its own ycmd global configuration file. If you prefer, you can
@@ -433,7 +440,7 @@ Example .ycm<sub>extra</sub><sub>flags</sub>:
 </div>
 
 <p>
-If your build system doesn't handle the creation of a compile<sub>commands.json</sub>,
+If your build system doesn’t handle the creation of a compile<sub>commands.json</sub>,
 you can use tools such as <a href="https://github.com/rizsotto/Bear">Bear</a> or <a href="https://pypi.python.org/pypi/scan-build">scan-build</a> to generate it, which both work
 with almost any build system.
 </p>
@@ -441,8 +448,8 @@ with almost any build system.
 </div>
 </div>
 
-<div id="outline-container-orgef6b882" class="outline-2">
-<h2 id="functions"><a id="orgef6b882"></a><span class="section-number-2">4</span> Functions</h2>
+<div id="outline-container-orgf890d7f" class="outline-2">
+<h2 id="functions"><a id="orgf890d7f"></a><span class="section-number-2">4</span> Functions</h2>
 <div class="outline-text-2" id="text-functions">
 <p>
 If <code>company-ycmd</code> is used, then a function
@@ -466,8 +473,8 @@ is necessary for the keybinding to work when completing includes.
 </div>
 </div>
 
-<div id="outline-container-orga0d7813" class="outline-2">
-<h2 id="key-bindings"><a id="orga0d7813"></a><span class="section-number-2">5</span> Key Bindings</h2>
+<div id="outline-container-org0d2443c" class="outline-2">
+<h2 id="key-bindings"><a id="org0d2443c"></a><span class="section-number-2">5</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
 Adds <code>SPC m g g</code> go to definition binding to <code>c++-mode</code> as well as <code>SPC m g G</code>
@@ -478,7 +485,7 @@ for the more imprecise but faster version.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-08-23 Thu 09:35</p>
+<p class="date">Created: 2018-10-13 Sat 21:52</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

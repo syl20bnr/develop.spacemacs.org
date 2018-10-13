@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-08-23 Thu 09:35 -->
+<!-- 2018-10-13 Sat 21:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spell Checking layer</title>
@@ -279,22 +279,26 @@ for the JavaScript code in this tag.
 <li><a href="#enable-auto-completion-popup">2.6. Enable auto-completion popup</a></li>
 </ul>
 </li>
-<li><a href="#key-bindings">3. Key Bindings</a></li>
+<li><a href="#key-bindings">3. Key Bindings</a>
+<ul>
+<li><a href="#spell-checking-transient-state">3.1. Spell Checking Transient-state</a></li>
+</ul>
+</li>
 <li><a href="#known-issues">4. Known issues</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgdcd3086" class="outline-2">
-<h2 id="description"><a id="orgdcd3086"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org3a0128a" class="outline-2">
+<h2 id="description"><a id="org3a0128a"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer provides spell checking capabilities to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-org9d55890" class="outline-3">
-<h3 id="features"><a id="org9d55890"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orge1a3ce4" class="outline-3">
+<h3 id="features"><a id="orge1a3ce4"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Buffer-wide spell checking via external command (ispell, hunspell, aspell) run through <a href="http://www-sop.inria.fr/members/Manuel.Serrano/flyspell/flyspell.html">Flyspell</a>.</li>
@@ -306,13 +310,13 @@ This layer provides spell checking capabilities to Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-org0b4f4d6" class="outline-2">
-<h2 id="install"><a id="org0b4f4d6"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orge017c46" class="outline-2">
+<h2 id="install"><a id="orge017c46"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org3b642ec" class="outline-3">
-<h3 id="layer"><a id="org3b642ec"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org80d6382" class="outline-3">
+<h3 id="layer"><a id="org80d6382"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -322,8 +326,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org5a1801b" class="outline-3">
-<h3 id="spell-checker-configuration"><a id="org5a1801b"></a><span class="section-number-3">2.2</span> Spell Checker Configuration</h3>
+<div id="outline-container-org0c03169" class="outline-3">
+<h3 id="spell-checker-configuration"><a id="org0c03169"></a><span class="section-number-3">2.2</span> Spell Checker Configuration</h3>
 <div class="outline-text-3" id="text-spell-checker-configuration">
 <p>
 The built-in Emacs variable that controls which external spell-checking program
@@ -337,8 +341,8 @@ also use the key binding <code>SPC S d</code>).
 </div>
 </div>
 
-<div id="outline-container-org1b80fae" class="outline-3">
-<h3 id="disabling-by-default"><a id="org1b80fae"></a><span class="section-number-3">2.3</span> Disabling by default</h3>
+<div id="outline-container-orgb356891" class="outline-3">
+<h3 id="disabling-by-default"><a id="orgb356891"></a><span class="section-number-3">2.3</span> Disabling by default</h3>
 <div class="outline-text-3" id="text-disabling-by-default">
 <p>
 By default, <code>spell-checking</code> is enabled in all available major modes and may be
@@ -354,8 +358,8 @@ toggled off with <code>SPC t S</code>. You can default this to off by setting th
 </div>
 </div>
 
-<div id="outline-container-org331437e" class="outline-3">
-<h3 id="enabling-auto-dictionary-mode"><a id="org331437e"></a><span class="section-number-3">2.4</span> Enabling auto-dictionary-mode</h3>
+<div id="outline-container-orgcf91dbd" class="outline-3">
+<h3 id="enabling-auto-dictionary-mode"><a id="orgcf91dbd"></a><span class="section-number-3">2.4</span> Enabling auto-dictionary-mode</h3>
 <div class="outline-text-3" id="text-enabling-auto-dictionary-mode">
 <p>
 <code>auto-dictionary-mode</code> tries to detect the current language from the buffer
@@ -471,12 +475,12 @@ currently supported language:
 </div>
 </div>
 
-<div id="outline-container-org8726bad" class="outline-3">
-<h3 id="enabling-multi-dictionary-support-with-hunspell"><a id="org8726bad"></a><span class="section-number-3">2.5</span> Enabling multi-dictionary support with hunspell</h3>
+<div id="outline-container-orge883606" class="outline-3">
+<h3 id="enabling-multi-dictionary-support-with-hunspell"><a id="orge883606"></a><span class="section-number-3">2.5</span> Enabling multi-dictionary support with hunspell</h3>
 <div class="outline-text-3" id="text-enabling-multi-dictionary-support-with-hunspell">
 <p>
 If your language is not supported by auto-dictionary feature or you author
-multi-lingual documents you might be compeled to use hunspell's multi-dictionary
+multi-lingual documents you might be compeled to use hunspell’s multi-dictionary
 mode. For example to enable it for pl<sub>PL</sub> and en<sub>GB</sub> dictionaries you could put
 following code in your dotspacemacs/user-config section in your configuration
 file:
@@ -494,14 +498,14 @@ file:
 </div>
 
 <p>
-One caveat is you need quite modern ispell.el for above to work. It's been
+One caveat is you need quite modern ispell.el for above to work. It’s been
 tested with version coming from Emacs 25.2 repository.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org995365e" class="outline-3">
-<h3 id="enable-auto-completion-popup"><a id="org995365e"></a><span class="section-number-3">2.6</span> Enable auto-completion popup</h3>
+<div id="outline-container-orgdb465e1" class="outline-3">
+<h3 id="enable-auto-completion-popup"><a id="orgdb465e1"></a><span class="section-number-3">2.6</span> Enable auto-completion popup</h3>
 <div class="outline-text-3" id="text-enable-auto-completion-popup">
 <p>
 To enable auto-completion popup when the point is idle on a misspelled word
@@ -517,8 +521,8 @@ set the layer variable <code>enable-flyspell-auto-completion</code> to t:
 </div>
 </div>
 
-<div id="outline-container-org1a29ab8" class="outline-2">
-<h2 id="key-bindings"><a id="org1a29ab8"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-orgf493c07" class="outline-2">
+<h2 id="key-bindings"><a id="orgf493c07"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -546,6 +550,11 @@ set the layer variable <code>enable-flyspell-auto-completion</code> to t:
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC u SPC S c</code></td>
+<td class="org-left">flyspell correct all errors one by one</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC S d</code></td>
 <td class="org-left">change dictionary</td>
 </tr>
@@ -562,15 +571,72 @@ set the layer variable <code>enable-flyspell-auto-completion</code> to t:
 </tbody>
 </table>
 </div>
+
+<div id="outline-container-org55a962f" class="outline-3">
+<h3 id="spell-checking-transient-state"><a id="org55a962f"></a><span class="section-number-3">3.1</span> Spell Checking Transient-state</h3>
+<div class="outline-text-3" id="text-spell-checking-transient-state">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC S . b</code></td>
+<td class="org-left">Rerun spell check for the whole buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC S . d</code></td>
+<td class="org-left">Change dictionary</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC S . n</code></td>
+<td class="org-left">Go to next spelling error</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC S . c</code></td>
+<td class="org-left">Correct word under cursor</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC S . t</code></td>
+<td class="org-left">Toggle spell check</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC S . q</code></td>
+<td class="org-left">Quit transient state</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC S . Q</code></td>
+<td class="org-left">Quit transient state and disable <code>flyspell-mode</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orga2c7122" class="outline-2">
-<h2 id="known-issues"><a id="orga2c7122"></a><span class="section-number-2">4</span> Known issues</h2>
+<div id="outline-container-org168a878" class="outline-2">
+<h2 id="known-issues"><a id="org168a878"></a><span class="section-number-2">4</span> Known issues</h2>
 <div class="outline-text-2" id="text-known-issues">
 <p>
 Vim-empty-lines layer seems incompatible with spell-checking inside org-mode. If
-you experience "Args out of range" error message when invoking <code>SPC S c</code> inside
-org-mode buffer then check if you don't have vim-empty-lines layer enabled and
+you experience “Args out of range” error message when invoking <code>SPC S c</code> inside
+org-mode buffer then check if you don’t have vim-empty-lines layer enabled and
 disable it.
 </p>
 </div>
@@ -578,7 +644,7 @@ disable it.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-08-23 Thu 09:35</p>
+<p class="date">Created: 2018-10-13 Sat 21:53</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
