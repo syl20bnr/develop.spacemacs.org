@@ -6,7 +6,7 @@
 <!-- 2018-10-31 Wed 18:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Geolocation layer</title>
+<title>multiple-cursors layer</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Travis CI User" />
 <style type="text/css">
@@ -259,220 +259,71 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Geolocation layer</h1>
+<h1 class="title">multiple-cursors layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#description">1. Description</a>
-<ul>
-<li><a href="#features">1.1. Features:</a></li>
-</ul>
-</li>
+<li><a href="#description">1. Description</a></li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#configuration">3. Configuration</a>
+<li><a href="#configuration">3. Configuration</a></li>
+<li><a href="#key-bindings">4. Key bindings</a>
 <ul>
-<li><a href="#location">3.1. Location</a></li>
-<li><a href="#osx-location">3.2. OSX-location</a></li>
-<li><a href="#theme-changer">3.3. Theme-changer</a></li>
-<li><a href="#sunshine-weather-forecast">3.4. Sunshine (weather forecast)</a></li>
-</ul>
-</li>
-<li><a href="#key-bindings">4. Key Bindings</a>
-<ul>
-<li><a href="#weather">4.1. Weather</a></li>
+<li><a href="#evil-mc">4.1. <code>evil-mc</code></a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org94bd539" class="outline-2">
-<h2 id="description"><a id="org94bd539"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgdf69791" class="outline-2">
+<h2 id="description"><a id="orgdf69791"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer offers location sensitive adjustments to Emacs.
+This layer adds support for multiple cursors.
 </p>
 </div>
-
-<div id="outline-container-org89dd28c" class="outline-3">
-<h3 id="features"><a id="org89dd28c"></a><span class="section-number-3">1.1</span> Features:</h3>
-<div class="outline-text-3" id="text-features">
-<ul class="org-ul">
-<li>Supports the following adjustments:
-<ul class="org-ul">
-<li>Automatic switching between light (day) and dark (night) themes via <a href="https://github.com/hadronzoo/theme-changer">theme-changer</a></li>
-<li>Local weather forecast via <a href="https://github.com/aaronbieber/sunshine.el/blob/master/sunshine.el">sunshine</a></li>
-<li>Integration with OS X’s CoreLocation service via <a href="https://github.com/purcell/osx-location">osx-location</a></li>
-<li>Manual location setting via variables in your dotfile</li>
-</ul></li>
-</ul>
-</div>
-</div>
 </div>
 
-<div id="outline-container-org467da20" class="outline-2">
-<h2 id="install"><a id="org467da20"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org0f046e7" class="outline-2">
+<h2 id="install"><a id="org0f046e7"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>geolocation</code> to the existing <code>dotspacemacs-configuration-layers</code> list in
-this file.
+add <code>multiple-cursors</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
-
-<p>
-All services are disable by default. To enable all, or some of them, add instead
-something like this:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>geolocation <span class="org-builtin">:variables</span>
-             geolocation-enable-automatic-theme-changer t
-             geolocation-enable-location-service t
-             geolocation-enable-weather-forecast t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 </div>
 </div>
 
-<div id="outline-container-orgbd9c5d3" class="outline-2">
-<h2 id="configuration"><a id="orgbd9c5d3"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-orga5d2d38" class="outline-2">
+<h2 id="configuration"><a id="orga5d2d38"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
-</div>
-
-<div id="outline-container-org3b6463e" class="outline-3">
-<h3 id="location"><a id="org3b6463e"></a><span class="section-number-3">3.1</span> Location</h3>
-<div class="outline-text-3" id="text-location">
 <p>
-Set location manually by setting the following variables in your dotfile:
+Currently the only supported backend is <code>evil-mc</code>, but more backends will be
+availabe in the future.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> calendar-location-name <span class="org-string">"Barcelona, Spain"</span>
-      calendar-latitude <span class="org-highlight-numbers-number">41.23</span>
-      calendar-longitude <span class="org-highlight-numbers-number">1.80</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>multiple-cursors <span class="org-builtin">:variables</span> multiple-cursors-backend 'evil-mc<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgbbe0de7" class="outline-3">
-<h3 id="osx-location"><a id="orgbbe0de7"></a><span class="section-number-3">3.2</span> OSX-location</h3>
-<div class="outline-text-3" id="text-osx-location">
-<p>
-Mac users can take adavantage of automatic geogrphical discovery using the OS’s
-CoreLocation system service, implemented as a long running background process.
-In order to enable it, set <code>geolocation-enable-location-service</code> to <code>t</code> as
-explained in installation instructions.
-</p>
-
-<p>
-A helper script will need to be given proper access first time this layer is
-activated.
-</p>
-
-
-<div class="figure">
-<p><img src="img/emacs-location-helper.jpg" alt="emacs-location-helper.jpg" />
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org8afa81f" class="outline-3">
-<h3 id="theme-changer"><a id="org8afa81f"></a><span class="section-number-3">3.3</span> Theme-changer</h3>
-<div class="outline-text-3" id="text-theme-changer">
-<p>
-This layer implement a simple “theme changer” which, when enabled, will switch
-between first two themes the user has setup in <code>dotspacemacs-themes</code>. First
-theme listed will be used as the light variant, while the second as the dark.
-Other themes will be ignored by this layer, though they are still available for
-cycling, etc.
-</p>
-
-<p>
-Note that <code>theme-changer</code> <b>requires</b> location to be set.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org365a5c2" class="outline-3">
-<h3 id="sunshine-weather-forecast"><a id="org365a5c2"></a><span class="section-number-3">3.4</span> Sunshine (weather forecast)</h3>
-<div class="outline-text-3" id="text-sunshine-weather-forecast">
-<p>
-Sunshine display local weather forecast.
-</p>
-
-<p>
-Setup <a href="https://home.openweathermap.org/users/sign_in">OpenWeatherMap</a> API key. Set <code>sunshine-appid</code> to some hash string from the
-openweathermap website. You need to sign up to the website to get a API key.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> sunshine-appid <span class="org-string">"your-apikey"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-Configure your location by setting the variable sunshine-location. You can
-provide a string, like “New York, NY” or a ZIP code, like “90210”. This variable
-is available through the Customize facility.
-</p>
-
-<p>
-When specifying a ZIP code, you may receive results from a foreign country. This
-is due to weird behavior from OpenWeatherMap. To resolve this, append a comma
-and the country code after the ZIP code. Note the lack of a space in the example
-below.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> sunshine-location <span class="org-string">"90210,USA"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-It will use the imperial unit system by default. To switch to metric, add
-<code>sunshine-units 'metric</code> to the variables list for this layer, or add this.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> sunshine-units 'metric<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-Weather forecast icons are disabled by default, and can be toggled by pressing
-`i’ within this mode’s main buffer.
-</p>
-
-<p>
-To display weather forecast icons by default (“pretty mode”), add
-<code>sunshine-show-icons t</code> to the variables list for this layer, or add this:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> sunshine-show-icons t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-
-<div class="figure">
-<p><img src="img/emacs-sunshine.jpg" alt="emacs-sunshine.jpg" />
-</p>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org5487e6a" class="outline-2">
-<h2 id="key-bindings"><a id="org5487e6a"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-orgd2efa9e" class="outline-2">
+<h2 id="key-bindings"><a id="orgd2efa9e"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org78775c2" class="outline-3">
-<h3 id="weather"><a id="org78775c2"></a><span class="section-number-3">4.1</span> Weather</h3>
-<div class="outline-text-3" id="text-weather">
+<div id="outline-container-orgdc28997" class="outline-3">
+<h3 id="evil-mc"><a id="orgdc28997"></a><span class="section-number-3">4.1</span> <code>evil-mc</code></h3>
+<div class="outline-text-3" id="text-evil-mc">
+<p>
+The <code>evil-mc</code> package provides the following key bindings:
+</p>
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -480,27 +331,133 @@ To display weather forecast icons by default (“pretty mode”), add
 <col  class="org-left" />
 
 <col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>g r f</code></td>
+<td class="org-left">evil-mc-make-and-goto-first-cursor</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g r h</code></td>
+<td class="org-left">evil-mc-make-cursor-here</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g r j</code></td>
+<td class="org-left">evil-mc-make-cursor-move-next-line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g r k</code></td>
+<td class="org-left">evil-mc-make-cursor-move-prev-line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g r l</code></td>
+<td class="org-left">evil-mc-make-and-goto-last-cursor</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g r m</code></td>
+<td class="org-left">evil-mc-make-all-cursors</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g r n</code></td>
+<td class="org-left">evil-mc-skip-and-goto-next-match</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g r N</code></td>
+<td class="org-left">evil-mc-skip-and-goto-next-cursor</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g r p</code></td>
+<td class="org-left">evil-mc-skip-and-goto-prev-match</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g r P</code></td>
+<td class="org-left">evil-mc-skip-and-goto-prev-cursor</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g r r</code></td>
+<td class="org-left">evil-mc-resume-cursors</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g r s</code></td>
+<td class="org-left">evil-mc-pause-cursors</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g r u</code></td>
+<td class="org-left">evil-mc-undo-all-cursors</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+For easy navigation you also have the following:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
 
 <col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Evil</th>
-<th scope="col" class="org-left">Holy</th>
-<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC a w</code></td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">Display pretty weather forecast</td>
+<td class="org-left"><code>M-n</code></td>
+<td class="org-left">evil-mc-make-and-goto-next-cursor</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC a W</code></td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">Display quick weather forecast in mini buffer</td>
+<td class="org-left"><code>M-p</code></td>
+<td class="org-left">evil-mc-make-and-goto-prev-cursor</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-n</code></td>
+<td class="org-left">evil-mc-make-and-goto-next-match</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-p</code></td>
+<td class="org-left">evil-mc-make-and-goto-prev-match</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-t</code></td>
+<td class="org-left">evil-mc-skip-and-goto-next-match</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-M-j</code></td>
+<td class="org-left">evil-mc-make-cursor-move-next-line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-M-k</code></td>
+<td class="org-left">evil-mc-make-cursor-move-prev-line</td>
 </tr>
 </tbody>
 </table>

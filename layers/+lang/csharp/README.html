@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-13 Sat 23:08 -->
+<!-- 2018-10-31 Wed 18:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>C# layer</title>
@@ -278,6 +278,7 @@ for the JavaScript code in this tag.
 <li><a href="#helpers-documentation-info">5.2. Helpers (documentation, info)</a></li>
 <li><a href="#refactoring">5.3. Refactoring</a></li>
 <li><a href="#omnisharp-server-interaction">5.4. OmniSharp server interaction</a></li>
+<li><a href="#tests">5.5. Tests</a></li>
 </ul>
 </li>
 </ul>
@@ -289,8 +290,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgdf3c620" class="outline-2">
-<h2 id="description"><a id="orgdf3c620"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org4e66c4e" class="outline-2">
+<h2 id="description"><a id="org4e66c4e"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for C# language using the <a href="https://github.com/OmniSharp/omnisharp-roslyn">omnisharp-roslyn</a> language
@@ -303,8 +304,8 @@ PRs are welcome too!
 </p>
 </div>
 
-<div id="outline-container-org6b2d701" class="outline-3">
-<h3 id="features"><a id="org6b2d701"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orgb4fa14f" class="outline-3">
+<h3 id="features"><a id="orgb4fa14f"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Syntax checking with flycheck (when <code>syntax-checking</code> layer is used)</li>
@@ -317,8 +318,8 @@ PRs are welcome too!
 </div>
 </div>
 
-<div id="outline-container-orgd164153" class="outline-2">
-<h2 id="packages-included"><a id="orgd164153"></a><span class="section-number-2">2</span> Packages Included</h2>
+<div id="outline-container-org95b1c66" class="outline-2">
+<h2 id="packages-included"><a id="org95b1c66"></a><span class="section-number-2">2</span> Packages Included</h2>
 <div class="outline-text-2" id="text-packages-included">
 <ul class="org-ul">
 <li><a href="https://github.com/OmniSharp/omnisharp-emacs">omnisharp</a></li>
@@ -326,8 +327,8 @@ PRs are welcome too!
 </div>
 </div>
 
-<div id="outline-container-org1db3ffc" class="outline-2">
-<h2 id="install"><a id="org1db3ffc"></a><span class="section-number-2">3</span> Install</h2>
+<div id="outline-container-org731e84b" class="outline-2">
+<h2 id="install"><a id="org731e84b"></a><span class="section-number-2">3</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -342,16 +343,16 @@ you, please see <a href="https://github.com/OmniSharp/omnisharp-emacs/blob/maste
 </p>
 
 <p>
-The server needs to be started manually with <code>SPC m s s</code> (or with
+While the server will start automatically where possible if the
+server needs to be started manually use <code>SPC m s s</code> (or
 <code>M-x omnisharp-start-omnisharp-server</code>). It will prompt a path to your .cpsroj
-or .sln file. In the future the server will be started automatically however for
-now this is required.
+or .sln file.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc8b2ed9" class="outline-2">
-<h2 id="caveats"><a id="orgc8b2ed9"></a><span class="section-number-2">4</span> Caveats</h2>
+<div id="outline-container-org4997a5c" class="outline-2">
+<h2 id="caveats"><a id="org4997a5c"></a><span class="section-number-2">4</span> Caveats</h2>
 <div class="outline-text-2" id="text-caveats">
 <ul class="org-ul">
 <li>You should use <code>dotnet</code> CLI tool from <a href="https://www.microsoft.com/net/download/core">.NET Core download page</a> or an IDE like
@@ -364,13 +365,13 @@ current server and start another one pointing to another solution/project.</li>
 </div>
 </div>
 
-<div id="outline-container-orgd7ba25b" class="outline-2">
-<h2 id="key-bindings"><a id="orgd7ba25b"></a><span class="section-number-2">5</span> Key Bindings</h2>
+<div id="outline-container-org73e2c8b" class="outline-2">
+<h2 id="key-bindings"><a id="org73e2c8b"></a><span class="section-number-2">5</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orga560a60" class="outline-3">
-<h3 id="navigation"><a id="orga560a60"></a><span class="section-number-3">5.1</span> Navigation</h3>
+<div id="outline-container-org2a9766d" class="outline-3">
+<h3 id="navigation"><a id="org2a9766d"></a><span class="section-number-3">5.1</span> Navigation</h3>
 <div class="outline-text-3" id="text-navigation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -461,8 +462,8 @@ current server and start another one pointing to another solution/project.</li>
 </div>
 </div>
 
-<div id="outline-container-org9fd3448" class="outline-3">
-<h3 id="helpers-documentation-info"><a id="org9fd3448"></a><span class="section-number-3">5.2</span> Helpers (documentation, info)</h3>
+<div id="outline-container-org0937952" class="outline-3">
+<h3 id="helpers-documentation-info"><a id="org0937952"></a><span class="section-number-3">5.2</span> Helpers (documentation, info)</h3>
 <div class="outline-text-3" id="text-helpers-documentation-info">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -493,8 +494,8 @@ current server and start another one pointing to another solution/project.</li>
 </div>
 </div>
 
-<div id="outline-container-org21480b5" class="outline-3">
-<h3 id="refactoring"><a id="org21480b5"></a><span class="section-number-3">5.3</span> Refactoring</h3>
+<div id="outline-container-org18e19fa" class="outline-3">
+<h3 id="refactoring"><a id="org18e19fa"></a><span class="section-number-3">5.3</span> Refactoring</h3>
 <div class="outline-text-3" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -530,8 +531,8 @@ current server and start another one pointing to another solution/project.</li>
 </div>
 </div>
 
-<div id="outline-container-org567e8c9" class="outline-3">
-<h3 id="omnisharp-server-interaction"><a id="org567e8c9"></a><span class="section-number-3">5.4</span> OmniSharp server interaction</h3>
+<div id="outline-container-org003d49d" class="outline-3">
+<h3 id="omnisharp-server-interaction"><a id="org003d49d"></a><span class="section-number-3">5.4</span> OmniSharp server interaction</h3>
 <div class="outline-text-3" id="text-omnisharp-server-interaction">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -571,11 +572,38 @@ current server and start another one pointing to another solution/project.</li>
 </table>
 </div>
 </div>
+
+<div id="outline-container-org78d48ff" class="outline-3">
+<h3 id="tests"><a id="org78d48ff"></a><span class="section-number-3">5.5</span> Tests</h3>
+<div class="outline-text-3" id="text-tests">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m t b</code></td>
+<td class="org-left">Run tests in current buffer</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-10-13 Sat 23:08</p>
+<p class="date">Created: 2018-10-31 Wed 18:52</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
