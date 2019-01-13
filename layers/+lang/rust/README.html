@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-31 Wed 18:52 -->
+<!-- 2019-01-13 Sun 20:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rust layer</title>
@@ -161,6 +161,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -272,7 +285,12 @@ for the JavaScript code in this tag.
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
-<li><a href="#racer">2.2. Racer</a></li>
+<li><a href="#backends">2.2. Backends</a>
+<ul>
+<li><a href="#racer">2.2.1. Racer</a></li>
+<li><a href="#lsp">2.2.2. LSP</a></li>
+</ul>
+</li>
 <li><a href="#cargo">2.3. Cargo</a></li>
 <li><a href="#rustfmt">2.4. Rustfmt</a></li>
 </ul>
@@ -287,32 +305,32 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org69afece" class="outline-2">
-<h2 id="description"><a id="org69afece"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org0c631ec" class="outline-2">
+<h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer supports <a href="https://www.rust-lang.org/en-US/">Rust</a> development in Spacemacs.
+This layer supports <a href="https://www.rust-lang.org">Rust</a> development in Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-orgca4e584" class="outline-3">
-<h3 id="features"><a id="orgca4e584"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org1a2142b" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Auto-completion and navigation support through <a href="https://github.com/phildawes/racer">Racer</a></li>
+<li>Auto-completion and navigation support through <a href="https://github.com/emacs-lsp/lsp-rust">lsp</a> or <a href="https://github.com/phildawes/racer">Racer</a></li>
 <li>support for the Rust package manager <a href="http://doc.crates.io/index.html">Cargo</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc10ffc0" class="outline-2">
-<h2 id="install"><a id="orgc10ffc0"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgc03d620" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org2ec2e2e" class="outline-3">
-<h3 id="layer"><a id="org2ec2e2e"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org97d1e1c" class="outline-3">
+<h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -322,11 +340,20 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org643ec17" class="outline-3">
-<h3 id="racer"><a id="org643ec17"></a><span class="section-number-3">2.2</span> Racer</h3>
-<div class="outline-text-3" id="text-racer">
+<div id="outline-container-org525b540" class="outline-3">
+<h3 id="backends"><span class="section-number-3">2.2</span> Backends</h3>
+<div class="outline-text-3" id="text-backends">
 <p>
-You must install <a href="https://github.com/phildawes/racer">Racer</a> to use this. Make sure the <code>racer</code> binary is available in
+The backend is dependent upon the <code>rust-backend</code> layer configuration variable.
+The possible vaules for <code>rust-backend</code> are <code>lsp</code> or <code>racer</code> with <code>racer</code> being the default.
+</p>
+</div>
+
+<div id="outline-container-org1575b13" class="outline-4">
+<h4 id="racer"><span class="section-number-4">2.2.1</span> Racer</h4>
+<div class="outline-text-4" id="text-racer">
+<p>
+You must install <a href="https://github.com/phildawes/racer">Racer</a> to use this backend. Make sure the <code>racer</code> binary is available in
 your <code>PATH</code> and to set the environment variable <code>RUST_SRC_PATH</code>, as described in
 the <a href="https://github.com/phildawes/racer#installation">installation instructions</a>.
 </p>
@@ -337,8 +364,30 @@ To enable auto-completion, ensure that the <code>auto-completion</code> layer is
 </div>
 </div>
 
-<div id="outline-container-org4bfbf76" class="outline-3">
-<h3 id="cargo"><a id="org4bfbf76"></a><span class="section-number-3">2.3</span> Cargo</h3>
+<div id="outline-container-orge54a4b4" class="outline-4">
+<h4 id="lsp"><span class="section-number-4">2.2.2</span> LSP</h4>
+<div class="outline-text-4" id="text-lsp">
+<p>
+You must install the <a href="https://github.com/rust-lang-nursery/rls">Rust Language Server</a>.
+</p>
+
+<p>
+Configuration of the lsp backend is done through the layer configuration variable <code>rust-rls-cmd</code>.
+The <code>rust-rls-cmd</code> is how the rust server should be launched.
+<code>rust-rls-cmd</code> defaults to <code>rustup run nightly rls</code>.
+The environment variable <code>RLS_ROOT</code> is used for configuration if <code>rust-rls-cmd</code> is set to <code>nil</code>.
+For additional configuration please see <a href="https://github.com/emacs-lsp/lsp-rust">rust-lsp</a>.
+</p>
+
+<p>
+To enable auto-completion, ensure that the <code>auto-completion</code> layer is enabled.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf0924ce" class="outline-3">
+<h3 id="cargo"><span class="section-number-3">2.3</span> Cargo</h3>
 <div class="outline-text-3" id="text-cargo">
 <p>
 <a href="http://doc.crates.io/index.html">Cargo</a> is a project management command line tool for Rust. Installation
@@ -347,8 +396,8 @@ instructions can be found on the main page of <a href="http://doc.crates.io/inde
 </div>
 </div>
 
-<div id="outline-container-org23d6f39" class="outline-3">
-<h3 id="rustfmt"><a id="org23d6f39"></a><span class="section-number-3">2.4</span> Rustfmt</h3>
+<div id="outline-container-org83343ac" class="outline-3">
+<h3 id="rustfmt"><span class="section-number-3">2.4</span> Rustfmt</h3>
 <div class="outline-text-3" id="text-rustfmt">
 <p>
 Format Rust code according to style guidelines using <a href="https://github.com/rust-lang-nursery/rustfmt">rustfmt</a>.
@@ -366,8 +415,8 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 </div>
 </div>
 
-<div id="outline-container-org1da07a7" class="outline-2">
-<h2 id="key-bindings"><a id="org1da07a7"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-org69f11ac" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -379,13 +428,13 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m =</code></td>
+<td class="org-left"><code>SPC m = =</code></td>
 <td class="org-left">reformat the buffer</td>
 </tr>
 
@@ -490,7 +539,7 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-10-31 Wed 18:52</p>
+<p class="date">Created: 2019-01-13 Sun 20:01</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

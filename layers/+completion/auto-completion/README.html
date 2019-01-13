@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-31 Wed 18:52 -->
+<!-- 2019-01-13 Sun 20:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Auto-completion layer</title>
@@ -161,6 +161,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -284,7 +297,7 @@ for the JavaScript code in this tag.
 <li><a href="#improved-faces">3.10. Improved faces</a></li>
 </ul>
 </li>
-<li><a href="#key-bindings-1">4. Key Bindings</a>
+<li><a href="#key-bindings-1">4. Key bindings</a>
 <ul>
 <li><a href="#company">4.1. Company</a></li>
 <li><a href="#auto-complete">4.2. Auto-complete</a></li>
@@ -296,16 +309,16 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgc148b32" class="outline-2">
-<h2 id="description"><a id="orgc148b32"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgc1cccf2" class="outline-2">
+<h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds auto-completion to all supported language layers.
 </p>
 </div>
 
-<div id="outline-container-orgdf43ded" class="outline-3">
-<h3 id="features"><a id="orgdf43ded"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org36fc8c3" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Support for code completion with <a href="http://company-mode.github.io/">company</a> or <a href="https://github.com/auto-complete/auto-complete">auto-complete</a> for various language layers</li>
@@ -317,8 +330,8 @@ This layer adds auto-completion to all supported language layers.
 </div>
 </div>
 
-<div id="outline-container-orge06d87e" class="outline-2">
-<h2 id="install"><a id="orge06d87e"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org0b57a84" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -333,13 +346,13 @@ layer for it to have any effect.
 </div>
 </div>
 
-<div id="outline-container-org7936838" class="outline-2">
-<h2 id="configuration"><a id="org7936838"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org72acf0a" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org5f0729c" class="outline-3">
-<h3 id="key-bindings"><a id="org5f0729c"></a><span class="section-number-3">3.1</span> Key bindings</h3>
+<div id="outline-container-org09bf1bd" class="outline-3">
+<h3 id="key-bindings"><span class="section-number-3">3.1</span> Key bindings</h3>
 <div class="outline-text-3" id="text-key-bindings">
 <p>
 You can customize the user experience of auto-completion with the following
@@ -397,8 +410,8 @@ you don’t use it already.
 </div>
 </div>
 
-<div id="outline-container-orge779878" class="outline-3">
-<h3 id="snippets-directories"><a id="orge779878"></a><span class="section-number-3">3.2</span> Snippets directories</h3>
+<div id="outline-container-orgb023f34" class="outline-3">
+<h3 id="snippets-directories"><span class="section-number-3">3.2</span> Snippets directories</h3>
 <div class="outline-text-3" id="text-snippets-directories">
 <p>
 The following directories are added by default:
@@ -421,8 +434,8 @@ If its value is <code>nil</code> then the path <code>~/.emacs.d/private/snippets
 </div>
 </div>
 
-<div id="outline-container-orgaaac3dc" class="outline-3">
-<h3 id="show-snippets-in-auto-completion-popup"><a id="orgaaac3dc"></a><span class="section-number-3">3.3</span> Show snippets in auto-completion popup</h3>
+<div id="outline-container-org738c35c" class="outline-3">
+<h3 id="show-snippets-in-auto-completion-popup"><span class="section-number-3">3.3</span> Show snippets in auto-completion popup</h3>
 <div class="outline-text-3" id="text-show-snippets-in-auto-completion-popup">
 <p>
 By default, snippets are not shown in the auto-completion popup. To show them in
@@ -438,8 +451,8 @@ the popup, set the variable <code>auto-completion-enable-snippets-in-popup</code
 </div>
 </div>
 
-<div id="outline-container-org69d904c" class="outline-3">
-<h3 id="tooltips"><a id="org69d904c"></a><span class="section-number-3">3.4</span> Tooltips</h3>
+<div id="outline-container-org751abdd" class="outline-3">
+<h3 id="tooltips"><span class="section-number-3">3.4</span> Tooltips</h3>
 <div class="outline-text-3" id="text-tooltips">
 <p>
 To enable automatic docstring tooltips set <code>auto-completion-enable-help-tooltip</code>
@@ -467,8 +480,8 @@ To enable manual non-automatic invocation of docstring tooltips, set it to
 </div>
 </div>
 
-<div id="outline-container-org96fb018" class="outline-3">
-<h3 id="sort-results-by-usage"><a id="org96fb018"></a><span class="section-number-3">3.5</span> Sort results by usage</h3>
+<div id="outline-container-orga7c1690" class="outline-3">
+<h3 id="sort-results-by-usage"><span class="section-number-3">3.5</span> Sort results by usage</h3>
 <div class="outline-text-3" id="text-sort-results-by-usage">
 <p>
 To enable sorting auto-completion results by their usage frequency set
@@ -486,8 +499,8 @@ is used. The variable has no effect when <code>auto-complete</code> is used.
 </div>
 </div>
 
-<div id="outline-container-orgd63d3ca" class="outline-3">
-<h3 id="enable-company-or-auto-complete-globally"><a id="orgd63d3ca"></a><span class="section-number-3">3.6</span> Enable company or auto-complete globally</h3>
+<div id="outline-container-org94e7420" class="outline-3">
+<h3 id="enable-company-or-auto-complete-globally"><span class="section-number-3">3.6</span> Enable company or auto-complete globally</h3>
 <div class="outline-text-3" id="text-enable-company-or-auto-complete-globally">
 <p>
 By default Spacemacs enables auto-completion explicitly for each supported
@@ -510,8 +523,8 @@ disable <code>company</code> first, see the next section to do so.
 </div>
 </div>
 
-<div id="outline-container-orgd9f9a1c" class="outline-3">
-<h3 id="replacing-company-by-auto-complete"><a id="orgd9f9a1c"></a><span class="section-number-3">3.7</span> Replacing company by auto-complete</h3>
+<div id="outline-container-org4334ef0" class="outline-3">
+<h3 id="replacing-company-by-auto-complete"><span class="section-number-3">3.7</span> Replacing company by auto-complete</h3>
 <div class="outline-text-3" id="text-replacing-company-by-auto-complete">
 <p>
 You can disable <code>company</code> by adding it to the <code>dotspacemacs-excluded-packages</code>
@@ -520,8 +533,8 @@ variable, then you are free to enable <code>auto-complete</code> globally.
 </div>
 </div>
 
-<div id="outline-container-orgcadc0ee" class="outline-3">
-<h3 id="add-auto-completion-in-a-layer"><a id="orgcadc0ee"></a><span class="section-number-3">3.8</span> Add auto-completion in a layer</h3>
+<div id="outline-container-org488b062" class="outline-3">
+<h3 id="add-auto-completion-in-a-layer"><span class="section-number-3">3.8</span> Add auto-completion in a layer</h3>
 <div class="outline-text-3" id="text-add-auto-completion-in-a-layer">
 <p>
 Here is an example to add <code>company</code> auto-completion to python buffers via the
@@ -552,8 +565,8 @@ In the file <code>packages.el</code> of the python layer:
 </div>
 </div>
 
-<div id="outline-container-org60f5bf9" class="outline-3">
-<h3 id="completion-back-ends"><a id="org60f5bf9"></a><span class="section-number-3">3.9</span> Completion back ends</h3>
+<div id="outline-container-org981212b" class="outline-3">
+<h3 id="completion-back-ends"><span class="section-number-3">3.9</span> Completion back ends</h3>
 <div class="outline-text-3" id="text-completion-back-ends">
 <p>
 Many spacemacs layers (e.g., python, html, haskell) configure company mode
@@ -573,8 +586,8 @@ your <code>.spacemacs</code> file with (e.g.)
 </div>
 </div>
 
-<div id="outline-container-org1ff6852" class="outline-3">
-<h3 id="improved-faces"><a id="org1ff6852"></a><span class="section-number-3">3.10</span> Improved faces</h3>
+<div id="outline-container-org70fd5ec" class="outline-3">
+<h3 id="improved-faces"><span class="section-number-3">3.10</span> Improved faces</h3>
 <div class="outline-text-3" id="text-improved-faces">
 <p>
 For nicer-looking faces, try adding the following to `custom-set-faces` in your dotspacemacs file.
@@ -592,13 +605,13 @@ For nicer-looking faces, try adding the following to `custom-set-faces` in your 
 </div>
 </div>
 
-<div id="outline-container-orga9bdf2a" class="outline-2">
-<h2 id="key-bindings-1"><a id="orga9bdf2a"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-orgdf61719" class="outline-2">
+<h2 id="key-bindings-1"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings-1">
 </div>
 
-<div id="outline-container-org3540c10" class="outline-3">
-<h3 id="company"><a id="org3540c10"></a><span class="section-number-3">4.1</span> Company</h3>
+<div id="outline-container-org07fa20b" class="outline-3">
+<h3 id="company"><span class="section-number-3">4.1</span> Company</h3>
 <div class="outline-text-3" id="text-company">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -610,7 +623,7 @@ For nicer-looking faces, try adding the following to `custom-set-faces` in your 
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -651,7 +664,7 @@ Vim Style:
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -687,7 +700,7 @@ Emacs style:
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -706,8 +719,8 @@ Emacs style:
 </div>
 </div>
 
-<div id="outline-container-org17fbb32" class="outline-3">
-<h3 id="auto-complete"><a id="org17fbb32"></a><span class="section-number-3">4.2</span> Auto-complete</h3>
+<div id="outline-container-org3062da8" class="outline-3">
+<h3 id="auto-complete"><span class="section-number-3">4.2</span> Auto-complete</h3>
 <div class="outline-text-3" id="text-auto-complete">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -719,7 +732,7 @@ Emacs style:
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -753,8 +766,8 @@ Emacs style:
 </div>
 </div>
 
-<div id="outline-container-org0faa3db" class="outline-3">
-<h3 id="yasnippet"><a id="org0faa3db"></a><span class="section-number-3">4.3</span> Yasnippet</h3>
+<div id="outline-container-org2a3020a" class="outline-3">
+<h3 id="yasnippet"><span class="section-number-3">4.3</span> Yasnippet</h3>
 <div class="outline-text-3" id="text-yasnippet">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -766,7 +779,7 @@ Emacs style:
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -785,8 +798,8 @@ Emacs style:
 </div>
 </div>
 
-<div id="outline-container-org642c63a" class="outline-3">
-<h3 id="auto-yasnippet"><a id="org642c63a"></a><span class="section-number-3">4.4</span> Auto-yasnippet</h3>
+<div id="outline-container-org451bcd5" class="outline-3">
+<h3 id="auto-yasnippet"><span class="section-number-3">4.4</span> Auto-yasnippet</h3>
 <div class="outline-text-3" id="text-auto-yasnippet">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -798,7 +811,7 @@ Emacs style:
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -825,7 +838,7 @@ Emacs style:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-10-31 Wed 18:52</p>
+<p class="date">Created: 2019-01-13 Sun 20:01</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

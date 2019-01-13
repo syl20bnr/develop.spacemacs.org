@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-31 Wed 18:52 -->
+<!-- 2019-01-13 Sun 20:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ESS (R) layer</title>
@@ -161,6 +161,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -271,7 +284,7 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#install">2. Install</a></li>
 <li><a href="#options">3. Options</a></li>
-<li><a href="#key-bindings">4. Key Bindings</a>
+<li><a href="#key-bindings">4. Key bindings</a>
 <ul>
 <li><a href="#inferior-repl-process">4.1. Inferior REPL process</a></li>
 <li><a href="#help">4.2. Help</a></li>
@@ -290,16 +303,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgf0550ad" class="outline-2">
-<h2 id="description"><a id="orgf0550ad"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org39e68ad" class="outline-2">
+<h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for statistical programming languages to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-orgc8f2747" class="outline-3">
-<h3 id="features"><a id="orgc8f2747"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orgce18d91" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Syntax highlighting</li>
@@ -317,8 +330,8 @@ This layer adds support for statistical programming languages to Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-org66f2e32" class="outline-2">
-<h2 id="install"><a id="org66f2e32"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgfe8ce98" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -338,8 +351,8 @@ To do so start the R terminal and type below code.
 </div>
 </div>
 
-<div id="outline-container-org53283e0" class="outline-2">
-<h2 id="options"><a id="org53283e0"></a><span class="section-number-2">3</span> Options</h2>
+<div id="outline-container-org956f12d" class="outline-2">
+<h2 id="options"><span class="section-number-2">3</span> Options</h2>
 <div class="outline-text-2" id="text-options">
 <p>
 To turn off the automatic replacement of underscores by <code>&lt;-</code>, set in your
@@ -366,13 +379,13 @@ appropriate:
 </div>
 </div>
 
-<div id="outline-container-orgcb01038" class="outline-2">
-<h2 id="key-bindings"><a id="orgcb01038"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-orgb164ad3" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org942e6e1" class="outline-3">
-<h3 id="inferior-repl-process"><a id="org942e6e1"></a><span class="section-number-3">4.1</span> Inferior REPL process</h3>
+<div id="outline-container-org56122f5" class="outline-3">
+<h3 id="inferior-repl-process"><span class="section-number-3">4.1</span> Inferior REPL process</h3>
 <div class="outline-text-3" id="text-inferior-repl-process">
 <p>
 Send code to inferior process with these commands:
@@ -388,18 +401,18 @@ Send code to inferior process with these commands:
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m '​</code></td>
+<td class="org-left">~SPC m '​~</td>
 <td class="org-left">start REPL</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m ,​</code></td>
+<td class="org-left">~SPC m ,​~</td>
 <td class="org-left">send region, current function, or paragraph and step</td>
 </tr>
 
@@ -473,8 +486,8 @@ Send code to inferior process with these commands:
 </div>
 </div>
 
-<div id="outline-container-orga927433" class="outline-3">
-<h3 id="help"><a id="orga927433"></a><span class="section-number-3">4.2</span> Help</h3>
+<div id="outline-container-org9889a12" class="outline-3">
+<h3 id="help"><span class="section-number-3">4.2</span> Help</h3>
 <div class="outline-text-3" id="text-help">
 <p>
 Get help and helpers for inspecting objects at point are available in R buffers only.
@@ -490,7 +503,7 @@ Get help and helpers for inspecting objects at point are available in R buffers 
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -569,8 +582,8 @@ Get help and helpers for inspecting objects at point are available in R buffers 
 </div>
 </div>
 
-<div id="outline-container-org9d0ae36" class="outline-3">
-<h3 id="more-interaction-with-the-repl"><a id="org9d0ae36"></a><span class="section-number-3">4.3</span> More interaction with the REPL</h3>
+<div id="outline-container-org4fc5915" class="outline-3">
+<h3 id="more-interaction-with-the-repl"><span class="section-number-3">4.3</span> More interaction with the REPL</h3>
 <div class="outline-text-3" id="text-more-interaction-with-the-repl">
 <p>
 Helpers that provide further interaction with the REPL.
@@ -586,7 +599,7 @@ Helpers that provide further interaction with the REPL.
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -645,8 +658,8 @@ Helpers that provide further interaction with the REPL.
 </div>
 </div>
 
-<div id="outline-container-org440abe9" class="outline-3">
-<h3 id="r-devtools"><a id="org440abe9"></a><span class="section-number-3">4.4</span> R devtools</h3>
+<div id="outline-container-org73c4dcd" class="outline-3">
+<h3 id="r-devtools"><span class="section-number-3">4.4</span> R devtools</h3>
 <div class="outline-text-3" id="text-r-devtools">
 <p>
 Interaction with the <code>R</code> <code>devtools</code> package.
@@ -662,7 +675,7 @@ Interaction with the <code>R</code> <code>devtools</code> package.
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -721,8 +734,8 @@ Interaction with the <code>R</code> <code>devtools</code> package.
 </div>
 </div>
 
-<div id="outline-container-org9eea97e" class="outline-3">
-<h3 id="debugging"><a id="org9eea97e"></a><span class="section-number-3">4.5</span> Debugging</h3>
+<div id="outline-container-orgd711a3f" class="outline-3">
+<h3 id="debugging"><span class="section-number-3">4.5</span> Debugging</h3>
 <div class="outline-text-3" id="text-debugging">
 <p>
 Tools for debugging
@@ -738,7 +751,7 @@ Tools for debugging
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -842,8 +855,8 @@ Tools for debugging
 </div>
 </div>
 
-<div id="outline-container-org381361f" class="outline-3">
-<h3 id="editing-markdown"><a id="org381361f"></a><span class="section-number-3">4.6</span> Editing Markdown</h3>
+<div id="outline-container-orgbaddaea" class="outline-3">
+<h3 id="editing-markdown"><span class="section-number-3">4.6</span> Editing Markdown</h3>
 <div class="outline-text-3" id="text-editing-markdown">
 <p>
 Edit Markdown files
@@ -859,7 +872,7 @@ Edit Markdown files
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -901,7 +914,7 @@ Edit Markdown files
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-10-31 Wed 18:52</p>
+<p class="date">Created: 2019-01-13 Sun 20:01</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

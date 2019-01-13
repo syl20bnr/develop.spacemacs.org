@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-31 Wed 18:52 -->
+<!-- 2019-01-13 Sun 20:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Evil-snipe layer</title>
@@ -161,6 +161,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -288,16 +301,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org1b7d10f" class="outline-2">
-<h2 id="description"><a id="org1b7d10f"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgb56bc11" class="outline-2">
+<h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds various replacements for vim’s default search functions.
 </p>
 </div>
 
-<div id="outline-container-orgc56fa62" class="outline-3">
-<h3 id="features"><a id="orgc56fa62"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org3f093e6" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Alternative implementation of vim’s default search operations.</li>
@@ -309,13 +322,13 @@ This layer adds various replacements for vim’s default search functions.
 </div>
 </div>
 
-<div id="outline-container-orgc6cb9d5" class="outline-2">
-<h2 id="install"><a id="orgc6cb9d5"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org8f20afc" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgc0ac676" class="outline-3">
-<h3 id="layer"><a id="orgc0ac676"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org073d866" class="outline-3">
+<h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -325,14 +338,14 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org3c319cc" class="outline-3">
-<h3 id="improved-f-and-t-search-behavior"><a id="org3c319cc"></a><span class="section-number-3">2.2</span> Improved f and t search behavior</h3>
+<div id="outline-container-orgab159d7" class="outline-3">
+<h3 id="improved-f-and-t-search-behavior"><span class="section-number-3">2.2</span> Improved f and t search behavior</h3>
 <div class="outline-text-3" id="text-improved-f-and-t-search-behavior">
 <p>
 With evil-snipe you can define your own search scope for <code>f</code> and <code>t</code> searches
 which means that you won’t have to jump to the correct line before searching
 with <code>f</code> / <code>t</code> / <code>F</code> / <code>T</code>. And after you have found a match, you can just press
-<code>f</code> or <code>t</code> again afterwards to continue the search. No need to use <code>;</code> / <code>​,​</code>.
+<code>f</code> or <code>t</code> again afterwards to continue the search. No need to use <code>;</code> / ~​,​~.
 </p>
 
 <p>
@@ -348,8 +361,8 @@ layer variable <code>evil-snipe-enable-alternate-f-and-t-behaviors</code> to <co
 </div>
 </div>
 
-<div id="outline-container-org17ad14e" class="outline-3">
-<h3 id="two-character-search-with-s"><a id="org17ad14e"></a><span class="section-number-3">2.3</span> Two-character search with s</h3>
+<div id="outline-container-org2bb4617" class="outline-3">
+<h3 id="two-character-search-with-s"><span class="section-number-3">2.3</span> Two-character search with s</h3>
 <div class="outline-text-3" id="text-two-character-search-with-s">
 <p>
 With the <code>s~/~S</code> keys you can do a simple search like <code>f~/~t</code>, but instead of
@@ -362,8 +375,8 @@ purposes.
 </div>
 </div>
 
-<div id="outline-container-org23ad40e" class="outline-3">
-<h3 id="more-scopes"><a id="org23ad40e"></a><span class="section-number-3">2.4</span> More scopes</h3>
+<div id="outline-container-orgaf4a556" class="outline-3">
+<h3 id="more-scopes"><span class="section-number-3">2.4</span> More scopes</h3>
 <div class="outline-text-3" id="text-more-scopes">
 <p>
 Evil-snipe also adds several scope options for searches (set <code>evil-snipe-scope</code>
@@ -425,8 +438,8 @@ remove this line from <code>evil-snipe/packages.el</code>:
 </div>
 </div>
 
-<div id="outline-container-org95e7300" class="outline-3">
-<h3 id="symbol-groups"><a id="org95e7300"></a><span class="section-number-3">2.5</span> Symbol groups</h3>
+<div id="outline-container-org717455c" class="outline-3">
+<h3 id="symbol-groups"><span class="section-number-3">2.5</span> Symbol groups</h3>
 <div class="outline-text-3" id="text-symbol-groups">
 <p>
 With symbol groups you can let a character stand for a regex, for example a
@@ -465,8 +478,8 @@ quickly cycle through all function definitions in a buffer!
 </div>
 </div>
 
-<div id="outline-container-orgf884919" class="outline-2">
-<h2 id="key-bindings"><a id="orgf884919"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-org87a2115" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -478,7 +491,7 @@ quickly cycle through all function definitions in a buffer!
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -519,7 +532,7 @@ quickly cycle through all function definitions in a buffer!
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-10-31 Wed 18:52</p>
+<p class="date">Created: 2019-01-13 Sun 20:01</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

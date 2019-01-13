@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-31 Wed 18:52 -->
+<!-- 2019-01-13 Sun 20:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Restclient layer</title>
@@ -161,6 +161,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -281,16 +294,16 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org7393c9b" class="outline-2">
-<h2 id="description"><a id="org7393c9b"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgc58da7f" class="outline-2">
+<h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer provides a REPL-like interface for http requests.
 </p>
 </div>
 
-<div id="outline-container-org1cce984" class="outline-3">
-<h3 id="features"><a id="org1cce984"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org01e15d5" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>REPL for http requests via <a href="https://github.com/pashky/restclient.el">restclient</a></li>
@@ -300,8 +313,8 @@ This layer provides a REPL-like interface for http requests.
 </div>
 </div>
 
-<div id="outline-container-orgcb5d313" class="outline-2">
-<h2 id="install"><a id="orgcb5d313"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org7ae74ce" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -311,8 +324,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgcc8031a" class="outline-2">
-<h2 id="configuration"><a id="orgcc8031a"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org80a4782" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 By default the layer uses <a href="https://github.com/pashky/restclient.el">restclient</a>. To use <code>org</code> via <a href="http://github.com/zweifisch/ob-http">ob-http</a> by default set
@@ -326,8 +339,8 @@ choose the mode at any time.
 </div>
 </div>
 
-<div id="outline-container-org2b86439" class="outline-2">
-<h2 id="restclient"><a id="org2b86439"></a><span class="section-number-2">4</span> Restclient</h2>
+<div id="outline-container-orga6cd4e6" class="outline-2">
+<h2 id="restclient"><span class="section-number-2">4</span> Restclient</h2>
 <div class="outline-text-2" id="text-restclient">
 <p>
 Any file with an <code>.http</code> extension is opened in a <code>restclient</code> buffer.
@@ -347,8 +360,8 @@ There is support for <code>org-babel</code> and <code>restclient</code> code blo
 </pre>
 </div>
 
-<div id="outline-container-org26cbf59" class="outline-3">
-<h3 id="key-bindings"><a id="org26cbf59"></a><span class="section-number-3">4.1</span> Key bindings</h3>
+<div id="outline-container-org3711a0f" class="outline-3">
+<h3 id="key-bindings"><span class="section-number-3">4.1</span> Key bindings</h3>
 <div class="outline-text-3" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -360,7 +373,7 @@ There is support for <code>org-babel</code> and <code>restclient</code> code blo
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -405,8 +418,8 @@ There is support for <code>org-babel</code> and <code>restclient</code> code blo
 </div>
 </div>
 
-<div id="outline-container-org112ff6f" class="outline-2">
-<h2 id="ob-http"><a id="org112ff6f"></a><span class="section-number-2">5</span> ob-http</h2>
+<div id="outline-container-org934264a" class="outline-2">
+<h2 id="ob-http"><span class="section-number-2">5</span> ob-http</h2>
 <div class="outline-text-2" id="text-ob-http">
 <p>
 Any file with an <code>.http</code> extension is opened in an <code>org</code> buffer with org babel
@@ -418,7 +431,7 @@ Full documentation and examples can be found in the package’s <a href="http://
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-10-31 Wed 18:52</p>
+<p class="date">Created: 2019-01-13 Sun 20:01</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

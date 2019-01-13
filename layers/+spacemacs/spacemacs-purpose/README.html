@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-31 Wed 18:52 -->
+<!-- 2019-01-13 Sun 20:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spacemacs-purpose layer</title>
@@ -161,6 +161,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -274,7 +287,7 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#install">2. Install</a></li>
 <li><a href="#usage">3. Usage</a></li>
-<li><a href="#key-bindings">4. Key Bindings</a></li>
+<li><a href="#key-bindings">4. Key bindings</a></li>
 <li><a href="#caveats">5. Caveats</a>
 <ul>
 <li><a href="#popwin-and-guide-key">5.1. Popwin and guide-key</a></li>
@@ -285,8 +298,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org1a91778" class="outline-2">
-<h2 id="description"><a id="org1a91778"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgd489655" class="outline-2">
+<h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer enables <a href="https://github.com/bmag/emacs-purpose">window-purpose</a>, which provides an alternative, purpose-based
@@ -301,8 +314,8 @@ brings popwin’s behavior to window-purpose and solves that problem.
 </p>
 </div>
 
-<div id="outline-container-org980218c" class="outline-3">
-<h3 id="features"><a id="org980218c"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org6a0b589" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Window layout is more robust and less likely to change unintentionally</li>
@@ -317,8 +330,8 @@ brings popwin’s behavior to window-purpose and solves that problem.
 </div>
 </div>
 
-<div id="outline-container-org3e15948" class="outline-3">
-<h3 id="purposes"><a id="org3e15948"></a><span class="section-number-3">1.2</span> Purposes</h3>
+<div id="outline-container-orgf67d1fe" class="outline-3">
+<h3 id="purposes"><span class="section-number-3">1.2</span> Purposes</h3>
 <div class="outline-text-3" id="text-purposes">
 <p>
 window-purpose contains a configuration which assigns a purpose for each
@@ -342,8 +355,8 @@ reserved only for buffers that share that purpose.
 </div>
 </div>
 
-<div id="outline-container-org0f469d1" class="outline-3">
-<h3 id="switch-to-buffer-and-display-buffer"><a id="org0f469d1"></a><span class="section-number-3">1.3</span> switch-to-buffer and display-buffer</h3>
+<div id="outline-container-org09ed8f6" class="outline-3">
+<h3 id="switch-to-buffer-and-display-buffer"><span class="section-number-3">1.3</span> switch-to-buffer and display-buffer</h3>
 <div class="outline-text-3" id="text-switch-to-buffer-and-display-buffer">
 <p>
 In regular Emacs, <code>switch-to-buffer</code> follows different rules than the other
@@ -355,8 +368,8 @@ result is a better control over how buffers are displayed, since
 </div>
 </div>
 
-<div id="outline-container-org491a1dd" class="outline-3">
-<h3 id="misc"><a id="org491a1dd"></a><span class="section-number-3">1.4</span> misc</h3>
+<div id="outline-container-orgb53db7d" class="outline-3">
+<h3 id="misc"><span class="section-number-3">1.4</span> misc</h3>
 <div class="outline-text-3" id="text-misc">
 <ul class="org-ul">
 <li>specialized helm source similar to <code>helm-source-buffers-list</code></li>
@@ -365,8 +378,8 @@ result is a better control over how buffers are displayed, since
 </div>
 </div>
 
-<div id="outline-container-org07e05ad" class="outline-2">
-<h2 id="install"><a id="org07e05ad"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org3a1badb" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -376,8 +389,8 @@ this file.
 </div>
 </div>
 
-<div id="outline-container-org72f76e5" class="outline-2">
-<h2 id="usage"><a id="org72f76e5"></a><span class="section-number-2">3</span> Usage</h2>
+<div id="outline-container-org607f089" class="outline-2">
+<h2 id="usage"><span class="section-number-2">3</span> Usage</h2>
 <div class="outline-text-2" id="text-usage">
 <p>
 With window-purpose layer installed, <code>purpose-mode</code> and <code>pupo-mode</code> are enabled.
@@ -398,8 +411,8 @@ See <a href="https://github.com/bmag/emacs-purpose/wiki">window-purpose wiki</a>
 </div>
 </div>
 
-<div id="outline-container-org6e4ec6f" class="outline-2">
-<h2 id="key-bindings"><a id="org6e4ec6f"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org4b530ca" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -411,7 +424,7 @@ See <a href="https://github.com/bmag/emacs-purpose/wiki">window-purpose wiki</a>
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -450,13 +463,13 @@ See <a href="https://github.com/bmag/emacs-purpose/wiki">window-purpose wiki</a>
 </div>
 </div>
 
-<div id="outline-container-org494dc74" class="outline-2">
-<h2 id="caveats"><a id="org494dc74"></a><span class="section-number-2">5</span> Caveats</h2>
+<div id="outline-container-org199af42" class="outline-2">
+<h2 id="caveats"><span class="section-number-2">5</span> Caveats</h2>
 <div class="outline-text-2" id="text-caveats">
 </div>
 
-<div id="outline-container-org9b41a35" class="outline-3">
-<h3 id="popwin-and-guide-key"><a id="org9b41a35"></a><span class="section-number-3">5.1</span> Popwin and guide-key</h3>
+<div id="outline-container-org03296f8" class="outline-3">
+<h3 id="popwin-and-guide-key"><span class="section-number-3">5.1</span> Popwin and guide-key</h3>
 <div class="outline-text-3" id="text-popwin-and-guide-key">
 <p>
 If a buffer is displayed in two different windows, and only one of those windows
@@ -466,8 +479,8 @@ purpose-dedicated.
 </div>
 </div>
 
-<div id="outline-container-org4f67074" class="outline-3">
-<h3 id="packages-that-do-display-management"><a id="org4f67074"></a><span class="section-number-3">5.2</span> Packages that do display management</h3>
+<div id="outline-container-orga5232a6" class="outline-3">
+<h3 id="packages-that-do-display-management"><span class="section-number-3">5.2</span> Packages that do display management</h3>
 <div class="outline-text-3" id="text-packages-that-do-display-management">
 <p>
 Some packages that manage how windows are displayed, such as <code>gdb</code> with
@@ -481,7 +494,7 @@ with <code>window-purpose</code>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-10-31 Wed 18:52</p>
+<p class="date">Created: 2019-01-13 Sun 20:01</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

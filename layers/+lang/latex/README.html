@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-31 Wed 18:52 -->
+<!-- 2019-01-13 Sun 20:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LaTeX layer</title>
@@ -161,6 +161,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -296,16 +309,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgf57d3a8" class="outline-2">
-<h2 id="description"><a id="orgf57d3a8"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org158f366" class="outline-2">
+<h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for LaTeX files with <a href="https://savannah.gnu.org/projects/auctex/">AucTeX</a>.
 </p>
 </div>
 
-<div id="outline-container-orgcd4d8dd" class="outline-3">
-<h3 id="features"><a id="orgcd4d8dd"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org65be8dc" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Auto-build with <a href="https://github.com/tom-tan/auctex-latexmk/">auctex-latexmk</a></li>
@@ -316,8 +329,8 @@ This layer adds support for LaTeX files with <a href="https://savannah.gnu.org/p
 </div>
 </div>
 
-<div id="outline-container-orga3245a5" class="outline-3">
-<h3 id="bibtex"><a id="orga3245a5"></a><span class="section-number-3">1.2</span> BibTeX</h3>
+<div id="outline-container-orgdd8c004" class="outline-3">
+<h3 id="bibtex"><span class="section-number-3">1.2</span> BibTeX</h3>
 <div class="outline-text-3" id="text-bibtex">
 <p>
 For more extensive support of BibTeX files than RefTeX provides, have a look at
@@ -327,13 +340,13 @@ the <a href="../../%2Blang/bibtex/README.html">BibTeX layer</a>.
 </div>
 </div>
 
-<div id="outline-container-orge727a13" class="outline-2">
-<h2 id="install"><a id="orge727a13"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org7937a8c" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org9807ca6" class="outline-3">
-<h3 id="layer"><a id="org9807ca6"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-orgf53903a" class="outline-3">
+<h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -343,8 +356,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org3541b34" class="outline-3">
-<h3 id="auto-completion"><a id="org3541b34"></a><span class="section-number-3">2.2</span> Auto-completion</h3>
+<div id="outline-container-orge5bf615" class="outline-3">
+<h3 id="auto-completion"><span class="section-number-3">2.2</span> Auto-completion</h3>
 <div class="outline-text-3" id="text-auto-completion">
 <p>
 Add the layer <code>auto-completion</code> to the variable
@@ -353,8 +366,8 @@ Add the layer <code>auto-completion</code> to the variable
 </div>
 </div>
 
-<div id="outline-container-org0d49255" class="outline-3">
-<h3 id="previewing"><a id="org0d49255"></a><span class="section-number-3">2.3</span> Previewing</h3>
+<div id="outline-container-org77f5339" class="outline-3">
+<h3 id="previewing"><span class="section-number-3">2.3</span> Previewing</h3>
 <div class="outline-text-3" id="text-previewing">
 <p>
 To perform full-document previews (that is, aside from the inline previewing
@@ -374,8 +387,8 @@ you recompile.
 </div>
 </div>
 
-<div id="outline-container-orgb48a16d" class="outline-3">
-<h3 id="build-command"><a id="orgb48a16d"></a><span class="section-number-3">2.4</span> Build command</h3>
+<div id="outline-container-org1acf10a" class="outline-3">
+<h3 id="build-command"><span class="section-number-3">2.4</span> Build command</h3>
 <div class="outline-text-3" id="text-build-command">
 <p>
 A build command can be specified via the layer variable <code>latex-build-command</code>.
@@ -397,8 +410,8 @@ entries you may have added there. To use the regular <code>AucTeX</code> command
 </div>
 </div>
 
-<div id="outline-container-orgdd61538" class="outline-3">
-<h3 id="auto-fill"><a id="orgdd61538"></a><span class="section-number-3">2.5</span> Auto-fill</h3>
+<div id="outline-container-orgc47f2f1" class="outline-3">
+<h3 id="auto-fill"><span class="section-number-3">2.5</span> Auto-fill</h3>
 <div class="outline-text-3" id="text-auto-fill">
 <p>
 To enable auto-fill set the variable <code>latex-enable-auto-fill</code> to <code>t</code>.
@@ -417,8 +430,8 @@ The variable <code>latex-nofill-env</code> provide the list of environment names
 </div>
 </div>
 
-<div id="outline-container-orgd48fed7" class="outline-3">
-<h3 id="folding"><a id="orgd48fed7"></a><span class="section-number-3">2.6</span> Folding</h3>
+<div id="outline-container-org9595d47" class="outline-3">
+<h3 id="folding"><span class="section-number-3">2.6</span> Folding</h3>
 <div class="outline-text-3" id="text-folding">
 <p>
 Enable folding of text by setting <code>latex-enable-folding</code> to <code>t</code>. Default value
@@ -433,8 +446,8 @@ is nil.
 </div>
 </div>
 
-<div id="outline-container-org9b03f8c" class="outline-3">
-<h3 id="magic-latex-buffer"><a id="org9b03f8c"></a><span class="section-number-3">2.7</span> Magic latex buffer</h3>
+<div id="outline-container-org40394ed" class="outline-3">
+<h3 id="magic-latex-buffer"><span class="section-number-3">2.7</span> Magic latex buffer</h3>
 <div class="outline-text-3" id="text-magic-latex-buffer">
 <p>
 To enable “magic” symbols in latex buffers, set the variable
@@ -469,8 +482,8 @@ By default, the underlying latex code is echoed in the echo area.
 </div>
 </div>
 
-<div id="outline-container-orgb970417" class="outline-2">
-<h2 id="key-bindings"><a id="orgb970417"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-orgda7eec8" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -482,7 +495,7 @@ By default, the underlying latex code is echoed in the echo area.
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -493,7 +506,7 @@ By default, the underlying latex code is echoed in the echo area.
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m ​,​</code></td>
+<td class="org-left">~SPC m ​,​~</td>
 <td class="org-left">TeX command on master file</td>
 </tr>
 
@@ -705,8 +718,8 @@ By default, the underlying latex code is echoed in the echo area.
 </table>
 </div>
 
-<div id="outline-container-orgb8f3411" class="outline-3">
-<h3 id="folding-1"><a id="orgb8f3411"></a><span class="section-number-3">3.1</span> Folding</h3>
+<div id="outline-container-org04131d6" class="outline-3">
+<h3 id="folding-1"><span class="section-number-3">3.1</span> Folding</h3>
 <div class="outline-text-3" id="text-folding-1">
 <p>
 Available only when <code>latex-enable-folding</code> is non nil.
@@ -722,7 +735,7 @@ Available only when <code>latex-enable-folding</code> is non nil.
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -756,8 +769,8 @@ Available only when <code>latex-enable-folding</code> is non nil.
 </div>
 </div>
 
-<div id="outline-container-org724c5ff" class="outline-3">
-<h3 id="reftex"><a id="org724c5ff"></a><span class="section-number-3">3.2</span> RefTeX</h3>
+<div id="outline-container-org2dd1085" class="outline-3">
+<h3 id="reftex"><span class="section-number-3">3.2</span> RefTeX</h3>
 <div class="outline-text-3" id="text-reftex">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -769,7 +782,7 @@ Available only when <code>latex-enable-folding</code> is non nil.
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -846,7 +859,7 @@ Available only when <code>latex-enable-folding</code> is non nil.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-10-31 Wed 18:52</p>
+<p class="date">Created: 2019-01-13 Sun 20:01</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

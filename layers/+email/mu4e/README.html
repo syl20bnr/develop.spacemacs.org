@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-31 Wed 18:52 -->
+<!-- 2019-01-13 Sun 20:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mu4e layer</title>
@@ -161,6 +161,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -298,16 +311,16 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org9838668" class="outline-2">
-<h2 id="description"><a id="org9838668"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orga313e7d" class="outline-2">
+<h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for the Mu4e email client.
 </p>
 </div>
 
-<div id="outline-container-orgdf3a031" class="outline-3">
-<h3 id="features"><a id="orgdf3a031"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orgeec3042" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Search, read, reply, move, and delete email.</li>
@@ -322,8 +335,8 @@ This layer adds support for the Mu4e email client.
 </div>
 </div>
 
-<div id="outline-container-org0030afa" class="outline-2">
-<h2 id="install"><a id="org0030afa"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgf08cc6f" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 In order to use this layer you must install mu and mu4e separately. Typically
@@ -360,13 +373,13 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </div>
 </div>
 
-<div id="outline-container-orgaabbe22" class="outline-2">
-<h2 id="commands"><a id="orgaabbe22"></a><span class="section-number-2">3</span> Commands</h2>
+<div id="outline-container-org2dfa352" class="outline-2">
+<h2 id="commands"><span class="section-number-2">3</span> Commands</h2>
 <div class="outline-text-2" id="text-commands">
 </div>
 
-<div id="outline-container-org6f25273" class="outline-3">
-<h3 id="global-bindings"><a id="org6f25273"></a><span class="section-number-3">3.1</span> Global bindings</h3>
+<div id="outline-container-org57e995c" class="outline-3">
+<h3 id="global-bindings"><span class="section-number-3">3.1</span> Global bindings</h3>
 <div class="outline-text-3" id="text-global-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -407,8 +420,8 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </div>
 </div>
 
-<div id="outline-container-org3616f1e" class="outline-3">
-<h3 id="headers-mode"><a id="org3616f1e"></a><span class="section-number-3">3.2</span> Headers mode</h3>
+<div id="outline-container-org96e8bee" class="outline-3">
+<h3 id="headers-mode"><span class="section-number-3">3.2</span> Headers mode</h3>
 <div class="outline-text-3" id="text-headers-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -444,8 +457,8 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </div>
 </div>
 
-<div id="outline-container-orgb811f40" class="outline-3">
-<h3 id="view-mode"><a id="orgb811f40"></a><span class="section-number-3">3.3</span> View mode</h3>
+<div id="outline-container-orgffe0f72" class="outline-3">
+<h3 id="view-mode"><span class="section-number-3">3.3</span> View mode</h3>
 <div class="outline-text-3" id="text-view-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -482,8 +495,8 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </div>
 </div>
 
-<div id="outline-container-orgee01836" class="outline-2">
-<h2 id="configuration"><a id="orgee01836"></a><span class="section-number-2">4</span> Configuration</h2>
+<div id="outline-container-org125d8aa" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">4</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 Configuration varies too much to give precise instructions. What follows is one
@@ -492,8 +505,8 @@ instructions.
 </p>
 </div>
 
-<div id="outline-container-orgf427625" class="outline-3">
-<h3 id="maildirs-extension"><a id="orgf427625"></a><span class="section-number-3">4.1</span> Maildirs extension</h3>
+<div id="outline-container-org44e1bce" class="outline-3">
+<h3 id="maildirs-extension"><span class="section-number-3">4.1</span> Maildirs extension</h3>
 <div class="outline-text-3" id="text-maildirs-extension">
 <p>
 The <a href="https://github.com/agpchil/mu4e-maildirs-extension">maildirs extension</a> adds a list of all your maildirs to the main mu4e view
@@ -515,8 +528,8 @@ variable <code>mu4e-use-maildirs-extension</code> to a non-nil value:
 </div>
 </div>
 
-<div id="outline-container-org3aad7e3" class="outline-3">
-<h3 id="multiple-accounts"><a id="org3aad7e3"></a><span class="section-number-3">4.2</span> Multiple Accounts</h3>
+<div id="outline-container-org933fcc9" class="outline-3">
+<h3 id="multiple-accounts"><span class="section-number-3">4.2</span> Multiple Accounts</h3>
 <div class="outline-text-3" id="text-multiple-accounts">
 <p>
 With `mu 0.9.16`, mu4e comes with a native contexts feature for managing
@@ -579,8 +592,8 @@ new contexts feature.
 </div>
 </div>
 
-<div id="outline-container-org01828d5" class="outline-3">
-<h3 id="async-mode"><a id="org01828d5"></a><span class="section-number-3">4.3</span> Async mode</h3>
+<div id="outline-container-org079f52d" class="outline-3">
+<h3 id="async-mode"><span class="section-number-3">4.3</span> Async mode</h3>
 <div class="outline-text-3" id="text-async-mode">
 <p>
 mu4e can send mails in async mode, which speeds up sending as you do not have
@@ -598,8 +611,8 @@ layer.
 </div>
 </div>
 
-<div id="outline-container-org1a59e6d" class="outline-3">
-<h3 id="attachment-directory"><a id="org1a59e6d"></a><span class="section-number-3">4.4</span> Attachment directory</h3>
+<div id="outline-container-orgd3b6fcd" class="outline-3">
+<h3 id="attachment-directory"><span class="section-number-3">4.4</span> Attachment directory</h3>
 <div class="outline-text-3" id="text-attachment-directory">
 <p>
 By default mu4e will save attachment files to $HOME, but this layer changes
@@ -613,8 +626,8 @@ that to $HOME/Downloads if it exists. You can override this in your user-config:
 </div>
 </div>
 
-<div id="outline-container-org8902542" class="outline-3">
-<h3 id="example-configuration"><a id="org8902542"></a><span class="section-number-3">4.5</span> Example configuration</h3>
+<div id="outline-container-orgeb88948" class="outline-3">
+<h3 id="example-configuration"><span class="section-number-3">4.5</span> Example configuration</h3>
 <div class="outline-text-3" id="text-example-configuration">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Set up some common mu4e variables</span>
@@ -649,8 +662,8 @@ that to $HOME/Downloads if it exists. You can override this in your user-config:
 </div>
 </div>
 
-<div id="outline-container-org9b9168f" class="outline-3">
-<h3 id="notifications"><a id="org9b9168f"></a><span class="section-number-3">4.6</span> Notifications</h3>
+<div id="outline-container-orgac8041b" class="outline-3">
+<h3 id="notifications"><span class="section-number-3">4.6</span> Notifications</h3>
 <div class="outline-text-3" id="text-notifications">
 <p>
 <code>mu4e-alert</code> is an extension that provides desktop notifications and adds the
@@ -669,8 +682,8 @@ For an extended documentation of the available customizations please refer to
 </p>
 </div>
 
-<div id="outline-container-orgd5e53ad" class="outline-4">
-<h4 id="os-notifications"><a id="orgd5e53ad"></a><span class="section-number-4">4.6.1</span> OS notifications</h4>
+<div id="outline-container-orgfc8aa30" class="outline-4">
+<h4 id="os-notifications"><span class="section-number-4">4.6.1</span> OS notifications</h4>
 <div class="outline-text-4" id="text-os-notifications">
 <p>
 To enable notifications about new messages, add the following line to your
@@ -712,8 +725,8 @@ installed libraries:
 </div>
 </div>
 
-<div id="outline-container-orgf3009f3" class="outline-4">
-<h4 id="mode-line-notifications"><a id="orgf3009f3"></a><span class="section-number-4">4.6.2</span> Mode-line notifications</h4>
+<div id="outline-container-org5bc40cc" class="outline-4">
+<h4 id="mode-line-notifications"><span class="section-number-4">4.6.2</span> Mode-line notifications</h4>
 <div class="outline-text-4" id="text-mode-line-notifications">
 <p>
 To enable mode-line display about new messages, add the following line to
@@ -738,8 +751,8 @@ or use layer variables when you add the layer to
 </div>
 </div>
 
-<div id="outline-container-orgc936d09" class="outline-3">
-<h3 id="spacemacs-layout-integration"><a id="orgc936d09"></a><span class="section-number-3">4.7</span> Spacemacs layout integration</h3>
+<div id="outline-container-orgdb88361" class="outline-3">
+<h3 id="spacemacs-layout-integration"><span class="section-number-3">4.7</span> Spacemacs layout integration</h3>
 <div class="outline-text-3" id="text-spacemacs-layout-integration">
 <p>
 A <a href="../../../doc/DOCUMENTATION.html#layouts-and-workspaces">Spacemacs custom layout</a> is defined by the layer. The name and the key binding
@@ -766,8 +779,8 @@ By default the values are:
 </div>
 </div>
 
-<div id="outline-container-org1ccac91" class="outline-2">
-<h2 id="see-also"><a id="org1ccac91"></a><span class="section-number-2">5</span> See also</h2>
+<div id="outline-container-org807edc6" class="outline-2">
+<h2 id="see-also"><span class="section-number-2">5</span> See also</h2>
 <div class="outline-text-2" id="text-see-also">
 <p>
 Refer to the official mu and mu4e documentation for additional info.
@@ -780,7 +793,7 @@ Refer to the official mu and mu4e documentation for additional info.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-10-31 Wed 18:52</p>
+<p class="date">Created: 2019-01-13 Sun 20:01</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
