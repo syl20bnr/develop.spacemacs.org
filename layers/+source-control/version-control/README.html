@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-31 Wed 18:52 -->
+<!-- 2019-01-13 Sun 20:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Version-Control layer</title>
@@ -161,6 +161,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -279,7 +292,7 @@ for the JavaScript code in this tag.
 <li><a href="#differences-between-margin-programs">3.1. Differences between margin programs</a></li>
 </ul>
 </li>
-<li><a href="#key-bindings">4. Key Bindings</a>
+<li><a href="#key-bindings">4. Key bindings</a>
 <ul>
 <li><a href="#vc-directory-buffer-commands">4.1. VC Directory buffer commands</a></li>
 <li><a href="#commit-message-editing-buffer">4.2. Commit message editing buffer</a></li>
@@ -295,8 +308,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org2e5bd6d" class="outline-2">
-<h2 id="description"><a id="org2e5bd6d"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgf097264" class="outline-2">
+<h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layers adds general configuration for <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Version-Control.html">Emacs VC</a>.
@@ -304,8 +317,8 @@ It should work with all VC backends such as Git, Mercurial, Bazaar, SVN, etc&#x2
 </p>
 </div>
 
-<div id="outline-container-orgf2bcb09" class="outline-3">
-<h3 id="features"><a id="orgf2bcb09"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orgfe7b5bb" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>highlights uncommitted changes in the fringe or margin with <a href="https://github.com/dgutov/diff-hl">diff-hl</a>, <a href="https://github.com/syohex/emacs-git-gutter">git-gutter</a>, or <a href="https://github.com/nonsequitur/git-gutter-plus">git-gutter+</a></li>
@@ -315,13 +328,13 @@ It should work with all VC backends such as Git, Mercurial, Bazaar, SVN, etc&#x2
 </div>
 </div>
 
-<div id="outline-container-orgccb293f" class="outline-2">
-<h2 id="install"><a id="orgccb293f"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org79c2378" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgf382e4c" class="outline-3">
-<h3 id="layer"><a id="orgf382e4c"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org89b8ff7" class="outline-3">
+<h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -332,8 +345,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orga413053" class="outline-2">
-<h2 id="configuration"><a id="orga413053"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-orge933e1d" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 You can choose the package to facilitate the diff transient-state and show margins
@@ -368,8 +381,8 @@ To automatically enable diff margins in all buffers, set
 </div>
 </div>
 
-<div id="outline-container-org4f5c44e" class="outline-3">
-<h3 id="differences-between-margin-programs"><a id="org4f5c44e"></a><span class="section-number-3">3.1</span> Differences between margin programs</h3>
+<div id="outline-container-orgcfd1c3a" class="outline-3">
+<h3 id="differences-between-margin-programs"><span class="section-number-3">3.1</span> Differences between margin programs</h3>
 <div class="outline-text-3" id="text-differences-between-margin-programs">
 <p>
 This layer contains generalized mappings for three diff margin packages:
@@ -435,8 +448,8 @@ one over the other:
 </div>
 </div>
 
-<div id="outline-container-orgd213646" class="outline-2">
-<h2 id="key-bindings"><a id="orgd213646"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org7ebd18e" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
 VC commands:
@@ -452,7 +465,7 @@ VC commands:
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -540,8 +553,8 @@ VC commands:
 </table>
 </div>
 
-<div id="outline-container-orgdd272c4" class="outline-3">
-<h3 id="vc-directory-buffer-commands"><a id="orgdd272c4"></a><span class="section-number-3">4.1</span> VC Directory buffer commands</h3>
+<div id="outline-container-org53c0a07" class="outline-3">
+<h3 id="vc-directory-buffer-commands"><span class="section-number-3">4.1</span> VC Directory buffer commands</h3>
 <div class="outline-text-3" id="text-vc-directory-buffer-commands">
 <p>
 You can hit <code>SPC pv</code> from the current project to open the VC Directory buffer,
@@ -617,7 +630,7 @@ Navigation and interaction commands in the VC Directory buffer:
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Bindings</th>
+<th scope="col" class="org-left">Key bindings</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -656,8 +669,8 @@ Navigation and interaction commands in the VC Directory buffer:
 </div>
 </div>
 
-<div id="outline-container-orgd486da1" class="outline-3">
-<h3 id="commit-message-editing-buffer"><a id="orgd486da1"></a><span class="section-number-3">4.2</span> Commit message editing buffer</h3>
+<div id="outline-container-org7692953" class="outline-3">
+<h3 id="commit-message-editing-buffer"><span class="section-number-3">4.2</span> Commit message editing buffer</h3>
 <div class="outline-text-3" id="text-commit-message-editing-buffer">
 <p>
 In a commit message buffer press <code>C-c C-c</code> to commit the changes with the entered message.
@@ -666,8 +679,8 @@ Pressing <code>C-c C-k</code> will discard the commit message and close this buf
 </div>
 </div>
 
-<div id="outline-container-org8d8f043" class="outline-3">
-<h3 id="diff-mode"><a id="org8d8f043"></a><span class="section-number-3">4.3</span> Diff mode</h3>
+<div id="outline-container-org21d9d36" class="outline-3">
+<h3 id="diff-mode"><span class="section-number-3">4.3</span> Diff mode</h3>
 <div class="outline-text-3" id="text-diff-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -679,7 +692,7 @@ Pressing <code>C-c C-k</code> will discard the commit message and close this buf
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Bindings</th>
+<th scope="col" class="org-left">Key bindings</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -780,7 +793,7 @@ A transient buffer is also defined, start it with <code>SPC m .</code> or <code>
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Bindings</th>
+<th scope="col" class="org-left">Key bindings</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -809,8 +822,8 @@ A transient buffer is also defined, start it with <code>SPC m .</code> or <code>
 </div>
 </div>
 
-<div id="outline-container-org6f954d6" class="outline-3">
-<h3 id="log-view-buffer"><a id="org6f954d6"></a><span class="section-number-3">4.4</span> Log view buffer</h3>
+<div id="outline-container-org8b35a43" class="outline-3">
+<h3 id="log-view-buffer"><span class="section-number-3">4.4</span> Log view buffer</h3>
 <div class="outline-text-3" id="text-log-view-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -822,7 +835,7 @@ A transient buffer is also defined, start it with <code>SPC m .</code> or <code>
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Bindings</th>
+<th scope="col" class="org-left">Key bindings</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -871,8 +884,8 @@ A transient buffer is also defined, start it with <code>SPC m .</code> or <code>
 </div>
 </div>
 
-<div id="outline-container-org8b9abae" class="outline-3">
-<h3 id="annotation-buffer"><a id="org8b9abae"></a><span class="section-number-3">4.5</span> Annotation buffer</h3>
+<div id="outline-container-org07af291" class="outline-3">
+<h3 id="annotation-buffer"><span class="section-number-3">4.5</span> Annotation buffer</h3>
 <div class="outline-text-3" id="text-annotation-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -884,7 +897,7 @@ A transient buffer is also defined, start it with <code>SPC m .</code> or <code>
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Bindings</th>
+<th scope="col" class="org-left">Key bindings</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -933,9 +946,13 @@ A transient buffer is also defined, start it with <code>SPC m .</code> or <code>
 </div>
 </div>
 
-<div id="outline-container-org409871f" class="outline-3">
-<h3 id="version-control-transient-state"><a id="org409871f"></a><span class="section-number-3">4.6</span> Version Control Transient-state</h3>
+<div id="outline-container-org6a6733b" class="outline-3">
+<h3 id="version-control-transient-state"><span class="section-number-3">4.6</span> Version Control Transient-state</h3>
 <div class="outline-text-3" id="text-version-control-transient-state">
+<p>
+Use <code>SPC g .</code> to enter a transient state for quickly navigating between hunks in a buffer. During that state, the following bindings are active:
+</p>
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -946,102 +963,102 @@ A transient buffer is also defined, start it with <code>SPC m .</code> or <code>
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC g . h</code></td>
+<td class="org-left"><code>h</code></td>
 <td class="org-left">Show diff of hunk</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC g . n</code></td>
+<td class="org-left"><code>n</code></td>
 <td class="org-left">Next hunk</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC g . N</code></td>
+<td class="org-left"><code>N</code> or <code>p</code></td>
 <td class="org-left">Previous hunk</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC g . p</code></td>
-<td class="org-left">Previous hunk</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g . r</code></td>
+<td class="org-left"><code>r</code></td>
 <td class="org-left">Revert hunk</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC g . s</code></td>
+<td class="org-left"><code>s</code></td>
 <td class="org-left">Stage hunk</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC g . t</code></td>
+<td class="org-left"><code>t</code></td>
 <td class="org-left">Toggle margin indicators</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC g . w</code></td>
+<td class="org-left"><code>w</code></td>
 <td class="org-left">Stage file</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC g . u</code></td>
+<td class="org-left"><code>u</code></td>
 <td class="org-left">Unstage file</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC g . d</code></td>
+<td class="org-left"><code>d</code></td>
 <td class="org-left">Repo diff popup</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC g . D</code></td>
+<td class="org-left"><code>D</code></td>
 <td class="org-left">Show diffs of unstaged hunks</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC g . c</code></td>
+<td class="org-left"><code>c</code></td>
 <td class="org-left">Commit with popup</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC g . C</code></td>
+<td class="org-left"><code>C</code></td>
 <td class="org-left">Commit</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC g . P</code></td>
+<td class="org-left"><code>P</code></td>
 <td class="org-left">Push repo with popup</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC g . f</code></td>
+<td class="org-left"><code>f</code></td>
 <td class="org-left">Fetch for repo with popup</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC g . F</code></td>
+<td class="org-left"><code>F</code></td>
 <td class="org-left">Pull repo with popup</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC g . l</code></td>
+<td class="org-left"><code>l</code></td>
 <td class="org-left">Show repo log</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>z</code></td>
+<td class="org-left">Recenter buffer in window</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-org124be3f" class="outline-3">
-<h3 id="smerge-mode-transient-state"><a id="org124be3f"></a><span class="section-number-3">4.7</span> Smerge Mode Transient-state</h3>
+<div id="outline-container-orgb6c1991" class="outline-3">
+<h3 id="smerge-mode-transient-state"><span class="section-number-3">4.7</span> Smerge Mode Transient-state</h3>
 <div class="outline-text-3" id="text-smerge-mode-transient-state">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1053,7 +1070,7 @@ A transient buffer is also defined, start it with <code>SPC m .</code> or <code>
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -1132,8 +1149,8 @@ A transient buffer is also defined, start it with <code>SPC m .</code> or <code>
 </div>
 </div>
 
-<div id="outline-container-orgf9b45a3" class="outline-3">
-<h3 id="toggles"><a id="orgf9b45a3"></a><span class="section-number-3">4.8</span> Toggles</h3>
+<div id="outline-container-org2f4b123" class="outline-3">
+<h3 id="toggles"><span class="section-number-3">4.8</span> Toggles</h3>
 <div class="outline-text-3" id="text-toggles">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1145,7 +1162,7 @@ A transient buffer is also defined, start it with <code>SPC m .</code> or <code>
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -1167,7 +1184,7 @@ A transient buffer is also defined, start it with <code>SPC m .</code> or <code>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-10-31 Wed 18:52</p>
+<p class="date">Created: 2019-01-13 Sun 20:01</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

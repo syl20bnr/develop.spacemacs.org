@@ -6,7 +6,7 @@
 <!-- 2019-01-13 Sun 20:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>spacemacs-navigation layer</title>
+<title>DAP layer</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Travis CI User" />
 <style type="text/css">
@@ -272,47 +272,367 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">spacemacs-navigation layer</h1>
+<h1 class="title">DAP layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#description">1. Description</a>
 <ul>
-<li><a href="#features">1.1. Features:</a></li>
+<li><a href="#layer-installation">1.1. Layer installation</a></li>
+<li><a href="#features">1.2. Features:</a></li>
+</ul>
+</li>
+<li><a href="#configuration">2. Configuration</a>
+<ul>
+<li><a href="#derived-layers">2.1. Derived layers</a>
+<ul>
+<li><a href="#declared-prefixes">2.1.1. Declared prefixes</a></li>
+<li><a href="#default-key-bindings">2.1.2. Default key bindings</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li><a href="#references">3. References</a></li>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-org0eb3446" class="outline-2">
+<div id="outline-container-org5d67dda" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds general navigation functions to all supported layers.
+Experimental integrated visual debugger using <a href="https://code.visualstudio.com/docs/extensionAPI/api-debugging">Debug Adapter Protocol</a>.
+</p>
+
+<p>
+<a href="https://code.visualstudio.com/docs/extensionAPI/api-debugging">Debug Adapter Protocol</a> is a wire protocol for communication between client and
+Debug Server. It similar to the <a href="https://github.com/Microsoft/language-server-protocol">LSP</a> but providers integration with debug
+server.
 </p>
 </div>
 
-<div id="outline-container-orgcc5d37d" class="outline-3">
-<h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org3da3aad" class="outline-3">
+<h3 id="layer-installation"><span class="section-number-3">1.1</span> Layer installation</h3>
+<div class="outline-text-3" id="text-layer-installation">
+<p>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>dap</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org49fa083" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.2</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
+<p>
+Fully featured IDE-like debugger providing:
+</p>
 <ul class="org-ul">
-<li>Support for ace-links in
-<ul class="org-ul">
-<li><code>spacemacs</code> buffer</li>
-<li><code>info-mode</code></li>
-<li><code>help-mode</code></li>
-<li><code>eww-mode</code></li>
-</ul></li>
-<li>Support for keeping the cursor centered on the screen</li>
-<li>Evilified version of <code>doc-view-mode</code></li>
-<li>Tweaks for <code>golden-ratio-mode</code></li>
-<li>Support for <code>paradox</code> a modern emacs package manager</li>
-<li>Shortcuts for restarting <code>emacs</code></li>
-<li>Shortcuts for easily switching between windows</li>
+<li>Launch/Attach</li>
+<li>Breakpoints</li>
+<li>Exceptions</li>
+<li>Pause &amp; Continue</li>
+<li>Step In/Out/Over</li>
+<li>Callstacks</li>
+<li>Threads</li>
+<li>Multiple simultaneous debug sessions</li>
+<li>Evaluating statements</li>
+<li>Debug/Run configurations</li>
+<li>Debug REPL</li>
 </ul>
 </div>
+</div>
+</div>
+
+<div id="outline-container-org845ed6b" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">2</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+</div>
+
+<div id="outline-container-orgec2a830" class="outline-3">
+<h3 id="derived-layers"><span class="section-number-3">2.1</span> Derived layers</h3>
+<div class="outline-text-3" id="text-derived-layers">
+<p>
+Derived layer should provide information how to configure the language
+specific debug adapter and the language specific bindings(e. g. debug
+application, debug test, etc). The package declares function
+<code>spacemacs/dap-bind-keys-for-mode</code> which should be used by the derived layers
+to configure the shortcuts.
+</p>
+</div>
+
+<div id="outline-container-org9c89a3c" class="outline-4">
+<h4 id="declared-prefixes"><span class="section-number-4">2.1.1</span> Declared prefixes</h4>
+<div class="outline-text-4" id="text-declared-prefixes">
+<p>
+The following prefixes have been declared:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">prefix</th>
+<th scope="col" class="org-left">name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d</code></td>
+<td class="org-left">debug</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d d</code></td>
+<td class="org-left">launching</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b</code></td>
+<td class="org-left">breakpoints</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d l</code></td>
+<td class="org-left">debug windows</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d S</code></td>
+<td class="org-left">context switching</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d e</code></td>
+<td class="org-left">eval</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d I</code></td>
+<td class="org-left">inspect</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org6eed90d" class="outline-4">
+<h4 id="default-key-bindings"><span class="section-number-4">2.1.2</span> Default key bindings</h4>
+<div class="outline-text-4" id="text-default-key-bindings">
+<p>
+The default bindings are listed below. Derived layers should extend this list:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d d d</code></td>
+<td class="org-left">start debugging</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d d l</code></td>
+<td class="org-left">debug last configuration</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d d r</code></td>
+<td class="org-left">debug recent configuration</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d c</code></td>
+<td class="org-left">continue</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d i</code></td>
+<td class="org-left">step in</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d o</code></td>
+<td class="org-left">step out</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d s</code></td>
+<td class="org-left">next step</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d v</code></td>
+<td class="org-left">inspect value at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d r</code></td>
+<td class="org-left">restart frame</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d .</code></td>
+<td class="org-left">debug transient state</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d a</code></td>
+<td class="org-left">abandon current session</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d A</code></td>
+<td class="org-left">abandon all process</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d e e</code></td>
+<td class="org-left">eval</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d e r</code></td>
+<td class="org-left">eval region</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d e t</code></td>
+<td class="org-left">eval value at point</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d S s</code></td>
+<td class="org-left">switch session</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d S t</code></td>
+<td class="org-left">switch thread</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d S f</code></td>
+<td class="org-left">switch frame</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d I i</code></td>
+<td class="org-left">inspect</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d I r</code></td>
+<td class="org-left">inspect region</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d I t</code></td>
+<td class="org-left">inspect value at point</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d b b</code></td>
+<td class="org-left">toggle a breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b c</code></td>
+<td class="org-left">change breakpoint condition</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b l</code></td>
+<td class="org-left">change breakpoint log condition</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b h</code></td>
+<td class="org-left">change breakpoint hit count</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b a</code></td>
+<td class="org-left">add a breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b d</code></td>
+<td class="org-left">delete a breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b D</code></td>
+<td class="org-left">clear all breakpoints</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d '_</code></td>
+<td class="org-left">Run debug REPL</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d w l</code></td>
+<td class="org-left">list local variables</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d w o</code></td>
+<td class="org-left">goto output buffer if present</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d w s</code></td>
+<td class="org-left">list sessions</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d w b</code></td>
+<td class="org-left">list breakpoints</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org85a5c7e" class="outline-2">
+<h2 id="references"><span class="section-number-2">3</span> References</h2>
+<div class="outline-text-2" id="text-references">
+<ul class="org-ul">
+<li><a href="https://github.com/yyoncho/dap-mode">dap-mode repo</a></li>
+<li><a href="https://github.com/emacs-lsp/lsp-mode">lsp-mode repo</a></li>
+</ul>
 </div>
 </div>
 </div>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-31 Wed 18:52 -->
+<!-- 2019-01-13 Sun 20:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Chinese layer</title>
@@ -161,6 +161,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -285,7 +298,7 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#key-bindings">3. Key Bindings</a>
+<li><a href="#key-bindings">3. Key bindings</a>
 <ul>
 <li><a href="#youdao-dictionary">3.1. Youdao Dictionary</a></li>
 <li><a href="#find-by-pinyin-dired">3.2. Find-by-pinyin-dired</a></li>
@@ -298,16 +311,16 @@ for the JavaScript code in this tag.
 <img src="img/China.png" alt="China.png" /> <img src="img/Chinese.png" alt="Chinese.png" />
 </p>
 
-<div id="outline-container-org5acf1c0" class="outline-2">
-<h2 id="description"><a id="org5acf1c0"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orge8c4de3" class="outline-2">
+<h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for traditional Chinese script to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-org5708c57" class="outline-3">
-<h3 id="features"><a id="org5708c57"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-orgdc37f71" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Support for the <a href="https://en.wikipedia.org/wiki/Pinyin">Pinyin(拼音)</a> input method via <a href="https://github.com/tumashu/chinese-pyim">chinese-pyim</a>.</li>
@@ -324,13 +337,13 @@ This layer adds support for traditional Chinese script to Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-orgd30ee3d" class="outline-2">
-<h2 id="install"><a id="orgd30ee3d"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org5d448ed" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org2c6885d" class="outline-3">
-<h3 id="layer"><a id="org2c6885d"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-orgb482ec0" class="outline-3">
+<h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -340,13 +353,13 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org338f9e9" class="outline-3">
-<h3 id="configuration"><a id="org338f9e9"></a><span class="section-number-3">2.2</span> Configuration</h3>
+<div id="outline-container-orgb0de706" class="outline-3">
+<h3 id="configuration"><span class="section-number-3">2.2</span> Configuration</h3>
 <div class="outline-text-3" id="text-configuration">
 </div>
 
-<div id="outline-container-org63b415f" class="outline-4">
-<h4 id="configure-the-default-input-method配置默认中文输入法"><a id="org63b415f"></a><span class="section-number-4">2.2.1</span> Configure the Default Input Method(配置默认中文输入法)</h4>
+<div id="outline-container-orgaba46b1" class="outline-4">
+<h4 id="configure-the-default-input-method配置默认中文输入法"><span class="section-number-4">2.2.1</span> Configure the Default Input Method(配置默认中文输入法)</h4>
 <div class="outline-text-4" id="text-configure-the-default-input-method配置默认中文输入法">
 <p>
 The default Chinese input method is <code>Chinese-pyim</code>, if you are a Wubi(五笔) user,
@@ -361,8 +374,8 @@ you could set the variable <code>chinese-default-input-method</code> to <code>wu
 </div>
 </div>
 
-<div id="outline-container-orgc872beb" class="outline-4">
-<h4 id="configure-the-chinese-pyim-input-method配置中文拼音输入法"><a id="orgc872beb"></a><span class="section-number-4">2.2.2</span> Configure the <code>Chinese-pyim</code> Input Method(配置中文拼音输入法)</h4>
+<div id="outline-container-orgf183d09" class="outline-4">
+<h4 id="configure-the-chinese-pyim-input-method配置中文拼音输入法"><span class="section-number-4">2.2.2</span> Configure the <code>Chinese-pyim</code> Input Method(配置中文拼音输入法)</h4>
 <div class="outline-text-4" id="text-configure-the-chinese-pyim-input-method配置中文拼音输入法">
 <p>
 The first time you use <code>Chinese-pyim</code>, you need to install the lexicon(词库)
@@ -374,8 +387,8 @@ just press <code>s</code> to save and <code>R</code> to restart configuration.
 </div>
 </div>
 
-<div id="outline-container-orgf96283e" class="outline-4">
-<h4 id="configure-chinese-conv-配置简繁转换"><a id="orgf96283e"></a><span class="section-number-4">2.2.3</span> Configure <code>chinese-conv</code> (配置简繁转换)</h4>
+<div id="outline-container-org856058a" class="outline-4">
+<h4 id="configure-chinese-conv-配置简繁转换"><span class="section-number-4">2.2.3</span> Configure <code>chinese-conv</code> (配置简繁转换)</h4>
 <div class="outline-text-4" id="text-configure-chinese-conv-配置简繁转换">
 <p>
 The <code>chinese-conv</code> package requires either <a href="https://github.com/BYVoid/OpenCC">opencc</a> or <a href="https://github.com/xiaoyjy/cconv">cconv</a> installed.
@@ -417,8 +430,8 @@ to replace the current selection in-place.
 </div>
 </div>
 
-<div id="outline-container-org3a082cf" class="outline-4">
-<h4 id="enable-fcitx"><a id="org3a082cf"></a><span class="section-number-4">2.2.4</span> Enable fcitx</h4>
+<div id="outline-container-org769b873" class="outline-4">
+<h4 id="enable-fcitx"><span class="section-number-4">2.2.4</span> Enable fcitx</h4>
 <div class="outline-text-4" id="text-enable-fcitx">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>chinese <span class="org-builtin">:variables</span>
@@ -438,12 +451,12 @@ with the following configuration.
 </div>
 
 <ol class="org-ol">
-<li><a id="requirement"></a><a id="orgc603f6f"></a>Requirement<br />
+<li><a id="requirement"></a>Requirement<br />
 <div class="outline-text-5" id="text-requirement">
 </div>
 
 <ol class="org-ol">
-<li><a id="linux"></a><a id="org715273b"></a>Linux<br />
+<li><a id="linux"></a>Linux<br />
 <div class="outline-text-6" id="text-linux">
 <p>
 You need to install <code>fcitx</code> and <code>fcitx-remote</code> on your machine.
@@ -451,7 +464,7 @@ You need to install <code>fcitx</code> and <code>fcitx-remote</code> on your mac
 </div>
 </li>
 
-<li><a id="mac-os-x"></a><a id="org05ceb34"></a>Mac OS X<br />
+<li><a id="mac-os-x"></a>Mac OS X<br />
 <div class="outline-text-6" id="text-mac-os-x">
 <p>
 We don’t have a <code>fcitx</code> in OS X yet but we already added an emulation called
@@ -483,7 +496,7 @@ method support.
 </div>
 </li>
 
-<li><a id="windows"></a><a id="org1f6e380"></a>Windows<br />
+<li><a id="windows"></a>Windows<br />
 <div class="outline-text-6" id="text-windows">
 <p>
 In order to use <code>fcitx.el</code> in Windows, you should install <a href="https://github.com/cute-jumper/fcitx-remote-for-windows">fcitx-remote-for-windows</a>.
@@ -495,8 +508,8 @@ In order to use <code>fcitx.el</code> in Windows, you should install <a href="ht
 </ol>
 </div>
 
-<div id="outline-container-orgf77f8cc" class="outline-4">
-<h4 id="enable-youdao有道-dictionary激活有道字典"><a id="orgf77f8cc"></a><span class="section-number-4">2.2.5</span> Enable YouDao(有道) Dictionary(激活有道字典)</h4>
+<div id="outline-container-orgdada10b" class="outline-4">
+<h4 id="enable-youdao有道-dictionary激活有道字典"><span class="section-number-4">2.2.5</span> Enable YouDao(有道) Dictionary(激活有道字典)</h4>
 <div class="outline-text-4" id="text-enable-youdao有道-dictionary激活有道字典">
 <p>
 The YouDao Dictionary is disabled by default, if you want enable it.
@@ -511,8 +524,8 @@ You should set <code>chinese-enable-youdao-dict</code> to <code>t</code>.
 </div>
 </div>
 
-<div id="outline-container-org8e0abcb" class="outline-4">
-<h4 id="set-monospaced-font-size设置等宽字体"><a id="org8e0abcb"></a><span class="section-number-4">2.2.6</span> Set monospaced font size(设置等宽字体）</h4>
+<div id="outline-container-org26a2f1d" class="outline-4">
+<h4 id="set-monospaced-font-size设置等宽字体"><span class="section-number-4">2.2.6</span> Set monospaced font size(设置等宽字体）</h4>
 <div class="outline-text-4" id="text-set-monospaced-font-size设置等宽字体">
 <p>
 If you are mixing Chinese script with Latin script, the text is not perfectly
@@ -534,8 +547,8 @@ Example configuration:
 </div>
 </div>
 
-<div id="outline-container-org7db72fa" class="outline-4">
-<h4 id="enabledisable-ace-pinyin-in-avy-goto-char"><a id="org7db72fa"></a><span class="section-number-4">2.2.7</span> Enable/Disable ace-pinyin in <code>avy-goto-char</code></h4>
+<div id="outline-container-org707dfb8" class="outline-4">
+<h4 id="enabledisable-ace-pinyin-in-avy-goto-char"><span class="section-number-4">2.2.7</span> Enable/Disable ace-pinyin in <code>avy-goto-char</code></h4>
 <div class="outline-text-4" id="text-enabledisable-ace-pinyin-in-avy-goto-char">
 <p>
 You can use <code>avy-goto-char</code> with pinyin supported by default, if you want to
@@ -552,8 +565,8 @@ disable it. You can set <code>chinese-enable-avy-pinyin</code> to <code>nil</cod
 </div>
 </div>
 
-<div id="outline-container-org99b88ef" class="outline-2">
-<h2 id="key-bindings"><a id="org99b88ef"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-org3615254" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
 Currently, there are no built-in key bindings for this layer. You could define
@@ -566,8 +579,8 @@ personal usage, spacemacs won´t put any binding under this prefix):
 </p>
 </div>
 
-<div id="outline-container-orgf3226d1" class="outline-3">
-<h3 id="youdao-dictionary"><a id="orgf3226d1"></a><span class="section-number-3">3.1</span> Youdao Dictionary</h3>
+<div id="outline-container-orgc27a346" class="outline-3">
+<h3 id="youdao-dictionary"><span class="section-number-3">3.1</span> Youdao Dictionary</h3>
 <div class="outline-text-3" id="text-youdao-dictionary">
 <p>
 Bind <code>SPC o y</code> to <code>youdao-dictionary-search-at-point+</code>.
@@ -575,8 +588,8 @@ Bind <code>SPC o y</code> to <code>youdao-dictionary-search-at-point+</code>.
 </div>
 </div>
 
-<div id="outline-container-org33fad0f" class="outline-3">
-<h3 id="find-by-pinyin-dired"><a id="org33fad0f"></a><span class="section-number-3">3.2</span> Find-by-pinyin-dired</h3>
+<div id="outline-container-orgdf1edf4" class="outline-3">
+<h3 id="find-by-pinyin-dired"><span class="section-number-3">3.2</span> Find-by-pinyin-dired</h3>
 <div class="outline-text-3" id="text-find-by-pinyin-dired">
 <p>
 Bind <code>SPC o d</code> to <code>find-by-pinyin-dired</code>
@@ -587,7 +600,7 @@ Bind <code>SPC o d</code> to <code>find-by-pinyin-dired</code>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-10-31 Wed 18:52</p>
+<p class="date">Created: 2019-01-13 Sun 20:02</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-31 Wed 18:52 -->
+<!-- 2019-01-13 Sun 20:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>C/C++ layer</title>
@@ -161,6 +161,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -273,21 +286,33 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
 <li><a href="#default-mode-for-header-files">2.2. Default mode for header files</a></li>
-<li><a href="#clang-configuration">2.3. Clang Configuration</a>
+<li><a href="#backends">2.3. Backends</a>
 <ul>
-<li><a href="#clang-format">2.3.1. clang-format</a></li>
-<li><a href="#company-clang-and-flycheck">2.3.2. Company-clang and flycheck</a></li>
+<li><a href="#rtags">2.3.1. RTags</a></li>
+<li><a href="#cquery--ccls-lsp-backends">2.3.2. cquery / ccls (lsp backends)</a></li>
 </ul>
 </li>
-<li><a href="#rtags-configuration">2.4. RTags configuration</a></li>
+<li><a href="#clang-configuration">2.4. Clang Configuration</a>
+<ul>
+<li><a href="#clang-format">2.4.1. clang-format</a></li>
+<li><a href="#company-clang-and-flycheck">2.4.2. Company-clang and flycheck</a></li>
+</ul>
+</li>
 <li><a href="#enable-google-set-c-style">2.5. Enable google-set-c-style</a></li>
 <li><a href="#newlines">2.6. Newlines</a></li>
+<li><a href="#projectile-sub-project-adoption">2.7. Projectile sub-project adoption</a></li>
 </ul>
 </li>
-<li><a href="#key-bindings">3. Key Bindings</a>
+<li><a href="#key-bindings">3. Key bindings</a>
 <ul>
 <li><a href="#formatting-clang-format">3.1. Formatting (clang-format)</a></li>
-<li><a href="#rtags">3.2. RTags</a></li>
+<li><a href="#rtags-1">3.2. RTags</a></li>
+<li><a href="#cquery--ccls">3.3. cquery / ccls</a>
+<ul>
+<li><a href="#backend-language-server">3.3.1. backend (language server)</a></li>
+<li><a href="#goto">3.3.2. goto</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -299,16 +324,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org1f89ea7" class="outline-2">
-<h2 id="description"><a id="org1f89ea7"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgfe2ffcd" class="outline-2">
+<h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds configuration for C/C++ language.
 </p>
 </div>
 
-<div id="outline-container-orge13244e" class="outline-3">
-<h3 id="features"><a id="orge13244e"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org7b6a267" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Support syntax checking via flycheck with Clang.</li>
@@ -326,18 +351,19 @@ company-clang (when <code>c-c++-enable-clang-support</code> is turned on), or
 company-ycmd (when <code>ycmd</code> layer is included).</li>
 <li>Support for <a href="https://github.com/realgud/realgud">realgud</a> debugger.</li>
 <li>Support for <a href="https://github.com/Andersbakken/rtags">rtags</a>.</li>
+<li>Support for <a href="https://github.com/cquery-project/cquery">cquery</a> or <a href="https://github.com/MaskRay/ccls">ccls</a> as an lsp backend.</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7899d97" class="outline-2">
-<h2 id="install"><a id="org7899d97"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org2229895" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org76fbf4e" class="outline-3">
-<h3 id="layer"><a id="org76fbf4e"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-orgf08be6c" class="outline-3">
+<h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -351,8 +377,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org8b8b9e3" class="outline-3">
-<h3 id="default-mode-for-header-files"><a id="org8b8b9e3"></a><span class="section-number-3">2.2</span> Default mode for header files</h3>
+<div id="outline-container-orgdf59b30" class="outline-3">
+<h3 id="default-mode-for-header-files"><span class="section-number-3">2.2</span> Default mode for header files</h3>
 <div class="outline-text-3" id="text-default-mode-for-header-files">
 <p>
 By default header files are opened in <code>c-mode</code>, you can open them in <code>c++-mode</code>
@@ -361,7 +387,7 @@ by setting the variable <code>c-c++-default-mode-for-headers</code> to <code>c++
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-default-mode-for-headers 'c++-mode<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-default-mode-for-headers 'c++-mode<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -373,8 +399,221 @@ can be found in the <a href="http://www.gnu.org/software/emacs/manual/html_node/
 </div>
 </div>
 
-<div id="outline-container-org77ae32a" class="outline-3">
-<h3 id="clang-configuration"><a id="org77ae32a"></a><span class="section-number-3">2.3</span> Clang Configuration</h3>
+<div id="outline-container-org7372c28" class="outline-3">
+<h3 id="backends"><span class="section-number-3">2.3</span> Backends</h3>
+<div class="outline-text-3" id="text-backends">
+<p>
+This layer supports the selection of one of 3 available backends for code navigation etc via the <code>c-c++-backend</code> configuration variable.
+</p>
+</div>
+
+<div id="outline-container-orga0548d2" class="outline-4">
+<h4 id="rtags"><span class="section-number-4">2.3.1</span> RTags</h4>
+<div class="outline-text-4" id="text-rtags">
+<p>
+RTags is a well established clang-based source code indexing tool.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="external-dependencies"></a>External dependencies<br />
+<div class="outline-text-5" id="text-external-dependencies">
+<p>
+Install the RTags server via <a href="https://formulae.brew.sh/formula/rtags">homebrew</a>, the <a href="https://aur.archlinux.org/packages/rtags/">aur</a> or from source according to the instructions <a href="https://github.com/Andersbakken/rtags">here</a>.
+N.B. RTags is not supported on Windows at the time of writing, although there is an <a href="https://github.com/Andersbakken/rtags/issues/770">open issue with some recent activity</a> on github.
+</p>
+</div>
+</li>
+
+<li><a id="configuration"></a>Configuration<br />
+<div class="outline-text-5" id="text-configuration">
+<p>
+To enable support for <code>rtags</code>, set the layer variable <code>c-c++-backend</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-backend 'rtags<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+This will also enable <code>company-rtags</code> to be used as a backend for
+auto-completion (when <code>auto-completion</code> layer is included).
+To prevent this, while retaining the rest of Rtags functionality,
+set the variable <code>c-c++-rtags-completion</code> to <code>nil</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span>
+                       c-c++-backend 'rtags
+                       c-c++-enable-rtags-completion nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgb0b6537" class="outline-4">
+<h4 id="cquery--ccls-lsp-backends"><span class="section-number-4">2.3.2</span> cquery / ccls (lsp backends)</h4>
+<div class="outline-text-4" id="text-cquery--ccls-lsp-backends">
+<p>
+<a href="https://github.com/cquery-project/cquery">cquery</a> and <a href="https://github.com/MaskRay/ccls">ccls</a> are alternative implementations of the language server protocol based on libclang. They claim to be more efficient
+than existing tools at indexing large code bases.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="features-1"></a>Features:<br />
+<div class="outline-text-5" id="text-features-1">
+<ul class="org-ul">
+<li>Cross references (definitions, references, base/derived classes/methods, type instances, &#x2026;)</li>
+<li>Diagnostics</li>
+<li>Completion with <code>company-lsp</code></li>
+<li>Semantic highlighting</li>
+<li>See more on <a href="https://github.com/cquery-project/cquery/wiki/Emacs">https://github.com/cquery-project/cquery/wiki/Emacs</a></li>
+<li>Cross-platform - functional on Windows, Linux and OSX.</li>
+</ul>
+</div>
+</li>
+
+<li><a id="external-dependencies-1"></a>External dependencies<br />
+<div class="outline-text-5" id="text-external-dependencies-1">
+<p>
+Install one (or both) of the following:
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="cquery-server"></a>cquery server<br />
+<div class="outline-text-6" id="text-cquery-server">
+<p>
+Install the <code>cquery</code> server. <a href="https://github.com/cquery-project/cquery/wiki/Getting-started">Instructions</a>.
+</p>
+</div>
+</li>
+
+<li><a id="ccls-server"></a>ccls server<br />
+<div class="outline-text-6" id="text-ccls-server">
+<p>
+Install the <code>ccls</code> server. <a href="https://github.com/MaskRay/ccls/wiki/Getting-started">Instructions</a>.
+</p>
+</div>
+</li>
+</ol>
+</li>
+
+<li><a id="configuration-1"></a>Configuration<br />
+<div class="outline-text-5" id="text-configuration-1">
+</div>
+
+<ol class="org-ol">
+<li><a id="basic"></a>Basic<br />
+<div class="outline-text-6" id="text-basic">
+<p>
+Select either <code>cquery</code> or <code>ccls</code> as the <code>c-c++</code> layer backend by adding the following to your dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-backend 'lsp-cquery<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">;</span><span class="org-comment">or 'lsp-ccls</span>
+</pre>
+</div>
+
+<p>
+N.B. The <a href="../../+tools/lsp/README.html">LSP layer</a> will be loaded automatically if either backend is selected.
+</p>
+</div>
+</li>
+
+<li><a id="setting-path-to-backend-executable"></a>Setting path to backend executable<br />
+<div class="outline-text-6" id="text-setting-path-to-backend-executable">
+<p>
+The basic configuration above should work if the cquery/ccls executable folder is present in your path. If not, you can set the path explicitly.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span>
+                       c-c++-backend 'lsp-cquery
+                       c-c++-lsp-executable <span class="org-string">"/path/to/bin/cquery/or/ccls"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+If you need to expand <code>~</code> in the path, you can use <code>file-truename</code> like
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span>
+                       c-c++-backend 'lsp-cquery
+                       c-c++-lsp-executable <span class="org-rainbow-delimiters-depth-4">(</span>file-truename <span class="org-string">"~/bin/cquery/or/ccls"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="semantic-highlighting"></a>Semantic highlighting<br />
+<div class="outline-text-6" id="text-semantic-highlighting">
+<p>
+Semantic highlighting is disabled by default. To enable, set the <code>c-c++-lsp-sem-highlight-method</code> variable to either <code>'font-lock</code> or <code>'overlay</code>.
+To enable the rainbow semantic highlighting colour theme, set <code>c-c++-lsp-sem-highlight-rainbow</code> to <code>t</code>.
+</p>
+</div>
+</li>
+
+<li><a id="additional-configuration-options"></a>Additional configuration options<br />
+<div class="outline-text-6" id="text-additional-configuration-options">
+<p>
+Both lsp backends are configured to store their index cache in a subdirectory of <code>.emacs.d/cache</code>. This can be overridden by
+specifying an explicit <code>c-c++-lsp-cache-dir</code>. Setting this value to a relative path will cause the index cache to be placed in a
+subdirectory of your project root.
+</p>
+
+<p>
+There are other initialization options such as the number of indexer threads, cache serialization format.
+They have good default values. See <code>config.el</code> of the layer and the backends’ respective homepages for more info.
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/cquery-project/cquery/wiki/Emacs">Emacs section of <code>cquery</code> wiki</a></li>
+<li><a href="https://github.com/MaskRay/ccls/wiki/Emacs">Emacs section of <code>ccls</code> wiki</a></li>
+</ul>
+</div>
+</li>
+
+<li><a id="example-dotspacemacs-configuration-layers-entry"></a>Example dotspacemacs-configuration-layers entry<br />
+<div class="outline-text-6" id="text-example-dotspacemacs-configuration-layers-entry">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span>
+                       c-c++-adopt-subprojects t
+                       c-c++-backend 'lsp-ccls
+                       c-c++-lsp-executable <span class="org-rainbow-delimiters-depth-4">(</span>file-truename <span class="org-string">"~/dev/cpp/ccls/Release/ccls"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+                       c-c++-lsp-sem-highlight-rainbow t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</li>
+
+<li><a id="completion"></a>Completion<br />
+<div class="outline-text-5" id="text-completion">
+<p>
+<code>company-lsp</code> provides completion functionality. Client-side cache and sorting have been disabled in favour of server,
+as recommended by <code>cquery=/=ccls</code> wikis.
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org76f603d" class="outline-3">
+<h3 id="clang-configuration"><span class="section-number-3">2.4</span> Clang Configuration</h3>
 <div class="outline-text-3" id="text-clang-configuration">
 <p>
 To enable Clang support, set the layer variable <code>c-c++-enable-clang-support</code>
@@ -383,13 +622,17 @@ to <code>t</code> in the dotfile:
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-enable-clang-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-enable-clang-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
+
+<p>
+N.B. do not set this option if either the <code>cquery</code> or <code>ccls</code> backend
+</p>
 </div>
 
-<div id="outline-container-org08e0461" class="outline-4">
-<h4 id="clang-format"><a id="org08e0461"></a><span class="section-number-4">2.3.1</span> clang-format</h4>
+<div id="outline-container-org718394c" class="outline-4">
+<h4 id="clang-format"><span class="section-number-4">2.4.1</span> clang-format</h4>
 <div class="outline-text-4" id="text-clang-format">
 <p>
 <a href="http://clang.llvm.org/docs/ClangFormat.html">clang-format</a> allows reformatting either a selected region of code
@@ -406,15 +649,15 @@ To enable automatic buffer formatting on save, set the variable
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-enable-clang-format-on-save t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-enable-clang-format-on-save t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orga9ede32" class="outline-4">
-<h4 id="company-clang-and-flycheck"><a id="orga9ede32"></a><span class="section-number-4">2.3.2</span> Company-clang and flycheck</h4>
+<div id="outline-container-orgb6fd724" class="outline-4">
+<h4 id="company-clang-and-flycheck"><span class="section-number-4">2.4.2</span> Company-clang and flycheck</h4>
 <div class="outline-text-4" id="text-company-clang-and-flycheck">
 <p>
 This layer adds some fancy improvements to <code>company-clang</code>. It includes a hook
@@ -431,37 +674,8 @@ missing header files.
 </div>
 </div>
 
-<div id="outline-container-org4297c49" class="outline-3">
-<h3 id="rtags-configuration"><a id="org4297c49"></a><span class="section-number-3">2.4</span> RTags configuration</h3>
-<div class="outline-text-3" id="text-rtags-configuration">
-<p>
-To enable support for <code>rtags</code>, set the layer variable
-<code>c-c++-enable-rtags-support</code> to <code>t</code> in your dotfile.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-enable-rtags-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-This will also enable <code>company-rtags</code> to be used as a backend for
-auto-completion (when <code>auto-completion</code> layer is included).
-To prevent this, while retaining the rest of Rtags functionality,
-set the variable <code>c-c++-enable-rtags-support</code> to <code>'no-completion</code>:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-enable-rtags-support 'no-completion<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org2419690" class="outline-3">
-<h3 id="enable-google-set-c-style"><a id="org2419690"></a><span class="section-number-3">2.5</span> Enable google-set-c-style</h3>
+<div id="outline-container-org7edef74" class="outline-3">
+<h3 id="enable-google-set-c-style"><span class="section-number-3">2.5</span> Enable google-set-c-style</h3>
 <div class="outline-text-3" id="text-enable-google-set-c-style">
 <p>
 If you have clang enabled with <code>clang-format</code> as described earlier in this page
@@ -484,8 +698,7 @@ an entry like
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>c-c++ <span class="org-builtin">:variables</span>
-       c-c++-enable-google-style t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-enable-google-style t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -496,16 +709,15 @@ set that up like this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>c-c++ <span class="org-builtin">:variables</span>
-       c-c++-enable-google-style t
-       c-c++-enable-google-newline t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-enable-google-style t
+                  c-c++-enable-google-newline t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2e459f4" class="outline-3">
-<h3 id="newlines"><a id="org2e459f4"></a><span class="section-number-3">2.6</span> Newlines</h3>
+<div id="outline-container-org9201e20" class="outline-3">
+<h3 id="newlines"><span class="section-number-3">2.6</span> Newlines</h3>
 <div class="outline-text-3" id="text-newlines">
 <p>
 You can enable the <code>Auto-newline</code> minor mode that automatically adds newlines
@@ -513,16 +725,35 @@ after certain characters by setting the <code>c-c++-enable-auto-newline</code> v
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>c-c++ <span class="org-builtin">:variables</span>
-       c-c++-enable-auto-newline t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-enable-auto-newline t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
+
+<div id="outline-container-org5dc43de" class="outline-3">
+<h3 id="projectile-sub-project-adoption"><span class="section-number-3">2.7</span> Projectile sub-project adoption</h3>
+<div class="outline-text-3" id="text-projectile-sub-project-adoption">
+<p>
+To prevent projectile from using subproject root when visiting files in a subproject,
+set <code>c-c++-adopt-subprojects</code> to <code>t</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-adopt-subprojects t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 
-<div id="outline-container-org5df7165" class="outline-2">
-<h2 id="key-bindings"><a id="org5df7165"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<p>
+This is based on a recommendation on the <code>cquery</code> and <code>ccls</code> wikis, but should be more
+generally applicable.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4807e45" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -534,7 +765,7 @@ after certain characters by setting the <code>c-c++-enable-auto-newline</code> v
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -565,7 +796,7 @@ after certain characters by setting the <code>c-c++-enable-auto-newline</code> v
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r</code></td>
+<td class="org-left"><code>SPC m r .</code></td>
 <td class="org-left">srefactor: refactor thing at point.</td>
 </tr>
 </tbody>
@@ -576,8 +807,8 @@ after certain characters by setting the <code>c-c++-enable-auto-newline</code> v
 </p>
 </div>
 
-<div id="outline-container-org592eb9d" class="outline-3">
-<h3 id="formatting-clang-format"><a id="org592eb9d"></a><span class="section-number-3">3.1</span> Formatting (clang-format)</h3>
+<div id="outline-container-orgf84ede7" class="outline-3">
+<h3 id="formatting-clang-format"><span class="section-number-3">3.1</span> Formatting (clang-format)</h3>
 <div class="outline-text-3" id="text-formatting-clang-format">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -589,7 +820,7 @@ after certain characters by setting the <code>c-c++-enable-auto-newline</code> v
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -608,9 +839,9 @@ after certain characters by setting the <code>c-c++-enable-auto-newline</code> v
 </div>
 </div>
 
-<div id="outline-container-org4167421" class="outline-3">
-<h3 id="rtags"><a id="org4167421"></a><span class="section-number-3">3.2</span> RTags</h3>
-<div class="outline-text-3" id="text-rtags">
+<div id="outline-container-org1f22286" class="outline-3">
+<h3 id="rtags-1"><span class="section-number-3">3.2</span> RTags</h3>
+<div class="outline-text-3" id="text-rtags-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -621,7 +852,7 @@ after certain characters by setting the <code>c-c++-enable-auto-newline</code> v
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -774,11 +1005,209 @@ after certain characters by setting the <code>c-c++-enable-auto-newline</code> v
 </table>
 </div>
 </div>
+
+<div id="outline-container-org7e44a41" class="outline-3">
+<h3 id="cquery--ccls"><span class="section-number-3">3.3</span> cquery / ccls</h3>
+<div class="outline-text-3" id="text-cquery--ccls">
+<p>
+The key bindings listed below are in addition to the default key bindings defined by the <a href="../../+tools/lsp/README.html">LSP layer</a>.
+A <code>[ccls]</code> or <code>[cquery]</code> suffix indicates that the binding is for the indicated backend only.
+</p>
+</div>
+
+<div id="outline-container-orgbd202ba" class="outline-4">
+<h4 id="backend-language-server"><span class="section-number-4">3.3.1</span> backend (language server)</h4>
+<div class="outline-text-4" id="text-backend-language-server">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m b f</code></td>
+<td class="org-left">refresh index (e.g. after branch change)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m b p</code></td>
+<td class="org-left">preprocess file</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgf18fc49" class="outline-4">
+<h4 id="goto"><span class="section-number-4">3.3.2</span> goto</h4>
+<div class="outline-text-4" id="text-goto">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m g &amp;</code></td>
+<td class="org-left">find references (address)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g R</code></td>
+<td class="org-left">find references (read)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g W</code></td>
+<td class="org-left">find references (write)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g c</code></td>
+<td class="org-left">find callers</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g C</code></td>
+<td class="org-left">find callees</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g v</code></td>
+<td class="org-left">vars</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g f</code></td>
+<td class="org-left">find file at point (ffap)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g F</code></td>
+<td class="org-left">ffap other window</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<ol class="org-ol">
+<li><a id="gotohierarchy"></a>goto/hierarchy<br />
+<div class="outline-text-5" id="text-gotohierarchy">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m g h b</code></td>
+<td class="org-left">base class(es)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g h d</code></td>
+<td class="org-left">derived class(es) [ccls]</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g h c</code></td>
+<td class="org-left">call hierarchy</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g h C</code></td>
+<td class="org-left">call hierarchy (inv)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g h i</code></td>
+<td class="org-left">inheritance hierarchy</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g h I</code></td>
+<td class="org-left">inheritance hierarchy (inv)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+
+<li><a id="gotomember"></a>goto/member<br />
+<div class="outline-text-5" id="text-gotomember">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m g m h</code></td>
+<td class="org-left">member hierarchy</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g m t</code></td>
+<td class="org-left">member types [ccls]</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g m f</code></td>
+<td class="org-left">member functions [ccls]</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g m v</code></td>
+<td class="org-left">member variables [ccls]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-10-31 Wed 18:52</p>
+<p class="date">Created: 2019-01-13 Sun 20:02</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

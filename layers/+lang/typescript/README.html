@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-31 Wed 18:52 -->
+<!-- 2019-01-13 Sun 20:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TypeScript layer</title>
@@ -161,6 +161,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -300,16 +313,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org44f3a85" class="outline-2">
-<h2 id="description"><a id="org44f3a85"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org9d2a5f6" class="outline-2">
+<h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for TypeScript and TSX editing.
 </p>
 </div>
 
-<div id="outline-container-orge0a0318" class="outline-3">
-<h3 id="features"><a id="orge0a0318"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org93bad99" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Multiple backends support: Tide and LSP</li>
@@ -328,8 +341,8 @@ This layer adds support for TypeScript and TSX editing.
 </div>
 </div>
 
-<div id="outline-container-org8359100" class="outline-2">
-<h2 id="install"><a id="org8359100"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orge51daaf" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -369,8 +382,8 @@ Default is <code>'tide</code>.
 </p>
 </div>
 
-<div id="outline-container-orgdee5c1a" class="outline-3">
-<h3 id="pre-requisites"><a id="orgdee5c1a"></a><span class="section-number-3">2.1</span> Pre-requisites</h3>
+<div id="outline-container-orgbfde890" class="outline-3">
+<h3 id="pre-requisites"><span class="section-number-3">2.1</span> Pre-requisites</h3>
 <div class="outline-text-3" id="text-pre-requisites">
 <p>
 You will need <code>node.js v0.12.0</code> or greater.
@@ -401,8 +414,8 @@ layers are enabled.
 </div>
 </div>
 
-<div id="outline-container-orge97e934" class="outline-3">
-<h3 id="choosing-a-backend"><a id="orge97e934"></a><span class="section-number-3">2.2</span> Choosing a backend</h3>
+<div id="outline-container-org8a58a94" class="outline-3">
+<h3 id="choosing-a-backend"><span class="section-number-3">2.2</span> Choosing a backend</h3>
 <div class="outline-text-3" id="text-choosing-a-backend">
 <p>
 To choose a default backend set the layer variable <code>typescript-backend</code>:
@@ -435,13 +448,13 @@ Backend can be chosen on a per project basis using directory local variables
 </div>
 </div>
 
-<div id="outline-container-orgfb3a992" class="outline-2">
-<h2 id="backends"><a id="orgfb3a992"></a><span class="section-number-2">3</span> Backends</h2>
+<div id="outline-container-orgb20abe9" class="outline-2">
+<h2 id="backends"><span class="section-number-2">3</span> Backends</h2>
 <div class="outline-text-2" id="text-backends">
 </div>
 
-<div id="outline-container-org8ee5a03" class="outline-3">
-<h3 id="tide"><a id="org8ee5a03"></a><span class="section-number-3">3.1</span> Tide</h3>
+<div id="outline-container-orgf707b7a" class="outline-3">
+<h3 id="tide"><span class="section-number-3">3.1</span> Tide</h3>
 <div class="outline-text-3" id="text-tide">
 <p>
 Tide comes with an embedded Typescript server, it is recommended to use the
@@ -461,8 +474,8 @@ For example:
 </div>
 </div>
 
-<div id="outline-container-org2e123e3" class="outline-4">
-<h4 id="notes"><a id="org2e123e3"></a><span class="section-number-4">3.1.1</span> Notes</h4>
+<div id="outline-container-org60fb055" class="outline-4">
+<h4 id="notes"><span class="section-number-4">3.1.1</span> Notes</h4>
 <div class="outline-text-4" id="text-notes">
 <p>
 Make sure to add <a href="https://github.com/Microsoft/TypeScript/wiki/tsconfig.json">tsconfig.json</a> in the project root folder.
@@ -485,8 +498,8 @@ restart server after editing it.
 </div>
 </div>
 
-<div id="outline-container-orgf6ac11d" class="outline-3">
-<h3 id="language-server-protocol"><a id="orgf6ac11d"></a><span class="section-number-3">3.2</span> Language Server Protocol</h3>
+<div id="outline-container-org1209da6" class="outline-3">
+<h3 id="language-server-protocol"><span class="section-number-3">3.2</span> Language Server Protocol</h3>
 <div class="outline-text-3" id="text-language-server-protocol">
 <p>
 You have to install the following dependencies with npm.
@@ -500,13 +513,13 @@ You have to install the following dependencies with npm.
 </div>
 </div>
 
-<div id="outline-container-org957a656" class="outline-2">
-<h2 id="key-bindings"><a id="org957a656"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org069066f" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org117d5e1" class="outline-3">
-<h3 id="typescript-major-mode"><a id="org117d5e1"></a><span class="section-number-3">4.1</span> Typescript Major Mode</h3>
+<div id="outline-container-org1e5298b" class="outline-3">
+<h3 id="typescript-major-mode"><span class="section-number-3">4.1</span> Typescript Major Mode</h3>
 <div class="outline-text-3" id="text-typescript-major-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -518,7 +531,7 @@ You have to install the following dependencies with npm.
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -592,8 +605,8 @@ You have to install the following dependencies with npm.
 </div>
 </div>
 
-<div id="outline-container-org9c5c041" class="outline-3">
-<h3 id="reference-major-mode"><a id="org9c5c041"></a><span class="section-number-3">4.2</span> Reference Major Mode</h3>
+<div id="outline-container-orga0b244d" class="outline-3">
+<h3 id="reference-major-mode"><span class="section-number-3">4.2</span> Reference Major Mode</h3>
 <div class="outline-text-3" id="text-reference-major-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -605,7 +618,7 @@ You have to install the following dependencies with npm.
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Key binding</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
@@ -632,7 +645,7 @@ You have to install the following dependencies with npm.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2018-10-31 Wed 18:52</p>
+<p class="date">Created: 2019-01-13 Sun 20:02</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
