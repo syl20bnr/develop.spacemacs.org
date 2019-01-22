@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-13 Sun 20:01 -->
+<!-- 2019-01-22 Tue 20:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GitHub layer</title>
@@ -227,7 +227,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -292,8 +292,8 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#key-bindings">3. Key bindings</a>
 <ul>
-<li><a href="#magit-gh-pulls">3.1. magit-gh-pulls</a></li>
-<li><a href="#magithub">3.2. magithub</a></li>
+<li><a href="#magithub">3.1. magithub</a></li>
+<li><a href="#forge">3.2. forge</a></li>
 <li><a href="#gistel">3.3. gist.el</a></li>
 <li><a href="#clone-repositories">3.4. Clone repositories</a></li>
 </ul>
@@ -307,7 +307,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org007188c" class="outline-2">
+<div id="outline-container-orga222f67" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -315,12 +315,12 @@ This layers adds support for <a href="http://github.com">GitHub</a>.
 </p>
 </div>
 
-<div id="outline-container-org70198cd" class="outline-3">
+<div id="outline-container-org500f732" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li><a href="https://github.com/sigma/magit-gh-pulls">magit-gh-pulls</a>: handy <code>magit</code> add-on to manage GitHub pull requests.</li>
-<li><a href="https://github.com/vermiculus/magithub">magithub</a>: magit integrated interface to <a href="https://hub.github.com/">hub</a> command line</li>
+<li><a href="https://github.com/vermiculus/magithub">magithub</a>: Magit-integrated interface to <a href="https://hub.github.com/">hub</a> command line</li>
+<li><a href="https://github.com/magit/forge">forge</a>: integration with various forges, such as GitHub and GitLab.</li>
 <li><a href="https://github.com/defunkt/gist.el">gist.el</a>: full-featured mode to browse and post GitHub gists.</li>
 <li><a href="https://github.com/sshaw/git-link">git-link</a>: quickly generate URLs for commits or files.</li>
 <li><a href="https://github.com/dgtized/github-clone.el">github-clone</a> allows for easy cloning and forking of repositories.</li>
@@ -329,12 +329,12 @@ This layers adds support for <a href="http://github.com">GitHub</a>.
 </div>
 </div>
 
-<div id="outline-container-org00da503" class="outline-2">
+<div id="outline-container-orgb2e31e0" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org7e5a3b6" class="outline-3">
+<div id="outline-container-org9ee6adc" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -345,7 +345,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org430d5b0" class="outline-3">
+<div id="outline-container-org98280dc" class="outline-3">
 <h3 id="git-configuration"><span class="section-number-3">2.2</span> Git configuration</h3>
 <div class="outline-text-3" id="text-git-configuration">
 <p>
@@ -365,7 +365,7 @@ You will also need to <a href="https://help.github.com/articles/generating-a-new
 </div>
 </div>
 
-<div id="outline-container-org5522b6f" class="outline-3">
+<div id="outline-container-org9b117b6" class="outline-3">
 <h3 id="hub-configuration"><span class="section-number-3">2.3</span> Hub configuration</h3>
 <div class="outline-text-3" id="text-hub-configuration">
 <p>
@@ -376,7 +376,7 @@ to authenticate, you can use hub browse in a terminal (inside a GitHub repo).
 </div>
 </div>
 
-<div id="outline-container-orgad6d0c9" class="outline-3">
+<div id="outline-container-orgf2ffc12" class="outline-3">
 <h3 id="magithub-configuration"><span class="section-number-3">2.4</span> Magithub configuration</h3>
 <div class="outline-text-3" id="text-magithub-configuration">
 <p>
@@ -413,79 +413,13 @@ Alternatively, use the following Emacs forms:
 </div>
 </div>
 
-<div id="outline-container-orgbb3cfdf" class="outline-2">
+<div id="outline-container-org046fd95" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org9453aba" class="outline-3">
-<h3 id="magit-gh-pulls"><span class="section-number-3">3.1</span> magit-gh-pulls</h3>
-<div class="outline-text-3" id="text-magit-gh-pulls">
-<p>
-In a <code>magit status</code> buffer (<code>SPC g s</code>):
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code># c</code></td>
-<td class="org-left">create a pull request</td>
-</tr>
-
-<tr>
-<td class="org-left"><code># g</code></td>
-<td class="org-left">get a list of (or reload) all PRs in the current repository</td>
-</tr>
-
-<tr>
-<td class="org-left"><code># f</code></td>
-<td class="org-left">fetch the commits associated with the current PR at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code># b</code></td>
-<td class="org-left">create a branch for the current PR at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code># m</code></td>
-<td class="org-left">merge the PR with current branch at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code># d</code></td>
-<td class="org-left">show a diff of the current pull request at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code># o</code></td>
-<td class="org-left">open PR at point in browser</td>
-</tr>
-</tbody>
-</table>
-
-<p>
-Note that <code>magit-gh-pulls</code> will try to fast-forward the PRs whenever it is
-possible.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgf3cd6ae" class="outline-3">
-<h3 id="magithub"><span class="section-number-3">3.2</span> magithub</h3>
+<div id="outline-container-orge3f8762" class="outline-3">
+<h3 id="magithub"><span class="section-number-3">3.1</span> magithub</h3>
 <div class="outline-text-3" id="text-magithub">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -536,7 +470,88 @@ possible.
 </div>
 </div>
 
-<div id="outline-container-org9b6d772" class="outline-3">
+<div id="outline-container-org7f055f4" class="outline-3">
+<h3 id="forge"><span class="section-number-3">3.2</span> forge</h3>
+<div class="outline-text-3" id="text-forge">
+<p>
+In a <code>magit-status</code> buffer (<code>SPC g s</code>):
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>b Y</code></td>
+<td class="org-left">create branch from pull-request</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>b y</code></td>
+<td class="org-left">create and check out branch from pull-request</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>F f</code></td>
+<td class="org-left">fetch issues and pull-requests</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>F n</code></td>
+<td class="org-left">fetch notifications</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>F p</code></td>
+<td class="org-left">create pull-request</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>F i</code></td>
+<td class="org-left">create issue</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>F F</code></td>
+<td class="org-left">list notifications</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>F P</code></td>
+<td class="org-left">list pull-requests</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>F I</code></td>
+<td class="org-left">list issues</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>p y</code></td>
+<td class="org-left">pull pull-requests and issues for the current repository</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>p Y</code></td>
+<td class="org-left">pull all notifications for the current repository’s forge</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orge5d0026" class="outline-3">
 <h3 id="gistel"><span class="section-number-3">3.3</span> gist.el</h3>
 <div class="outline-text-3" id="text-gistel">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -684,7 +699,7 @@ In the gist list buffer:
 </div>
 </div>
 
-<div id="outline-container-org2462e4a" class="outline-3">
+<div id="outline-container-orgd5d9788" class="outline-3">
 <h3 id="clone-repositories"><span class="section-number-3">3.4</span> Clone repositories</h3>
 <div class="outline-text-3" id="text-clone-repositories">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -734,7 +749,7 @@ In the gist list buffer:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-01-13 Sun 20:01</p>
+<p class="date">Created: 2019-01-22 Tue 20:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
