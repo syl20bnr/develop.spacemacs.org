@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-22 Tue 20:42 -->
+<!-- 2019-05-17 Fri 23:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>spacemacs-docker distribution</title>
@@ -279,31 +279,31 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#description">1. Description</a>
 <ul>
-<li><a href="#screenshots">1.1. Screenshots</a></li>
-<li><a href="#features">1.2. Features:</a></li>
+<li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#how-to-setup">2. How to setup</a></li>
-<li><a href="#how-to-use">3. How to use</a>
+<li><a href="#screenshots">2. Screenshots</a></li>
+<li><a href="#how-to-setup">3. How to setup</a></li>
+<li><a href="#how-to-use">4. How to use</a>
 <ul>
-<li><a href="#macos">3.1. MacOS</a></li>
-<li><a href="#windows">3.2. Windows</a></li>
-<li><a href="#gnulinux">3.3. GNU/Linux</a></li>
-<li><a href="#with-xpra-on-any-of-the-oses-and-via-web-browser">3.4. With Xpra on any of the OSes and via web-browser</a>
+<li><a href="#macos">4.1. MacOS</a></li>
+<li><a href="#windows">4.2. Windows</a></li>
+<li><a href="#gnulinux">4.3. GNU/Linux</a></li>
+<li><a href="#with-xpra-on-any-of-the-oses-and-via-web-browser">4.4. With Xpra on any of the OSes and via web-browser</a>
 <ul>
-<li><a href="#pros">3.4.1. Pros</a></li>
-<li><a href="#cons">3.4.2. Cons</a></li>
-<li><a href="#instruction">3.4.3. Instruction</a></li>
+<li><a href="#pros">4.4.1. Pros</a></li>
+<li><a href="#cons">4.4.2. Cons</a></li>
+<li><a href="#instruction">4.4.3. Instruction</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#some-basic-docker-commands-to-get-you-going">4. Some basic docker commands to get you going</a></li>
+<li><a href="#some-basic-docker-commands-to-get-you-going">5. Some basic docker commands to get you going</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgcddf0e4" class="outline-2">
+<div id="outline-container-org9414e00" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -313,9 +313,30 @@ with GUI support on all major platforms and even <a href="https://i.imgur.com/wD
 </p>
 </div>
 
-<div id="outline-container-orgcd8099b" class="outline-3">
-<h3 id="screenshots"><span class="section-number-3">1.1</span> Screenshots</h3>
-<div class="outline-text-3" id="text-screenshots">
+<div id="outline-container-orge7d04a8" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
+<ul class="org-ul">
+<li>Automatically get Spacemacs layers dependency installed with <a href="../../+distributions/spacemacs-docker/deps-install/README.html">installer scripts</a></li>
+<li>Reap the benefit of Emacs and other GNU/Linux tools on Windows/MacOS machines</li>
+<li>Use <a href="https://hub.docker.com/">docker hub</a> to auto-build your environment and store full backups for free</li>
+<li>Build once and work with the same development environment everywhere</li>
+<li>Run untrusted/risky code in the tunable sandbox with CPU/network/disk quotas</li>
+<li>Try new tools, experiment and roll back changes when something goes wrong</li>
+<li>Share your setup with others or extend someone else’s development environment</li>
+<li>Run multiple Emacs instances on the same machine isolated</li>
+<li>An easy way to swap Emacs version (<code>emacs25</code> <code>emacs-snapshot</code>) for debugging</li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/pause/">pause</a> container to free resources temporarily</li>
+<li><a href="https://github.com/docker/docker/blob/1.13.x/experimental/checkpoint-restore.md">Checkpoint &amp; Restore</a> - maybe the fastest way to start a “heavy” environment</li>
+<li>Friendly for networks with low upload speed/quotas.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf1a85b5" class="outline-2">
+<h2 id="screenshots"><span class="section-number-2">2</span> Screenshots</h2>
+<div class="outline-text-2" id="text-screenshots">
 
 <div class="figure">
 <p><img src="img/MAC_SP.jpg" alt="MAC_SP.jpg" />
@@ -348,29 +369,8 @@ with GUI support on all major platforms and even <a href="https://i.imgur.com/wD
 </div>
 </div>
 
-<div id="outline-container-org73282c3" class="outline-3">
-<h3 id="features"><span class="section-number-3">1.2</span> Features:</h3>
-<div class="outline-text-3" id="text-features">
-<ul class="org-ul">
-<li>Automatically get Spacemacs layers dependency installed with <a href="../../%2Bdistributions/spacemacs-docker/deps-install/README.html">installer scripts</a></li>
-<li>Reap the benefit of Emacs and other GNU/Linux tools on Windows/MacOS machines</li>
-<li>Use <a href="https://hub.docker.com/">docker hub</a> to auto-build your environment and store full backups for free</li>
-<li>Build once and work with the same development environment everywhere</li>
-<li>Run untrusted/risky code in the tunable sandbox with CPU/network/disk quotas</li>
-<li>Try new tools, experiment and roll back changes when something goes wrong</li>
-<li>Share your setup with others or extend someone else’s development environment</li>
-<li>Run multiple Emacs instances on the same machine isolated</li>
-<li>An easy way to swap Emacs version (<code>emacs25</code> <code>emacs-snapshot</code>) for debugging</li>
-<li><a href="https://docs.docker.com/engine/reference/commandline/pause/">pause</a> container to free resources temporarily</li>
-<li><a href="https://github.com/docker/docker/blob/1.13.x/experimental/checkpoint-restore.md">Checkpoint &amp; Restore</a> - maybe the fastest way to start a “heavy” environment</li>
-<li>Friendly for networks with low upload speed/quotas.</li>
-</ul>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org31152f0" class="outline-2">
-<h2 id="how-to-setup"><span class="section-number-2">2</span> How to setup</h2>
+<div id="outline-container-orge8ccb0d" class="outline-2">
+<h2 id="how-to-setup"><span class="section-number-2">3</span> How to setup</h2>
 <div class="outline-text-2" id="text-how-to-setup">
 <p>
 The idea is to build your own image <a href="https://docs.docker.com/engine/reference/builder/#from">FROM</a> the one of the provided base images
@@ -382,8 +382,8 @@ the machine that will run development environment and then use
 </div>
 </div>
 
-<div id="outline-container-orgd8db60a" class="outline-2">
-<h2 id="how-to-use"><span class="section-number-2">3</span> How to use</h2>
+<div id="outline-container-org461a681" class="outline-2">
+<h2 id="how-to-use"><span class="section-number-2">4</span> How to use</h2>
 <div class="outline-text-2" id="text-how-to-use">
 <p>
 With one of the methods below replace <code>spacemacs/emacs25:develop</code> with your images.
@@ -392,8 +392,8 @@ the same machine.
 </p>
 </div>
 
-<div id="outline-container-org91d2ab0" class="outline-3">
-<h3 id="macos"><span class="section-number-3">3.1</span> MacOS</h3>
+<div id="outline-container-org7877c80" class="outline-3">
+<h3 id="macos"><span class="section-number-3">4.1</span> MacOS</h3>
 <div class="outline-text-3" id="text-macos">
 <p>
 Get <a href="https://www.xquartz.org">XQuartz</a> and <code>open -a XQuartz</code> In the XQuartz preferences go to the “Security”
@@ -418,8 +418,8 @@ docker run -ti --name spacemacs <span class="org-sh-escaped-newline">\</span>
 </div>
 </div>
 
-<div id="outline-container-org5393fec" class="outline-3">
-<h3 id="windows"><span class="section-number-3">3.2</span> Windows</h3>
+<div id="outline-container-org24b411c" class="outline-3">
+<h3 id="windows"><span class="section-number-3">4.2</span> Windows</h3>
 <div class="outline-text-3" id="text-windows">
 <p>
 Get <a href="https://www.cygwin.com">Cygwin</a> with <code>xinit</code>, <code>xorg-server</code> and optionaly <a href="https://github.com/rprichard/winpty">winpty</a> (to run Emacs container with <code>-t</code>)
@@ -459,8 +459,8 @@ Also You can use <a href="https://www.reddit.com/r/emacs/comments/7a63r4/emacs_i
 </div>
 </div>
 
-<div id="outline-container-orgcc26035" class="outline-3">
-<h3 id="gnulinux"><span class="section-number-3">3.3</span> GNU/Linux</h3>
+<div id="outline-container-org22208de" class="outline-3">
+<h3 id="gnulinux"><span class="section-number-3">4.3</span> GNU/Linux</h3>
 <div class="outline-text-3" id="text-gnulinux">
 <p>
 Make sure that <code>$DISPLAY</code> variable is set
@@ -508,13 +508,13 @@ Or allow local connection from the container’s host-name
 </div>
 </div>
 
-<div id="outline-container-orgf14831c" class="outline-3">
-<h3 id="with-xpra-on-any-of-the-oses-and-via-web-browser"><span class="section-number-3">3.4</span> With Xpra on any of the OSes and via web-browser</h3>
+<div id="outline-container-org4858c1f" class="outline-3">
+<h3 id="with-xpra-on-any-of-the-oses-and-via-web-browser"><span class="section-number-3">4.4</span> With Xpra on any of the OSes and via web-browser</h3>
 <div class="outline-text-3" id="text-with-xpra-on-any-of-the-oses-and-via-web-browser">
 </div>
 
-<div id="outline-container-org0875f4a" class="outline-4">
-<h4 id="pros"><span class="section-number-4">3.4.1</span> Pros</h4>
+<div id="outline-container-org0025b4c" class="outline-4">
+<h4 id="pros"><span class="section-number-4">4.4.1</span> Pros</h4>
 <div class="outline-text-4" id="text-pros">
 <ul class="org-ul">
 <li>Xpra has a client for GNU/Linux, Windows and MacOS + can work via web browser</li>
@@ -525,8 +525,8 @@ Or allow local connection from the container’s host-name
 </div>
 </div>
 
-<div id="outline-container-org4fc46f0" class="outline-4">
-<h4 id="cons"><span class="section-number-4">3.4.2</span> Cons</h4>
+<div id="outline-container-orgee753f5" class="outline-4">
+<h4 id="cons"><span class="section-number-4">4.4.2</span> Cons</h4>
 <div class="outline-text-4" id="text-cons">
 <ul class="org-ul">
 <li>Lag spikes with some OSes</li>
@@ -534,8 +534,8 @@ Or allow local connection from the container’s host-name
 </div>
 </div>
 
-<div id="outline-container-org1fbd788" class="outline-4">
-<h4 id="instruction"><span class="section-number-4">3.4.3</span> Instruction</h4>
+<div id="outline-container-orgdccde3e" class="outline-4">
+<h4 id="instruction"><span class="section-number-4">4.4.3</span> Instruction</h4>
 <div class="outline-text-4" id="text-instruction">
 <p>
 It’s a good idea to read <a href="https://github.com/JAremko/docker-x11-bridge">docker-x11-bridge</a> and <a href="https://www.xpra.org/trac/">Xpra</a> documentations, but
@@ -607,8 +607,8 @@ Now visit <a href="http://localhost:10000/index.html?encoding=png&amp;password">
 </div>
 </div>
 
-<div id="outline-container-orgc36802c" class="outline-2">
-<h2 id="some-basic-docker-commands-to-get-you-going"><span class="section-number-2">4</span> Some basic docker commands to get you going</h2>
+<div id="outline-container-orged5699f" class="outline-2">
+<h2 id="some-basic-docker-commands-to-get-you-going"><span class="section-number-2">5</span> Some basic docker commands to get you going</h2>
 <div class="outline-text-2" id="text-some-basic-docker-commands-to-get-you-going">
 <ul class="org-ul">
 <li><code>docker rm -f spacemacs</code> - remove <code>spacemacs</code> container</li>
@@ -642,7 +642,7 @@ With the running <code>spacemacs</code> container
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-01-22 Tue 20:42</p>
+<p class="date">Created: 2019-05-17 Fri 23:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-22 Tue 20:42 -->
+<!-- 2019-05-17 Fri 23:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JavaScript layer</title>
@@ -286,14 +286,19 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#web-beautify">2.1. web-beautify</a></li>
 <li><a href="#prettier">2.2. prettier</a></li>
-<li><a href="#choosing-a-backend">2.3. Choosing a backend</a></li>
-<li><a href="#choosing-a-formatter">2.4. Choosing a formatter</a></li>
+<li><a href="#import-js">2.3. import-js</a></li>
+<li><a href="#choosing-a-backend">2.4. Choosing a backend</a></li>
+<li><a href="#choosing-a-formatter">2.5. Choosing a formatter</a></li>
 </ul>
 </li>
 <li><a href="#backends">3. Backends</a>
 <ul>
 <li><a href="#tern">3.1. Tern</a></li>
-<li><a href="#language-server-protocol">3.2. Language Server Protocol</a></li>
+<li><a href="#language-server-protocol">3.2. Language Server Protocol</a>
+<ul>
+<li><a href="#debugger-dap-integration">3.2.1. Debugger (dap integration)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#configuration">4. Configuration</a>
@@ -307,12 +312,14 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#js2-mode">5.1. js2-mode</a></li>
 <li><a href="#folding-js2-mode">5.2. Folding (js2-mode)</a></li>
-<li><a href="#refactoring-js2-refactor">5.3. Refactoring (js2-refactor)</a>
+<li><a href="#importing-import-js">5.3. Importing (import-js)</a></li>
+<li><a href="#refactoring-js2-refactor">5.4. Refactoring (js2-refactor)</a>
 <ul>
-<li><a href="#documentation-js-doc">5.3.1. Documentation (js-doc)</a></li>
+<li><a href="#documentation-js-doc">5.4.1. Documentation (js-doc)</a></li>
 </ul>
 </li>
-<li><a href="#repl-skewer-mode">5.4. REPL (skewer-mode)</a></li>
+<li><a href="#repl-skewer-mode">5.5. REPL (skewer-mode)</a></li>
+<li><a href="#debugger-dap-mode">5.6. debugger (dap mode)</a></li>
 </ul>
 </li>
 </ul>
@@ -324,7 +331,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org260dc75" class="outline-2">
+<div id="outline-container-orgb65eaa1" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -332,7 +339,7 @@ This layer adds support for the JavaScript language using <a href="https://githu
 </p>
 </div>
 
-<div id="outline-container-org673511a" class="outline-3">
+<div id="outline-container-orgc2ba2bc" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -347,7 +354,7 @@ This layer adds support for the JavaScript language using <a href="https://githu
 </div>
 </div>
 
-<div id="outline-container-org753c5b0" class="outline-2">
+<div id="outline-container-orgfd4ebcb" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -355,6 +362,15 @@ To use this configuration layer, add it to your <code>~/.spacemacs</code>. You w
 add <code>javascript</code> to the existing <code>dotspacemacs-configuration-layers</code> list in
 this file.
 </p>
+
+<p>
+To enable the importing helper, install the <code>ImportJS</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ npm install -g import-js
+</pre>
+</div>
 
 <p>
 To activate error checking using flycheck, install one of the <a href="http://www.flycheck.org/en/latest/languages.html#javascript">available linters</a>
@@ -378,7 +394,7 @@ If you install these in non-standard locations, then add the following to your <
 </div>
 </div>
 
-<div id="outline-container-org0cbaa41" class="outline-3">
+<div id="outline-container-org799c35e" class="outline-3">
 <h3 id="web-beautify"><span class="section-number-3">2.1</span> web-beautify</h3>
 <div class="outline-text-3" id="text-web-beautify">
 <p>
@@ -387,7 +403,7 @@ See <a href="../../+tools/web-beautify/README.html">web-beautify layer</a> docum
 </div>
 </div>
 
-<div id="outline-container-org5796b1b" class="outline-3">
+<div id="outline-container-org1264bb1" class="outline-3">
 <h3 id="prettier"><span class="section-number-3">2.2</span> prettier</h3>
 <div class="outline-text-3" id="text-prettier">
 <p>
@@ -396,8 +412,26 @@ See <a href="../../+tools/prettier/README.html">prettier layer</a> documentation
 </div>
 </div>
 
-<div id="outline-container-org1b5d4e7" class="outline-3">
-<h3 id="choosing-a-backend"><span class="section-number-3">2.3</span> Choosing a backend</h3>
+<div id="outline-container-org48e336e" class="outline-3">
+<h3 id="import-js"><span class="section-number-3">2.3</span> import-js</h3>
+<div class="outline-text-3" id="text-import-js">
+<p>
+See <a href="../../+tools/import-js/README.html">import-js layer</a> documentation.
+</p>
+
+<p>
+To enable it, set the layer variable <code>javascript-import-tool</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span> javascript-import-tool 'import-js<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb1a1604" class="outline-3">
+<h3 id="choosing-a-backend"><span class="section-number-3">2.4</span> Choosing a backend</h3>
 <div class="outline-text-3" id="text-choosing-a-backend">
 <p>
 To choose a default backend set the layer variable <code>javascript-backend</code>:
@@ -424,8 +458,8 @@ Backend can be chosen on a per project basis using directory local variables
 </div>
 </div>
 
-<div id="outline-container-org5a7a2fa" class="outline-3">
-<h3 id="choosing-a-formatter"><span class="section-number-3">2.4</span> Choosing a formatter</h3>
+<div id="outline-container-org865a1e9" class="outline-3">
+<h3 id="choosing-a-formatter"><span class="section-number-3">2.5</span> Choosing a formatter</h3>
 <div class="outline-text-3" id="text-choosing-a-formatter">
 <p>
 To choose a formatter, set the layer variable <code>javascript-fmt-tool</code>:
@@ -453,16 +487,31 @@ Formatter can be chosen on a per project basis using directory local variables
 <p>
 <b>Note:</b> you can easily add a directory local variable with <code>SPC f v d</code>.
 </p>
+
+<p>
+You can choose formatting tool:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>javascript <span class="org-builtin">:variables</span>
+              javascript-fmt-tool 'prettier<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Default is <code>’web-beautify</code>.
+</p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org129ee91" class="outline-2">
+<div id="outline-container-org6385534" class="outline-2">
 <h2 id="backends"><span class="section-number-2">3</span> Backends</h2>
 <div class="outline-text-2" id="text-backends">
 </div>
 
-<div id="outline-container-org30f0af6" class="outline-3">
+<div id="outline-container-org1c9e0ff" class="outline-3">
 <h3 id="tern"><span class="section-number-3">3.1</span> Tern</h3>
 <div class="outline-text-3" id="text-tern">
 <p>
@@ -471,11 +520,20 @@ See <a href="../../+tools/tern/README.html">tern layer</a> documentation.
 </div>
 </div>
 
-<div id="outline-container-org7fbbac1" class="outline-3">
+<div id="outline-container-org1fa101e" class="outline-3">
 <h3 id="language-server-protocol"><span class="section-number-3">3.2</span> Language Server Protocol</h3>
 <div class="outline-text-3" id="text-language-server-protocol">
 <p>
-You just have to install javascript and typescript language server packages:
+You have to install <code>typescript-language-server</code> (recommended) or <code>javascript-typescript-langserver</code> language server packages via
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">npm i -g typescript typescript-language-server
+</pre>
+</div>
+
+<p>
+or
 </p>
 
 <div class="org-src-container">
@@ -483,15 +541,24 @@ You just have to install javascript and typescript language server packages:
 </pre>
 </div>
 </div>
+
+<div id="outline-container-org7ce0856" class="outline-4">
+<h4 id="debugger-dap-integration"><span class="section-number-4">3.2.1</span> Debugger (dap integration)</h4>
+<div class="outline-text-4" id="text-debugger-dap-integration">
+<p>
+To install the debug adapter you may run <code>M-x dap-firefox-setup</code> or <code>M-x dap-firefox-setup</code> if you are using Linux or download it manually from <a href="https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-firefox-debug">Firefox Debug Adapter</a> or <a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome">Chrome Debug Adapter</a> and adjust <code>dap-firefox-debug-path</code> or <code>dap-chrome-debug-path</code>. For usage instructions refer to <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a> readme.
+</p>
+</div>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org66103c9" class="outline-2">
+<div id="outline-container-org156ac35" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">4</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-orgfe91cab" class="outline-3">
+<div id="outline-container-org1899c51" class="outline-3">
 <h3 id="indentation"><span class="section-number-3">4.1</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
@@ -534,7 +601,7 @@ or when adding the <code>javascript</code> configuration layer:
 </div>
 </div>
 
-<div id="outline-container-org06ecd0f" class="outline-3">
+<div id="outline-container-org46feac5" class="outline-3">
 <h3 id="repl"><span class="section-number-3">4.2</span> REPL</h3>
 <div class="outline-text-3" id="text-repl">
 <p>
@@ -547,7 +614,7 @@ in the top-right corner - if it turns green, you’re good to go).
 </div>
 </div>
 
-<div id="outline-container-org5cfc95e" class="outline-3">
+<div id="outline-container-org30df5c5" class="outline-3">
 <h3 id="node-modules"><span class="section-number-3">4.3</span> Node Modules</h3>
 <div class="outline-text-3" id="text-node-modules">
 <p>
@@ -566,12 +633,12 @@ doing this <a href="https://stackoverflow.com/questions/9679932#comment33532258_
 </div>
 </div>
 
-<div id="outline-container-org84614aa" class="outline-2">
+<div id="outline-container-org9f6dff9" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orga50a1d1" class="outline-3">
+<div id="outline-container-orgd46af69" class="outline-3">
 <h3 id="js2-mode"><span class="section-number-3">5.1</span> js2-mode</h3>
 <div class="outline-text-3" id="text-js2-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -603,7 +670,7 @@ doing this <a href="https://stackoverflow.com/questions/9679932#comment33532258_
 </div>
 </div>
 
-<div id="outline-container-org580b009" class="outline-3">
+<div id="outline-container-org68c1ca9" class="outline-3">
 <h3 id="folding-js2-mode"><span class="section-number-3">5.2</span> Folding (js2-mode)</h3>
 <div class="outline-text-3" id="text-folding-js2-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -655,8 +722,45 @@ doing this <a href="https://stackoverflow.com/questions/9679932#comment33532258_
 </div>
 </div>
 
-<div id="outline-container-orgd33bf6c" class="outline-3">
-<h3 id="refactoring-js2-refactor"><span class="section-number-3">5.3</span> Refactoring (js2-refactor)</h3>
+<div id="outline-container-org00b5b86" class="outline-3">
+<h3 id="importing-import-js"><span class="section-number-3">5.3</span> Importing (import-js)</h3>
+<div class="outline-text-3" id="text-importing-import-js">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m i i</code></td>
+<td class="org-left">Import the module for the variable under the cursor</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i f</code></td>
+<td class="org-left">Import any missing modules and remove any modules that are not used</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g i</code></td>
+<td class="org-left">Go to the module of the variable under cursor</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgc1a666d" class="outline-3">
+<h3 id="refactoring-js2-refactor"><span class="section-number-3">5.4</span> Refactoring (js2-refactor)</h3>
 <div class="outline-text-3" id="text-refactoring-js2-refactor">
 <p>
 Bindings should match the plain emacs assignments.
@@ -830,8 +934,8 @@ Bindings should match the plain emacs assignments.
 </table>
 </div>
 
-<div id="outline-container-org98515b8" class="outline-4">
-<h4 id="documentation-js-doc"><span class="section-number-4">5.3.1</span> Documentation (js-doc)</h4>
+<div id="outline-container-org15359d6" class="outline-4">
+<h4 id="documentation-js-doc"><span class="section-number-4">5.4.1</span> Documentation (js-doc)</h4>
 <div class="outline-text-4" id="text-documentation-js-doc">
 <p>
 You can check more <a href="https://github.com/mooz/js-doc/">here</a>
@@ -877,8 +981,8 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 
-<div id="outline-container-org5015820" class="outline-3">
-<h3 id="repl-skewer-mode"><span class="section-number-3">5.4</span> REPL (skewer-mode)</h3>
+<div id="outline-container-org3dc0ee0" class="outline-3">
+<h3 id="repl-skewer-mode"><span class="section-number-3">5.5</span> REPL (skewer-mode)</h3>
 <div class="outline-text-3" id="text-repl-skewer-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -970,11 +1074,207 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </table>
 </div>
 </div>
+
+<div id="outline-container-orga3127cc" class="outline-3">
+<h3 id="debugger-dap-mode"><span class="section-number-3">5.6</span> debugger (dap mode)</h3>
+<div class="outline-text-3" id="text-debugger-dap-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d d d</code></td>
+<td class="org-left">start debugging</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d d l</code></td>
+<td class="org-left">debug last configuration</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d d r</code></td>
+<td class="org-left">debug recent configuration</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d c</code></td>
+<td class="org-left">continue</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d i</code></td>
+<td class="org-left">step in</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d o</code></td>
+<td class="org-left">step out</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d s</code></td>
+<td class="org-left">next step</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d v</code></td>
+<td class="org-left">inspect value at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d r</code></td>
+<td class="org-left">restart frame</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d .</code></td>
+<td class="org-left">debug transient state</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d a</code></td>
+<td class="org-left">abandon current session</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d A</code></td>
+<td class="org-left">abandon all process</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d e e</code></td>
+<td class="org-left">eval</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d e r</code></td>
+<td class="org-left">eval region</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d e t</code></td>
+<td class="org-left">eval value at point</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d S s</code></td>
+<td class="org-left">switch session</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d S t</code></td>
+<td class="org-left">switch thread</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d S f</code></td>
+<td class="org-left">switch frame</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d I i</code></td>
+<td class="org-left">inspect</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d I r</code></td>
+<td class="org-left">inspect region</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d I t</code></td>
+<td class="org-left">inspect value at point</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d b b</code></td>
+<td class="org-left">toggle a breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b c</code></td>
+<td class="org-left">change breakpoint condition</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b l</code></td>
+<td class="org-left">change breakpoint log condition</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b h</code></td>
+<td class="org-left">change breakpoint hit count</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b a</code></td>
+<td class="org-left">add a breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b d</code></td>
+<td class="org-left">delete a breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b D</code></td>
+<td class="org-left">clear all breakpoints</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d '_</code></td>
+<td class="org-left">Run debug REPL</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d w l</code></td>
+<td class="org-left">list local variables</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d w o</code></td>
+<td class="org-left">goto output buffer if present</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d w s</code></td>
+<td class="org-left">list sessions</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d w b</code></td>
+<td class="org-left">list breakpoints</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-01-22 Tue 20:42</p>
+<p class="date">Created: 2019-05-17 Fri 23:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

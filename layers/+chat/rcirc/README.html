@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-22 Tue 20:42 -->
+<!-- 2019-05-17 Fri 23:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>RCIRC layer</title>
@@ -294,6 +294,11 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#enabling-sfoobar">2.3. Enabling <code>s/foo/bar/</code></a></li>
+<li><a href="#enabling-emojify-mode">2.4. Enabling emojify-mode</a></li>
+<li><a href="#enabling-erc-image">2.5. Enabling erc-image</a></li>
+<li><a href="#enabling-erc-tweet">2.6. Enabling erc-tweet</a></li>
+<li><a href="#enabling-erc-yt">2.7. Enabling erc-yt</a></li>
+<li><a href="#enabling-rcirc-styles">2.8. Enabling rcirc-styles</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key bindings</a></li>
@@ -308,7 +313,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org620651d" class="outline-2">
+<div id="outline-container-orgb042b0b" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -317,7 +322,7 @@ and ZNC.
 </p>
 </div>
 
-<div id="outline-container-orgfadfbce" class="outline-3">
+<div id="outline-container-org0e2f47c" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -333,12 +338,12 @@ using the <code>emoji</code> layer or having a proper font) :clap:</li>
 </div>
 </div>
 
-<div id="outline-container-org9f85c85" class="outline-2">
+<div id="outline-container-orgccd84d6" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org9eec259" class="outline-3">
+<div id="outline-container-org939ccb7" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -349,7 +354,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgbda3fc8" class="outline-3">
+<div id="outline-container-org1c3e07a" class="outline-3">
 <h3 id="configuring-authentication"><span class="section-number-3">2.2</span> Configuring authentication</h3>
 <div class="outline-text-3" id="text-configuring-authentication">
 <p>
@@ -365,7 +370,7 @@ but still not secured)</li>
 </ul>
 </div>
 
-<div id="outline-container-org9b60377" class="outline-4">
+<div id="outline-container-orgdb933ee" class="outline-4">
 <h4 id="storing-the-credentials-in-your-dotfile"><span class="section-number-4">2.2.1</span> Storing the credentials in your dotfile</h4>
 <div class="outline-text-4" id="text-storing-the-credentials-in-your-dotfile">
 <p>
@@ -397,7 +402,7 @@ is convenient but not recommended.
 </ol>
 </div>
 
-<div id="outline-container-orgb7bfff0" class="outline-4">
+<div id="outline-container-orge081781" class="outline-4">
 <h4 id="storing-the-credentials-in-your-dropbox"><span class="section-number-4">2.2.2</span> Storing the credentials in your Dropbox</h4>
 <div class="outline-text-4" id="text-storing-the-credentials-in-your-dropbox">
 <p>
@@ -431,7 +436,7 @@ recommended.
 </ol>
 </div>
 
-<div id="outline-container-org97ad15d" class="outline-4">
+<div id="outline-container-orgf815bab" class="outline-4">
 <h4 id="storing-the-credentials-in-authinfo"><span class="section-number-4">2.2.3</span> Storing the credentials in authinfo</h4>
 <div class="outline-text-4" id="text-storing-the-credentials-in-authinfo">
 <p>
@@ -475,7 +480,7 @@ At last you need to provide your servers configuration in the
 </div>
 </div>
 
-<div id="outline-container-orgc236d0e" class="outline-4">
+<div id="outline-container-org00f519b" class="outline-4">
 <h4 id="connecting-behind-a-znc-bouncer-and-storing-the-credentials-in-authinfo"><span class="section-number-4">2.2.4</span> Connecting behind a ZNC bouncer and storing the credentials in authinfo</h4>
 <div class="outline-text-4" id="text-connecting-behind-a-znc-bouncer-and-storing-the-credentials-in-authinfo">
 <p>
@@ -560,7 +565,7 @@ will be replaced by the credentials stored in your <code>~/.authinfo.gpg</code>.
 </div>
 </div>
 
-<div id="outline-container-org8a431f1" class="outline-3">
+<div id="outline-container-orgbbcd7f5" class="outline-3">
 <h3 id="enabling-sfoobar"><span class="section-number-3">2.3</span> Enabling <code>s/foo/bar/</code></h3>
 <div class="outline-text-3" id="text-enabling-sfoobar">
 <p>
@@ -575,9 +580,89 @@ variable <code>rcirc-enable-late-fix</code> to <code>t</code> in your dotfile:
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgf4a4c2a" class="outline-3">
+<h3 id="enabling-emojify-mode"><span class="section-number-3">2.4</span> Enabling emojify-mode</h3>
+<div class="outline-text-3" id="text-enabling-emojify-mode">
+<p>
+To enable emojify-mode in rcirc buffers, set the variable <code>rcirc-enable-emojify</code>
+to <code>t</code> in your dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>rcirc <span class="org-builtin">:variables</span> rcirc-enable-emojify t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org8859159" class="outline-2">
+<div id="outline-container-org7525d0a" class="outline-3">
+<h3 id="enabling-erc-image"><span class="section-number-3">2.5</span> Enabling erc-image</h3>
+<div class="outline-text-3" id="text-enabling-erc-image">
+<p>
+To enable erc-image for fetching and showing images when they are linked to in
+chat, set the variable <code>rcirc-enable-erc-image</code> to <code>t</code> in your dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>rcirc <span class="org-builtin">:variables</span> rcirc-enable-erc-image t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4e79616" class="outline-3">
+<h3 id="enabling-erc-tweet"><span class="section-number-3">2.6</span> Enabling erc-tweet</h3>
+<div class="outline-text-3" id="text-enabling-erc-tweet">
+<p>
+To enable erc-tweet for fetching and displaying tweets when they are linked in
+chat, set the variable <code>rcirc-enable-erc-tweet</code> to <code>t</code> in your dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>rcirc <span class="org-builtin">:variables</span> rcirc-enable-erc-tweet t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org99c2b79" class="outline-3">
+<h3 id="enabling-erc-yt"><span class="section-number-3">2.7</span> Enabling erc-yt</h3>
+<div class="outline-text-3" id="text-enabling-erc-yt">
+<p>
+To enable erc-yt for fetching and displaying previews for YouTube links in chat,
+set the variable <code>rcirc-enable-erc-yt</code> to <code>t</code> in your dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>rcirc <span class="org-builtin">:variables</span> rcirc-enable-erc-yt t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge3b5883" class="outline-3">
+<h3 id="enabling-rcirc-styles"><span class="section-number-3">2.8</span> Enabling rcirc-styles</h3>
+<div class="outline-text-3" id="text-enabling-rcirc-styles">
+<p>
+To enable rcirc-styles for displaying and inserting color and text attribute
+codes, set the variable <code>rcirc-enable-styles</code> to <code>t</code> in your dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>rcirc <span class="org-builtin">:variables</span> rcirc-enable-styles t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6ac11d0" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -603,6 +688,21 @@ variable <code>rcirc-enable-late-fix</code> to <code>t</code> in your dotfile:
 <tr>
 <td class="org-left"><code>SPC l o i</code></td>
 <td class="org-left">Open rcirc in a custom perspective “@RICRC” (need perspectives layer enabled)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i a</code></td>
+<td class="org-left">Interactively insert a color code (if rcirc-styles is enabled)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i c</code></td>
+<td class="org-left">Interactively insert a text attribute code (if rcirc-styles is enabled)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i p</code></td>
+<td class="org-left">Toggle preview in input line (if rcirc-styles is enabled)</td>
 </tr>
 </tbody>
 </table>
@@ -640,7 +740,7 @@ In normal state:
 </div>
 </div>
 
-<div id="outline-container-org569722c" class="outline-2">
+<div id="outline-container-org416b732" class="outline-2">
 <h2 id="rcirc-documentation"><span class="section-number-2">4</span> Rcirc documentation</h2>
 <div class="outline-text-2" id="text-rcirc-documentation">
 <p>
@@ -649,7 +749,7 @@ The rcirc documentation can be found <a href="http://www.gnu.org/software/emacs/
 </div>
 </div>
 
-<div id="outline-container-org5a6e360" class="outline-2">
+<div id="outline-container-orgfec0ea4" class="outline-2">
 <h2 id="spacemacs-layout-support"><span class="section-number-2">5</span> Spacemacs Layout Support</h2>
 <div class="outline-text-2" id="text-spacemacs-layout-support">
 <p>
@@ -662,7 +762,7 @@ binding (“i”) is controlled by <code>rcirc-spacemacs-layout-binding</code>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-01-22 Tue 20:42</p>
+<p class="date">Created: 2019-05-17 Fri 23:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
