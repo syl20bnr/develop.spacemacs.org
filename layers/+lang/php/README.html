@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-22 Tue 20:42 -->
+<!-- 2019-05-17 Fri 23:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PHP layer</title>
@@ -284,7 +284,7 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#install">2. Install</a></li>
 <li><a href="#key-bindings">3. Key bindings</a></li>
-<li><a href="#troubleshooting">4. Troubleshooting</a></li>
+<li><a href="#usage">4. Usage</a></li>
 </ul>
 </div>
 </div>
@@ -294,7 +294,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgffd25bb" class="outline-2">
+<div id="outline-container-org51d3aa3" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -302,7 +302,7 @@ This layer adds PHP language support to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-orga2ddcb9" class="outline-3">
+<div id="outline-container-orgcabf105" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -321,7 +321,7 @@ The <code>gtags</code> layer is recommended to benefit from better <code>eldoc</
 </div>
 </div>
 
-<div id="outline-container-org30394ab" class="outline-2">
+<div id="outline-container-org4e156f0" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -332,7 +332,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org7b7c5ec" class="outline-2">
+<div id="outline-container-orgcfe17d4" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -364,11 +364,11 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgdfd49a9" class="outline-2">
-<h2 id="troubleshooting"><span class="section-number-2">4</span> Troubleshooting</h2>
-<div class="outline-text-2" id="text-troubleshooting">
+<div id="outline-container-orgf547770" class="outline-2">
+<h2 id="usage"><span class="section-number-2">4</span> Usage</h2>
+<div class="outline-text-2" id="text-usage">
 <p>
-Because of the way that the php-extras package works, there are a couple of simple
+Because of the way that the ac-php-core package works, there are a couple of simple
 initialization tasks which must occur to get the completion working as it should.
 On any new project make sure to perform the following initialization tasks:
 </p>
@@ -384,14 +384,33 @@ touch .ac-php-conf.json
 </div></li>
 
 <li>Inside of spacemacs run:
-= ac-php-remake-tags-all =</li>
+= ac-php-remake-tags =</li>
 </ol>
+
+<p>
+The <code>.ac-php-conf.json</code> file is required to enable auto-completion. When you run
+<code>ac-php-remake-tags</code> and your <code>.ac-php-conf.json</code> file is empty the default configuration
+will be used and inserted in the file.
+</p>
+
+<p>
+If your project contains the following files at the root folder:
+</p>
+<ol class="org-ol">
+<li><code>.projectile</code></li>
+<li><code>vendor/autoload.php</code></li>
+</ol>
+
+<p>
+the necessary configuration file (<code>.ac-php-conf.json</code>) will be created automatically
+if it does not exist. 
+</p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-01-22 Tue 20:42</p>
+<p class="date">Created: 2019-05-17 Fri 23:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

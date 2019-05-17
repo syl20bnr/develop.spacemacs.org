@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-22 Tue 20:42 -->
+<!-- 2019-05-17 Fri 23:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Vinegar layer</title>
@@ -280,30 +280,36 @@ for the JavaScript code in this tag.
 <li><a href="#description">1. Description</a>
 <ul>
 <li><a href="#features">1.1. Features:</a></li>
-<li><a href="#mouse-bindings">1.2. Mouse bindings</a></li>
-<li><a href="#key-bindings">1.3. Key bindings</a></li>
+</ul>
+</li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#reuse-dired-buffer">2.2. Reuse dired buffer</a></li>
+<li><a href="#deactive-hide-details-mode">2.3. Deactive hide details mode</a></li>
+<li><a href="#mouse-bindings">2.4. Mouse bindings</a></li>
+<li><a href="#key-bindings">2.5. Key bindings</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga13b5bf" class="outline-2">
+<div id="outline-container-org411bfdc" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer is a port layer for vim-vinegar for emacs.
+This layer is a port of vim-vinegar for emacs.
 </p>
 
 <p>
-A port of tpope’s
-<a href="https://github.com/tpope/vim-vinegar">vinegar.vim</a>, simplifying <code>dired</code>
+It is based on tpope’s <a href="https://github.com/tpope/vim-vinegar">vinegar.vim</a>, simplifying <code>dired</code>
 with a limited number of details and exposing the <code>-</code> command in all
 buffers to enter dired.
 </p>
 </div>
 
-<div id="outline-container-orgb4b31ff" class="outline-3">
+<div id="outline-container-org2617be8" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -317,9 +323,58 @@ single bar</li>
 </ul>
 </div>
 </div>
+</div>
 
-<div id="outline-container-org7aa377c" class="outline-3">
-<h3 id="mouse-bindings"><span class="section-number-3">1.2</span> Mouse bindings</h3>
+<div id="outline-container-org2334909" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-org13adffa" class="outline-3">
+<h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
+<p>
+To use this configuration layer add <code>vinegar</code> to the 
+<code>dotspacemacs-configuration-layers</code> list.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge8c7d69" class="outline-3">
+<h3 id="reuse-dired-buffer"><span class="section-number-3">2.2</span> Reuse dired buffer</h3>
+<div class="outline-text-3" id="text-reuse-dired-buffer">
+<p>
+To reuse dired buffers set the variable <code>vinegar-reuse-dired-buffer</code> to <code>t</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>vinegar <span class="org-builtin">:variables</span>
+           vinegar-reuse-dired-buffer nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3d2c601" class="outline-3">
+<h3 id="deactive-hide-details-mode"><span class="section-number-3">2.3</span> Deactive hide details mode</h3>
+<div class="outline-text-3" id="text-deactive-hide-details-mode">
+<p>
+Per default extensive details in dired are hidden with this layer.
+This can be deactivated by setting the variable <code>vinegar-dired-hide-details</code> to <code>nil</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>vinegar <span class="org-builtin">:variables</span>
+           vinegar-dired-hide-details t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4305dc6" class="outline-3">
+<h3 id="mouse-bindings"><span class="section-number-3">2.4</span> Mouse bindings</h3>
 <div class="outline-text-3" id="text-mouse-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -355,8 +410,8 @@ single bar</li>
 </div>
 </div>
 
-<div id="outline-container-orgfe36d25" class="outline-3">
-<h3 id="key-bindings"><span class="section-number-3">1.3</span> Key bindings</h3>
+<div id="outline-container-org632b00b" class="outline-3">
+<h3 id="key-bindings"><span class="section-number-3">2.5</span> Key bindings</h3>
 <div class="outline-text-3" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -450,7 +505,7 @@ single bar</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-01-22 Tue 20:42</p>
+<p class="date">Created: 2019-05-17 Fri 23:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

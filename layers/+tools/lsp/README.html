@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-22 Tue 20:42 -->
+<!-- 2019-05-17 Fri 23:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LSP layer</title>
@@ -306,7 +306,7 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgf2deb88" class="outline-2">
+<div id="outline-container-org1103d49" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -318,11 +318,11 @@ This layer adds support for basic language server protocol packages speaking
 Different language servers may support the language server protocol to varying degrees
 and they may also provide extensions; check the language server’s website for
 details.
-<code>M-x lsp-capabilities</code> in a LSP buffer to list capabilities of the server.
+<code>M-x lsp-describe-session</code> in a LSP buffer to list capabilities of the server.
 </p>
 </div>
 
-<div id="outline-container-org2a657f1" class="outline-3">
+<div id="outline-container-orgea9569a" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -341,7 +341,7 @@ search and others)</li>
 </div>
 </div>
 
-<div id="outline-container-orgd716a54" class="outline-2">
+<div id="outline-container-org80f3cff" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">2</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
@@ -356,7 +356,7 @@ disable projects you don’t want to enable LSP.
 </p>
 </div>
 
-<div id="outline-container-orgf2e2771" class="outline-3">
+<div id="outline-container-org684e7d2" class="outline-3">
 <h3 id="variables"><span class="section-number-3">2.1</span> Variables</h3>
 <div class="outline-text-3" id="text-variables">
 <p>
@@ -418,12 +418,18 @@ under the derived mode t prefix by <code>(spacemacs/lsp-bind-keys-for-mode mode)
 <td class="org-left">nil</td>
 <td class="org-left">When non-nil, the symbol information overlay includes symbol name (redundant for c-modes)</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>lsp-prefer-flymake</code></td>
+<td class="org-left">nil</td>
+<td class="org-left">When non-nil, use flymake. When nil, and <code>lsp-ui-flycheck</code> is available, use flycheck. When :none, use neither flymake nor flycheck.</td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-orgad1cc2c" class="outline-3">
+<div id="outline-container-orgc1314ec" class="outline-3">
 <h3 id="navigation-mode"><span class="section-number-3">2.2</span> Navigation mode</h3>
 <div class="outline-text-3" id="text-navigation-mode">
 <p>
@@ -436,7 +442,7 @@ the bindings under <code>SPC m G</code> and creates bindings under <code>SPC m g
 </div>
 </div>
 
-<div id="outline-container-org676f6fd" class="outline-2">
+<div id="outline-container-orgf3c529a" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
@@ -445,7 +451,7 @@ available in all language layers based on the lsp layer.
 </p>
 </div>
 
-<div id="outline-container-org9ba2ba3" class="outline-3">
+<div id="outline-container-orge6cbf4d" class="outline-3">
 <h3 id="key-binding-prefixes"><span class="section-number-3">3.1</span> Key binding prefixes</h3>
 <div class="outline-text-3" id="text-key-binding-prefixes">
 <p>
@@ -486,6 +492,12 @@ The key bindings are grouped under the following prefixes:
 <td class="org-left"><code>SPC m G</code></td>
 <td class="org-left">peek</td>
 <td class="org-left">Source navigation (lsp-ui-peek overlay)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m F</code></td>
+<td class="org-left">folder</td>
+<td class="org-left">Add/remove folders from workspace</td>
 </tr>
 
 <tr>
@@ -539,20 +551,20 @@ Some navigation key bindings (i.e. <code>SPC m g</code> / <code>SPC m G</code>) 
 <tr>
 <td class="org-left"><code>SPC m &lt;g/G&gt; h</code></td>
 <td class="org-left">hierarchy</td>
-<td class="org-left">Heirarchy (i.e. call/inheritance hierarchy etc. )</td>
+<td class="org-left">Hierarchy (i.e. call/inheritance hierarchy etc. )</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m &lt;g/G&gt; m</code></td>
 <td class="org-left">member hierarchy</td>
-<td class="org-left">Class/namespace members (functions, nested classes, vars</td>
+<td class="org-left">Class/namespace members (functions, nested classes, vars)</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-org5f131c2" class="outline-3">
+<div id="outline-container-orgc0ce262" class="outline-3">
 <h3 id="core-key-bindings"><span class="section-number-3">3.2</span> Core key bindings</h3>
 <div class="outline-text-3" id="text-core-key-bindings">
 <p>
@@ -578,6 +590,11 @@ The lsp minor mode bindings are:
 <td class="org-left"><code>SPC m = b</code></td>
 <td class="org-left">format buffer (lsp)</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>SPC m = r</code></td>
+<td class="org-left">format region (lsp)</td>
+</tr>
 </tbody>
 <tbody>
 <tr>
@@ -597,7 +614,7 @@ The lsp minor mode bindings are:
 
 <tr>
 <td class="org-left"><code>SPC m g e</code></td>
-<td class="org-left">browse flycheck errors</td>
+<td class="org-left">browse flycheck errors (lsp-treemacs)</td>
 </tr>
 
 <tr>
@@ -628,7 +645,12 @@ The lsp minor mode bindings are:
 
 <tr>
 <td class="org-left"><code>SPC m g s</code></td>
-<td class="org-left">find-workspace-symbol (lsp-ui)</td>
+<td class="org-left">find symbol in project (helm-lsp)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g S</code></td>
+<td class="org-left">find symbol in all projects (helm-lsp)</td>
 </tr>
 
 <tr>
@@ -676,6 +698,11 @@ The lsp minor mode bindings are:
 <td class="org-left"><code>SPC m G n</code></td>
 <td class="org-left">goto next (lsp-ui-peek stack - see Note 2)</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>SPC m G E</code></td>
+<td class="org-left">browse flycheck errors (lsp-ui)</td>
+</tr>
 </tbody>
 <tbody>
 <tr>
@@ -684,6 +711,11 @@ The lsp minor mode bindings are:
 </tr>
 </tbody>
 <tbody>
+<tr>
+<td class="org-left"><code>SPC m b s</code></td>
+<td class="org-left">lsp-shutdown-workspace</td>
+</tr>
+
 <tr>
 <td class="org-left"><code>SPC m b r</code></td>
 <td class="org-left">lsp-restart-workspace</td>
@@ -695,8 +727,8 @@ The lsp minor mode bindings are:
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m b c</code></td>
-<td class="org-left">lsp-capabilities</td>
+<td class="org-left"><code>SPC m b d</code></td>
+<td class="org-left">lsp-describe-session</td>
 </tr>
 </tbody>
 <tbody>
@@ -730,6 +762,27 @@ The lsp minor mode bindings are:
 <td class="org-left"><code>SPC m T I</code></td>
 <td class="org-left">toggle symbol info overlay duplicates</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>SPC m T l</code></td>
+<td class="org-left">toggle lenses</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m F r</code></td>
+<td class="org-left">Remove workspace folder</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m F a</code></td>
+<td class="org-left">Add workspace folder</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m F s</code></td>
+<td class="org-left">Switch workspace folder</td>
+</tr>
 </tbody>
 </table>
 
@@ -740,7 +793,7 @@ Note 2: There is a window local jump list dedicated to cross references.
 </div>
 </div>
 
-<div id="outline-container-org69f1d68" class="outline-3">
+<div id="outline-container-org73678c9" class="outline-3">
 <h3 id="language-specific-key-binding-extensions"><span class="section-number-3">3.3</span> Language-specific key binding extensions</h3>
 <div class="outline-text-3" id="text-language-specific-key-binding-extensions">
 <p>
@@ -750,7 +803,7 @@ in a manner consistent with the <code>lsp-navigation</code> setting.
 </p>
 </div>
 
-<div id="outline-container-orgdd2d380" class="outline-4">
+<div id="outline-container-org16f74b2" class="outline-4">
 <h4 id="spacemacslsp-define-extensions-layer-name-kind-request-optional-extra-parameters"><span class="section-number-4">3.3.1</span> <code>spacemacs/lsp-define-extensions layer-name kind request &amp;optional extra-parameters</code></h4>
 <div class="outline-text-4" id="text-spacemacslsp-define-extensions-layer-name-kind-request-optional-extra-parameters">
 <p>
@@ -774,7 +827,7 @@ This defines the following interactive functions:
 </div>
 </div>
 
-<div id="outline-container-orga3bed04" class="outline-4">
+<div id="outline-container-orgca74057" class="outline-4">
 <h4 id="spacemacslsp-bind-extensions-for-mode"><span class="section-number-4">3.3.2</span> <code>spacemacs/lsp-bind-extensions-for-mode</code></h4>
 <div class="outline-text-4" id="text-spacemacslsp-bind-extensions-for-mode">
 <p>
@@ -837,14 +890,14 @@ etc.
 </div>
 </div>
 
-<div id="outline-container-orgbfbd582" class="outline-2">
+<div id="outline-container-orgb21b43a" class="outline-2">
 <h2 id="diagnostics"><span class="section-number-2">4</span> Diagnostics</h2>
 <div class="outline-text-2" id="text-diagnostics">
 <p>
 If some features do not work as expected, here is a common check list.
 </p>
 <ul class="org-ul">
-<li><code>M-x lsp-capabilities</code> If the LSP workspace is initialized correctly</li>
+<li><code>M-x lsp-describe-session</code> If the LSP workspace is initialized correctly</li>
 <li><code>M-: xref-backend-functions</code> should be <code>(lsp--xref-backend)</code> for cross
 references</li>
 <li><code>M-: completion-at-point-functions</code> should be <code>(lsp-completion-at-point)</code> for
@@ -853,7 +906,7 @@ completion</li>
 </div>
 </div>
 
-<div id="outline-container-org723e5d3" class="outline-2">
+<div id="outline-container-orge6e6022" class="outline-2">
 <h2 id="references"><span class="section-number-2">5</span> References</h2>
 <div class="outline-text-2" id="text-references">
 <ul class="org-ul">
@@ -865,7 +918,7 @@ completion</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-01-22 Tue 20:42</p>
+<p class="date">Created: 2019-05-17 Fri 23:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

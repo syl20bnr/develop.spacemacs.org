@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-22 Tue 20:42 -->
+<!-- 2019-05-17 Fri 23:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SQL layer</title>
@@ -314,7 +314,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org3ef9746" class="outline-2">
+<div id="outline-container-orgc81bfbc" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -322,7 +322,7 @@ This layer adds support for a wide range of SQL dialects to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-org14c13ed" class="outline-3">
+<div id="outline-container-org1935b5a" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -344,6 +344,7 @@ This layer adds support for a wide range of SQL dialects to Spacemacs.
 <li>Vertica</li>
 </ul></li>
 <li>Syntax-checking via <a href="https://github.com/purcell/sqlint">sqlint</a> for ANSI SQL.</li>
+<li>Format code with <code>sqlfmt</code></li>
 <li>Snippet insertion for the more general SQL constructs.</li>
 <li>REPL support via <code>SQLi</code> buffer.</li>
 <li>Automatic capitalization of keywords.</li>
@@ -352,7 +353,7 @@ This layer adds support for a wide range of SQL dialects to Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-orge64330a" class="outline-2">
+<div id="outline-container-orgdf98a50" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -371,7 +372,7 @@ For syntax-checking you also need to install <a href="https://www.ruby-lang.org/
 </div>
 </div>
 
-<div id="outline-container-org69090ea" class="outline-3">
+<div id="outline-container-org1a852c6" class="outline-3">
 <h3 id="sql-keywords-capitalization"><span class="section-number-3">2.1</span> SQL Keywords Capitalization</h3>
 <div class="outline-text-3" id="text-sql-keywords-capitalization">
 <p>
@@ -392,7 +393,7 @@ variable <code>sql-capitalize-keywords</code> to <code>t</code>.
 </div>
 </div>
 
-<div id="outline-container-org58b0705" class="outline-4">
+<div id="outline-container-orgd45a910" class="outline-4">
 <h4 id="sql-interactive-mode"><span class="section-number-4">2.1.1</span> SQL Interactive Mode</h4>
 <div class="outline-text-4" id="text-sql-interactive-mode">
 <p>
@@ -402,7 +403,7 @@ you can set the variable <code>sql-capitalize-keywords-disable-interactive</code
 </div>
 </div>
 
-<div id="outline-container-org8e1d0d0" class="outline-4">
+<div id="outline-container-org5464c52" class="outline-4">
 <h4 id="blacklisting-keywords"><span class="section-number-4">2.1.2</span> Blacklisting keywords</h4>
 <div class="outline-text-4" id="text-blacklisting-keywords">
 <p>
@@ -428,7 +429,7 @@ column and NAME is non-reserved SQL keyword.
 </div>
 </div>
 
-<div id="outline-container-org2cd3dda" class="outline-3">
+<div id="outline-container-org5f138da" class="outline-3">
 <h3 id="auto-indent"><span class="section-number-3">2.2</span> Auto-Indent</h3>
 <div class="outline-text-3" id="text-auto-indent">
 <p>
@@ -446,12 +447,12 @@ auto-indent by setting the variable <code>sql-auto-indent</code> to <code>nil</c
 </div>
 </div>
 
-<div id="outline-container-org87076cc" class="outline-2">
+<div id="outline-container-org4a0d9cd" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgc33f91a" class="outline-3">
+<div id="outline-container-org19c6270" class="outline-3">
 <h3 id="highlighting"><span class="section-number-3">3.1</span> Highlighting</h3>
 <div class="outline-text-3" id="text-highlighting">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -478,7 +479,7 @@ auto-indent by setting the variable <code>sql-auto-indent</code> to <code>nil</c
 </div>
 </div>
 
-<div id="outline-container-org9a757e7" class="outline-3">
+<div id="outline-container-orgf2b5c11" class="outline-3">
 <h3 id="inferior-process-interactions-sqli"><span class="section-number-3">3.2</span> Inferior Process Interactions (SQLi)</h3>
 <div class="outline-text-3" id="text-inferior-process-interactions-sqli">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -519,7 +520,7 @@ auto-indent by setting the variable <code>sql-auto-indent</code> to <code>nil</c
 </table>
 </div>
 
-<div id="outline-container-org9ef1f54" class="outline-4">
+<div id="outline-container-org378feee" class="outline-4">
 <h4 id="send-sql-queries-to-sqli"><span class="section-number-4">3.2.1</span> Send SQL queries to SQLi:</h4>
 <div class="outline-text-4" id="text-send-sql-queries-to-sqli">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -587,7 +588,7 @@ auto-indent by setting the variable <code>sql-auto-indent</code> to <code>nil</c
 </div>
 </div>
 
-<div id="outline-container-orgf7ba976" class="outline-3">
+<div id="outline-container-org81f0815" class="outline-3">
 <h3 id="sqli-buffer"><span class="section-number-3">3.3</span> SQLi buffer</h3>
 <div class="outline-text-3" id="text-sqli-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -619,7 +620,7 @@ auto-indent by setting the variable <code>sql-auto-indent</code> to <code>nil</c
 </div>
 </div>
 
-<div id="outline-container-org17f23a1" class="outline-3">
+<div id="outline-container-org6085b5f" class="outline-3">
 <h3 id="code-formatting"><span class="section-number-3">3.4</span> Code Formatting</h3>
 <div class="outline-text-3" id="text-code-formatting">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -643,7 +644,7 @@ auto-indent by setting the variable <code>sql-auto-indent</code> to <code>nil</c
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-01-22 Tue 20:42</p>
+<p class="date">Created: 2019-05-17 Fri 23:23</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

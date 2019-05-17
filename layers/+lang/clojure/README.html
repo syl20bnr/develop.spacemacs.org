@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-22 Tue 20:43 -->
+<!-- 2019-05-17 Fri 23:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Clojure layer</title>
@@ -299,7 +299,8 @@ for the JavaScript code in this tag.
 <li><a href="#usage">3. Usage</a>
 <ul>
 <li><a href="#cheatsheet">3.1. Cheatsheet</a></li>
-<li><a href="#structuraly-safe-editing">3.2. Structuraly safe editing</a></li>
+<li><a href="#linting">3.2. Linting</a></li>
+<li><a href="#structuraly-safe-editing">3.3. Structuraly safe editing</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">4. Key bindings</a>
@@ -348,7 +349,7 @@ for the JavaScript code in this tag.
 <img src="img/clojure.png" alt="clojure.png" /> <img src="img/cider.png" alt="cider.png" />
 </p>
 
-<div id="outline-container-org7d02b75" class="outline-2">
+<div id="outline-container-orgdb1ca26" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -356,13 +357,14 @@ This layer adds support for <a href="https://clojure.org/">Clojure</a> language 
 </p>
 </div>
 
-<div id="outline-container-org05b6416" class="outline-3">
+<div id="outline-container-orgc963dc2" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>REPL via <a href="https://github.com/clojure-emacs/cider">CIDER</a></li>
 <li>Code formatting via <a href="https://github.com/clojure-emacs/cider">CIDER</a> using <a href="https://github.com/weavejester/cljfmt">Cljfmt</a></li>
 <li>Refactoring via <a href="https://github.com/clojure-emacs/clj-refactor.el">clj-refactor</a></li>
+<li>Linting via <a href="https://github.com/clojure-emacs/squiggly-clojure">squiggly-clojure</a></li>
 <li>Aligning of code forms via <a href="https://github.com/clojure-emacs/clojure-mode">clojure-mode</a></li>
 <li>Debugging with <a href="https://github.com/clojure-emacs/sayid">sayid</a></li>
 <li>Clojure cheatsheet</li>
@@ -372,12 +374,12 @@ This layer adds support for <a href="https://clojure.org/">Clojure</a> language 
 </div>
 </div>
 
-<div id="outline-container-org41cf75e" class="outline-2">
+<div id="outline-container-org6d37ce0" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org6a8d130" class="outline-3">
+<div id="outline-container-orgfaa8af7" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -388,7 +390,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org514c2ed" class="outline-3">
+<div id="outline-container-org4d0aab5" class="outline-3">
 <h3 id="pretty-symbols"><span class="section-number-3">2.2</span> Pretty Symbols</h3>
 <div class="outline-text-3" id="text-pretty-symbols">
 <p>
@@ -418,7 +420,7 @@ Or set this variable when loading the configuration layer:
 </div>
 </div>
 
-<div id="outline-container-org06a1a71" class="outline-3">
+<div id="outline-container-org6326f75" class="outline-3">
 <h3 id="enabling-sayid-or-clj-refactor"><span class="section-number-3">2.3</span> Enabling sayid or clj-refactor</h3>
 <div class="outline-text-3" id="text-enabling-sayid-or-clj-refactor">
 <p>
@@ -456,7 +458,7 @@ injected when jacking in CIDER.
 </div>
 </div>
 
-<div id="outline-container-org6d2f360" class="outline-3">
+<div id="outline-container-orgb2e3b6e" class="outline-3">
 <h3 id="starting-clojure-manually-outside-of-emacs"><span class="section-number-3">2.4</span> Starting Clojure manually (outside of Emacs)</h3>
 <div class="outline-text-3" id="text-starting-clojure-manually-outside-of-emacs">
 <p>
@@ -480,11 +482,11 @@ are enabled.
 </p>
 </div>
 
-<div id="outline-container-org8d0b2bb" class="outline-4">
+<div id="outline-container-orgb948934" class="outline-4">
 <h4 id="quick-start-with-boot"><span class="section-number-4">2.4.1</span> Quick Start with boot</h4>
 <div class="outline-text-4" id="text-quick-start-with-boot">
 <ul class="org-ul">
-<li>Install <code>boot</code> (see <a href="https://github.com/boot-clj/boot#user-content-install">https://github.com/boot-clj/boot#user-content-install</a>)</li>
+<li>Install <code>boot</code> 2.8.2 or newer (see <a href="https://github.com/boot-clj/boot#user-content-install">https://github.com/boot-clj/boot#user-content-install</a>)</li>
 <li><p>
 Create a file <code>~/.boot/profile.boot</code> with the following content:
 </p>
@@ -496,7 +498,7 @@ Create a file <code>~/.boot/profile.boot</code> with the following content:
        ;; When running an older version of CIDER (pre 0.18), use the
        ;; version that best matches M-x cider-version. For versions since
        ;; 0.18.0 use whatever version is the most recent.
-       '[cider/cider-nrepl "0.19.0-SNAPSHOT"]
+       '[cider/cider-nrepl "0.21.1"]
 
        ;; Only necessary when using clj-refactor
        '[refactor-nrepl "2.4.0"]
@@ -514,11 +516,11 @@ Create a file <code>~/.boot/profile.boot</code> with the following content:
 </div>
 </div>
 
-<div id="outline-container-org5b2d522" class="outline-4">
+<div id="outline-container-org8a7841b" class="outline-4">
 <h4 id="quick-start-with-lein"><span class="section-number-4">2.4.2</span> Quick Start with lein</h4>
 <div class="outline-text-4" id="text-quick-start-with-lein">
 <ul class="org-ul">
-<li>Install <code>lein</code> version 2.5.2 or newer (see <a href="https://leiningen.org/#install">https://leiningen.org/#install</a>)</li>
+<li>Install <code>lein</code> version 2.9.0 or newer (see <a href="https://leiningen.org/#install">https://leiningen.org/#install</a>)</li>
 <li><p>
 Create a file <code>~/.lein/profiles.clj</code> with the following content:
 </p>
@@ -528,7 +530,7 @@ Create a file <code>~/.lein/profiles.clj</code> with the following content:
  {:plugins [;; When running an older version of CIDER (pre 0.18), use the
             ;; version that best matches M-x cider-version. For versions since
             ;; 0.18.0 use whatever version is the most recent.
-            [cider/cider-nrepl "0.19.0-SNAPSHOT"]
+            [cider/cider-nrepl "0.21.1"]
 
             ;; Only necessary when using clj-refactor
             [refactor-nrepl "2.4.0"]
@@ -549,7 +551,7 @@ Create a file <code>~/.lein/profiles.clj</code> with the following content:
 </div>
 </div>
 
-<div id="outline-container-org3d4e45d" class="outline-4">
+<div id="outline-container-org81941c8" class="outline-4">
 <h4 id="more-details"><span class="section-number-4">2.4.3</span> More details</h4>
 <div class="outline-text-4" id="text-more-details">
 <p>
@@ -564,12 +566,12 @@ More info regarding installation of nREPL middleware can be found here:
 </div>
 </div>
 
-<div id="outline-container-orgfd201a0" class="outline-2">
+<div id="outline-container-org079d892" class="outline-2">
 <h2 id="usage"><span class="section-number-2">3</span> Usage</h2>
 <div class="outline-text-2" id="text-usage">
 </div>
 
-<div id="outline-container-org5d88505" class="outline-3">
+<div id="outline-container-org3d56302" class="outline-3">
 <h3 id="cheatsheet"><span class="section-number-3">3.1</span> Cheatsheet</h3>
 <div class="outline-text-3" id="text-cheatsheet">
 <p>
@@ -585,8 +587,29 @@ some functions that deal with sorting maps.
 </div>
 </div>
 
-<div id="outline-container-org2359f4f" class="outline-3">
-<h3 id="structuraly-safe-editing"><span class="section-number-3">3.2</span> Structuraly safe editing</h3>
+<div id="outline-container-org53233f4" class="outline-3">
+<h3 id="linting"><span class="section-number-3">3.2</span> Linting</h3>
+<div class="outline-text-3" id="text-linting">
+<p>
+Linting works via flycheck and disabled by default.
+You can enable it like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> clojure-enable-linters t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Make sure to read the <a href="https://github.com/clojure-emacs/squiggly-clojure#warnings">warnings section</a>.
+If you have a problem peek into <a href="https://github.com/clojure-emacs/squiggly-clojure#debugging-and-bug-reporting">debugging and bug reporting</a> then try to reproduce in the <a href="https://github.com/clojure-emacs/squiggly-clojure/tree/master/sample-project">sample project</a>.
+NOTE: With the default linter configs you should add <code>org.clojure/core.typed</code> to the development dependencies.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1b6827f" class="outline-3">
+<h3 id="structuraly-safe-editing"><span class="section-number-3">3.3</span> Structuraly safe editing</h3>
 <div class="outline-text-3" id="text-structuraly-safe-editing">
 <p>
 This layer adds support for <code>evil-cleverparens</code> which allows to safely edit
@@ -624,12 +647,12 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </div>
 </div>
 
-<div id="outline-container-orgaffc19b" class="outline-2">
+<div id="outline-container-orgca04c97" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orga054b4e" class="outline-3">
+<div id="outline-container-org814b891" class="outline-3">
 <h3 id="working-with-clojure-files-barfage-slurpage--more"><span class="section-number-3">4.1</span> Working with clojure files (barfage, slurpage &amp; more)</h3>
 <div class="outline-text-3" id="text-working-with-clojure-files-barfage-slurpage--more">
 <p>
@@ -645,12 +668,12 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org5ca009b" class="outline-3">
+<div id="outline-container-org7bc1dea" class="outline-3">
 <h3 id="leader"><span class="section-number-3">4.2</span> Leader</h3>
 <div class="outline-text-3" id="text-leader">
 </div>
 
-<div id="outline-container-org476c04b" class="outline-4">
+<div id="outline-container-orgf43804a" class="outline-4">
 <h4 id="documentation"><span class="section-number-4">4.2.1</span> Documentation</h4>
 <div class="outline-text-4" id="text-documentation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -707,7 +730,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-orgb5f2e4c" class="outline-4">
+<div id="outline-container-org4e96fa1" class="outline-4">
 <h4 id="evaluation"><span class="section-number-4">4.2.2</span> Evaluation</h4>
 <div class="outline-text-4" id="text-evaluation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -771,6 +794,11 @@ As this state works the same for all files, the documentation is in global
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC m e u</code></td>
+<td class="org-left">Undefine a symbol from the current namespace</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m e w</code></td>
 <td class="org-left">eval last sexp and replace with result</td>
 </tr>
@@ -779,7 +807,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org4498308" class="outline-4">
+<div id="outline-container-orgc89ff6c" class="outline-4">
 <h4 id="goto"><span class="section-number-4">4.2.3</span> Goto</h4>
 <div class="outline-text-4" id="text-goto">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -841,7 +869,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org6543aed" class="outline-4">
+<div id="outline-container-orgf7b2910" class="outline-4">
 <h4 id="repl"><span class="section-number-4">4.2.4</span> REPL</h4>
 <div class="outline-text-4" id="text-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -963,7 +991,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org138b996" class="outline-4">
+<div id="outline-container-org1059461" class="outline-4">
 <h4 id="tests"><span class="section-number-4">4.2.5</span> Tests</h4>
 <div class="outline-text-4" id="text-tests">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1000,7 +1028,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org78f82a9" class="outline-4">
+<div id="outline-container-org41a73b4" class="outline-4">
 <h4 id="toggles"><span class="section-number-4">4.2.6</span> Toggles</h4>
 <div class="outline-text-4" id="text-toggles">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1047,7 +1075,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-orgff34064" class="outline-4">
+<div id="outline-container-org28a2143" class="outline-4">
 <h4 id="debugging"><span class="section-number-4">4.2.7</span> Debugging</h4>
 <div class="outline-text-4" id="text-debugging">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1199,7 +1227,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org96d8a79" class="outline-4">
+<div id="outline-container-orgf1bc572" class="outline-4">
 <h4 id="refactoring"><span class="section-number-4">4.2.8</span> Refactoring</h4>
 <div class="outline-text-4" id="text-refactoring">
 <p>
@@ -1476,7 +1504,7 @@ The following refactorings require cljr-refactor to be enabled and generally dep
 </div>
 </div>
 
-<div id="outline-container-org6607388" class="outline-4">
+<div id="outline-container-org705567e" class="outline-4">
 <h4 id="reformatting"><span class="section-number-4">4.2.9</span> Reformatting</h4>
 <div class="outline-text-4" id="text-reformatting">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1513,7 +1541,7 @@ The following refactorings require cljr-refactor to be enabled and generally dep
 </div>
 </div>
 
-<div id="outline-container-orgdc64fd3" class="outline-4">
+<div id="outline-container-org0844282" class="outline-4">
 <h4 id="profiling"><span class="section-number-4">4.2.10</span> Profiling</h4>
 <div class="outline-text-4" id="text-profiling">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1571,7 +1599,7 @@ The following refactorings require cljr-refactor to be enabled and generally dep
 </div>
 </div>
 
-<div id="outline-container-org42de04f" class="outline-3">
+<div id="outline-container-orgf30fd05" class="outline-3">
 <h3 id="cider-buffers"><span class="section-number-3">4.3</span> CIDER Buffers</h3>
 <div class="outline-text-3" id="text-cider-buffers">
 <p>
@@ -1579,7 +1607,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </p>
 </div>
 
-<div id="outline-container-orga60cf87" class="outline-4">
+<div id="outline-container-orgfb59a46" class="outline-4">
 <h4 id="cider-repl-mode"><span class="section-number-4">4.3.1</span> cider-repl-mode</h4>
 <div class="outline-text-4" id="text-cider-repl-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1611,7 +1639,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org32e92e1" class="outline-4">
+<div id="outline-container-orgad05db4" class="outline-4">
 <h4 id="stacktrace-mode"><span class="section-number-4">4.3.2</span> stacktrace-mode</h4>
 <div class="outline-text-4" id="text-stacktrace-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1708,7 +1736,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-orgad5c6a1" class="outline-4">
+<div id="outline-container-org2860d78" class="outline-4">
 <h4 id="inspector-mode"><span class="section-number-4">4.3.3</span> inspector-mode</h4>
 <div class="outline-text-4" id="text-inspector-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1770,7 +1798,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org995ea0b" class="outline-4">
+<div id="outline-container-org2abca41" class="outline-4">
 <h4 id="test-report-mode"><span class="section-number-4">4.3.4</span> test-report-mode</h4>
 <div class="outline-text-4" id="text-test-report-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1833,12 +1861,12 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-orgb3d49f4" class="outline-3">
+<div id="outline-container-org130e8df" class="outline-3">
 <h3 id="sayid-buffers"><span class="section-number-3">4.4</span> Sayid Buffers</h3>
 <div class="outline-text-3" id="text-sayid-buffers">
 </div>
 
-<div id="outline-container-org60949c5" class="outline-4">
+<div id="outline-container-org383a7f6" class="outline-4">
 <h4 id="sayid-mode"><span class="section-number-4">4.4.1</span> sayid-mode</h4>
 <div class="outline-text-4" id="text-sayid-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1945,7 +1973,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org1a0831e" class="outline-4">
+<div id="outline-container-org7aa3ccc" class="outline-4">
 <h4 id="sayid-traced-mode"><span class="section-number-4">4.4.2</span> sayid-traced-mode</h4>
 <div class="outline-text-4" id="text-sayid-traced-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2017,7 +2045,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-orgc187b2b" class="outline-4">
+<div id="outline-container-orgf958e86" class="outline-4">
 <h4 id="sayid-pprint"><span class="section-number-4">4.4.3</span> sayid-pprint</h4>
 <div class="outline-text-4" id="text-sayid-pprint">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2066,12 +2094,12 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org49f4c55" class="outline-2">
+<div id="outline-container-orgefe2b65" class="outline-2">
 <h2 id="development-notes"><span class="section-number-2">5</span> Development Notes</h2>
 <div class="outline-text-2" id="text-development-notes">
 </div>
 
-<div id="outline-container-orgd88211a" class="outline-3">
+<div id="outline-container-org7f5bc5e" class="outline-3">
 <h3 id="indentation"><span class="section-number-3">5.1</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
@@ -2086,7 +2114,7 @@ specific vars.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-01-22 Tue 20:43</p>
+<p class="date">Created: 2019-05-17 Fri 23:23</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
