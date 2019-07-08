@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-17 Fri 23:23 -->
+<!-- 2019-07-08 Mon 21:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TypeScript layer</title>
@@ -313,7 +313,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org6d2d847" class="outline-2">
+<div id="outline-container-org41354a4" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -321,7 +321,7 @@ This layer adds support for TypeScript and TSX editing.
 </p>
 </div>
 
-<div id="outline-container-org08781ca" class="outline-3">
+<div id="outline-container-orgcb3e6b0" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -329,7 +329,7 @@ This layer adds support for TypeScript and TSX editing.
 <li>Eldoc-mode</li>
 <li>Documentation at point</li>
 <li>Auto complete</li>
-<li>Flycheck with linter</li>
+<li>Flycheck with either tslint or eslint</li>
 <li>Jump to definition, Jump to type definition</li>
 <li>Find occurrences (Imenu-mode)</li>
 <li>Rename symbol</li>
@@ -341,7 +341,7 @@ This layer adds support for TypeScript and TSX editing.
 </div>
 </div>
 
-<div id="outline-container-org9021c10" class="outline-2">
+<div id="outline-container-org3c0dbdc" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -380,9 +380,20 @@ You can choose formatting tool:
 <p>
 Default is <code>'tide</code>.
 </p>
+
+<p>
+You can choose either tslint (default) or eslint for linting:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>typescript <span class="org-builtin">:variables</span>
+              typescript-linter 'tslint<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
 </div>
 
-<div id="outline-container-org490a4b7" class="outline-3">
+<div id="outline-container-orgce1207b" class="outline-3">
 <h3 id="pre-requisites"><span class="section-number-3">2.1</span> Pre-requisites</h3>
 <div class="outline-text-3" id="text-pre-requisites">
 <p>
@@ -390,13 +401,33 @@ You will need <code>node.js v0.12.0</code> or greater.
 </p>
 
 <p>
-If you want linting run:
+If you want linting with tslint run:
 </p>
 
 <div class="org-src-container">
 <pre class="src src-shell">npm install -g typescript tslint
 </pre>
 </div>
+
+<p>
+If you want linting with eslint run:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">npm install eslint
+</pre>
+</div>
+
+<p>
+We need to use the project-local eslint installation in order to pick up plugins
+and presets installed locally.
+</p>
+
+<p>
+Ensure that the project directory <code>node_modules/.bin</code> is added to the buffer
+local <code>exec_path</code> (see the Javascript layer <a href="../../+lang/javascript/README.html">README</a> documentation for more
+details).
+</p>
 
 <p>
 If you want to use typescript-formatter for formatting run:
@@ -414,7 +445,7 @@ layers are enabled.
 </div>
 </div>
 
-<div id="outline-container-orgf5c5799" class="outline-3">
+<div id="outline-container-org806cb02" class="outline-3">
 <h3 id="choosing-a-backend"><span class="section-number-3">2.2</span> Choosing a backend</h3>
 <div class="outline-text-3" id="text-choosing-a-backend">
 <p>
@@ -447,12 +478,12 @@ Backend can be chosen on a per project basis using directory local variables
 </div>
 </div>
 
-<div id="outline-container-org077ef78" class="outline-2">
+<div id="outline-container-orgfe31415" class="outline-2">
 <h2 id="backends"><span class="section-number-2">3</span> Backends</h2>
 <div class="outline-text-2" id="text-backends">
 </div>
 
-<div id="outline-container-org1a97723" class="outline-3">
+<div id="outline-container-org54d2ecb" class="outline-3">
 <h3 id="tide"><span class="section-number-3">3.1</span> Tide</h3>
 <div class="outline-text-3" id="text-tide">
 <p>
@@ -473,7 +504,7 @@ For example:
 </div>
 </div>
 
-<div id="outline-container-orgb6019ea" class="outline-4">
+<div id="outline-container-org1478619" class="outline-4">
 <h4 id="notes"><span class="section-number-4">3.1.1</span> Notes</h4>
 <div class="outline-text-4" id="text-notes">
 <p>
@@ -490,14 +521,14 @@ Send to playground requires browser.
 </p>
 
 <p>
-Currently tsserver doesn’t pickup tsconfig.json file changes. You might need to
+Currently tsserver doesn't pickup tsconfig.json file changes. You might need to
 restart server after editing it.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org8120bb9" class="outline-3">
+<div id="outline-container-org69b72fc" class="outline-3">
 <h3 id="language-server-protocol"><span class="section-number-3">3.2</span> Language Server Protocol</h3>
 <div class="outline-text-3" id="text-language-server-protocol">
 <p>
@@ -508,12 +539,12 @@ Consult the installation command for the desired language server found at <a hre
 </div>
 </div>
 
-<div id="outline-container-org1014660" class="outline-2">
+<div id="outline-container-org6f86b2f" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org621dfa4" class="outline-3">
+<div id="outline-container-org7b3699a" class="outline-3">
 <h3 id="typescript-major-mode"><span class="section-number-3">4.1</span> Typescript Major Mode</h3>
 <div class="outline-text-3" id="text-typescript-major-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -553,12 +584,12 @@ Consult the installation command for the desired language server found at <a hre
 
 <tr>
 <td class="org-left"><code>SPC m g g</code></td>
-<td class="org-left">jump to entity’s definition</td>
+<td class="org-left">jump to entity's definition</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m g t</code></td>
-<td class="org-left">jump to entity’s type definition</td>
+<td class="org-left">jump to entity's type definition</td>
 </tr>
 
 <tr>
@@ -600,7 +631,7 @@ Consult the installation command for the desired language server found at <a hre
 </div>
 </div>
 
-<div id="outline-container-orgdf06cf4" class="outline-3">
+<div id="outline-container-org7ec8a0d" class="outline-3">
 <h3 id="reference-major-mode"><span class="section-number-3">4.2</span> Reference Major Mode</h3>
 <div class="outline-text-3" id="text-reference-major-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -640,7 +671,7 @@ Consult the installation command for the desired language server found at <a hre
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-05-17 Fri 23:23</p>
+<p class="date">Created: 2019-07-08 Mon 21:00</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

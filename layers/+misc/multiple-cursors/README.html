@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-17 Fri 23:22 -->
+<!-- 2019-07-08 Mon 21:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>multiple-cursors layer</title>
@@ -287,18 +287,24 @@ for the JavaScript code in this tag.
 <li><a href="#key-bindings">4. Key bindings</a>
 <ul>
 <li><a href="#evil-mc">4.1. <code>evil-mc</code></a></li>
+<li><a href="#multiple-cursors">4.2. <code>multiple-cursors</code></a></li>
+</ul>
+</li>
+<li><a href="#notes">5. Notes</a>
+<ul>
+<li><a href="#multiple-cursors-1">5.1. <code>multiple-cursors</code></a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org53fd607" class="outline-2">
+<div id="outline-container-orgaab5312" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 </div>
 
-<div id="outline-container-orgae3f6be" class="outline-3">
+<div id="outline-container-orgdcbcf72" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -308,7 +314,7 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgc39f6ee" class="outline-2">
+<div id="outline-container-org2643afe" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -319,12 +325,20 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgcdfc1f3" class="outline-2">
+<div id="outline-container-org6420d83" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
-Currently the only supported backend is <code>evil-mc</code>, but more backends will be
-available in the future.
+Currently supported backends are:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/gabesoft/evil-mc">evil-mc</a> (default)</li>
+<li><a href="https://github.com/magnars/multiple-cursors.el">mc</a></li>
+</ul>
+
+<p>
+To set your choice of backend, configure <code>multiple-cursors-backend</code> variable of
+the layer.
 </p>
 
 <div class="org-src-container">
@@ -335,12 +349,12 @@ available in the future.
 </div>
 </div>
 
-<div id="outline-container-org5b790c4" class="outline-2">
+<div id="outline-container-org711e940" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org93c5eb8" class="outline-3">
+<div id="outline-container-org40a5a8a" class="outline-3">
 <h3 id="evil-mc"><span class="section-number-3">4.1</span> <code>evil-mc</code></h3>
 <div class="outline-text-3" id="text-evil-mc">
 <p>
@@ -491,11 +505,142 @@ For easy navigation you also have the following:
 </table>
 </div>
 </div>
+
+<div id="outline-container-orgf5e9403" class="outline-3">
+<h3 id="multiple-cursors"><span class="section-number-3">4.2</span> <code>multiple-cursors</code></h3>
+<div class="outline-text-3" id="text-multiple-cursors">
+<p>
+The <code>multiple-cursors</code> backend provides the following key bindings to
+insert new cursors:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC s m a</code></td>
+<td class="org-left">mc/mark-all-dwim</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC s m b</code></td>
+<td class="org-left">mc/mark-all-like-this</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC s m m</code></td>
+<td class="org-left">mc/mark-more-like-this-extended</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC s m r</code></td>
+<td class="org-left">mc/edit-lines</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+These special bindings manipulate text under cursors:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC s m s l</code></td>
+<td class="org-left">mc/insert-letters</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC s m s m</code></td>
+<td class="org-left">mc/mark-sgml-tag-pair</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC s m s n</code></td>
+<td class="org-left">mc/insert-numbers</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC s m s r</code></td>
+<td class="org-left">set-rectangular-region-anchor</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC s m s s</code></td>
+<td class="org-left">mc/sort-regions</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC s m s t</code></td>
+<td class="org-left">mc/reverse-regions</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org97a85f3" class="outline-2">
+<h2 id="notes"><span class="section-number-2">5</span> Notes</h2>
+<div class="outline-text-2" id="text-notes">
+</div>
+
+<div id="outline-container-org5dfd40d" class="outline-3">
+<h3 id="multiple-cursors-1"><span class="section-number-3">5.1</span> <code>multiple-cursors</code></h3>
+<div class="outline-text-3" id="text-multiple-cursors-1">
+<p>
+Some commands executed during <code>multiple-cursors</code> enabled may lead Emacs to go frenzy.
+Commands like window manipulation will be executed multiple times if <code>mc</code> is active.
+Not all Emacs commands may be compatible with <code>mc</code>.
+</p>
+
+<p>
+To run interactive <code>M-x</code> commands with <code>mc</code>, run the command first. This will result
+with application of the command to the leading cursor. Then press <code>C-:</code> to apply the
+command to consequtive cursors. If this is not the case or you want a command to be
+executed only once, configure the <code>mc/cmds-to-run-once</code> variable of the layer like
+in the following example.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>multiple-cursors <span class="org-builtin">:variables</span>
+                    multiple-cursors-backend 'mc
+                    mc/cmds-to-run-once '<span class="org-rainbow-delimiters-depth-4">(</span>upcase-region<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-05-17 Fri 23:22</p>
+<p class="date">Created: 2019-07-08 Mon 21:00</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

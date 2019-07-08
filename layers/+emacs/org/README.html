@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-17 Fri 23:22 -->
+<!-- 2019-07-08 Mon 21:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Org layer</title>
@@ -300,6 +300,7 @@ for the JavaScript code in this tag.
 <li><a href="#mode-line-support">4.12. Mode line support</a></li>
 <li><a href="#sticky-header-support">4.13. Sticky header support</a></li>
 <li><a href="#epub-support">4.14. Epub support</a></li>
+<li><a href="#jira-support">4.15. Jira support</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">5. Key bindings</a>
@@ -338,6 +339,7 @@ for the JavaScript code in this tag.
 <li><a href="#visualization-bindings">5.19.3. Visualization bindings</a></li>
 </ul>
 </li>
+<li><a href="#org-jira">5.20. Org-jira</a></li>
 </ul>
 </li>
 </ul>
@@ -349,7 +351,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org92d7ff0" class="outline-2">
+<div id="outline-container-orgf48f352" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -357,7 +359,7 @@ This layer enables <a href="http://orgmode.org/">org mode</a> for Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-orgce1522b" class="outline-3">
+<div id="outline-container-orgc76baec" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -373,7 +375,7 @@ This layer enables <a href="http://orgmode.org/">org mode</a> for Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-orgc28780e" class="outline-2">
+<div id="outline-container-org64f9b64" class="outline-2">
 <h2 id="bibtex"><span class="section-number-2">2</span> BibTeX</h2>
 <div class="outline-text-2" id="text-bibtex">
 <p>
@@ -383,7 +385,7 @@ the <a href="../../+lang/bibtex/README.html">BibTeX layer</a>.
 </div>
 </div>
 
-<div id="outline-container-org2b515ee" class="outline-2">
+<div id="outline-container-org32fffd7" class="outline-2">
 <h2 id="important-note"><span class="section-number-2">3</span> Important Note</h2>
 <div class="outline-text-2" id="text-important-note">
 <p>
@@ -420,12 +422,12 @@ More details can be found <a href="https://github.com/syl20bnr/spacemacs/issues/
 </div>
 </div>
 
-<div id="outline-container-orgdc218fc" class="outline-2">
+<div id="outline-container-org2400b1d" class="outline-2">
 <h2 id="install"><span class="section-number-2">4</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org6779dc2" class="outline-3">
+<div id="outline-container-org980092d" class="outline-3">
 <h3 id="layer"><span class="section-number-3">4.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -436,7 +438,7 @@ add the <code>org</code> entry.
 </div>
 </div>
 
-<div id="outline-container-org5b0608f" class="outline-3">
+<div id="outline-container-org8c8e7da" class="outline-3">
 <h3 id="github-support"><span class="section-number-3">4.2</span> Github support</h3>
 <div class="outline-text-3" id="text-github-support">
 <p>
@@ -452,7 +454,7 @@ flavored markdown set the variable <code>org-enable-github-support</code> to <co
 </div>
 </div>
 
-<div id="outline-container-org5762e20" class="outline-3">
+<div id="outline-container-org19b6f54" class="outline-3">
 <h3 id="twitter-bootstrap-support"><span class="section-number-3">4.3</span> Twitter Bootstrap support</h3>
 <div class="outline-text-3" id="text-twitter-bootstrap-support">
 <p>
@@ -470,7 +472,7 @@ This would install the <a href="https://github.com/marsmining/ox-twbs">ox-twbs</
 </div>
 </div>
 
-<div id="outline-container-org5d4a379" class="outline-3">
+<div id="outline-container-orgd933469" class="outline-3">
 <h3 id="gnuplot-support"><span class="section-number-3">4.4</span> Gnuplot support</h3>
 <div class="outline-text-3" id="text-gnuplot-support">
 <p>
@@ -486,7 +488,7 @@ the <code>gnuplot</code> package to your <code>dotspacemacs-excluded-packages</c
 </div>
 </div>
 
-<div id="outline-container-org4ca65b2" class="outline-3">
+<div id="outline-container-org7e3ca59" class="outline-3">
 <h3 id="revealjs-support"><span class="section-number-3">4.5</span> Reveal.js support</h3>
 <div class="outline-text-3" id="text-revealjs-support">
 <p>
@@ -512,12 +514,12 @@ Alternatively, add the following line to each <code>.org</code> file you want to
 </p>
 
 <pre class="example">
-#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/3.0.0/
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@3.8.0
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org869879c" class="outline-3">
+<div id="outline-container-org4834f14" class="outline-3">
 <h3 id="org-journal-support"><span class="section-number-3">4.6</span> Org-journal support</h3>
 <div class="outline-text-3" id="text-org-journal-support">
 <p>
@@ -630,7 +632,7 @@ For example:
 </div>
 </div>
 
-<div id="outline-container-orgeae2fb5" class="outline-3">
+<div id="outline-container-org5934ff7" class="outline-3">
 <h3 id="hugo-support"><span class="section-number-3">4.7</span> Hugo support</h3>
 <div class="outline-text-3" id="text-hugo-support">
 <p>
@@ -648,7 +650,7 @@ To install the Org exporter <a href="https://ox-hugo.scripter.co">ox-hugo</a> th
 </div>
 </div>
 
-<div id="outline-container-orgd895316" class="outline-3">
+<div id="outline-container-orge778e23" class="outline-3">
 <h3 id="trello-support"><span class="section-number-3">4.8</span> Trello support</h3>
 <div class="outline-text-3" id="text-trello-support">
 <p>
@@ -664,7 +666,7 @@ To install Trello support set the variable <code>org-enable-trello-support</code
 </div>
 </div>
 
-<div id="outline-container-org074eade" class="outline-3">
+<div id="outline-container-org7e918a1" class="outline-3">
 <h3 id="different-bullets"><span class="section-number-3">4.9</span> Different bullets</h3>
 <div class="outline-text-3" id="text-different-bullets">
 <p>
@@ -689,7 +691,7 @@ You can disable the fancy bullets entirely by adding <code>org-bullets</code> to
 </div>
 </div>
 
-<div id="outline-container-org5d6299b" class="outline-3">
+<div id="outline-container-orgb7683e2" class="outline-3">
 <h3 id="project-support"><span class="section-number-3">4.10</span> Project support</h3>
 <div class="outline-text-3" id="text-project-support">
 <p>
@@ -722,7 +724,7 @@ the following snippet.
 </div>
 </div>
 
-<div id="outline-container-org7fa79f1" class="outline-3">
+<div id="outline-container-org7561cb3" class="outline-3">
 <h3 id="org-brain-support"><span class="section-number-3">4.11</span> Org-brain support</h3>
 <div class="outline-text-3" id="text-org-brain-support">
 <p>
@@ -732,7 +734,7 @@ package documentation</a> for more information.
 </div>
 </div>
 
-<div id="outline-container-orgb474e7f" class="outline-3">
+<div id="outline-container-orgc4ffc44" class="outline-3">
 <h3 id="mode-line-support"><span class="section-number-3">4.12</span> Mode line support</h3>
 <div class="outline-text-3" id="text-mode-line-support">
 <p>
@@ -751,7 +753,7 @@ To permanently enable mode line display of org clock, add this snippet to your
 </div>
 </div>
 
-<div id="outline-container-org5c81701" class="outline-3">
+<div id="outline-container-org4c7487d" class="outline-3">
 <h3 id="sticky-header-support"><span class="section-number-3">4.13</span> Sticky header support</h3>
 <div class="outline-text-3" id="text-sticky-header-support">
 <p>
@@ -767,7 +769,7 @@ To install sticky header support set the variable <code>org-enable-sticky-header
 </div>
 </div>
 
-<div id="outline-container-org5c8aa19" class="outline-3">
+<div id="outline-container-org7439737" class="outline-3">
 <h3 id="epub-support"><span class="section-number-3">4.14</span> Epub support</h3>
 <div class="outline-text-3" id="text-epub-support">
 <p>
@@ -783,14 +785,43 @@ the variable <code>org-enable-epub-support</code> to <code>t</code>.
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgbffc014" class="outline-3">
+<h3 id="jira-support"><span class="section-number-3">4.15</span> Jira support</h3>
+<div class="outline-text-3" id="text-jira-support">
+<p>
+To bring Jira and OrgMode together over <a href="https://github.com/ahungry/org-jira">org-jira</a> set the variable
+<code>org-enable-jira-support</code> to <code>t</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
+       org-enable-jira-support t
+       jiralib-url <span class="org-string">"https://yourcompany.atlassian.net:443"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 
-<div id="outline-container-orgf2e1e05" class="outline-2">
+<p>
+If you would like to avoid being prompted for your login and password each time
+you connect, add your authentication credentials to <code>~/.authinfo.gpg</code> or
+<code>~/.authinfo</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-authinfo">machine yourcompany.atlassian.net login you@example.com password yourPassword port 443
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9ebae7d" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org2e3c3e8" class="outline-3">
+<div id="outline-container-org22d6652" class="outline-3">
 <h3 id="starting-org-mode"><span class="section-number-3">5.1</span> Starting org-mode</h3>
 <div class="outline-text-3" id="text-starting-org-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -912,7 +943,7 @@ the variable <code>org-enable-epub-support</code> to <code>t</code>.
 </div>
 </div>
 
-<div id="outline-container-orgc22526d" class="outline-3">
+<div id="outline-container-org2b8f31b" class="outline-3">
 <h3 id="toggles"><span class="section-number-3">5.2</span> Toggles</h3>
 <div class="outline-text-3" id="text-toggles">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -974,7 +1005,7 @@ the variable <code>org-enable-epub-support</code> to <code>t</code>.
 </div>
 </div>
 
-<div id="outline-container-org35d9497" class="outline-3">
+<div id="outline-container-org7cb44a2" class="outline-3">
 <h3 id="org-mode"><span class="section-number-3">5.3</span> Org-mode</h3>
 <div class="outline-text-3" id="text-org-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1176,7 +1207,7 @@ the variable <code>org-enable-epub-support</code> to <code>t</code>.
 </div>
 </div>
 
-<div id="outline-container-org5f897af" class="outline-3">
+<div id="outline-container-orgd6f19bf" class="outline-3">
 <h3 id="org-with-evil-org-mode"><span class="section-number-3">5.4</span> Org with evil-org-mode</h3>
 <div class="outline-text-3" id="text-org-with-evil-org-mode">
 <p>
@@ -1290,7 +1321,7 @@ are also available.
 </div>
 </div>
 
-<div id="outline-container-orga230e32" class="outline-3">
+<div id="outline-container-org0665d0f" class="outline-3">
 <h3 id="tables"><span class="section-number-3">5.5</span> Tables</h3>
 <div class="outline-text-3" id="text-tables">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1447,7 +1478,7 @@ are also available.
 </div>
 </div>
 
-<div id="outline-container-orga95125f" class="outline-3">
+<div id="outline-container-orgbeccb27" class="outline-3">
 <h3 id="trees"><span class="section-number-3">5.6</span> Trees</h3>
 <div class="outline-text-3" id="text-trees">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1589,7 +1620,7 @@ are also available.
 </div>
 </div>
 
-<div id="outline-container-org9e8ed49" class="outline-3">
+<div id="outline-container-org0c1eb53" class="outline-3">
 <h3 id="element-insertion"><span class="section-number-3">5.7</span> Element insertion</h3>
 <div class="outline-text-3" id="text-element-insertion">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1686,7 +1717,7 @@ are also available.
 </div>
 </div>
 
-<div id="outline-container-orgc271cde" class="outline-3">
+<div id="outline-container-org34efd2c" class="outline-3">
 <h3 id="links"><span class="section-number-3">5.8</span> Links</h3>
 <div class="outline-text-3" id="text-links">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1713,7 +1744,7 @@ are also available.
 </div>
 </div>
 
-<div id="outline-container-orgeadf50e" class="outline-3">
+<div id="outline-container-org332c6fa" class="outline-3">
 <h3 id="babel--source-blocks"><span class="section-number-3">5.9</span> Babel / Source Blocks</h3>
 <div class="outline-text-3" id="text-babel--source-blocks">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1849,7 +1880,7 @@ are also available.
 </table>
 </div>
 
-<div id="outline-container-org56f529f" class="outline-4">
+<div id="outline-container-org0edffa7" class="outline-4">
 <h4 id="org-babel-transient-state"><span class="section-number-4">5.9.1</span> Org Babel Transient State</h4>
 <div class="outline-text-4" id="text-org-babel-transient-state">
 <p>
@@ -1912,7 +1943,7 @@ execution. During that state, the following bindings are active:
 </div>
 </div>
 
-<div id="outline-container-org18f68ba" class="outline-3">
+<div id="outline-container-orgc234d88" class="outline-3">
 <h3 id="emphasis"><span class="section-number-3">5.10</span> Emphasis</h3>
 <div class="outline-text-3" id="text-emphasis">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1969,7 +2000,7 @@ execution. During that state, the following bindings are active:
 </div>
 </div>
 
-<div id="outline-container-orgdb6119d" class="outline-3">
+<div id="outline-container-orged3b37c" class="outline-3">
 <h3 id="navigating-in-calendar"><span class="section-number-3">5.11</span> Navigating in calendar</h3>
 <div class="outline-text-3" id="text-navigating-in-calendar">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2031,7 +2062,7 @@ execution. During that state, the following bindings are active:
 </div>
 </div>
 
-<div id="outline-container-orge793c67" class="outline-3">
+<div id="outline-container-orgd4366bf" class="outline-3">
 <h3 id="capture-buffers-and-src-blocks"><span class="section-number-3">5.12</span> Capture buffers and src blocks</h3>
 <div class="outline-text-3" id="text-capture-buffers-and-src-blocks">
 <p>
@@ -2088,12 +2119,12 @@ conventions.
 </div>
 </div>
 
-<div id="outline-container-org1e2194b" class="outline-3">
+<div id="outline-container-orgcbb6c94" class="outline-3">
 <h3 id="org-agenda"><span class="section-number-3">5.13</span> Org agenda</h3>
 <div class="outline-text-3" id="text-org-agenda">
 </div>
 
-<div id="outline-container-org7be660c" class="outline-4">
+<div id="outline-container-orgc7c6f6d" class="outline-4">
 <h4 id="key-bindings-1"><span class="section-number-4">5.13.1</span> Key bindings</h4>
 <div class="outline-text-4" id="text-key-bindings-1">
 <p>
@@ -2224,7 +2255,7 @@ The evilified org agenda supports the following bindings:
 </div>
 </div>
 
-<div id="outline-container-org47fe903" class="outline-4">
+<div id="outline-container-org30c6257" class="outline-4">
 <h4 id="org-agenda-transient-state"><span class="section-number-4">5.13.2</span> Org agenda transient state</h4>
 <div class="outline-text-4" id="text-org-agenda-transient-state">
 <p>
@@ -2584,7 +2615,7 @@ are listed bellow.
 </div>
 </div>
 
-<div id="outline-container-org7938c29" class="outline-3">
+<div id="outline-container-org54345c1" class="outline-3">
 <h3 id="pomodoro"><span class="section-number-3">5.14</span> Pomodoro</h3>
 <div class="outline-text-3" id="text-pomodoro">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2611,7 +2642,7 @@ are listed bellow.
 </div>
 </div>
 
-<div id="outline-container-org3153e2d" class="outline-3">
+<div id="outline-container-org7d400e6" class="outline-3">
 <h3 id="presentation"><span class="section-number-3">5.15</span> Presentation</h3>
 <div class="outline-text-3" id="text-presentation">
 <p>
@@ -2652,7 +2683,7 @@ org-present must be activated explicitly by typing: <code>SPC SPC org-present</c
 </div>
 </div>
 
-<div id="outline-container-orgcf6308a" class="outline-3">
+<div id="outline-container-org65075d2" class="outline-3">
 <h3 id="helm-org-rifle"><span class="section-number-3">5.16</span> Helm-org-rifle</h3>
 <div class="outline-text-3" id="text-helm-org-rifle">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2679,7 +2710,7 @@ org-present must be activated explicitly by typing: <code>SPC SPC org-present</c
 </div>
 </div>
 
-<div id="outline-container-orgb59b7e0" class="outline-3">
+<div id="outline-container-orgcf30527" class="outline-3">
 <h3 id="org-projectile"><span class="section-number-3">5.17</span> Org-projectile</h3>
 <div class="outline-text-3" id="text-org-projectile">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2716,7 +2747,7 @@ org-present must be activated explicitly by typing: <code>SPC SPC org-present</c
 </div>
 </div>
 
-<div id="outline-container-orgd07a1ed" class="outline-3">
+<div id="outline-container-org976d1f8" class="outline-3">
 <h3 id="org-journal"><span class="section-number-3">5.18</span> Org-journal</h3>
 <div class="outline-text-3" id="text-org-journal">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2847,12 +2878,12 @@ are available.
 </div>
 </div>
 
-<div id="outline-container-orgb5e3870" class="outline-3">
+<div id="outline-container-orgd0b32be" class="outline-3">
 <h3 id="org-brain"><span class="section-number-3">5.19</span> Org-brain</h3>
 <div class="outline-text-3" id="text-org-brain">
 </div>
 
-<div id="outline-container-org91e330d" class="outline-4">
+<div id="outline-container-org0488b8f" class="outline-4">
 <h4 id="application-bindings"><span class="section-number-4">5.19.1</span> Application bindings</h4>
 <div class="outline-text-4" id="text-application-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2884,7 +2915,7 @@ are available.
 </div>
 </div>
 
-<div id="outline-container-org98041c6" class="outline-4">
+<div id="outline-container-org6a476c4" class="outline-4">
 <h4 id="org-mode-bindings"><span class="section-number-4">5.19.2</span> org-mode bindings</h4>
 <div class="outline-text-4" id="text-org-mode-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2951,7 +2982,7 @@ are available.
 </div>
 </div>
 
-<div id="outline-container-org6927ff4" class="outline-4">
+<div id="outline-container-orgcd8a913" class="outline-4">
 <h4 id="visualization-bindings"><span class="section-number-4">5.19.3</span> Visualization bindings</h4>
 <div class="outline-text-4" id="text-visualization-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -3023,11 +3054,103 @@ are available.
 </div>
 </div>
 </div>
+
+<div id="outline-container-org5636acc" class="outline-3">
+<h3 id="org-jira"><span class="section-number-3">5.20</span> Org-jira</h3>
+<div class="outline-text-3" id="text-org-jira">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC a o J p g</code></td>
+<td class="org-left">Get projects list</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o J i b</code></td>
+<td class="org-left">Open the current issue in a WWW browser</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o J i g</code></td>
+<td class="org-left">Get issues</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o J i h</code></td>
+<td class="org-left">Get only head of issues</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o J i f</code></td>
+<td class="org-left">Get only head of issues from filter</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o J i u</code></td>
+<td class="org-left">Update an issue at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o J i w</code></td>
+<td class="org-left">Progress an issue at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o J i r</code></td>
+<td class="org-left">Refresh an issue at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o J i c</code></td>
+<td class="org-left">Create an issue at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o J i y</code></td>
+<td class="org-left">Copy current issue key</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o J s c</code></td>
+<td class="org-left">Create a subtask</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o J s g</code></td>
+<td class="org-left">Get subtasks</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o J c u</code></td>
+<td class="org-left">Update the comment at point or add a new comment</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o J t j</code></td>
+<td class="org-left">Convert the TODO item at point to a Jira ticket</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-05-17 Fri 23:22</p>
+<p class="date">Created: 2019-07-08 Mon 21:00</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

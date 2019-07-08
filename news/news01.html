@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-17 Fri 23:22 -->
+<!-- 2019-07-08 Mon 21:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Newsletter #01: About the 0.200 release</title>
@@ -317,13 +317,13 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgf01941b" class="outline-2">
+<div id="outline-container-org176ad64" class="outline-2">
 <h2 id="introduction"><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-introduction">
 <p>
 0.200 is a huge release with more than 1700 commits since the last major version
 released in January 2016. Actually it is so big that we jumped directly from
-version 0.105 to version 0.200, so don’t panic if you think you missed all the
+version 0.105 to version 0.200, so don't panic if you think you missed all the
 versions since 0.105 :-)
 </p>
 
@@ -339,12 +339,12 @@ at the root of the Git repository.
 </p>
 
 <p>
-Let’s start with the hottest section: breaking changes!
+Let's start with the hottest section: breaking changes!
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb3cb511" class="outline-2">
+<div id="outline-container-orgbdff164" class="outline-2">
 <h2 id="breaking-changes"><span class="section-number-2">2</span> Breaking changes</h2>
 <div class="outline-text-2" id="text-breaking-changes">
 <p>
@@ -360,7 +360,7 @@ develop branch had to adapt to them at some point, the result seems to worth it.
 </p>
 </div>
 
-<div id="outline-container-org36af155" class="outline-3">
+<div id="outline-container-org1755695" class="outline-3">
 <h3 id="support-for-emacs-243-has-been-dropped"><span class="section-number-3">2.1</span> Support for Emacs 24.3 has been dropped</h3>
 <div class="outline-text-3" id="text-support-for-emacs-243-has-been-dropped">
 <p>
@@ -370,12 +370,12 @@ in 2013. Supporting this version in Spacemacs is more and more work for
 maintainers so we decided to drop all the 24.3 related code in Spacemacs
 effectively raising the minimum Emacs version required to 24.4. We believe that
 users are able to switch to a newer version of Emacs, if you need help in this
-process you can try the <a href="https://gitter.im/syl20bnr/spacemacs">Gitter chat</a>, I’m sure you’ll find solutions there.
+process you can try the <a href="https://gitter.im/syl20bnr/spacemacs">Gitter chat</a>, I'm sure you'll find solutions there.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org000d2e4" class="outline-3">
+<div id="outline-container-orgd49d63a" class="outline-3">
 <h3 id="some-modifications-in-the-layer-format"><span class="section-number-3">2.2</span> Some modifications in the layer format</h3>
 <div class="outline-text-3" id="text-some-modifications-in-the-layer-format">
 <p>
@@ -453,7 +453,7 @@ replaced by the <code>:excluded</code> keyword in <code>&lt;layer&gt;-packages</
 <p>
 A new file called <code>layers.el</code> is in charge of layers dependency, i.e. when a
 layer needs to declare additional layers. Previously this was done in the
-<code>config.el</code> file, to avoid errors you’ll have to move the calls to the functions
+<code>config.el</code> file, to avoid errors you'll have to move the calls to the functions
 <code>configuration-layer/declare-layer</code> and <code>configuration-layer/declare-layers</code> to
 a dedicated <code>layers.el</code> file. An example can be found in the
 <a href="https://github.com/syl20bnr/spacemacs/blob/564cbc40eda936985325c9b79088fbcb39d9a69d/layers/+distributions/spacemacs/layers.el">spacemacs distribution layer</a>.
@@ -461,7 +461,7 @@ a dedicated <code>layers.el</code> file. An example can be found in the
 </div>
 </div>
 
-<div id="outline-container-org0607c11" class="outline-3">
+<div id="outline-container-org7784489" class="outline-3">
 <h3 id="controlling-downloaded-packages"><span class="section-number-3">2.3</span> Controlling downloaded packages</h3>
 <div class="outline-text-3" id="text-controlling-downloaded-packages">
 <p>
@@ -478,14 +478,14 @@ packages are downloaded by Spacemacs. Three behaviours are supported:
 </p>
 <ul class="org-ul">
 <li><code>used-only</code> (default) will download only the used packages</li>
-<li><code>used-but-keep-unused</code> will download only the used packages but won’t uninstall
+<li><code>used-but-keep-unused</code> will download only the used packages but won't uninstall
 them if they become unused</li>
 <li><code>all</code> will download <span class="underline">all</span> the supported packages by Spacemacs.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgefa8600" class="outline-3">
+<div id="outline-container-org39fbdf4" class="outline-3">
 <h3 id="key-bindings"><span class="section-number-3">2.4</span> Key bindings</h3>
 <div class="outline-text-3" id="text-key-bindings">
 <p>
@@ -497,7 +497,7 @@ is a rather big amount of changes for users jumping from master 0.105 to 0.200.
 First of all the most visible change is for <code>SPC SPC</code> which triggers now <code>M-x</code>
 instead of <code>avy</code> to jump to a character. The <code>SPC</code> key in Spacemacs is a central
 key as it acts as the leader key for <span class="underline">all</span> the key bindings, it made sense to
-give the same sense of “root” key to the sequence <code>SPC SPC</code>, so now <code>SPC SPC</code> is
+give the same sense of "root" key to the sequence <code>SPC SPC</code>, so now <code>SPC SPC</code> is
 the central sequence to execute <span class="underline">any</span> interactive function in Emacs.
 </p>
 
@@ -505,7 +505,7 @@ the central sequence to execute <span class="underline">any</span> interactive f
 Where is the <code>avy</code> command then ? We reorganised from the ground up the prefix
 <code>SPC j</code> for all jump commands. In the conventions a doubled key is often used
 for the default command under a given prefix, for instance <code>SPC b b</code> is for
-buffer selection, <code>SPC f f</code> for file selection etc&#x2026; The “jump to character”
+buffer selection, <code>SPC f f</code> for file selection etc&#x2026; The "jump to character"
 command of <code>avy</code> is then under <code>SPC j j</code>. Here is a detailed list of the new
 <code>SPC j</code> prefix:
 </p>
@@ -535,7 +535,7 @@ Closing, deleting or killing things ? This can be a tough call to distinguish
 them and we can find such confusion in the Spacemacs key bindings, for instance
 we close a window but we delete a buffer and we can also kill a buffer. Whereas
 it can make sense for a lot of users, there are still users finding this
-confusing. So we decided to simplify the notion of “closing/deleting” things
+confusing. So we decided to simplify the notion of "closing/deleting" things
 under the <code>d</code> key for <code>delete</code>. We moved <code>SPC w c</code> and <code>SPC w C</code> to <code>SPC w d</code>
 and <code>SPC w D</code>.
 </p>
@@ -554,7 +554,7 @@ is available via <code>SPC w</code> with <code>SPC w h/j/k/l</code>, <code>SPC w
 <li><code>SPC b K</code> (kill other buffers) is now <code>SPC b m</code> to map with <code>SPC w m</code>
 (maximize buffer/window which effectively delete other windows).</li>
 <li><code>SPC b D</code> now kills a buffer using <code>ace-window</code>.</li>
-<li>Buffer actions don’t delete the windows by default, use the universal
+<li>Buffer actions don't delete the windows by default, use the universal
 prefix argument to do so, for instance <code>SPC u SPC b d</code> and <code>SPC u SPC b D</code>
 will delete the buffer and also the window. Another example is
 <code>SPC u SPC b m</code> to maximize a buffer.</li>
@@ -608,12 +608,12 @@ new <code>hydra</code> powered macro <code>spacemacs|define-transient-state</cod
 </div>
 </div>
 
-<div id="outline-container-orgb469fc0" class="outline-2">
+<div id="outline-container-org180102d" class="outline-2">
 <h2 id="whats-new-"><span class="section-number-2">3</span> What's new ?</h2>
 <div class="outline-text-2" id="text-whats-new-">
 </div>
 
-<div id="outline-container-org88cd49d" class="outline-3">
+<div id="outline-container-orgd4f4375" class="outline-3">
 <h3 id="startup-improvments"><span class="section-number-3">3.1</span> Startup improvments</h3>
 <div class="outline-text-3" id="text-startup-improvments">
 <p>
@@ -624,7 +624,7 @@ scale as we add new layers and packages to the distribution.
 </div>
 </div>
 
-<div id="outline-container-orga2fff6e" class="outline-3">
+<div id="outline-container-org9f1c181" class="outline-3">
 <h3 id="improved-composability"><span class="section-number-3">3.2</span> Improved composability</h3>
 <div class="outline-text-3" id="text-improved-composability">
 <p>
@@ -681,11 +681,11 @@ Another example to select all the packages except <code>fancy-battery</code>:
 </div>
 </div>
 
-<div id="outline-container-orgea38e13" class="outline-3">
+<div id="outline-container-org1d6e077" class="outline-3">
 <h3 id="improved-stability"><span class="section-number-3">3.3</span> Improved stability</h3>
 <div class="outline-text-3" id="text-improved-stability">
 <p>
-This is one of the Achilles’ heel of Spacemacs. We rely on bleeding edge version
+This is one of the Achilles' heel of Spacemacs. We rely on bleeding edge version
 of packages from <code>melpa</code> repository to install a fresh version of Spacemacs. If
 the repository is down then no sugar, try again later.
 </p>
@@ -714,7 +714,7 @@ all packages are installed in the same <code>elpa</code> directory.
 </div>
 </div>
 
-<div id="outline-container-orgdbff067" class="outline-3">
+<div id="outline-container-org5ed4538" class="outline-3">
 <h3 id="lazy-installation-of-layers"><span class="section-number-3">3.4</span> Lazy installation of layers</h3>
 <div class="outline-text-3" id="text-lazy-installation-of-layers">
 <p>
@@ -726,7 +726,7 @@ supported extension.
 <p>
 For instance, when opening an Elixir file with extension <code>.ex</code> Spacemacs will
 ask to install the <code>elixir</code> layer if it is not already used. The <code>elixir</code> layer
-is automatically added to the dotfile so it won’t be uninstalled after a
+is automatically added to the dotfile so it won't be uninstalled after a
 restart.
 </p>
 
@@ -739,13 +739,13 @@ values:
 <li><code>unused</code> to lazy install only layers not listed in
 <code>dotspacemacs-configuration-layers</code></li>
 <li><code>all</code> to lazy install any layer supporting lazy installation (i.e. even the
-used layers won’t be installed at startup until you open a file with a
+used layers won't be installed at startup until you open a file with a
 supported extension).</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc82d80f" class="outline-3">
+<div id="outline-container-orgc14f389" class="outline-3">
 <h3 id="a-better-hybrid-editing-style"><span class="section-number-3">3.5</span> A better hybrid editing style</h3>
 <div class="outline-text-3" id="text-a-better-hybrid-editing-style">
 <p>
@@ -774,7 +774,7 @@ To define these new variables use the <code>:variables</code> keyword. For examp
 </div>
 </div>
 
-<div id="outline-container-org4f47e56" class="outline-3">
+<div id="outline-container-orgf9d1b3a" class="outline-3">
 <h3 id="support-for-ivy"><span class="section-number-3">3.6</span> Support for Ivy</h3>
 <div class="outline-text-3" id="text-support-for-ivy">
 <p>
@@ -789,13 +789,13 @@ layer to your dotfile and reloading it with <code>SPC f e R</code>!
 <p>
 The level of feature of the <code>ivy</code> layer is pretty on par with the <code>helm</code> layer,
 this is a fantastic work and it demonstrates all the power of a community-driven
-configuration. I’m really excited by this new feature and how it is so easy to
+configuration. I'm really excited by this new feature and how it is so easy to
 enjoy it. Nice work guys!
 </p>
 </div>
 </div>
 
-<div id="outline-container-orge93f7db" class="outline-3">
+<div id="outline-container-org8e17ffd" class="outline-3">
 <h3 id="better-transient-states"><span class="section-number-3">3.7</span> Better transient-states</h3>
 <div class="outline-text-3" id="text-better-transient-states">
 <p>
@@ -812,7 +812,7 @@ the same documentation strings format everywhere.
 </div>
 </div>
 
-<div id="outline-container-org4e2b676" class="outline-3">
+<div id="outline-container-org1b7af2d" class="outline-3">
 <h3 id="more-debugging-tools"><span class="section-number-3">3.8</span> More debugging tools</h3>
 <div class="outline-text-3" id="text-more-debugging-tools">
 <p>
@@ -856,7 +856,7 @@ command line parameters:
 </div>
 </div>
 
-<div id="outline-container-orgd966d59" class="outline-3">
+<div id="outline-container-orgd95474a" class="outline-3">
 <h3 id="new-keyboard-layouts"><span class="section-number-3">3.9</span> New keyboard layouts</h3>
 <div class="outline-text-3" id="text-new-keyboard-layouts">
 <p>
@@ -872,7 +872,7 @@ information about layout definition.
 </div>
 </div>
 
-<div id="outline-container-org3224dab" class="outline-3">
+<div id="outline-container-org1af45be" class="outline-3">
 <h3 id="directory-and-file-local-variables"><span class="section-number-3">3.10</span> Directory and file local variables</h3>
 <div class="outline-text-3" id="text-directory-and-file-local-variables">
 <p>
@@ -897,7 +897,7 @@ requirements.
 </div>
 </div>
 
-<div id="outline-container-org61e0f1d" class="outline-3">
+<div id="outline-container-orgfb81f64" class="outline-3">
 <h3 id="more-useful-abstraction"><span class="section-number-3">3.11</span> More useful abstraction</h3>
 <div class="outline-text-3" id="text-more-useful-abstraction">
 <p>
@@ -920,7 +920,7 @@ REPL with <code>SPC a '</code>.
 </div>
 </div>
 
-<div id="outline-container-orgdbfbc13" class="outline-3">
+<div id="outline-container-org80285ea" class="outline-3">
 <h3 id="new-welcome-screen"><span class="section-number-3">3.12</span> New welcome screen</h3>
 <div class="outline-text-3" id="text-new-welcome-screen">
 <p>
@@ -953,7 +953,7 @@ There are two new lists of items which can be displayed on the welcome screen:
 </div>
 </div>
 
-<div id="outline-container-org97e25e0" class="outline-3">
+<div id="outline-container-orge05b43e" class="outline-3">
 <h3 id="about-spacemacs-update-notifications"><span class="section-number-3">3.13</span> About Spacemacs update notifications</h3>
 <div class="outline-text-3" id="text-about-spacemacs-update-notifications">
 <p>
@@ -983,7 +983,7 @@ If you want automatic check of new version you have now to opt-in by setting
 </div>
 </div>
 
-<div id="outline-container-orgecf139a" class="outline-3">
+<div id="outline-container-orgdb7798a" class="outline-3">
 <h3 id="a-new-community-document"><span class="section-number-3">3.14</span> A new community document</h3>
 <div class="outline-text-3" id="text-a-new-community-document">
 <p>
@@ -994,7 +994,7 @@ list of the moderation actions taken by collaborators.
 </div>
 </div>
 
-<div id="outline-container-orgbfbc7e7" class="outline-3">
+<div id="outline-container-org801d24f" class="outline-3">
 <h3 id="the-spacemacs-shop"><span class="section-number-3">3.15</span> The Spacemacs shop</h3>
 <div class="outline-text-3" id="text-the-spacemacs-shop">
 <p>
@@ -1010,12 +1010,12 @@ will be available for women as well in the coming weeks!
 </div>
 </div>
 
-<div id="outline-container-org4909d27" class="outline-2">
+<div id="outline-container-org0ab0055" class="outline-2">
 <h2 id="whats-next-"><span class="section-number-2">4</span> What's next ?</h2>
 <div class="outline-text-2" id="text-whats-next-">
 </div>
 
-<div id="outline-container-org5746ea8" class="outline-3">
+<div id="outline-container-org22ed4e6" class="outline-3">
 <h3 id="even-more-stability"><span class="section-number-3">4.1</span> Even more stability</h3>
 <div class="outline-text-3" id="text-even-more-stability">
 <p>
@@ -1033,23 +1033,23 @@ previous stable state if required.
 </div>
 </div>
 
-<div id="outline-container-org63a3a8a" class="outline-3">
+<div id="outline-container-org6a8b756" class="outline-3">
 <h3 id="more-consistent-window-behaviour"><span class="section-number-3">4.2</span> More consistent window behaviour</h3>
 <div class="outline-text-3" id="text-more-consistent-window-behaviour">
 <p>
 One of the main focus for 0.201 will be to integrate <a href="https://github.com/bmag/emacs-purpose">emacs-purpose</a>. It is a
 package to display buffer in the same windows. The current pull request is very
-popular and I’m sure you’ll like what it will bring to the Spacemacs experience.
+popular and I'm sure you'll like what it will bring to the Spacemacs experience.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org70d6af6" class="outline-3">
+<div id="outline-container-org1cf6b2e" class="outline-3">
 <h3 id="new-layers"><span class="section-number-3">4.3</span> New layers</h3>
 <div class="outline-text-3" id="text-new-layers">
 <p>
 Pull requests with new layers are low on the priority list because reviewing
-them is more time consuming. For 0.201 I’ll focus on all the pull requests with
+them is more time consuming. For 0.201 I'll focus on all the pull requests with
 new layers in order to speed up the merge so you can expect more new layers for
 0.201 than 0.200.
 </p>
@@ -1057,7 +1057,7 @@ new layers in order to speed up the merge so you can expect more new layers for
 </div>
 </div>
 
-<div id="outline-container-org6976775" class="outline-2">
+<div id="outline-container-orgf096255" class="outline-2">
 <h2 id="a-few-thanks"><span class="section-number-2">5</span> A few thanks</h2>
 <div class="outline-text-2" id="text-a-few-thanks">
 <p>
@@ -1086,7 +1086,7 @@ of <code>evil</code>.</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-05-17 Fri 23:22</p>
+<p class="date">Created: 2019-07-08 Mon 21:00</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

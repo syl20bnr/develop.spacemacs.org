@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-17 Fri 23:23 -->
+<!-- 2019-07-08 Mon 21:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>HTML layer</title>
@@ -284,16 +284,22 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#install">2. Install</a>
 <ul>
-<li><a href="#web-beautify">2.1. web-beautify</a></li>
-<li><a href="#prettier">2.2. prettier</a></li>
-<li><a href="#choosing-a-formatter">2.3. Choosing a formatter</a></li>
+<li><a href="#lsp">2.1. LSP</a></li>
+<li><a href="#web-beautify">2.2. web-beautify</a></li>
+<li><a href="#prettier">2.3. prettier</a></li>
+<li><a href="#choosing-a-formatter">2.4. Choosing a formatter</a></li>
 </ul>
 </li>
-<li><a href="#live-display-in-browser">3. Live display in browser</a></li>
-<li><a href="#key-bindings">4. Key bindings</a>
+<li><a href="#backends">3. Backends</a>
 <ul>
-<li><a href="#web-mode">4.1. Web mode</a></li>
-<li><a href="#cssscss">4.2. CSS/SCSS</a></li>
+<li><a href="#language-server-protocol">3.1. Language Server Protocol</a></li>
+</ul>
+</li>
+<li><a href="#live-display-in-browser">4. Live display in browser</a></li>
+<li><a href="#key-bindings">5. Key bindings</a>
+<ul>
+<li><a href="#web-mode">5.1. Web mode</a></li>
+<li><a href="#cssscss">5.2. CSS/SCSS</a></li>
 </ul>
 </li>
 </ul>
@@ -305,7 +311,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orge4cbdff" class="outline-2">
+<div id="outline-container-org5c3dcb8" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -313,7 +319,7 @@ This layer adds support for editing HTML and CSS.
 </p>
 </div>
 
-<div id="outline-container-org5025b5f" class="outline-3">
+<div id="outline-container-orgd0ba70e" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -330,7 +336,7 @@ This layer adds support for editing HTML and CSS.
 </div>
 </div>
 
-<div id="outline-container-org0443dbc" class="outline-2">
+<div id="outline-container-org85d5ebc" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -351,8 +357,22 @@ gem specific_install https://github.com/Sweetchuck/scss_lint_reporter_checkstyle
 </div>
 </div>
 
-<div id="outline-container-org910a615" class="outline-3">
-<h3 id="web-beautify"><span class="section-number-3">2.1</span> web-beautify</h3>
+<div id="outline-container-org67588fc" class="outline-3">
+<h3 id="lsp"><span class="section-number-3">2.1</span> LSP</h3>
+<div class="outline-text-3" id="text-lsp">
+<p>
+To enable the LSP set the layer variables below:
+</p>
+<ul class="org-ul">
+<li><code>css-enable-lsp</code></li>
+<li><code>less-enable-lsp</code></li>
+<li><code>scss-enable-lsp</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge6f9b33" class="outline-3">
+<h3 id="web-beautify"><span class="section-number-3">2.2</span> web-beautify</h3>
 <div class="outline-text-3" id="text-web-beautify">
 <p>
 See <a href="../../+tools/web-beautify/README.html">web-beautify layer</a> documentation.
@@ -360,8 +380,8 @@ See <a href="../../+tools/web-beautify/README.html">web-beautify layer</a> docum
 </div>
 </div>
 
-<div id="outline-container-orgcfef9bd" class="outline-3">
-<h3 id="prettier"><span class="section-number-3">2.2</span> prettier</h3>
+<div id="outline-container-org36a1ed1" class="outline-3">
+<h3 id="prettier"><span class="section-number-3">2.3</span> prettier</h3>
 <div class="outline-text-3" id="text-prettier">
 <p>
 See <a href="../../+tools/prettier/README.html">prettier layer</a> documentation.
@@ -369,8 +389,8 @@ See <a href="../../+tools/prettier/README.html">prettier layer</a> documentation
 </div>
 </div>
 
-<div id="outline-container-orgbd84e7b" class="outline-3">
-<h3 id="choosing-a-formatter"><span class="section-number-3">2.3</span> Choosing a formatter</h3>
+<div id="outline-container-org47e5856" class="outline-3">
+<h3 id="choosing-a-formatter"><span class="section-number-3">2.4</span> Choosing a formatter</h3>
 <div class="outline-text-3" id="text-choosing-a-formatter">
 <p>
 To choose a formatter, set the layer variable <code>web-fmt-tool</code>:
@@ -402,8 +422,28 @@ Formatter can be chosen on a per project basis using directory local variables
 </div>
 </div>
 
-<div id="outline-container-org5ede0cb" class="outline-2">
-<h2 id="live-display-in-browser"><span class="section-number-2">3</span> Live display in browser</h2>
+<div id="outline-container-org33095d1" class="outline-2">
+<h2 id="backends"><span class="section-number-2">3</span> Backends</h2>
+<div class="outline-text-2" id="text-backends">
+</div>
+
+<div id="outline-container-org0cac4a7" class="outline-3">
+<h3 id="language-server-protocol"><span class="section-number-3">3.1</span> Language Server Protocol</h3>
+<div class="outline-text-3" id="text-language-server-protocol">
+<p>
+You have to install <code>vscode-css-languageserver-bin</code> via
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">npm i -g vscode-css-languageserver-bin
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd4dd219" class="outline-2">
+<h2 id="live-display-in-browser"><span class="section-number-2">4</span> Live display in browser</h2>
 <div class="outline-text-2" id="text-live-display-in-browser">
 <p>
 Use <code>SPC m I</code> to enable impatient mode, opening a live view of a HTML file in
@@ -423,13 +463,13 @@ For more information visit the <a href="https://github.com/skeeto/impatient-mode
 </div>
 </div>
 
-<div id="outline-container-org19893cf" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-orgc52cc40" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org6e96c34" class="outline-3">
-<h3 id="web-mode"><span class="section-number-3">4.1</span> Web mode</h3>
+<div id="outline-container-org496f02c" class="outline-3">
+<h3 id="web-mode"><span class="section-number-3">5.1</span> Web mode</h3>
 <div class="outline-text-3" id="text-web-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -611,8 +651,8 @@ A transient-state is also defined, start it with <code>SPC m .</code> or <code>,
 </div>
 </div>
 
-<div id="outline-container-org194a7fb" class="outline-3">
-<h3 id="cssscss"><span class="section-number-3">4.2</span> CSS/SCSS</h3>
+<div id="outline-container-org003a359" class="outline-3">
+<h3 id="cssscss"><span class="section-number-3">5.2</span> CSS/SCSS</h3>
 <div class="outline-text-3" id="text-cssscss">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -651,7 +691,7 @@ A transient-state is also defined, start it with <code>SPC m .</code> or <code>,
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-05-17 Fri 23:23</p>
+<p class="date">Created: 2019-07-08 Mon 21:00</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

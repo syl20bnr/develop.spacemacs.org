@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-17 Fri 23:22 -->
+<!-- 2019-07-08 Mon 21:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shell layer</title>
@@ -293,6 +293,7 @@ for the JavaScript code in this tag.
 <li><a href="#enable-em-smart-in-eshell">3.6. Enable em-smart in Eshell</a></li>
 <li><a href="#protect-your-eshell-prompt">3.7. Protect your Eshell prompt</a></li>
 <li><a href="#fish-shell-and-ansi-term">3.8. Fish shell and ansi-term</a></li>
+<li><a href="#close-window-with-terminal">3.9. Close window with terminal</a></li>
 </ul>
 </li>
 <li><a href="#eshell">4. Eshell</a></li>
@@ -311,7 +312,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgee6aeea" class="outline-2">
+<div id="outline-container-org94910b9" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -319,7 +320,7 @@ This layer configures the various shells available in Emacs.
 </p>
 </div>
 
-<div id="outline-container-org550c5e7" class="outline-3">
+<div id="outline-container-org81500d4" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -329,7 +330,7 @@ This layer configures the various shells available in Emacs.
 </div>
 </div>
 
-<div id="outline-container-org96e34c9" class="outline-2">
+<div id="outline-container-org2c80ee7" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -340,12 +341,12 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org0d9cbf2" class="outline-2">
+<div id="outline-container-org500cec5" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-orgdf1602c" class="outline-3">
+<div id="outline-container-org2d05f6c" class="outline-3">
 <h3 id="default-shell"><span class="section-number-3">3.1</span> Default shell</h3>
 <div class="outline-text-3" id="text-default-shell">
 <p>
@@ -386,7 +387,7 @@ The default shell is quickly accessible via a the default shortcut key ~SPC '​
 </div>
 </div>
 
-<div id="outline-container-org75c16bd" class="outline-3">
+<div id="outline-container-org0d594a8" class="outline-3">
 <h3 id="default-shell-position-width-and-height"><span class="section-number-3">3.2</span> Default shell position, width, and height</h3>
 <div class="outline-text-3" id="text-default-shell-position-width-and-height">
 <p>
@@ -414,7 +415,7 @@ your shell is positioned on the left or the right.
 </div>
 </div>
 
-<div id="outline-container-org028d2bc" class="outline-3">
+<div id="outline-container-org37ab056" class="outline-3">
 <h3 id="set-shell-for-term-and-ansi-term"><span class="section-number-3">3.3</span> Set shell for term and ansi-term</h3>
 <div class="outline-text-3" id="text-set-shell-for-term-and-ansi-term">
 <p>
@@ -430,7 +431,7 @@ Default value is <code>/bin/bash</code>.
 </div>
 </div>
 
-<div id="outline-container-orga95ea50" class="outline-3">
+<div id="outline-container-orgcf6cc4e" class="outline-3">
 <h3 id="set-shell-for-multi-term"><span class="section-number-3">3.4</span> Set shell for multi-term</h3>
 <div class="outline-text-3" id="text-set-shell-for-multi-term">
 <p>
@@ -446,7 +447,7 @@ Default value is <code>/bin/bash</code>.
 </div>
 </div>
 
-<div id="outline-container-org1eeca21" class="outline-3">
+<div id="outline-container-org7c0d785" class="outline-3">
 <h3 id="width-of-the-shell-popup-buffers"><span class="section-number-3">3.5</span> Width of the shell popup buffers</h3>
 <div class="outline-text-3" id="text-width-of-the-shell-popup-buffers">
 <p>
@@ -463,7 +464,7 @@ layer variable <code>shell-default-full-span</code> to nil.
 </div>
 </div>
 
-<div id="outline-container-org9cba437" class="outline-3">
+<div id="outline-container-org42afa26" class="outline-3">
 <h3 id="enable-em-smart-in-eshell"><span class="section-number-3">3.6</span> Enable em-smart in Eshell</h3>
 <div class="outline-text-3" id="text-enable-em-smart-in-eshell">
 <p>
@@ -475,12 +476,12 @@ From the <code>em-smart</code> documentation:
 The best way to get a sense of what this code is trying to do is by
 using it. Basically, the philosophy represents a blend between the
 ease of use of modern day shells, and the review-before-you-proceed
-mentality of Plan 9’s 9term.
+mentality of Plan 9's 9term.
 </p>
 </blockquote>
 
 <p>
-In a nutshell, when <code>em-smart</code> is enabled point won’t jump at the end of the
+In a nutshell, when <code>em-smart</code> is enabled point won't jump at the end of the
 buffer when a command is executed, it will stay at the same command prompt used
 to execute the command. This allows to quickly edit the last command in the case
 of a mistake. If there is no mistake and you directly type a new command then
@@ -499,7 +500,7 @@ To enable <code>em-smart</code> put the following layer variable to non-nil:
 </div>
 </div>
 
-<div id="outline-container-org19516d7" class="outline-3">
+<div id="outline-container-org6f6d4e2" class="outline-3">
 <h3 id="protect-your-eshell-prompt"><span class="section-number-3">3.7</span> Protect your Eshell prompt</h3>
 <div class="outline-text-3" id="text-protect-your-eshell-prompt">
 <p>
@@ -524,7 +525,7 @@ to nil.
 </div>
 </div>
 
-<div id="outline-container-orgd05e182" class="outline-3">
+<div id="outline-container-orgf944751" class="outline-3">
 <h3 id="fish-shell-and-ansi-term"><span class="section-number-3">3.8</span> Fish shell and ansi-term</h3>
 <div class="outline-text-3" id="text-fish-shell-and-ansi-term">
 <p>
@@ -578,9 +579,29 @@ correctly, in the function <code>dotspacemacs/user-config</code> of your dotfile
 </div>
 </div>
 </div>
+
+<div id="outline-container-org73f2e3e" class="outline-3">
+<h3 id="close-window-with-terminal"><span class="section-number-3">3.9</span> Close window with terminal</h3>
+<div class="outline-text-3" id="text-close-window-with-terminal">
+<p>
+If you want its window to close when the terminal terminates, set the following
+layer variable to non-nil:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> close-window-with-terminal t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 
-<div id="outline-container-orgbedfe4d" class="outline-2">
+<p>
+This is only applied to <code>term</code> and <code>ansi-term</code> modes.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc0b014c" class="outline-2">
 <h2 id="eshell"><span class="section-number-2">4</span> Eshell</h2>
 <div class="outline-text-2" id="text-eshell">
 <p>
@@ -606,7 +627,7 @@ layer is installed)</li>
 </div>
 </div>
 
-<div id="outline-container-org130e069" class="outline-2">
+<div id="outline-container-orge7164fa" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -631,7 +652,7 @@ layer is installed)</li>
 
 <tr>
 <td class="org-left">~SPC p '​~</td>
-<td class="org-left">Open a shell in the project’s root</td>
+<td class="org-left">Open a shell in the project's root</td>
 </tr>
 
 <tr>
@@ -693,7 +714,7 @@ in the current buffer instead of a popup.
 </p>
 </div>
 
-<div id="outline-container-org475b48a" class="outline-3">
+<div id="outline-container-org01f9c2f" class="outline-3">
 <h3 id="multi-term"><span class="section-number-3">5.1</span> Multi-term</h3>
 <div class="outline-text-3" id="text-multi-term">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -745,7 +766,7 @@ in the current buffer instead of a popup.
 </div>
 </div>
 
-<div id="outline-container-org1cc7eaa" class="outline-3">
+<div id="outline-container-orgf8932f2" class="outline-3">
 <h3 id="eshell-1"><span class="section-number-3">5.2</span> Eshell</h3>
 <div class="outline-text-3" id="text-eshell-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -775,7 +796,7 @@ in the current buffer instead of a popup.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-05-17 Fri 23:22</p>
+<p class="date">Created: 2019-07-08 Mon 21:00</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

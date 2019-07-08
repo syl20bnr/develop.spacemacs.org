@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-17 Fri 23:23 -->
+<!-- 2019-07-08 Mon 21:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Dash layer</title>
@@ -292,8 +292,9 @@ for the JavaScript code in this tag.
 <li><a href="#zeal-linux--windows">2.2. Zeal (Linux &amp; Windows)</a></li>
 </ul>
 </li>
-<li><a href="#word-at-point">3. Word at point</a></li>
-<li><a href="#key-bindings">4. Key bindings</a></li>
+<li><a href="#configuration">3. Configuration</a></li>
+<li><a href="#word-at-point">4. Word at point</a></li>
+<li><a href="#key-bindings">5. Key bindings</a></li>
 </ul>
 </div>
 </div>
@@ -309,19 +310,19 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org6beaee5" class="outline-2">
+<div id="outline-container-org4f2f702" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer integrates offline api browsers into emacs. It provides one for OS X, Linux and Windows.
+This layer integrates offline api browsers into Emacs. It provides one for OS X, Linux and Windows.
 </p>
 </div>
 
-<div id="outline-container-org6dd9913" class="outline-3">
+<div id="outline-container-org9ce5c03" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Searching for word at point in offline api browser’s UI.</li>
+<li>Searching for word at point in offline api browser's UI.</li>
 <li>Integration of offline api browser search results in helm and ivy.</li>
 <li>Support for <a href="https://kapeli.com/dash">dash</a> offline api browser for OS X.</li>
 <li>Support for <a href="https://zealdocs.org/">zeal</a> offline api browser for Linux.</li>
@@ -330,7 +331,7 @@ This layer integrates offline api browsers into emacs. It provides one for OS X,
 </div>
 </div>
 
-<div id="outline-container-orgd1d54c9" class="outline-2">
+<div id="outline-container-orgfe46000" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -340,7 +341,7 @@ file.
 </p>
 </div>
 
-<div id="outline-container-org18685f0" class="outline-3">
+<div id="outline-container-org95afc5e" class="outline-3">
 <h3 id="dash-os-x"><span class="section-number-3">2.1</span> Dash (OS X)</h3>
 <div class="outline-text-3" id="text-dash-os-x">
 <p>
@@ -353,7 +354,7 @@ when using this layer.
 </p>
 </div>
 
-<div id="outline-container-orgdae8d15" class="outline-4">
+<div id="outline-container-org86ee0a1" class="outline-4">
 <h4 id="sqlite3"><span class="section-number-4">2.1.1</span> Sqlite3</h4>
 <div class="outline-text-4" id="text-sqlite3">
 <p>
@@ -363,7 +364,7 @@ Helm Dash <a href="https://github.com/areina/helm-dash#user-content-requirements
 </div>
 </div>
 
-<div id="outline-container-org1692b66" class="outline-3">
+<div id="outline-container-orgc4a4804" class="outline-3">
 <h3 id="zeal-linux--windows"><span class="section-number-3">2.2</span> Zeal (Linux &amp; Windows)</h3>
 <div class="outline-text-3" id="text-zeal-linux--windows">
 <p>
@@ -377,12 +378,38 @@ Then install the docsets you use more frequently
 </div>
 </div>
 
-<div id="outline-container-org659d62a" class="outline-2">
-<h2 id="word-at-point"><span class="section-number-2">3</span> Word at point</h2>
+<div id="outline-container-orgc5035b2" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+<p>
+By default, the dash layer will initialize all installed docsets to be active in
+all buffers. To disable this and opt-in to specific docsets for specific buffers, set:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>dash <span class="org-builtin">:variables</span>
+      dash-autoload-common-docsets nil<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+To change the location of the installed docsets, set:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>dash <span class="org-builtin">:variables</span>
+      helm-dash-docset-newpath <span class="org-string">"~/.docsets"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org982d8fa" class="outline-2">
+<h2 id="word-at-point"><span class="section-number-2">4</span> Word at point</h2>
 <div class="outline-text-2" id="text-word-at-point">
 <p>
 <code>dash-at-point</code> and <code>zeal-at-point</code> will search for the word at point in the respective offline api browser.
-The result will be displayed in the offline browser’s UI.
+The result will be displayed in the offline browser's UI.
 </p>
 
 <p>
@@ -392,23 +419,13 @@ and show the details in a browser. To do so <a href="https://github.com/areina/h
 </p>
 
 <p>
-To get them working it is necessary to set <code>helm-dash-docset-newpath</code> to the location of your docsets.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>dash <span class="org-builtin">:variables</span>
-      helm-dash-docset-newpath <span class="org-string">"~/.local/share/Zeal/Zeal/docsets"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
 For more details please check <a href="https://github.com/stanaka/dash-at-point#Usage">dash-at-point-usage</a> or <a href="https://github.com/jinzhu/zeal-at-point">zeal-at-point</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org11cc4f1" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-orgc700486" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -451,7 +468,7 @@ For more details please check <a href="https://github.com/stanaka/dash-at-point#
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-05-17 Fri 23:23</p>
+<p class="date">Created: 2019-07-08 Mon 21:00</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
