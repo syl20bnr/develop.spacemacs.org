@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-17 Fri 23:22 -->
+<!-- 2019-07-08 Mon 21:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JavaScript layer</title>
@@ -304,8 +304,18 @@ for the JavaScript code in this tag.
 <li><a href="#configuration">4. Configuration</a>
 <ul>
 <li><a href="#indentation">4.1. Indentation</a></li>
-<li><a href="#repl">4.2. REPL</a></li>
-<li><a href="#node-modules">4.3. Node Modules</a></li>
+<li><a href="#repl">4.2. REPL</a>
+<ul>
+<li><a href="#browser-based-repl">4.2.1. Browser based REPL</a></li>
+<li><a href="#server-based-repl">4.2.2. Server based REPL</a></li>
+</ul>
+</li>
+<li><a href="#node">4.3. Node</a>
+<ul>
+<li><a href="#node-modules">4.3.1. Node Modules</a></li>
+<li><a href="#node-externs">4.3.2. Node Externs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#key-bindings">5. Key bindings</a>
@@ -318,8 +328,9 @@ for the JavaScript code in this tag.
 <li><a href="#documentation-js-doc">5.4.1. Documentation (js-doc)</a></li>
 </ul>
 </li>
-<li><a href="#repl-skewer-mode">5.5. REPL (skewer-mode)</a></li>
-<li><a href="#debugger-dap-mode">5.6. debugger (dap mode)</a></li>
+<li><a href="#browser-based-repl-skewer-mode">5.5. Browser based REPL (skewer-mode)</a></li>
+<li><a href="#server-based-repl-nodejs-repl">5.6. Server based REPL (nodejs-repl)</a></li>
+<li><a href="#debugger-dap-mode">5.7. debugger (dap mode)</a></li>
 </ul>
 </li>
 </ul>
@@ -331,7 +342,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgb65eaa1" class="outline-2">
+<div id="outline-container-org5b2cfde" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -339,7 +350,7 @@ This layer adds support for the JavaScript language using <a href="https://githu
 </p>
 </div>
 
-<div id="outline-container-orgc2ba2bc" class="outline-3">
+<div id="outline-container-org664ddee" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -347,14 +358,15 @@ This layer adds support for the JavaScript language using <a href="https://githu
 <li>Smart code folding</li>
 <li>Refactoring: done using <a href="https://github.com/magnars/js2-refactor.el">js2-refactor</a>.</li>
 <li>Auto-completion and documentation</li>
-<li>REPL available via <a href="https://github.com/skeeto/skewer-mode">skewer-mode</a> and <a href="https://github.com/pandeiro/livid-mode">livid-mode</a></li>
+<li>Browser based REPL available via <a href="https://github.com/skeeto/skewer-mode">skewer-mode</a> and <a href="https://github.com/pandeiro/livid-mode">livid-mode</a></li>
+<li>Server based REPL with <a href="https://github.com/abicky/nodejs-repl.el">nodejs-repl</a></li>
 <li>Formatting with <a href="https://github.com/yasuyk/web-beautify">web-beautify</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgfd4ebcb" class="outline-2">
+<div id="outline-container-orga8fbec2" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -394,7 +406,7 @@ If you install these in non-standard locations, then add the following to your <
 </div>
 </div>
 
-<div id="outline-container-org799c35e" class="outline-3">
+<div id="outline-container-orgd5227f4" class="outline-3">
 <h3 id="web-beautify"><span class="section-number-3">2.1</span> web-beautify</h3>
 <div class="outline-text-3" id="text-web-beautify">
 <p>
@@ -403,7 +415,7 @@ See <a href="../../+tools/web-beautify/README.html">web-beautify layer</a> docum
 </div>
 </div>
 
-<div id="outline-container-org1264bb1" class="outline-3">
+<div id="outline-container-org9d9d1eb" class="outline-3">
 <h3 id="prettier"><span class="section-number-3">2.2</span> prettier</h3>
 <div class="outline-text-3" id="text-prettier">
 <p>
@@ -412,7 +424,7 @@ See <a href="../../+tools/prettier/README.html">prettier layer</a> documentation
 </div>
 </div>
 
-<div id="outline-container-org48e336e" class="outline-3">
+<div id="outline-container-org96cec0c" class="outline-3">
 <h3 id="import-js"><span class="section-number-3">2.3</span> import-js</h3>
 <div class="outline-text-3" id="text-import-js">
 <p>
@@ -430,7 +442,7 @@ To enable it, set the layer variable <code>javascript-import-tool</code>:
 </div>
 </div>
 
-<div id="outline-container-orgb1a1604" class="outline-3">
+<div id="outline-container-org6be26b0" class="outline-3">
 <h3 id="choosing-a-backend"><span class="section-number-3">2.4</span> Choosing a backend</h3>
 <div class="outline-text-3" id="text-choosing-a-backend">
 <p>
@@ -458,7 +470,7 @@ Backend can be chosen on a per project basis using directory local variables
 </div>
 </div>
 
-<div id="outline-container-org865a1e9" class="outline-3">
+<div id="outline-container-org9898809" class="outline-3">
 <h3 id="choosing-a-formatter"><span class="section-number-3">2.5</span> Choosing a formatter</h3>
 <div class="outline-text-3" id="text-choosing-a-formatter">
 <p>
@@ -506,12 +518,12 @@ Default is <code>’web-beautify</code>.
 </div>
 </div>
 
-<div id="outline-container-org6385534" class="outline-2">
+<div id="outline-container-org64bf0fe" class="outline-2">
 <h2 id="backends"><span class="section-number-2">3</span> Backends</h2>
 <div class="outline-text-2" id="text-backends">
 </div>
 
-<div id="outline-container-org1c9e0ff" class="outline-3">
+<div id="outline-container-org215c050" class="outline-3">
 <h3 id="tern"><span class="section-number-3">3.1</span> Tern</h3>
 <div class="outline-text-3" id="text-tern">
 <p>
@@ -520,7 +532,7 @@ See <a href="../../+tools/tern/README.html">tern layer</a> documentation.
 </div>
 </div>
 
-<div id="outline-container-org1fa101e" class="outline-3">
+<div id="outline-container-org02fff7d" class="outline-3">
 <h3 id="language-server-protocol"><span class="section-number-3">3.2</span> Language Server Protocol</h3>
 <div class="outline-text-3" id="text-language-server-protocol">
 <p>
@@ -542,7 +554,7 @@ or
 </div>
 </div>
 
-<div id="outline-container-org7ce0856" class="outline-4">
+<div id="outline-container-orgdec93b8" class="outline-4">
 <h4 id="debugger-dap-integration"><span class="section-number-4">3.2.1</span> Debugger (dap integration)</h4>
 <div class="outline-text-4" id="text-debugger-dap-integration">
 <p>
@@ -553,12 +565,12 @@ To install the debug adapter you may run <code>M-x dap-firefox-setup</code> or <
 </div>
 </div>
 
-<div id="outline-container-org156ac35" class="outline-2">
+<div id="outline-container-org5223bf1" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">4</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org1899c51" class="outline-3">
+<div id="outline-container-org2cd520c" class="outline-3">
 <h3 id="indentation"><span class="section-number-3">4.1</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
@@ -601,22 +613,62 @@ or when adding the <code>javascript</code> configuration layer:
 </div>
 </div>
 
-<div id="outline-container-org46feac5" class="outline-3">
+<div id="outline-container-orgeb93abe" class="outline-3">
 <h3 id="repl"><span class="section-number-3">4.2</span> REPL</h3>
 <div class="outline-text-3" id="text-repl">
+</div>
+
+<div id="outline-container-org17976f4" class="outline-4">
+<h4 id="browser-based-repl"><span class="section-number-4">4.2.1</span> Browser based REPL</h4>
+<div class="outline-text-4" id="text-browser-based-repl">
 <p>
-To use the available JS repl, you need a running httpd server and a page loaded
+To use the browser based REPL set the <code>javascript-repl</code> variable as shown below:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>javascript <span class="org-builtin">:variables</span> javascript-repl `skewer<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+In addition you need a running httpd server and a page loaded
 with skewer. If a blank page serves your needs, just use the run-skewer command
 in your javascript buffer. If you want to inject it in your own page, follow
 <a href="https://github.com/skeeto/skewer-mode#skewering-with-cors">these instructions</a> (install the Greasemonkey script and then click the triangle
-in the top-right corner - if it turns green, you’re good to go).
+in the top-right corner - if it turns green, you're good to go).
 </p>
 </div>
 </div>
 
-<div id="outline-container-org30df5c5" class="outline-3">
-<h3 id="node-modules"><span class="section-number-3">4.3</span> Node Modules</h3>
-<div class="outline-text-3" id="text-node-modules">
+<div id="outline-container-org9155816" class="outline-4">
+<h4 id="server-based-repl"><span class="section-number-4">4.2.2</span> Server based REPL</h4>
+<div class="outline-text-4" id="text-server-based-repl">
+<p>
+To use the server based REPL set the <code>javascript-repl</code> variable as shown below:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>javascript <span class="org-builtin">:variables</span> javascript-repl `nodejs<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+In addition install nodejs and make sure that <code>node</code> is in the path.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org15fb499" class="outline-3">
+<h3 id="node"><span class="section-number-3">4.3</span> Node</h3>
+<div class="outline-text-3" id="text-node">
+</div>
+
+<div id="outline-container-org037d5d4" class="outline-4">
+<h4 id="node-modules"><span class="section-number-4">4.3.1</span> Node Modules</h4>
+<div class="outline-text-4" id="text-node-modules">
 <p>
 If you would like <code>node_modules/.bin</code> to be automatically added to the buffer
 local <code>exec_path</code>, e.g. to support project local eslint installations, set the
@@ -631,14 +683,32 @@ doing this <a href="https://stackoverflow.com/questions/9679932#comment33532258_
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgfb5acbf" class="outline-4">
+<h4 id="node-externs"><span class="section-number-4">4.3.2</span> Node Externs</h4>
+<div class="outline-text-4" id="text-node-externs">
+<p>
+If you want <code>js2-mode</code> to presume <code>node</code> variables are defined by the host
+system (for completion purposes <i>i.a.</i>) set the <code>js2-include-node-exters</code>
+variable to <code>t</code> in the <code>javascript</code> config section:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>javascript <span class="org-builtin">:variables</span> js2-include-node-externs t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org9f6dff9" class="outline-2">
+<div id="outline-container-org8a6493a" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgd46af69" class="outline-3">
+<div id="outline-container-org7b04d2a" class="outline-3">
 <h3 id="js2-mode"><span class="section-number-3">5.1</span> js2-mode</h3>
 <div class="outline-text-3" id="text-js2-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -670,7 +740,7 @@ doing this <a href="https://stackoverflow.com/questions/9679932#comment33532258_
 </div>
 </div>
 
-<div id="outline-container-org68c1ca9" class="outline-3">
+<div id="outline-container-org07a92e4" class="outline-3">
 <h3 id="folding-js2-mode"><span class="section-number-3">5.2</span> Folding (js2-mode)</h3>
 <div class="outline-text-3" id="text-folding-js2-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -722,7 +792,7 @@ doing this <a href="https://stackoverflow.com/questions/9679932#comment33532258_
 </div>
 </div>
 
-<div id="outline-container-org00b5b86" class="outline-3">
+<div id="outline-container-org1902596" class="outline-3">
 <h3 id="importing-import-js"><span class="section-number-3">5.3</span> Importing (import-js)</h3>
 <div class="outline-text-3" id="text-importing-import-js">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -759,7 +829,7 @@ doing this <a href="https://stackoverflow.com/questions/9679932#comment33532258_
 </div>
 </div>
 
-<div id="outline-container-orgc1a666d" class="outline-3">
+<div id="outline-container-orgbe3c479" class="outline-3">
 <h3 id="refactoring-js2-refactor"><span class="section-number-3">5.4</span> Refactoring (js2-refactor)</h3>
 <div class="outline-text-3" id="text-refactoring-js2-refactor">
 <p>
@@ -934,7 +1004,7 @@ Bindings should match the plain emacs assignments.
 </table>
 </div>
 
-<div id="outline-container-org15359d6" class="outline-4">
+<div id="outline-container-org20af4ea" class="outline-4">
 <h4 id="documentation-js-doc"><span class="section-number-4">5.4.1</span> Documentation (js-doc)</h4>
 <div class="outline-text-4" id="text-documentation-js-doc">
 <p>
@@ -981,9 +1051,9 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 
-<div id="outline-container-org3dc0ee0" class="outline-3">
-<h3 id="repl-skewer-mode"><span class="section-number-3">5.5</span> REPL (skewer-mode)</h3>
-<div class="outline-text-3" id="text-repl-skewer-mode">
+<div id="outline-container-orgf906adb" class="outline-3">
+<h3 id="browser-based-repl-skewer-mode"><span class="section-number-3">5.5</span> Browser based REPL (skewer-mode)</h3>
+<div class="outline-text-3" id="text-browser-based-repl-skewer-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1027,7 +1097,7 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m s a</code></td>
+<td class="org-left"><code>SPC m T l</code></td>
 <td class="org-left">Toggle live evaluation of whole buffer in REPL on buffer changes</td>
 </tr>
 
@@ -1075,8 +1145,80 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 
-<div id="outline-container-orga3127cc" class="outline-3">
-<h3 id="debugger-dap-mode"><span class="section-number-3">5.6</span> debugger (dap mode)</h3>
+<div id="outline-container-org7386679" class="outline-3">
+<h3 id="server-based-repl-nodejs-repl"><span class="section-number-3">5.6</span> Server based REPL (nodejs-repl)</h3>
+<div class="outline-text-3" id="text-server-based-repl-nodejs-repl">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m s i</code></td>
+<td class="org-left">Switch to NodeJS REPL if one has been started, otherwise start one</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s e</code></td>
+<td class="org-left">Send last expression to NodeJS REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s E</code></td>
+<td class="org-left">Send last expression to NodeJS REPL and switch to REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s b</code></td>
+<td class="org-left">Send current buffer to NodeJS REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s B</code></td>
+<td class="org-left">Send current buffer to NodeJS REPL and switch to REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s l</code></td>
+<td class="org-left">Send current line to NodeJS REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s L</code></td>
+<td class="org-left">Send current line to NodeJS REPL and switch to REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s r</code></td>
+<td class="org-left">Send active region to NodeJS REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s R</code></td>
+<td class="org-left">Send active region to NodeJS REPL and switch to REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s s</code></td>
+<td class="org-left">switch to REPL</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org531aaf5" class="outline-3">
+<h3 id="debugger-dap-mode"><span class="section-number-3">5.7</span> debugger (dap mode)</h3>
 <div class="outline-text-3" id="text-debugger-dap-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1274,7 +1416,7 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-05-17 Fri 23:22</p>
+<p class="date">Created: 2019-07-08 Mon 21:00</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-17 Fri 23:22 -->
+<!-- 2019-07-08 Mon 21:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python layer</title>
@@ -291,7 +291,12 @@ for the JavaScript code in this tag.
 <li><a href="#backends">3. Backends</a>
 <ul>
 <li><a href="#anaconda">3.1. Anaconda</a></li>
-<li><a href="#language-server-protocol">3.2. Language Server Protocol</a></li>
+<li><a href="#language-server-protocol">3.2. Language Server Protocol</a>
+<ul>
+<li><a href="#python-language-server">3.2.1. python-language-server</a></li>
+<li><a href="#microsoft-python-language-server">3.2.2. Microsoft python language server</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#additional-tools">4. Additional tools</a>
@@ -344,7 +349,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org10db350" class="outline-2">
+<div id="outline-container-org88aa1fb" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -352,14 +357,18 @@ This layer adds support for the Python language.
 </p>
 </div>
 
-<div id="outline-container-org5f9b7fa" class="outline-3">
+<div id="outline-container-org243ce27" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Support for the following backends:
 <ul class="org-ul">
 <li><a href="https://github.com/proofit404/anaconda-mode">anaconda</a> (default),</li>
-<li><a href="https://github.com/emacs-lsp/lsp-python">Language Server Protocol</a> (experimental),</li>
+<li><a href="https://github.com/emacs-lsp/lsp-python">Language Server Protocol</a> (experimental - 2 implementations),
+<ul class="org-ul">
+<li>python-language-server</li>
+<li>Microsoft python language server</li>
+</ul></li>
 </ul></li>
 <li>Auto-completion</li>
 <li>Code Navigation</li>
@@ -379,12 +388,12 @@ This layer adds support for the Python language.
 </div>
 </div>
 
-<div id="outline-container-org81bcf3d" class="outline-2">
+<div id="outline-container-org4bfdb0c" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org4c10208" class="outline-3">
+<div id="outline-container-orgb4397df" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -395,7 +404,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org3894a4c" class="outline-3">
+<div id="outline-container-org74d7464" class="outline-3">
 <h3 id="choosing-a-backend"><span class="section-number-3">2.2</span> Choosing a backend</h3>
 <div class="outline-text-3" id="text-choosing-a-backend">
 <p>
@@ -424,16 +433,47 @@ Backend can be chosen on a per project basis using directory local variables
 <p>
 <b>Note:</b> you can easily add a directory local variable with <code>SPC f v d</code>.
 </p>
+
+<p>
+The available options are:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">symbol</th>
+<th scope="col" class="org-left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">'anaconda</td>
+<td class="org-left">Default</td>
+</tr>
+
+<tr>
+<td class="org-left">'lsp</td>
+<td class="org-left">python-language-server package</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc1d7a0e" class="outline-2">
+<div id="outline-container-org06e76a1" class="outline-2">
 <h2 id="backends"><span class="section-number-2">3</span> Backends</h2>
 <div class="outline-text-2" id="text-backends">
 </div>
 
-<div id="outline-container-org381315a" class="outline-3">
+<div id="outline-container-org990e383" class="outline-3">
 <h3 id="anaconda"><span class="section-number-3">3.1</span> Anaconda</h3>
 <div class="outline-text-3" id="text-anaconda">
 <p>
@@ -465,16 +505,61 @@ Source: <a href="https://github.com/proofit404/anaconda-mode#issues">https://git
 </p>
 
 <p>
-If you are facing errors such as “Unable to run anaconda-mode server”, try
+If you are facing errors such as "Unable to run anaconda-mode server", try
 setting your <code>PYTHONPATH</code> as explained at
 <a href="https://github.com/proofit404/anaconda-mode#pythonpath">https://github.com/proofit404/anaconda-mode#pythonpath</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org2c24adb" class="outline-3">
+<div id="outline-container-orgee2bcdf" class="outline-3">
 <h3 id="language-server-protocol"><span class="section-number-3">3.2</span> Language Server Protocol</h3>
 <div class="outline-text-3" id="text-language-server-protocol">
+<p>
+The <code>lsp</code> backend can use either of the following language server implementations:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">symbol</th>
+<th scope="col" class="org-left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">'pyls</td>
+<td class="org-left">python-language-server package (default)</td>
+</tr>
+
+<tr>
+<td class="org-left">'mspyls</td>
+<td class="org-left">Microsoft python language server</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<code>pyls</code> is used by default - to use the Microsoft server, set the <code>python-lsp-server</code>
+layer variable as follows:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>python <span class="org-builtin">:variables</span> python-backend 'lsp python-lsp-server 'mspyls<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org378373f" class="outline-4">
+<h4 id="python-language-server"><span class="section-number-4">3.2.1</span> python-language-server</h4>
+<div class="outline-text-4" id="text-python-language-server">
 <p>
 You just have to install python language server package:
 </p>
@@ -497,21 +582,63 @@ pip install pyls-mypy
 </div>
 
 <p>
-If you’ve installed the language server and related packages as development
-dependencies in a pipenv environment, you’ll want to set the <code>python-pipenv-activate</code>
+If you've installed the language server and related packages as development
+dependencies in a pipenv environment, you'll want to set the <code>python-pipenv-activate</code>
 config variable to <code>t</code>. This activates your pipenv before enabling the
 lsp backend.
 </p>
 </div>
 </div>
+
+<div id="outline-container-orgc333a31" class="outline-4">
+<h4 id="microsoft-python-language-server"><span class="section-number-4">3.2.2</span> Microsoft python language server</h4>
+<div class="outline-text-4" id="text-microsoft-python-language-server">
+<p>
+Paraphrasing the instructions provided by the author of the <code>lsp-python-ms</code> package:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">git clone https://github.com/Microsoft/python-language-server.git
+<span class="org-builtin">cd</span> python-language-server/src/LanguageServer/Impl
+dotnet build -c Release
+dotnet publish -c Release -r &lt;RUNTIME&gt;
+</pre>
 </div>
 
-<div id="outline-container-orgcba0f19" class="outline-2">
+<p>
+where <code>&lt;RUNTIME&gt;</code> is one of the <a href="https://docs.microsoft.com/en-us/dotnet/core/rid-catalog">runtime IDs supported by dotnet core</a>. One of <code>linux-x64</code>, <code>osx-x64</code>, <code>win10-x64</code> should
+cover most use cases.
+</p>
+
+<p>
+The default package configuration assumes the executable is located in a folder included in your system path.
+To use the latest built version in a cloned git repo, use the <code>python-lsp-git-root</code> config variable, e.g.:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span>
+            python-backend 'lsp
+            python-lsp-server 'mspyls
+            python-lsp-git-root <span class="org-string">"~/dev/python/python-language-server"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+N.B. If you're using Arch linux or a derivative distribution, you can install the <code>microsoft-python-language-server</code>
+package from the AUR.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8b9de8e" class="outline-2">
 <h2 id="additional-tools"><span class="section-number-2">4</span> Additional tools</h2>
 <div class="outline-text-2" id="text-additional-tools">
 </div>
 
-<div id="outline-container-org1db1404" class="outline-3">
+<div id="outline-container-orgd8175f8" class="outline-3">
 <h3 id="syntax-checking"><span class="section-number-3">4.1</span> Syntax checking</h3>
 <div class="outline-text-3" id="text-syntax-checking">
 <p>
@@ -525,7 +652,7 @@ Syntax checking uses <code>flake8</code> package:
 </div>
 </div>
 
-<div id="outline-container-org5175c0c" class="outline-3">
+<div id="outline-container-org6436f9f" class="outline-3">
 <h3 id="test-runner"><span class="section-number-3">4.2</span> Test runner</h3>
 <div class="outline-text-3" id="text-test-runner">
 <p>
@@ -568,7 +695,7 @@ The root of the project is detected with a <code>.git</code> directory or a <cod
 </div>
 </div>
 
-<div id="outline-container-org6ef90ee" class="outline-3">
+<div id="outline-container-orgcea43f3" class="outline-3">
 <h3 id="buffer-formatting"><span class="section-number-3">4.3</span> Buffer formatting</h3>
 <div class="outline-text-3" id="text-buffer-formatting">
 <p>
@@ -595,7 +722,7 @@ installed.
 </div>
 </div>
 
-<div id="outline-container-orgdcf1daf" class="outline-3">
+<div id="outline-container-org02d9b58" class="outline-3">
 <h3 id="automatic-buffer-formatting-on-save"><span class="section-number-3">4.4</span> Automatic buffer formatting on save</h3>
 <div class="outline-text-3" id="text-automatic-buffer-formatting-on-save">
 <p>
@@ -612,7 +739,7 @@ will be used.
 </div>
 </div>
 
-<div id="outline-container-org3052c62" class="outline-3">
+<div id="outline-container-orgcfe81a7" class="outline-3">
 <h3 id="automatic-save-of-buffer-when-testing"><span class="section-number-3">4.5</span> Automatic save of buffer when testing</h3>
 <div class="outline-text-3" id="text-automatic-save-of-buffer-when-testing">
 <p>
@@ -628,7 +755,7 @@ you can disable this feature by setting <code>python-save-before-test</code> to 
 </div>
 </div>
 
-<div id="outline-container-orge7d8bf5" class="outline-3">
+<div id="outline-container-org371ba65" class="outline-3">
 <h3 id="autoflake"><span class="section-number-3">4.6</span> autoflake</h3>
 <div class="outline-text-3" id="text-autoflake">
 <p>
@@ -642,7 +769,7 @@ To be able to suppress unused imports easily, install <a href="https://github.co
 </div>
 </div>
 
-<div id="outline-container-org5f0ed02" class="outline-3">
+<div id="outline-container-orgf85a613" class="outline-3">
 <h3 id="pylookup"><span class="section-number-3">4.7</span> pylookup</h3>
 <div class="outline-text-3" id="text-pylookup">
 <p>
@@ -652,7 +779,7 @@ To use <code>pylookup</code> on <code>SPC m h H</code>, make sure you update the
 </div>
 </div>
 
-<div id="outline-container-orgc9f1299" class="outline-3">
+<div id="outline-container-org54058f7" class="outline-3">
 <h3 id="dap-mode-debugger-only-for-lsp-backend"><span class="section-number-3">4.8</span> dap-mode debugger (only for lsp backend)</h3>
 <div class="outline-text-3" id="text-dap-mode-debugger-only-for-lsp-backend">
 <p>
@@ -667,12 +794,12 @@ To use <code>dap-mode</code> for debugging do:
 </div>
 </div>
 
-<div id="outline-container-orga5d9a6e" class="outline-2">
+<div id="outline-container-org26d75d7" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">5</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org5d1ecef" class="outline-3">
+<div id="outline-container-org315104c" class="outline-3">
 <h3 id="fill-column"><span class="section-number-3">5.1</span> Fill column</h3>
 <div class="outline-text-3" id="text-fill-column">
 <p>
@@ -688,7 +815,7 @@ the <code>user-init</code> function in your <code>.spacemacs</code>:
 </div>
 </div>
 
-<div id="outline-container-orge9e00f7" class="outline-3">
+<div id="outline-container-org2b9cce3" class="outline-3">
 <h3 id="sort-imports"><span class="section-number-3">5.2</span> Sort imports</h3>
 <div class="outline-text-3" id="text-sort-imports">
 <p>
@@ -709,7 +836,7 @@ or as a directory-local variable (for per-project settings).
 </div>
 </div>
 
-<div id="outline-container-orgb6fe1e6" class="outline-3">
+<div id="outline-container-orgdbf0b8f" class="outline-3">
 <h3 id="importmagic"><span class="section-number-3">5.3</span> Importmagic</h3>
 <div class="outline-text-3" id="text-importmagic">
 <p>
@@ -724,12 +851,12 @@ Install importmagic and epc for importmagic functionality.
 </div>
 </div>
 
-<div id="outline-container-org82e9987" class="outline-2">
+<div id="outline-container-orgce979c8" class="outline-2">
 <h2 id="management-of-python-versions-and-virtual-environments"><span class="section-number-2">6</span> Management of Python versions and virtual environments</h2>
 <div class="outline-text-2" id="text-management-of-python-versions-and-virtual-environments">
 </div>
 
-<div id="outline-container-org578379b" class="outline-3">
+<div id="outline-container-orgd99d237" class="outline-3">
 <h3 id="manage-virtual-environments-with-pyvenv"><span class="section-number-3">6.1</span> Manage virtual environments with pyvenv</h3>
 <div class="outline-text-3" id="text-manage-virtual-environments-with-pyvenv">
 <p>
@@ -778,7 +905,7 @@ by the <a href="https://github.com/jorgenschaefer/pyvenv">pyvenv</a> package. It
 </div>
 </div>
 
-<div id="outline-container-orgc51e73d" class="outline-3">
+<div id="outline-container-org4bf80de" class="outline-3">
 <h3 id="manage-multiple-python-versions-with-pyenv"><span class="section-number-3">6.2</span> Manage multiple Python versions with pyenv</h3>
 <div class="outline-text-3" id="text-manage-multiple-python-versions-with-pyenv">
 <p>
@@ -822,7 +949,7 @@ has installed. Those will be listed alongside your Python versions.
 </p>
 </div>
 
-<div id="outline-container-org496621b" class="outline-4">
+<div id="outline-container-org58bbed1" class="outline-4">
 <h4 id="automatic-activation-of-local-pyenv-version"><span class="section-number-4">6.2.1</span> Automatic activation of local pyenv version</h4>
 <div class="outline-text-4" id="text-automatic-activation-of-local-pyenv-version">
 <p>
@@ -855,12 +982,12 @@ can be set with the variable <code>python-auto-set-local-pyvenv-virtualenv=</cod
 </div>
 </div>
 
-<div id="outline-container-org44491ce" class="outline-2">
+<div id="outline-container-orgb68148f" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">7</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org00e3e8b" class="outline-3">
+<div id="outline-container-orgc8fc7d9" class="outline-3">
 <h3 id="inferior-repl-process"><span class="section-number-3">7.1</span> Inferior REPL process</h3>
 <div class="outline-text-3" id="text-inferior-repl-process">
 <p>
@@ -939,7 +1066,7 @@ Send code to inferior process commands:
 </div>
 </div>
 
-<div id="outline-container-org5e7e049" class="outline-3">
+<div id="outline-container-org9f325a5" class="outline-3">
 <h3 id="running-python-script-in-shell"><span class="section-number-3">7.2</span> Running Python Script in shell</h3>
 <div class="outline-text-3" id="text-running-python-script-in-shell">
 <p>
@@ -983,7 +1110,7 @@ compilation command.
 </div>
 </div>
 
-<div id="outline-container-org3f27e7a" class="outline-3">
+<div id="outline-container-orgd09da53" class="outline-3">
 <h3 id="testing"><span class="section-number-3">7.3</span> Testing</h3>
 <div class="outline-text-3" id="text-testing">
 <p>
@@ -1082,7 +1209,7 @@ function with a prefix argument, for example <code>SPC u SPC m t a</code>.
 </div>
 </div>
 
-<div id="outline-container-org88ef724" class="outline-3">
+<div id="outline-container-org075fe4e" class="outline-3">
 <h3 id="refactoring"><span class="section-number-3">7.4</span> Refactoring</h3>
 <div class="outline-text-3" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1119,7 +1246,7 @@ function with a prefix argument, for example <code>SPC u SPC m t a</code>.
 </div>
 </div>
 
-<div id="outline-container-org5858092" class="outline-3">
+<div id="outline-container-org3bef016" class="outline-3">
 <h3 id="pip-package-management"><span class="section-number-3">7.5</span> Pip package management</h3>
 <div class="outline-text-3" id="text-pip-package-management">
 <p>
@@ -1195,7 +1322,7 @@ In the package list buffer:
 </div>
 </div>
 
-<div id="outline-container-orgd2bcd28" class="outline-3">
+<div id="outline-container-org287f959" class="outline-3">
 <h3 id="live-coding"><span class="section-number-3">7.6</span> Live coding</h3>
 <div class="outline-text-3" id="text-live-coding">
 <p>
@@ -1226,7 +1353,7 @@ Live coding is provided by the <a href="https://github.com/donkirkby/live-py-plu
 </div>
 </div>
 
-<div id="outline-container-orgd12b6cc" class="outline-3">
+<div id="outline-container-org1b2b0a5" class="outline-3">
 <h3 id="other-python-commands"><span class="section-number-3">7.7</span> Other Python commands</h3>
 <div class="outline-text-3" id="text-other-python-commands">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1348,7 +1475,7 @@ Live coding is provided by the <a href="https://github.com/donkirkby/live-py-plu
 </div>
 </div>
 
-<div id="outline-container-org234c028" class="outline-3">
+<div id="outline-container-orgef3f718" class="outline-3">
 <h3 id="debugger"><span class="section-number-3">7.8</span> Debugger</h3>
 <div class="outline-text-3" id="text-debugger">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1547,7 +1674,7 @@ Live coding is provided by the <a href="https://github.com/donkirkby/live-py-plu
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-05-17 Fri 23:22</p>
+<p class="date">Created: 2019-07-08 Mon 21:00</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

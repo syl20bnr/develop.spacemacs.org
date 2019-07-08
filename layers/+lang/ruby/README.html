@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-17 Fri 23:23 -->
+<!-- 2019-07-08 Mon 21:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ruby layer</title>
@@ -284,27 +284,34 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#install">2. Install</a>
 <ul>
-<li><a href="#prerequisites">2.1. Prerequisites</a></li>
-<li><a href="#ruby-version-management">2.2. Ruby version management</a></li>
-<li><a href="#test-runner">2.3. Test runner</a></li>
+<li><a href="#backends">2.1. Backends</a>
+<ul>
+<li><a href="#robe">2.1.1. Robe</a></li>
+<li><a href="#language-server-protocol">2.1.2. Language Server Protocol</a></li>
+</ul>
+</li>
+<li><a href="#prerequisites">2.2. Prerequisites</a></li>
+<li><a href="#ruby-version-management">2.3. Ruby version management</a></li>
+<li><a href="#test-runner">2.4. Test runner</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key bindings</a>
 <ul>
 <li><a href="#ruby-enh-ruby-mode-robe-inf-ruby-ruby-tools">3.1. Ruby (enh-ruby-mode, robe, inf-ruby, ruby-tools)</a></li>
-<li><a href="#bundler">3.2. Bundler</a></li>
-<li><a href="#rubocop">3.3. RuboCop</a></li>
-<li><a href="#tests">3.4. Tests</a>
+<li><a href="#debugger">3.2. Debugger</a></li>
+<li><a href="#bundler">3.3. Bundler</a></li>
+<li><a href="#rubocop">3.4. RuboCop</a></li>
+<li><a href="#tests">3.5. Tests</a>
 <ul>
-<li><a href="#rspec-mode">3.4.1. RSpec-mode</a></li>
-<li><a href="#ruby-test-mode">3.4.2. Ruby-test-mode</a></li>
-<li><a href="#minitest-mode">3.4.3. minitest-mode</a></li>
+<li><a href="#rspec-mode">3.5.1. RSpec-mode</a></li>
+<li><a href="#ruby-test-mode">3.5.2. Ruby-test-mode</a></li>
+<li><a href="#minitest-mode">3.5.3. minitest-mode</a></li>
 </ul>
 </li>
-<li><a href="#toggles">3.5. Toggles</a></li>
-<li><a href="#rake">3.6. Rake</a></li>
-<li><a href="#refactor">3.7. Refactor</a></li>
-<li><a href="#seeing-is-believing">3.8. Seeing is believing</a></li>
+<li><a href="#toggles">3.6. Toggles</a></li>
+<li><a href="#rake">3.7. Rake</a></li>
+<li><a href="#refactor">3.8. Refactor</a></li>
+<li><a href="#seeing-is-believing">3.9. Seeing is believing</a></li>
 </ul>
 </li>
 <li><a href="#layer-options">4. Layer options</a></li>
@@ -317,7 +324,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orga48ed6f" class="outline-2">
+<div id="outline-container-org76a4ccd" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -325,7 +332,7 @@ This layer provides support for the Ruby programming language.
 </p>
 </div>
 
-<div id="outline-container-org7647624" class="outline-3">
+<div id="outline-container-org032a901" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -340,7 +347,7 @@ This layer provides support for the Ruby programming language.
 </div>
 </div>
 
-<div id="outline-container-org42e1e7c" class="outline-2">
+<div id="outline-container-org2243035" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -350,7 +357,7 @@ file.
 </p>
 
 <p>
-This layer supports two different Ruby modes: Emacs’s built-in Ruby Mode and
+This layer supports two different Ruby modes: Emacs's built-in Ruby Mode and
 <a href="https://github.com/zenspider/enhanced-ruby-mode">enh-ruby-mode</a>. By default the built-in Ruby mode is enabled. To switch to the
 <code>enh-ruby-mode</code> set <code>ruby-enable-enh-ruby-mode</code> to t:
 </p>
@@ -362,8 +369,44 @@ This layer supports two different Ruby modes: Emacs’s built-in Ruby Mode and
 </div>
 </div>
 
-<div id="outline-container-org6ad576d" class="outline-3">
-<h3 id="prerequisites"><span class="section-number-3">2.1</span> Prerequisites</h3>
+<div id="outline-container-orgbb067f6" class="outline-3">
+<h3 id="backends"><span class="section-number-3">2.1</span> Backends</h3>
+<div class="outline-text-3" id="text-backends">
+</div>
+
+<div id="outline-container-org11340be" class="outline-4">
+<h4 id="robe"><span class="section-number-4">2.1.1</span> Robe</h4>
+<div class="outline-text-4" id="text-robe">
+<p>
+The default Ruby-mode backend. See Prerequisites for the necessary Gems to support Robe.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc855f20" class="outline-4">
+<h4 id="language-server-protocol"><span class="section-number-4">2.1.2</span> Language Server Protocol</h4>
+<div class="outline-text-4" id="text-language-server-protocol">
+<p>
+IDE-like backend for Ruby. The only prerequisite gem is <code>solargraph</code> which can be
+installed globally with:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">gem install solargraph
+</pre>
+</div>
+
+<p>
+LSP also supports the DAP debugger which will be automatically configured upon
+using the LSP backend. Dap-mode can be setup here:
+<a href="https://github.com/emacs-lsp/dap-mode#ruby">https://github.com/emacs-lsp/dap-mode#ruby</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd9244da" class="outline-3">
+<h3 id="prerequisites"><span class="section-number-3">2.2</span> Prerequisites</h3>
 <div class="outline-text-3" id="text-prerequisites">
 <p>
 Some of the advanced features supported by this layer depend on external gems
@@ -375,6 +418,7 @@ based on your version manager):
 <li><code>ruby_parser</code> is required for <b>goto-step<sub>definition</sub></b> in <code>feature-mode</code></li>
 <li><code>rubocop</code> is required for rubocop integration</li>
 <li><code>seeing_is_believing</code> helps you evaluate code inline</li>
+<li><code>solargraph</code> is required for using the language server protocol in <code>ruby-mode</code></li>
 </ul>
 
 <p>
@@ -399,8 +443,8 @@ specific documentation for details and caveats):
 </div>
 </div>
 
-<div id="outline-container-org49598f9" class="outline-3">
-<h3 id="ruby-version-management"><span class="section-number-3">2.2</span> Ruby version management</h3>
+<div id="outline-container-orga91d442" class="outline-3">
+<h3 id="ruby-version-management"><span class="section-number-3">2.3</span> Ruby version management</h3>
 <div class="outline-text-3" id="text-ruby-version-management">
 <p>
 This layer supports <a href="https://rvm.io/">RVM</a>, <a href="https://github.com/rbenv/rbenv">Rbenv</a>, and <a href="https://github.com/postmodern/chruby">Chruby</a>. You can choose the default version
@@ -428,8 +472,8 @@ Note: Only one version manager at a time can be enabled.
 </div>
 </div>
 
-<div id="outline-container-orgb0bebea" class="outline-3">
-<h3 id="test-runner"><span class="section-number-3">2.3</span> Test runner</h3>
+<div id="outline-container-org07bd026" class="outline-3">
+<h3 id="test-runner"><span class="section-number-3">2.4</span> Test runner</h3>
 <div class="outline-text-3" id="text-test-runner">
 <p>
 This layer supports <code>RSpec</code>, <code>ruby-test</code> and <code>minitest</code> test runners
@@ -455,12 +499,12 @@ directory local variables.
 </div>
 </div>
 
-<div id="outline-container-org14aa5d9" class="outline-2">
+<div id="outline-container-orge91e9b3" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org9fe0b95" class="outline-3">
+<div id="outline-container-org9bbf4c4" class="outline-3">
 <h3 id="ruby-enh-ruby-mode-robe-inf-ruby-ruby-tools"><span class="section-number-3">3.1</span> Ruby (enh-ruby-mode, robe, inf-ruby, ruby-tools)</h3>
 <div class="outline-text-3" id="text-ruby-enh-ruby-mode-robe-inf-ruby-ruby-tools">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -567,8 +611,204 @@ directory local variables.
 </div>
 </div>
 
-<div id="outline-container-orgf2b0d57" class="outline-3">
-<h3 id="bundler"><span class="section-number-3">3.2</span> Bundler</h3>
+<div id="outline-container-org1ed0fbe" class="outline-3">
+<h3 id="debugger"><span class="section-number-3">3.2</span> Debugger</h3>
+<div class="outline-text-3" id="text-debugger">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d d d</code></td>
+<td class="org-left">start debugging</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d d l</code></td>
+<td class="org-left">debug last configuration</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d d r</code></td>
+<td class="org-left">debug recent configuration</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d c</code></td>
+<td class="org-left">continue</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d i</code></td>
+<td class="org-left">step in</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d o</code></td>
+<td class="org-left">step out</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d s</code></td>
+<td class="org-left">next step</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d v</code></td>
+<td class="org-left">inspect value at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d r</code></td>
+<td class="org-left">restart frame</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d .</code></td>
+<td class="org-left">debug transient state</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d a</code></td>
+<td class="org-left">abandon current session</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d A</code></td>
+<td class="org-left">abandon all process</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d e e</code></td>
+<td class="org-left">eval</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d e r</code></td>
+<td class="org-left">eval region</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d e t</code></td>
+<td class="org-left">eval value at point</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d S s</code></td>
+<td class="org-left">switch session</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d S t</code></td>
+<td class="org-left">switch thread</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d S f</code></td>
+<td class="org-left">switch frame</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d I i</code></td>
+<td class="org-left">inspect</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d I r</code></td>
+<td class="org-left">inspect region</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d I t</code></td>
+<td class="org-left">inspect value at point</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d b b</code></td>
+<td class="org-left">toggle a breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b c</code></td>
+<td class="org-left">change breakpoint condition</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b l</code></td>
+<td class="org-left">change breakpoint log condition</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b h</code></td>
+<td class="org-left">change breakpoint hit count</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b a</code></td>
+<td class="org-left">add a breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b d</code></td>
+<td class="org-left">delete a breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b D</code></td>
+<td class="org-left">clear all breakpoints</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d '_</code></td>
+<td class="org-left">Run debug REPL</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d w l</code></td>
+<td class="org-left">list local variables</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d w o</code></td>
+<td class="org-left">goto output buffer if present</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d w s</code></td>
+<td class="org-left">list sessions</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d w b</code></td>
+<td class="org-left">list breakpoints</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org4681505" class="outline-3">
+<h3 id="bundler"><span class="section-number-3">3.3</span> Bundler</h3>
 <div class="outline-text-3" id="text-bundler">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -619,8 +859,8 @@ directory local variables.
 </div>
 </div>
 
-<div id="outline-container-org62e1acf" class="outline-3">
-<h3 id="rubocop"><span class="section-number-3">3.3</span> RuboCop</h3>
+<div id="outline-container-org22477fe" class="outline-3">
+<h3 id="rubocop"><span class="section-number-3">3.4</span> RuboCop</h3>
 <div class="outline-text-3" id="text-rubocop">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -638,32 +878,37 @@ directory local variables.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m r r f</code></td>
+<td class="org-left"><code>SPC m = r</code></td>
+<td class="org-left">Format the current buffer using RuboCop</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m R r f</code></td>
 <td class="org-left">Runs RuboCop on the currently visited file</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r r F</code></td>
+<td class="org-left"><code>SPC m R r F</code></td>
 <td class="org-left">Runs auto-correct on the currently visited file</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r r d</code></td>
+<td class="org-left"><code>SPC m R r d</code></td>
 <td class="org-left">Prompts from a directory on which to run RuboCop</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r r D</code></td>
+<td class="org-left"><code>SPC m R r D</code></td>
 <td class="org-left">Prompts for a directory on which to run auto-correct</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r r p</code></td>
+<td class="org-left"><code>SPC m R r p</code></td>
 <td class="org-left">Runs RuboCop on the entire project</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r r P</code></td>
+<td class="org-left"><code>SPC m R r P</code></td>
 <td class="org-left">Runs auto-correct on the project</td>
 </tr>
 </tbody>
@@ -671,13 +916,13 @@ directory local variables.
 </div>
 </div>
 
-<div id="outline-container-org1167762" class="outline-3">
-<h3 id="tests"><span class="section-number-3">3.4</span> Tests</h3>
+<div id="outline-container-org267c509" class="outline-3">
+<h3 id="tests"><span class="section-number-3">3.5</span> Tests</h3>
 <div class="outline-text-3" id="text-tests">
 </div>
 
-<div id="outline-container-org1969e05" class="outline-4">
-<h4 id="rspec-mode"><span class="section-number-4">3.4.1</span> RSpec-mode</h4>
+<div id="outline-container-org3ee040c" class="outline-4">
+<h4 id="rspec-mode"><span class="section-number-4">3.5.1</span> RSpec-mode</h4>
 <div class="outline-text-4" id="text-rspec-mode">
 <p>
 When <code>ruby-test-runner</code> equals <code>rspec</code>.
@@ -750,20 +995,20 @@ When <code>ruby-test-runner</code> equals <code>rspec</code>.
 
 <tr>
 <td class="org-left"><code>SPC m t TAB</code></td>
-<td class="org-left">toggle between spec’s and target’s buffer</td>
+<td class="org-left">toggle between spec's and target's buffer</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m t ~</code></td>
-<td class="org-left">toggle between spec’s and target’s buffer find example</td>
+<td class="org-left">toggle between spec's and target's buffer find example</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-org385d6d6" class="outline-4">
-<h4 id="ruby-test-mode"><span class="section-number-4">3.4.2</span> Ruby-test-mode</h4>
+<div id="outline-container-org63dd02b" class="outline-4">
+<h4 id="ruby-test-mode"><span class="section-number-4">3.5.2</span> Ruby-test-mode</h4>
 <div class="outline-text-4" id="text-ruby-test-mode">
 <p>
 When <code>ruby-test-runner</code> equals <code>ruby-test</code>.
@@ -798,8 +1043,8 @@ When <code>ruby-test-runner</code> equals <code>ruby-test</code>.
 </div>
 </div>
 
-<div id="outline-container-org2ece1f4" class="outline-4">
-<h4 id="minitest-mode"><span class="section-number-4">3.4.3</span> minitest-mode</h4>
+<div id="outline-container-org7d1cb58" class="outline-4">
+<h4 id="minitest-mode"><span class="section-number-4">3.5.3</span> minitest-mode</h4>
 <div class="outline-text-4" id="text-minitest-mode">
 <p>
 When <code>ruby-test-runner</code> equals <code>minitest</code>.
@@ -845,8 +1090,8 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-org12ffe0b" class="outline-3">
-<h3 id="toggles"><span class="section-number-3">3.5</span> Toggles</h3>
+<div id="outline-container-org4a47050" class="outline-3">
+<h3 id="toggles"><span class="section-number-3">3.6</span> Toggles</h3>
 <div class="outline-text-3" id="text-toggles">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -877,8 +1122,8 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-org02a1e61" class="outline-3">
-<h3 id="rake"><span class="section-number-3">3.6</span> Rake</h3>
+<div id="outline-container-org8ef9232" class="outline-3">
+<h3 id="rake"><span class="section-number-3">3.7</span> Rake</h3>
 <div class="outline-text-3" id="text-rake">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -919,8 +1164,8 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-orgfa6f521" class="outline-3">
-<h3 id="refactor"><span class="section-number-3">3.7</span> Refactor</h3>
+<div id="outline-container-org616aeba" class="outline-3">
+<h3 id="refactor"><span class="section-number-3">3.8</span> Refactor</h3>
 <div class="outline-text-3" id="text-refactor">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -961,8 +1206,8 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-orgbfad8f6" class="outline-3">
-<h3 id="seeing-is-believing"><span class="section-number-3">3.8</span> Seeing is believing</h3>
+<div id="outline-container-org5592fbc" class="outline-3">
+<h3 id="seeing-is-believing"><span class="section-number-3">3.9</span> Seeing is believing</h3>
 <div class="outline-text-3" id="text-seeing-is-believing">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -994,7 +1239,7 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-orgf8001a3" class="outline-2">
+<div id="outline-container-org6a082fa" class="outline-2">
 <h2 id="layer-options"><span class="section-number-2">4</span> Layer options</h2>
 <div class="outline-text-2" id="text-layer-options">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1038,6 +1283,12 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 <td class="org-left"><code>t</code></td>
 <td class="org-left">If non-nil, enable highlight for debugger keywords.</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>ruby-backend</code></td>
+<td class="org-left"><code>robe</code></td>
+<td class="org-left">Defines the backend for IDE feature. Possible values are <code>robe</code> or <code>lsp</code>.</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1045,7 +1296,7 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-05-17 Fri 23:23</p>
+<p class="date">Created: 2019-07-08 Mon 21:00</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
