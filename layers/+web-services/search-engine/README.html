@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-08 Mon 21:00 -->
+<!-- 2019-11-08 Fri 17:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Search Engine layer</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Travis CI User" />
+<meta name="author" content="root" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -295,7 +295,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org923cdc8" class="outline-2">
+<div id="outline-container-orgeccb7a2" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -303,7 +303,7 @@ This layer adds support for the <a href="https://github.com/hrs/engine-mode">Sea
 </p>
 </div>
 
-<div id="outline-container-orgf0230c8" class="outline-3">
+<div id="outline-container-orgd5fbb72" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -313,7 +313,7 @@ This layer adds support for the <a href="https://github.com/hrs/engine-mode">Sea
 </div>
 </div>
 
-<div id="outline-container-orga070e08" class="outline-2">
+<div id="outline-container-org6c43da0" class="outline-2">
 <h2 id="supported-search-engines"><span class="section-number-2">2</span> Supported search engines</h2>
 <div class="outline-text-2" id="text-supported-search-engines">
 <ul class="org-ul">
@@ -333,11 +333,19 @@ This layer adds support for the <a href="https://github.com/hrs/engine-mode">Sea
 <li>Spacemacs Pull Requests</li>
 <li>Wikipedia</li>
 <li>Wolfram Alpha</li>
+<li>Maven Central</li>
+<li>Npm</li>
+<li>Hoogle 5</li>
+<li>Hackage Package Search</li>
+<li>Clojure-doc</li>
+<li>Python Package Index</li>
+<li>Python Docs</li>
+<li>C++ Reference</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org950be3d" class="outline-2">
+<div id="outline-container-orgc662403" class="outline-2">
 <h2 id="install"><span class="section-number-2">3</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -348,7 +356,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgb9ed52e" class="outline-2">
+<div id="outline-container-org646c804" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -379,7 +387,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org64577db" class="outline-2">
+<div id="outline-container-org2bae5d1" class="outline-2">
 <h2 id="customize-it"><span class="section-number-2">5</span> Customize it!</h2>
 <div class="outline-text-2" id="text-customize-it">
 <p>
@@ -396,15 +404,30 @@ your <code>dotspacemacs/user-config</code>:
 </div>
 
 <p>
-Also if you want more search engines, just push them (do this in
-<code>dotspacemacs/user-config</code>)
+If you want more control of how various search engines are handled
+or you want to add additional ones you can do so by setting the
+following datastructure to <code>search-engine-config-list</code> in your <code>dotspacemacs/user-config</code>.
 </p>
 
+<p>
+The datastructure consists of a key and:
+</p>
+<ul class="org-ul">
+<li>name -&gt; the name displayed in the search prompt.</li>
+<li>url -&gt; the url to query against, search parameter must be set as <code>%s</code>.</li>
+<li>keywords -&gt; a list of <code>engine-mode</code> keywords like a specific browser to use
+or a specific transformation to make. You can find a detailed
+list of all supported features <a href="https://github.com/hrs/engine-mode">here</a>.</li>
+</ul>
+
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">push</span> '<span class="org-rainbow-delimiters-depth-2">(</span>custom1
-         <span class="org-builtin">:name</span> <span class="org-string">"Custom Search Engine 1"</span>
-         <span class="org-builtin">:url</span> <span class="org-string">"http://www.domain.com/s/stuff_sutff_remember_to_replace_search_candidate_with_%s"</span><span class="org-rainbow-delimiters-depth-2">)</span>
-        search-engine-alist<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>search-engine <span class="org-builtin">:variables</span>
+                   search-engine-config-list '<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">(</span>custom1
+                                                <span class="org-builtin">:name</span> <span class="org-string">"Custom Search Engine 1"</span>
+                                                <span class="org-builtin">:url</span> <span class="org-string">"http://www.domain.com/s/stuff_sutff_remember_to_replace_search_candidate_with_%s"</span>
+                                                <span class="org-builtin">:keywords</span> <span class="org-rainbow-delimiters-depth-6">(</span><span class="org-builtin">:docstring</span> <span class="org-string">"My custom string"</span>
+                                                                      <span class="org-builtin">:browser</span> 'eww-browse-url<span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -418,8 +441,8 @@ any key binding you want.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-07-08 Mon 21:00</p>
+<p class="author">Author: root</p>
+<p class="date">Created: 2019-11-08 Fri 17:51</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

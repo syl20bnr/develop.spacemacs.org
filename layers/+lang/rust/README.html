@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-08 Mon 21:00 -->
+<!-- 2019-11-08 Fri 17:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rust layer</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Travis CI User" />
+<meta name="author" content="root" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -285,7 +285,7 @@ for the JavaScript code in this tag.
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
-<li><a href="#backends">2.2. Backends</a>
+<li><a href="#choosing-a-backend">2.2. Choosing a backend</a>
 <ul>
 <li><a href="#racer">2.2.1. Racer</a></li>
 <li><a href="#lsp">2.2.2. LSP</a></li>
@@ -309,7 +309,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgf800562" class="outline-2">
+<div id="outline-container-orgeca8ca9" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -317,23 +317,24 @@ This layer supports <a href="https://www.rust-lang.org">Rust</a> development in 
 </p>
 </div>
 
-<div id="outline-container-org56754a7" class="outline-3">
+<div id="outline-container-orgd27fa5c" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Auto-completion and navigation support through <a href="https://github.com/emacs-lsp/lsp-rust">lsp</a> or <a href="https://github.com/phildawes/racer">Racer</a></li>
+<li>Interactive debugger using <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a></li>
 <li>support for the Rust package manager <a href="http://doc.crates.io/index.html">Cargo</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org6f08dc7" class="outline-2">
+<div id="outline-container-orgca82eeb" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgb6387b7" class="outline-3">
+<div id="outline-container-org67ff6d1" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -344,16 +345,43 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgfd4769e" class="outline-3">
-<h3 id="backends"><span class="section-number-3">2.2</span> Backends</h3>
-<div class="outline-text-3" id="text-backends">
+<div id="outline-container-org6069a10" class="outline-3">
+<h3 id="choosing-a-backend"><span class="section-number-3">2.2</span> Choosing a backend</h3>
+<div class="outline-text-3" id="text-choosing-a-backend">
 <p>
-The backend is dependent upon the <code>rust-backend</code> layer configuration variable.
-The possible vaules for <code>rust-backend</code> are <code>lsp</code> or <code>racer</code> with <code>racer</code> being the default.
+To choose a default backend set the layer variable <code>rust-backend</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>rust <span class="org-builtin">:variables</span> rust-backend 'racer<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Alternatively the <code>lsp</code> backend will be automatically chosen if the layer <code>lsp</code>
+is used and you did not specify any value for <code>rust-backend</code>.
+</p>
+
+<p>
+Backend can be chosen on a per project basis using directory local variables
+(files named <code>.dir-locals.el</code> at the root of a project), an example to use the
+<code>lsp</code> backend:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>rust-mode <span class="org-rainbow-delimiters-depth-3">(</span>rust-backend . lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+<b>Note:</b> you can easily add a directory local variable with <code>SPC f v d</code>.
 </p>
 </div>
 
-<div id="outline-container-org247235e" class="outline-4">
+<div id="outline-container-org497c058" class="outline-4">
 <h4 id="racer"><span class="section-number-4">2.2.1</span> Racer</h4>
 <div class="outline-text-4" id="text-racer">
 <p>
@@ -368,7 +396,7 @@ To enable auto-completion, ensure that the <code>auto-completion</code> layer is
 </div>
 </div>
 
-<div id="outline-container-org966b2c3" class="outline-4">
+<div id="outline-container-org2b1f46e" class="outline-4">
 <h4 id="lsp"><span class="section-number-4">2.2.2</span> LSP</h4>
 <div class="outline-text-4" id="text-lsp">
 <p>
@@ -396,7 +424,7 @@ To install the debug adapter you may run <code>M-x dap-gdb-lldb-setup</code> whe
 </div>
 </div>
 
-<div id="outline-container-org32002bd" class="outline-3">
+<div id="outline-container-org96fdc9b" class="outline-3">
 <h3 id="cargo"><span class="section-number-3">2.3</span> Cargo</h3>
 <div class="outline-text-3" id="text-cargo">
 <p>
@@ -406,7 +434,7 @@ instructions can be found on the main page of <a href="http://doc.crates.io/inde
 </div>
 </div>
 
-<div id="outline-container-org6cf6279" class="outline-3">
+<div id="outline-container-orgfaba41b" class="outline-3">
 <h3 id="rustfmt"><span class="section-number-3">2.4</span> Rustfmt</h3>
 <div class="outline-text-3" id="text-rustfmt">
 <p>
@@ -425,7 +453,7 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 </div>
 </div>
 
-<div id="outline-container-org712b58f" class="outline-2">
+<div id="outline-container-org87e2fc1" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -546,206 +574,20 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 </table>
 </div>
 
-<div id="outline-container-org1272810" class="outline-3">
+<div id="outline-container-org4a9b62d" class="outline-3">
 <h3 id="debugger"><span class="section-number-3">3.1</span> debugger</h3>
 <div class="outline-text-3" id="text-debugger">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d d d</code></td>
-<td class="org-left">start debugging</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d d l</code></td>
-<td class="org-left">debug last configuration</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d d r</code></td>
-<td class="org-left">debug recent configuration</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d c</code></td>
-<td class="org-left">continue</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d i</code></td>
-<td class="org-left">step in</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d o</code></td>
-<td class="org-left">step out</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d s</code></td>
-<td class="org-left">next step</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d v</code></td>
-<td class="org-left">inspect value at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d r</code></td>
-<td class="org-left">restart frame</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d .</code></td>
-<td class="org-left">debug transient state</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d a</code></td>
-<td class="org-left">abandon current session</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d A</code></td>
-<td class="org-left">abandon all process</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d e e</code></td>
-<td class="org-left">eval</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d e r</code></td>
-<td class="org-left">eval region</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d e t</code></td>
-<td class="org-left">eval value at point</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d S s</code></td>
-<td class="org-left">switch session</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d S t</code></td>
-<td class="org-left">switch thread</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d S f</code></td>
-<td class="org-left">switch frame</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d I i</code></td>
-<td class="org-left">inspect</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d I r</code></td>
-<td class="org-left">inspect region</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d I t</code></td>
-<td class="org-left">inspect value at point</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d b b</code></td>
-<td class="org-left">toggle a breakpoint</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b c</code></td>
-<td class="org-left">change breakpoint condition</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b l</code></td>
-<td class="org-left">change breakpoint log condition</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b h</code></td>
-<td class="org-left">change breakpoint hit count</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b a</code></td>
-<td class="org-left">add a breakpoint</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b d</code></td>
-<td class="org-left">delete a breakpoint</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b D</code></td>
-<td class="org-left">clear all breakpoints</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d '_</code></td>
-<td class="org-left">Run debug REPL</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d w l</code></td>
-<td class="org-left">list local variables</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d w o</code></td>
-<td class="org-left">goto output buffer if present</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d w s</code></td>
-<td class="org-left">list sessions</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d w b</code></td>
-<td class="org-left">list breakpoints</td>
-</tr>
-</tbody>
-</table>
+<p>
+Using the <code>dap</code> layer you'll get access to all the DAP key bindings, see the
+complete list of key bindings on the <a href="https://github.com/syl20bnr/spacemacs/tree/develop/layers/+tools/dap#key-bindings">dap layer description</a>.
+</p>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-07-08 Mon 21:00</p>
+<p class="author">Author: root</p>
+<p class="date">Created: 2019-11-08 Fri 17:50</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

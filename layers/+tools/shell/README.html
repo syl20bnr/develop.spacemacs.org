@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-08 Mon 21:00 -->
+<!-- 2019-11-08 Fri 17:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shell layer</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Travis CI User" />
+<meta name="author" content="root" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -282,12 +282,23 @@ for the JavaScript code in this tag.
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a></li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#install-vterm">2.1. Install vterm</a>
+<ul>
+<li><a href="#check-that-your-emacs-supports-dynamic-modules">2.1.1. Check that your Emacs supports dynamic modules</a></li>
+<li><a href="#install-cmake-311-or-higher">2.1.2. Install CMake 3.11 or higher</a></li>
+<li><a href="#install-libtool">2.1.3. Install libtool</a></li>
+<li><a href="#install-libvterm">2.1.4. Install libvterm</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#configuration">3. Configuration</a>
 <ul>
 <li><a href="#default-shell">3.1. Default shell</a></li>
 <li><a href="#default-shell-position-width-and-height">3.2. Default shell position, width, and height</a></li>
-<li><a href="#set-shell-for-term-and-ansi-term">3.3. Set shell for term and ansi-term</a></li>
+<li><a href="#set-shell-for-term-ansi-term-and-vterm">3.3. Set shell for term, ansi-term and vterm</a></li>
 <li><a href="#set-shell-for-multi-term">3.4. Set shell for multi-term</a></li>
 <li><a href="#width-of-the-shell-popup-buffers">3.5. Width of the shell popup buffers</a></li>
 <li><a href="#enable-em-smart-in-eshell">3.6. Enable em-smart in Eshell</a></li>
@@ -312,7 +323,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org94910b9" class="outline-2">
+<div id="outline-container-org3ebffb2" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -320,7 +331,7 @@ This layer configures the various shells available in Emacs.
 </p>
 </div>
 
-<div id="outline-container-org81500d4" class="outline-3">
+<div id="outline-container-orge342654" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -330,7 +341,7 @@ This layer configures the various shells available in Emacs.
 </div>
 </div>
 
-<div id="outline-container-org2c80ee7" class="outline-2">
+<div id="outline-container-org08e6c21" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -339,24 +350,139 @@ add <code>shell</code> to the existing <code>dotspacemacs-configuration-layers</
 file.
 </p>
 </div>
+
+<div id="outline-container-org693890c" class="outline-3">
+<h3 id="install-vterm"><span class="section-number-3">2.1</span> Install vterm</h3>
+<div class="outline-text-3" id="text-install-vterm">
+<p>
+<code>vterm</code> is the latest addition to Emacs' set of terminal emulators and the only
+one to be implemented in C, leveraging <code>libvterm</code>. It is the only one in Emacs
+at the moment to be as fast as a standalone terminal with full support for
+<code>ncurses</code>, <code>vim</code>, <code>htop</code> and the likes.
+</p>
+
+<p>
+On its first run, <code>vterm</code> will automatically compile its dynamic library, for
+which dependencies are needed. For more details, head to the <a href="https://github.com/akermu/emacs-libvterm">official docs</a>.
+</p>
 </div>
 
-<div id="outline-container-org500cec5" class="outline-2">
+<div id="outline-container-orga8d2443" class="outline-4">
+<h4 id="check-that-your-emacs-supports-dynamic-modules"><span class="section-number-4">2.1.1</span> Check that your Emacs supports dynamic modules</h4>
+<div class="outline-text-4" id="text-check-that-your-emacs-supports-dynamic-modules">
+<p>
+You can check if your Emacs supports loading dynamic libraries by checking if
+the <code>system-configuration-features</code> variable contains the string <code>MODULES</code>. If
+not, you need to get a version of Emacs that supports it or compile it from
+source supplying the <code>./configure --with-module</code> option at configure time.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb10a242" class="outline-4">
+<h4 id="install-cmake-311-or-higher"><span class="section-number-4">2.1.2</span> Install CMake 3.11 or higher</h4>
+<div class="outline-text-4" id="text-install-cmake-311-or-higher">
+</div>
+
+<ol class="org-ol">
+<li><a id="macos"></a>macOS<br />
+<div class="outline-text-5" id="text-macos">
+<div class="org-src-container">
+<pre class="src src-shell">brew install cmake
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="ubuntu"></a>Ubuntu<br />
+<div class="outline-text-5" id="text-ubuntu">
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt install cmake
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orga3ba133" class="outline-4">
+<h4 id="install-libtool"><span class="section-number-4">2.1.3</span> Install libtool</h4>
+<div class="outline-text-4" id="text-install-libtool">
+<p>
+If the <code>libtool</code> command does not exist in your system (usually in
+<code>/usr/bin/libtool</code>), you need to install it:
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="ubuntu-1"></a>Ubuntu<br />
+<div class="outline-text-5" id="text-ubuntu-1">
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt install libtool-bin
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org837fa2e" class="outline-4">
+<h4 id="install-libvterm"><span class="section-number-4">2.1.4</span> Install libvterm</h4>
+<div class="outline-text-4" id="text-install-libvterm">
+</div>
+
+<ol class="org-ol">
+<li><a id="macos-1"></a>macOS<br />
+<div class="outline-text-5" id="text-macos-1">
+<div class="org-src-container">
+<pre class="src src-shell">brew install libvterm
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="ubuntu-2"></a>Ubuntu<br />
+<div class="outline-text-5" id="text-ubuntu-2">
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt install libvterm-dev
+</pre>
+</div>
+
+<p>
+In other distros, find it and install it in your favorite package manager.
+</p>
+</div>
+</li>
+
+<li><a id="windows"></a>Windows<br />
+<div class="outline-text-5" id="text-windows">
+<p>
+Not supported at the moment, <a href="https://github.com/akermu/emacs-libvterm/issues/12">but possibly coming up</a>.
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga2c3d46" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org2d05f6c" class="outline-3">
+<div id="outline-container-org2116554" class="outline-3">
 <h3 id="default-shell"><span class="section-number-3">3.1</span> Default shell</h3>
 <div class="outline-text-3" id="text-default-shell">
 <p>
-Emacs supports three types of shell:
+Emacs supports five types of shells/terminals:
 </p>
 <ul class="org-ul">
-<li>the Emacs shell</li>
+<li>the Emacs shell (eshell)</li>
 <li>the inferior shell</li>
 <li>the terminal emulator</li>
 <li>the ANSI terminal emulator</li>
+<li>the vterm terminal emulator based on the C library libvterm</li>
 </ul>
 
 <p>
@@ -368,11 +494,12 @@ To define the default shell you can set the layer variable <code>shell-default-s
 to the following variables:
 </p>
 <ul class="org-ul">
-<li><code>eshell</code></li>
+<li><code>eshell</code> (default on Windows)</li>
 <li><code>shell</code></li>
 <li><code>term</code></li>
-<li><code>ansi-term</code></li>
+<li><code>ansi-term</code> (default on Linux/macOS)</li>
 <li><code>multi-term</code></li>
+<li><code>vterm</code></li>
 </ul>
 
 <div class="org-src-container">
@@ -387,7 +514,7 @@ The default shell is quickly accessible via a the default shortcut key ~SPC '​
 </div>
 </div>
 
-<div id="outline-container-org0d594a8" class="outline-3">
+<div id="outline-container-org1769e2e" class="outline-3">
 <h3 id="default-shell-position-width-and-height"><span class="section-number-3">3.2</span> Default shell position, width, and height</h3>
 <div class="outline-text-3" id="text-default-shell-position-width-and-height">
 <p>
@@ -415,9 +542,9 @@ your shell is positioned on the left or the right.
 </div>
 </div>
 
-<div id="outline-container-org37ab056" class="outline-3">
-<h3 id="set-shell-for-term-and-ansi-term"><span class="section-number-3">3.3</span> Set shell for term and ansi-term</h3>
-<div class="outline-text-3" id="text-set-shell-for-term-and-ansi-term">
+<div id="outline-container-org35dfad5" class="outline-3">
+<h3 id="set-shell-for-term-ansi-term-and-vterm"><span class="section-number-3">3.3</span> Set shell for term, ansi-term and vterm</h3>
+<div class="outline-text-3" id="text-set-shell-for-term-ansi-term-and-vterm">
 <p>
 The default shell can be set by setting the variable <code>shell-default-term-shell</code>.
 Default value is <code>/bin/bash</code>.
@@ -431,7 +558,7 @@ Default value is <code>/bin/bash</code>.
 </div>
 </div>
 
-<div id="outline-container-orgcf6cc4e" class="outline-3">
+<div id="outline-container-org5d5bd4b" class="outline-3">
 <h3 id="set-shell-for-multi-term"><span class="section-number-3">3.4</span> Set shell for multi-term</h3>
 <div class="outline-text-3" id="text-set-shell-for-multi-term">
 <p>
@@ -447,7 +574,7 @@ Default value is <code>/bin/bash</code>.
 </div>
 </div>
 
-<div id="outline-container-org7c0d785" class="outline-3">
+<div id="outline-container-orgc0af015" class="outline-3">
 <h3 id="width-of-the-shell-popup-buffers"><span class="section-number-3">3.5</span> Width of the shell popup buffers</h3>
 <div class="outline-text-3" id="text-width-of-the-shell-popup-buffers">
 <p>
@@ -464,7 +591,7 @@ layer variable <code>shell-default-full-span</code> to nil.
 </div>
 </div>
 
-<div id="outline-container-org42afa26" class="outline-3">
+<div id="outline-container-org31c2ef5" class="outline-3">
 <h3 id="enable-em-smart-in-eshell"><span class="section-number-3">3.6</span> Enable em-smart in Eshell</h3>
 <div class="outline-text-3" id="text-enable-em-smart-in-eshell">
 <p>
@@ -500,7 +627,7 @@ To enable <code>em-smart</code> put the following layer variable to non-nil:
 </div>
 </div>
 
-<div id="outline-container-org6f6d4e2" class="outline-3">
+<div id="outline-container-orga481cd2" class="outline-3">
 <h3 id="protect-your-eshell-prompt"><span class="section-number-3">3.7</span> Protect your Eshell prompt</h3>
 <div class="outline-text-3" id="text-protect-your-eshell-prompt">
 <p>
@@ -525,7 +652,7 @@ to nil.
 </div>
 </div>
 
-<div id="outline-container-orgf944751" class="outline-3">
+<div id="outline-container-org7f30dec" class="outline-3">
 <h3 id="fish-shell-and-ansi-term"><span class="section-number-3">3.8</span> Fish shell and ansi-term</h3>
 <div class="outline-text-3" id="text-fish-shell-and-ansi-term">
 <p>
@@ -580,7 +707,7 @@ correctly, in the function <code>dotspacemacs/user-config</code> of your dotfile
 </div>
 </div>
 
-<div id="outline-container-org73f2e3e" class="outline-3">
+<div id="outline-container-org8bcb28e" class="outline-3">
 <h3 id="close-window-with-terminal"><span class="section-number-3">3.9</span> Close window with terminal</h3>
 <div class="outline-text-3" id="text-close-window-with-terminal">
 <p>
@@ -601,7 +728,7 @@ This is only applied to <code>term</code> and <code>ansi-term</code> modes.
 </div>
 </div>
 
-<div id="outline-container-orgc0b014c" class="outline-2">
+<div id="outline-container-orgabe118b" class="outline-2">
 <h2 id="eshell"><span class="section-number-2">4</span> Eshell</h2>
 <div class="outline-text-2" id="text-eshell">
 <p>
@@ -627,7 +754,7 @@ layer is installed)</li>
 </div>
 </div>
 
-<div id="outline-container-orge7164fa" class="outline-2">
+<div id="outline-container-orgd61a88a" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -691,6 +818,11 @@ layer is installed)</li>
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC a s v</code></td>
+<td class="org-left">Open, close or go to a <code>vterm</code></td>
+</tr>
+
+<tr>
 <td class="org-left"><code>C-j</code></td>
 <td class="org-left">next item in history</td>
 </tr>
@@ -714,7 +846,7 @@ in the current buffer instead of a popup.
 </p>
 </div>
 
-<div id="outline-container-org01f9c2f" class="outline-3">
+<div id="outline-container-orgfc6f404" class="outline-3">
 <h3 id="multi-term"><span class="section-number-3">5.1</span> Multi-term</h3>
 <div class="outline-text-3" id="text-multi-term">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -766,7 +898,7 @@ in the current buffer instead of a popup.
 </div>
 </div>
 
-<div id="outline-container-orgf8932f2" class="outline-3">
+<div id="outline-container-org726a6c6" class="outline-3">
 <h3 id="eshell-1"><span class="section-number-3">5.2</span> Eshell</h3>
 <div class="outline-text-3" id="text-eshell-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -795,8 +927,8 @@ in the current buffer instead of a popup.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-07-08 Mon 21:00</p>
+<p class="author">Author: root</p>
+<p class="date">Created: 2019-11-08 Fri 17:51</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

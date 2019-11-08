@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-08 Mon 21:00 -->
+<!-- 2019-11-08 Fri 17:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>GO layer</title>
+<title>Go layer</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Travis CI User" />
+<meta name="author" content="root" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -272,7 +272,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">GO layer</h1>
+<h1 class="title">Go layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -284,17 +284,22 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#install">2. Install</a>
 <ul>
-<li><a href="#pre-requisites">2.1. Pre-requisites</a></li>
-<li><a href="#lsp-backend">2.2. LSP backend</a></li>
-<li><a href="#layer">2.3. Layer</a></li>
+<li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#choosing-a-backend">2.2. Choosing a backend</a></li>
+<li><a href="#pre-requisites">2.3. Pre-requisites</a></li>
 </ul>
 </li>
 <li><a href="#configuration">3. Configuration</a>
 <ul>
-<li><a href="#indentation">3.1. Indentation</a></li>
-<li><a href="#tests">3.2. Tests</a></li>
-<li><a href="#guru">3.3. Guru</a></li>
-<li><a href="#autocomplete">3.4. Autocomplete</a></li>
+<li><a href="#execution">3.1. Execution</a></li>
+<li><a href="#indentation">3.2. Indentation</a></li>
+<li><a href="#autoformat">3.3. Autoformat</a></li>
+<li><a href="#linting">3.4. Linting</a></li>
+<li><a href="#tests">3.5. Tests</a></li>
+<li><a href="#coverage">3.6. Coverage</a></li>
+<li><a href="#guru">3.7. Guru</a></li>
+<li><a href="#auto-completion">3.8. Auto-completion</a></li>
+<li><a href="#lsp-backend">3.9. LSP backend</a></li>
 </ul>
 </li>
 <li><a href="#working-with-go">4. Working with Go</a>
@@ -313,41 +318,88 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgd2a5ea9" class="outline-2">
+<div id="outline-container-orgab1ec91" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds extensive support for go to Spacemacs.
+This layer adds extensive support for the <a href="https://golang.org">Go</a> programming language.
 </p>
 </div>
 
-<div id="outline-container-org51ce9d0" class="outline-3">
+<div id="outline-container-org66b1a50" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>gofmt/goimports on file save (to enable, see <a href="#configuration">Configuration</a>)</li>
-<li>Auto-completion using <a href="https://github.com/nsf/gocode/tree/master/emacs">go-autocomplete</a> (with the <code>auto-completion</code> layer)</li>
-<li>Source analysis using <a href="https://docs.google.com/document/d/1_Y9xCEMj5S-7rv2ooHpZNH15JgRT5iM742gJkw5LtmQ">go-guru</a></li>
+<li>Run <a href="https://golang.org/cmd/gofmt/">gofmt</a> / <a href="https://godoc.org/golang.org/x/tools/cmd/goimports">goimports</a> on file save (see <a href="#autoformat">Autoformat</a>)</li>
+<li>Auto-completion using <a href="https://github.com/nsf/gocode/tree/master/emacs">go-autocomplete.el</a>, via the <code>auto-completion</code> layer (see <a href="#auto-completion">Auto-completion</a>)</li>
+<li>Source analysis using <a href="https://docs.google.com/document/d/1_Y9xCEMj5S-7rv2ooHpZNH15JgRT5iM742gJkw5LtmQ">go-guru</a> (see <a href="#guru">Guru</a>)</li>
 <li>Refactoring with <a href="http://gorefactor.org/">godoctor</a></li>
-<li>Edit struct field tag with <a href="https://github.com/fatih/gomodifytags">gomodifytags</a></li>
-<li>Linting with flycheck's built-in checkers or flycheck-gometalinter</li>
-<li>Coverage profile visualization</li>
-<li>Test generation with <a href="https://github.com/s-kostyaev/go-gen-test">go-gen-test</a></li>
-<li>Get packages faster with <a href="https://github.com/haya14busa/gopkgs">gopkgs</a></li>
+<li>Edit struct field tags with <a href="https://github.com/fatih/gomodifytags">gomodifytags</a></li>
+<li>Linting with flycheck's built-in checkers or <a href="https://github.com/golangci/golangci-lint">golangci-lint</a> (see <a href="#linting">Linting</a>)</li>
+<li>Test generation via <a href="https://github.com/s-kostyaev/go-gen-test">go-gen-test</a> (see <a href="#tests">Tests</a>)</li>
+<li>Coverage profile visualization (see <a href="#coverage">Coverage</a>)</li>
+<li>List packages faster with <a href="https://github.com/haya14busa/gopkgs">gopkgs</a></li>
 <li>Fill a structure with default values using the <a href="https://github.com/davidrjenni/reftools/tree/master/cmd/fillstruct">fillstruct</a></li>
-<li>LSP backend</li>
+<li>LSP backend (see <a href="#lsp-backend">LSP backend</a>)</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7f06cb9" class="outline-2">
+<div id="outline-container-org9d935c4" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orga811620" class="outline-3">
-<h3 id="pre-requisites"><span class="section-number-3">2.1</span> Pre-requisites</h3>
+<div id="outline-container-org7a6365d" class="outline-3">
+<h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
+<p>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>go</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaa82f5f" class="outline-3">
+<h3 id="choosing-a-backend"><span class="section-number-3">2.2</span> Choosing a backend</h3>
+<div class="outline-text-3" id="text-choosing-a-backend">
+<p>
+To choose a default backend set the layer variable <code>go-backend</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-backend 'go-mode<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Alternatively the <code>lsp</code> backend will be automatically chosen if the layer <code>lsp</code>
+is used and you did not specify any value for <code>go-backend</code>.
+</p>
+
+<p>
+Backend can be chosen on a per project basis using directory local variables
+(files named <code>.dir-locals.el</code> at the root of a project), an example to use the
+<code>lsp</code> backend:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>go-mode <span class="org-rainbow-delimiters-depth-3">(</span>go-backend . lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+<b>Note:</b> you can easily add a directory local variable with <code>SPC f v d</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6681ae9" class="outline-3">
+<h3 id="pre-requisites"><span class="section-number-3">2.3</span> Pre-requisites</h3>
 <div class="outline-text-3" id="text-pre-requisites">
 <p>
 You will need <code>gocode</code>, <code>gogetdoc</code>, <code>godef</code>, <code>godoctor</code> and many others
@@ -355,94 +407,29 @@ to get all the goodies of this layer:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">go get -u -v github.com/mdempsky/gocode
-go get -u -v github.com/rogpeppe/godef
-go get -u -v golang.org/x/tools/cmd/guru
-go get -u -v golang.org/x/tools/cmd/gorename
-go get -u -v golang.org/x/tools/cmd/goimports
+<pre class="src src-sh"><span class="org-variable-name">GO111MODULE</span>=on go get -v golang.org/x/tools/gopls@latest
 go get -u -v golang.org/x/tools/cmd/godoc
-go get -u -v github.com/zmb3/gogetdoc
+go get -u -v golang.org/x/tools/cmd/goimports
+go get -u -v golang.org/x/tools/cmd/gorename
+go get -u -v golang.org/x/tools/cmd/guru
 go get -u -v github.com/cweill/gotests/...
-go get -u github.com/haya14busa/gopkgs/cmd/gopkgs
 go get -u -v github.com/davidrjenni/reftools/cmd/fillstruct
-go get -u github.com/josharian/impl
+go get -u -v github.com/fatih/gomodifytags
+go get -u -v github.com/godoctor/godoctor
+go get -u -v github.com/golangci/golangci-lint/cmd/golangci-lint
+go get -u -v github.com/haya14busa/gopkgs/cmd/gopkgs
+go get -u -v github.com/josharian/impl
+go get -u -v github.com/mdempsky/gocode
+go get -u -v github.com/rogpeppe/godef
+go get -u -v github.com/zmb3/gogetdoc
 </pre>
 </div>
 
 <p>
-If you wish to use a linters aggregator tool, you can enable <code>gometalinter</code> or <code>golangci-lint</code>.
-</p>
-
-<p>
-If you wish to use <code>gometalinter</code> set the value of <code>go-use-gometalinter</code> to t:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-use-gometalinter t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-and install the tool:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-sh">go get -u -v github.com/alecthomas/gometalinter
-gometalinter --install --update
-</pre>
-</div>
-
-<p>
-For more information read <a href="https://github.com/alecthomas/gometalinter/blob/master/README.md">gometalinter README.md</a>
-and <a href="https://github.com/favadi/flycheck-gometalinter/blob/master/README.md">flycheck-gometalinter README.md</a>
-</p>
-
-<p>
-If you wish to use <code>golangci-lint</code> set the value of <code>go-use-golangci-lint</code> to t:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-use-golangci-lint t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-and install the tool:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-sh">go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
-</pre>
-</div>
-
-<p>
-For more information read <a href="https://github.com/golangci/golangci-lint">golangci-lint README.md</a>
-and <a href="https://github.com/weijiangan/flycheck-golangci-lint">flycheck-golangci-lint README.md</a>
-</p>
-
-<p>
-If you wish to use <code>godoctor</code> for refactoring, install it too:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-sh">go get -u -v github.com/godoctor/godoctor
-go install github.com/godoctor/godoctor
-</pre>
-</div>
-
-<p>
-If you want to use <code>gomodifytags</code> to edit field tags, install it too:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-sh">go get -u -v github.com/fatih/gomodifytags
-</pre>
-</div>
-
-<p>
-Make sure that the <code>gocode</code> executable is in your PATH. For information about
-setting up <code>$PATH</code>, check out the corresponding section in the FAQ (<code>SPC h f
-$PATH RET</code>).
+Make sure that the executables are in your search <code>$PATH</code>. Note that they are
+installed on <code>$(go env GOPATH)/bin</code>, or <code>$GOBIN</code> if that environment variable is
+defined. For information about setting up <code>$PATH</code>, check out the corresponding
+section in the FAQ (<code>SPC h f $PATH RET</code>).
 </p>
 
 <p>
@@ -451,12 +438,192 @@ layers are enabled as well.
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-org7a07828" class="outline-3">
-<h3 id="lsp-backend"><span class="section-number-3">2.2</span> LSP backend</h3>
+<div id="outline-container-org14b5785" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+</div>
+
+<div id="outline-container-org8e83b35" class="outline-3">
+<h3 id="execution"><span class="section-number-3">3.1</span> Execution</h3>
+<div class="outline-text-3" id="text-execution">
+<p>
+To run the current <code>main</code> package with command line arguments, set the value of
+<code>go-run-args</code> as a file local variable, e.g.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">// Local Variables&#58;
+// go-run-args: <span class="org-string">"--output run.log"</span>
+// End:
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org06a382c" class="outline-3">
+<h3 id="indentation"><span class="section-number-3">3.2</span> Indentation</h3>
+<div class="outline-text-3" id="text-indentation">
+<p>
+By default, the tab width in Go mode is 8 spaces. To use a different value, set
+the layer variable <code>go-tab-width</code>, e.g.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-tab-width <span class="org-highlight-numbers-number">4</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+If you're using <code>.editorconfig</code> in your project, set the value to nil to avoid
+conflicts, i.e.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-tab-width nil<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgae9c8d7" class="outline-3">
+<h3 id="autoformat"><span class="section-number-3">3.3</span> Autoformat</h3>
+<div class="outline-text-3" id="text-autoformat">
+<p>
+To run <code>gofmt</code> before save, set the value to a non-nil, i.e.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-format-before-save t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+To use a different formatter, set the value of <code>gofmt-command</code>, e.g.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> gofmt-command <span class="org-string">"goimports"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgafedcd7" class="outline-3">
+<h3 id="linting"><span class="section-number-3">3.4</span> Linting</h3>
+<div class="outline-text-3" id="text-linting">
+<p>
+If you wish to use <code>golangci-lint</code>, set the following layer variable to non-nil:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-use-golangci-lint t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Check <a href="https://github.com/golangci/golangci-lint">golangci-lint</a> and <a href="https://github.com/weijiangan/flycheck-golangci-lint">flycheck-golangci-lint</a> for more details.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc88da3d" class="outline-3">
+<h3 id="tests"><span class="section-number-3">3.5</span> Tests</h3>
+<div class="outline-text-3" id="text-tests">
+<p>
+If you're using <code>gocheck</code> or <code>testify</code> in your project you can use the
+<code>go-use-gocheck-for-testing</code> or <code>go-use-testify-for-testing</code> variable to enable
+suite testing and to get single function testing to work.
+</p>
+
+<p>
+Tests are run in a compilation buffer displayed in a popup window that can be
+closed by pressing <code>C-g</code> from any other window. The variable <code>go-test-buffer-name</code>
+can be customized to set the output buffer name.
+</p>
+
+<p>
+To provide additional arguments to <code>go test</code>, specify <code>go-use-test-args</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-use-test-args <span class="org-string">"-race -timeout 10s"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org63b7cab" class="outline-3">
+<h3 id="coverage"><span class="section-number-3">3.6</span> Coverage</h3>
+<div class="outline-text-3" id="text-coverage">
+<p>
+<code>go-coverage-display-buffer-func</code> controls how <code>go-coverage</code> should display
+the coverage buffer. See <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Choosing-Window.html">display-buffer</a> for a list of possible functions.
+The default value is <code>display-buffer-reuse-window</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4a6b4df" class="outline-3">
+<h3 id="guru"><span class="section-number-3">3.7</span> Guru</h3>
+<div class="outline-text-3" id="text-guru">
+<p>
+If you would like to use the <code>Go Guru</code> bindings in your work, in your project you
+will need to set the scope with <code>SPC m f o</code>. The scope is a comma separated set
+of packages, and Go's recursive operator is supported. In addition, you can
+prefix it with <code>-</code> to exclude a package from searching.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0644e01" class="outline-3">
+<h3 id="auto-completion"><span class="section-number-3">3.8</span> Auto-completion</h3>
+<div class="outline-text-3" id="text-auto-completion">
+<p>
+For auto-completion there are actually two choices. First there is the classic
+<code>gocode</code>. This has been around for quite a long time now, however <code>gocode</code> has many
+shortcomings, like not being able to show documentation for built-in objects or
+being fully dependent on installed binary files to provide its suggestions.
+</p>
+
+<p>
+A more modern and complete solution is provided by <code>gogetdoc</code>, which is able to
+precisely detect all documentations in your go projects independently from where
+they have been added. This is also the recommended choice from <code>go-mode.el</code>.
+</p>
+
+<p>
+To choose <code>gocode</code> nothing more needs to be done. To use <code>gogetdoc</code> you need to set
+the layer variable:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> godoc-at-point-function 'godoc-gogetdoc<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+If you choose to use <code>gocode</code> there are some suggestions to improve its results.
+As <code>gocode</code> uses the output from installed binary files to provide its suggestions.
+You have a few options to ensure you always get up to date suggestions:
+</p>
+<ul class="org-ul">
+<li>Run <code>go install ./...</code> in your package directory when you make a file change.</li>
+<li>Run <code>gocode set autobuild true</code> to have gocode attempt to run <code>go install ./...</code>
+for you.</li>
+<li>You can configure your task runner to run the <code>go install ./...</code> command on every
+file change.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge052968" class="outline-3">
+<h3 id="lsp-backend"><span class="section-number-3">3.9</span> LSP backend</h3>
 <div class="outline-text-3" id="text-lsp-backend">
 <p>
-To enable the LSP backend set the layer variable <code>go-backend</code>:
+To enable the LSP backend, ensure that the <code>lsp</code> layer is enabled, and set the
+layer variable <code>go-backend</code>:
 </p>
 
 <div class="org-src-container">
@@ -465,13 +632,12 @@ To enable the LSP backend set the layer variable <code>go-backend</code>:
 </div>
 
 <p>
-You also need to install the Go Language Server.
-Consult the installation command for the desired language server found at <a href="https://www.github.com/emacs-lsp/lsp-mode/">lsp-mode</a> for instructions.
+You can check <a href="https://www.github.com/emacs-lsp/lsp-mode/">lsp-mode</a> for the gory details.
 </p>
 
 <p>
-Backend can be chosen on a per project basis using directory local variables
-(files named <code>.dir-locals.el</code> at the root of a project), an example to use the
+The backend can be chosen on a per project basis using directory local variables
+(files named <code>.dir-locals.el</code> at the root of a project), an example is to use the
 <code>go-mode</code> backend:
 </p>
 
@@ -488,191 +654,14 @@ Backend can be chosen on a per project basis using directory local variables
 </p>
 </div>
 </div>
-
-<div id="outline-container-org55dc4ce" class="outline-3">
-<h3 id="layer"><span class="section-number-3">2.3</span> Layer</h3>
-<div class="outline-text-3" id="text-layer">
-<p>
-To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>go</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
-file.
-</p>
-</div>
-</div>
 </div>
 
-<div id="outline-container-orgd854fd8" class="outline-2">
-<h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
-<div class="outline-text-2" id="text-configuration">
-<p>
-To run <code>gofmt</code> before save, set the value to a non-nil, e.g.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> go-format-before-save t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-To use a different formatter, set the value of <code>gofmt-command</code>, e.g.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gofmt-command <span class="org-string">"goimports"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-or
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> gofmt-command <span class="org-string">"goimports"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-To run current main package with command line arguments, set the value of
-<code>go-run-args</code> as file local variable, e.g.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">// Local Variables&#58;
-// go-run-args: <span class="org-string">"--output run.log"</span>
-// End:
-</pre>
-</div>
-</div>
-
-<div id="outline-container-org0ebece9" class="outline-3">
-<h3 id="indentation"><span class="section-number-3">3.1</span> Indentation</h3>
-<div class="outline-text-3" id="text-indentation">
-<p>
-By default, the tab width in Go mode is 8 spaces. To use a different value set
-the layer variable <code>go-tab-width</code>, e.g.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-tab-width <span class="org-highlight-numbers-number">4</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-If you're using <code>.editorconfig</code> in your project, set the value to nil to avoid
-confliction, e.g.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-tab-width nil<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org96abcec" class="outline-3">
-<h3 id="tests"><span class="section-number-3">3.2</span> Tests</h3>
-<div class="outline-text-3" id="text-tests">
-<p>
-If you're using <code>gocheck</code> in your project you can use the
-<code>go-use-gocheck-for-testing</code> variable to enable suite testing and to get single
-function testing to work.
-</p>
-
-<p>
-<code>go-coverage-display-buffer-func</code> controls how <code>go-coverage</code> should display
-the coverage buffer. See <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Choosing-Window.html"><code>display-buffer</code></a> for a list of possible functions.
-The default value is <code>display-buffer-reuse-window</code>.
-</p>
-
-<p>
-Tests are run in a compilation buffer displayed in a popup window that can be
-closed by pressing <code>C-g</code> from any other window. The variable
-<code>go-test-buffer-name</code> can be customized to set the output buffer name.
-</p>
-
-<p>
-To provide additional arguments to go test, specify <code>go-use-test-args</code>.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-use-test-args <span class="org-string">"-race -timeout 10s"</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org1d04df1" class="outline-3">
-<h3 id="guru"><span class="section-number-3">3.3</span> Guru</h3>
-<div class="outline-text-3" id="text-guru">
-<p>
-Go Oracle has been deprecated as of October 1, 2016, it's replacement is <code>go-guru</code>.
-</p>
-
-<p>
-If you would like to use the <code>goguru</code> bindings in your work, you will need to
-install it, and in your project you will need to set the scope with <code>SPC m f o</code>.
-The scope is a comma separated set of packages, and <code>go=’s recursive operator is
-supported. In addition, you can prefix with =-</code> to exclude a package from
-searching.
-</p>
-
-<p>
-In addition, <code>GOPATH</code> must be set prior to <code>go-guru</code> initialization.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgccefa7a" class="outline-3">
-<h3 id="autocomplete"><span class="section-number-3">3.4</span> Autocomplete</h3>
-<div class="outline-text-3" id="text-autocomplete">
-<p>
-For auto-completion there are actually two choices. First there is the classic <code>gocode</code>.
-This has been around for quite a long time now, however <code>gocode</code> has many shortcomings like
-not being able to show documentation for build-in objects or being fully dependent on installed binary
-files to provide its suggestions.
-</p>
-
-<p>
-A more modern and complete solution is provided by <code>gogetdoc</code> which is able to
-precisely detect all documentations in your go projects independent on where
-they have been added. This is also the choice recommended from <code>go-mode.el</code>.
-</p>
-
-<p>
-To choose <code>gocode</code> nothing more needs to be done. To use <code>gogetdoc</code> you need to set
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> godoc-at-point-function 'godoc-gogetdoc<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-in your <code>dotfile</code>.
-</p>
-
-<p>
-If you choose to use <code>gocode</code> there are some suggestions to improve its results.
-As <code>gocode</code> uses the output from installed binary files to provide its suggestions.
-You have a few options to ensure you always get up to date suggestions:
-</p>
-<ul class="org-ul">
-<li>Run <code>go install ./...</code> in your package directory when you make a file change.</li>
-<li>Run <code>gocode set autobuild true</code> to have gocode attempt to run <code>go install ./...</code>
-for you.</li>
-<li>You can configure your task runner to run <code>go install ./...</code> command on every
-file change.</li>
-</ul>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org41b00ad" class="outline-2">
+<div id="outline-container-org1ef51cc" class="outline-2">
 <h2 id="working-with-go"><span class="section-number-2">4</span> Working with Go</h2>
 <div class="outline-text-2" id="text-working-with-go">
 </div>
 
-<div id="outline-container-orgd3b1e5e" class="outline-3">
+<div id="outline-container-org49993a5" class="outline-3">
 <h3 id="go-commands-start-with-m"><span class="section-number-3">4.1</span> Go commands (start with <code>m</code>):</h3>
 <div class="outline-text-3" id="text-go-commands-start-with-m">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -794,7 +783,7 @@ file change.</li>
 </div>
 </div>
 
-<div id="outline-container-orgeb1c903" class="outline-3">
+<div id="outline-container-org039e8c8" class="outline-3">
 <h3 id="go-guru"><span class="section-number-3">4.2</span> Go Guru</h3>
 <div class="outline-text-3" id="text-go-guru">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -876,7 +865,7 @@ file change.</li>
 </div>
 </div>
 
-<div id="outline-container-org90a5021" class="outline-3">
+<div id="outline-container-org943ab66" class="outline-3">
 <h3 id="refactoring"><span class="section-number-3">4.3</span> Refactoring</h3>
 <div class="outline-text-3" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -906,12 +895,12 @@ file change.</li>
 
 <tr>
 <td class="org-left"><code>SPC m r f</code></td>
-<td class="org-left">Add field tags</td>
+<td class="org-left">Add field tags (with <code>gomodifytags</code>)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m r F</code></td>
-<td class="org-left">Remove field tags</td>
+<td class="org-left">Remove field tags (with <code>gomodifytags</code>)</td>
 </tr>
 
 <tr>
@@ -931,7 +920,7 @@ file change.</li>
 
 <tr>
 <td class="org-left"><code>SPC m r s</code></td>
-<td class="org-left">Fill structure with default values</td>
+<td class="org-left">Fill structure with default values (with <code>go-fillstruct</code>)</td>
 </tr>
 
 <tr>
@@ -945,8 +934,8 @@ file change.</li>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-07-08 Mon 21:00</p>
+<p class="author">Author: root</p>
+<p class="date">Created: 2019-11-08 Fri 17:50</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

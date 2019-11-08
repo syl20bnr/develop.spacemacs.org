@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-08 Mon 21:00 -->
+<!-- 2019-11-08 Fri 17:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Clojure layer</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Travis CI User" />
+<meta name="author" content="root" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -287,11 +287,19 @@ for the JavaScript code in this tag.
 <li><a href="#layer">2.1. Layer</a></li>
 <li><a href="#pretty-symbols">2.2. Pretty Symbols</a></li>
 <li><a href="#enabling-sayid-or-clj-refactor">2.3. Enabling sayid or clj-refactor</a></li>
-<li><a href="#starting-clojure-manually-outside-of-emacs">2.4. Starting Clojure manually (outside of Emacs)</a>
+<li><a href="#enabling-automatic-linting">2.4. Enabling Automatic Linting</a>
 <ul>
-<li><a href="#quick-start-with-boot">2.4.1. Quick Start with boot</a></li>
-<li><a href="#quick-start-with-lein">2.4.2. Quick Start with lein</a></li>
-<li><a href="#more-details">2.4.3. More details</a></li>
+<li><a href="#enable-clj-kondo-linter">2.4.1. Enable clj-kondo linter</a></li>
+<li><a href="#enable-joker-linter">2.4.2. Enable joker linter</a></li>
+<li><a href="#enable-squiggly-linter">2.4.3. Enable Squiggly linter</a></li>
+<li><a href="#enable-multiple-linters">2.4.4. Enable multiple linters</a></li>
+</ul>
+</li>
+<li><a href="#starting-clojure-manually-outside-of-emacs">2.5. Starting Clojure manually (outside of Emacs)</a>
+<ul>
+<li><a href="#quick-start-with-boot">2.5.1. Quick Start with boot</a></li>
+<li><a href="#quick-start-with-lein">2.5.2. Quick Start with lein</a></li>
+<li><a href="#more-details">2.5.3. More details</a></li>
 </ul>
 </li>
 </ul>
@@ -299,8 +307,7 @@ for the JavaScript code in this tag.
 <li><a href="#usage">3. Usage</a>
 <ul>
 <li><a href="#cheatsheet">3.1. Cheatsheet</a></li>
-<li><a href="#linting">3.2. Linting</a></li>
-<li><a href="#structuraly-safe-editing">3.3. Structuraly safe editing</a></li>
+<li><a href="#structuraly-safe-editing">3.2. Structuraly safe editing</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">4. Key bindings</a>
@@ -349,7 +356,7 @@ for the JavaScript code in this tag.
 <img src="img/clojure.png" alt="clojure.png" /> <img src="img/cider.png" alt="cider.png" />
 </p>
 
-<div id="outline-container-orgea2d5a8" class="outline-2">
+<div id="outline-container-org4740cf2" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -357,14 +364,14 @@ This layer adds support for <a href="https://clojure.org/">Clojure</a> language 
 </p>
 </div>
 
-<div id="outline-container-orga66223e" class="outline-3">
+<div id="outline-container-org40ecf58" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>REPL via <a href="https://github.com/clojure-emacs/cider">CIDER</a></li>
 <li>Code formatting via <a href="https://github.com/clojure-emacs/cider">CIDER</a> using <a href="https://github.com/weavejester/cljfmt">Cljfmt</a></li>
 <li>Refactoring via <a href="https://github.com/clojure-emacs/clj-refactor.el">clj-refactor</a></li>
-<li>Linting via <a href="https://github.com/clojure-emacs/squiggly-clojure">squiggly-clojure</a></li>
+<li>Linting via <a href="https://github.com/clojure-emacs/squiggly-clojure">squiggly-clojure</a>, <a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> or <a href="https://github.com/candid82/joker">joker</a></li>
 <li>Aligning of code forms via <a href="https://github.com/clojure-emacs/clojure-mode">clojure-mode</a></li>
 <li>Debugging with <a href="https://github.com/clojure-emacs/sayid">sayid</a></li>
 <li>Clojure cheatsheet</li>
@@ -374,12 +381,12 @@ This layer adds support for <a href="https://clojure.org/">Clojure</a> language 
 </div>
 </div>
 
-<div id="outline-container-org365f1d8" class="outline-2">
+<div id="outline-container-orgbf98b2c" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org877f00c" class="outline-3">
+<div id="outline-container-org0aef7c8" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -390,7 +397,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgc24aa70" class="outline-3">
+<div id="outline-container-org097df0e" class="outline-3">
 <h3 id="pretty-symbols"><span class="section-number-3">2.2</span> Pretty Symbols</h3>
 <div class="outline-text-3" id="text-pretty-symbols">
 <p>
@@ -420,7 +427,7 @@ Or set this variable when loading the configuration layer:
 </div>
 </div>
 
-<div id="outline-container-org3e8bafa" class="outline-3">
+<div id="outline-container-org3b4a6bf" class="outline-3">
 <h3 id="enabling-sayid-or-clj-refactor"><span class="section-number-3">2.3</span> Enabling sayid or clj-refactor</h3>
 <div class="outline-text-3" id="text-enabling-sayid-or-clj-refactor">
 <p>
@@ -458,8 +465,174 @@ injected when jacking in CIDER.
 </div>
 </div>
 
-<div id="outline-container-org0158ff1" class="outline-3">
-<h3 id="starting-clojure-manually-outside-of-emacs"><span class="section-number-3">2.4</span> Starting Clojure manually (outside of Emacs)</h3>
+<div id="outline-container-orge645179" class="outline-3">
+<h3 id="enabling-automatic-linting"><span class="section-number-3">2.4</span> Enabling Automatic Linting</h3>
+<div class="outline-text-3" id="text-enabling-automatic-linting">
+<p>
+<a href="https://github.com/borkdude/clj-kondo">clj-kondo</a>, <a href="https://github.com/candid82/joker">joker</a> and <a href="https://github.com/clojure-emacs/squiggly-clojure">squiggly-clojure</a> provide automated linting via <code>flycheck</code>.
+These packages are disabled by default as they require the relevant linter binaries
+to be installed locally.
+</p>
+
+<p>
+The recommended linter is to use <a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> in combination with <a href="https://github.com/candid82/joker">joker</a>. Together they catch the most issues while both running extremely quickly.
+</p>
+
+<p>
+squiggly reloads your code on every change which gives unexpected results if
+your code is not re-loadable. squiggly also requires <code>org.clojure/core.typed</code> be
+added to the development dependencies of your projects or build tool when using
+<code>cider-connect</code>.
+</p>
+</div>
+
+<div id="outline-container-orgd4e4c09" class="outline-4">
+<h4 id="enable-clj-kondo-linter"><span class="section-number-4">2.4.1</span> Enable clj-kondo linter</h4>
+<div class="outline-text-4" id="text-enable-clj-kondo-linter">
+<p>
+This linter based on static syntax checking and requires the <a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> binary
+installed on the system PATH that <code>spacemacs.env</code> includes. Please read the
+<a href="https://github.com/borkdude/clj-kondo/blob/master/doc/install.md">clj-kondo binary installation instructions</a>
+</p>
+
+<p>
+Enable the clj-kondo automatic linter in Spacemacs by adding a <code>:variables</code> option
+to your Spacemacs configuration:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Witout any variables your configuration would just include clojure</span>
+dotspacemacs-configuration-layers
+'<span class="org-rainbow-delimiters-depth-1">(</span>...
+  clojure
+  <span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">to use clj-kondo as a linter, add this variable to the clojure layer</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">wrapping the clojure layer in a list</span>
+dotspacemacs-configuration-layers
+'<span class="org-rainbow-delimiters-depth-1">(</span>...
+  <span class="org-rainbow-delimiters-depth-2">(</span>clojure <span class="org-builtin">:variables</span>
+           clojure-enable-linters 'clj-kondo<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfb3891c" class="outline-4">
+<h4 id="enable-joker-linter"><span class="section-number-4">2.4.2</span> Enable joker linter</h4>
+<div class="outline-text-4" id="text-enable-joker-linter">
+<p>
+This linter is based on static syntax checking and requires the <a href="https://github.com/candid82/joker">joker</a> binary
+installed on the system PATH that <code>spacemacs.env</code> includes. Please read the
+<a href="https://github.com/candid82/joker#installation">joker binary installation instructions</a>
+</p>
+
+<p>
+Enable the joker automatic linter in Spacemacs by adding a <code>:variables</code> option
+to your Spacemacs configuration:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Witout any variables your configuration would just include clojure</span>
+dotspacemacs-configuration-layers
+'<span class="org-rainbow-delimiters-depth-1">(</span>...
+  clojure
+  <span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">to use joker as a linter, add this variable to the clojure layer</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">wrapping the clojure layer in a list</span>
+dotspacemacs-configuration-layers
+'<span class="org-rainbow-delimiters-depth-1">(</span>...
+  <span class="org-rainbow-delimiters-depth-2">(</span>clojure <span class="org-builtin">:variables</span>
+           clojure-enable-linters 'joker<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org784b341" class="outline-4">
+<h4 id="enable-squiggly-linter"><span class="section-number-4">2.4.3</span> Enable Squiggly linter</h4>
+<div class="outline-text-4" id="text-enable-squiggly-linter">
+<p>
+<a href="https://github.com/clojure-emacs/squiggly-clojure">squiggly-clojure</a> uses <a href="https://github.com/jonase/eastwood">Eastwood</a> and <a href="https://github.com/jonase/kibit">Kibit</a> for linting. Please install these projects
+before configuring Spacemacs with <code>squiggly</code>.
+</p>
+
+<p>
+Make sure to read the <a href="https://github.com/clojure-emacs/squiggly-clojure#warnings">squiggly-clojure warnings section</a>.
+</p>
+
+<p>
+Please read the section on <a href="https://github.com/clojure-emacs/squiggly-clojure#dependencies-in-clojure">squiggly dependencies</a> if you are using <code>cider-connect</code>
+</p>
+
+<p>
+Enable the squiggly (eastwood, kibit and core.typed) automatic linter in Spacemacs by adding a <code>:variables</code> option to your Spacemacs configuration:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Without any variables your configuration would just include Clojure</span>
+dotspacemacs-configuration-layers
+'<span class="org-rainbow-delimiters-depth-1">(</span>...
+  clojure
+  <span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">to use squiggly as a linter, add this variable to the clojure layer</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">wrapping the clojure layer in a list</span>
+dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-1">(</span>...
+    <span class="org-rainbow-delimiters-depth-2">(</span>clojure <span class="org-builtin">:variables</span>
+             clojure-enable-linters 'squiggly<span class="org-rainbow-delimiters-depth-2">)</span>
+    <span class="org-rainbow-delimiters-depth-1">)</span>
+
+</pre>
+</div>
+
+<p>
+Troubleshooting: please read <a href="https://github.com/clojure-emacs/squiggly-clojure#debugging-and-bug-reporting">debugging and bug reporting</a> and try to reproduce using the <a href="https://github.com/clojure-emacs/squiggly-clojure/tree/master/sample-project">sample project</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgabcfcaf" class="outline-4">
+<h4 id="enable-multiple-linters"><span class="section-number-4">2.4.4</span> Enable multiple linters</h4>
+<div class="outline-text-4" id="text-enable-multiple-linters">
+<p>
+You can choose to enable multiple linters and have them all run together. This gives you better linting coverage, as they don't catch all the same issues.
+</p>
+
+<p>
+You will need to follow their individual install instructions first, to get all their necessary binaries and configs on the system PATH that <code>spacemacs.env</code> includes. Please refer to their individual Enable &#x2026; linter section respectively.
+</p>
+
+<p>
+Once all the linters you want to enable are installed, you simply need to specify a list of them in the <code>:variables</code> option to your Spacemacs configuration:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Witout any variables your configuration would just include clojure</span>
+dotspacemacs-configuration-layers
+'<span class="org-rainbow-delimiters-depth-1">(</span>...
+  clojure
+  <span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">to enable multiple linters, say clj-kondo and joker, add a list variable to the clojure layer</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">listing each one in the order you want them running, wrapping the clojure layer in a list</span>
+dotspacemacs-configuration-layers
+'<span class="org-rainbow-delimiters-depth-1">(</span>...
+  <span class="org-rainbow-delimiters-depth-2">(</span>clojure <span class="org-builtin">:variables</span>
+           clojure-enable-linters '<span class="org-rainbow-delimiters-depth-3">(</span>clj-kondo joker<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1b9564a" class="outline-3">
+<h3 id="starting-clojure-manually-outside-of-emacs"><span class="section-number-3">2.5</span> Starting Clojure manually (outside of Emacs)</h3>
 <div class="outline-text-3" id="text-starting-clojure-manually-outside-of-emacs">
 <p>
 CIDER communicates with your Clojure process through nREPL, and for CIDER to
@@ -482,8 +655,8 @@ are enabled.
 </p>
 </div>
 
-<div id="outline-container-org48b438d" class="outline-4">
-<h4 id="quick-start-with-boot"><span class="section-number-4">2.4.1</span> Quick Start with boot</h4>
+<div id="outline-container-org5e8cfea" class="outline-4">
+<h4 id="quick-start-with-boot"><span class="section-number-4">2.5.1</span> Quick Start with boot</h4>
 <div class="outline-text-4" id="text-quick-start-with-boot">
 <ul class="org-ul">
 <li>Install <code>boot</code> 2.8.2 or newer (see <a href="https://github.com/boot-clj/boot#user-content-install">https://github.com/boot-clj/boot#user-content-install</a>)</li>
@@ -516,8 +689,8 @@ Create a file <code>~/.boot/profile.boot</code> with the following content:
 </div>
 </div>
 
-<div id="outline-container-org0faf9de" class="outline-4">
-<h4 id="quick-start-with-lein"><span class="section-number-4">2.4.2</span> Quick Start with lein</h4>
+<div id="outline-container-org14e1f6d" class="outline-4">
+<h4 id="quick-start-with-lein"><span class="section-number-4">2.5.2</span> Quick Start with lein</h4>
 <div class="outline-text-4" id="text-quick-start-with-lein">
 <ul class="org-ul">
 <li>Install <code>lein</code> version 2.9.0 or newer (see <a href="https://leiningen.org/#install">https://leiningen.org/#install</a>)</li>
@@ -550,8 +723,8 @@ Create a file <code>~/.lein/profiles.clj</code> with the following content:
 </div>
 </div>
 
-<div id="outline-container-orge279593" class="outline-4">
-<h4 id="more-details"><span class="section-number-4">2.4.3</span> More details</h4>
+<div id="outline-container-orgc86b258" class="outline-4">
+<h4 id="more-details"><span class="section-number-4">2.5.3</span> More details</h4>
 <div class="outline-text-4" id="text-more-details">
 <p>
 More info regarding installation of nREPL middleware can be found here:
@@ -565,12 +738,12 @@ More info regarding installation of nREPL middleware can be found here:
 </div>
 </div>
 
-<div id="outline-container-orgc35a421" class="outline-2">
+<div id="outline-container-org75db47a" class="outline-2">
 <h2 id="usage"><span class="section-number-2">3</span> Usage</h2>
 <div class="outline-text-2" id="text-usage">
 </div>
 
-<div id="outline-container-org5ddd826" class="outline-3">
+<div id="outline-container-orgc67c86f" class="outline-3">
 <h3 id="cheatsheet"><span class="section-number-3">3.1</span> Cheatsheet</h3>
 <div class="outline-text-3" id="text-cheatsheet">
 <p>
@@ -586,29 +759,8 @@ some functions that deal with sorting maps.
 </div>
 </div>
 
-<div id="outline-container-org306c5a4" class="outline-3">
-<h3 id="linting"><span class="section-number-3">3.2</span> Linting</h3>
-<div class="outline-text-3" id="text-linting">
-<p>
-Linting works via flycheck and disabled by default.
-You can enable it like this:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> clojure-enable-linters t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-Make sure to read the <a href="https://github.com/clojure-emacs/squiggly-clojure#warnings">warnings section</a>.
-If you have a problem peek into <a href="https://github.com/clojure-emacs/squiggly-clojure#debugging-and-bug-reporting">debugging and bug reporting</a> then try to reproduce in the <a href="https://github.com/clojure-emacs/squiggly-clojure/tree/master/sample-project">sample project</a>.
-NOTE: With the default linter configs you should add <code>org.clojure/core.typed</code> to the development dependencies.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgd267b95" class="outline-3">
-<h3 id="structuraly-safe-editing"><span class="section-number-3">3.3</span> Structuraly safe editing</h3>
+<div id="outline-container-org9ea2c9e" class="outline-3">
+<h3 id="structuraly-safe-editing"><span class="section-number-3">3.2</span> Structuraly safe editing</h3>
 <div class="outline-text-3" id="text-structuraly-safe-editing">
 <p>
 This layer adds support for <code>evil-cleverparens</code> which allows to safely edit
@@ -646,12 +798,12 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </div>
 </div>
 
-<div id="outline-container-org98c3254" class="outline-2">
+<div id="outline-container-orgb55c021" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orga348617" class="outline-3">
+<div id="outline-container-orgc7f6798" class="outline-3">
 <h3 id="working-with-clojure-files-barfage-slurpage--more"><span class="section-number-3">4.1</span> Working with clojure files (barfage, slurpage &amp; more)</h3>
 <div class="outline-text-3" id="text-working-with-clojure-files-barfage-slurpage--more">
 <p>
@@ -667,12 +819,12 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org80d7b15" class="outline-3">
+<div id="outline-container-org8bced39" class="outline-3">
 <h3 id="leader"><span class="section-number-3">4.2</span> Leader</h3>
 <div class="outline-text-3" id="text-leader">
 </div>
 
-<div id="outline-container-org31c8b55" class="outline-4">
+<div id="outline-container-org2226219" class="outline-4">
 <h4 id="documentation"><span class="section-number-4">4.2.1</span> Documentation</h4>
 <div class="outline-text-4" id="text-documentation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -701,8 +853,8 @@ As this state works the same for all files, the documentation is in global
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m h g</code></td>
-<td class="org-left">cider grimoire</td>
+<td class="org-left"><code>SPC m h d</code></td>
+<td class="org-left">cider clojuredocs</td>
 </tr>
 
 <tr>
@@ -729,7 +881,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org959ddb5" class="outline-4">
+<div id="outline-container-orgd7b7a12" class="outline-4">
 <h4 id="evaluation"><span class="section-number-4">4.2.2</span> Evaluation</h4>
 <div class="outline-text-4" id="text-evaluation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -816,7 +968,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org330e71a" class="outline-4">
+<div id="outline-container-orgb8107cd" class="outline-4">
 <h4 id="goto"><span class="section-number-4">4.2.3</span> Goto</h4>
 <div class="outline-text-4" id="text-goto">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -846,7 +998,7 @@ As this state works the same for all files, the documentation is in global
 
 <tr>
 <td class="org-left"><code>SPC m g g</code></td>
-<td class="org-left">goto var</td>
+<td class="org-left">goto var definition <code>spacemacs/clj-find-var</code></td>
 </tr>
 
 <tr>
@@ -878,7 +1030,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-orgbe2ac01" class="outline-4">
+<div id="outline-container-org1c39ae3" class="outline-4">
 <h4 id="repl"><span class="section-number-4">4.2.4</span> REPL</h4>
 <div class="outline-text-4" id="text-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -942,13 +1094,18 @@ As this state works the same for all files, the documentation is in global
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m s i</code></td>
-<td class="org-left">start REPL (cider-jack-in)</td>
+<td class="org-left"><code>SPC m s j c</code></td>
+<td class="org-left">start Clojure REPL (<code>cider-jack-in-clj</code>)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m s I</code></td>
-<td class="org-left">start clojurescript REPL (cider-jack-in-clojurescript)</td>
+<td class="org-left"><code>SPC m s j f</code></td>
+<td class="org-left">start Clojure REPL (<code>cider-jack-in-clj&amp;cljs</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s j s</code></td>
+<td class="org-left">start ClojureScript REPL (<code>cider-jack-in-cljs</code>)</td>
 </tr>
 
 <tr>
@@ -987,6 +1144,11 @@ As this state works the same for all files, the documentation is in global
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC m s u</code></td>
+<td class="org-left">require Clojure utils into current namespace - i.e. functions <code>doc</code> <code>source</code></td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m s x</code></td>
 <td class="org-left">refresh REPL</td>
 </tr>
@@ -1000,7 +1162,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org5f934aa" class="outline-4">
+<div id="outline-container-org8f9caa5" class="outline-4">
 <h4 id="tests"><span class="section-number-4">4.2.5</span> Tests</h4>
 <div class="outline-text-4" id="text-tests">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1037,7 +1199,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org7595111" class="outline-4">
+<div id="outline-container-org77d190f" class="outline-4">
 <h4 id="toggles"><span class="section-number-4">4.2.6</span> Toggles</h4>
 <div class="outline-text-4" id="text-toggles">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1084,7 +1246,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org603a0f4" class="outline-4">
+<div id="outline-container-org29dd2bd" class="outline-4">
 <h4 id="debugging"><span class="section-number-4">4.2.7</span> Debugging</h4>
 <div class="outline-text-4" id="text-debugging">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1236,7 +1398,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org343d885" class="outline-4">
+<div id="outline-container-org19051b4" class="outline-4">
 <h4 id="refactoring"><span class="section-number-4">4.2.8</span> Refactoring</h4>
 <div class="outline-text-4" id="text-refactoring">
 <p>
@@ -1513,7 +1675,7 @@ The following refactorings require cljr-refactor to be enabled and generally dep
 </div>
 </div>
 
-<div id="outline-container-orgffc313e" class="outline-4">
+<div id="outline-container-org257000f" class="outline-4">
 <h4 id="reformatting"><span class="section-number-4">4.2.9</span> Reformatting</h4>
 <div class="outline-text-4" id="text-reformatting">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1550,7 +1712,7 @@ The following refactorings require cljr-refactor to be enabled and generally dep
 </div>
 </div>
 
-<div id="outline-container-orgfae4f1e" class="outline-4">
+<div id="outline-container-org5c2701b" class="outline-4">
 <h4 id="profiling"><span class="section-number-4">4.2.10</span> Profiling</h4>
 <div class="outline-text-4" id="text-profiling">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1608,7 +1770,7 @@ The following refactorings require cljr-refactor to be enabled and generally dep
 </div>
 </div>
 
-<div id="outline-container-orgb2d4127" class="outline-3">
+<div id="outline-container-org323ed38" class="outline-3">
 <h3 id="cider-buffers"><span class="section-number-3">4.3</span> CIDER Buffers</h3>
 <div class="outline-text-3" id="text-cider-buffers">
 <p>
@@ -1616,7 +1778,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </p>
 </div>
 
-<div id="outline-container-orgab726aa" class="outline-4">
+<div id="outline-container-org8c70ab8" class="outline-4">
 <h4 id="cider-repl-mode"><span class="section-number-4">4.3.1</span> cider-repl-mode</h4>
 <div class="outline-text-4" id="text-cider-repl-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1648,7 +1810,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-orgb973a36" class="outline-4">
+<div id="outline-container-orgcf9c010" class="outline-4">
 <h4 id="stacktrace-mode"><span class="section-number-4">4.3.2</span> stacktrace-mode</h4>
 <div class="outline-text-4" id="text-stacktrace-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1745,7 +1907,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org7d713d0" class="outline-4">
+<div id="outline-container-orga37e4bb" class="outline-4">
 <h4 id="inspector-mode"><span class="section-number-4">4.3.3</span> inspector-mode</h4>
 <div class="outline-text-4" id="text-inspector-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1807,7 +1969,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org39cd768" class="outline-4">
+<div id="outline-container-org04de32f" class="outline-4">
 <h4 id="test-report-mode"><span class="section-number-4">4.3.4</span> test-report-mode</h4>
 <div class="outline-text-4" id="text-test-report-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1870,12 +2032,12 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org5522f80" class="outline-3">
+<div id="outline-container-orgf8f3933" class="outline-3">
 <h3 id="sayid-buffers"><span class="section-number-3">4.4</span> Sayid Buffers</h3>
 <div class="outline-text-3" id="text-sayid-buffers">
 </div>
 
-<div id="outline-container-org5ac9cf4" class="outline-4">
+<div id="outline-container-org52017e1" class="outline-4">
 <h4 id="sayid-mode"><span class="section-number-4">4.4.1</span> sayid-mode</h4>
 <div class="outline-text-4" id="text-sayid-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1982,7 +2144,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-orgdbbaeea" class="outline-4">
+<div id="outline-container-org47c9781" class="outline-4">
 <h4 id="sayid-traced-mode"><span class="section-number-4">4.4.2</span> sayid-traced-mode</h4>
 <div class="outline-text-4" id="text-sayid-traced-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2054,7 +2216,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-orgece4ecc" class="outline-4">
+<div id="outline-container-orgc95d9c5" class="outline-4">
 <h4 id="sayid-pprint"><span class="section-number-4">4.4.3</span> sayid-pprint</h4>
 <div class="outline-text-4" id="text-sayid-pprint">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2103,12 +2265,12 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org28dd3d8" class="outline-2">
+<div id="outline-container-orgbfdb6e2" class="outline-2">
 <h2 id="development-notes"><span class="section-number-2">5</span> Development Notes</h2>
 <div class="outline-text-2" id="text-development-notes">
 </div>
 
-<div id="outline-container-orgbdffa60" class="outline-3">
+<div id="outline-container-org6a99892" class="outline-3">
 <h3 id="indentation"><span class="section-number-3">5.1</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
@@ -2122,8 +2284,8 @@ specific vars.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-07-08 Mon 21:00</p>
+<p class="author">Author: root</p>
+<p class="date">Created: 2019-11-08 Fri 17:50</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

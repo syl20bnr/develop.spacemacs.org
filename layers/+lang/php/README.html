@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-08 Mon 21:00 -->
+<!-- 2019-11-08 Fri 17:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PHP layer</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Travis CI User" />
+<meta name="author" content="root" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -282,9 +282,19 @@ for the JavaScript code in this tag.
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a></li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#backends">2.2. Backends</a>
+<ul>
+<li><a href="#intelephense">2.2.1. intelephense</a></li>
+<li><a href="#php-language-server">2.2.2. php-language-server</a></li>
+<li><a href="#ac-php-core">2.2.3. ac-php-core</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#key-bindings">3. Key bindings</a></li>
-<li><a href="#usage">4. Usage</a></li>
 </ul>
 </div>
 </div>
@@ -294,7 +304,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org2057f41" class="outline-2">
+<div id="outline-container-org90b597c" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -302,7 +312,7 @@ This layer adds PHP language support to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-org272a627" class="outline-3">
+<div id="outline-container-org96bdd4b" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -311,6 +321,7 @@ This layer adds PHP language support to Spacemacs.
 <li>Complete and jump to define with <a href="https://github.com/xcwen/ac-php">company-php</a></li>
 <li>Run tests with PHPUnit</li>
 <li>Reformat code with PHP CBF</li>
+<li>Support for the <a href="https://langserver.org/">Language Server Protocol</a> (experimental)</li>
 </ul>
 
 <p>
@@ -321,9 +332,14 @@ The <code>gtags</code> layer is recommended to benefit from better <code>eldoc</
 </div>
 </div>
 
-<div id="outline-container-org20ab1f8" class="outline-2">
+<div id="outline-container-orgb51e7e2" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-org41f5e8b" class="outline-3">
+<h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>php</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
@@ -332,41 +348,87 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgf5c4d58" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
-<div class="outline-text-2" id="text-key-bindings">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<div id="outline-container-org4f4a34e" class="outline-3">
+<h3 id="backends"><span class="section-number-3">2.2</span> Backends</h3>
+<div class="outline-text-3" id="text-backends">
+<p>
+For php you have the choice between a set of possible LSP backends with
+different setup instructions and different capabilities.
+</p>
 
+<p>
+Note that you'll need to use the <code>lsp</code> layer to enable these backends.
+</p>
+</div>
 
-<colgroup>
-<col  class="org-left" />
+<div id="outline-container-orgecf8bc1" class="outline-4">
+<h4 id="intelephense"><span class="section-number-4">2.2.1</span> intelephense</h4>
+<div class="outline-text-4" id="text-intelephense">
+<p>
+This is the recommended LSP server solution. To activate it set the
+layer variable <code>php-backend</code>:
+</p>
 
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m g g</code></td>
-<td class="org-left">jump to define at point</td>
-</tr>
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>php <span class="org-builtin">:variables</span> php-backend 'lsp<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
 
-<tr>
-<td class="org-left"><code>C-t</code></td>
-<td class="org-left">jump back</td>
-</tr>
-</tbody>
-</table>
+<p>
+and install the npm server with:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">npm install -g intelephense
+</pre>
+</div>
+
+<p>
+You can find further information on the project's <a href="http://intelephense.net/">website</a> and <a href="https://github.com/bmewburn/vscode-intelephense">GitHub page</a>.
+</p>
 </div>
 </div>
 
-<div id="outline-container-org43998d6" class="outline-2">
-<h2 id="usage"><span class="section-number-2">4</span> Usage</h2>
-<div class="outline-text-2" id="text-usage">
+<div id="outline-container-org42c2a80" class="outline-4">
+<h4 id="php-language-server"><span class="section-number-4">2.2.2</span> php-language-server</h4>
+<div class="outline-text-4" id="text-php-language-server">
+<p>
+This is an alternative LSP server implementation working on PHP basis rather than nodejs.
+To activate it set the layer variable <code>php-backend</code> like for the intelephense backend and
+install the server via <a href="https://getcomposer.org/">composer</a>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">composer require felixfbecker/language-server
+composer run-script --working-dir=vendor/felixfbecker/language-server parse-stubs
+</pre>
+</div>
+
+<p>
+You can find further information on the project's <a href="https://github.com/felixfbecker/php-language-server%20">GitHub page</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2e7365e" class="outline-4">
+<h4 id="ac-php-core"><span class="section-number-4">2.2.3</span> ac-php-core</h4>
+<div class="outline-text-4" id="text-ac-php-core">
+<p>
+This is a non server solution working entirely from an elisp package.
+This requires no installation of external services but also delivers
+the least amount of IDE like integrations with spacemacs.
+</p>
+
+<p>
+To activate it just don't set the variable <code>php-backend</code> in your dotfile.
+Remember that additional setup instructions are necessary on a per
+project basis which you can find below.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="setup"></a>Setup<br />
+<div class="outline-text-5" id="text-setup">
 <p>
 Because of the way that the ac-php-core package works, there are a couple of simple
 initialization tasks which must occur to get the completion working as it should.
@@ -406,11 +468,47 @@ the necessary configuration file (<code>.ac-php-conf.json</code>) will be create
 if it does not exist. 
 </p>
 </div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org96f3331" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m g g</code></td>
+<td class="org-left">jump to define at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-t</code></td>
+<td class="org-left">jump back</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-07-08 Mon 21:00</p>
+<p class="author">Author: root</p>
+<p class="date">Created: 2019-11-08 Fri 17:50</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
