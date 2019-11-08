@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-08 Mon 21:00 -->
+<!-- 2019-11-08 Fri 17:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Java layer</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Travis CI User" />
+<meta name="author" content="root" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -290,79 +290,39 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#backends">3. Backends</a>
 <ul>
-<li><a href="#meghanada">3.1. Meghanada</a>
+<li><a href="#lsp-java">3.1. LSP Java</a>
 <ul>
 <li><a href="#installation">3.1.1. Installation</a></li>
-<li><a href="#about-maven">3.1.2. About Maven</a></li>
 </ul>
 </li>
-<li><a href="#eclim">3.2. Eclim</a>
+<li><a href="#meghanada">3.2. Meghanada</a>
 <ul>
 <li><a href="#installation-1">3.2.1. Installation</a></li>
-<li><a href="#configuration">3.2.2. Configuration</a></li>
-<li><a href="#usage">3.2.3. Usage</a></li>
-</ul>
-</li>
-<li><a href="#ensime">3.3. ENSIME</a>
-<ul>
-<li><a href="#installation-when-using-sbt">3.3.1. Installation when using SBT</a></li>
-<li><a href="#installation-when-using-gradle">3.3.2. Installation when using Gradle</a></li>
-<li><a href="#configuration-1">3.3.3. Configuration</a></li>
-<li><a href="#usage-1">3.3.4. Usage</a></li>
-<li><a href="#issues">3.3.5. Issues</a></li>
-</ul>
-</li>
-<li><a href="#lsp-java">3.4. LSP Java</a>
-<ul>
-<li><a href="#usage-2">3.4.1. Usage</a></li>
+<li><a href="#about-maven">3.2.2. About Maven</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#key-bindings">4. Key bindings</a>
 <ul>
-<li><a href="#meghanada-1">4.1. Meghanada</a>
+<li><a href="#lsp-java-1">4.1. LSP Java</a>
 <ul>
-<li><a href="#server">4.1.1. Server</a></li>
-<li><a href="#navigation">4.1.2. Navigation</a></li>
-<li><a href="#compilation">4.1.3. Compilation</a></li>
-<li><a href="#tests-junit">4.1.4. Tests (junit)</a></li>
-<li><a href="#refactoring">4.1.5. Refactoring</a></li>
-<li><a href="#tasks">4.1.6. Tasks</a></li>
+<li><a href="#code-completion">4.1.1. Code completion</a></li>
+<li><a href="#debugger">4.1.2. Debugger</a></li>
 </ul>
 </li>
-<li><a href="#eclim-2">4.2. Eclim</a>
+<li><a href="#meghanada-1">4.2. Meghanada</a>
 <ul>
-<li><a href="#java-mode">4.2.1. Java-mode</a></li>
-<li><a href="#errors-problems-buffer">4.2.2. Errors (problems) buffer</a></li>
-<li><a href="#projects-buffer">4.2.3. Projects buffer</a></li>
+<li><a href="#server">4.2.1. Server</a></li>
+<li><a href="#navigation">4.2.2. Navigation</a></li>
+<li><a href="#compilation">4.2.3. Compilation</a></li>
+<li><a href="#tests-junit">4.2.4. Tests (junit)</a></li>
+<li><a href="#refactoring">4.2.5. Refactoring</a></li>
+<li><a href="#tasks">4.2.6. Tasks</a></li>
 </ul>
 </li>
-<li><a href="#ensime-key-bindings">4.3. Ensime key bindings</a>
-<ul>
-<li><a href="#search">4.3.1. Search</a></li>
-<li><a href="#ensime-search-mode">4.3.2. Ensime Search Mode</a></li>
-<li><a href="#sbt">4.3.3. sbt</a></li>
-<li><a href="#typecheck">4.3.4. Typecheck</a></li>
-<li><a href="#debug">4.3.5. Debug</a></li>
-<li><a href="#errors">4.3.6. Errors</a></li>
-<li><a href="#goto-1">4.3.7. Goto</a></li>
-<li><a href="#print-and-yank-types">4.3.8. Print and yank types</a></li>
-<li><a href="#documentation-inspect">4.3.9. Documentation, Inspect</a></li>
-<li><a href="#server-1">4.3.10. Server</a></li>
-<li><a href="#refactoring-2">4.3.11. Refactoring</a></li>
-<li><a href="#tests-1">4.3.12. Tests</a></li>
-<li><a href="#repl">4.3.13. REPL</a></li>
-</ul>
-</li>
-<li><a href="#lsp-java-1">4.4. LSP Java</a>
-<ul>
-<li><a href="#code-intelligence-shorcuts">4.4.1. Code intelligence shorcuts</a></li>
-<li><a href="#debugger-shorcuts">4.4.2. Debugger shorcuts</a></li>
-</ul>
-</li>
-<li><a href="#maven">4.5. Maven</a></li>
-<li><a href="#gradle">4.6. Gradle</a></li>
+<li><a href="#maven">4.3. Maven</a></li>
+<li><a href="#gradle">4.4. Gradle</a></li>
 </ul>
 </li>
 </ul>
@@ -374,7 +334,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org9d728f6" class="outline-2">
+<div id="outline-container-orgab491bf" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -382,34 +342,30 @@ This layer adds support for the Java language.
 </p>
 </div>
 
-<div id="outline-container-org281dd42" class="outline-3">
+<div id="outline-container-org64349f7" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Support for the following backends:
 <ul class="org-ul">
-<li><a href="https://github.com/mopemope/meghanada-emacs">Meghanada</a> client/server (default),</li>
-<li><a href="http://eclim.org">Eclim</a> client/server,</li>
-<li><a href="https://ensime.github.io/">ENSIME</a> client/server.</li>
-<li><a href="https://github.com/emacs-lsp/lsp-java">LSP Java</a> client/server.</li>
+<li><a href="https://github.com/emacs-lsp/lsp-java">LSP Java</a> client/server (default)</li>
+<li><a href="https://github.com/mopemope/meghanada-emacs">Meghanada</a> client/server</li>
 </ul></li>
-<li>Each provides:
-<ul class="org-ul">
 <li>Auto-completion using company</li>
 <li>Linting using flycheck integration</li>
 <li>Maven and Gradle integration</li>
-</ul></li>
+<li>Interactive debugger using <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgf75124a" class="outline-2">
+<div id="outline-container-orgd154f57" class="outline-2">
 <h2 id="layer-installation"><span class="section-number-2">2</span> Layer Installation</h2>
 <div class="outline-text-2" id="text-layer-installation">
 </div>
 
-<div id="outline-container-orgec7783c" class="outline-3">
+<div id="outline-container-org970c824" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -420,7 +376,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgfe35d0e" class="outline-3">
+<div id="outline-container-org3793c07" class="outline-3">
 <h3 id="choosing-a-backend"><span class="section-number-3">2.2</span> Choosing a backend</h3>
 <div class="outline-text-3" id="text-choosing-a-backend">
 <p>
@@ -428,50 +384,72 @@ To choose a default backend set the layer variable <code>java-backend</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>java <span class="org-builtin">:variables</span> java-backend 'eclim<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>java <span class="org-builtin">:variables</span> java-backend 'meghanada<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
+Alternatively the <code>lsp</code> backend will be automatically chosen if the layer <code>lsp</code>
+is used and you did not specify any value for <code>java-backend</code>.
+</p>
+
+<p>
 Backend can be chosen on a per project basis using directory local variables
 (files named <code>.dir-locals.el</code> at the root of a project), an example to use the
-<code>eclim</code> backend:
+<code>lsp</code> backend:
 </p>
 
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
 <span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
 
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>java-mode <span class="org-rainbow-delimiters-depth-3">(</span>java-backend . eclim<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>java-mode <span class="org-rainbow-delimiters-depth-3">(</span>java-backend . lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
 <b>Note:</b> you can easily add a directory local variable with <code>SPC f v d</code>.
 </p>
-
-<p>
-If you want to use the Ensime backend, you should modify your <code>~/.spacemacs</code> to
-use the recommended Ensime version (Stable). Please add the following lines to
-<code>dotspacemacs/user-init</code>:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'configuration-layer-elpa-archives '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"melpa-stable"</span> . <span class="org-string">"stable.melpa.org/packages/"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'package-pinned-packages '<span class="org-rainbow-delimiters-depth-2">(</span>ensime . <span class="org-string">"melpa-stable"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org91de666" class="outline-2">
+<div id="outline-container-orgcd65ed3" class="outline-2">
 <h2 id="backends"><span class="section-number-2">3</span> Backends</h2>
 <div class="outline-text-2" id="text-backends">
 </div>
 
-<div id="outline-container-orge3e43ef" class="outline-3">
-<h3 id="meghanada"><span class="section-number-3">3.1</span> Meghanada</h3>
+<div id="outline-container-org41cce4f" class="outline-3">
+<h3 id="lsp-java"><span class="section-number-3">3.1</span> LSP Java</h3>
+<div class="outline-text-3" id="text-lsp-java">
+<p>
+LSP Java is the Java adapter for <a href="https://github.com/emacs-lsp/lsp-mode">LSP Mode</a> which is the Emacs client for <a href="https://github.com/Microsoft/language-server-protocol">Language Server Protocol</a>.
+</p>
+
+<p>
+It integrates with <code>company</code> and <code>flycheck</code>. In addition it also provides
+full graphical debugging support via <code>DAP mode</code>.
+</p>
+
+<p>
+LSP is the default backend used by this layer, see <a href="#choosing-a-backend">Choosing a backend</a> in
+order to lean how to select a different backend.
+</p>
+</div>
+
+<div id="outline-container-orgc94f150" class="outline-4">
+<h4 id="installation"><span class="section-number-4">3.1.1</span> Installation</h4>
+<div class="outline-text-4" id="text-installation">
+<p>
+The lsp server will be installed automatically whenever a Java file
+is opened.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2a94339" class="outline-3">
+<h3 id="meghanada"><span class="section-number-3">3.2</span> Meghanada</h3>
 <div class="outline-text-3" id="text-meghanada">
 <p>
 Meghanada is composed of a lightweight server and an Emacs minor mode. It
@@ -481,16 +459,11 @@ is unintrusive and integrates with <code>company</code> and <code>flycheck</code
 <p>
 Both <code>Gradle</code> and <code>Maven</code> projects are compatible with Meghanada.
 </p>
-
-<p>
-Meghanada is the default backend used by this layer, see <a href="#choosing-a-backend">Choosing a backend</a> in
-order to lean how to select a different backend.
-</p>
 </div>
 
-<div id="outline-container-org466bce9" class="outline-4">
-<h4 id="installation"><span class="section-number-4">3.1.1</span> Installation</h4>
-<div class="outline-text-4" id="text-installation">
+<div id="outline-container-orgfce2a3a" class="outline-4">
+<h4 id="installation-1"><span class="section-number-4">3.2.1</span> Installation</h4>
+<div class="outline-text-4" id="text-installation-1">
 <p>
 The Meghanada server will be installed automatically whenever a Java file
 is opened.
@@ -508,8 +481,8 @@ No additional configuration is necessary!
 </div>
 </div>
 
-<div id="outline-container-orgaced001" class="outline-4">
-<h4 id="about-maven"><span class="section-number-4">3.1.2</span> About Maven</h4>
+<div id="outline-container-org1b88cc2" class="outline-4">
+<h4 id="about-maven"><span class="section-number-4">3.2.2</span> About Maven</h4>
 <div class="outline-text-4" id="text-about-maven">
 <p>
 Maven is not fully supported by Meghanada (but should still work fine for most
@@ -519,1579 +492,21 @@ at the root of your project first.
 </div>
 </div>
 </div>
-
-<div id="outline-container-org2f213e6" class="outline-3">
-<h3 id="eclim"><span class="section-number-3">3.2</span> Eclim</h3>
-<div class="outline-text-3" id="text-eclim">
-<p>
-Eclim provides the ability to access Eclipse features such as code completion,
-searching, code validation, and many more.
-</p>
 </div>
 
-<div id="outline-container-org5cbdfad" class="outline-4">
-<h4 id="installation-1"><span class="section-number-4">3.2.1</span> Installation</h4>
-<div class="outline-text-4" id="text-installation-1">
-</div>
-
-<ol class="org-ol">
-<li><a id="eclipse"></a>Eclipse<br />
-<div class="outline-text-5" id="text-eclipse">
-<p>
-First you need the last version of Eclispe from the <a href="https://www.eclipse.org/downloads/eclipse-packages/">official Eclipse site</a>.
-</p>
-
-<p>
-<b>Note:</b> if you are on MacOS there some issues between the new native Eclipse
-application installed by the <code>Eclispe-install.app</code> wizard and the Eclim
-installer wizard. The recommended way to install Eclipse on MacOS is by using
-<code>homebrew</code> or by get the <code>tar.gz</code> compressed file instead. With homebrew
-the command line to install Eclipse is <code>brew cask install eclipse-jee</code>.
-</p>
-</div>
-</li>
-
-<li><a id="eclim-1"></a>Eclim<br />
-<div class="outline-text-5" id="text-eclim-1">
-<p>
-For installation of Eclim check the <a href="http://eclim.org/install.html#download">official page</a> to download the installer
-then double click on it or launch it in the command line with the following
-command (the example is for MacOS, replace the eclispe.home definition by
-your correct location as well as the current version of eclim):
-</p>
-
-<div class="org-src-container">
-<pre class="src src-shell">$ java -Dvim.skip=true -Declipse.home=/Applications/Eclipse.app/Contents/Eclipse -jar eclim_2.6.0.jar install
-</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-
-<div id="outline-container-org6970268" class="outline-4">
-<h4 id="configuration"><span class="section-number-4">3.2.2</span> Configuration</h4>
-<div class="outline-text-4" id="text-configuration">
-<p>
-You may need to set the Eclipse and Eclim paths in your dotfile as layer
-variables or in the <code>dotspacemacs/user-config</code>, for instance on MacOS as layer
-variables:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>java <span class="org-builtin">:variables</span> java-backend 'eclim
-                 eclim-eclipse-dirs '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"/Applications/Eclipse.app/Contents/Eclipse/"</span><span class="org-rainbow-delimiters-depth-2">)</span>
-                 eclim-executable <span class="org-string">"/Applications/Eclipse.app/Contents/Eclipse/eclim"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-You can also configure useful other options like the default location for the
-Eclim workspace (default value is <code>~/workspace</code>), as shown below:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span>
- <span class="org-comment-delimiter">;; </span><span class="org-comment">Specify the workspace to use by default</span>
- eclimd-default-workspace <span class="org-string">"/path/to/default/eclipse/workspace"</span>
- <span class="org-comment-delimiter">;; </span><span class="org-comment">whether autostarting eclimd or not (default nil)</span>
- eclimd-autostart t
- <span class="org-comment-delimiter">;; </span><span class="org-comment">Whether or not to block emacs until eclimd is ready (default nil)</span>
- eclimd-wait-for-process t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgd2ee1fa" class="outline-4">
-<h4 id="usage"><span class="section-number-4">3.2.3</span> Usage</h4>
-<div class="outline-text-4" id="text-usage">
-<p>
-Start the eclim daemon with <code>SPC m D s</code> and stop it with <code>SPC m D k</code>. (See
-below.)
-</p>
-
-<p>
-Syntax checking is performed only on demand with <code>SPC e e</code> to preserve
-perfomance.
-</p>
-
-<p>
-Auto-save feature may freeze Emacs sometimes, use <code>C-g</code> to unfreeze Emacs or
-atlernatively you can set <code>dotspacemacs-auto-save-file-location</code> to nil.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org914ea45" class="outline-3">
-<h3 id="ensime"><span class="section-number-3">3.3</span> ENSIME</h3>
-<div class="outline-text-3" id="text-ensime">
-<p>
-Another backend option is the ENSIME server, which is a lot more responsive than
-Eclim. ENSIME is originally made to work with Scala but it now works with plain
-Java projects as well.
-</p>
-</div>
-
-<div id="outline-container-org0b6a387" class="outline-4">
-<h4 id="installation-when-using-sbt"><span class="section-number-4">3.3.1</span> Installation when using SBT</h4>
-<div class="outline-text-4" id="text-installation-when-using-sbt">
-<p>
-Find it with your favourite package manager, eg:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-shell">nix-env --install sbt
-</pre>
-</div>
-
-<p>
-or refer to <a href="http://www.scala-sbt.org/download.html">the sbt installation instructions</a>.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org038c3ae" class="outline-4">
-<h4 id="installation-when-using-gradle"><span class="section-number-4">3.3.2</span> Installation when using Gradle</h4>
-<div class="outline-text-4" id="text-installation-when-using-gradle">
-<p>
-Refer to the <a href="https://ensime.github.io/build_tools/gradle/">Ensime installation instructions</a> to install the <code>ensime-gradle</code>
-plugin.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org05f4299" class="outline-4">
-<h4 id="configuration-1"><span class="section-number-4">3.3.3</span> Configuration</h4>
-<div class="outline-text-4" id="text-configuration-1">
-<p>
-Follow <a href="https://ensime.github.io/build_tools/sbt/">the ENSIME configuration instructions</a>. Spacemacs uses
-the development version of Ensime so follow the appropriate steps.
-</p>
-
-<p>
-To use the build functions under <code>SPC m b</code> you need to use version <code>0.13.5</code> or
-newer of <code>sbt</code>, and specify that in your project's <code>project/build.properties</code>.
-For example,
-</p>
-
-<div class="org-src-container">
-<pre class="src src-scala">sbt.version=0.13.11
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org6f1bb64" class="outline-4">
-<h4 id="usage-1"><span class="section-number-4">3.3.4</span> Usage</h4>
-<div class="outline-text-4" id="text-usage-1">
-<p>
-<code>SPC SPC spacemacs/ensime-gen-and-restart</code> or <code>SPC m D r</code> generates a new config
-for a project and starts the server. Afterwards <code>SPC SPC ensime</code> or <code>SPC m D s</code>
-will suffice do the trick.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgf9e0344" class="outline-4">
-<h4 id="issues"><span class="section-number-4">3.3.5</span> Issues</h4>
-<div class="outline-text-4" id="text-issues">
-<p>
-ENSIME is originally built for Scala, so support for java is not complete, in
-particular refactoring doesn't work.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org417d1cc" class="outline-3">
-<h3 id="lsp-java"><span class="section-number-3">3.4</span> LSP Java</h3>
-<div class="outline-text-3" id="text-lsp-java">
-<p>
-LSP Java is the Java adapter for <a href="https://github.com/emacs-lsp/lsp-mode">LSP Mode</a> which is the Emacs client for <a href="https://github.com/Microsoft/language-server-protocol">Language Server Protocol</a>.
-</p>
-</div>
-
-<div id="outline-container-org02e37ca" class="outline-4">
-<h4 id="usage-2"><span class="section-number-4">3.4.1</span> Usage</h4>
-<div class="outline-text-4" id="text-usage-2">
-<p>
-Open a java file and the <code>lsp-java</code> will automatically download the server
-and ask you which projects you want to import.
-</p>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgc1975aa" class="outline-2">
+<div id="outline-container-org3f89aba" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgac7efc9" class="outline-3">
-<h3 id="meghanada-1"><span class="section-number-3">4.1</span> Meghanada</h3>
-<div class="outline-text-3" id="text-meghanada-1">
-</div>
-
-<div id="outline-container-orgad1ea42" class="outline-4">
-<h4 id="server"><span class="section-number-4">4.1.1</span> Server</h4>
-<div class="outline-text-4" id="text-server">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m D c</code></td>
-<td class="org-left">Connect to server</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m D d</code></td>
-<td class="org-left">Disconnect from server</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m D i</code></td>
-<td class="org-left">Install server (should be done automatically</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m D k</code></td>
-<td class="org-left">Kill server</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m D l</code></td>
-<td class="org-left">Clear server cache</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m D p</code></td>
-<td class="org-left">Ping server</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m D r</code></td>
-<td class="org-left">Restart server</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m D s</code></td>
-<td class="org-left">Start server</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m D u</code></td>
-<td class="org-left">Update server</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m D v</code></td>
-<td class="org-left">Print version of the server</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgbb69bd3" class="outline-4">
-<h4 id="navigation"><span class="section-number-4">4.1.2</span> Navigation</h4>
-<div class="outline-text-4" id="text-navigation">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m g b</code></td>
-<td class="org-left">Jump back to previous location</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g g</code></td>
-<td class="org-left">Jump to declaration</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgcb5a4fa" class="outline-4">
-<h4 id="compilation"><span class="section-number-4">4.1.3</span> Compilation</h4>
-<div class="outline-text-4" id="text-compilation">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m c b</code></td>
-<td class="org-left">Compile file (buffer)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c c</code></td>
-<td class="org-left">Compile project</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-org14179ac" class="outline-4">
-<h4 id="tests-junit"><span class="section-number-4">4.1.4</span> Tests (junit)</h4>
-<div class="outline-text-4" id="text-tests-junit">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m t a</code></td>
-<td class="org-left">Run all tests</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m t c</code></td>
-<td class="org-left">Run test class around point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m t l</code></td>
-<td class="org-left">Run last tests</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m t t</code></td>
-<td class="org-left">Run test cause around point</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-org76cac50" class="outline-4">
-<h4 id="refactoring"><span class="section-number-4">4.1.5</span> Refactoring</h4>
-<div class="outline-text-4" id="text-refactoring">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m =</code></td>
-<td class="org-left">Beautify code</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r i</code></td>
-<td class="org-left">Optimize imports</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r I</code></td>
-<td class="org-left">Import all</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r n</code></td>
-<td class="org-left">Create a new class, interface, or enum</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-org84cb183" class="outline-4">
-<h4 id="tasks"><span class="section-number-4">4.1.6</span> Tasks</h4>
-<div class="outline-text-4" id="text-tasks">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m x :</code></td>
-<td class="org-left">Run task</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org7d090f7" class="outline-3">
-<h3 id="eclim-2"><span class="section-number-3">4.2</span> Eclim</h3>
-<div class="outline-text-3" id="text-eclim-2">
-</div>
-
-<div id="outline-container-orgc76dba3" class="outline-4">
-<h4 id="java-mode"><span class="section-number-4">4.2.1</span> Java-mode</h4>
-<div class="outline-text-4" id="text-java-mode">
-</div>
-
-<ol class="org-ol">
-<li><a id="ant"></a>Ant<br />
-<div class="outline-text-5" id="text-ant">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m a a</code></td>
-<td class="org-left">Run Ant</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m a c</code></td>
-<td class="org-left">Clear Ant cache</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m a r</code></td>
-<td class="org-left">Run Ant</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m a v</code></td>
-<td class="org-left">Validate</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-
-<li><a id="project-management"></a>Project management<br />
-<div class="outline-text-5" id="text-project-management">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m p b</code></td>
-<td class="org-left">Build project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m p c</code></td>
-<td class="org-left">Create project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m p d</code></td>
-<td class="org-left">Delete project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m p g</code></td>
-<td class="org-left">Open file in current project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m p i</code></td>
-<td class="org-left">Import project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m p j</code></td>
-<td class="org-left">Information about project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m p k</code></td>
-<td class="org-left">Close project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m p o</code></td>
-<td class="org-left">Open project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m p p</code></td>
-<td class="org-left">Open project management buffer</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m p r</code></td>
-<td class="org-left">Run project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m p u</code></td>
-<td class="org-left">Update project</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-
-<li><a id="eclim-daemon"></a>Eclim daemon<br />
-<div class="outline-text-5" id="text-eclim-daemon">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m D k</code></td>
-<td class="org-left">Kill daemon</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m D s</code></td>
-<td class="org-left">Start daemon</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-
-<li><a id="goto"></a>Goto<br />
-<div class="outline-text-5" id="text-goto">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">~M-​,​~</td>
-<td class="org-left">jump back from go to declaration/definition</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g g</code></td>
-<td class="org-left">go to declaration</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g t</code></td>
-<td class="org-left">go to type definition</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-
-<li><a id="refactoring-1"></a>Refactoring<br />
-<div class="outline-text-5" id="text-refactoring-1">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m r c</code></td>
-<td class="org-left">create a constructor</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r f</code></td>
-<td class="org-left">format file</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r g</code></td>
-<td class="org-left">generate getter and setter</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r i</code></td>
-<td class="org-left">optimize imports</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r j</code></td>
-<td class="org-left">implement or override a method</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r n</code></td>
-<td class="org-left">create a new class, enum, or interface</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r r</code></td>
-<td class="org-left">rename symbol</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-
-<li><a id="documentation-find"></a>Documentation, Find<br />
-<div class="outline-text-5" id="text-documentation-find">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m f f</code></td>
-<td class="org-left">general find in project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m h c</code></td>
-<td class="org-left">call hierarchy</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m h h</code></td>
-<td class="org-left">show documentation for symbol at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m h i</code></td>
-<td class="org-left">view hierarchy</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m h u</code></td>
-<td class="org-left">show usages for symbol at point</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-
-<li><a id="errors-problems"></a>Errors (problems)<br />
-<div class="outline-text-5" id="text-errors-problems">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC e e</code></td>
-<td class="org-left">Force an error check</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC e l</code></td>
-<td class="org-left">List errors</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC e n</code></td>
-<td class="org-left">Next error</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC e p</code></td>
-<td class="org-left">Previous error</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m e e</code></td>
-<td class="org-left">Correct error around point</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-
-<li><a id="tests"></a>Tests<br />
-<div class="outline-text-5" id="text-tests">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m t t</code></td>
-<td class="org-left">run JUnit tests for current method or current file or project</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-</ol>
-</div>
-
-<div id="outline-container-orga719814" class="outline-4">
-<h4 id="errors-problems-buffer"><span class="section-number-4">4.2.2</span> Errors (problems) buffer</h4>
-<div class="outline-text-4" id="text-errors-problems-buffer">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>RET</code></td>
-<td class="org-left">go to problem place</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>a</code></td>
-<td class="org-left">show all problems</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>e</code></td>
-<td class="org-left">show only errors</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>f</code></td>
-<td class="org-left">show problems only for current file</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>g</code></td>
-<td class="org-left">refresh problems</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>q</code></td>
-<td class="org-left">quit</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>w</code></td>
-<td class="org-left">show only warnings</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-org84c80f5" class="outline-4">
-<h4 id="projects-buffer"><span class="section-number-4">4.2.3</span> Projects buffer</h4>
-<div class="outline-text-4" id="text-projects-buffer">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>RET</code></td>
-<td class="org-left">go to current project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>c</code></td>
-<td class="org-left">go to problem place</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>D</code></td>
-<td class="org-left">delete project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>g</code></td>
-<td class="org-left">refresh buffer</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>i</code></td>
-<td class="org-left">info about current project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>I</code></td>
-<td class="org-left">import existing project into the workspace</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>m</code></td>
-<td class="org-left">mark current project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>M</code></td>
-<td class="org-left">mark all projects</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>N</code></td>
-<td class="org-left">create new project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>o</code></td>
-<td class="org-left">open project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>p</code></td>
-<td class="org-left">update project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>q</code></td>
-<td class="org-left">quit</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>R</code></td>
-<td class="org-left">rename current project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>u</code></td>
-<td class="org-left">unmark current project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>U</code></td>
-<td class="org-left">unmark all projects</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orge947b5b" class="outline-3">
-<h3 id="ensime-key-bindings"><span class="section-number-3">4.3</span> Ensime key bindings</h3>
-<div class="outline-text-3" id="text-ensime-key-bindings">
-</div>
-
-<div id="outline-container-org19f7de2" class="outline-4">
-<h4 id="search"><span class="section-number-4">4.3.1</span> Search</h4>
-<div class="outline-text-4" id="text-search">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m /</code></td>
-<td class="org-left">incremental search using <code>ensime-scalex</code> major mode</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m ?</code></td>
-<td class="org-left">incremental search in all live buffers</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgf1d54fb" class="outline-4">
-<h4 id="ensime-search-mode"><span class="section-number-4">4.3.2</span> Ensime Search Mode</h4>
-<div class="outline-text-4" id="text-ensime-search-mode">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>C-j</code></td>
-<td class="org-left">Move to next match</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>C-k</code></td>
-<td class="org-left">Move to previous match</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>C-i</code></td>
-<td class="org-left">Insert at point import of current result</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>RET</code></td>
-<td class="org-left">Jump to the target of the currently selected ensime-search-result</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>C-q</code></td>
-<td class="org-left">Quit ensime search</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orge8b4256" class="outline-4">
-<h4 id="sbt"><span class="section-number-4">4.3.3</span> sbt</h4>
-<div class="outline-text-4" id="text-sbt">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m b .</code></td>
-<td class="org-left">sbt transient state</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m b b</code></td>
-<td class="org-left">sbt command</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m b c</code></td>
-<td class="org-left">compile</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m b C</code></td>
-<td class="org-left">clean command</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m b i</code></td>
-<td class="org-left">switch to sbt shell</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m b p</code></td>
-<td class="org-left">package command</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m b r</code></td>
-<td class="org-left">run command</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-org5fa8afb" class="outline-4">
-<h4 id="typecheck"><span class="section-number-4">4.3.4</span> Typecheck</h4>
-<div class="outline-text-4" id="text-typecheck">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m c t</code></td>
-<td class="org-left">type check the current file</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orge893225" class="outline-4">
-<h4 id="debug"><span class="section-number-4">4.3.5</span> Debug</h4>
-<div class="outline-text-4" id="text-debug">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d A</code></td>
-<td class="org-left">Attach to a remote debugger</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b</code></td>
-<td class="org-left">set breakpoint</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d B</code></td>
-<td class="org-left">clear breakpoint</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d C</code></td>
-<td class="org-left">clear all breakpoints</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d c</code></td>
-<td class="org-left">continue</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d i</code></td>
-<td class="org-left">inspect value at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d n</code></td>
-<td class="org-left">next</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d o</code></td>
-<td class="org-left">step out</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d q</code></td>
-<td class="org-left">quit</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d r</code></td>
-<td class="org-left">run</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d s</code></td>
-<td class="org-left">step</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d t</code></td>
-<td class="org-left">backtrace</td>
-</tr>
-</tbody>
-</table>
-
-<p>
-<b>Note:</b> These key bindings need a transient-state, PR welcome :-)
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgce8073d" class="outline-4">
-<h4 id="errors"><span class="section-number-4">4.3.6</span> Errors</h4>
-<div class="outline-text-4" id="text-errors">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m e e</code></td>
-<td class="org-left">print error at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m e s</code></td>
-<td class="org-left">switch to buffer containing the stack trace parser</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgd07fee3" class="outline-4">
-<h4 id="goto-1"><span class="section-number-4">4.3.7</span> Goto</h4>
-<div class="outline-text-4" id="text-goto-1">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m g g</code></td>
-<td class="org-left">go to definition</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-org1564b05" class="outline-4">
-<h4 id="print-and-yank-types"><span class="section-number-4">4.3.8</span> Print and yank types</h4>
-<div class="outline-text-4" id="text-print-and-yank-types">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m h T</code></td>
-<td class="org-left">print full type name at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m h t</code></td>
-<td class="org-left">print short type name at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m y T</code></td>
-<td class="org-left">yank full type name at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m y t</code></td>
-<td class="org-left">yank short type name at point</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgfba06e4" class="outline-4">
-<h4 id="documentation-inspect"><span class="section-number-4">4.3.9</span> Documentation, Inspect</h4>
-<div class="outline-text-4" id="text-documentation-inspect">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m h h</code></td>
-<td class="org-left">show documentation for symbol at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m h u</code></td>
-<td class="org-left">show uses for symbol at point</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgb23df1e" class="outline-4">
-<h4 id="server-1"><span class="section-number-4">4.3.10</span> Server</h4>
-<div class="outline-text-4" id="text-server-1">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m D f</code></td>
-<td class="org-left">reload open files</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m D r</code></td>
-<td class="org-left">regenerate the <code>.ensime</code> and restart the ensime server</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m D s</code></td>
-<td class="org-left">start ensime server</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-org251af7d" class="outline-4">
-<h4 id="refactoring-2"><span class="section-number-4">4.3.11</span> Refactoring</h4>
-<div class="outline-text-4" id="text-refactoring-2">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m r a</code></td>
-<td class="org-left">add type annotation</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r d</code></td>
-<td class="org-left">get rid of an intermediate variable (<code>ensime-refactor-inline-local</code>)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r D</code></td>
-<td class="org-left">get rid of an intermediate variable (<code>ensime-undo-peek</code>)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r i</code></td>
-<td class="org-left">organize imports</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r m</code></td>
-<td class="org-left">extract a range of code into a method</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r r</code></td>
-<td class="org-left">rename a symbol project wide</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r t</code></td>
-<td class="org-left">import type at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r v</code></td>
-<td class="org-left">extract a range of code into a variable</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m z</code></td>
-<td class="org-left">expand/contract region</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-org470e400" class="outline-4">
-<h4 id="tests-1"><span class="section-number-4">4.3.12</span> Tests</h4>
-<div class="outline-text-4" id="text-tests-1">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m t a</code></td>
-<td class="org-left">test command (sbt)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m t r</code></td>
-<td class="org-left">test quick command (sbt)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m t t</code></td>
-<td class="org-left">test only (sbt)</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgb45ba51" class="outline-4">
-<h4 id="repl"><span class="section-number-4">4.3.13</span> REPL</h4>
-<div class="outline-text-4" id="text-repl">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m s a</code></td>
-<td class="org-left">ask for a file to be loaded in the REPL</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s b</code></td>
-<td class="org-left">send buffer to the REPL</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s B</code></td>
-<td class="org-left">send buffer to the REPL and focus the REPL buffer in <code>insert state</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s i</code></td>
-<td class="org-left">start or switch to the REPL inferior process</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s r</code></td>
-<td class="org-left">send region to the REPL</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s R</code></td>
-<td class="org-left">send region to the REPL and focus the REPL buffer in <code>insert state</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org226f5dc" class="outline-3">
-<h3 id="lsp-java-1"><span class="section-number-3">4.4</span> LSP Java</h3>
+<div id="outline-container-org36821dd" class="outline-3">
+<h3 id="lsp-java-1"><span class="section-number-3">4.1</span> LSP Java</h3>
 <div class="outline-text-3" id="text-lsp-java-1">
 </div>
 
-<div id="outline-container-org14a726e" class="outline-4">
-<h4 id="code-intelligence-shorcuts"><span class="section-number-4">4.4.1</span> Code intelligence shorcuts</h4>
-<div class="outline-text-4" id="text-code-intelligence-shorcuts">
+<div id="outline-container-orgf1e1d7a" class="outline-4">
+<h4 id="code-completion"><span class="section-number-4">4.1.1</span> Code completion</h4>
+<div class="outline-text-4" id="text-code-completion">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -2271,9 +686,25 @@ and ask you which projects you want to import.
 </div>
 </div>
 
-<div id="outline-container-org7b22d1b" class="outline-4">
-<h4 id="debugger-shorcuts"><span class="section-number-4">4.4.2</span> Debugger shorcuts</h4>
-<div class="outline-text-4" id="text-debugger-shorcuts">
+<div id="outline-container-org5ddb815" class="outline-4">
+<h4 id="debugger"><span class="section-number-4">4.1.2</span> Debugger</h4>
+<div class="outline-text-4" id="text-debugger">
+<p>
+Using the <code>dap</code> layer you'll get access to all the DAP key bindings, see the
+complete list of key bindings on the <a href="https://github.com/syl20bnr/spacemacs/tree/develop/layers/+tools/dap#key-bindings">dap layer description</a>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1585f0f" class="outline-3">
+<h3 id="meghanada-1"><span class="section-number-3">4.2</span> Meghanada</h3>
+<div class="outline-text-3" id="text-meghanada-1">
+</div>
+
+<div id="outline-container-orgaf5c567" class="outline-4">
+<h4 id="server"><span class="section-number-4">4.2.1</span> Server</h4>
+<div class="outline-text-4" id="text-server">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -2290,204 +721,228 @@ and ask you which projects you want to import.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m d t t</code></td>
-<td class="org-left">Debug test method</td>
+<td class="org-left"><code>SPC m D c</code></td>
+<td class="org-left">Connect to server</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m d t c</code></td>
-<td class="org-left">Debug test class</td>
+<td class="org-left"><code>SPC m D d</code></td>
+<td class="org-left">Disconnect from server</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m d j</code></td>
-<td class="org-left">Debug java class(main method).</td>
+<td class="org-left"><code>SPC m D i</code></td>
+<td class="org-left">Install server (should be done automatically</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D k</code></td>
+<td class="org-left">Kill server</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D l</code></td>
+<td class="org-left">Clear server cache</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D p</code></td>
+<td class="org-left">Ping server</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D r</code></td>
+<td class="org-left">Restart server</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D s</code></td>
+<td class="org-left">Start server</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D u</code></td>
+<td class="org-left">Update server</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D v</code></td>
+<td class="org-left">Print version of the server</td>
 </tr>
 </tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org85d2707" class="outline-4">
+<h4 id="navigation"><span class="section-number-4">4.2.2</span> Navigation</h4>
+<div class="outline-text-4" id="text-navigation">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m t t</code></td>
-<td class="org-left">Run test method</td>
+<td class="org-left"><code>SPC m g b</code></td>
+<td class="org-left">Jump back to previous location</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g g</code></td>
+<td class="org-left">Jump to declaration</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgce053cf" class="outline-4">
+<h4 id="compilation"><span class="section-number-4">4.2.3</span> Compilation</h4>
+<div class="outline-text-4" id="text-compilation">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m c b</code></td>
+<td class="org-left">Compile file (buffer)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c c</code></td>
+<td class="org-left">Compile project</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org12ded38" class="outline-4">
+<h4 id="tests-junit"><span class="section-number-4">4.2.4</span> Tests (junit)</h4>
+<div class="outline-text-4" id="text-tests-junit">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m t a</code></td>
+<td class="org-left">Run all tests</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m t c</code></td>
-<td class="org-left">Run test class</td>
+<td class="org-left">Run test class around point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t l</code></td>
+<td class="org-left">Run last tests</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t t</code></td>
+<td class="org-left">Run test cause around point</td>
 </tr>
 </tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org409d702" class="outline-4">
+<h4 id="refactoring"><span class="section-number-4">4.2.5</span> Refactoring</h4>
+<div class="outline-text-4" id="text-refactoring">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m d d d</code></td>
-<td class="org-left">start debugging</td>
+<td class="org-left"><code>SPC m =</code></td>
+<td class="org-left">Beautify code</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m d d l</code></td>
-<td class="org-left">debug last configuration</td>
+<td class="org-left"><code>SPC m r i</code></td>
+<td class="org-left">Optimize imports</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m d d r</code></td>
-<td class="org-left">debug recent configuration</td>
+<td class="org-left"><code>SPC m r I</code></td>
+<td class="org-left">Import all</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r n</code></td>
+<td class="org-left">Create a new class, interface, or enum</td>
 </tr>
 </tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgeb4e5b9" class="outline-4">
+<h4 id="tasks"><span class="section-number-4">4.2.6</span> Tasks</h4>
+<div class="outline-text-4" id="text-tasks">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m d c</code></td>
-<td class="org-left">continue</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d i</code></td>
-<td class="org-left">step in</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d o</code></td>
-<td class="org-left">step out</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d s</code></td>
-<td class="org-left">next step</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d v</code></td>
-<td class="org-left">inspect value at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d r</code></td>
-<td class="org-left">restart frame</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d .</code></td>
-<td class="org-left">debug transient state</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d a</code></td>
-<td class="org-left">abandon current session</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d A</code></td>
-<td class="org-left">abandon all process</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d e e</code></td>
-<td class="org-left">eval</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d e r</code></td>
-<td class="org-left">eval region</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d e t</code></td>
-<td class="org-left">eval value at point</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d S s</code></td>
-<td class="org-left">switch session</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d S t</code></td>
-<td class="org-left">switch thread</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d S f</code></td>
-<td class="org-left">switch frame</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d I i</code></td>
-<td class="org-left">inspect</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d I r</code></td>
-<td class="org-left">inspect region</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d I t</code></td>
-<td class="org-left">inspect value at point</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d b b</code></td>
-<td class="org-left">toggle a breakpoint</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b c</code></td>
-<td class="org-left">change breakpoint condition</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b l</code></td>
-<td class="org-left">change breakpoint log condition</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b h</code></td>
-<td class="org-left">change breakpoint hit count</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b a</code></td>
-<td class="org-left">add a breakpoint</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b d</code></td>
-<td class="org-left">delete a breakpoint</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b D</code></td>
-<td class="org-left">clear all breakpoints</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d '_</code></td>
-<td class="org-left">Run debug REPL</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d w l</code></td>
-<td class="org-left">list local variables</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d w o</code></td>
-<td class="org-left">goto output buffer if present</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d w s</code></td>
-<td class="org-left">list sessions</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d w b</code></td>
-<td class="org-left">list breakpoints</td>
+<td class="org-left"><code>SPC m x :</code></td>
+<td class="org-left">Run task</td>
 </tr>
 </tbody>
 </table>
@@ -2495,8 +950,8 @@ and ask you which projects you want to import.
 </div>
 </div>
 
-<div id="outline-container-org585b0d5" class="outline-3">
-<h3 id="maven"><span class="section-number-3">4.5</span> Maven</h3>
+<div id="outline-container-orga3bf297" class="outline-3">
+<h3 id="maven"><span class="section-number-3">4.3</span> Maven</h3>
 <div class="outline-text-3" id="text-maven">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -2567,8 +1022,8 @@ and ask you which projects you want to import.
 </div>
 </div>
 
-<div id="outline-container-orgad5fd82" class="outline-3">
-<h3 id="gradle"><span class="section-number-3">4.6</span> Gradle</h3>
+<div id="outline-container-orgade6035" class="outline-3">
+<h3 id="gradle"><span class="section-number-3">4.4</span> Gradle</h3>
 <div class="outline-text-3" id="text-gradle">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -2626,8 +1081,8 @@ and ask you which projects you want to import.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-07-08 Mon 21:00</p>
+<p class="author">Author: root</p>
+<p class="date">Created: 2019-11-08 Fri 17:50</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

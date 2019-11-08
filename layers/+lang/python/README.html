@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-08 Mon 21:00 -->
+<!-- 2019-11-08 Fri 17:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python layer</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Travis CI User" />
+<meta name="author" content="root" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -349,7 +349,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org88aa1fb" class="outline-2">
+<div id="outline-container-org9d87b95" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -357,7 +357,7 @@ This layer adds support for the Python language.
 </p>
 </div>
 
-<div id="outline-container-org243ce27" class="outline-3">
+<div id="outline-container-org457ded4" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -383,17 +383,18 @@ This layer adds support for the Python language.
 <li>Sort imports with <a href="https://pypi.python.org/pypi/isort">isort</a></li>
 <li>Fix a missing import statement with <a href="https://github.com/anachronic/importmagic.el">importmagic</a></li>
 <li>Pip package manager with <a href="https://github.com/brotzeit/pippel">pippel</a></li>
+<li>Interactive debugger using <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org4bfdb0c" class="outline-2">
+<div id="outline-container-org817fba9" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgb4397df" class="outline-3">
+<div id="outline-container-org75189f6" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -404,7 +405,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org74d7464" class="outline-3">
+<div id="outline-container-org35b2a4e" class="outline-3">
 <h3 id="choosing-a-backend"><span class="section-number-3">2.2</span> Choosing a backend</h3>
 <div class="outline-text-3" id="text-choosing-a-backend">
 <p>
@@ -415,6 +416,11 @@ To choose a default backend set the layer variable <code>python-backend</code>:
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>python <span class="org-builtin">:variables</span> python-backend 'anaconda<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
+
+<p>
+Alternatively the <code>lsp</code> backend will be automatically chosen if the layer <code>lsp</code>
+is used and you did not specify any value for <code>python-backend</code>.
+</p>
 
 <p>
 Backend can be chosen on a per project basis using directory local variables
@@ -468,12 +474,12 @@ The available options are:
 </div>
 </div>
 
-<div id="outline-container-org06e76a1" class="outline-2">
+<div id="outline-container-org82d357c" class="outline-2">
 <h2 id="backends"><span class="section-number-2">3</span> Backends</h2>
 <div class="outline-text-2" id="text-backends">
 </div>
 
-<div id="outline-container-org990e383" class="outline-3">
+<div id="outline-container-org562aff6" class="outline-3">
 <h3 id="anaconda"><span class="section-number-3">3.1</span> Anaconda</h3>
 <div class="outline-text-3" id="text-anaconda">
 <p>
@@ -491,12 +497,12 @@ To fix this, install the <code>anaconda-mode</code> <a href="https://github.com/
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">pip install --upgrade <span class="org-string">"jedi&gt;=0.9.0"</span> <span class="org-string">"json-rpc&gt;=1.8.1"</span> <span class="org-string">"service_factory&gt;=0.1.5"</span>
+<pre class="src src-sh">pip install --upgrade <span class="org-string">"jedi&gt;=0.13.0"</span> <span class="org-string">"json-rpc&gt;=1.8.1"</span> <span class="org-string">"service_factory&gt;=0.1.5"</span>
 </pre>
 </div>
 
 <p>
-If you encounter problems with Jedi 1.0 consider downgrading to 0.9.0. See <a href="https://github.com/davidhalter/jedi/issues/873">this
+If you encounter problems with Jedi 1.0 consider downgrading to 0.13.0. See <a href="https://github.com/davidhalter/jedi/issues/873">this
 issue</a> for details.
 </p>
 
@@ -512,7 +518,7 @@ setting your <code>PYTHONPATH</code> as explained at
 </div>
 </div>
 
-<div id="outline-container-orgee2bcdf" class="outline-3">
+<div id="outline-container-org9835144" class="outline-3">
 <h3 id="language-server-protocol"><span class="section-number-3">3.2</span> Language Server Protocol</h3>
 <div class="outline-text-3" id="text-language-server-protocol">
 <p>
@@ -557,7 +563,7 @@ layer variable as follows:
 </div>
 </div>
 
-<div id="outline-container-org378373f" class="outline-4">
+<div id="outline-container-org394ecc5" class="outline-4">
 <h4 id="python-language-server"><span class="section-number-4">3.2.1</span> python-language-server</h4>
 <div class="outline-text-4" id="text-python-language-server">
 <p>
@@ -590,7 +596,7 @@ lsp backend.
 </div>
 </div>
 
-<div id="outline-container-orgc333a31" class="outline-4">
+<div id="outline-container-org1daf2ac" class="outline-4">
 <h4 id="microsoft-python-language-server"><span class="section-number-4">3.2.2</span> Microsoft python language server</h4>
 <div class="outline-text-4" id="text-microsoft-python-language-server">
 <p>
@@ -633,12 +639,12 @@ package from the AUR.
 </div>
 </div>
 
-<div id="outline-container-org8b9de8e" class="outline-2">
+<div id="outline-container-org23669bb" class="outline-2">
 <h2 id="additional-tools"><span class="section-number-2">4</span> Additional tools</h2>
 <div class="outline-text-2" id="text-additional-tools">
 </div>
 
-<div id="outline-container-orgd8175f8" class="outline-3">
+<div id="outline-container-orgfc0b50f" class="outline-3">
 <h3 id="syntax-checking"><span class="section-number-3">4.1</span> Syntax checking</h3>
 <div class="outline-text-3" id="text-syntax-checking">
 <p>
@@ -652,7 +658,7 @@ Syntax checking uses <code>flake8</code> package:
 </div>
 </div>
 
-<div id="outline-container-org6436f9f" class="outline-3">
+<div id="outline-container-org7e8fa4b" class="outline-3">
 <h3 id="test-runner"><span class="section-number-3">4.2</span> Test runner</h3>
 <div class="outline-text-3" id="text-test-runner">
 <p>
@@ -695,12 +701,12 @@ The root of the project is detected with a <code>.git</code> directory or a <cod
 </div>
 </div>
 
-<div id="outline-container-orgcea43f3" class="outline-3">
+<div id="outline-container-orga4bb9a2" class="outline-3">
 <h3 id="buffer-formatting"><span class="section-number-3">4.3</span> Buffer formatting</h3>
 <div class="outline-text-3" id="text-buffer-formatting">
 <p>
-One of <a href="https://github.com/google/yapf">YAPF</a> (the default) or <a href="https://github.com/ambv/black">black</a> may be selected as the formatter, via
-<code>python-formatter</code>, as <code>'yapf</code> or <code>'black</code> respectively.
+One of <a href="https://github.com/google/yapf">YAPF</a> (the default), <a href="https://github.com/ambv/black">black</a> or <code>lsp</code> may be selected as the formatter, via
+<code>python-formatter</code>, as <code>'yapf</code>, <code>'black</code> or <code>lsp</code> respectively.
 </p>
 
 <div class="org-src-container">
@@ -711,18 +717,18 @@ One of <a href="https://github.com/google/yapf">YAPF</a> (the default) or <a hre
 
 <p>
 The key binding <code>SPC m =</code> invokes the selected formatter on the current buffer
-when in python mode.
+when in non LSP python mode otherwise <code>SPC m ==</code> is used.
 </p>
 
 <p>
-Note that YAPF and black may also be invoked unconditionally via
-<code>yapfify-buffer</code> and <code>blacken-buffer</code>, respectively, provided that they are
-installed.
+Note that a specific formatter may also be invoked unconditionally via
+<code>yapfify-buffer</code>, <code>blacken-buffer</code> or <code>lsp-format-buffer</code>, provided
+these are installed.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org02d9b58" class="outline-3">
+<div id="outline-container-orgb25b812" class="outline-3">
 <h3 id="automatic-buffer-formatting-on-save"><span class="section-number-3">4.4</span> Automatic buffer formatting on save</h3>
 <div class="outline-text-3" id="text-automatic-buffer-formatting-on-save">
 <p>
@@ -739,7 +745,7 @@ will be used.
 </div>
 </div>
 
-<div id="outline-container-orgcfe81a7" class="outline-3">
+<div id="outline-container-orgd2aba4f" class="outline-3">
 <h3 id="automatic-save-of-buffer-when-testing"><span class="section-number-3">4.5</span> Automatic save of buffer when testing</h3>
 <div class="outline-text-3" id="text-automatic-save-of-buffer-when-testing">
 <p>
@@ -755,7 +761,7 @@ you can disable this feature by setting <code>python-save-before-test</code> to 
 </div>
 </div>
 
-<div id="outline-container-org371ba65" class="outline-3">
+<div id="outline-container-org159040c" class="outline-3">
 <h3 id="autoflake"><span class="section-number-3">4.6</span> autoflake</h3>
 <div class="outline-text-3" id="text-autoflake">
 <p>
@@ -769,7 +775,7 @@ To be able to suppress unused imports easily, install <a href="https://github.co
 </div>
 </div>
 
-<div id="outline-container-orgf85a613" class="outline-3">
+<div id="outline-container-org4cd3b0e" class="outline-3">
 <h3 id="pylookup"><span class="section-number-3">4.7</span> pylookup</h3>
 <div class="outline-text-3" id="text-pylookup">
 <p>
@@ -779,7 +785,7 @@ To use <code>pylookup</code> on <code>SPC m h H</code>, make sure you update the
 </div>
 </div>
 
-<div id="outline-container-org54058f7" class="outline-3">
+<div id="outline-container-orgeb25134" class="outline-3">
 <h3 id="dap-mode-debugger-only-for-lsp-backend"><span class="section-number-3">4.8</span> dap-mode debugger (only for lsp backend)</h3>
 <div class="outline-text-3" id="text-dap-mode-debugger-only-for-lsp-backend">
 <p>
@@ -794,12 +800,12 @@ To use <code>dap-mode</code> for debugging do:
 </div>
 </div>
 
-<div id="outline-container-org26d75d7" class="outline-2">
+<div id="outline-container-org68d27ce" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">5</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org315104c" class="outline-3">
+<div id="outline-container-org21dcafe" class="outline-3">
 <h3 id="fill-column"><span class="section-number-3">5.1</span> Fill column</h3>
 <div class="outline-text-3" id="text-fill-column">
 <p>
@@ -815,7 +821,7 @@ the <code>user-init</code> function in your <code>.spacemacs</code>:
 </div>
 </div>
 
-<div id="outline-container-org2b9cce3" class="outline-3">
+<div id="outline-container-orgf4af5fa" class="outline-3">
 <h3 id="sort-imports"><span class="section-number-3">5.2</span> Sort imports</h3>
 <div class="outline-text-3" id="text-sort-imports">
 <p>
@@ -836,7 +842,7 @@ or as a directory-local variable (for per-project settings).
 </div>
 </div>
 
-<div id="outline-container-orgdbf0b8f" class="outline-3">
+<div id="outline-container-orgbbafcf9" class="outline-3">
 <h3 id="importmagic"><span class="section-number-3">5.3</span> Importmagic</h3>
 <div class="outline-text-3" id="text-importmagic">
 <p>
@@ -851,12 +857,12 @@ Install importmagic and epc for importmagic functionality.
 </div>
 </div>
 
-<div id="outline-container-orgce979c8" class="outline-2">
+<div id="outline-container-org2bbbd01" class="outline-2">
 <h2 id="management-of-python-versions-and-virtual-environments"><span class="section-number-2">6</span> Management of Python versions and virtual environments</h2>
 <div class="outline-text-2" id="text-management-of-python-versions-and-virtual-environments">
 </div>
 
-<div id="outline-container-orgd99d237" class="outline-3">
+<div id="outline-container-org01b8f06" class="outline-3">
 <h3 id="manage-virtual-environments-with-pyvenv"><span class="section-number-3">6.1</span> Manage virtual environments with pyvenv</h3>
 <div class="outline-text-3" id="text-manage-virtual-environments-with-pyvenv">
 <p>
@@ -905,12 +911,12 @@ by the <a href="https://github.com/jorgenschaefer/pyvenv">pyvenv</a> package. It
 </div>
 </div>
 
-<div id="outline-container-org4bf80de" class="outline-3">
+<div id="outline-container-org54c9bee" class="outline-3">
 <h3 id="manage-multiple-python-versions-with-pyenv"><span class="section-number-3">6.2</span> Manage multiple Python versions with pyenv</h3>
 <div class="outline-text-3" id="text-manage-multiple-python-versions-with-pyenv">
 <p>
 If you need multiple Python versions (e.g. Python 2 and Python 3) then take a
-look at <a href="https://github.com/yyuu/pyenv">pyenv</a>. It enables the installation and managment of multiple
+look at <a href="https://github.com/yyuu/pyenv">pyenv</a>. It enables the installation and management of multiple
 Python versions.
 <a href="https://www.brianthicks.com/post/2015/04/15/automate-your-python-environment-with-pyenv/">This blogpost</a> gives a good overview on how to use the tool. Spacemacs
 integration is provided by <a href="https://github.com/proofit404/pyenv-mode">pyenv mode</a> which has the following key bindings.
@@ -949,7 +955,7 @@ has installed. Those will be listed alongside your Python versions.
 </p>
 </div>
 
-<div id="outline-container-org58bbed1" class="outline-4">
+<div id="outline-container-orgd41c864" class="outline-4">
 <h4 id="automatic-activation-of-local-pyenv-version"><span class="section-number-4">6.2.1</span> Automatic activation of local pyenv version</h4>
 <div class="outline-text-4" id="text-automatic-activation-of-local-pyenv-version">
 <p>
@@ -970,7 +976,7 @@ the pyenv version. The behavior can be set with the variable
 
 <p>
 The same is also possible on pyvenv with a file called <code>.venv</code>. The behavior
-can be set with the variable <code>python-auto-set-local-pyvenv-virtualenv=</code> to:
+can be set with the variable <code>python-auto-set-local-pyvenv-virtualenv</code> to:
 </p>
 <ul class="org-ul">
 <li><code>on-visit</code> (default) set the virtualenv when you visit a python buffer,</li>
@@ -982,12 +988,12 @@ can be set with the variable <code>python-auto-set-local-pyvenv-virtualenv=</cod
 </div>
 </div>
 
-<div id="outline-container-orgb68148f" class="outline-2">
+<div id="outline-container-org3758242" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">7</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgc8fc7d9" class="outline-3">
+<div id="outline-container-orge8a7bd9" class="outline-3">
 <h3 id="inferior-repl-process"><span class="section-number-3">7.1</span> Inferior REPL process</h3>
 <div class="outline-text-3" id="text-inferior-repl-process">
 <p>
@@ -1066,7 +1072,7 @@ Send code to inferior process commands:
 </div>
 </div>
 
-<div id="outline-container-org9f325a5" class="outline-3">
+<div id="outline-container-orgdc603d8" class="outline-3">
 <h3 id="running-python-script-in-shell"><span class="section-number-3">7.2</span> Running Python Script in shell</h3>
 <div class="outline-text-3" id="text-running-python-script-in-shell">
 <p>
@@ -1110,7 +1116,7 @@ compilation command.
 </div>
 </div>
 
-<div id="outline-container-orgd09da53" class="outline-3">
+<div id="outline-container-orgadfe546" class="outline-3">
 <h3 id="testing"><span class="section-number-3">7.3</span> Testing</h3>
 <div class="outline-text-3" id="text-testing">
 <p>
@@ -1209,7 +1215,7 @@ function with a prefix argument, for example <code>SPC u SPC m t a</code>.
 </div>
 </div>
 
-<div id="outline-container-org075fe4e" class="outline-3">
+<div id="outline-container-orgee709f3" class="outline-3">
 <h3 id="refactoring"><span class="section-number-3">7.4</span> Refactoring</h3>
 <div class="outline-text-3" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1246,7 +1252,7 @@ function with a prefix argument, for example <code>SPC u SPC m t a</code>.
 </div>
 </div>
 
-<div id="outline-container-org3bef016" class="outline-3">
+<div id="outline-container-org53a69cd" class="outline-3">
 <h3 id="pip-package-management"><span class="section-number-3">7.5</span> Pip package management</h3>
 <div class="outline-text-3" id="text-pip-package-management">
 <p>
@@ -1322,7 +1328,7 @@ In the package list buffer:
 </div>
 </div>
 
-<div id="outline-container-org287f959" class="outline-3">
+<div id="outline-container-org73398a3" class="outline-3">
 <h3 id="live-coding"><span class="section-number-3">7.6</span> Live coding</h3>
 <div class="outline-text-3" id="text-live-coding">
 <p>
@@ -1353,7 +1359,7 @@ Live coding is provided by the <a href="https://github.com/donkirkby/live-py-plu
 </div>
 </div>
 
-<div id="outline-container-org1b2b0a5" class="outline-3">
+<div id="outline-container-orgad5f3ec" class="outline-3">
 <h3 id="other-python-commands"><span class="section-number-3">7.7</span> Other Python commands</h3>
 <div class="outline-text-3" id="text-other-python-commands">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1372,8 +1378,8 @@ Live coding is provided by the <a href="https://github.com/donkirkby/live-py-plu
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m =</code></td>
-<td class="org-left">reformat the buffer using formatter specified in <code>python-formatter</code></td>
+<td class="org-left"><code>SPC m =</code> or <code>SPC m = =</code></td>
+<td class="org-left">reformat the buffer using default formatter specified in <code>python-formatter</code></td>
 </tr>
 
 <tr>
@@ -1475,206 +1481,20 @@ Live coding is provided by the <a href="https://github.com/donkirkby/live-py-plu
 </div>
 </div>
 
-<div id="outline-container-orgef3f718" class="outline-3">
+<div id="outline-container-orgbce6010" class="outline-3">
 <h3 id="debugger"><span class="section-number-3">7.8</span> Debugger</h3>
 <div class="outline-text-3" id="text-debugger">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d d d</code></td>
-<td class="org-left">start debugging</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d d l</code></td>
-<td class="org-left">debug last configuration</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d d r</code></td>
-<td class="org-left">debug recent configuration</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d c</code></td>
-<td class="org-left">continue</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d i</code></td>
-<td class="org-left">step in</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d o</code></td>
-<td class="org-left">step out</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d s</code></td>
-<td class="org-left">next step</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d v</code></td>
-<td class="org-left">inspect value at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d r</code></td>
-<td class="org-left">restart frame</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d .</code></td>
-<td class="org-left">debug transient state</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d a</code></td>
-<td class="org-left">abandon current session</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d A</code></td>
-<td class="org-left">abandon all process</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d e e</code></td>
-<td class="org-left">eval</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d e r</code></td>
-<td class="org-left">eval region</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d e t</code></td>
-<td class="org-left">eval value at point</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d S s</code></td>
-<td class="org-left">switch session</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d S t</code></td>
-<td class="org-left">switch thread</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d S f</code></td>
-<td class="org-left">switch frame</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d I i</code></td>
-<td class="org-left">inspect</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d I r</code></td>
-<td class="org-left">inspect region</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d I t</code></td>
-<td class="org-left">inspect value at point</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d b b</code></td>
-<td class="org-left">toggle a breakpoint</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b c</code></td>
-<td class="org-left">change breakpoint condition</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b l</code></td>
-<td class="org-left">change breakpoint log condition</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b h</code></td>
-<td class="org-left">change breakpoint hit count</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b a</code></td>
-<td class="org-left">add a breakpoint</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b d</code></td>
-<td class="org-left">delete a breakpoint</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d b D</code></td>
-<td class="org-left">clear all breakpoints</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d '_</code></td>
-<td class="org-left">Run debug REPL</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m d w l</code></td>
-<td class="org-left">list local variables</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d w o</code></td>
-<td class="org-left">goto output buffer if present</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d w s</code></td>
-<td class="org-left">list sessions</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d w b</code></td>
-<td class="org-left">list breakpoints</td>
-</tr>
-</tbody>
-</table>
+<p>
+Using the <code>dap</code> layer you'll get access to all the DAP key bindings, see the
+complete list of key bindings on the <a href="https://github.com/syl20bnr/spacemacs/tree/develop/layers/+tools/dap#key-bindings">dap layer description</a>.
+</p>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-07-08 Mon 21:00</p>
+<p class="author">Author: root</p>
+<p class="date">Created: 2019-11-08 Fri 17:50</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-08 Mon 21:00 -->
+<!-- 2019-11-08 Fri 17:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>julia layer</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Travis CI User" />
+<meta name="author" content="root" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -298,7 +298,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org859e9e9" class="outline-2">
+<div id="outline-container-orgd40839b" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -306,7 +306,7 @@ This layer adds support for <a href="https://julialang.org">Julia</a> to Spacema
 </p>
 </div>
 
-<div id="outline-container-org69d66ee" class="outline-3">
+<div id="outline-container-org823ec7c" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -321,7 +321,7 @@ This layer adds support for <a href="https://julialang.org">Julia</a> to Spacema
 </div>
 </div>
 
-<div id="outline-container-orgfe7a335" class="outline-2">
+<div id="outline-container-org8ecc591" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -331,68 +331,23 @@ file.
 </p>
 </div>
 
-<div id="outline-container-org3f89ac4" class="outline-3">
+<div id="outline-container-orgc2958ca" class="outline-3">
 <h3 id="lsp"><span class="section-number-3">2.1</span> LSP</h3>
 <div class="outline-text-3" id="text-lsp">
 <p>
-Warning: enabling the LSP functionality within this package can cause emacs to
-hang for significant lengths of time when opening a Julia file. See tip below on
-using PackageCompiler.jl to mitigate this issue.
-</p>
-
-<p>
-This layer can be used with <a href="https://github.com/JuliaEditorSupport/LanguageServer.jl"><code>LanguageServer.jl</code></a> and emacs <a href="https://github.com/emacs-lsp/lsp-mode"><code>lsp-mode</code></a> to provide
+This layer can be used with <a href="https://github.com/JuliaEditorSupport/LanguageServer.jl">LanguageServer.jl</a> and Emacs <a href="https://github.com/emacs-lsp/lsp-mode">lsp-mode</a> to provide
 richer, IDE-like capabilities. To use this layer with lsp, you must do the
 following:
 </p>
 <ol class="org-ol">
-<li>Add <code>lsp</code> to <code>dotspacemacs-configuration-layers</code>.</li>
-<li>Install <code>LanguageServer.jl</code> by invoking <code>Pkg.add("LanguageServer")</code> in the
-Julia REPL.</li>
-<li>Enable layer integration with lsp as described in section below.</li>
+<li><code>LanguageServer.jl</code> should be configured automatically, if not, see the
+documentation of <code>lsp-julia</code>.</li>
+<li>define the layer variable <code>julia-backend</code> to <code>lsp</code> in your dotfile</li>
 </ol>
 
 <p>
-<code>LanguageServer.jl</code> tends to have a very long startup time. In the worst case,
-<code>lsp-mode</code> might give up on the language server before its started, but
-regardless usage of <code>lsp-mode</code> with Julia can cause long delays when first
-opening files. To mitigate this issue, you can try compiling <code>LanguageServer.jl</code>
-ahead of time using <a href="https://github.com/JuliaLang/PackageCompiler.jl"><code>PackageCompiler.jl</code></a>. This drastically reduces startup time
-if successful:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-julia">julia&gt; Pkg.add("PackageCompiler")
-julia&gt; using PackageCompiler
-julia&gt; compile_package("LanguageServer")
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org16cd6fe" class="outline-2">
-<h2 id="options"><span class="section-number-2">3</span> Options</h2>
-<div class="outline-text-2" id="text-options">
-<p>
-While <code>julia-mode</code> is perfectly usable without configuration or other packages,
-you can choose to replace the default functionality of using <a href="https://github.com/tpapp/julia-repl/"><code>julia-repl</code></a> as the
-layer's interactive REPL with the ess REPL and other functionality that comes
-with it. To do so, install this layer with:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span>
- dotspacemacs-configuration-layers
- '<span class="org-rainbow-delimiters-depth-2">(</span>
-   <span class="org-rainbow-delimiters-depth-3">(</span>julia <span class="org-builtin">:variables</span> julia-mode-enable-ess t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-This layer also includes experimental support for <code>lsp-mode</code>. To enable language
-server functionality with this layer, follow <a href="#lsp">the instructions for installation</a>,
-and then install this layer with:
+To enable language server functionality with this layer, follow the instructions
+for installation, and then install this layer with:
 </p>
 
 <div class="org-src-container">
@@ -404,13 +359,41 @@ and then install this layer with:
 </div>
 
 <p>
-Warning: <a href="https://github.com/JuliaEditorSupport/LanguageServer.jl"><code>LanguageServer.jl</code></a> has not yet been released for Julia 1.0. If you are
+Warning: <a href="https://github.com/JuliaEditorSupport/LanguageServer.jl">LanguageServer.jl</a> has not yet been released for Julia 1.0. If you are
 using this layer with Julia 1.0, <code>julia-mode-enable-lsp</code> should be set to <code>nil</code>.
+</p>
+
+<p>
+<code>LanguageServer.jl</code> tends to have a very long startup time. In the worst case,
+<code>lsp-mode</code> might give up on the language server before its started, but
+regardless usage of <code>lsp-mode</code> with Julia can cause long delays when first
+opening files. 
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-orgb6abf69" class="outline-2">
+<div id="outline-container-orgdf49839" class="outline-2">
+<h2 id="options"><span class="section-number-2">3</span> Options</h2>
+<div class="outline-text-2" id="text-options">
+<p>
+While <code>julia-mode</code> is perfectly usable without configuration or other packages,
+you can choose to replace the default functionality of using <a href="https://github.com/tpapp/julia-repl/">julia-repl</a> as the
+layer's interactive REPL with the ess REPL and other functionality that comes
+with it. To do so, install this layer with:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span>
+ dotspacemacs-configuration-layers
+ '<span class="org-rainbow-delimiters-depth-2">(</span>
+   <span class="org-rainbow-delimiters-depth-3">(</span>julia <span class="org-builtin">:variables</span> julia-mode-enable-ess t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org651b9c3" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -429,23 +412,61 @@ using this layer with Julia 1.0, <code>julia-mode-enable-lsp</code> should be se
 </thead>
 <tbody>
 <tr>
+<td class="org-left"><code>TAB</code></td>
+<td class="org-left">Expands latex macro (e.g. <code>\delta</code>).</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m l</code></td>
+<td class="org-left">Expands latex macro (e.g. <code>\delta</code>).</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m = =</code></td>
+<td class="org-left">Indent line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m = d</code></td>
+<td class="org-left">Deindent line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m = q</code></td>
+<td class="org-left">Indent Sexp</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m '</code></td>
+<td class="org-left">Brings up Julia Repl (starts new one or focuses existing).</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r</code></td>
+<td class="org-left">Brings up Julia Repl (starts new one or focuses existing).</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m h h</code></td>
 <td class="org-left">Calls <code>@doc</code> macro on symbol under cursor.</td>
 </tr>
-
+</tbody>
+<tbody>
 <tr>
-<td class="org-left"><code>SPC m e m</code></td>
-<td class="org-left">Expands macro under cursor.</td>
+<td class="org-left"><code>SPC m s a</code></td>
+<td class="org-left">Activate the project of the current buffer (call with prefix to activate home project)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m w</code></td>
-<td class="org-left">Calls <code>workspace()</code> in Repl to give clean namespace.</td>
+<td class="org-left"><code>SPC m s d</code></td>
+<td class="org-left"><code>cd</code> into the buffer directory</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC e l</code></td>
-<td class="org-left">Expands latex macro (e.g. <code>\delta</code>).</td>
+<td class="org-left"><code>SPC m s i</code></td>
+<td class="org-left">Brings up Julia Repl (starts new one or focuses existing).</td>
 </tr>
 
 <tr>
@@ -454,18 +475,94 @@ using this layer with Julia 1.0, <code>julia-mode-enable-lsp</code> should be se
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC m s t</code></td>
+<td class="org-left">Sends buffer to REPL via <code>Revise.includet</code>.</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m s l</code></td>
 <td class="org-left">Sends line to REPL.</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m s r</code></td>
-<td class="org-left">Sends region to REPL.</td>
+<td class="org-left"><code>SPC m s s</code></td>
+<td class="org-left">Sends line to REPL.</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r</code></td>
+<td class="org-left"><code>SPC m s r</code></td>
+<td class="org-left">Sends region or line to REPL.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s m</code></td>
+<td class="org-left">Call <code>@macroexpand</code> on an expression</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s e</code></td>
+<td class="org-left">Call <code>@edit</code> on an expression</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s v</code></td>
+<td class="org-left">Prompt and set a Julia REPL inferior buffer name for the current buffer</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m e a</code></td>
+<td class="org-left">Activate the project of the current buffer (call with prefix to activate home project)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e d</code></td>
+<td class="org-left"><code>cd</code> into the buffer directory</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e i</code></td>
 <td class="org-left">Brings up Julia Repl (starts new one or focuses existing).</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e b</code></td>
+<td class="org-left">Sends buffer to REPL.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e t</code></td>
+<td class="org-left">Sends buffer to REPL via <code>Revise.includet</code>.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e l</code></td>
+<td class="org-left">Sends line to REPL.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e s</code></td>
+<td class="org-left">Sends line to REPL.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e r</code></td>
+<td class="org-left">Sends region or line to REPL.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e m</code></td>
+<td class="org-left">Call <code>@macroexpand</code> on an expression</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e e</code></td>
+<td class="org-left">Call <code>@edit</code> on an expression</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e v</code></td>
+<td class="org-left">Prompt and set a Julia REPL inferior buffer name for the current buffer</td>
 </tr>
 </tbody>
 </table>
@@ -473,8 +570,8 @@ using this layer with Julia 1.0, <code>julia-mode-enable-lsp</code> should be se
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-07-08 Mon 21:00</p>
+<p class="author">Author: root</p>
+<p class="date">Created: 2019-11-08 Fri 17:50</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

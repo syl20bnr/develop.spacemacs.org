@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-08 Mon 21:00 -->
+<!-- 2019-11-08 Fri 17:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GitHub layer</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Travis CI User" />
+<meta name="author" content="root" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -286,16 +286,14 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
 <li><a href="#git-configuration">2.2. Git configuration</a></li>
-<li><a href="#hub-configuration">2.3. Hub configuration</a></li>
-<li><a href="#magithub-configuration">2.4. Magithub configuration</a></li>
+<li><a href="#forge">2.3. Forge</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key bindings</a>
 <ul>
-<li><a href="#magithub">3.1. magithub</a></li>
-<li><a href="#forge">3.2. forge</a></li>
-<li><a href="#gistel">3.3. gist.el</a></li>
-<li><a href="#clone-repositories">3.4. Clone repositories</a></li>
+<li><a href="#forge-1">3.1. Forge</a></li>
+<li><a href="#gistel">3.2. gist.el</a></li>
+<li><a href="#clone-repositories">3.3. Clone repositories</a></li>
 </ul>
 </li>
 </ul>
@@ -307,7 +305,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org1954812" class="outline-2">
+<div id="outline-container-orgd683f56" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -315,11 +313,10 @@ This layers adds support for <a href="http://github.com">GitHub</a>.
 </p>
 </div>
 
-<div id="outline-container-orgc2e5dfc" class="outline-3">
+<div id="outline-container-org2ae34e1" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li><a href="https://github.com/vermiculus/magithub">magithub</a>: Magit-integrated interface to <a href="https://hub.github.com/">hub</a> command line</li>
 <li><a href="https://github.com/magit/forge">forge</a>: integration with various forges, such as GitHub and GitLab.</li>
 <li><a href="https://github.com/defunkt/gist.el">gist.el</a>: full-featured mode to browse and post GitHub gists.</li>
 <li><a href="https://github.com/sshaw/git-link">git-link</a>: quickly generate URLs for commits or files.</li>
@@ -329,12 +326,12 @@ This layers adds support for <a href="http://github.com">GitHub</a>.
 </div>
 </div>
 
-<div id="outline-container-orgb9f3217" class="outline-2">
+<div id="outline-container-org7590f74" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgbbde3df" class="outline-3">
+<div id="outline-container-org4c533e9" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -345,7 +342,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgda956d7" class="outline-3">
+<div id="outline-container-org1a8a6c3" class="outline-3">
 <h3 id="git-configuration"><span class="section-number-3">2.2</span> Git configuration</h3>
 <div class="outline-text-3" id="text-git-configuration">
 <p>
@@ -365,114 +362,37 @@ You will also need to <a href="https://help.github.com/articles/generating-a-new
 </div>
 </div>
 
-<div id="outline-container-org7ae0773" class="outline-3">
-<h3 id="hub-configuration"><span class="section-number-3">2.3</span> Hub configuration</h3>
-<div class="outline-text-3" id="text-hub-configuration">
+<div id="outline-container-org62c3551" class="outline-3">
+<h3 id="forge"><span class="section-number-3">2.3</span> Forge</h3>
+<div class="outline-text-3" id="text-forge">
 <p>
-For now, <code>Magithub</code> requires the <code>hub</code> utility to work &#x2013; before trying to use
-Magithub, follow the installation instructions at hub.github.com. To force hub
-to authenticate, you can use hub browse in a terminal (inside a GitHub repo).
+The <code>forge</code> package uses <code>emacsql</code> which requires a C compiler to be available
+on MS Windows, see issue <a href="https://github.com/skeeto/emacsql/issues/46">https://github.com/skeeto/emacsql/issues/46</a>.
 </p>
-</div>
-</div>
 
-<div id="outline-container-orgdf11554" class="outline-3">
-<h3 id="magithub-configuration"><span class="section-number-3">2.4</span> Magithub configuration</h3>
-<div class="outline-text-3" id="text-magithub-configuration">
 <p>
-Spacemacs configures <code>Magithub</code> to be in offline mode by default and disables
-displaying the GitHub project status, issues, and pull requests because loading
-project data for repositories with many pull requests or issues can be
-exorbitantly slow (see <a href="https://github.com/syl20bnr/spacemacs/issues/11176">issue #11176</a>). To toggle online mode and the project
-status, issues, and pull requests sections for the current repository, open in
-the <code>magit status</code> buffer (<code>SPC g s</code>) and then open the Magithub settings popup
-(<code>@ C</code>). To enable online mode and the project status, pull requests, and
-issues sections by default, use the following shell commands:
+For this reason the <code>forge</code> package is not installed on MS Windows by default.
+If you still want to install it (which means you do have a C compiler available
+in your PATH) then use the <code>dotspacemacs-additional-packages</code> variable in your
+dotfile:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">git config --global --bool magithub.online true
-git config --global --bool magithub.status.includeStatusHeader true
-git config --global --bool magithub.status.includePullRequestsSection true
-git config --global --bool magithub.status.includeIssuesSection true
-</pre>
-</div>
-
-<p>
-Alternatively, use the following Emacs forms:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>magit-set <span class="org-string">"true"</span> <span class="org-string">"--global"</span> <span class="org-string">"magithub.online"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>magit-set <span class="org-string">"true"</span> <span class="org-string">"--global"</span> <span class="org-string">"magithub.status.includeStatusHeader"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>magit-set <span class="org-string">"true"</span> <span class="org-string">"--global"</span> <span class="org-string">"magithub.status.includePullRequestsSection"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>magit-set <span class="org-string">"true"</span> <span class="org-string">"--global"</span> <span class="org-string">"magithub.status.includeIssuesSection"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>dotspacemacs-additional-packages '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>forge <span class="org-builtin">:toggle</span> t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org315bb5c" class="outline-2">
+<div id="outline-container-org8ed9f85" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org06c3c35" class="outline-3">
-<h3 id="magithub"><span class="section-number-3">3.1</span> magithub</h3>
-<div class="outline-text-3" id="text-magithub">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>@ C</code></td>
-<td class="org-left">open the Magithub settings popup</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>@ H</code></td>
-<td class="org-left">opens the current repository in the browser</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>@ c</code></td>
-<td class="org-left">pushes a brand-new local repository up to GitHub</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>@ f</code></td>
-<td class="org-left">create a fork of an existing repository</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>@ p</code></td>
-<td class="org-left">submit pull request upstream</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>@ i</code></td>
-<td class="org-left">create an issue</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-org7ff356e" class="outline-3">
-<h3 id="forge"><span class="section-number-3">3.2</span> forge</h3>
-<div class="outline-text-3" id="text-forge">
+<div id="outline-container-org7c3b26e" class="outline-3">
+<h3 id="forge-1"><span class="section-number-3">3.1</span> Forge</h3>
+<div class="outline-text-3" id="text-forge-1">
 <p>
 In a <code>magit-status</code> buffer (<code>SPC g s</code>):
 </p>
@@ -613,8 +533,8 @@ In a <code>forge-post</code> buffer (assuming the major mode leader key is <code
 </div>
 </div>
 
-<div id="outline-container-org6e28e11" class="outline-3">
-<h3 id="gistel"><span class="section-number-3">3.3</span> gist.el</h3>
+<div id="outline-container-org331f2cb" class="outline-3">
+<h3 id="gistel"><span class="section-number-3">3.2</span> gist.el</h3>
 <div class="outline-text-3" id="text-gistel">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -761,8 +681,8 @@ In the gist list buffer:
 </div>
 </div>
 
-<div id="outline-container-orgd94db56" class="outline-3">
-<h3 id="clone-repositories"><span class="section-number-3">3.4</span> Clone repositories</h3>
+<div id="outline-container-orgeb81065" class="outline-3">
+<h3 id="clone-repositories"><span class="section-number-3">3.3</span> Clone repositories</h3>
 <div class="outline-text-3" id="text-clone-repositories">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -810,8 +730,8 @@ In the gist list buffer:
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-07-08 Mon 21:00</p>
+<p class="author">Author: root</p>
+<p class="date">Created: 2019-11-08 Fri 17:50</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

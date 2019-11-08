@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-08 Mon 21:00 -->
+<!-- 2019-11-08 Fri 17:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Configuration layers</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Travis CI User" />
+<meta name="author" content="root" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -392,12 +392,14 @@ for the JavaScript code in this tag.
 <li><a href="#extra-languages">15.1.3. Extra languages</a></li>
 <li><a href="#faust">15.1.4. Faust</a></li>
 <li><a href="#gpu">15.1.5. Gpu</a></li>
-<li><a href="#octave">15.1.6. Octave</a></li>
-<li><a href="#prolog">15.1.7. Prolog</a></li>
-<li><a href="#sql">15.1.8. Sql</a></li>
-<li><a href="#lisp-dialects">15.1.9. Lisp dialects</a></li>
-<li><a href="#markup--configuration">15.1.10. Markup &amp; configuration</a></li>
-<li><a href="#scripting">15.1.11. Scripting</a></li>
+<li><a href="#kivy">15.1.6. Kivy</a></li>
+<li><a href="#mercury">15.1.7. Mercury</a></li>
+<li><a href="#octave">15.1.8. Octave</a></li>
+<li><a href="#prolog">15.1.9. Prolog</a></li>
+<li><a href="#sql">15.1.10. Sql</a></li>
+<li><a href="#lisp-dialects">15.1.11. Lisp dialects</a></li>
+<li><a href="#markup--configuration">15.1.12. Markup &amp; configuration</a></li>
+<li><a href="#scripting">15.1.13. Scripting</a></li>
 </ul>
 </li>
 <li><a href="#frameworks">15.2. Frameworks</a>
@@ -418,10 +420,11 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#utilities">15.4. Utilities</a>
 <ul>
-<li><a href="#dotnet">15.4.1. Dotnet</a></li>
-<li><a href="#ipython-notebook">15.4.2. Ipython notebook</a></li>
-<li><a href="#protocol-buffers">15.4.3. Protocol buffers</a></li>
-<li><a href="#sailfish-os-developer">15.4.4. Sailfish os developer</a></li>
+<li><a href="#conda-layer">15.4.1. Conda layer</a></li>
+<li><a href="#dotnet">15.4.2. Dotnet</a></li>
+<li><a href="#ipython-notebook">15.4.3. Ipython notebook</a></li>
+<li><a href="#protocol-buffers">15.4.4. Protocol buffers</a></li>
+<li><a href="#sailfish-os-developer">15.4.5. Sailfish os developer</a></li>
 </ul>
 </li>
 </ul>
@@ -532,7 +535,7 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgf122f51" class="outline-2">
+<div id="outline-container-orgeef86a5" class="outline-2">
 <h2 id="this-file-is-auto-generated"><span class="section-number-2">1</span> THIS FILE IS AUTO GENERATED</h2>
 <div class="outline-text-2" id="text-this-file-is-auto-generated">
 <p>
@@ -542,12 +545,12 @@ See "README.org tags" section of CONTRIBUTING.org for instructions.
 </div>
 </div>
 
-<div id="outline-container-org5df8ead" class="outline-2">
+<div id="outline-container-org63590d6" class="outline-2">
 <h2 id="chats"><span class="section-number-2">2</span> Chats</h2>
 <div class="outline-text-2" id="text-chats">
 </div>
 
-<div id="outline-container-orgfe81e3f" class="outline-3">
+<div id="outline-container-orgf3a11b7" class="outline-3">
 <h3 id="erc"><span class="section-number-3">2.1</span> Erc</h3>
 <div class="outline-text-3" id="text-erc">
 <p>
@@ -577,7 +580,7 @@ using the <code>emoji</code> layer or having a proper font) :clap:</li>
 </div>
 </div>
 
-<div id="outline-container-orgf1f4ce9" class="outline-3">
+<div id="outline-container-orgeb40d68" class="outline-3">
 <h3 id="jabber"><span class="section-number-3">2.2</span> Jabber</h3>
 <div class="outline-text-3" id="text-jabber">
 <p>
@@ -597,7 +600,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orge1907c0" class="outline-3">
+<div id="outline-container-orgf45ee74" class="outline-3">
 <h3 id="rcirc"><span class="section-number-3">2.3</span> Rcirc</h3>
 <div class="outline-text-3" id="text-rcirc">
 <p>
@@ -624,7 +627,7 @@ using the <code>emoji</code> layer or having a proper font) :clap:</li>
 </div>
 </div>
 
-<div id="outline-container-orgfc1d785" class="outline-3">
+<div id="outline-container-org2ed3a49" class="outline-3">
 <h3 id="slack"><span class="section-number-3">2.4</span> Slack</h3>
 <div class="outline-text-3" id="text-slack">
 <p>
@@ -649,12 +652,12 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org67c1959" class="outline-2">
+<div id="outline-container-orgf786b65" class="outline-2">
 <h2 id="checkers"><span class="section-number-2">3</span> Checkers</h2>
 <div class="outline-text-2" id="text-checkers">
 </div>
 
-<div id="outline-container-orga970812" class="outline-3">
+<div id="outline-container-orge799d1e" class="outline-3">
 <h3 id="spell-checking"><span class="section-number-3">3.1</span> Spell checking</h3>
 <div class="outline-text-3" id="text-spell-checking">
 <p>
@@ -677,7 +680,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgebe9bf5" class="outline-3">
+<div id="outline-container-org19fc886" class="outline-3">
 <h3 id="syntax-checking"><span class="section-number-3">3.2</span> Syntax checking</h3>
 <div class="outline-text-3" id="text-syntax-checking">
 <p>
@@ -699,12 +702,12 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org39ee929" class="outline-2">
+<div id="outline-container-org7700e61" class="outline-2">
 <h2 id="completion"><span class="section-number-2">4</span> Completion</h2>
 <div class="outline-text-2" id="text-completion">
 </div>
 
-<div id="outline-container-orgf280176" class="outline-3">
+<div id="outline-container-orga5692ca" class="outline-3">
 <h3 id="auto-completion"><span class="section-number-3">4.1</span> Auto-completion</h3>
 <div class="outline-text-3" id="text-auto-completion">
 <p>
@@ -723,11 +726,12 @@ Features:
 <li>Frequency-based suggestions via <a href="https://github.com/company-mode/company-statistics">company-statistics</a> for <code>company</code></li>
 <li>Integration with <a href="https://github.com/capitaomorte/yasnippet">yasnippet</a> and <a href="https://github.com/abo-abo/auto-yasnippet">auto-yasnippet</a></li>
 <li>Automatic configuration of <a href="https://www.emacswiki.org/emacs/HippieExpand">hippie-expand</a></li>
+<li>Automatic docstring tooltips are provided by <a href="https://github.com/expez/company-quickhelp">company-quickhelp</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc2a42df" class="outline-3">
+<div id="outline-container-org2300512" class="outline-3">
 <h3 id="helm"><span class="section-number-3">4.2</span> Helm</h3>
 <div class="outline-text-3" id="text-helm">
 <p>
@@ -763,7 +767,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org79cbf1f" class="outline-3">
+<div id="outline-container-org088f66e" class="outline-3">
 <h3 id="ivy"><span class="section-number-3">4.3</span> Ivy</h3>
 <div class="outline-text-3" id="text-ivy">
 <p>
@@ -799,7 +803,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orga13611f" class="outline-3">
+<div id="outline-container-org2fc64d9" class="outline-3">
 <h3 id="templates"><span class="section-number-3">4.4</span> Templates</h3>
 <div class="outline-text-3" id="text-templates">
 <p>
@@ -822,12 +826,12 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org24559bc" class="outline-2">
+<div id="outline-container-org571e9ca" class="outline-2">
 <h2 id="e-mail"><span class="section-number-2">5</span> E-mail</h2>
 <div class="outline-text-2" id="text-e-mail">
 </div>
 
-<div id="outline-container-orgf2829d1" class="outline-3">
+<div id="outline-container-org1c83c70" class="outline-3">
 <h3 id="gnus"><span class="section-number-3">5.1</span> Gnus</h3>
 <div class="outline-text-3" id="text-gnus">
 <p>
@@ -849,7 +853,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org3dbfc24" class="outline-3">
+<div id="outline-container-org2b959ca" class="outline-3">
 <h3 id="mu4e"><span class="section-number-3">5.2</span> Mu4e</h3>
 <div class="outline-text-3" id="text-mu4e">
 <p>
@@ -857,7 +861,7 @@ Features:
 </p>
 
 <p>
-This layer adds support for the Mu4e email client.
+This layer adds support for the <code>Mu4e</code> email client.
 </p>
 
 <p>
@@ -869,13 +873,13 @@ Features:
 <li>UI optimized for speed: quick keystrokes for common actions.</li>
 <li>Very extendable and customizable.</li>
 <li>Integration with Helm.</li>
-<li>Maildir summary using <a href="https://github.com/agpchil/mu4e-maildirs-extension">mu4e-mailidrs-extension</a></li>
+<li>Maildir summary using <a href="https://github.com/agpchil/mu4e-maildirs-extension">mu4e-mailidirs-extension</a></li>
 <li>Notifications using <a href="https://github.com/iqbalansari/mu4e-alert">mu4e-alert</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4bd5845" class="outline-3">
+<div id="outline-container-orgb540fc8" class="outline-3">
 <h3 id="notmuch"><span class="section-number-3">5.3</span> Notmuch</h3>
 <div class="outline-text-3" id="text-notmuch">
 <p>
@@ -902,12 +906,12 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org84c6f2b" class="outline-2">
+<div id="outline-container-orgdb55499" class="outline-2">
 <h2 id="emacs"><span class="section-number-2">6</span> Emacs</h2>
 <div class="outline-text-2" id="text-emacs">
 </div>
 
-<div id="outline-container-org7ac9876" class="outline-3">
+<div id="outline-container-orgc93fb62" class="outline-3">
 <h3 id="better-defaults"><span class="section-number-3">6.1</span> Better defaults</h3>
 <div class="outline-text-3" id="text-better-defaults">
 <p>
@@ -941,7 +945,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org879c949" class="outline-3">
+<div id="outline-container-orgd182269" class="outline-3">
 <h3 id="ibuffer"><span class="section-number-3">6.2</span> Ibuffer</h3>
 <div class="outline-text-3" id="text-ibuffer">
 <p>
@@ -962,7 +966,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgccaf2f5" class="outline-3">
+<div id="outline-container-org91f7adf" class="outline-3">
 <h3 id="org"><span class="section-number-3">6.3</span> Org</h3>
 <div class="outline-text-3" id="text-org">
 <p>
@@ -988,7 +992,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org34381a6" class="outline-3">
+<div id="outline-container-org438d67f" class="outline-3">
 <h3 id="semantic"><span class="section-number-3">6.4</span> Semantic</h3>
 <div class="outline-text-3" id="text-semantic">
 <p>
@@ -1028,7 +1032,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgb0e6111" class="outline-3">
+<div id="outline-container-org7737c13" class="outline-3">
 <h3 id="smex"><span class="section-number-3">6.5</span> Smex</h3>
 <div class="outline-text-3" id="text-smex">
 <p>
@@ -1048,7 +1052,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orge338d45" class="outline-3">
+<div id="outline-container-org989143a" class="outline-3">
 <h3 id="typography"><span class="section-number-3">6.6</span> Typography</h3>
 <div class="outline-text-3" id="text-typography">
 <p>
@@ -1073,12 +1077,12 @@ required (Only available on Emacs 25).</li>
 </div>
 </div>
 
-<div id="outline-container-org7bb0a05" class="outline-2">
+<div id="outline-container-org79bd610" class="outline-2">
 <h2 id="file-trees"><span class="section-number-2">7</span> File trees</h2>
 <div class="outline-text-2" id="text-file-trees">
 </div>
 
-<div id="outline-container-org5d55146" class="outline-3">
+<div id="outline-container-org6ab506c" class="outline-3">
 <h3 id="neotree"><span class="section-number-3">7.1</span> Neotree</h3>
 <div class="outline-text-3" id="text-neotree">
 <p>
@@ -1101,7 +1105,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgc806c1a" class="outline-3">
+<div id="outline-container-org200dda5" class="outline-3">
 <h3 id="treemacs"><span class="section-number-3">7.2</span> Treemacs</h3>
 <div class="outline-text-3" id="text-treemacs">
 <p>
@@ -1134,7 +1138,7 @@ of the node at point (with $HOME as fallback)</li>
 <li>Optionally fontifying files based on their git status.</li>
 <li>Optionally collapsing single-dir-child directories into one.</li>
 <li>Doing both asynchronously for an imperceptible performance cost.</li>
-<li>Optional <code>follow-mode</code> to automatically focus the currently selected file.</li>
+<li>Optional <code>follow-mode</code> to automatically focus the currently selected file or tag.</li>
 <li>Optional <code>filewatch-mode</code> to automatically refresh the view after (and only
 after) changes to the shown filesystem.</li>
 </ul>
@@ -1142,12 +1146,12 @@ after) changes to the shown filesystem.</li>
 </div>
 </div>
 
-<div id="outline-container-orgb4c7994" class="outline-2">
+<div id="outline-container-org7d5912c" class="outline-2">
 <h2 id="fonts"><span class="section-number-2">8</span> Fonts</h2>
 <div class="outline-text-2" id="text-fonts">
 </div>
 
-<div id="outline-container-org0781849" class="outline-3">
+<div id="outline-container-orgc7acae7" class="outline-3">
 <h3 id="unicode-fonts"><span class="section-number-3">8.1</span> Unicode-fonts</h3>
 <div class="outline-text-3" id="text-unicode-fonts">
 <p>
@@ -1165,19 +1169,19 @@ Features:
 <ul class="org-ul">
 <li>Display unicode glyphs using the best available font.</li>
 <li>Easily override glyphs or sections of glyphs.</li>
-<li>Display color emoji on both the Mac port version of Emacs and emacs-plus (with
+<li>Display color emoji on both the macOS port version of Emacs and emacs-plus (with
 <code>unicode-fonts-force-multi-color-on-mac</code> set to non nil).</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org922fe3b" class="outline-2">
+<div id="outline-container-org7c8e994" class="outline-2">
 <h2 id="fun"><span class="section-number-2">9</span> Fun</h2>
 <div class="outline-text-2" id="text-fun">
 </div>
 
-<div id="outline-container-org5ace321" class="outline-3">
+<div id="outline-container-orgcbd2ac4" class="outline-3">
 <h3 id="emoji"><span class="section-number-3">9.1</span> Emoji</h3>
 <div class="outline-text-3" id="text-emoji">
 <p>
@@ -1194,13 +1198,13 @@ Features:
 <ul class="org-ul">
 <li>Browse Emoji in a dedicated buffer</li>
 <li>Display Emoji images in buffer</li>
-<li>Insert one or several Emoji with an helm front-end</li>
+<li>Insert one or several Emoji with a helm front-end</li>
 <li>Completion of Emojis using <a href="https://github.com/dunn/company-emoji">company-emoji</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9d872d2" class="outline-3">
+<div id="outline-container-org81d78bc" class="outline-3">
 <h3 id="games"><span class="section-number-3">9.2</span> Games</h3>
 <div class="outline-text-3" id="text-games">
 <p>
@@ -1224,7 +1228,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgc259bb7" class="outline-3">
+<div id="outline-container-org44cb2c2" class="outline-3">
 <h3 id="selectric"><span class="section-number-3">9.3</span> Selectric</h3>
 <div class="outline-text-3" id="text-selectric">
 <p>
@@ -1248,7 +1252,7 @@ the latest IBM Iseries server.</li>
 </div>
 </div>
 
-<div id="outline-container-orgdd47576" class="outline-3">
+<div id="outline-container-orgd16ecf4" class="outline-3">
 <h3 id="xkcd"><span class="section-number-3">9.4</span> Xkcd</h3>
 <div class="outline-text-3" id="text-xkcd">
 <p>
@@ -1272,12 +1276,12 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org06c6467" class="outline-2">
+<div id="outline-container-org498db00" class="outline-2">
 <h2 id="internationalization"><span class="section-number-2">10</span> Internationalization</h2>
 <div class="outline-text-2" id="text-internationalization">
 </div>
 
-<div id="outline-container-org59f4f75" class="outline-3">
+<div id="outline-container-orgdc04105" class="outline-3">
 <h3 id="chinese"><span class="section-number-3">10.1</span> Chinese</h3>
 <div class="outline-text-3" id="text-chinese">
 <p>
@@ -1305,7 +1309,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orge2fd66b" class="outline-3">
+<div id="outline-container-org7cde78e" class="outline-3">
 <h3 id="japanese"><span class="section-number-3">10.2</span> Japanese</h3>
 <div class="outline-text-3" id="text-japanese">
 <p>
@@ -1334,7 +1338,7 @@ when exporting org-mode to html.</li>
 </div>
 </div>
 
-<div id="outline-container-orgf8019a3" class="outline-3">
+<div id="outline-container-orgda2ad55" class="outline-3">
 <h3 id="keyboard-layout"><span class="section-number-3">10.3</span> Keyboard-layout</h3>
 <div class="outline-text-3" id="text-keyboard-layout">
 <p>
@@ -1358,12 +1362,12 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org5948d9d" class="outline-2">
+<div id="outline-container-orgd76733a" class="outline-2">
 <h2 id="miscellaneous"><span class="section-number-2">11</span> Miscellaneous</h2>
 <div class="outline-text-2" id="text-miscellaneous">
 </div>
 
-<div id="outline-container-orgfc0adab" class="outline-3">
+<div id="outline-container-org295a9ee" class="outline-3">
 <h3 id="copy-as-format"><span class="section-number-3">11.1</span> Copy-as-format</h3>
 <div class="outline-text-3" id="text-copy-as-format">
 <p>
@@ -1383,7 +1387,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org4408adf" class="outline-3">
+<div id="outline-container-orgcb2b161" class="outline-3">
 <h3 id="ietf"><span class="section-number-3">11.2</span> Ietf</h3>
 <div class="outline-text-3" id="text-ietf">
 <p>
@@ -1406,7 +1410,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgf73d3b3" class="outline-3">
+<div id="outline-container-org9396b26" class="outline-3">
 <h3 id="multiple-cursors"><span class="section-number-3">11.3</span> Multiple-cursors</h3>
 <div class="outline-text-3" id="text-multiple-cursors">
 <p>
@@ -1422,7 +1426,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org7e818b6" class="outline-3">
+<div id="outline-container-orgff7c28f" class="outline-3">
 <h3 id="nlinum"><span class="section-number-3">11.4</span> Nlinum</h3>
 <div class="outline-text-3" id="text-nlinum">
 <p>
@@ -1451,7 +1455,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org3178e89" class="outline-3">
+<div id="outline-container-org5a22bc5" class="outline-3">
 <h3 id="parinfer"><span class="section-number-3">11.5</span> Parinfer</h3>
 <div class="outline-text-3" id="text-parinfer">
 <p>
@@ -1472,7 +1476,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org17aa598" class="outline-3">
+<div id="outline-container-org63cbc44" class="outline-3">
 <h3 id="spacemacs-completion"><span class="section-number-3">11.6</span> Spacemacs-completion</h3>
 <div class="outline-text-3" id="text-spacemacs-completion">
 <p>
@@ -1505,7 +1509,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org638d9db" class="outline-3">
+<div id="outline-container-org710982b" class="outline-3">
 <h3 id="spacemacs-defaults"><span class="section-number-3">11.7</span> Spacemacs-defaults</h3>
 <div class="outline-text-3" id="text-spacemacs-defaults">
 <p>
@@ -1558,7 +1562,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgd6e808c" class="outline-3">
+<div id="outline-container-org756fd5d" class="outline-3">
 <h3 id="spacemacs-editing"><span class="section-number-3">11.8</span> Spacemacs-editing</h3>
 <div class="outline-text-3" id="text-spacemacs-editing">
 <p>
@@ -1594,7 +1598,7 @@ via <code>hungry-delete</code>.</li>
 </div>
 </div>
 
-<div id="outline-container-org610389f" class="outline-3">
+<div id="outline-container-org8c20961" class="outline-3">
 <h3 id="spacemacs-editing-visual"><span class="section-number-3">11.9</span> Spacemacs-editing-visual</h3>
 <div class="outline-text-3" id="text-spacemacs-editing-visual">
 <p>
@@ -1620,7 +1624,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orge4a2e41" class="outline-3">
+<div id="outline-container-orgb273e96" class="outline-3">
 <h3 id="spacemacs-evil"><span class="section-number-3">11.10</span> Spacemacs-evil</h3>
 <div class="outline-text-3" id="text-spacemacs-evil">
 <p>
@@ -1660,7 +1664,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgd9471aa" class="outline-3">
+<div id="outline-container-orgcd0c453" class="outline-3">
 <h3 id="spacemacs-language"><span class="section-number-3">11.11</span> Spacemacs-language</h3>
 <div class="outline-text-3" id="text-spacemacs-language">
 <p>
@@ -1681,7 +1685,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org3f77ebc" class="outline-3">
+<div id="outline-container-org79f6fce" class="outline-3">
 <h3 id="spacemacs-layouts"><span class="section-number-3">11.12</span> Spacemacs-layouts</h3>
 <div class="outline-text-3" id="text-spacemacs-layouts">
 <p>
@@ -1702,7 +1706,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgca59e2e" class="outline-3">
+<div id="outline-container-org73be1eb" class="outline-3">
 <h3 id="spacemacs-misc"><span class="section-number-3">11.13</span> Spacemacs-misc</h3>
 <div class="outline-text-3" id="text-spacemacs-misc">
 <p>
@@ -1723,7 +1727,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org8690a78" class="outline-3">
+<div id="outline-container-orgea2b763" class="outline-3">
 <h3 id="spacemacs-modeline"><span class="section-number-3">11.14</span> Spacemacs-modeline</h3>
 <div class="outline-text-3" id="text-spacemacs-modeline">
 <p>
@@ -1752,7 +1756,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org2293aad" class="outline-3">
+<div id="outline-container-org5c59f56" class="outline-3">
 <h3 id="spacemacs-navigation"><span class="section-number-3">11.15</span> Spacemacs-navigation</h3>
 <div class="outline-text-3" id="text-spacemacs-navigation">
 <p>
@@ -1784,7 +1788,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org93d16f2" class="outline-3">
+<div id="outline-container-org3a0ce1b" class="outline-3">
 <h3 id="spacemacs-org"><span class="section-number-3">11.16</span> Spacemacs-org</h3>
 <div class="outline-text-3" id="text-spacemacs-org">
 <p>
@@ -1807,7 +1811,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org80141ef" class="outline-3">
+<div id="outline-container-orgcbc25e2" class="outline-3">
 <h3 id="spacemacs-project"><span class="section-number-3">11.17</span> Spacemacs-project</h3>
 <div class="outline-text-3" id="text-spacemacs-project">
 <p>
@@ -1828,7 +1832,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgc6555bf" class="outline-3">
+<div id="outline-container-orgab8e3b5" class="outline-3">
 <h3 id="spacemacs-purpose"><span class="section-number-3">11.18</span> Spacemacs-purpose</h3>
 <div class="outline-text-3" id="text-spacemacs-purpose">
 <p>
@@ -1863,7 +1867,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org18bf9ae" class="outline-3">
+<div id="outline-container-org29383d5" class="outline-3">
 <h3 id="spacemacs-visual"><span class="section-number-3">11.19</span> Spacemacs-visual</h3>
 <div class="outline-text-3" id="text-spacemacs-visual">
 <p>
@@ -1891,12 +1895,12 @@ via <code>hl-todo</code>.</li>
 </div>
 </div>
 
-<div id="outline-container-org9f1d0a7" class="outline-2">
+<div id="outline-container-orgab0bd93" class="outline-2">
 <h2 id="music"><span class="section-number-2">12</span> Music</h2>
 <div class="outline-text-2" id="text-music">
 </div>
 
-<div id="outline-container-org5f6d674" class="outline-3">
+<div id="outline-container-org3e9d0f8" class="outline-3">
 <h3 id="alda-layer"><span class="section-number-3">12.1</span> Alda layer</h3>
 <div class="outline-text-3" id="text-alda-layer">
 <p>
@@ -1925,7 +1929,7 @@ through a running Alda server.</li>
 </div>
 </div>
 
-<div id="outline-container-orgaa36382" class="outline-3">
+<div id="outline-container-org355044b" class="outline-3">
 <h3 id="spotify"><span class="section-number-3">12.2</span> Spotify</h3>
 <div class="outline-text-3" id="text-spotify">
 <p>
@@ -1946,12 +1950,12 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org0e6b294" class="outline-2">
+<div id="outline-container-orgb9ca2a1" class="outline-2">
 <h2 id="operating-systems"><span class="section-number-2">13</span> Operating systems</h2>
 <div class="outline-text-2" id="text-operating-systems">
 </div>
 
-<div id="outline-container-org5eaaef2" class="outline-3">
+<div id="outline-container-orge7b7b9c" class="outline-3">
 <h3 id="nixos"><span class="section-number-3">13.1</span> Nixos</h3>
 <div class="outline-text-3" id="text-nixos">
 <p>
@@ -1973,7 +1977,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgda48484" class="outline-3">
+<div id="outline-container-org3cd7577" class="outline-3">
 <h3 id="osx"><span class="section-number-3">13.2</span> Osx</h3>
 <div class="outline-text-3" id="text-osx">
 <p>
@@ -1981,8 +1985,8 @@ Features:
 </p>
 
 <p>
-Spacemacs is not just emacs+vim. It can have OSX key bindings too! This layer
-globally defines common OSX key bindings.
+Spacemacs is not just Emacs plus Vim. It can have macOS key bindings too! This
+layer globally defines common macOS key bindings.
 </p>
 
 <p>
@@ -1997,12 +2001,12 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org4e50ea9" class="outline-2">
+<div id="outline-container-orgd061f02" class="outline-2">
 <h2 id="pair-programming"><span class="section-number-2">14</span> Pair programming</h2>
 <div class="outline-text-2" id="text-pair-programming">
 </div>
 
-<div id="outline-container-org8054ac9" class="outline-3">
+<div id="outline-container-org8748416" class="outline-3">
 <h3 id="floobits"><span class="section-number-3">14.1</span> Floobits</h3>
 <div class="outline-text-3" id="text-floobits">
 <p>
@@ -2026,17 +2030,17 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org48f84bc" class="outline-2">
+<div id="outline-container-orgf66956a" class="outline-2">
 <h2 id="programming-languages"><span class="section-number-2">15</span> Programming languages</h2>
 <div class="outline-text-2" id="text-programming-languages">
 </div>
 
-<div id="outline-container-orga6a2dd4" class="outline-3">
+<div id="outline-container-org08b6ac0" class="outline-3">
 <h3 id="domain-specific-dsls"><span class="section-number-3">15.1</span> Domain-specific (DSLs)</h3>
 <div class="outline-text-3" id="text-domain-specific-dsls">
 </div>
 
-<div id="outline-container-org6e99597" class="outline-4">
+<div id="outline-container-org1851484" class="outline-4">
 <h4 id="coq"><span class="section-number-4">15.1.1</span> Coq</h4>
 <div class="outline-text-4" id="text-coq">
 <p>
@@ -2061,7 +2065,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgfa0defd" class="outline-4">
+<div id="outline-container-org1a395a1" class="outline-4">
 <h4 id="ess-r"><span class="section-number-4">15.1.2</span> Ess (r)</h4>
 <div class="outline-text-4" id="text-ess-r">
 <p>
@@ -2089,7 +2093,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org931e187" class="outline-4">
+<div id="outline-container-org0d7fb3c" class="outline-4">
 <h4 id="extra-languages"><span class="section-number-4">15.1.3</span> Extra languages</h4>
 <div class="outline-text-4" id="text-extra-languages">
 <p>
@@ -2111,7 +2115,6 @@ Features:
 <li>Android Logcat (not associated with any file types by default)</li>
 <li>Gentoo ebuilds</li>
 <li>Hoon</li>
-<li>Kivy</li>
 <li>MATLAB</li>
 <li>QML</li>
 <li>OpenScad</li>
@@ -2124,7 +2127,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org276ef96" class="outline-4">
+<div id="outline-container-org011992b" class="outline-4">
 <h4 id="faust"><span class="section-number-4">15.1.4</span> Faust</h4>
 <div class="outline-text-4" id="text-faust">
 <p>
@@ -2145,7 +2148,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org67a22bb" class="outline-4">
+<div id="outline-container-org6085ab6" class="outline-4">
 <h4 id="gpu"><span class="section-number-4">15.1.5</span> Gpu</h4>
 <div class="outline-text-4" id="text-gpu">
 <p>
@@ -2188,8 +2191,50 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgbf92f63" class="outline-4">
-<h4 id="octave"><span class="section-number-4">15.1.6</span> Octave</h4>
+<div id="outline-container-org1780cad" class="outline-4">
+<h4 id="kivy"><span class="section-number-4">15.1.6</span> Kivy</h4>
+<div class="outline-text-4" id="text-kivy">
+<p>
+<a href="+lang/kivy/README.html">+lang/kivy/README.org</a>
+</p>
+
+<p>
+This layer adds support for Kivy, cross-platform GUI framework for Python.
+</p>
+
+<p>
+Features:
+</p>
+<ul class="org-ul">
+<li>Syntax Highlighting</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org36fedb5" class="outline-4">
+<h4 id="mercury"><span class="section-number-4">15.1.7</span> Mercury</h4>
+<div class="outline-text-4" id="text-mercury">
+<p>
+<a href="+lang/mercury-layer/README.html">+lang/mercury-layer/README.org</a>
+</p>
+
+<p>
+This layer adds support for the Mercury language.
+</p>
+
+<p>
+Features:
+</p>
+<ul class="org-ul">
+<li>Indentation.</li>
+<li>Syntax highlighting.</li>
+<li>Compiling and running.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6d0be34" class="outline-4">
+<h4 id="octave"><span class="section-number-4">15.1.8</span> Octave</h4>
 <div class="outline-text-4" id="text-octave">
 <p>
 <a href="+lang/octave/README.html">+lang/octave/README.org</a>
@@ -2211,8 +2256,8 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgbee612e" class="outline-4">
-<h4 id="prolog"><span class="section-number-4">15.1.7</span> Prolog</h4>
+<div id="outline-container-orge893ae6" class="outline-4">
+<h4 id="prolog"><span class="section-number-4">15.1.9</span> Prolog</h4>
 <div class="outline-text-4" id="text-prolog">
 <p>
 <a href="+lang/prolog/README.html">+lang/prolog/README.org</a>
@@ -2234,8 +2279,8 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgf338367" class="outline-4">
-<h4 id="sql"><span class="section-number-4">15.1.8</span> Sql</h4>
+<div id="outline-container-orgb64ef1f" class="outline-4">
+<h4 id="sql"><span class="section-number-4">15.1.10</span> Sql</h4>
 <div class="outline-text-4" id="text-sql">
 <p>
 <a href="+lang/sql/README.html">+lang/sql/README.org</a>
@@ -2275,8 +2320,8 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgb2ac16a" class="outline-4">
-<h4 id="lisp-dialects"><span class="section-number-4">15.1.9</span> Lisp dialects</h4>
+<div id="outline-container-orgb3c1a29" class="outline-4">
+<h4 id="lisp-dialects"><span class="section-number-4">15.1.11</span> Lisp dialects</h4>
 <div class="outline-text-4" id="text-lisp-dialects">
 </div>
 
@@ -2298,7 +2343,7 @@ Features:
 <li>REPL via <a href="https://github.com/clojure-emacs/cider">CIDER</a></li>
 <li>Code formatting via <a href="https://github.com/clojure-emacs/cider">CIDER</a> using <a href="https://github.com/weavejester/cljfmt">Cljfmt</a></li>
 <li>Refactoring via <a href="https://github.com/clojure-emacs/clj-refactor.el">clj-refactor</a></li>
-<li>Linting via <a href="https://github.com/clojure-emacs/squiggly-clojure">squiggly-clojure</a></li>
+<li>Linting via <a href="https://github.com/clojure-emacs/squiggly-clojure">squiggly-clojure</a>, <a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> or <a href="https://github.com/candid82/joker">joker</a></li>
 <li>Aligning of code forms via <a href="https://github.com/clojure-emacs/clojure-mode">clojure-mode</a></li>
 <li>Debugging with <a href="https://github.com/clojure-emacs/sayid">sayid</a></li>
 <li>Clojure cheatsheet</li>
@@ -2383,8 +2428,8 @@ Features:
 </ol>
 </div>
 
-<div id="outline-container-org60812f8" class="outline-4">
-<h4 id="markup--configuration"><span class="section-number-4">15.1.10</span> Markup &amp; configuration</h4>
+<div id="outline-container-orgc8b58da" class="outline-4">
+<h4 id="markup--configuration"><span class="section-number-4">15.1.12</span> Markup &amp; configuration</h4>
 <div class="outline-text-4" id="text-markup--configuration">
 </div>
 
@@ -2777,8 +2822,8 @@ Features:
 </ol>
 </div>
 
-<div id="outline-container-org1ce8412" class="outline-4">
-<h4 id="scripting"><span class="section-number-4">15.1.11</span> Scripting</h4>
+<div id="outline-container-org088e94a" class="outline-4">
+<h4 id="scripting"><span class="section-number-4">15.1.13</span> Scripting</h4>
 <div class="outline-text-4" id="text-scripting">
 </div>
 
@@ -2846,6 +2891,7 @@ Features:
 <li>Auto-completion using <a href="https://github.com/Alexander-Miller/company-shell">company-shell</a></li>
 <li><code>Sh</code> scripts linting using <a href="https://www.shellcheck.net/">shellcheck</a></li>
 <li><code>Sh</code> scripts style checking using <a href="https://github.com/openstack-dev/bashate">bashate</a></li>
+<li>Support for the <a href="https://langserver.org/">Language Server Protocol</a> (experimental)</li>
 </ul>
 </div>
 </li>
@@ -2893,12 +2939,12 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org77442d9" class="outline-3">
+<div id="outline-container-org6d44856" class="outline-3">
 <h3 id="frameworks"><span class="section-number-3">15.2</span> Frameworks</h3>
 <div class="outline-text-3" id="text-frameworks">
 </div>
 
-<div id="outline-container-orgdba6e9d" class="outline-4">
+<div id="outline-container-org0aed167" class="outline-4">
 <h4 id="django"><span class="section-number-4">15.2.1</span> Django</h4>
 <div class="outline-text-4" id="text-django">
 <p>
@@ -2923,7 +2969,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org27da48a" class="outline-4">
+<div id="outline-container-org30621e3" class="outline-4">
 <h4 id="emberjs"><span class="section-number-4">15.2.2</span> Emberjs</h4>
 <div class="outline-text-4" id="text-emberjs">
 <p>
@@ -2977,7 +3023,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org9b3381a" class="outline-4">
+<div id="outline-container-org74b307f" class="outline-4">
 <h4 id="phoenix"><span class="section-number-4">15.2.3</span> Phoenix</h4>
 <div class="outline-text-4" id="text-phoenix">
 <p>
@@ -2997,7 +3043,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgfc2aa5b" class="outline-4">
+<div id="outline-container-org5553718" class="outline-4">
 <h4 id="react"><span class="section-number-4">15.2.4</span> React</h4>
 <div class="outline-text-4" id="text-react">
 <p>
@@ -3023,7 +3069,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org42e3383" class="outline-4">
+<div id="outline-container-orga59a185" class="outline-4">
 <h4 id="ruby-on-rails"><span class="section-number-4">15.2.5</span> Ruby on rails</h4>
 <div class="outline-text-4" id="text-ruby-on-rails">
 <p>
@@ -3048,12 +3094,12 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org0a9f255" class="outline-3">
+<div id="outline-container-org23a86b5" class="outline-3">
 <h3 id="general-purpose"><span class="section-number-3">15.3</span> General-purpose</h3>
 <div class="outline-text-3" id="text-general-purpose">
 </div>
 
-<div id="outline-container-orgcb03e37" class="outline-4">
+<div id="outline-container-org9e84134" class="outline-4">
 <h4 id="imperative"><span class="section-number-4">15.3.1</span> Imperative</h4>
 <div class="outline-text-4" id="text-imperative">
 </div>
@@ -3113,7 +3159,7 @@ Features:
 </ol>
 </div>
 
-<div id="outline-container-org1760585" class="outline-4">
+<div id="outline-container-org1f61d80" class="outline-4">
 <h4 id="multi-paradigm"><span class="section-number-4">15.3.2</span> Multi-paradigm</h4>
 <div class="outline-text-4" id="text-multi-paradigm">
 </div>
@@ -3263,6 +3309,11 @@ This layer adds support for <a href="http://elixir-lang.org/">Elixir</a>.
 
 <p>
 <a href="https://github.com/tonini/alchemist.el">Alchemist</a> brings the Elixir tooling to Emacs and comes with a bunch of features.
+<a href="https://github.com/emacs-lsp/lsp-mode">Lsp-mode</a> brings IDE like features following Language Server Protocol, through <a href="https://github.com/JakeBecker/elixir-ls">elixir-ls</a>
+</p>
+
+<p>
+As Alchemist is no longer maintained, elixir-ls is a preferred solution, even though it has less features at the moment.
 </p>
 
 <p>
@@ -3281,6 +3332,7 @@ Features:
 <li>Flycheck support for mix compile</li>
 <li>Flycheck support for <a href="https://github.com/rrrene/credo">credo</a></li>
 <li>Flycheck support for test results</li>
+<li>Interactive debugger using <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a></li>
 </ul>
 </div>
 </li>
@@ -3359,24 +3411,24 @@ Features:
 </p>
 
 <p>
-This layer adds extensive support for go to Spacemacs.
+This layer adds extensive support for the <a href="https://golang.org">Go</a> programming language.
 </p>
 
 <p>
 Features:
 </p>
 <ul class="org-ul">
-<li>gofmt/goimports on file save (to enable, see <a href="+lang/go/README.html">Configuration</a>)</li>
-<li>Auto-completion using <a href="https://github.com/nsf/gocode/tree/master/emacs">go-autocomplete</a> (with the <code>auto-completion</code> layer)</li>
-<li>Source analysis using <a href="https://docs.google.com/document/d/1_Y9xCEMj5S-7rv2ooHpZNH15JgRT5iM742gJkw5LtmQ">go-guru</a></li>
+<li>Run <a href="https://golang.org/cmd/gofmt/">gofmt</a> / <a href="https://godoc.org/golang.org/x/tools/cmd/goimports">goimports</a> on file save (see <a href="+lang/go/README.html">Autoformat</a>)</li>
+<li>Auto-completion using <a href="https://github.com/nsf/gocode/tree/master/emacs">go-autocomplete.el</a>, via the <code>auto-completion</code> layer (see <a href="+lang/go/README.html">Auto-completion</a>)</li>
+<li>Source analysis using <a href="https://docs.google.com/document/d/1_Y9xCEMj5S-7rv2ooHpZNH15JgRT5iM742gJkw5LtmQ">go-guru</a> (see <a href="+lang/go/README.html">Guru</a>)</li>
 <li>Refactoring with <a href="http://gorefactor.org/">godoctor</a></li>
-<li>Edit struct field tag with <a href="https://github.com/fatih/gomodifytags">gomodifytags</a></li>
-<li>Linting with flycheck's built-in checkers or flycheck-gometalinter</li>
-<li>Coverage profile visualization</li>
-<li>Test generation with <a href="https://github.com/s-kostyaev/go-gen-test">go-gen-test</a></li>
-<li>Get packages faster with <a href="https://github.com/haya14busa/gopkgs">gopkgs</a></li>
+<li>Edit struct field tags with <a href="https://github.com/fatih/gomodifytags">gomodifytags</a></li>
+<li>Linting with flycheck's built-in checkers or <a href="https://github.com/golangci/golangci-lint">golangci-lint</a> (see <a href="+lang/go/README.html">Linting</a>)</li>
+<li>Test generation via <a href="https://github.com/s-kostyaev/go-gen-test">go-gen-test</a> (see <a href="+lang/go/README.html">Tests</a>)</li>
+<li>Coverage profile visualization (see <a href="+lang/go/README.html">Coverage</a>)</li>
+<li>List packages faster with <a href="https://github.com/haya14busa/gopkgs">gopkgs</a></li>
 <li>Fill a structure with default values using the <a href="https://github.com/davidrjenni/reftools/tree/master/cmd/fillstruct">fillstruct</a></li>
-<li>LSP backend</li>
+<li>LSP backend (see <a href="+lang/go/README.html">LSP backend</a>)</li>
 </ul>
 </div>
 </li>
@@ -3442,17 +3494,13 @@ Features:
 <ul class="org-ul">
 <li>Support for the following backends:
 <ul class="org-ul">
-<li><a href="https://github.com/mopemope/meghanada-emacs">Meghanada</a> client/server (default),</li>
-<li><a href="http://eclim.org">Eclim</a> client/server,</li>
-<li><a href="https://ensime.github.io/">ENSIME</a> client/server.</li>
-<li><a href="https://github.com/emacs-lsp/lsp-java">LSP Java</a> client/server.</li>
+<li><a href="https://github.com/emacs-lsp/lsp-java">LSP Java</a> client/server (default)</li>
+<li><a href="https://github.com/mopemope/meghanada-emacs">Meghanada</a> client/server</li>
 </ul></li>
-<li>Each provides:
-<ul class="org-ul">
 <li>Auto-completion using company</li>
 <li>Linting using flycheck integration</li>
 <li>Maven and Gradle integration</li>
-</ul></li>
+<li>Interactive debugger using <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a></li>
 </ul>
 </div>
 </li>
@@ -3682,6 +3730,7 @@ Features:
 <li>Complete and jump to define with <a href="https://github.com/xcwen/ac-php">company-php</a></li>
 <li>Run tests with PHPUnit</li>
 <li>Reformat code with PHP CBF</li>
+<li>Support for the <a href="https://langserver.org/">Language Server Protocol</a> (experimental)</li>
 </ul>
 
 <p>
@@ -3727,6 +3776,7 @@ Features:
 <li>Sort imports with <a href="https://pypi.python.org/pypi/isort">isort</a></li>
 <li>Fix a missing import statement with <a href="https://github.com/anachronic/importmagic.el">importmagic</a></li>
 <li>Pip package manager with <a href="https://github.com/brotzeit/pippel">pippel</a></li>
+<li>Interactive debugger using <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a></li>
 </ul>
 </div>
 </li>
@@ -3797,6 +3847,7 @@ Features:
 <li>Rake runner</li>
 <li>Linter (rubocop)</li>
 <li>Interactive REPL and code navigation (robe)</li>
+<li>Interactive debugger using <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a></li>
 </ul>
 </div>
 </li>
@@ -3816,6 +3867,7 @@ Features:
 </p>
 <ul class="org-ul">
 <li>Auto-completion and navigation support through <a href="https://github.com/emacs-lsp/lsp-rust">lsp</a> or <a href="https://github.com/phildawes/racer">Racer</a></li>
+<li>Interactive debugger using <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a></li>
 <li>support for the Rust package manager <a href="http://doc.crates.io/index.html">Cargo</a></li>
 </ul>
 </div>
@@ -3836,6 +3888,7 @@ Features:
 </p>
 <ul class="org-ul">
 <li>Syntax highlighting</li>
+<li>Support for language backend. Either using <a href="https://ensime.github.io/">ENSIME</a> or <a href="https://scalameta.org/metals/">Metals</a></li>
 <li>Auto-completion</li>
 <li>Syntax-checking</li>
 <li>Refactoring</li>
@@ -3845,7 +3898,6 @@ Features:
 <li>Eldoc integration</li>
 <li>Test execution directly from Emacs</li>
 <li>Automatic replacement of ASCII arrows with unicode ones</li>
-<li>Automatic starting/stopping of <a href="https://ensime.github.io/">ENSIME</a> IDE server</li>
 </ul>
 </div>
 </li>
@@ -3891,6 +3943,25 @@ Features:
 <li>Code navigation using <code>imenu</code> (built-in)</li>
 <li>Automatic syntax checking with <code>flycheck</code> (available with the
 <code>syntax-checking</code> layer)</li>
+</ul>
+</div>
+</li>
+
+<li><a id="zig"></a>Zig<br />
+<div class="outline-text-5" id="text-zig">
+<p>
+<a href="+lang/zig/README.html">+lang/zig/README.org</a>
+</p>
+
+<p>
+This layer adds support for the zig programming language <a href="https://ziglang.org/">https://ziglang.org/</a>
+</p>
+
+<p>
+Features:
+</p>
+<ul class="org-ul">
+<li>Syntax Highlighting</li>
 </ul>
 </div>
 </li>
@@ -3943,7 +4014,8 @@ Features:
 <li>Auto-completion and documentation</li>
 <li>Browser based REPL available via <a href="https://github.com/skeeto/skewer-mode">skewer-mode</a> and <a href="https://github.com/pandeiro/livid-mode">livid-mode</a></li>
 <li>Server based REPL with <a href="https://github.com/abicky/nodejs-repl.el">nodejs-repl</a></li>
-<li>Formatting with <a href="https://github.com/yasuyk/web-beautify">web-beautify</a></li>
+<li>Formatting with <a href="https://github.com/yasuyk/web-beautify">web-beautify</a> or <a href="https://github.com/prettier/prettier">prettier</a></li>
+<li>Interactive debugger using <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a></li>
 </ul>
 </div>
 </li>
@@ -4004,7 +4076,7 @@ Features:
 </ol>
 </div>
 
-<div id="outline-container-org68376d9" class="outline-4">
+<div id="outline-container-org42ec305" class="outline-4">
 <h4 id="purely-functional"><span class="section-number-4">15.3.3</span> Purely functional</h4>
 <div class="outline-text-4" id="text-purely-functional">
 </div>
@@ -4115,13 +4187,34 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orge8dc432" class="outline-3">
+<div id="outline-container-org50c9c4f" class="outline-3">
 <h3 id="utilities"><span class="section-number-3">15.4</span> Utilities</h3>
 <div class="outline-text-3" id="text-utilities">
 </div>
 
-<div id="outline-container-org4d4cb79" class="outline-4">
-<h4 id="dotnet"><span class="section-number-4">15.4.1</span> Dotnet</h4>
+<div id="outline-container-org643fc23" class="outline-4">
+<h4 id="conda-layer"><span class="section-number-4">15.4.1</span> Conda layer</h4>
+<div class="outline-text-4" id="text-conda-layer">
+<p>
+<a href="+lang/conda/README.html">+lang/conda/README.org</a>
+</p>
+
+<p>
+This layer adds support for the Anaconda python environment for
+numerical computations to Spacemacs.
+</p>
+
+<p>
+Features:
+</p>
+<ul class="org-ul">
+<li>Controlling <code>Anaconda</code> or <code>Miniconda</code> environments directly from emacs with <a href="https://github.com/necaris/conda.el">conda.el</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbab4705" class="outline-4">
+<h4 id="dotnet"><span class="section-number-4">15.4.2</span> Dotnet</h4>
 <div class="outline-text-4" id="text-dotnet">
 <p>
 <a href="+tools/dotnet/README.html">+tools/dotnet/README.org</a>
@@ -4140,8 +4233,8 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgbe6c6ed" class="outline-4">
-<h4 id="ipython-notebook"><span class="section-number-4">15.4.2</span> Ipython notebook</h4>
+<div id="outline-container-org1f555de" class="outline-4">
+<h4 id="ipython-notebook"><span class="section-number-4">15.4.3</span> Ipython notebook</h4>
 <div class="outline-text-4" id="text-ipython-notebook">
 <p>
 <a href="+lang/ipython-notebook/README.html">+lang/ipython-notebook/README.org</a>
@@ -4166,8 +4259,8 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org403cb9c" class="outline-4">
-<h4 id="protocol-buffers"><span class="section-number-4">15.4.3</span> Protocol buffers</h4>
+<div id="outline-container-orgfe17351" class="outline-4">
+<h4 id="protocol-buffers"><span class="section-number-4">15.4.4</span> Protocol buffers</h4>
 <div class="outline-text-4" id="text-protocol-buffers">
 <p>
 <a href="+lang/protobuf/README.html">+lang/protobuf/README.org</a>
@@ -4189,8 +4282,8 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org6bf60cd" class="outline-4">
-<h4 id="sailfish-os-developer"><span class="section-number-4">15.4.4</span> Sailfish os developer</h4>
+<div id="outline-container-orga06d417" class="outline-4">
+<h4 id="sailfish-os-developer"><span class="section-number-4">15.4.5</span> Sailfish os developer</h4>
 <div class="outline-text-4" id="text-sailfish-os-developer">
 <p>
 <a href="+tools/sailfish-developer/README.html">+tools/sailfish-developer/README.org</a>
@@ -4211,12 +4304,12 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org17264ad" class="outline-2">
+<div id="outline-container-org13a05ee" class="outline-2">
 <h2 id="readers"><span class="section-number-2">16</span> Readers</h2>
 <div class="outline-text-2" id="text-readers">
 </div>
 
-<div id="outline-container-org084005f" class="outline-3">
+<div id="outline-container-org33f69f4" class="outline-3">
 <h3 id="dash"><span class="section-number-3">16.1</span> Dash</h3>
 <div class="outline-text-3" id="text-dash">
 <p>
@@ -4224,22 +4317,22 @@ Features:
 </p>
 
 <p>
-This layer integrates offline api browsers into Emacs. It provides one for OS X, Linux and Windows.
+This layer integrates offline API browsers into Emacs. It provides one for macOS, Linux and Windows.
 </p>
 
 <p>
 Features:
 </p>
 <ul class="org-ul">
-<li>Searching for word at point in offline api browser's UI.</li>
-<li>Integration of offline api browser search results in helm and ivy.</li>
-<li>Support for <a href="https://kapeli.com/dash">dash</a> offline api browser for OS X.</li>
-<li>Support for <a href="https://zealdocs.org/">zeal</a> offline api browser for Linux.</li>
+<li>Searching for word at point in offline API browser's UI.</li>
+<li>Integration of offline API browser search results in Helm and Ivy.</li>
+<li>Support for <a href="https://kapeli.com/dash">dash</a> offline API browser for macOS.</li>
+<li>Support for <a href="https://zealdocs.org/">zeal</a> offline API browser for Linux.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org39b08d7" class="outline-3">
+<div id="outline-container-org96c1616" class="outline-3">
 <h3 id="deft"><span class="section-number-3">16.2</span> Deft</h3>
 <div class="outline-text-3" id="text-deft">
 <p>
@@ -4261,7 +4354,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org80c4aec" class="outline-3">
+<div id="outline-container-orgcd0dde3" class="outline-3">
 <h3 id="elfeed"><span class="section-number-3">16.3</span> Elfeed</h3>
 <div class="outline-text-3" id="text-elfeed">
 <p>
@@ -4283,7 +4376,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org3e9d867" class="outline-3">
+<div id="outline-container-org501c0d5" class="outline-3">
 <h3 id="epub"><span class="section-number-3">16.4</span> Epub</h3>
 <div class="outline-text-3" id="text-epub">
 <p>
@@ -4312,7 +4405,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgbd0b3c9" class="outline-3">
+<div id="outline-container-orgc9bb468" class="outline-3">
 <h3 id="pdf"><span class="section-number-3">16.5</span> Pdf</h3>
 <div class="outline-text-3" id="text-pdf">
 <p>
@@ -4347,7 +4440,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org0481025" class="outline-3">
+<div id="outline-container-orgacbfe59" class="outline-3">
 <h3 id="speed-reading"><span class="section-number-3">16.6</span> Speed reading</h3>
 <div class="outline-text-3" id="text-speed-reading">
 <p>
@@ -4368,12 +4461,12 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgc6b53e1" class="outline-2">
+<div id="outline-container-org0e996bc" class="outline-2">
 <h2 id="source-control"><span class="section-number-2">17</span> Source control</h2>
 <div class="outline-text-2" id="text-source-control">
 </div>
 
-<div id="outline-container-org0f918a8" class="outline-3">
+<div id="outline-container-orgbff7d8c" class="outline-3">
 <h3 id="git"><span class="section-number-3">17.1</span> Git</h3>
 <div class="outline-text-3" id="text-git">
 <p>
@@ -4404,7 +4497,7 @@ New to Magit? Checkout the <a href="https://magit.vc/about/">official intro</a>.
 </div>
 </div>
 
-<div id="outline-container-org8b5a450" class="outline-3">
+<div id="outline-container-orgf28f4f1" class="outline-3">
 <h3 id="github"><span class="section-number-3">17.2</span> Github</h3>
 <div class="outline-text-3" id="text-github">
 <p>
@@ -4419,7 +4512,6 @@ This layers adds support for <a href="http://github.com">GitHub</a>.
 Features:
 </p>
 <ul class="org-ul">
-<li><a href="https://github.com/vermiculus/magithub">magithub</a>: Magit-integrated interface to <a href="https://hub.github.com/">hub</a> command line</li>
 <li><a href="https://github.com/magit/forge">forge</a>: integration with various forges, such as GitHub and GitLab.</li>
 <li><a href="https://github.com/defunkt/gist.el">gist.el</a>: full-featured mode to browse and post GitHub gists.</li>
 <li><a href="https://github.com/sshaw/git-link">git-link</a>: quickly generate URLs for commits or files.</li>
@@ -4428,7 +4520,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org01a72d5" class="outline-3">
+<div id="outline-container-orgb0f2df2" class="outline-3">
 <h3 id="perforce"><span class="section-number-3">17.3</span> Perforce</h3>
 <div class="outline-text-3" id="text-perforce">
 <p>
@@ -4448,7 +4540,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org370caf1" class="outline-3">
+<div id="outline-container-orgac7549b" class="outline-3">
 <h3 id="version-control"><span class="section-number-3">17.4</span> Version-control</h3>
 <div class="outline-text-3" id="text-version-control">
 <p>
@@ -4471,17 +4563,17 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org86ee3fb" class="outline-2">
+<div id="outline-container-org548f05c" class="outline-2">
 <h2 id="spacemacs"><span class="section-number-2">18</span> Spacemacs</h2>
 <div class="outline-text-2" id="text-spacemacs">
 </div>
 
-<div id="outline-container-org3e9e28b" class="outline-3">
+<div id="outline-container-orgfa06cb1" class="outline-3">
 <h3 id="distributions"><span class="section-number-3">18.1</span> Distributions</h3>
 <div class="outline-text-3" id="text-distributions">
 </div>
 
-<div id="outline-container-org92f3e5d" class="outline-4">
+<div id="outline-container-orgc88617d" class="outline-4">
 <h4 id="spacemacs-distribution"><span class="section-number-4">18.1.1</span> Spacemacs distribution</h4>
 <div class="outline-text-4" id="text-spacemacs-distribution">
 <p>
@@ -4518,7 +4610,7 @@ to the base distribution.
 </div>
 </div>
 
-<div id="outline-container-org3cc7a85" class="outline-4">
+<div id="outline-container-orgdabae9e" class="outline-4">
 <h4 id="spacemacs-base-distribution"><span class="section-number-4">18.1.2</span> Spacemacs-base distribution</h4>
 <div class="outline-text-4" id="text-spacemacs-base-distribution">
 <p>
@@ -4540,7 +4632,7 @@ a new standalone Spacemacs installation except you have very good reasons to.</l
 </div>
 </div>
 
-<div id="outline-container-org49205d8" class="outline-4">
+<div id="outline-container-orga9a7f8a" class="outline-4">
 <h4 id="spacemacs-bootstrap-distribution"><span class="section-number-4">18.1.3</span> Spacemacs-bootstrap distribution</h4>
 <div class="outline-text-4" id="text-spacemacs-bootstrap-distribution">
 <p>
@@ -4568,7 +4660,7 @@ Spacemacs specific key binding commands</li>
 </div>
 </div>
 
-<div id="outline-container-org49fa467" class="outline-4">
+<div id="outline-container-orga5e92b5" class="outline-4">
 <h4 id="spacemacs-docker-distribution"><span class="section-number-4">18.1.4</span> Spacemacs-docker distribution</h4>
 <div class="outline-text-4" id="text-spacemacs-docker-distribution">
 <p>
@@ -4586,7 +4678,7 @@ Features:
 </p>
 <ul class="org-ul">
 <li>Automatically get Spacemacs layers dependency installed with <a href="+distributions/spacemacs-docker/deps-install/README.html">installer scripts</a></li>
-<li>Reap the benefit of Emacs and other GNU/Linux tools on Windows/MacOS machines</li>
+<li>Reap the benefit of Emacs and other GNU/Linux tools on Windows or macOS machines</li>
 <li>Use <a href="https://hub.docker.com/">docker hub</a> to auto-build your environment and store full backups for free</li>
 <li>Build once and work with the same development environment everywhere</li>
 <li>Run untrusted/risky code in the tunable sandbox with CPU/network/disk quotas</li>
@@ -4602,12 +4694,12 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgcff4944" class="outline-2">
+<div id="outline-container-org6060308" class="outline-2">
 <h2 id="tagging"><span class="section-number-2">19</span> Tagging</h2>
 <div class="outline-text-2" id="text-tagging">
 </div>
 
-<div id="outline-container-org2ca163d" class="outline-3">
+<div id="outline-container-orgaf4c996" class="outline-3">
 <h3 id="cscope"><span class="section-number-3">19.1</span> Cscope</h3>
 <div class="outline-text-3" id="text-cscope">
 <p>
@@ -4632,7 +4724,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org37112c2" class="outline-3">
+<div id="outline-container-org68b0c9d" class="outline-3">
 <h3 id="helm-gtags"><span class="section-number-3">19.2</span> Helm gtags</h3>
 <div class="outline-text-3" id="text-helm-gtags">
 <p>
@@ -4670,12 +4762,12 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org4fc6c0b" class="outline-2">
+<div id="outline-container-org69e57cf" class="outline-2">
 <h2 id="themes"><span class="section-number-2">20</span> Themes</h2>
 <div class="outline-text-2" id="text-themes">
 </div>
 
-<div id="outline-container-org0ae55c8" class="outline-3">
+<div id="outline-container-org73bec0b" class="outline-3">
 <h3 id="colors"><span class="section-number-3">20.1</span> Colors</h3>
 <div class="outline-text-3" id="text-colors">
 <p>
@@ -4701,7 +4793,7 @@ with <a href="https://github.com/Fanael/rainbow-identifiers">rainbow-identifiers
 </div>
 </div>
 
-<div id="outline-container-orgf19f068" class="outline-3">
+<div id="outline-container-org5d62b18" class="outline-3">
 <h3 id="nyan-mode"><span class="section-number-3">20.2</span> Nyan-mode</h3>
 <div class="outline-text-3" id="text-nyan-mode">
 <p>
@@ -4728,7 +4820,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org0fcb0b6" class="outline-3">
+<div id="outline-container-org219a549" class="outline-3">
 <h3 id="themes-megapack"><span class="section-number-3">20.3</span> Themes megapack</h3>
 <div class="outline-text-3" id="text-themes-megapack">
 <p>
@@ -4749,7 +4841,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orga7edb9d" class="outline-3">
+<div id="outline-container-org9c378c3" class="outline-3">
 <h3 id="theming"><span class="section-number-3">20.4</span> Theming</h3>
 <div class="outline-text-3" id="text-theming">
 <p>
@@ -4772,12 +4864,12 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orge03ce19" class="outline-2">
+<div id="outline-container-org0c04e73" class="outline-2">
 <h2 id="tools"><span class="section-number-2">21</span> Tools</h2>
 <div class="outline-text-2" id="text-tools">
 </div>
 
-<div id="outline-container-org8a66fe2" class="outline-3">
+<div id="outline-container-org766c89a" class="outline-3">
 <h3 id="ansible"><span class="section-number-3">21.1</span> Ansible</h3>
 <div class="outline-text-3" id="text-ansible">
 <p>
@@ -4799,7 +4891,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgdb9b2be" class="outline-3">
+<div id="outline-container-org4f67796" class="outline-3">
 <h3 id="bm"><span class="section-number-3">21.2</span> Bm</h3>
 <div class="outline-text-3" id="text-bm">
 <p>
@@ -4829,7 +4921,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org9805c51" class="outline-3">
+<div id="outline-container-org03c23e0" class="outline-3">
 <h3 id="cfengine"><span class="section-number-3">21.3</span> Cfengine</h3>
 <div class="outline-text-3" id="text-cfengine">
 <p>
@@ -4852,7 +4944,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org5e4729e" class="outline-3">
+<div id="outline-container-org1ef3058" class="outline-3">
 <h3 id="chrome"><span class="section-number-3">21.4</span> Chrome</h3>
 <div class="outline-text-3" id="text-chrome">
 <p>
@@ -4874,7 +4966,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgb985765" class="outline-3">
+<div id="outline-container-org53a683c" class="outline-3">
 <h3 id="cmake"><span class="section-number-3">21.5</span> Cmake</h3>
 <div class="outline-text-3" id="text-cmake">
 <p>
@@ -4897,7 +4989,7 @@ of flycheck, company-clang and RTags (if installed) with <a href="https://github
 </div>
 </div>
 
-<div id="outline-container-org5755808" class="outline-3">
+<div id="outline-container-orgc528826" class="outline-3">
 <h3 id="command-log"><span class="section-number-3">21.6</span> Command-log</h3>
 <div class="outline-text-3" id="text-command-log">
 <p>
@@ -4919,7 +5011,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org0cec0ba" class="outline-3">
+<div id="outline-container-orge70d340" class="outline-3">
 <h3 id="dap"><span class="section-number-3">21.7</span> Dap</h3>
 <div class="outline-text-3" id="text-dap">
 <p>
@@ -4959,7 +5051,7 @@ Fully featured IDE-like debugger providing:
 </div>
 </div>
 
-<div id="outline-container-org0a138d5" class="outline-3">
+<div id="outline-container-org450f077" class="outline-3">
 <h3 id="debug"><span class="section-number-3">21.8</span> Debug</h3>
 <div class="outline-text-3" id="text-debug">
 <p>
@@ -4982,7 +5074,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org8bf1bec" class="outline-3">
+<div id="outline-container-org5ad1683" class="outline-3">
 <h3 id="docker"><span class="section-number-3">21.9</span> Docker</h3>
 <div class="outline-text-3" id="text-docker">
 <p>
@@ -5007,7 +5099,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgc4758f7" class="outline-3">
+<div id="outline-container-org27f2f5d" class="outline-3">
 <h3 id="fasd"><span class="section-number-3">21.10</span> Fasd</h3>
 <div class="outline-text-3" id="text-fasd">
 <p>
@@ -5029,7 +5121,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org054e724" class="outline-3">
+<div id="outline-container-orgd63aae6" class="outline-3">
 <h3 id="finance"><span class="section-number-3">21.11</span> Finance</h3>
 <div class="outline-text-3" id="text-finance">
 <p>
@@ -5053,7 +5145,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org5c92679" class="outline-3">
+<div id="outline-container-org83910ec" class="outline-3">
 <h3 id="geolocation"><span class="section-number-3">21.12</span> Geolocation</h3>
 <div class="outline-text-3" id="text-geolocation">
 <p>
@@ -5072,14 +5164,14 @@ Features:
 <ul class="org-ul">
 <li>Automatic switching between light (day) and dark (night) themes via <a href="https://github.com/hadronzoo/theme-changer">theme-changer</a></li>
 <li>Local weather forecast via <a href="https://github.com/aaronbieber/sunshine.el/blob/master/sunshine.el">sunshine</a></li>
-<li>Integration with OS X's CoreLocation service via <a href="https://github.com/purcell/osx-location">osx-location</a></li>
+<li>Integration with macOS's CoreLocation service via <a href="https://github.com/purcell/osx-location">osx-location</a></li>
 <li>Manual location setting via variables in your dotfile</li>
 </ul></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org15956f4" class="outline-3">
+<div id="outline-container-orgba1a3c4" class="outline-3">
 <h3 id="imenu-list"><span class="section-number-3">21.13</span> Imenu-list</h3>
 <div class="outline-text-3" id="text-imenu-list">
 <p>
@@ -5104,7 +5196,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgdd81983" class="outline-3">
+<div id="outline-container-org44c723a" class="outline-3">
 <h3 id="import-js"><span class="section-number-3">21.14</span> Import-js</h3>
 <div class="outline-text-3" id="text-import-js">
 <p>
@@ -5126,7 +5218,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org91c80f2" class="outline-3">
+<div id="outline-container-orgb9ce954" class="outline-3">
 <h3 id="lsp"><span class="section-number-3">21.15</span> Lsp</h3>
 <div class="outline-text-3" id="text-lsp">
 <p>
@@ -5163,7 +5255,7 @@ search and others)</li>
 </div>
 </div>
 
-<div id="outline-container-org73b2dd7" class="outline-3">
+<div id="outline-container-orga1fb642" class="outline-3">
 <h3 id="nginx"><span class="section-number-3">21.16</span> Nginx</h3>
 <div class="outline-text-3" id="text-nginx">
 <p>
@@ -5185,7 +5277,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org49590e9" class="outline-3">
+<div id="outline-container-orgebee530" class="outline-3">
 <h3 id="node"><span class="section-number-3">21.17</span> Node</h3>
 <div class="outline-text-3" id="text-node">
 <p>
@@ -5206,7 +5298,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgdfe2d63" class="outline-3">
+<div id="outline-container-orgdbf6b57" class="outline-3">
 <h3 id="pandoc"><span class="section-number-3">21.18</span> Pandoc</h3>
 <div class="outline-text-3" id="text-pandoc">
 <p>
@@ -5233,7 +5325,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgf53c5ee" class="outline-3">
+<div id="outline-container-org7f6dc98" class="outline-3">
 <h3 id="pass"><span class="section-number-3">21.19</span> Pass</h3>
 <div class="outline-text-3" id="text-pass">
 <p>
@@ -5255,7 +5347,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org46e4795" class="outline-3">
+<div id="outline-container-orgfb66995" class="outline-3">
 <h3 id="prettier"><span class="section-number-3">21.20</span> Prettier</h3>
 <div class="outline-text-3" id="text-prettier">
 <p>
@@ -5275,7 +5367,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org43505ff" class="outline-3">
+<div id="outline-container-org31b981d" class="outline-3">
 <h3 id="prodigy"><span class="section-number-3">21.21</span> Prodigy</h3>
 <div class="outline-text-3" id="text-prodigy">
 <p>
@@ -5303,7 +5395,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org8596be6" class="outline-3">
+<div id="outline-container-orgedf59a5" class="outline-3">
 <h3 id="puppet"><span class="section-number-3">21.22</span> Puppet</h3>
 <div class="outline-text-3" id="text-puppet">
 <p>
@@ -5326,7 +5418,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgfdd76e4" class="outline-3">
+<div id="outline-container-org3efc758" class="outline-3">
 <h3 id="ranger"><span class="section-number-3">21.23</span> Ranger</h3>
 <div class="outline-text-3" id="text-ranger">
 <p>
@@ -5363,7 +5455,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org5c55a24" class="outline-3">
+<div id="outline-container-org2c77b7d" class="outline-3">
 <h3 id="rebox"><span class="section-number-3">21.24</span> Rebox</h3>
 <div class="outline-text-3" id="text-rebox">
 <p>
@@ -5393,7 +5485,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org45a6f45" class="outline-3">
+<div id="outline-container-org03b97ad" class="outline-3">
 <h3 id="restclient"><span class="section-number-3">21.25</span> Restclient</h3>
 <div class="outline-text-3" id="text-restclient">
 <p>
@@ -5414,7 +5506,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgfa9f644" class="outline-3">
+<div id="outline-container-orgc8689cb" class="outline-3">
 <h3 id="saltstack"><span class="section-number-3">21.26</span> Saltstack</h3>
 <div class="outline-text-3" id="text-saltstack">
 <p>
@@ -5435,7 +5527,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgc19c41c" class="outline-3">
+<div id="outline-container-org758639a" class="outline-3">
 <h3 id="shell"><span class="section-number-3">21.27</span> Shell</h3>
 <div class="outline-text-3" id="text-shell">
 <p>
@@ -5455,7 +5547,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org06f7637" class="outline-3">
+<div id="outline-container-org3db36bf" class="outline-3">
 <h3 id="sphinx"><span class="section-number-3">21.28</span> Sphinx</h3>
 <div class="outline-text-3" id="text-sphinx">
 <p>
@@ -5478,7 +5570,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org7dfb672" class="outline-3">
+<div id="outline-container-org8a26626" class="outline-3">
 <h3 id="systemd"><span class="section-number-3">21.29</span> Systemd</h3>
 <div class="outline-text-3" id="text-systemd">
 <p>
@@ -5500,7 +5592,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orga33644e" class="outline-3">
+<div id="outline-container-orge55ce52" class="outline-3">
 <h3 id="tern"><span class="section-number-3">21.30</span> Tern</h3>
 <div class="outline-text-3" id="text-tern">
 <p>
@@ -5521,7 +5613,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org5116652" class="outline-3">
+<div id="outline-container-orgd137401" class="outline-3">
 <h3 id="terraform"><span class="section-number-3">21.31</span> Terraform</h3>
 <div class="outline-text-3" id="text-terraform">
 <p>
@@ -5542,7 +5634,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orga4c2ea9" class="outline-3">
+<div id="outline-container-orgcc82b74" class="outline-3">
 <h3 id="tmux"><span class="section-number-3">21.32</span> Tmux</h3>
 <div class="outline-text-3" id="text-tmux">
 <p>
@@ -5562,7 +5654,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org074bbca" class="outline-3">
+<div id="outline-container-org6c31ae1" class="outline-3">
 <h3 id="transmission"><span class="section-number-3">21.33</span> Transmission</h3>
 <div class="outline-text-3" id="text-transmission">
 <p>
@@ -5582,7 +5674,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org0daac82" class="outline-3">
+<div id="outline-container-org684305a" class="outline-3">
 <h3 id="vagrant"><span class="section-number-3">21.34</span> Vagrant</h3>
 <div class="outline-text-3" id="text-vagrant">
 <p>
@@ -5604,7 +5696,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orge2f4168" class="outline-3">
+<div id="outline-container-org1f3a287" class="outline-3">
 <h3 id="web-beautify"><span class="section-number-3">21.35</span> Web-beautify</h3>
 <div class="outline-text-3" id="text-web-beautify">
 <p>
@@ -5624,7 +5716,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgdc10472" class="outline-3">
+<div id="outline-container-org9764ffb" class="outline-3">
 <h3 id="xclipboard"><span class="section-number-3">21.36</span> Xclipboard</h3>
 <div class="outline-text-3" id="text-xclipboard">
 <p>
@@ -5641,11 +5733,12 @@ Features:
 <ul class="org-ul">
 <li>adds copy support to the X-clipboard from the terminal.</li>
 <li>adds paste support to the X-clipboard from the terminal.</li>
+<li><a href="https://github.com/redguardtoo/cliphist">cliphist</a> package: integration with clipboard managers on Linux and macOS.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org89b70b2" class="outline-3">
+<div id="outline-container-orgc9966d0" class="outline-3">
 <h3 id="ycmd"><span class="section-number-3">21.37</span> Ycmd</h3>
 <div class="outline-text-3" id="text-ycmd">
 <p>
@@ -5667,12 +5760,12 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org9a14404" class="outline-2">
+<div id="outline-container-orgd3e5990" class="outline-2">
 <h2 id="vim"><span class="section-number-2">22</span> Vim</h2>
 <div class="outline-text-2" id="text-vim">
 </div>
 
-<div id="outline-container-org8bc1d46" class="outline-3">
+<div id="outline-container-orgb223ba7" class="outline-3">
 <h3 id="evil-commentary"><span class="section-number-3">22.1</span> Evil-commentary</h3>
 <div class="outline-text-3" id="text-evil-commentary">
 <p>
@@ -5693,7 +5786,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org4feb8a0" class="outline-3">
+<div id="outline-container-orgfcb92b2" class="outline-3">
 <h3 id="evil-snipe"><span class="section-number-3">22.2</span> Evil-snipe</h3>
 <div class="outline-text-3" id="text-evil-snipe">
 <p>
@@ -5716,7 +5809,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgb4cac2b" class="outline-3">
+<div id="outline-container-org81f4abf" class="outline-3">
 <h3 id="vim-empty-lines"><span class="section-number-3">22.3</span> Vim-empty-lines</h3>
 <div class="outline-text-3" id="text-vim-empty-lines">
 <p>
@@ -5749,7 +5842,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org9f1fd96" class="outline-3">
+<div id="outline-container-orgffbac4f" class="outline-3">
 <h3 id="vinegar"><span class="section-number-3">22.4</span> Vinegar</h3>
 <div class="outline-text-3" id="text-vinegar">
 <p>
@@ -5782,12 +5875,12 @@ single bar</li>
 </div>
 </div>
 
-<div id="outline-container-orgbfc27af" class="outline-2">
+<div id="outline-container-org8f544cd" class="outline-2">
 <h2 id="web-services"><span class="section-number-2">23</span> Web services</h2>
 <div class="outline-text-2" id="text-web-services">
 </div>
 
-<div id="outline-container-orga92c3a9" class="outline-3">
+<div id="outline-container-orgc4eaecc" class="outline-3">
 <h3 id="confluence"><span class="section-number-3">23.1</span> Confluence</h3>
 <div class="outline-text-3" id="text-confluence">
 <p>
@@ -5808,7 +5901,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-orgba448be" class="outline-3">
+<div id="outline-container-org335f47c" class="outline-3">
 <h3 id="evernote"><span class="section-number-3">23.2</span> Evernote</h3>
 <div class="outline-text-3" id="text-evernote">
 <p>
@@ -5831,7 +5924,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org7241508" class="outline-3">
+<div id="outline-container-org7dc1c0f" class="outline-3">
 <h3 id="search-engine"><span class="section-number-3">23.3</span> Search engine</h3>
 <div class="outline-text-3" id="text-search-engine">
 <p>
@@ -5851,7 +5944,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org7e95bd6" class="outline-3">
+<div id="outline-container-orgf3b4450" class="outline-3">
 <h3 id="twitter"><span class="section-number-3">23.4</span> Twitter</h3>
 <div class="outline-text-3" id="text-twitter">
 <p>
@@ -5895,7 +5988,7 @@ Features:
 </div>
 </div>
 
-<div id="outline-container-org8c41a54" class="outline-3">
+<div id="outline-container-orga05b2a1" class="outline-3">
 <h3 id="wakatime"><span class="section-number-3">23.5</span> Wakatime</h3>
 <div class="outline-text-3" id="text-wakatime">
 <p>
@@ -5928,8 +6021,8 @@ Features:
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Travis CI User</p>
-<p class="date">Created: 2019-07-08 Mon 21:00</p>
+<p class="author">Author: root</p>
+<p class="date">Created: 2019-11-08 Fri 17:50</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
