@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-08 Fri 17:50 -->
+<!-- 2019-11-10 Sun 14:17 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>C/C++ layer</title>
@@ -285,20 +285,15 @@ for the JavaScript code in this tag.
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
-<li><a href="#default-mode-for-header-files">2.2. Default mode for header files</a></li>
-<li><a href="#backends">2.3. Backends</a>
+<li><a href="#backends">2.2. Backends</a>
 <ul>
-<li><a href="#rtags">2.3.1. RTags</a></li>
-<li><a href="#cquery--ccls-lsp-backends">2.3.2. cquery / ccls (lsp backends)</a></li>
+<li><a href="#lsp">2.2.1. LSP</a></li>
+<li><a href="#rtags">2.2.2. rtags</a></li>
 </ul>
 </li>
+<li><a href="#default-mode-for-header-files">2.3. Default mode for header files</a></li>
 <li><a href="#organize-file-header-includes-on-save">2.4. Organize file header includes on save</a></li>
-<li><a href="#clang-configuration">2.5. Clang Configuration</a>
-<ul>
-<li><a href="#clang-format">2.5.1. clang-format</a></li>
-<li><a href="#company-clang-and-flycheck">2.5.2. Company-clang and flycheck</a></li>
-</ul>
-</li>
+<li><a href="#clang-format">2.5. clang-format</a></li>
 <li><a href="#enable-google-set-c-style">2.6. Enable google-set-c-style</a></li>
 <li><a href="#newlines">2.7. Newlines</a></li>
 <li><a href="#projectile-sub-project-adoption">2.8. Projectile sub-project adoption</a></li>
@@ -306,15 +301,21 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#key-bindings">3. Key bindings</a>
 <ul>
-<li><a href="#formatting-clang-format">3.1. Formatting (clang-format)</a></li>
-<li><a href="#rtags-1">3.2. RTags</a></li>
-<li><a href="#cquery--ccls">3.3. cquery / ccls</a>
+<li><a href="#lsp-1">3.1. LSP</a>
 <ul>
-<li><a href="#backend-language-server">3.3.1. backend (language server)</a></li>
-<li><a href="#goto">3.3.2. goto</a></li>
+<li><a href="#cquery--ccls">3.1.1. cquery / ccls</a></li>
+<li><a href="#debugger">3.1.2. debugger</a></li>
 </ul>
 </li>
-<li><a href="#debugger">3.4. debugger</a></li>
+<li><a href="#rtags-1">3.2. RTags</a></li>
+<li><a href="#additional-key-bindings">3.3. Additional key bindings</a>
+<ul>
+<li><a href="#disassemble">3.3.1. Disassemble</a></li>
+<li><a href="#formatting-clang-format">3.3.2. Formatting (clang-format)</a></li>
+<li><a href="#open-matching-files">3.3.3. Open matching files</a></li>
+<li><a href="#refactor">3.3.4. Refactor</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -326,7 +327,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgb148d11" class="outline-2">
+<div id="outline-container-org20ba365" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -334,37 +335,44 @@ This layer adds configuration for C/C++ language.
 </p>
 </div>
 
-<div id="outline-container-orgb0d6a94" class="outline-3">
+<div id="outline-container-org4ccd77e" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Support syntax checking via flycheck with Clang.</li>
-<li>Support for disassembly of code with <a href="https://github.com/jart/disaster">disaster</a>.</li>
+<li>Multiple backends support:
+<ul class="org-ul">
+<li>LSP with either <code>clangd</code>, <a href="https://github.com/cquery-project/cquery">cquery</a> or <a href="https://github.com/MaskRay/ccls">ccls</a></li>
+<li><a href="https://github.com/Andersbakken/rtags">rtags</a> (gtags)</li>
+<li><a href="https://github.com/abingham/emacs-ycmd">emacs-ycmd</a></li>
+</ul></li>
+<li>Support for debuggers <a href="https://github.com/realgud/realgud">realgud</a> and <a href="https://github.com/emacs-lsp/dap-mode">dap</a> (with LSP backend)</li>
+<li>Support syntax checking via flycheck (<code>syntax-checking</code> layer required)</li>
+<li>Auto-completion via company (<code>auto-completion</code> layer required)</li>
 <li>Support code reformatting with <a href="http://clang.llvm.org/docs/ClangFormat.html">clang-format</a>.</li>
-<li>Display function or variable definition at the bottom. (when <code>semantic</code> layer
-is included)</li>
-<li>Display current function cursor is in at the top. See <a href="https://github.com/tuhdo/semantic-stickyfunc-enhance">stickyfunc-demos</a> for
-demos in some programming languages. (when <code>semantic</code> layer is included)</li>
+<li>Support for disassembly of code with <a href="https://github.com/jart/disaster">disaster</a>.</li>
+<li><code>sematic</code> layer integration:
+<ul class="org-ul">
+<li>Function or variable definition at the bottom</li>
+<li>Current function cursor is at the top. See <a href="https://github.com/tuhdo/semantic-stickyfunc-enhance">stickyfunc-demos</a> for
+demos in some programming languages.</li>
 <li>Support common refactoring with <a href="https://github.com/tuhdo/semantic-refactor">semantic-refactor</a>. See <a href="https://github.com/tuhdo/semantic-refactor/blob/master/srefactor-demos/demos.org">srefactor-demos</a> for
-demonstration of refactoring features. (when <code>semantic</code> layer is included)</li>
-<li>Support code navigation via cscope (when <code>cscope</code> layer is included) and gtags.</li>
-<li>Support auto-completion (when <code>auto-completion</code> layer is included) via
-company-clang (when <code>c-c++-enable-clang-support</code> is turned on), or
-company-ycmd (when <code>ycmd</code> layer is included).</li>
-<li>Support for <a href="https://github.com/realgud/realgud">realgud</a> debugger.</li>
-<li>Support for <a href="https://github.com/Andersbakken/rtags">rtags</a>.</li>
-<li>Support for <a href="https://github.com/cquery-project/cquery">cquery</a> or <a href="https://github.com/MaskRay/ccls">ccls</a> as an lsp backend.</li>
+demonstration of refactoring features.</li>
+</ul></li>
+<li><code>cscope</code> layer integration:
+<ul class="org-ul">
+<li>code navigation</li>
+</ul></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org685b945" class="outline-2">
+<div id="outline-container-orgd103b63" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgcb8a090" class="outline-3">
+<div id="outline-container-org71261b0" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -372,205 +380,261 @@ To use this configuration layer, add it to your <code>~/.spacemacs</code>. You w
 add <code>c-c++</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
 file.
 </p>
-
-<p>
-<b>Note:</b> <a href="https://github.com/tuhdo/semantic-refactor">semantic-refactor</a> is only available for Emacs 24.4+
-</p>
 </div>
 </div>
 
-<div id="outline-container-org1de0552" class="outline-3">
-<h3 id="default-mode-for-header-files"><span class="section-number-3">2.2</span> Default mode for header files</h3>
-<div class="outline-text-3" id="text-default-mode-for-header-files">
-<p>
-Mode for header files is auto detected by `c-or-c++-mode' in Emacs &gt; 26.1+.
-Older Emacs will open header files in <code>c-mode</code> by default, you can open them in
-<code>c++-mode</code> by setting the variable <code>c-c++-default-mode-for-headers</code> as follow.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-default-mode-for-headers 'c++-mode<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-<b>Note:</b> To set the variable for a given project, create a directory local
-variable at the root of your project. More info on directory local variables
-can be found in the <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Directory-Local-Variables.html">dir-locals</a>.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org78873b7" class="outline-3">
-<h3 id="backends"><span class="section-number-3">2.3</span> Backends</h3>
+<div id="outline-container-org578f7a4" class="outline-3">
+<h3 id="backends"><span class="section-number-3">2.2</span> Backends</h3>
 <div class="outline-text-3" id="text-backends">
 <p>
-This layer supports the selection of one of 3 available backends for code
-navigation etc via the <code>c-c++-backend</code> configuration variable.
+Supported backends are:
 </p>
-</div>
+<ul class="org-ul">
+<li><code>lsp-clangd</code> using clangd LSP server</li>
+<li><code>lsp-ccls</code> using ccls LSP server</li>
+<li><code>lsp-cquery</code> using cquery LSP server</li>
+<li><code>rtags</code> using <a href="https://github.com/Andersbakken/rtags">rtags</a></li>
+<li><code>ycmd</code> using <a href="https://github.com/abingham/emacs-ycmd">emacs-ycmd</a></li>
+</ul>
 
-<div id="outline-container-org058d99b" class="outline-4">
-<h4 id="rtags"><span class="section-number-4">2.3.1</span> RTags</h4>
-<div class="outline-text-4" id="text-rtags">
 <p>
-RTags is a well established clang-based source code indexing tool.
-</p>
-</div>
-
-<ol class="org-ol">
-<li><a id="external-dependencies"></a>External dependencies<br />
-<div class="outline-text-5" id="text-external-dependencies">
-<p>
-Install the RTags server via <a href="https://formulae.brew.sh/formula/rtags">homebrew</a>, the <a href="https://aur.archlinux.org/packages/rtags/">aur</a> or from source according to the
-instructions <a href="https://github.com/Andersbakken/rtags">here</a>. N.B. RTags is not supported on Windows at the time of
-writing, although there is an <a href="https://github.com/Andersbakken/rtags/issues/770">open issue with some recent activity</a> on github.
-</p>
-</div>
-</li>
-
-<li><a id="configuration"></a>Configuration<br />
-<div class="outline-text-5" id="text-configuration">
-<p>
-To enable support for <code>rtags</code>, set the layer variable <code>c-c++-backend</code>:
+To choose a default backend set the layer variable <code>c-c++-backend</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-backend 'rtags<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>c-c++ <span class="org-builtin">:variables</span> =c-c++-backend= 'lsp-clangd<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
-This will also enable <code>company-rtags</code> to be used as a backend for
-auto-completion (when <code>auto-completion</code> layer is included).
-To prevent this, while retaining the rest of Rtags functionality,
-set the variable <code>c-c++-rtags-completion</code> to <code>nil</code>:
+Alternatively the <code>lsp-clangd</code> backend will be automatically chosen if the layer
+<code>lsp</code> is used and you did not specify any value for <code>c-c++-backend</code>.
+</p>
+
+<p>
+<b>Note:</b> It is recommended to use a modern backend like the <code>lsp</code> ones.
+</p>
+
+<p>
+The backend can be chosen on a per project basis using directory local variables
+(files named <code>.dir-locals.el</code> at the root of a project), an example is to use the
+<code>lsp-ccls</code> backend:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span>
-                       c-c++-backend 'rtags
-                       c-c++-enable-rtags-completion nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>c++-mode <span class="org-rainbow-delimiters-depth-3">(</span>c-c++-backend . lsp-ccls<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
-</div>
-</li>
-</ol>
+
+<p>
+<b>Note:</b> you can easily add a directory local variable with <code>SPC f v d</code>.
+</p>
 </div>
 
-<div id="outline-container-orgaff4f26" class="outline-4">
-<h4 id="cquery--ccls-lsp-backends"><span class="section-number-4">2.3.2</span> cquery / ccls (lsp backends)</h4>
-<div class="outline-text-4" id="text-cquery--ccls-lsp-backends">
+<div id="outline-container-org53e46a0" class="outline-4">
+<h4 id="lsp"><span class="section-number-4">2.2.1</span> LSP</h4>
+<div class="outline-text-4" id="text-lsp">
 <p>
-<a href="https://github.com/cquery-project/cquery">cquery</a> and <a href="https://github.com/MaskRay/ccls">ccls</a> are alternative implementations of the language server protocol
-based on libclang. They claim to be more efficient than existing tools at
-indexing large code bases.
+LSP support is provided via the <a href="../../+tools/lsp/README.html">LSP layer</a>, using one of three available backends
+(all based on libclang).
+</p>
+<ul class="org-ul">
+<li><a href="https://clang.llvm.org/extra/clangd/">clangd</a></li>
+<li><a href="https://github.com/cquery-project/cquery">cquery</a></li>
+<li><a href="https://github.com/MaskRay/ccls">ccls</a></li>
+</ul>
+
+<p>
+They claim to be more efficient than existing tools at indexing large code bases.
 </p>
 </div>
 
 <ol class="org-ol">
-<li><a id="features-1"></a>Features:<br />
+<li><a id="features-1"></a>Features<br />
 <div class="outline-text-5" id="text-features-1">
 <ul class="org-ul">
 <li>Cross references (definitions, references, base/derived classes/methods, type instances, &#x2026;)</li>
 <li>Diagnostics</li>
 <li>Completion with <code>company-lsp</code></li>
-<li>Semantic highlighting</li>
+<li>Semantic highlighting (<code>cquery</code>, <code>ccls</code>)</li>
 <li>See more on <a href="https://github.com/cquery-project/cquery/wiki/Emacs">https://github.com/cquery-project/cquery/wiki/Emacs</a></li>
 <li>Cross-platform - functional on Windows, Linux and macOS.</li>
 </ul>
 </div>
 </li>
 
-<li><a id="external-dependencies-1"></a>External dependencies<br />
-<div class="outline-text-5" id="text-external-dependencies-1">
+<li><a id="external-dependencies"></a>External dependencies<br />
+<div class="outline-text-5" id="text-external-dependencies">
 <p>
-Install one (or both) of the following:
+Install one (or more) of the following (<code>clangd</code> is used by default):
 </p>
 </div>
 
 <ol class="org-ol">
-<li><a id="cquery-server"></a>cquery server<br />
-<div class="outline-text-6" id="text-cquery-server">
+<li><a id="clangd"></a>clangd<br />
+<div class="outline-text-6" id="text-clangd">
 <p>
-Install the <code>cquery</code> server. <a href="https://github.com/cquery-project/cquery/wiki/Getting-started">Instructions</a>.
+Install <code>clang</code> using a binary distribution downloaded from the <a href="http://releases.llvm.org/download.html">LLVM releases
+page</a> or via your package manager. This is the default implementation that's used by the
+Emacs <code>lsp-mode</code> package and probably the easiest to install.
 </p>
+<ul class="org-ul">
+<li><a href="https://clang.llvm.org/extra/clangd/Extensions.html">clangd protocol extensions page</a></li>
+</ul>
 </div>
 </li>
 
 <li><a id="ccls-server"></a>ccls server<br />
 <div class="outline-text-6" id="text-ccls-server">
 <p>
-Install the <code>ccls</code> server. <a href="https://github.com/MaskRay/ccls/wiki/Getting-started">Instructions</a>.
+Install the <code>ccls</code> server. See <a href="https://github.com/MaskRay/ccls/wiki">instructions</a>. This is currently the most fully
+featured implementation, including semantic highlighting and some navigation/
+introspection features that are not provided by clangd.
+</p>
+
+<p>
+Note that prebuild binaries exist for most Linux distros and MacOS using
+Homebrew.
+</p>
+</div>
+</li>
+
+<li><a id="cquery-server"></a>cquery server<br />
+<div class="outline-text-6" id="text-cquery-server">
+<p>
+Install the <code>cquery</code> server. See <a href="https://github.com/cquery-project/cquery/wiki">instructions</a>. This implementation appears to be
+unmaintained and continued support is provided here purely for existing users.
+It is recommended to use the <code>lsp-ccls</code> backend instead if you can.
+</p>
+
+<p>
+Note that prebuilt binaries exist for most Linux distros and MacOS using
+Homebrew.
 </p>
 </div>
 </li>
 </ol>
 </li>
 
-<li><a id="configuration-1"></a>Configuration<br />
-<div class="outline-text-5" id="text-configuration-1">
+<li><a id="configuration"></a>Configuration<br />
+<div class="outline-text-5" id="text-configuration">
 </div>
 
 <ol class="org-ol">
 <li><a id="basic"></a>Basic<br />
 <div class="outline-text-6" id="text-basic">
 <p>
-Select either <code>cquery</code> or <code>ccls</code> as the <code>c-c++</code> layer backend by adding the
-following to your dotfile:
+To use the default <code>clangd</code> language server, select <code>lsp-clangd</code> as the <code>c-c++</code>
+layer backend by adding the following to your dotfile:
 </p>
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-backend 'lsp-cquery<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">;</span><span class="org-comment">or 'lsp-ccls</span>
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-backend 'lsp-clangd<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
-
-<p>
-N.B. The <a href="../../+tools/lsp/README.html">LSP layer</a> will be loaded automatically if either backend is selected.
-</p>
 </div>
 </li>
 
-<li><a id="setting-path-to-backend-executable"></a>Setting path to backend executable<br />
-<div class="outline-text-6" id="text-setting-path-to-backend-executable">
+<li><a id="selecting-an-alternate-lsp-server"></a>Selecting an alternate LSP server<br />
+<div class="outline-text-6" id="text-selecting-an-alternate-lsp-server">
 <p>
-The basic configuration above should work if the cquery/ccls executable folder
-is present in your path. If not, you can set the path explicitly.
+To choose an alternate LSP server set the layer variable <code>c-c++-backend</code> to
+another supported backend, for instance <code>lsp-ccls</code>:
 </p>
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span>
-                       c-c++-backend 'lsp-cquery
-                       c-c++-lsp-executable <span class="org-string">"/path/to/bin/cquery/or/ccls"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-backend 'lsp-ccls<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
+</div>
+</li>
 
+<li><a id="path-to-lsp-server-executables"></a>Path to LSP server executables<br />
+<div class="outline-text-6" id="text-path-to-lsp-server-executables">
 <p>
-If you need to expand <code>~</code> in the path, you can use <code>file-truename</code> like
+LSP expects to find the LSP server executables in your <code>PATH</code>. If you want to
+specify the location of an executable then you need to set the appropriate
+variable:
 </p>
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span>
-                       c-c++-backend 'lsp-cquery
-                       c-c++-lsp-executable <span class="org-rainbow-delimiters-depth-4">(</span>file-truename <span class="org-string">"~/bin/cquery/or/ccls"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Server</th>
+<th scope="col" class="org-left">Variable name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">clangd</td>
+<td class="org-left"><code>lsp-clients-clangd-executable</code></td>
+</tr>
+
+<tr>
+<td class="org-left">ccls</td>
+<td class="org-left"><code>ccls-executable</code></td>
+</tr>
+
+<tr>
+<td class="org-left">cquery</td>
+<td class="org-left"><code>cquery-executable</code></td>
+</tr>
+</tbody>
+</table>
 </div>
 </li>
 
 <li><a id="semantic-highlighting"></a>Semantic highlighting<br />
 <div class="outline-text-6" id="text-semantic-highlighting">
 <p>
-Semantic highlighting is disabled by default. To enable, set the
-<code>c-c++-lsp-sem-highlight-method</code> variable to either <code>'font-lock</code> or <code>'overlay</code>.
-To enable the rainbow semantic highlighting colour theme, set
-<code>c-c++-lsp-sem-highlight-rainbow</code> to <code>t</code>.
+Currently only available for <code>lsp-ccls</code> and <code>lps-cquery</code>. Semantic highlighting
+can precisely highlight identifiers.
+</p>
+
+<p>
+Semantic highlighting is disabled by default. To enable it set the layer
+<code>c-c++-lsp-enable-semantic-highlight</code> to non-nil. It is possible to give a
+different color for each identifier by setting the variable to <code>'rainbow</code>.
+</p>
+
+<p>
+When semantic highlighting is enabled then the method that's used to highlight the text
+relies on Emacs' fastest <code>font-lock</code> mechanism. A more
+accurate but also slower method is to use overlays. To use overlays set
+the layer variable <code>c-c++-lsp-semantic-highlight-method</code> to <code>'overlay</code>.
+</p>
+</div>
+</li>
+
+<li><a id="cache-directory-absolute-or-relative"></a>Cache directory (absolute or relative)<br />
+<div class="outline-text-6" id="text-cache-directory-absolute-or-relative">
+<p>
+<code>clangd</code> cache directoy is <code>.clangd</code> and cannot be changed.
+</p>
+
+<p>
+<code>ccls</code> default directory is <code>.ccls-cache</code>, it can be changed by setting the
+<code>:cache</code> option in the variable <code>ccls-initialization-options</code>.
+</p>
+
+<p>
+<code>cquery</code> cache directory is set by default to be
+<code>&lt;emacs_config_directory&gt;/.cache/lsp-cquery</code>. You can change this setting by
+setting the layer variable <code>c-c++-lsp-cquery-cache-directory</code> to either an
+absolute or relative directory. Relative directory is relative to the current
+project root directory.
 </p>
 </div>
 </li>
@@ -578,20 +642,11 @@ To enable the rainbow semantic highlighting colour theme, set
 <li><a id="additional-configuration-options"></a>Additional configuration options<br />
 <div class="outline-text-6" id="text-additional-configuration-options">
 <p>
-Both lsp backends are configured to store their index cache in a subdirectory of
-<code>.emacs.d/cache</code>. This can be overridden by specifying an explicit
-<code>c-c++-lsp-cache-dir</code>. Setting this value to a relative path will cause the
-index cache to be placed in a subdirectory of your project root.
-</p>
-
-<p>
-There are other initialization options such as the number of indexer threads,
-cache serialization format. They have good default values. See <code>config.el</code> of
-the layer and the backends' respective homepages for more info.
+See the full list of configuration options you can set at:
 </p>
 <ul class="org-ul">
-<li><a href="https://github.com/cquery-project/cquery/wiki/Emacs">Emacs section of <code>cquery</code> wiki</a></li>
 <li><a href="https://github.com/MaskRay/ccls/wiki/Emacs">Emacs section of <code>ccls</code> wiki</a></li>
+<li><a href="https://github.com/cquery-project/cquery/wiki/Emacs">Emacs section of <code>cquery</code> wiki</a></li>
 </ul>
 </div>
 </li>
@@ -603,8 +658,7 @@ the layer and the backends' respective homepages for more info.
               '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span>
                        c-c++-adopt-subprojects t
                        c-c++-backend 'lsp-ccls
-                       c-c++-lsp-executable <span class="org-rainbow-delimiters-depth-4">(</span>file-truename <span class="org-string">"~/dev/cpp/ccls/Release/ccls"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-                       c-c++-lsp-sem-highlight-rainbow t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+                       c-c++-lsp-enable-semantic-highlight 'rainbow<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -626,16 +680,93 @@ as recommended by <code>cquery=/=ccls</code> wikis.
 <div class="outline-text-5" id="text-debugger-dap-integration">
 <p>
 To install the debug adapter you may run <code>M-x dap-gdb-lldb-setup</code> when you are
-on Linux or download it manually from <a href="https://marketplace.visualstudio.com/items?itemName=webfreak.debug">Native Debug</a> and adjust
-<code>dap-gdb-lldb-path</code>.
+on Linux or download it manually from <a href="https://marketplace.visualstudio.com/items?itemName=webfreak.debug">Native Debug</a> and adjust the
+<code>dap-gdb-lldb-path</code> variable.
 </p>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org235c65e" class="outline-4">
+<h4 id="rtags"><span class="section-number-4">2.2.2</span> rtags</h4>
+<div class="outline-text-4" id="text-rtags">
+<p>
+rtags is a well established clang-based source code indexing tool.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="external-dependencies-1"></a>External dependencies<br />
+<div class="outline-text-5" id="text-external-dependencies-1">
+<p>
+Install the RTags server via <a href="https://formulae.brew.sh/formula/rtags">homebrew</a>, the <a href="https://aur.archlinux.org/packages/rtags/">aur</a> or from source according to the
+instructions <a href="https://github.com/Andersbakken/rtags">here</a>.
+</p>
+
+<p>
+<b>Note:</b> RTags is not supported on Windows at the time of
+writing, although there is an <a href="https://github.com/Andersbakken/rtags/issues/770">open issue with some recent activity</a> on github.
+</p>
+</div>
+</li>
+
+<li><a id="configuration-1"></a>Configuration<br />
+<div class="outline-text-5" id="text-configuration-1">
+<p>
+To enable support for <code>rtags</code>, set the layer variable <code>c-c++-backend</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-backend 'rtags<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+This will also enable <code>company-rtags</code> to be used as a backend for
+auto-completion (when the <code>auto-completion</code> layer is enabled).
+To prevent this, while retaining the rest of Rtags' functionality,
+set the variable <code>c-c++-rtags-completion</code> to <code>nil</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span>
+                       c-c++-backend 'rtags
+                       c-c++-enable-rtags-completion nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
 </div>
 </li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-orgf941b21" class="outline-3">
+<div id="outline-container-orgf259623" class="outline-3">
+<h3 id="default-mode-for-header-files"><span class="section-number-3">2.3</span> Default mode for header files</h3>
+<div class="outline-text-3" id="text-default-mode-for-header-files">
+<p>
+The mode for header files is auto detected by `c-or-c++-mode' in Emacs &gt; 26.1+.
+Older versions of Emacs will open header files in <code>c-mode</code> by default, you can open them in
+<code>c++-mode</code> by setting the variable <code>c-c++-default-mode-for-headers</code> as follow.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-default-mode-for-headers 'c++-mode<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+<b>Note:</b> To set the variable for a given project, create a directory local
+variable at the root of your project. More info on directory local variables
+can be found in the manual: <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Directory-Local-Variables.html">dir-locals</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org04eaa3f" class="outline-3">
 <h3 id="organize-file-header-includes-on-save"><span class="section-number-3">2.4</span> Organize file header includes on save</h3>
 <div class="outline-text-3" id="text-organize-file-header-includes-on-save">
 <p>
@@ -651,35 +782,15 @@ To organize the file header includes on save, set the layer variable
 </div>
 </div>
 
-<div id="outline-container-orga7772e5" class="outline-3">
-<h3 id="clang-configuration"><span class="section-number-3">2.5</span> Clang Configuration</h3>
-<div class="outline-text-3" id="text-clang-configuration">
+<div id="outline-container-org47c7fd1" class="outline-3">
+<h3 id="clang-format"><span class="section-number-3">2.5</span> clang-format</h3>
+<div class="outline-text-3" id="text-clang-format">
 <p>
-To enable Clang support, set the layer variable <code>c-c++-enable-clang-support</code>
-to <code>t</code> in the dotfile:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-enable-clang-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-N.B. do not set this option if either the <code>cquery</code> or <code>ccls</code> backend
-</p>
-</div>
-
-<div id="outline-container-orged94b8d" class="outline-4">
-<h4 id="clang-format"><span class="section-number-4">2.5.1</span> clang-format</h4>
-<div class="outline-text-4" id="text-clang-format">
-<p>
-<a href="http://clang.llvm.org/docs/ClangFormat.html">clang-format</a> allows reformatting either a selected region of code
-(<code>clang-format-region</code>) or a whole buffer (<code>clang-format-buffer</code>)
-according to a style defined in a <code>.clang-format</code> file. This file
-is either located in the same directory as the file being edited,
-or any of its parent directories. If no <code>.clang-format</code> is found,
-then a default style will be used.
+<a href="http://clang.llvm.org/docs/ClangFormat.html">clang-format</a> allows for reformatting either a selected region of code
+(<code>clang-format-region</code>) or a whole buffer (<code>clang-format-buffer</code>) according to a
+style defined in a <code>.clang-format</code> file. This file is either located in the same
+directory as the file being edited, or in any of its parent directories. If no
+<code>.clang-format</code> file is found, then a default style will be used.
 </p>
 
 <p>
@@ -695,25 +806,7 @@ To enable automatic buffer formatting on save, set the variable
 </div>
 </div>
 
-<div id="outline-container-org70bf07d" class="outline-4">
-<h4 id="company-clang-and-flycheck"><span class="section-number-4">2.5.2</span> Company-clang and flycheck</h4>
-<div class="outline-text-4" id="text-company-clang-and-flycheck">
-<p>
-This layer adds some fancy improvements to <code>company-clang</code>. It includes a hook
-to load a projects <code>.clang_complete</code> file, which is just a text file with one
-clang flag per line, a format also used by other text editor clang plugins.
-</p>
-
-<p>
-Not only does this allow proper autocomplete on projects with extra includes and
-flags, but there is also support for flycheck so that it doesn't complain about
-missing header files.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org8b6a0a0" class="outline-3">
+<div id="outline-container-org7070f8b" class="outline-3">
 <h3 id="enable-google-set-c-style"><span class="section-number-3">2.6</span> Enable google-set-c-style</h3>
 <div class="outline-text-3" id="text-enable-google-set-c-style">
 <p>
@@ -755,7 +848,7 @@ set that up like this:
 </div>
 </div>
 
-<div id="outline-container-org8476580" class="outline-3">
+<div id="outline-container-org1c9e901" class="outline-3">
 <h3 id="newlines"><span class="section-number-3">2.7</span> Newlines</h3>
 <div class="outline-text-3" id="text-newlines">
 <p>
@@ -770,7 +863,7 @@ after certain characters by setting the <code>c-c++-enable-auto-newline</code> v
 </div>
 </div>
 
-<div id="outline-container-orgdae8232" class="outline-3">
+<div id="outline-container-org62acd2a" class="outline-3">
 <h3 id="projectile-sub-project-adoption"><span class="section-number-3">2.8</span> Projectile sub-project adoption</h3>
 <div class="outline-text-3" id="text-projectile-sub-project-adoption">
 <p>
@@ -791,277 +884,31 @@ generally applicable.
 </div>
 </div>
 
-<div id="outline-container-org62a83b3" class="outline-2">
+<div id="outline-container-orgc4e5389" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+</div>
 
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m g a</code></td>
-<td class="org-left">open matching file</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">(e.g. switch between .cpp and .h, requires a project to work)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g A</code></td>
-<td class="org-left">open matching file in another window</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">(e.g. switch between .cpp and .h, requires a project to work)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m D</code></td>
-<td class="org-left">disaster: disassemble c/c++ code</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r .</code></td>
-<td class="org-left">srefactor: refactor thing at point.</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m r i</code></td>
-<td class="org-left">organize includes</td>
-</tr>
-</tbody>
-</table>
-
+<div id="outline-container-orgc346945" class="outline-3">
+<h3 id="lsp-1"><span class="section-number-3">3.1</span> LSP</h3>
+<div class="outline-text-3" id="text-lsp-1">
 <p>
-<b>Note:</b> <a href="https://github.com/tuhdo/semantic-refactor">semantic-refactor</a> is only available for Emacs 24.4+.
+The default key bindings for the LSP implementations are defined and documented in
+the <a href="../../+tools/lsp/README.html">LSP layer</a>.
 </p>
 </div>
 
-<div id="outline-container-orgefda4d4" class="outline-3">
-<h3 id="formatting-clang-format"><span class="section-number-3">3.1</span> Formatting (clang-format)</h3>
-<div class="outline-text-3" id="text-formatting-clang-format">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m = =</code></td>
-<td class="org-left">format current region or buffer</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m = f</code></td>
-<td class="org-left">format current function</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgf08a7da" class="outline-3">
-<h3 id="rtags-1"><span class="section-number-3">3.2</span> RTags</h3>
-<div class="outline-text-3" id="text-rtags-1">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m g .</code></td>
-<td class="org-left">find symbol at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g ,</code></td>
-<td class="org-left">find references at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g ;</code></td>
-<td class="org-left">find file</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g /</code></td>
-<td class="org-left">find all references at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g [</code></td>
-<td class="org-left">location stack back</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g ]</code></td>
-<td class="org-left">location stack forward</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g &gt;</code></td>
-<td class="org-left">c++ tags find symbol</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g &lt;</code></td>
-<td class="org-left">c++ tags find references</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g B</code></td>
-<td class="org-left">show rtags buffer</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g d</code></td>
-<td class="org-left">print dependencies</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g D</code></td>
-<td class="org-left">diagnostics</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g e</code></td>
-<td class="org-left">reparse file</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g E</code></td>
-<td class="org-left">preprocess file</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g F</code></td>
-<td class="org-left">fixit</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g G</code></td>
-<td class="org-left">guess function at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g h</code></td>
-<td class="org-left">print class hierarchy</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g I</code></td>
-<td class="org-left">c++ tags imenu</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g L</code></td>
-<td class="org-left">copy and print current location</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g M</code></td>
-<td class="org-left">symbol info</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g O</code></td>
-<td class="org-left">goto offset</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g p</code></td>
-<td class="org-left">set current project</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g R</code></td>
-<td class="org-left">rename symbol</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g s</code></td>
-<td class="org-left">print source arguments</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g S</code></td>
-<td class="org-left">display summary</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g T</code></td>
-<td class="org-left">taglist</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g v</code></td>
-<td class="org-left">find virtuals at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g V</code></td>
-<td class="org-left">print enum value at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g X</code></td>
-<td class="org-left">fix fixit at point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g Y</code></td>
-<td class="org-left">cycle overlays on screen</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-org58e77d9" class="outline-3">
-<h3 id="cquery--ccls"><span class="section-number-3">3.3</span> cquery / ccls</h3>
-<div class="outline-text-3" id="text-cquery--ccls">
+<div id="outline-container-org8b96bf4" class="outline-4">
+<h4 id="cquery--ccls"><span class="section-number-4">3.1.1</span> cquery / ccls</h4>
+<div class="outline-text-4" id="text-cquery--ccls">
 <p>
-The key bindings listed below are in addition to the default key bindings defined by the <a href="../../+tools/lsp/README.html">LSP layer</a>.
 A <code>[ccls]</code> or <code>[cquery]</code> suffix indicates that the binding is for the indicated backend only.
 </p>
 </div>
 
-<div id="outline-container-org4e33162" class="outline-4">
-<h4 id="backend-language-server"><span class="section-number-4">3.3.1</span> backend (language server)</h4>
-<div class="outline-text-4" id="text-backend-language-server">
+<ol class="org-ol">
+<li><a id="backend-language-server"></a>backend (language server)<br />
+<div class="outline-text-5" id="text-backend-language-server">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1089,11 +936,10 @@ A <code>[ccls]</code> or <code>[cquery]</code> suffix indicates that the binding
 </tbody>
 </table>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgb6eb7a5" class="outline-4">
-<h4 id="goto"><span class="section-number-4">3.3.2</span> goto</h4>
-<div class="outline-text-4" id="text-goto">
+<li><a id="goto"></a>goto<br />
+<div class="outline-text-5" id="text-goto">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1151,8 +997,8 @@ A <code>[ccls]</code> or <code>[cquery]</code> suffix indicates that the binding
 </tbody>
 </table>
 </div>
+</li>
 
-<ol class="org-ol">
 <li><a id="gotohierarchy"></a>goto/hierarchy<br />
 <div class="outline-text-5" id="text-gotohierarchy">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1246,11 +1092,10 @@ A <code>[ccls]</code> or <code>[cquery]</code> suffix indicates that the binding
 </li>
 </ol>
 </div>
-</div>
 
-<div id="outline-container-org4d6c71d" class="outline-3">
-<h3 id="debugger"><span class="section-number-3">3.4</span> debugger</h3>
-<div class="outline-text-3" id="text-debugger">
+<div id="outline-container-orgb6af882" class="outline-4">
+<h4 id="debugger"><span class="section-number-4">3.1.2</span> debugger</h4>
+<div class="outline-text-4" id="text-debugger">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1444,10 +1289,317 @@ A <code>[ccls]</code> or <code>[cquery]</code> suffix indicates that the binding
 </div>
 </div>
 </div>
+
+<div id="outline-container-org6af5d53" class="outline-3">
+<h3 id="rtags-1"><span class="section-number-3">3.2</span> RTags</h3>
+<div class="outline-text-3" id="text-rtags-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m g .</code></td>
+<td class="org-left">find symbol at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g ,</code></td>
+<td class="org-left">find references at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g ;</code></td>
+<td class="org-left">find file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g /</code></td>
+<td class="org-left">find all references at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g [</code></td>
+<td class="org-left">location stack back</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g ]</code></td>
+<td class="org-left">location stack forward</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g &gt;</code></td>
+<td class="org-left">c++ tags find symbol</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g &lt;</code></td>
+<td class="org-left">c++ tags find references</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g B</code></td>
+<td class="org-left">show rtags buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g d</code></td>
+<td class="org-left">print dependencies</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g D</code></td>
+<td class="org-left">diagnostics</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g e</code></td>
+<td class="org-left">reparse file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g E</code></td>
+<td class="org-left">preprocess file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g F</code></td>
+<td class="org-left">fixit</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g G</code></td>
+<td class="org-left">guess function at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g h</code></td>
+<td class="org-left">print class hierarchy</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g I</code></td>
+<td class="org-left">c++ tags imenu</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g L</code></td>
+<td class="org-left">copy and print current location</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g M</code></td>
+<td class="org-left">symbol info</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g O</code></td>
+<td class="org-left">goto offset</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g p</code></td>
+<td class="org-left">set current project</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g R</code></td>
+<td class="org-left">rename symbol</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g s</code></td>
+<td class="org-left">print source arguments</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g S</code></td>
+<td class="org-left">display summary</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g T</code></td>
+<td class="org-left">taglist</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g v</code></td>
+<td class="org-left">find virtuals at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g V</code></td>
+<td class="org-left">print enum value at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g X</code></td>
+<td class="org-left">fix fixit at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g Y</code></td>
+<td class="org-left">cycle overlays on screen</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgc439fdf" class="outline-3">
+<h3 id="additional-key-bindings"><span class="section-number-3">3.3</span> Additional key bindings</h3>
+<div class="outline-text-3" id="text-additional-key-bindings">
+</div>
+
+<div id="outline-container-orga21ccfb" class="outline-4">
+<h4 id="disassemble"><span class="section-number-4">3.3.1</span> Disassemble</h4>
+<div class="outline-text-4" id="text-disassemble">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m D</code></td>
+<td class="org-left">disaster: disassemble c/c++ code</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org8eebd77" class="outline-4">
+<h4 id="formatting-clang-format"><span class="section-number-4">3.3.2</span> Formatting (clang-format)</h4>
+<div class="outline-text-4" id="text-formatting-clang-format">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m = =</code></td>
+<td class="org-left">format current region or buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m = f</code></td>
+<td class="org-left">format current function</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgbc099b6" class="outline-4">
+<h4 id="open-matching-files"><span class="section-number-4">3.3.3</span> Open matching files</h4>
+<div class="outline-text-4" id="text-open-matching-files">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m g a</code></td>
+<td class="org-left">open matching file</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">(e.g. switch between .cpp and .h, requires a project to work)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g A</code></td>
+<td class="org-left">open matching file in another window</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">(e.g. switch between .cpp and .h, requires a project to work)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org6292299" class="outline-4">
+<h4 id="refactor"><span class="section-number-4">3.3.4</span> Refactor</h4>
+<div class="outline-text-4" id="text-refactor">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m r .</code></td>
+<td class="org-left">srefactor: refactor thing at point.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r i</code></td>
+<td class="org-left">organize includes</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2019-11-08 Fri 17:50</p>
+<p class="date">Created: 2019-11-10 Sun 14:17</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
