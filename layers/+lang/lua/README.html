@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-10 Sun 14:17 -->
+<!-- 2020-01-25 Sat 15:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lua layer</title>
@@ -282,10 +282,21 @@ for the JavaScript code in this tag.
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a></li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#backends">2.2. Backends</a>
+<ul>
+<li><a href="#lsp">2.2.1. LSP</a></li>
+<li><a href="#lua-mode">2.2.2. Lua mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#key-bindings">3. Key bindings</a>
 <ul>
-<li><a href="#commands">3.1. Commands</a></li>
+<li><a href="#lsp-1">3.1. LSP</a></li>
+<li><a href="#commands">3.2. Commands</a></li>
 </ul>
 </li>
 </ul>
@@ -297,7 +308,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org1e6dfe1" class="outline-2">
+<div id="outline-container-org28b07df" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -305,21 +316,28 @@ This layer adds support for editing Lua.
 </p>
 </div>
 
-<div id="outline-container-org68ba071" class="outline-3">
+<div id="outline-container-org6abc5ed" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Editing lua files using <a href="https://github.com/immerrr/lua-mode">lua-mode</a></li>
+<li>Code-Completion with <code>company-lsp</code> or <code>company-lua</code></li>
 <li>Sending code to a lua REPL</li>
 <li>Code linting using <a href="https://github.com/mpeterv/luacheck">Luacheck</a></li>
+<li>Cross references (definitions, references, rename&#x2026;)</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orga052f0f" class="outline-2">
+<div id="outline-container-orgdac6c3b" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-org78010ac" class="outline-3">
+<h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>lua</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
@@ -332,13 +350,75 @@ In order to enable code linting, install <a href="https://github.com/mpeterv/lua
 </div>
 </div>
 
-<div id="outline-container-org8d62e74" class="outline-2">
+<div id="outline-container-org0677540" class="outline-3">
+<h3 id="backends"><span class="section-number-3">2.2</span> Backends</h3>
+<div class="outline-text-3" id="text-backends">
+<p>
+Supported backends are:
+</p>
+<ul class="org-ul">
+<li><code>lsp-emmy</code> using clangd LSP server</li>
+<li><code>lua-mode</code> using emacs package</li>
+</ul>
+</div>
+
+<div id="outline-container-org4ea1ad4" class="outline-4">
+<h4 id="lsp"><span class="section-number-4">2.2.1</span> LSP</h4>
+<div class="outline-text-4" id="text-lsp">
+<p>
+LSP support is provided via the <a href="../../+tools/lsp/README.html">LSP layer</a>, currently only <a href="https://github.com/EmmyLua/EmmyLua-LanguageServer">EmmyLua</a> is supported.
+</p>
+
+<p>
+To use the <code>lsp-emmy</code> backend, please download the <a href="https://github.com/EmmyLua/EmmyLua-LanguageServer">EmmyLua-LS-all.jar</a> and put it into <code>~/.emacs.d/</code>, 
+then set the layer variable lua-backend to <code>lsp-emmy</code>.
+</p>
+
+<p>
+<code>Lsp-emmy</code> requires a working java installation in the path as well as the path to the LSP server jar.
+The java path and the path to the server executable can be configured as is shown below:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>lua <span class="org-builtin">:variables</span>
+     lua-backend 'lsp-emmy
+     lua-lsp-emmy-jar-path <span class="org-string">"~/.emacs.d/EmmyLua-LS-all.jar"</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
+     lua-lsp-emmy-java-path <span class="org-string">"java"</span>                         <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
+     lua-lsp-emmy-enable-file-watchers t<span class="org-rainbow-delimiters-depth-1">)</span>                  <span class="org-comment-delimiter">; </span><span class="org-comment">enabled default</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org37e17df" class="outline-4">
+<h4 id="lua-mode"><span class="section-number-4">2.2.2</span> Lua mode</h4>
+<div class="outline-text-4" id="text-lua-mode">
+<p>
+This backend provides support via pure emacs packages. It requires less setup than a full blown LSP setup 
+but also provides less features. To enable it just set the <code>lua-backend</code> to <code>nil</code>.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org89beffc" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org27a6525" class="outline-3">
-<h3 id="commands"><span class="section-number-3">3.1</span> Commands</h3>
+<div id="outline-container-org472d3b9" class="outline-3">
+<h3 id="lsp-1"><span class="section-number-3">3.1</span> LSP</h3>
+<div class="outline-text-3" id="text-lsp-1">
+<p>
+The default key bindings for the LSP implementations are defined and documented in
+the <a href="../../+tools/lsp/README.html">LSP layer</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdad1dc5" class="outline-3">
+<h3 id="commands"><span class="section-number-3">3.2</span> Commands</h3>
 <div class="outline-text-3" id="text-commands">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -379,6 +459,11 @@ In order to enable code linting, install <a href="https://github.com/mpeterv/lua
 <td class="org-left"><code>SPC m s r</code></td>
 <td class="org-left">send current region to REPL</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>SPC m '</code></td>
+<td class="org-left">open repl buffer</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -387,7 +472,7 @@ In order to enable code linting, install <a href="https://github.com/mpeterv/lua
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2019-11-10 Sun 14:17</p>
+<p class="date">Created: 2020-01-25 Sat 15:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

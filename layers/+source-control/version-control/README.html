@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-10 Sun 14:17 -->
+<!-- 2020-01-25 Sat 15:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Version-Control layer</title>
@@ -289,7 +289,7 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#configuration">3. Configuration</a>
 <ul>
-<li><a href="#differences-between-margin-programs">3.1. Differences between margin programs</a></li>
+<li><a href="#differences-between-margin-packages">3.1. Differences between margin packages</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">4. Key bindings</a>
@@ -308,7 +308,7 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org6f0974c" class="outline-2">
+<div id="outline-container-org5084209" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -317,7 +317,7 @@ It should work with all VC backends such as Git, Mercurial, Bazaar, SVN, etc&#x2
 </p>
 </div>
 
-<div id="outline-container-orga6444f6" class="outline-3">
+<div id="outline-container-orgf8881cc" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -328,12 +328,12 @@ It should work with all VC backends such as Git, Mercurial, Bazaar, SVN, etc&#x2
 </div>
 </div>
 
-<div id="outline-container-org9d2375e" class="outline-2">
+<div id="outline-container-org134904c" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org5352d98" class="outline-3">
+<div id="outline-container-org20ad72e" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -345,13 +345,19 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org86bab92" class="outline-2">
+<div id="outline-container-org622f7da" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
-You can choose the package to facilitate the diff transient-state and show margins
-by setting <code>version-control-diff-tool</code>
+You can choose the package to facilitate the diff transient-state and show
+margins by setting the <code>version-control-diff-tool</code> variable to one of the
+supported packages:
 </p>
+<ul class="org-ul">
+<li><a href="https://github.com/dgutov/diff-hl">diff-hl</a></li>
+<li><a href="https://github.com/syohex/emacs-git-gutter">git-gutter</a></li>
+<li><a href="https://github.com/nonsequitur/git-gutter-plus">git-gutter+</a> (default)</li>
+</ul>
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">'<span class="org-rainbow-delimiters-depth-1">(</span>version-control <span class="org-builtin">:variables</span>
@@ -381,12 +387,12 @@ To automatically enable diff margins in all buffers, set
 </div>
 </div>
 
-<div id="outline-container-org56f913f" class="outline-3">
-<h3 id="differences-between-margin-programs"><span class="section-number-3">3.1</span> Differences between margin programs</h3>
-<div class="outline-text-3" id="text-differences-between-margin-programs">
+<div id="outline-container-orge9c0aca" class="outline-3">
+<h3 id="differences-between-margin-packages"><span class="section-number-3">3.1</span> Differences between margin packages</h3>
+<div class="outline-text-3" id="text-differences-between-margin-packages">
 <p>
 This layer contains generalized mappings for three diff margin packages:
-diff-hl, git-gutter, and git-gutter+.
+<code>diff-hl</code>, <code>git-gutter</code>, and <code>git-gutter+</code>.
 </p>
 
 <p>
@@ -448,7 +454,7 @@ one over the other:
 </div>
 </div>
 
-<div id="outline-container-orgc290d21" class="outline-2">
+<div id="outline-container-org838875d" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
@@ -553,7 +559,7 @@ VC commands:
 </table>
 </div>
 
-<div id="outline-container-orgc969e99" class="outline-3">
+<div id="outline-container-orgb5e1a5c" class="outline-3">
 <h3 id="vc-directory-buffer-commands"><span class="section-number-3">4.1</span> VC Directory buffer commands</h3>
 <div class="outline-text-3" id="text-vc-directory-buffer-commands">
 <p>
@@ -669,7 +675,7 @@ Navigation and interaction commands in the VC Directory buffer:
 </div>
 </div>
 
-<div id="outline-container-org963d164" class="outline-3">
+<div id="outline-container-org0828825" class="outline-3">
 <h3 id="commit-message-editing-buffer"><span class="section-number-3">4.2</span> Commit message editing buffer</h3>
 <div class="outline-text-3" id="text-commit-message-editing-buffer">
 <p>
@@ -679,7 +685,7 @@ Pressing <code>C-c C-k</code> will discard the commit message and close this buf
 </div>
 </div>
 
-<div id="outline-container-orgbeff963" class="outline-3">
+<div id="outline-container-orgd276228" class="outline-3">
 <h3 id="diff-mode"><span class="section-number-3">4.3</span> Diff mode</h3>
 <div class="outline-text-3" id="text-diff-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -822,7 +828,7 @@ A transient buffer is also defined, start it with <code>SPC m .</code> or <code>
 </div>
 </div>
 
-<div id="outline-container-orgf08fed1" class="outline-3">
+<div id="outline-container-orgcc44429" class="outline-3">
 <h3 id="log-view-buffer"><span class="section-number-3">4.4</span> Log view buffer</h3>
 <div class="outline-text-3" id="text-log-view-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -884,7 +890,7 @@ A transient buffer is also defined, start it with <code>SPC m .</code> or <code>
 </div>
 </div>
 
-<div id="outline-container-org35197e1" class="outline-3">
+<div id="outline-container-org39179cc" class="outline-3">
 <h3 id="annotation-buffer"><span class="section-number-3">4.5</span> Annotation buffer</h3>
 <div class="outline-text-3" id="text-annotation-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -946,7 +952,7 @@ A transient buffer is also defined, start it with <code>SPC m .</code> or <code>
 </div>
 </div>
 
-<div id="outline-container-orgc438b74" class="outline-3">
+<div id="outline-container-orgc56b5cf" class="outline-3">
 <h3 id="version-control-transient-state"><span class="section-number-3">4.6</span> Version Control Transient-state</h3>
 <div class="outline-text-3" id="text-version-control-transient-state">
 <p>
@@ -1057,7 +1063,7 @@ Use <code>SPC g .</code> to enter a transient state for quickly navigating betwe
 </div>
 </div>
 
-<div id="outline-container-org4bc657a" class="outline-3">
+<div id="outline-container-org4bfa0a8" class="outline-3">
 <h3 id="smerge-mode-transient-state"><span class="section-number-3">4.7</span> Smerge Mode Transient-state</h3>
 <div class="outline-text-3" id="text-smerge-mode-transient-state">
 <p>
@@ -1236,7 +1242,7 @@ Other:
 </div>
 </div>
 
-<div id="outline-container-org3f58563" class="outline-3">
+<div id="outline-container-orgeeebc62" class="outline-3">
 <h3 id="toggles"><span class="section-number-3">4.8</span> Toggles</h3>
 <div class="outline-text-3" id="text-toggles">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1271,7 +1277,7 @@ Other:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2019-11-10 Sun 14:17</p>
+<p class="date">Created: 2020-01-25 Sat 15:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

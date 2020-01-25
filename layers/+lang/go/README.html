@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-10 Sun 14:17 -->
+<!-- 2020-01-25 Sat 15:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Go layer</title>
@@ -318,7 +318,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org661ebe7" class="outline-2">
+<div id="outline-container-org267ca7e" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -326,7 +326,7 @@ This layer adds extensive support for the <a href="https://golang.org">Go</a> pr
 </p>
 </div>
 
-<div id="outline-container-org492f6f6" class="outline-3">
+<div id="outline-container-orgbda8674" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -346,12 +346,12 @@ This layer adds extensive support for the <a href="https://golang.org">Go</a> pr
 </div>
 </div>
 
-<div id="outline-container-orgd2d4133" class="outline-2">
+<div id="outline-container-orge958714" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgf2219e7" class="outline-3">
+<div id="outline-container-org0179da6" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -361,7 +361,7 @@ add <code>go</code> to the existing <code>dotspacemacs-configuration-layers</cod
 </div>
 </div>
 
-<div id="outline-container-org2119e14" class="outline-3">
+<div id="outline-container-org68932b9" class="outline-3">
 <h3 id="choosing-a-backend"><span class="section-number-3">2.2</span> Choosing a backend</h3>
 <div class="outline-text-3" id="text-choosing-a-backend">
 <p>
@@ -398,7 +398,7 @@ Backend can be chosen on a per project basis using directory local variables
 </div>
 </div>
 
-<div id="outline-container-org14fa685" class="outline-3">
+<div id="outline-container-orgab781d6" class="outline-3">
 <h3 id="pre-requisites"><span class="section-number-3">2.3</span> Pre-requisites</h3>
 <div class="outline-text-3" id="text-pre-requisites">
 <p>
@@ -408,6 +408,7 @@ to get all the goodies of this layer:
 
 <div class="org-src-container">
 <pre class="src src-sh"><span class="org-variable-name">GO111MODULE</span>=on go get -v golang.org/x/tools/gopls@latest
+<span class="org-variable-name">GO111MODULE</span>=on <span class="org-variable-name">CGO_ENABLED</span>=<span class="org-highlight-numbers-number">0</span> go get -v -trimpath -ldflags <span class="org-string">'-s -w'</span> github.com/golangci/golangci-lint/cmd/golangci-lint
 go get -u -v golang.org/x/tools/cmd/godoc
 go get -u -v golang.org/x/tools/cmd/goimports
 go get -u -v golang.org/x/tools/cmd/gorename
@@ -416,7 +417,6 @@ go get -u -v github.com/cweill/gotests/...
 go get -u -v github.com/davidrjenni/reftools/cmd/fillstruct
 go get -u -v github.com/fatih/gomodifytags
 go get -u -v github.com/godoctor/godoctor
-go get -u -v github.com/golangci/golangci-lint/cmd/golangci-lint
 go get -u -v github.com/haya14busa/gopkgs/cmd/gopkgs
 go get -u -v github.com/josharian/impl
 go get -u -v github.com/mdempsky/gocode
@@ -440,12 +440,12 @@ layers are enabled as well.
 </div>
 </div>
 
-<div id="outline-container-org82f586b" class="outline-2">
+<div id="outline-container-org35f9c4d" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-orgda5fe21" class="outline-3">
+<div id="outline-container-org1fb37b0" class="outline-3">
 <h3 id="execution"><span class="section-number-3">3.1</span> Execution</h3>
 <div class="outline-text-3" id="text-execution">
 <p>
@@ -462,7 +462,7 @@ To run the current <code>main</code> package with command line arguments, set th
 </div>
 </div>
 
-<div id="outline-container-org32cd641" class="outline-3">
+<div id="outline-container-org62408a2" class="outline-3">
 <h3 id="indentation"><span class="section-number-3">3.2</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
@@ -487,7 +487,7 @@ conflicts, i.e.
 </div>
 </div>
 
-<div id="outline-container-org9af8cc7" class="outline-3">
+<div id="outline-container-org9def956" class="outline-3">
 <h3 id="autoformat"><span class="section-number-3">3.3</span> Autoformat</h3>
 <div class="outline-text-3" id="text-autoformat">
 <p>
@@ -510,7 +510,7 @@ To use a different formatter, set the value of <code>gofmt-command</code>, e.g.
 </div>
 </div>
 
-<div id="outline-container-orgd189463" class="outline-3">
+<div id="outline-container-org8b03d53" class="outline-3">
 <h3 id="linting"><span class="section-number-3">3.4</span> Linting</h3>
 <div class="outline-text-3" id="text-linting">
 <p>
@@ -528,7 +528,7 @@ Check <a href="https://github.com/golangci/golangci-lint">golangci-lint</a> and 
 </div>
 </div>
 
-<div id="outline-container-org61fe037" class="outline-3">
+<div id="outline-container-org2acc361" class="outline-3">
 <h3 id="tests"><span class="section-number-3">3.5</span> Tests</h3>
 <div class="outline-text-3" id="text-tests">
 <p>
@@ -554,7 +554,7 @@ To provide additional arguments to <code>go test</code>, specify <code>go-use-te
 </div>
 </div>
 
-<div id="outline-container-org7f328b2" class="outline-3">
+<div id="outline-container-orgaafdce7" class="outline-3">
 <h3 id="coverage"><span class="section-number-3">3.6</span> Coverage</h3>
 <div class="outline-text-3" id="text-coverage">
 <p>
@@ -565,7 +565,7 @@ The default value is <code>display-buffer-reuse-window</code>.
 </div>
 </div>
 
-<div id="outline-container-org8297642" class="outline-3">
+<div id="outline-container-orgf85ec1a" class="outline-3">
 <h3 id="guru"><span class="section-number-3">3.7</span> Guru</h3>
 <div class="outline-text-3" id="text-guru">
 <p>
@@ -577,7 +577,7 @@ prefix it with <code>-</code> to exclude a package from searching.
 </div>
 </div>
 
-<div id="outline-container-org2af726b" class="outline-3">
+<div id="outline-container-org4ed15bf" class="outline-3">
 <h3 id="auto-completion"><span class="section-number-3">3.8</span> Auto-completion</h3>
 <div class="outline-text-3" id="text-auto-completion">
 <p>
@@ -618,7 +618,7 @@ file change.</li>
 </div>
 </div>
 
-<div id="outline-container-orgf8b9f06" class="outline-3">
+<div id="outline-container-orgb89d582" class="outline-3">
 <h3 id="lsp-backend"><span class="section-number-3">3.9</span> LSP backend</h3>
 <div class="outline-text-3" id="text-lsp-backend">
 <p>
@@ -656,12 +656,12 @@ The backend can be chosen on a per project basis using directory local variables
 </div>
 </div>
 
-<div id="outline-container-org207382d" class="outline-2">
+<div id="outline-container-orga184487" class="outline-2">
 <h2 id="working-with-go"><span class="section-number-2">4</span> Working with Go</h2>
 <div class="outline-text-2" id="text-working-with-go">
 </div>
 
-<div id="outline-container-org3c8ddd5" class="outline-3">
+<div id="outline-container-orga5751be" class="outline-3">
 <h3 id="go-commands-start-with-m"><span class="section-number-3">4.1</span> Go commands (start with <code>m</code>):</h3>
 <div class="outline-text-3" id="text-go-commands-start-with-m">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -783,7 +783,7 @@ The backend can be chosen on a per project basis using directory local variables
 </div>
 </div>
 
-<div id="outline-container-org5eb5726" class="outline-3">
+<div id="outline-container-org7c7335e" class="outline-3">
 <h3 id="go-guru"><span class="section-number-3">4.2</span> Go Guru</h3>
 <div class="outline-text-3" id="text-go-guru">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -865,7 +865,7 @@ The backend can be chosen on a per project basis using directory local variables
 </div>
 </div>
 
-<div id="outline-container-org1fe56e7" class="outline-3">
+<div id="outline-container-orgef1cc25" class="outline-3">
 <h3 id="refactoring"><span class="section-number-3">4.3</span> Refactoring</h3>
 <div class="outline-text-3" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -935,7 +935,7 @@ The backend can be chosen on a per project basis using directory local variables
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2019-11-10 Sun 14:17</p>
+<p class="date">Created: 2020-01-25 Sat 15:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
