@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-10 Sun 14:17 -->
+<!-- 2020-01-25 Sat 15:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>YAML layer</title>
@@ -282,13 +282,18 @@ for the JavaScript code in this tag.
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a></li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#lsp">2.2. LSP</a></li>
+</ul>
+</li>
 <li><a href="#syntax-checking-with-flycheck">3. Syntax checking with flycheck</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org31a7523" class="outline-2">
+<div id="outline-container-org566c103" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -296,7 +301,7 @@ This layer provides support for the YAML file format.
 </p>
 </div>
 
-<div id="outline-container-org0835165" class="outline-3">
+<div id="outline-container-orgd919c4a" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -307,9 +312,14 @@ This layer provides support for the YAML file format.
 </div>
 </div>
 
-<div id="outline-container-org5b11638" class="outline-2">
+<div id="outline-container-orgebab198" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-org251a67e" class="outline-3">
+<h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>yaml</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
@@ -318,24 +328,52 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgac67309" class="outline-2">
+<div id="outline-container-orgefc5108" class="outline-3">
+<h3 id="lsp"><span class="section-number-3">2.2</span> LSP</h3>
+<div class="outline-text-3" id="text-lsp">
+<p>
+To enable LSP, install <a href="https://github.com/redhat-developer/yaml-language-server">yaml-language-server</a>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">npm i -g yaml-language-server
+</pre>
+</div>
+
+<p>
+And set the layer variable <code>yaml-enable-lsp</code> to <code>t</code> like shown below:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>yaml <span class="org-builtin">:variables</span> yaml-enable-lsp t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org98014da" class="outline-2">
 <h2 id="syntax-checking-with-flycheck"><span class="section-number-2">3</span> Syntax checking with flycheck</h2>
 <div class="outline-text-2" id="text-syntax-checking-with-flycheck">
 <p>
-Flycheck checks YAML with yaml-jsyaml or yaml-ruby. The flycheck YAML
-documentation can be found at the <a href="http://www.flycheck.org/en/latest/languages.html#yaml">flycheck website</a>.
+Flycheck checks YAML files with either:
 </p>
+<ul class="org-ul">
+<li><code>yaml-yamllint</code> (requires <code>yamllint</code>)</li>
+<li><code>yaml-jsyaml</code> (requires the <code>node-js</code> package <code>js-yaml</code>)</li>
+<li>or <code>yaml-ruby</code> (requires that <code>ruby</code> is installed on your system)</li>
+</ul>
 
 <p>
-Please notice that yaml-jsyaml requires node-js package js-yaml and that yaml-ruby requires ruby installed
-on your system to work.
+The flycheck YAML documentation can be found at the <a href="http://www.flycheck.org/en/latest/languages.html#yaml">flycheck website</a>.
 </p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2019-11-10 Sun 14:17</p>
+<p class="date">Created: 2020-01-25 Sat 15:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-10 Sun 14:17 -->
+<!-- 2020-01-25 Sat 15:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Docker layer</title>
@@ -282,7 +282,13 @@ for the JavaScript code in this tag.
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a></li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#docker">2.1. Docker</a></li>
+<li><a href="#linting">2.2. Linting</a></li>
+<li><a href="#lsp">2.3. LSP</a></li>
+</ul>
+</li>
 <li><a href="#usage">3. Usage</a>
 <ul>
 <li><a href="#tramp-access-to-docker-containers">3.1. TRAMP access to docker containers</a></li>
@@ -298,7 +304,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org75f7b7f" class="outline-2">
+<div id="outline-container-org98af72c" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -306,7 +312,7 @@ This layer integrates basic container management into Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-orgd635929" class="outline-3">
+<div id="outline-container-orge0e41ce" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -316,14 +322,20 @@ This layer integrates basic container management into Spacemacs.
 <li><code>Docker</code> container and image management via <a href="https://github.com/Silex/docker.el">docker.el</a></li>
 <li><code>docker-compose</code> integration via <a href="https://github.com/Silex/docker.el">docker.el</a></li>
 <li>Syntax checking via <a href="https://github.com/hadolint/hadolint">hadolint</a></li>
+<li>Code-Completion via <code>company-lsp</code></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org9e80b00" class="outline-2">
+<div id="outline-container-org1769998" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-org959e849" class="outline-3">
+<h3 id="docker"><span class="section-number-3">2.1</span> Docker</h3>
+<div class="outline-text-3" id="text-docker">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>docker</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
@@ -332,17 +344,60 @@ file.
 
 <p>
 You will also need the native package <a href="https://www.docker.com/">Docker</a> for the actual container management.
-For syntax checking the external library <code>hadolint</code> is also necessary.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org7bbe90a" class="outline-2">
+<div id="outline-container-org61ebe41" class="outline-3">
+<h3 id="linting"><span class="section-number-3">2.2</span> Linting</h3>
+<div class="outline-text-3" id="text-linting">
+<p>
+For syntax checking the external library <a href="https://github.com/hadolint/hadolint">hadolint</a> is necessary.
+It can either be downloaded from <a href="https://github.com/hadolint/hadolint/releases/latest"><code>here</code></a> or
+build locally with stack as shown below:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">stack install hadolint
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org900ae56" class="outline-3">
+<h3 id="lsp"><span class="section-number-3">2.3</span> LSP</h3>
+<div class="outline-text-3" id="text-lsp">
+<p>
+This layer can be enhanced with <a href="https://github.com/rcjsuen/dockerfile-language-server-nodejs"><code>dockerfile-language-server-nodejs</code></a> and emacs
+<a href="https://github.com/emacs-lsp/lsp-mode"><code>lsp-mode</code></a> to provide richer, IDE-like capabilities.
+To do so set the layer variable <code>docker-dockerfile-backend</code> to <code>lsp</code> like shown below:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>docker <span class="org-builtin">:variables</span> docker-dockerfile-backend 'lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+In addition you need to install the lsp server's executable in your system.
+This can be done via npm:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">npm i -g dockerfile-language-server-nodejs
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0b7a44c" class="outline-2">
 <h2 id="usage"><span class="section-number-2">3</span> Usage</h2>
 <div class="outline-text-2" id="text-usage">
 </div>
 
-<div id="outline-container-org4f8195e" class="outline-3">
+<div id="outline-container-org0b14233" class="outline-3">
 <h3 id="tramp-access-to-docker-containers"><span class="section-number-3">3.1</span> TRAMP access to docker containers</h3>
 <div class="outline-text-3" id="text-tramp-access-to-docker-containers">
 <p>
@@ -359,7 +414,7 @@ auto-completion of the running containers.
 </div>
 </div>
 
-<div id="outline-container-orgaea734e" class="outline-2">
+<div id="outline-container-org6ba0f95" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -453,7 +508,7 @@ auto-completion of the running containers.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2019-11-10 Sun 14:17</p>
+<p class="date">Created: 2020-01-25 Sat 15:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

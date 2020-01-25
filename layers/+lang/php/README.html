@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-10 Sun 14:17 -->
+<!-- 2020-01-25 Sat 15:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PHP layer</title>
@@ -294,7 +294,14 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#key-bindings">3. Key bindings</a></li>
+<li><a href="#key-bindings">3. Key bindings</a>
+<ul>
+<li><a href="#general">3.1. General</a></li>
+<li><a href="#refactoring-for-non-lsp-backends">3.2. Refactoring for non LSP backends</a></li>
+<li><a href="#debugging-for-non-lsp-backends">3.3. Debugging for non LSP backends</a></li>
+<li><a href="#lsp-key-bindings">3.4. LSP key bindings</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -304,7 +311,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgdef70b5" class="outline-2">
+<div id="outline-container-org453ff59" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -312,7 +319,7 @@ This layer adds PHP language support to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-org8eb37d8" class="outline-3">
+<div id="outline-container-org3877e43" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -321,6 +328,8 @@ This layer adds PHP language support to Spacemacs.
 <li>Complete and jump to define with <a href="https://github.com/xcwen/ac-php">company-php</a></li>
 <li>Run tests with PHPUnit</li>
 <li>Reformat code with PHP CBF</li>
+<li>Debug your programs with XDebug (via <a href="https://github.com/ahungry/geben">geben</a>)</li>
+<li>Refactor source files with help of <a href="https://github.com/emacs-php/phpactor.el">phpactor.el</a></li>
 <li>Support for the <a href="https://langserver.org/">Language Server Protocol</a> (experimental)</li>
 </ul>
 
@@ -332,12 +341,12 @@ The <code>gtags</code> layer is recommended to benefit from better <code>eldoc</
 </div>
 </div>
 
-<div id="outline-container-orgb419203" class="outline-2">
+<div id="outline-container-org863606e" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org6515a51" class="outline-3">
+<div id="outline-container-org77a8523" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -348,11 +357,11 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgdedab15" class="outline-3">
+<div id="outline-container-orgc3177e9" class="outline-3">
 <h3 id="backends"><span class="section-number-3">2.2</span> Backends</h3>
 <div class="outline-text-3" id="text-backends">
 <p>
-For php you have the choice between a set of possible LSP backends with
+For php you have the choice between a set of possible backends with
 different setup instructions and different capabilities.
 </p>
 
@@ -361,7 +370,7 @@ Note that you'll need to use the <code>lsp</code> layer to enable these backends
 </p>
 </div>
 
-<div id="outline-container-org6a0aca1" class="outline-4">
+<div id="outline-container-org0a7e12d" class="outline-4">
 <h4 id="intelephense"><span class="section-number-4">2.2.1</span> intelephense</h4>
 <div class="outline-text-4" id="text-intelephense">
 <p>
@@ -389,7 +398,7 @@ You can find further information on the project's <a href="http://intelephense.n
 </div>
 </div>
 
-<div id="outline-container-org58265b5" class="outline-4">
+<div id="outline-container-org72b32d3" class="outline-4">
 <h4 id="php-language-server"><span class="section-number-4">2.2.2</span> php-language-server</h4>
 <div class="outline-text-4" id="text-php-language-server">
 <p>
@@ -410,7 +419,7 @@ You can find further information on the project's <a href="https://github.com/fe
 </div>
 </div>
 
-<div id="outline-container-org9b16ae6" class="outline-4">
+<div id="outline-container-org17bee28" class="outline-4">
 <h4 id="ac-php-core"><span class="section-number-4">2.2.3</span> ac-php-core</h4>
 <div class="outline-text-4" id="text-ac-php-core">
 <p>
@@ -465,7 +474,23 @@ If your project contains the following files at the root folder:
 
 <p>
 the necessary configuration file (<code>.ac-php-conf.json</code>) will be created automatically
-if it does not exist. 
+if it does not exist.
+</p>
+</div>
+</li>
+
+<li><a id="refactoring"></a>Refactoring<br />
+<div class="outline-text-5" id="text-refactoring">
+<p>
+This backend provides refactoring and class auto-completion capabilities via <a href="https://github.com/emacs-php/phpactor.el">phpactor.el</a>.
+To ensure that the phpactor package is intact, just run
+<code>M-x phpactor-install-or-update</code> and the package itself will make sure that
+you're good to go.
+</p>
+
+<p>
+It also provides debug capabilities via the <a href="https://github.com/ahungry/geben">geben package</a>. Please refer for details
+to the project page.
 </p>
 </div>
 </li>
@@ -474,9 +499,14 @@ if it does not exist.
 </div>
 </div>
 
-<div id="outline-container-org24b818c" class="outline-2">
+<div id="outline-container-orgb2fddeb" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
+</div>
+
+<div id="outline-container-org2cec70b" class="outline-3">
+<h3 id="general"><span class="section-number-3">3.1</span> General</h3>
+<div class="outline-text-3" id="text-general">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -505,10 +535,325 @@ if it does not exist.
 </table>
 </div>
 </div>
+
+<div id="outline-container-org613d0f1" class="outline-3">
+<h3 id="refactoring-for-non-lsp-backends"><span class="section-number-3">3.2</span> Refactoring for non LSP backends</h3>
+<div class="outline-text-3" id="text-refactoring-for-non-lsp-backends">
+<p>
+For more precise insights on the meaning of the key bindings please refer to <a href="https://phpactor.github.io/phpactor/refactorings.html">phpactor API reference.</a>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m r i</code></td>
+<td class="org-left">import class under cursor</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r r</code></td>
+<td class="org-left">rename local variable</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r R</code></td>
+<td class="org-left">rename variable in a whole file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r n</code></td>
+<td class="org-left">synchronize namespace with file location</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r v</code></td>
+<td class="org-left">toggle method visibility (public-&gt;protected-&gt;private)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r g a</code></td>
+<td class="org-left">generate unknown property accessors</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r g m</code></td>
+<td class="org-left">generate a method signature by a call example</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r c n</code></td>
+<td class="org-left">create a new class at a given path</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r c c</code></td>
+<td class="org-left">copy current class elsewhere</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r c m</code></td>
+<td class="org-left">move (rename) current class</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r c i</code></td>
+<td class="org-left">generate an interface from class' public methods</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r p c</code></td>
+<td class="org-left">declare class properties by constructor signature</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r p p</code></td>
+<td class="org-left">add missing class properties</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r e c</code></td>
+<td class="org-left">extract constant under cursor from a class</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r e e</code></td>
+<td class="org-left">extract expression to a variable</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r e m</code></td>
+<td class="org-left">extract a code hunk to a method</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r m c</code></td>
+<td class="org-left">add non-implemented stubs from parent classes/contracts</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m P s</code></td>
+<td class="org-left">ask phpactor about it's status</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m P u</code></td>
+<td class="org-left">install/update phpactor package</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org197cc91" class="outline-3">
+<h3 id="debugging-for-non-lsp-backends"><span class="section-number-3">3.3</span> Debugging for non LSP backends</h3>
+<div class="outline-text-3" id="text-debugging-for-non-lsp-backends">
+<p>
+XDebug client management:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d x</code></td>
+<td class="org-left">start XDebug client</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d X</code></td>
+<td class="org-left">stop XDebug client</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b</code></td>
+<td class="org-left">set a predefined breakpoint on current line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d C</code></td>
+<td class="org-left">clear predefined breakpoints</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Debugger interaction:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>o</code> or <code>n</code></td>
+<td class="org-left">step over statement</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s</code> or <code>i</code></td>
+<td class="org-left">step into current call</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>r</code></td>
+<td class="org-left">step out of function</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>c</code></td>
+<td class="org-left">resume execution until cursor position or next breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>e</code></td>
+<td class="org-left">evaluate expression in local context</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>L</code></td>
+<td class="org-left">focus line the execution stopped on</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>v</code></td>
+<td class="org-left">display context (local/global variables, user-defined constants)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>b b</code></td>
+<td class="org-left">set breakpoint here</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>b c</code></td>
+<td class="org-left">set conditional breakpoint here</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>b e</code></td>
+<td class="org-left">set breakpoint on exception here</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>u</code></td>
+<td class="org-left">unset breakpoint here</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>U</code></td>
+<td class="org-left">clear all breakpoints (in all files!)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>w</code></td>
+<td class="org-left">show current stack trace</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g f</code></td>
+<td class="org-left">find debugged file in a worktree</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>q</code></td>
+<td class="org-left">quit debugging</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Variable listing:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>j</code></td>
+<td class="org-left">next variable or section</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>k</code></td>
+<td class="org-left">previous variable or section</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>TAB</code></td>
+<td class="org-left">fold/unfold variable or section</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>q</code></td>
+<td class="org-left">close variable listing</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org056c997" class="outline-3">
+<h3 id="lsp-key-bindings"><span class="section-number-3">3.4</span> LSP key bindings</h3>
+<div class="outline-text-3" id="text-lsp-key-bindings">
+<p>
+For a detailed list of key bindings in <code>lsp-mode</code> please checkout the README.org
+file of the <code>lsp layer</code>.
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2019-11-10 Sun 14:17</p>
+<p class="date">Created: 2020-01-25 Sat 15:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
