@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-25 Sat 15:22 -->
+<!-- 2020-05-06 Wed 22:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Scala layer</title>
@@ -227,7 +227,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -285,15 +285,15 @@ for the JavaScript code in this tag.
 <li><a href="#layer-installation">2. Layer Installation</a></li>
 <li><a href="#backends">3. Backends</a>
 <ul>
-<li><a href="#ensime">3.1. Ensime</a>
+<li><a href="#metals">3.1. Metals</a></li>
+<li><a href="#ensime-deprecated">3.2. Ensime (deprecated)</a>
 <ul>
-<li><a href="#installation-when-using-sbt">3.1.1. Installation when using SBT</a></li>
-<li><a href="#installation-when-using-gradle">3.1.2. Installation when using Gradle</a></li>
-<li><a href="#configuration">3.1.3. Configuration</a></li>
-<li><a href="#usage">3.1.4. Usage</a></li>
+<li><a href="#installation-when-using-sbt">3.2.1. Installation when using SBT</a></li>
+<li><a href="#installation-when-using-gradle">3.2.2. Installation when using Gradle</a></li>
+<li><a href="#configuration">3.2.3. Configuration</a></li>
+<li><a href="#usage">3.2.4. Usage</a></li>
 </ul>
 </li>
-<li><a href="#metals">3.2. Metals</a></li>
 </ul>
 </li>
 <li><a href="#scalastyle">4. Scalastyle</a>
@@ -301,27 +301,29 @@ for the JavaScript code in this tag.
 <li><a href="#use-java-doc-style">4.1. Use Java doc-style</a></li>
 </ul>
 </li>
-<li><a href="#automatically-show-the-type-of-the-symbol-under-the-cursor">5. Automatically show the type of the symbol under the cursor</a></li>
-<li><a href="#automatically-insert-asterisk-in-multiline-comments">6. Automatically insert asterisk in multiline comments</a></li>
-<li><a href="#automatically-replace-arrows-with-unicode-ones">7. Automatically replace arrows with unicode ones</a></li>
-<li><a href="#auto-start">8. Auto-start</a></li>
-<li><a href="#key-bindings">9. Key bindings</a>
+<li><a href="#enable-debug-adapter-protocol-dap">5. Enable Debug Adapter Protocol (DAP)</a></li>
+<li><a href="#automatically-show-the-type-of-the-symbol-under-the-cursor">6. Automatically show the type of the symbol under the cursor</a></li>
+<li><a href="#automatically-insert-asterisk-in-multiline-comments">7. Automatically insert asterisk in multiline comments</a></li>
+<li><a href="#automatically-replace-arrows-with-unicode-ones">8. Automatically replace arrows with unicode ones</a></li>
+<li><a href="#enable-gtags-as-a-fallback-navigation-utility">9. Enable GTags as a fallback navigation utility</a></li>
+<li><a href="#auto-start">10. Auto-start</a></li>
+<li><a href="#key-bindings">11. Key bindings</a>
 <ul>
-<li><a href="#ensime-1">9.1. Ensime</a>
+<li><a href="#ensime">11.1. Ensime</a>
 <ul>
-<li><a href="#search">9.1.1. Search</a></li>
-<li><a href="#ensime-search-mode">9.1.2. Ensime Search Mode</a></li>
-<li><a href="#sbt">9.1.3. sbt</a></li>
-<li><a href="#typecheck">9.1.4. Typecheck</a></li>
-<li><a href="#debug">9.1.5. Debug</a></li>
-<li><a href="#errors">9.1.6. Errors</a></li>
-<li><a href="#goto">9.1.7. Goto</a></li>
-<li><a href="#print-and-yank-types">9.1.8. Print and yank types</a></li>
-<li><a href="#documentation-inspect">9.1.9. Documentation, Inspect</a></li>
-<li><a href="#server">9.1.10. Server</a></li>
-<li><a href="#refactoring">9.1.11. Refactoring</a></li>
-<li><a href="#tests">9.1.12. Tests</a></li>
-<li><a href="#repl">9.1.13. REPL</a></li>
+<li><a href="#search">11.1.1. Search</a></li>
+<li><a href="#ensime-search-mode">11.1.2. Ensime Search Mode</a></li>
+<li><a href="#sbt">11.1.3. sbt</a></li>
+<li><a href="#typecheck">11.1.4. Typecheck</a></li>
+<li><a href="#debug">11.1.5. Debug</a></li>
+<li><a href="#errors">11.1.6. Errors</a></li>
+<li><a href="#goto">11.1.7. Goto</a></li>
+<li><a href="#print-and-yank-types">11.1.8. Print and yank types</a></li>
+<li><a href="#documentation-inspect">11.1.9. Documentation, Inspect</a></li>
+<li><a href="#server">11.1.10. Server</a></li>
+<li><a href="#refactoring">11.1.11. Refactoring</a></li>
+<li><a href="#tests">11.1.12. Tests</a></li>
+<li><a href="#repl">11.1.13. REPL</a></li>
 </ul>
 </li>
 </ul>
@@ -333,7 +335,7 @@ for the JavaScript code in this tag.
 <img src="img/scala.png" alt="scala.png" /> with <img src="img/ensime.png" alt="ensime.png" />
 </p>
 
-<div id="outline-container-org617fd63" class="outline-2">
+<div id="outline-container-org29fd04f" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -341,19 +343,22 @@ This layer adds support for the Scala language to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-orgf6ad2e2" class="outline-3">
+<div id="outline-container-orgc1c2a80" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Syntax highlighting</li>
 <li>Support for language backend. Either using <a href="https://ensime.github.io/">ENSIME</a> or <a href="https://scalameta.org/metals/">Metals</a></li>
+<li>Debugging support via dap</li>
 <li>Auto-completion</li>
+<li>Treeview support for viewing project structure and triggering compilation</li>
 <li>Syntax-checking</li>
 <li>Refactoring</li>
 <li>Incremental compilation</li>
 <li>Scala Repl</li>
 <li>Style linting</li>
 <li>Eldoc integration</li>
+<li>Optional GGTags search</li>
 <li>Test execution directly from Emacs</li>
 <li>Automatic replacement of ASCII arrows with unicode ones</li>
 </ul>
@@ -361,7 +366,7 @@ This layer adds support for the Scala language to Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-org629a6f2" class="outline-2">
+<div id="outline-container-org50ff387" class="outline-2">
 <h2 id="layer-installation"><span class="section-number-2">2</span> Layer Installation</h2>
 <div class="outline-text-2" id="text-layer-installation">
 <p>
@@ -369,29 +374,18 @@ To use this configuration layer, add it to your <code>~/.spacemacs</code>. You w
 add <code>scala</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
 file.
 </p>
-
-<p>
-Then, you should modify your <code>~/.spacemacs</code> to use the recommended Ensime
-version (Stable). Please add the following lines to <code>dotspacemacs/user-init</code>:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'configuration-layer-elpa-archives '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"melpa-stable"</span> . <span class="org-string">"stable.melpa.org/packages/"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'package-pinned-packages '<span class="org-rainbow-delimiters-depth-2">(</span>ensime . <span class="org-string">"melpa-stable"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 </div>
 </div>
 
-<div id="outline-container-org48767b2" class="outline-2">
+<div id="outline-container-org7b10975" class="outline-2">
 <h2 id="backends"><span class="section-number-2">3</span> Backends</h2>
 <div class="outline-text-2" id="text-backends">
 <p>
 The currently supported language backends are:
 </p>
 <ul class="org-ul">
-<li>scala-ensime (default)</li>
 <li>scala-metals</li>
+<li>scala-ensime (deprecated)</li>
 </ul>
 
 <p>
@@ -400,89 +394,13 @@ To set your choice of backend, configure the layer variable <code>scala-backend<
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>scala <span class="org-builtin">:variables</span> scala-backend 'scala-ensime<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">;</span><span class="org-comment">or 'scala-metals</span>
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>scala <span class="org-builtin">:variables</span> scala-backend 'scala-metals<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">;</span><span class="org-comment">or 'scala-ensime</span>
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org30ec120" class="outline-3">
-<h3 id="ensime"><span class="section-number-3">3.1</span> Ensime</h3>
-<div class="outline-text-3" id="text-ensime">
-<p>
-<a href="https://ensime.github.io/">ENSIME</a> provides IDE-like features, such as refactoring, incremental compilation
-and project-wide type-checking.
-</p>
-
-<p>
-ENSIME requires a configuration file at the root of each Scala project. It
-provides an SBT plugin, a gradle plugin and others (see <a href="https://web.archive.org/web/20190427005241/https://ensime.github.io/build_tools/">ensime.org</a> for a full
-list) to generate these files.
-</p>
-</div>
-
-<div id="outline-container-org0ae1773" class="outline-4">
-<h4 id="installation-when-using-sbt"><span class="section-number-4">3.1.1</span> Installation when using SBT</h4>
-<div class="outline-text-4" id="text-installation-when-using-sbt">
-<p>
-Find it with your favourite package manager, eg:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-shell">nix-env --install sbt
-</pre>
-</div>
-
-<p>
-or refer to <a href="http://www.scala-sbt.org/download.html">the sbt installation instructions</a>.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org4f965b4" class="outline-4">
-<h4 id="installation-when-using-gradle"><span class="section-number-4">3.1.2</span> Installation when using Gradle</h4>
-<div class="outline-text-4" id="text-installation-when-using-gradle">
-<p>
-Refer to the <a href="https://web.archive.org/web/20190324005432/http://ensime.github.io/build_tools/gradle/">Ensime installation instructions</a> to install the <code>ensime-gradle</code>
-plugin.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org8b15ad9" class="outline-4">
-<h4 id="configuration"><span class="section-number-4">3.1.3</span> Configuration</h4>
-<div class="outline-text-4" id="text-configuration">
-<p>
-Follow <a href="https://web.archive.org/web/20190417132406/http://ensime.github.io/build_tools/sbt/">the ENSIME configuration instructions</a>. Spacemacs uses
-the development version of Ensime so follow the appropriate steps.
-</p>
-
-<p>
-To use the build functions under <code>SPC m b</code> you need to use version <code>0.13.5</code> or
-newer of <code>sbt</code>, and specify that in your project's <code>project/build.properties</code>.
-For example,
-</p>
-
-<div class="org-src-container">
-<pre class="src src-scala">sbt.version=0.13.11
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgc25d4c4" class="outline-4">
-<h4 id="usage"><span class="section-number-4">3.1.4</span> Usage</h4>
-<div class="outline-text-4" id="text-usage">
-<p>
-<code>SPC SPC spacemacs/ensime-gen-and-restart</code> or <code>SPC m D r</code> generates a new config
-for a project and starts the server. Afterwards <code>SPC SPC ensime</code> or <code>SPC m D s</code>
-will suffice do the trick.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgb4b66a4" class="outline-3">
-<h3 id="metals"><span class="section-number-3">3.2</span> Metals</h3>
+<div id="outline-container-orge8a7a42" class="outline-3">
+<h3 id="metals"><span class="section-number-3">3.1</span> Metals</h3>
 <div class="outline-text-3" id="text-metals">
 <p>
 Currently, you must manually install the metals server. It is possible to do so
@@ -508,9 +426,100 @@ You will then have the common LSP key bindings; see
 </p>
 </div>
 </div>
+
+<div id="outline-container-orgb8bd863" class="outline-3">
+<h3 id="ensime-deprecated"><span class="section-number-3">3.2</span> Ensime (deprecated)</h3>
+<div class="outline-text-3" id="text-ensime-deprecated">
+<p>
+This package is mainly unmaintained today and should only be used as a last resort.
+</p>
+
+<p>
+<a href="https://ensime.github.io/">ENSIME</a> provides IDE-like features, such as refactoring, incremental compilation
+and project-wide type-checking.
+</p>
+
+<p>
+You will also need to modify your <code>dotspacemacs/user-init</code> to pull the recommended Ensime
+version (Stable):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'configuration-layer-elpa-archives '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"melpa-stable"</span> . <span class="org-string">"stable.melpa.org/packages/"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'package-pinned-packages '<span class="org-rainbow-delimiters-depth-2">(</span>ensime . <span class="org-string">"melpa-stable"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 
-<div id="outline-container-org83107cc" class="outline-2">
+<p>
+ENSIME requires a configuration file at the root of each Scala project. It
+provides an SBT plugin, a gradle plugin and others (see <a href="https://web.archive.org/web/20190427005241/https://ensime.github.io/build_tools/">ensime.org</a> for a full
+list) to generate these files.
+</p>
+</div>
+
+<div id="outline-container-org0bcaf0d" class="outline-4">
+<h4 id="installation-when-using-sbt"><span class="section-number-4">3.2.1</span> Installation when using SBT</h4>
+<div class="outline-text-4" id="text-installation-when-using-sbt">
+<p>
+Find it with your favourite package manager, eg:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">nix-env --install sbt
+</pre>
+</div>
+
+<p>
+or refer to <a href="http://www.scala-sbt.org/download.html">the sbt installation instructions</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org12bc603" class="outline-4">
+<h4 id="installation-when-using-gradle"><span class="section-number-4">3.2.2</span> Installation when using Gradle</h4>
+<div class="outline-text-4" id="text-installation-when-using-gradle">
+<p>
+Refer to the <a href="https://web.archive.org/web/20190324005432/http://ensime.github.io/build_tools/gradle/">Ensime installation instructions</a> to install the <code>ensime-gradle</code>
+plugin.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf4be1c9" class="outline-4">
+<h4 id="configuration"><span class="section-number-4">3.2.3</span> Configuration</h4>
+<div class="outline-text-4" id="text-configuration">
+<p>
+Follow <a href="https://web.archive.org/web/20190417132406/http://ensime.github.io/build_tools/sbt/">the ENSIME configuration instructions</a>. Spacemacs uses
+the development version of Ensime so follow the appropriate steps.
+</p>
+
+<p>
+To use the build functions under <code>SPC m b</code> you need to use version <code>0.13.5</code> or
+newer of <code>sbt</code>, and specify that in your project's <code>project/build.properties</code>.
+For example,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scala">sbt.version=0.13.11
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org779f4d4" class="outline-4">
+<h4 id="usage"><span class="section-number-4">3.2.4</span> Usage</h4>
+<div class="outline-text-4" id="text-usage">
+<p>
+<code>SPC SPC spacemacs/ensime-gen-and-restart</code> or <code>SPC m D r</code> generates a new config
+for a project and starts the server. Afterwards <code>SPC SPC ensime</code> or <code>SPC m D s</code>
+will suffice do the trick.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5e0e987" class="outline-2">
 <h2 id="scalastyle"><span class="section-number-2">4</span> Scalastyle</h2>
 <div class="outline-text-2" id="text-scalastyle">
 <p>
@@ -555,7 +564,7 @@ configuration instructions.
 </p>
 </div>
 
-<div id="outline-container-org6195f25" class="outline-3">
+<div id="outline-container-org3634097" class="outline-3">
 <h3 id="use-java-doc-style"><span class="section-number-3">4.1</span> Use Java doc-style</h3>
 <div class="outline-text-3" id="text-use-java-doc-style">
 <p>
@@ -572,8 +581,17 @@ To enable <code>java-doc-style</code>, set the variable <code>scala-indent:use-j
 </div>
 </div>
 
-<div id="outline-container-org839a372" class="outline-2">
-<h2 id="automatically-show-the-type-of-the-symbol-under-the-cursor"><span class="section-number-2">5</span> Automatically show the type of the symbol under the cursor</h2>
+<div id="outline-container-org5a07046" class="outline-2">
+<h2 id="enable-debug-adapter-protocol-dap"><span class="section-number-2">5</span> Enable Debug Adapter Protocol (DAP)</h2>
+<div class="outline-text-2" id="text-enable-debug-adapter-protocol-dap">
+<p>
+The metals backend enables integration with the DAP layer for debugging support.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9129a55" class="outline-2">
+<h2 id="automatically-show-the-type-of-the-symbol-under-the-cursor"><span class="section-number-2">6</span> Automatically show the type of the symbol under the cursor</h2>
 <div class="outline-text-2" id="text-automatically-show-the-type-of-the-symbol-under-the-cursor">
 <p>
 To enable the feature <code>ensime-type-at-point</code> when cursor moves, set the
@@ -592,8 +610,8 @@ Enabling this option can cause slow editor performance.
 </div>
 </div>
 
-<div id="outline-container-org46fc37c" class="outline-2">
-<h2 id="automatically-insert-asterisk-in-multiline-comments"><span class="section-number-2">6</span> Automatically insert asterisk in multiline comments</h2>
+<div id="outline-container-org292fd9e" class="outline-2">
+<h2 id="automatically-insert-asterisk-in-multiline-comments"><span class="section-number-2">7</span> Automatically insert asterisk in multiline comments</h2>
 <div class="outline-text-2" id="text-automatically-insert-asterisk-in-multiline-comments">
 <p>
 To insert a leading asterisk in multiline comments automatically, set the
@@ -608,8 +626,8 @@ variable <code>scala-auto-insert-asterisk-in-comments</code> to <code>t</code>.
 </div>
 </div>
 
-<div id="outline-container-orgffaa269" class="outline-2">
-<h2 id="automatically-replace-arrows-with-unicode-ones"><span class="section-number-2">7</span> Automatically replace arrows with unicode ones</h2>
+<div id="outline-container-org2455479" class="outline-2">
+<h2 id="automatically-replace-arrows-with-unicode-ones"><span class="section-number-2">8</span> Automatically replace arrows with unicode ones</h2>
 <div class="outline-text-2" id="text-automatically-replace-arrows-with-unicode-ones">
 <p>
 To replace <code>=&gt;</code>, <code>-&gt;</code> and <code>&lt;-</code> with unicode arrows <code>⇒</code>, <code>→</code> and <code>←</code>, set the
@@ -630,8 +648,24 @@ the ascii arrows back.
 </div>
 </div>
 
-<div id="outline-container-org21dcfe6" class="outline-2">
-<h2 id="auto-start"><span class="section-number-2">8</span> Auto-start</h2>
+<div id="outline-container-orgf0a8201" class="outline-2">
+<h2 id="enable-gtags-as-a-fallback-navigation-utility"><span class="section-number-2">9</span> Enable GTags as a fallback navigation utility</h2>
+<div class="outline-text-2" id="text-enable-gtags-as-a-fallback-navigation-utility">
+<p>
+To enable gtags when in scala-mode, in case metals, or, ensime are not fully
+functioning set the variable <code>scala-enable-gtags</code> to <code>t</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>scala <span class="org-builtin">:variables</span> scala-enable-gtags t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7b2e4e2" class="outline-2">
+<h2 id="auto-start"><span class="section-number-2">10</span> Auto-start</h2>
 <div class="outline-text-2" id="text-auto-start">
 <p>
 If you prefer to have the backend start when you load a scala file, you can enable it
@@ -646,18 +680,18 @@ with
 </div>
 </div>
 
-<div id="outline-container-org7554088" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">9</span> Key bindings</h2>
+<div id="outline-container-orgc73bb85" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">11</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org2e21a5c" class="outline-3">
-<h3 id="ensime-1"><span class="section-number-3">9.1</span> Ensime</h3>
-<div class="outline-text-3" id="text-ensime-1">
+<div id="outline-container-org59caf58" class="outline-3">
+<h3 id="ensime"><span class="section-number-3">11.1</span> Ensime</h3>
+<div class="outline-text-3" id="text-ensime">
 </div>
 
-<div id="outline-container-orgde976e7" class="outline-4">
-<h4 id="search"><span class="section-number-4">9.1.1</span> Search</h4>
+<div id="outline-container-org23c1d3b" class="outline-4">
+<h4 id="search"><span class="section-number-4">11.1.1</span> Search</h4>
 <div class="outline-text-4" id="text-search">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -688,8 +722,8 @@ with
 </div>
 </div>
 
-<div id="outline-container-org2f56724" class="outline-4">
-<h4 id="ensime-search-mode"><span class="section-number-4">9.1.2</span> Ensime Search Mode</h4>
+<div id="outline-container-orgb1a244d" class="outline-4">
+<h4 id="ensime-search-mode"><span class="section-number-4">11.1.2</span> Ensime Search Mode</h4>
 <div class="outline-text-4" id="text-ensime-search-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -735,8 +769,8 @@ with
 </div>
 </div>
 
-<div id="outline-container-orgcbf30b1" class="outline-4">
-<h4 id="sbt"><span class="section-number-4">9.1.3</span> sbt</h4>
+<div id="outline-container-org59cc319" class="outline-4">
+<h4 id="sbt"><span class="section-number-4">11.1.3</span> sbt</h4>
 <div class="outline-text-4" id="text-sbt">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -792,8 +826,8 @@ with
 </div>
 </div>
 
-<div id="outline-container-orgcb991d8" class="outline-4">
-<h4 id="typecheck"><span class="section-number-4">9.1.4</span> Typecheck</h4>
+<div id="outline-container-org4ef9dfb" class="outline-4">
+<h4 id="typecheck"><span class="section-number-4">11.1.4</span> Typecheck</h4>
 <div class="outline-text-4" id="text-typecheck">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -819,8 +853,8 @@ with
 </div>
 </div>
 
-<div id="outline-container-orge82ed5d" class="outline-4">
-<h4 id="debug"><span class="section-number-4">9.1.5</span> Debug</h4>
+<div id="outline-container-org793f793" class="outline-4">
+<h4 id="debug"><span class="section-number-4">11.1.5</span> Debug</h4>
 <div class="outline-text-4" id="text-debug">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -905,8 +939,8 @@ with
 </div>
 </div>
 
-<div id="outline-container-orgdd2f41f" class="outline-4">
-<h4 id="errors"><span class="section-number-4">9.1.6</span> Errors</h4>
+<div id="outline-container-org5381551" class="outline-4">
+<h4 id="errors"><span class="section-number-4">11.1.6</span> Errors</h4>
 <div class="outline-text-4" id="text-errors">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -937,8 +971,8 @@ with
 </div>
 </div>
 
-<div id="outline-container-orga970a41" class="outline-4">
-<h4 id="goto"><span class="section-number-4">9.1.7</span> Goto</h4>
+<div id="outline-container-orge996bd9" class="outline-4">
+<h4 id="goto"><span class="section-number-4">11.1.7</span> Goto</h4>
 <div class="outline-text-4" id="text-goto">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -964,8 +998,8 @@ with
 </div>
 </div>
 
-<div id="outline-container-org995235d" class="outline-4">
-<h4 id="print-and-yank-types"><span class="section-number-4">9.1.8</span> Print and yank types</h4>
+<div id="outline-container-orgb07e0dc" class="outline-4">
+<h4 id="print-and-yank-types"><span class="section-number-4">11.1.8</span> Print and yank types</h4>
 <div class="outline-text-4" id="text-print-and-yank-types">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1000,8 +1034,8 @@ with
 </div>
 </div>
 
-<div id="outline-container-orgf9e37a5" class="outline-4">
-<h4 id="documentation-inspect"><span class="section-number-4">9.1.9</span> Documentation, Inspect</h4>
+<div id="outline-container-org31e4cde" class="outline-4">
+<h4 id="documentation-inspect"><span class="section-number-4">11.1.9</span> Documentation, Inspect</h4>
 <div class="outline-text-4" id="text-documentation-inspect">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1032,8 +1066,8 @@ with
 </div>
 </div>
 
-<div id="outline-container-org8c1ce45" class="outline-4">
-<h4 id="server"><span class="section-number-4">9.1.10</span> Server</h4>
+<div id="outline-container-orgf0fc52c" class="outline-4">
+<h4 id="server"><span class="section-number-4">11.1.10</span> Server</h4>
 <div class="outline-text-4" id="text-server">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1069,8 +1103,8 @@ with
 </div>
 </div>
 
-<div id="outline-container-orgc70a6d5" class="outline-4">
-<h4 id="refactoring"><span class="section-number-4">9.1.11</span> Refactoring</h4>
+<div id="outline-container-org5daf6cf" class="outline-4">
+<h4 id="refactoring"><span class="section-number-4">11.1.11</span> Refactoring</h4>
 <div class="outline-text-4" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1136,8 +1170,8 @@ with
 </div>
 </div>
 
-<div id="outline-container-orgce64f7f" class="outline-4">
-<h4 id="tests"><span class="section-number-4">9.1.12</span> Tests</h4>
+<div id="outline-container-org6730362" class="outline-4">
+<h4 id="tests"><span class="section-number-4">11.1.12</span> Tests</h4>
 <div class="outline-text-4" id="text-tests">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1173,8 +1207,8 @@ with
 </div>
 </div>
 
-<div id="outline-container-orga0f134c" class="outline-4">
-<h4 id="repl"><span class="section-number-4">9.1.13</span> REPL</h4>
+<div id="outline-container-org5e7a4d1" class="outline-4">
+<h4 id="repl"><span class="section-number-4">11.1.13</span> REPL</h4>
 <div class="outline-text-4" id="text-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1229,7 +1263,7 @@ with
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-01-25 Sat 15:22</p>
+<p class="date">Created: 2020-05-06 Wed 22:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

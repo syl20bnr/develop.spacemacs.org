@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-25 Sat 15:22 -->
+<!-- 2020-05-06 Wed 22:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JavaScript layer</title>
@@ -227,7 +227,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -295,11 +295,12 @@ for the JavaScript code in this tag.
 <li><a href="#backends">3. Backends</a>
 <ul>
 <li><a href="#tern">3.1. Tern</a></li>
-<li><a href="#language-server-protocol">3.2. Language Server Protocol</a>
+<li><a href="#tide">3.2. Tide</a></li>
+<li><a href="#language-server-protocol">3.3. Language Server Protocol</a>
 <ul>
-<li><a href="#typescript">3.2.1. TypeScript</a></li>
-<li><a href="#flow">3.2.2. Flow</a></li>
-<li><a href="#debugger-dap-integration">3.2.3. Debugger (dap integration)</a></li>
+<li><a href="#typescript">3.3.1. TypeScript</a></li>
+<li><a href="#flow">3.3.2. Flow</a></li>
+<li><a href="#debugger-dap-integration">3.3.3. Debugger (dap integration)</a></li>
 </ul>
 </li>
 </ul>
@@ -319,6 +320,7 @@ for the JavaScript code in this tag.
 <li><a href="#node-externs">4.3.2. Node Externs</a></li>
 </ul>
 </li>
+<li><a href="#flowtypescript">4.4. Flow/Typescript</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">5. Key bindings</a>
@@ -345,7 +347,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgbbe5de3" class="outline-2">
+<div id="outline-container-org66a0128" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -353,7 +355,7 @@ This layer adds support for the JavaScript language using <a href="https://githu
 </p>
 </div>
 
-<div id="outline-container-org1315bf6" class="outline-3">
+<div id="outline-container-org095b3c9" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -365,12 +367,13 @@ This layer adds support for the JavaScript language using <a href="https://githu
 <li>Server based REPL with <a href="https://github.com/abicky/nodejs-repl.el">nodejs-repl</a></li>
 <li>Formatting with <a href="https://github.com/yasuyk/web-beautify">web-beautify</a> or <a href="https://github.com/prettier/prettier">prettier</a></li>
 <li>Interactive debugger using <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a></li>
+<li>Display Flow &amp; Typescript type information</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgfd56d6d" class="outline-2">
+<div id="outline-container-orgc5be174" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -411,7 +414,7 @@ If you install these in non-standard locations, then add the following to your
 </div>
 </div>
 
-<div id="outline-container-org02c37ca" class="outline-3">
+<div id="outline-container-orge64a9dc" class="outline-3">
 <h3 id="web-beautify"><span class="section-number-3">2.1</span> web-beautify</h3>
 <div class="outline-text-3" id="text-web-beautify">
 <p>
@@ -420,7 +423,7 @@ See <a href="../../+tools/web-beautify/README.html">web-beautify layer</a> docum
 </div>
 </div>
 
-<div id="outline-container-orgd9a060f" class="outline-3">
+<div id="outline-container-orgd45270d" class="outline-3">
 <h3 id="prettier"><span class="section-number-3">2.2</span> prettier</h3>
 <div class="outline-text-3" id="text-prettier">
 <p>
@@ -429,7 +432,7 @@ See <a href="../../+tools/prettier/README.html">prettier layer</a> documentation
 </div>
 </div>
 
-<div id="outline-container-orga71a1d6" class="outline-3">
+<div id="outline-container-orgafa913c" class="outline-3">
 <h3 id="import-js"><span class="section-number-3">2.3</span> import-js</h3>
 <div class="outline-text-3" id="text-import-js">
 <p>
@@ -447,7 +450,7 @@ To enable it, set the layer variable <code>javascript-import-tool</code>:
 </div>
 </div>
 
-<div id="outline-container-org96ea8e7" class="outline-3">
+<div id="outline-container-org1c349a8" class="outline-3">
 <h3 id="choosing-a-backend"><span class="section-number-3">2.4</span> Choosing a backend</h3>
 <div class="outline-text-3" id="text-choosing-a-backend">
 <p>
@@ -492,7 +495,7 @@ set the variable <code>javascript-lsp-linter</code> to <code>nil</code>.
 </div>
 </div>
 
-<div id="outline-container-orgd8e8539" class="outline-3">
+<div id="outline-container-org8ac7106" class="outline-3">
 <h3 id="choosing-a-formatter"><span class="section-number-3">2.5</span> Choosing a formatter</h3>
 <div class="outline-text-3" id="text-choosing-a-formatter">
 <p>
@@ -539,7 +542,7 @@ Default is <code>’web-beautify</code>.
 </div>
 </div>
 
-<div id="outline-container-org3351d49" class="outline-3">
+<div id="outline-container-orgc982e7d" class="outline-3">
 <h3 id="format-buffer-before-saving"><span class="section-number-3">2.6</span> Format buffer before saving</h3>
 <div class="outline-text-3" id="text-format-buffer-before-saving">
 <div class="org-src-container">
@@ -550,12 +553,12 @@ Default is <code>’web-beautify</code>.
 </div>
 </div>
 
-<div id="outline-container-org56a7021" class="outline-2">
+<div id="outline-container-orgf7ba3f4" class="outline-2">
 <h2 id="backends"><span class="section-number-2">3</span> Backends</h2>
 <div class="outline-text-2" id="text-backends">
 </div>
 
-<div id="outline-container-org995f4ed" class="outline-3">
+<div id="outline-container-org96fae03" class="outline-3">
 <h3 id="tern"><span class="section-number-3">3.1</span> Tern</h3>
 <div class="outline-text-3" id="text-tern">
 <p>
@@ -564,8 +567,17 @@ See <a href="../../+tools/tern/README.html">tern layer</a> documentation.
 </div>
 </div>
 
-<div id="outline-container-org67f951c" class="outline-3">
-<h3 id="language-server-protocol"><span class="section-number-3">3.2</span> Language Server Protocol</h3>
+<div id="outline-container-org49c1905" class="outline-3">
+<h3 id="tide"><span class="section-number-3">3.2</span> Tide</h3>
+<div class="outline-text-3" id="text-tide">
+<p>
+See <a href="../../+tools/tide/README.html">tide layer</a> documentation.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org52e908a" class="outline-3">
+<h3 id="language-server-protocol"><span class="section-number-3">3.3</span> Language Server Protocol</h3>
 <div class="outline-text-3" id="text-language-server-protocol">
 <p>
 To use an LSP server with JavaScript, add it as a <code>javascript-backend</code> to your
@@ -580,8 +592,8 @@ To use an LSP server with JavaScript, add it as a <code>javascript-backend</code
 </div>
 </div>
 
-<div id="outline-container-org3730a23" class="outline-4">
-<h4 id="typescript"><span class="section-number-4">3.2.1</span> TypeScript</h4>
+<div id="outline-container-orgf5cd7dc" class="outline-4">
+<h4 id="typescript"><span class="section-number-4">3.3.1</span> TypeScript</h4>
 <div class="outline-text-4" id="text-typescript">
 <p>
 You have to install <code>typescript-language-server</code> (recommended) or
@@ -604,8 +616,8 @@ or
 </div>
 </div>
 
-<div id="outline-container-org87df032" class="outline-4">
-<h4 id="flow"><span class="section-number-4">3.2.2</span> Flow</h4>
+<div id="outline-container-org9fafc76" class="outline-4">
+<h4 id="flow"><span class="section-number-4">3.3.2</span> Flow</h4>
 <div class="outline-text-4" id="text-flow">
 <p>
 You have to install <code>flow-bin</code>.
@@ -615,11 +627,16 @@ You have to install <code>flow-bin</code>.
 <pre class="src src-sh">npm i -g flow-bin
 </pre>
 </div>
+
+<p>
+Or, if you'd rather use a locally-installed <code>flow-bin</code> from your project's
+node<sub>modules</sub> directory, see the <a href="#node-modules">node-add-modules-path setting</a>.
+</p>
 </div>
 </div>
 
-<div id="outline-container-org972c0df" class="outline-4">
-<h4 id="debugger-dap-integration"><span class="section-number-4">3.2.3</span> Debugger (dap integration)</h4>
+<div id="outline-container-orgff70832" class="outline-4">
+<h4 id="debugger-dap-integration"><span class="section-number-4">3.3.3</span> Debugger (dap integration)</h4>
 <div class="outline-text-4" id="text-debugger-dap-integration">
 <p>
 To install the debug adapter you may run <code>M-x dap-firefox-setup</code> or
@@ -633,12 +650,12 @@ refer to <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a> readme.
 </div>
 </div>
 
-<div id="outline-container-org99e1d64" class="outline-2">
+<div id="outline-container-org092484a" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">4</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-orge825fe5" class="outline-3">
+<div id="outline-container-org50f6275" class="outline-3">
 <h3 id="indentation"><span class="section-number-3">4.1</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
@@ -681,12 +698,12 @@ or when adding the <code>javascript</code> configuration layer:
 </div>
 </div>
 
-<div id="outline-container-orga68e645" class="outline-3">
+<div id="outline-container-orgdb7ac0e" class="outline-3">
 <h3 id="repl"><span class="section-number-3">4.2</span> REPL</h3>
 <div class="outline-text-3" id="text-repl">
 </div>
 
-<div id="outline-container-org2cfceec" class="outline-4">
+<div id="outline-container-orgc20f3f8" class="outline-4">
 <h4 id="browser-based-repl"><span class="section-number-4">4.2.1</span> Browser based REPL</h4>
 <div class="outline-text-4" id="text-browser-based-repl">
 <p>
@@ -709,7 +726,7 @@ in the top-right corner - if it turns green, you're good to go).
 </div>
 </div>
 
-<div id="outline-container-org453e7f8" class="outline-4">
+<div id="outline-container-org0ca6485" class="outline-4">
 <h4 id="server-based-repl"><span class="section-number-4">4.2.2</span> Server based REPL</h4>
 <div class="outline-text-4" id="text-server-based-repl">
 <p>
@@ -729,12 +746,12 @@ In addition install nodejs and make sure that <code>node</code> is in the path.
 </div>
 </div>
 
-<div id="outline-container-org7fe6d75" class="outline-3">
+<div id="outline-container-orgdc1b7a9" class="outline-3">
 <h3 id="node"><span class="section-number-3">4.3</span> Node</h3>
 <div class="outline-text-3" id="text-node">
 </div>
 
-<div id="outline-container-org5479c7e" class="outline-4">
+<div id="outline-container-org77d391f" class="outline-4">
 <h4 id="node-modules"><span class="section-number-4">4.3.1</span> Node Modules</h4>
 <div class="outline-text-4" id="text-node-modules">
 <p>
@@ -752,7 +769,7 @@ doing this <a href="https://stackoverflow.com/questions/9679932#comment33532258_
 </div>
 </div>
 
-<div id="outline-container-orged1ef84" class="outline-4">
+<div id="outline-container-org776fd18" class="outline-4">
 <h4 id="node-externs"><span class="section-number-4">4.3.2</span> Node Externs</h4>
 <div class="outline-text-4" id="text-node-externs">
 <p>
@@ -769,14 +786,35 @@ variable to <code>t</code> in the <code>javascript</code> config section:
 </div>
 </div>
 </div>
+
+<div id="outline-container-org9f6572b" class="outline-3">
+<h3 id="flowtypescript"><span class="section-number-3">4.4</span> Flow/Typescript</h3>
+<div class="outline-text-3" id="text-flowtypescript">
+<p>
+Enable the <a href="#language-server-protocol">lsp</a> backend to view type information, jump to declarations, and more.
+</p>
+
+<p>
+js2-mode is sometimes confused by the type syntax, so you may wish to disable their
+parse warnings:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span> javascript-backend 'lsp
+            js2-mode-show-strict-warnings nil
+            js2-mode-show-parse-errors nil<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org5f483ea" class="outline-2">
+<div id="outline-container-org5126173" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org2e5d6d9" class="outline-3">
+<div id="outline-container-org04df5d1" class="outline-3">
 <h3 id="js2-mode"><span class="section-number-3">5.1</span> js2-mode</h3>
 <div class="outline-text-3" id="text-js2-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -808,7 +846,7 @@ variable to <code>t</code> in the <code>javascript</code> config section:
 </div>
 </div>
 
-<div id="outline-container-org679f52e" class="outline-3">
+<div id="outline-container-org782d7c8" class="outline-3">
 <h3 id="folding-js2-mode"><span class="section-number-3">5.2</span> Folding (js2-mode)</h3>
 <div class="outline-text-3" id="text-folding-js2-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -860,7 +898,7 @@ variable to <code>t</code> in the <code>javascript</code> config section:
 </div>
 </div>
 
-<div id="outline-container-org2e79a8e" class="outline-3">
+<div id="outline-container-org0411183" class="outline-3">
 <h3 id="importing-import-js"><span class="section-number-3">5.3</span> Importing (import-js)</h3>
 <div class="outline-text-3" id="text-importing-import-js">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -897,7 +935,7 @@ variable to <code>t</code> in the <code>javascript</code> config section:
 </div>
 </div>
 
-<div id="outline-container-org4f4401f" class="outline-3">
+<div id="outline-container-org0482d4b" class="outline-3">
 <h3 id="refactoring-js2-refactor"><span class="section-number-3">5.4</span> Refactoring (js2-refactor)</h3>
 <div class="outline-text-3" id="text-refactoring-js2-refactor">
 <p>
@@ -1072,7 +1110,7 @@ Bindings should match the plain emacs assignments.
 </table>
 </div>
 
-<div id="outline-container-orge3b0c76" class="outline-4">
+<div id="outline-container-org1d0f156" class="outline-4">
 <h4 id="documentation-js-doc"><span class="section-number-4">5.4.1</span> Documentation (js-doc)</h4>
 <div class="outline-text-4" id="text-documentation-js-doc">
 <p>
@@ -1119,7 +1157,7 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 
-<div id="outline-container-orga55ba7d" class="outline-3">
+<div id="outline-container-orgc2600bf" class="outline-3">
 <h3 id="browser-based-repl-skewer-mode"><span class="section-number-3">5.5</span> Browser based REPL (skewer-mode)</h3>
 <div class="outline-text-3" id="text-browser-based-repl-skewer-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1213,7 +1251,7 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 
-<div id="outline-container-orge0af67b" class="outline-3">
+<div id="outline-container-org281e63a" class="outline-3">
 <h3 id="server-based-repl-nodejs-repl"><span class="section-number-3">5.6</span> Server based REPL (nodejs-repl)</h3>
 <div class="outline-text-3" id="text-server-based-repl-nodejs-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1285,7 +1323,7 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 
-<div id="outline-container-orga5f6c15" class="outline-3">
+<div id="outline-container-org6b9c4d9" class="outline-3">
 <h3 id="debugger-dap-mode"><span class="section-number-3">5.7</span> debugger (dap mode)</h3>
 <div class="outline-text-3" id="text-debugger-dap-mode">
 <p>
@@ -1298,7 +1336,7 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-01-25 Sat 15:22</p>
+<p class="date">Created: 2020-05-06 Wed 22:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

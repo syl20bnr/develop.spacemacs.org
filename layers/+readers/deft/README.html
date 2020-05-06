@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-25 Sat 15:22 -->
+<!-- 2020-05-06 Wed 22:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Deft layer</title>
@@ -227,7 +227,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -285,15 +285,25 @@ for the JavaScript code in this tag.
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
-<li><a href="#configuration">2.2. Configuration</a></li>
+<li><a href="#zetteldeft">2.2. Zetteldeft</a></li>
+<li><a href="#configuration">2.3. Configuration</a></li>
 </ul>
 </li>
-<li><a href="#key-bindings">3. Key bindings</a></li>
+<li><a href="#key-bindings">3. Key bindings</a>
+<ul>
+<li><a href="#zetteldeft-key-bindings">3.1. Zetteldeft key bindings</a>
+<ul>
+<li><a href="#global">3.1.1. Global</a></li>
+<li><a href="#org-mode">3.1.2. Org-mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org38fef00" class="outline-2">
+<div id="outline-container-org4ccc0eb" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -301,24 +311,25 @@ This layer adds a search driven note taking system into Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-org56df6cf" class="outline-3">
+<div id="outline-container-org46bf4a4" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Browsing and creating notes with a powerful search function via <a href="http://jblevins.org/projects/deft/">Deft</a>.</li>
 <li>Integration of <code>org-mode</code> as note editor.</li>
 <li>Configurable list of extensions to recognize as notes.</li>
+<li>Zettelkasten system with <a href="https://github.com/EFLS/zetteldeft">zetteldeft</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orge274416" class="outline-2">
+<div id="outline-container-orgda02aee" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgfcd922a" class="outline-3">
+<div id="outline-container-orgc7d9c4d" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -329,8 +340,22 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgeee0197" class="outline-3">
-<h3 id="configuration"><span class="section-number-3">2.2</span> Configuration</h3>
+<div id="outline-container-orgf8cd2b2" class="outline-3">
+<h3 id="zetteldeft"><span class="section-number-3">2.2</span> Zetteldeft</h3>
+<div class="outline-text-3" id="text-zetteldeft">
+<p>
+Zetteldeft support is included with the layer. To enable it, set the layer variable <code>deft-zetteldeft</code> to <code>t</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>deft <span class="org-builtin">:variables</span> deft-zetteldeft t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9a07c65" class="outline-3">
+<h3 id="configuration"><span class="section-number-3">2.3</span> Configuration</h3>
 <div class="outline-text-3" id="text-configuration">
 <p>
 By default deft tries to put notes in <code>~/.deft</code> but you can change
@@ -361,7 +386,7 @@ Just add or substitute your preferred extension.
 </div>
 </div>
 
-<div id="outline-container-orgff2b4aa" class="outline-2">
+<div id="outline-container-orgf3ddd8f" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -382,6 +407,11 @@ Just add or substitute your preferred extension.
 <tr>
 <td class="org-left"><code>SPC a n</code></td>
 <td class="org-left">Open Deft (works globally)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC C d</code></td>
+<td class="org-left">Create new file (works globally)</td>
 </tr>
 
 <tr>
@@ -426,11 +456,144 @@ Just add or substitute your preferred extension.
 </tbody>
 </table>
 </div>
+
+<div id="outline-container-org385c769" class="outline-3">
+<h3 id="zetteldeft-key-bindings"><span class="section-number-3">3.1</span> Zetteldeft key bindings</h3>
+<div class="outline-text-3" id="text-zetteldeft-key-bindings">
+<p>
+Zetteldeft key bindings will appear in a few different places as follows:
+</p>
+</div>
+
+<div id="outline-container-org2d70183" class="outline-4">
+<h4 id="global"><span class="section-number-4">3.1.1</span> Global</h4>
+<div class="outline-text-4" id="text-global">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC C z</code> / <code>SPC a n z n</code></td>
+<td class="org-left">New zetteldeft file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a n n</code></td>
+<td class="org-left">Open deft (replaces <code>SPC a n</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a n z T</code></td>
+<td class="org-left">Show tag buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a n z s</code></td>
+<td class="org-left">Zetteldeft search-at-point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a n z o</code></td>
+<td class="org-left">Zetteldeft find file</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org96a39c4" class="outline-4">
+<h4 id="org-mode"><span class="section-number-4">3.1.2</span> Org-mode</h4>
+<div class="outline-text-4" id="text-org-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m z c</code></td>
+<td class="org-left">Search for id of current file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m z f</code></td>
+<td class="org-left">Follow link</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m z t</code></td>
+<td class="org-left">Tag search with avy</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m z N</code></td>
+<td class="org-left">New file and insert link</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m z r</code></td>
+<td class="org-left">Rename file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m z i</code></td>
+<td class="org-left">Find a file and insert link</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m z I</code></td>
+<td class="org-left">Find a file and insert link with full name</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m z s</code></td>
+<td class="org-left">Search at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m z l</code></td>
+<td class="org-left">Link search with avy</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m z F</code></td>
+<td class="org-left">File search with avy on window</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m z o</code></td>
+<td class="org-left">Find file</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-01-25 Sat 15:22</p>
+<p class="date">Created: 2020-05-06 Wed 22:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

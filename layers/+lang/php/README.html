@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-25 Sat 15:22 -->
+<!-- 2020-05-06 Wed 22:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PHP layer</title>
@@ -227,7 +227,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -287,9 +287,8 @@ for the JavaScript code in this tag.
 <li><a href="#layer">2.1. Layer</a></li>
 <li><a href="#backends">2.2. Backends</a>
 <ul>
-<li><a href="#intelephense">2.2.1. intelephense</a></li>
-<li><a href="#php-language-server">2.2.2. php-language-server</a></li>
-<li><a href="#ac-php-core">2.2.3. ac-php-core</a></li>
+<li><a href="#lsp">2.2.1. LSP</a></li>
+<li><a href="#ac-php-core">2.2.2. ac-php-core</a></li>
 </ul>
 </li>
 </ul>
@@ -300,6 +299,7 @@ for the JavaScript code in this tag.
 <li><a href="#refactoring-for-non-lsp-backends">3.2. Refactoring for non LSP backends</a></li>
 <li><a href="#debugging-for-non-lsp-backends">3.3. Debugging for non LSP backends</a></li>
 <li><a href="#lsp-key-bindings">3.4. LSP key bindings</a></li>
+<li><a href="#debugging-for-lsp-backends">3.5. Debugging for LSP backends</a></li>
 </ul>
 </li>
 </ul>
@@ -311,7 +311,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org453ff59" class="outline-2">
+<div id="outline-container-orga828c83" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -319,7 +319,7 @@ This layer adds PHP language support to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-org3877e43" class="outline-3">
+<div id="outline-container-org76f8375" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -328,7 +328,7 @@ This layer adds PHP language support to Spacemacs.
 <li>Complete and jump to define with <a href="https://github.com/xcwen/ac-php">company-php</a></li>
 <li>Run tests with PHPUnit</li>
 <li>Reformat code with PHP CBF</li>
-<li>Debug your programs with XDebug (via <a href="https://github.com/ahungry/geben">geben</a>)</li>
+<li>Debug your programs with XDebug (via <a href="https://github.com/ahungry/geben">geben</a> or <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a>)</li>
 <li>Refactor source files with help of <a href="https://github.com/emacs-php/phpactor.el">phpactor.el</a></li>
 <li>Support for the <a href="https://langserver.org/">Language Server Protocol</a> (experimental)</li>
 </ul>
@@ -341,12 +341,12 @@ The <code>gtags</code> layer is recommended to benefit from better <code>eldoc</
 </div>
 </div>
 
-<div id="outline-container-org863606e" class="outline-2">
+<div id="outline-container-org82849bf" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org77a8523" class="outline-3">
+<div id="outline-container-org95762d8" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -357,29 +357,33 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgc3177e9" class="outline-3">
+<div id="outline-container-org067984d" class="outline-3">
 <h3 id="backends"><span class="section-number-3">2.2</span> Backends</h3>
 <div class="outline-text-3" id="text-backends">
 <p>
 For php you have the choice between a set of possible backends with
 different setup instructions and different capabilities.
 </p>
+</div>
 
+<div id="outline-container-orgad29f6b" class="outline-4">
+<h4 id="lsp"><span class="section-number-4">2.2.1</span> LSP</h4>
+<div class="outline-text-4" id="text-lsp">
 <p>
 Note that you'll need to use the <code>lsp</code> layer to enable these backends.
 </p>
 </div>
 
-<div id="outline-container-org0a7e12d" class="outline-4">
-<h4 id="intelephense"><span class="section-number-4">2.2.1</span> intelephense</h4>
-<div class="outline-text-4" id="text-intelephense">
+<ol class="org-ol">
+<li><a id="intelephense"></a>intelephense<br />
+<div class="outline-text-5" id="text-intelephense">
 <p>
 This is the recommended LSP server solution. To activate it set the
 layer variable <code>php-backend</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>php <span class="org-builtin">:variables</span> php-backend 'lsp<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>php <span class="org-builtin">:variables</span> php-backend 'lsp<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -396,15 +400,14 @@ and install the npm server with:
 You can find further information on the project's <a href="http://intelephense.net/">website</a> and <a href="https://github.com/bmewburn/vscode-intelephense">GitHub page</a>.
 </p>
 </div>
-</div>
+</li>
 
-<div id="outline-container-org72b32d3" class="outline-4">
-<h4 id="php-language-server"><span class="section-number-4">2.2.2</span> php-language-server</h4>
-<div class="outline-text-4" id="text-php-language-server">
+<li><a id="php-language-server"></a>php-language-server<br />
+<div class="outline-text-5" id="text-php-language-server">
 <p>
-This is an alternative LSP server implementation working on PHP basis rather than nodejs.
-To activate it set the layer variable <code>php-backend</code> like for the intelephense backend and
-install the server via <a href="https://getcomposer.org/">composer</a>:
+This is an alternative LSP server implementation working on PHP basis rather
+than nodejs. To activate it set the layer variable <code>php-backend</code> like for the
+intelephense backend and install the server via <a href="https://getcomposer.org/">composer</a>:
 </p>
 
 <div class="org-src-container">
@@ -417,10 +420,73 @@ composer run-script --working-dir=vendor/felixfbecker/language-server parse-stub
 You can find further information on the project's <a href="https://github.com/felixfbecker/php-language-server">GitHub page</a>.
 </p>
 </div>
+</li>
+
+<li><a id="debugging"></a>Debugging<br />
+<div class="outline-text-5" id="text-debugging">
+<p>
+In case of using any of LSP backends You can debug using <a href="https://microsoft.github.io/debug-adapter-protocol">dap</a>.
+</p>
+
+<p>
+First of all You have to add <code>dap</code> to layer list of Your <code>dotspacemacs/layers</code>
+function of a <code>.spacemacs</code> config file.
+</p>
+
+<p>
+As mentioned in <a href="https://github.com/emacs-lsp/dap-mode#php">dap-mode doc for php</a>, dap-mode uses a <a href="https://marketplace.visualstudio.com/items?itemName=webfreak.debug">VSCode extension</a> as a
+debugging backend and includes a convenient <code>dap-php-setup</code> command to install
+it into Your emacs. To embrace it open any PHP file in any PHP project just
+after restarting emacs with <code>dap</code> layer enabled. Now You can call the extension
+installation command: <code>&lt;M-x&gt; dap-php-setup</code>.
+</p>
+
+<p>
+After that You can try to debug something. For example add a breakpoint to any
+of Your phpunit tests with <code>SPC m d b a</code>. And start debugging with <code>SPC m d d d</code>
+and selecting a debug template. Now run the test to ensure everything is
+working. The command to run the test while debugging could look like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">php -d xdebug.idekey=PHPSTORM -d xdebug.remote_autostart=<span class="org-highlight-numbers-number">1</span> -d xdebug.remote_enable=<span class="org-highlight-numbers-number">1</span> -d xdebug.remote_host=<span class="org-highlight-numbers-number">127.0.0.1</span> -d xdebug.remote_port=<span class="org-highlight-numbers-number">9000</span> bin/phpunit ./path/to/Test.php
+</pre>
 </div>
 
-<div id="outline-container-org17bee28" class="outline-4">
-<h4 id="ac-php-core"><span class="section-number-4">2.2.3</span> ac-php-core</h4>
+<p>
+The test is now expected to be paused by emacs/dap when it catches code at the
+breakpoint.
+</p>
+
+<p>
+You may wish to propagate some config options for the VSCode extension which is
+used as a debug server. For example if You are running Your code in a docker
+container the project source path may differ between the container (and Xdebug
+PHP extension consequently) and Emacs. The VSCode extension provides a config
+option to map the path. In VSCode it is done by adding an appropriate json
+config. For spacemacs it could be done for example by adding a next call to
+<code>dotspacemacs/user-config</code> function of Your <code>.spacemacs</code> config:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'dap-php
+  <span class="org-rainbow-delimiters-depth-2">(</span>dap-register-debug-template <span class="org-string">"PHP debug with custom path"</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>list <span class="org-builtin">:type</span> <span class="org-string">"php"</span>
+          <span class="org-builtin">:cwd</span> nil
+          <span class="org-builtin">:request</span> <span class="org-string">"launch"</span>
+          <span class="org-builtin">:name</span> <span class="org-string">"Php Debug with path"</span>
+          <span class="org-builtin">:args</span> '<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">"--server=4711"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+          <span class="org-builtin">:pathMappings</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">ht</span> <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-string">"/docker/src/path"</span> <span class="org-string">"/emacs/src/path"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+          <span class="org-builtin">:sourceMaps</span> t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgb591378" class="outline-4">
+<h4 id="ac-php-core"><span class="section-number-4">2.2.2</span> ac-php-core</h4>
 <div class="outline-text-4" id="text-ac-php-core">
 <p>
 This is a non server solution working entirely from an elisp package.
@@ -430,8 +496,8 @@ the least amount of IDE like integrations with spacemacs.
 
 <p>
 To activate it just don't set the variable <code>php-backend</code> in your dotfile.
-Remember that additional setup instructions are necessary on a per
-project basis which you can find below.
+Remember that additional setup instructions are necessary on a per project basis
+which you can find below.
 </p>
 </div>
 
@@ -439,9 +505,10 @@ project basis which you can find below.
 <li><a id="setup"></a>Setup<br />
 <div class="outline-text-5" id="text-setup">
 <p>
-Because of the way that the ac-php-core package works, there are a couple of simple
-initialization tasks which must occur to get the completion working as it should.
-On any new project make sure to perform the following initialization tasks:
+Because of the way that the ac-php-core package works, there are a couple of
+simple initialization tasks which must occur to get the completion working as it
+should. On any new project make sure to perform the following initialization
+tasks:
 </p>
 <ol class="org-ol">
 <li><p>
@@ -460,8 +527,8 @@ touch .ac-php-conf.json
 
 <p>
 The <code>.ac-php-conf.json</code> file is required to enable auto-completion. When you run
-<code>ac-php-remake-tags</code> and your <code>.ac-php-conf.json</code> file is empty the default configuration
-will be used and inserted in the file.
+<code>ac-php-remake-tags</code> and your <code>.ac-php-conf.json</code> file is empty the default
+configuration will be used and inserted in the file.
 </p>
 
 <p>
@@ -473,8 +540,8 @@ If your project contains the following files at the root folder:
 </ol>
 
 <p>
-the necessary configuration file (<code>.ac-php-conf.json</code>) will be created automatically
-if it does not exist.
+the necessary configuration file (<code>.ac-php-conf.json</code>) will be created
+automatically if it does not exist.
 </p>
 </div>
 </li>
@@ -482,15 +549,19 @@ if it does not exist.
 <li><a id="refactoring"></a>Refactoring<br />
 <div class="outline-text-5" id="text-refactoring">
 <p>
-This backend provides refactoring and class auto-completion capabilities via <a href="https://github.com/emacs-php/phpactor.el">phpactor.el</a>.
-To ensure that the phpactor package is intact, just run
+This backend provides refactoring and class auto-completion capabilities via
+<a href="https://github.com/emacs-php/phpactor.el">phpactor.el</a>. To ensure that the phpactor package is intact, just run
 <code>M-x phpactor-install-or-update</code> and the package itself will make sure that
 you're good to go.
 </p>
+</div>
+</li>
 
+<li><a id="debugging-1"></a>Debugging<br />
+<div class="outline-text-5" id="text-debugging-1">
 <p>
-It also provides debug capabilities via the <a href="https://github.com/ahungry/geben">geben package</a>. Please refer for details
-to the project page.
+While using ac-php-core debug capabilities are provided via the <a href="https://github.com/ahungry/geben">geben package</a>.
+Please refer for details to the project page.
 </p>
 </div>
 </li>
@@ -499,12 +570,12 @@ to the project page.
 </div>
 </div>
 
-<div id="outline-container-orgb2fddeb" class="outline-2">
+<div id="outline-container-org20d473e" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org2cec70b" class="outline-3">
+<div id="outline-container-org775a48c" class="outline-3">
 <h3 id="general"><span class="section-number-3">3.1</span> General</h3>
 <div class="outline-text-3" id="text-general">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -536,11 +607,12 @@ to the project page.
 </div>
 </div>
 
-<div id="outline-container-org613d0f1" class="outline-3">
+<div id="outline-container-org76b37b3" class="outline-3">
 <h3 id="refactoring-for-non-lsp-backends"><span class="section-number-3">3.2</span> Refactoring for non LSP backends</h3>
 <div class="outline-text-3" id="text-refactoring-for-non-lsp-backends">
 <p>
-For more precise insights on the meaning of the key bindings please refer to <a href="https://phpactor.github.io/phpactor/refactorings.html">phpactor API reference.</a>
+For more precise insights on the meaning of the key bindings please refer to
+<a href="https://phpactor.github.io/phpactor/refactorings.html">phpactor API reference.</a>
 </p>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -657,7 +729,7 @@ For more precise insights on the meaning of the key bindings please refer to <a 
 </div>
 </div>
 
-<div id="outline-container-org197cc91" class="outline-3">
+<div id="outline-container-orga9b6c12" class="outline-3">
 <h3 id="debugging-for-non-lsp-backends"><span class="section-number-3">3.3</span> Debugging for non LSP backends</h3>
 <div class="outline-text-3" id="text-debugging-for-non-lsp-backends">
 <p>
@@ -840,7 +912,7 @@ Variable listing:
 </div>
 </div>
 
-<div id="outline-container-org056c997" class="outline-3">
+<div id="outline-container-org6bd159a" class="outline-3">
 <h3 id="lsp-key-bindings"><span class="section-number-3">3.4</span> LSP key bindings</h3>
 <div class="outline-text-3" id="text-lsp-key-bindings">
 <p>
@@ -849,11 +921,20 @@ file of the <code>lsp layer</code>.
 </p>
 </div>
 </div>
+
+<div id="outline-container-org1e957d7" class="outline-3">
+<h3 id="debugging-for-lsp-backends"><span class="section-number-3">3.5</span> Debugging for LSP backends</h3>
+<div class="outline-text-3" id="text-debugging-for-lsp-backends">
+<p>
+See README.org file of the <code>dap-layer</code> for key bindings available in <code>dap-mode</code>
+</p>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-01-25 Sat 15:22</p>
+<p class="date">Created: 2020-05-06 Wed 22:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

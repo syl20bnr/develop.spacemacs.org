@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-25 Sat 15:22 -->
+<!-- 2020-05-06 Wed 22:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>spacemacs-layouts layer</title>
@@ -227,7 +227,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -282,21 +282,34 @@ for the JavaScript code in this tag.
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#restrict-functions-to-the-current-layouts-buffers">2. Restrict functions to the current layout's buffers</a></li>
-<li><a href="#restrict-spc-tab-to-the-current-layouts-buffers">3. Restrict SPC-TAB to the current layout's buffers</a></li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#restrict-functions-to-the-current-layouts-buffers">2.1. Restrict functions to the current layout's buffers</a></li>
+<li><a href="#restrict-spc-tab-to-the-current-layouts-buffers">2.2. Restrict SPC-TAB to the current layout's buffers</a></li>
+<li><a href="#kill-buffers-when-killing-current-layout">2.3. Kill buffers when killing current layout</a></li>
+</ul>
+</li>
+<li><a href="#usage">3. Usage</a></li>
+<li><a href="#key-bindings">4. Key bindings</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8b8daa9" class="outline-2">
+<div id="outline-container-orgfb1c3aa" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for distinct layouts/workspaces to Spacemacs.
 </p>
+
+<p>
+Layouts provide an easy way to group buffers for a project or any arbitrary
+buffer grouping you wish. Layouts also restrict actions to the buffers in
+the current layout.
+</p>
 </div>
 
-<div id="outline-container-org4f945f7" class="outline-3">
+<div id="outline-container-org7309905" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -307,9 +320,22 @@ This layer adds support for distinct layouts/workspaces to Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-orgc8da7d4" class="outline-2">
-<h2 id="restrict-functions-to-the-current-layouts-buffers"><span class="section-number-2">2</span> Restrict functions to the current layout's buffers</h2>
-<div class="outline-text-2" id="text-restrict-functions-to-the-current-layouts-buffers">
+<div id="outline-container-org0c3fcb0" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+<p>
+The <code>spacemacs-layouts</code> layer is included by default in the Spacemacs distribution.
+</p>
+
+<p>
+To set configuration layer variables, add <code>spacemacs-layouts</code> to the existing
+<code>dotspacemacs-configuration-layers</code> list in your <code>~/.spacemacs</code> file.
+</p>
+</div>
+
+<div id="outline-container-org8f42d5f" class="outline-3">
+<h3 id="restrict-functions-to-the-current-layouts-buffers"><span class="section-number-3">2.1</span> Restrict functions to the current layout's buffers</h3>
+<div class="outline-text-3" id="text-restrict-functions-to-the-current-layouts-buffers">
 <p>
 Besides <code>helm-mini</code> and <code>ivy-switch-buffer</code> that are aware of a layout's
 buffers. This layer also provides a <code>spacemacs-layouts-restricted-functions</code>
@@ -348,9 +374,9 @@ current Emacs session. A restart is required.
 </div>
 </div>
 
-<div id="outline-container-orgaadf5b4" class="outline-2">
-<h2 id="restrict-spc-tab-to-the-current-layouts-buffers"><span class="section-number-2">3</span> Restrict SPC-TAB to the current layout's buffers</h2>
-<div class="outline-text-2" id="text-restrict-spc-tab-to-the-current-layouts-buffers">
+<div id="outline-container-org28025b2" class="outline-3">
+<h3 id="restrict-spc-tab-to-the-current-layouts-buffers"><span class="section-number-3">2.2</span> Restrict SPC-TAB to the current layout's buffers</h3>
+<div class="outline-text-3" id="text-restrict-spc-tab-to-the-current-layouts-buffers">
 <p>
 When the <code>spacemacs-layouts-restrict-spc-tab</code> variable is set to <code>t</code>, then
 <code>SPC-TAB</code> (<code>spacemacs/alternate-buffer</code>) will be restricted to only switch
@@ -367,7 +393,8 @@ top of <code>.spacemacs</code> like this:
 </p>
 
 <pre class="example">
-(spacemacs-layouts :variables spacemacs-layouts-restrict-spc-tab t)
+(spacemacs-layouts :variables
+                   spacemacs-layouts-restrict-spc-tab t)
 </pre>
 
 <p>
@@ -380,10 +407,323 @@ evaluating it like this:
 </pre>
 </div>
 </div>
+
+<div id="outline-container-orge35d3d5" class="outline-3">
+<h3 id="kill-buffers-when-killing-current-layout"><span class="section-number-3">2.3</span> Kill buffers when killing current layout</h3>
+<div class="outline-text-3" id="text-kill-buffers-when-killing-current-layout">
+<p>
+<code>SPC l x</code> kills the current layout and the buffers stay open by default.
+<code>persp-autokill-buffer-on-remove</code> controls what happens when a layout is killed
+<code>nil</code> keeps all buffers
+<code>kill-weak</code> kills a buffer if it is not in any other layout except default
+<code>t</code> will kill all buffers in the current layout
+</p>
+
+<pre class="example">
+(spacemacs-layouts :variables
+                   persp-autokill-buffer-on-remove 'kill-weak)
+</pre>
+
+<p>
+If this variable is not set, then <code>SPC l x</code> kills the current layout, the buffers
+remain open and listed in the default layout.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd774d55" class="outline-2">
+<h2 id="usage"><span class="section-number-2">3</span> Usage</h2>
+<div class="outline-text-2" id="text-usage">
+<p>
+Layout 1 is the default layout and has global scope, so <code>SPC b b</code> lists all open
+buffers. All other layouts only show the buffers associated with that layout.
+</p>
+
+<p>
+<code>SPC l</code> to select from the current layouts by number or navigate with <code>n</code> / <code>p</code>
+ <code>?</code> will display the help menu.
+</p>
+
+<p>
+<code>SPC l l</code> to select or create a layout by typing the layout name.
+</p>
+
+<p>
+<code>SPC l d</code> to close the current layout, <code>SPC l x</code> to kill the current layout.
+</p>
+
+<p>
+See key bindings for more layout commands.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org57f6240" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC l ?</code></td>
+<td class="org-left">toggle hint in layouts transient state</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l 1</code></td>
+<td class="org-left">switch to layout 1</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l 2</code></td>
+<td class="org-left">switch to layout 2</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l 3</code></td>
+<td class="org-left">switch to layout 3</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l 4</code></td>
+<td class="org-left">switch to layout 4</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l 5</code></td>
+<td class="org-left">switch to layout 5</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l 6</code></td>
+<td class="org-left">switch to layout 6</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l 7</code></td>
+<td class="org-left">switch to layout 7</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l 8</code></td>
+<td class="org-left">switch to layout 8</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l 9</code></td>
+<td class="org-left">switch to layout 9</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l 0</code></td>
+<td class="org-left">switch to layout 0</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l C-1</code></td>
+<td class="org-left">switch to layout 11</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l C-2</code></td>
+<td class="org-left">switch to layout 12</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l C-3</code></td>
+<td class="org-left">switch to layout 13</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l C-4</code></td>
+<td class="org-left">switch to layout 14</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l C-5</code></td>
+<td class="org-left">switch to layout 15</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l C-6</code></td>
+<td class="org-left">switch to layout 16</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l C-7</code></td>
+<td class="org-left">switch to layout 17</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l C-8</code></td>
+<td class="org-left">switch to layout 18</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l C-9</code></td>
+<td class="org-left">switch to layout 19</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l C-0</code></td>
+<td class="org-left">switch to layout 20</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l TAB</code></td>
+<td class="org-left">jump to last layout</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l RET</code></td>
+<td class="org-left">exit layout transient state</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l C-h</code></td>
+<td class="org-left">previous layout</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l C-l</code></td>
+<td class="org-left">next layout</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l &lt;</code></td>
+<td class="org-left">move current layout left</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l &gt;</code></td>
+<td class="org-left">move current layout right</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l a</code></td>
+<td class="org-left">add buffer to layout</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l A</code></td>
+<td class="org-left">import buffers</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l b</code></td>
+<td class="org-left">list buffers open in layout</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l d</code></td>
+<td class="org-left">close current layout (keeps buffers open)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l e</code></td>
+<td class="org-left">switch to/create layout at position</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l D</code></td>
+<td class="org-left">close-other layout</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l h</code></td>
+<td class="org-left">Switch to default layout</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l L</code></td>
+<td class="org-left">Load saved layouts from a file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l l</code></td>
+<td class="org-left">select or create a layout by name</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l n</code></td>
+<td class="org-left">next layout</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l N</code></td>
+<td class="org-left">previous layout</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l o</code></td>
+<td class="org-left">select custom layout</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l p</code></td>
+<td class="org-left">persp-prev</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l r</code></td>
+<td class="org-left">remove buffer from layout</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l R</code></td>
+<td class="org-left">rename layout</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l s</code></td>
+<td class="org-left">save current layouts to file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l S</code></td>
+<td class="org-left">save current layouts to file by names</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l t</code></td>
+<td class="org-left">temporarily display buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l w</code></td>
+<td class="org-left">workspaces transient state</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l x</code></td>
+<td class="org-left">kill current layout</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC l X</code></td>
+<td class="org-left">kill other layout</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-01-25 Sat 15:22</p>
+<p class="date">Created: 2020-05-06 Wed 22:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
