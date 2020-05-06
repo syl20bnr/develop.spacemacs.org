@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-25 Sat 15:22 -->
+<!-- 2020-05-06 Wed 22:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sphinx layer</title>
@@ -227,7 +227,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -299,7 +299,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgd5a20b9" class="outline-2">
+<div id="outline-container-org359a5ef" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -308,7 +308,7 @@ the <code>restructuredtext</code> layer.
 </p>
 </div>
 
-<div id="outline-container-orgc6a20db" class="outline-3">
+<div id="outline-container-orgcb05ffd" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -320,7 +320,7 @@ the <code>restructuredtext</code> layer.
 </div>
 </div>
 
-<div id="outline-container-org1dc4e56" class="outline-2">
+<div id="outline-container-orgb7f0fe6" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -331,12 +331,12 @@ in this file.
 </div>
 </div>
 
-<div id="outline-container-orgaf8a7d3" class="outline-2">
+<div id="outline-container-orga179bec" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org9cb0e49" class="outline-3">
+<div id="outline-container-orga597d58" class="outline-3">
 <h3 id="sphinx-target"><span class="section-number-3">3.1</span> Sphinx target</h3>
 <div class="outline-text-3" id="text-sphinx-target">
 <p>
@@ -344,29 +344,33 @@ To use the layer's Sphinx feature, the following variables should be set.
 </p>
 
 <p>
-A parent directory is needed for all Sphinx projects' builds.
+A parent directory is needed for all your Sphinx project builds:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> rst-sphinx-target-parent <span class="org-string">"/your/path/of/build/"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>sphinx <span class="org-builtin">:variables</span>
+        rst-sphinx-target-parent <span class="org-string">"~/MyProjects/"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
-Set a directory in the parent directory for each Sphinx project.
+Create a directory in the parent directory for each Sphinx project.
+This will be used as the project name for the layer. In addition
+you need to define where the output folder should be for each project.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> rst-sphinx-target-projects
-      '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"project1"</span> . <span class="org-rainbow-delimiters-depth-4">(</span>latex <span class="org-string">"folder/in/target/parent"</span> t<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-        <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"project2"</span> . <span class="org-rainbow-delimiters-depth-4">(</span>html  <span class="org-string">"folder/in/target/parent"</span> nil<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-        <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>sphinx <span class="org-builtin">:variables</span>
+        rst-sphinx-target-parent <span class="org-string">"~/MyProjects/"</span>
+        rst-sphinx-target-projects
+        '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"project1"</span> . <span class="org-rainbow-delimiters-depth-4">(</span>latex <span class="org-string">"project1/_build"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+          <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"project2"</span> . <span class="org-rainbow-delimiters-depth-4">(</span>html  <span class="org-string">"project2/_build"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org8be3d33" class="outline-3">
+<div id="outline-container-orgb56f3b1" class="outline-3">
 <h3 id="web-browser"><span class="section-number-3">3.2</span> Web browser</h3>
 <div class="outline-text-3" id="text-web-browser">
 <p>
@@ -375,14 +379,15 @@ is optional. If not set, the default browser will be used.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> rst-slides-program <span class="org-string">"chromium"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>sphinx <span class="org-builtin">:variables</span>
+        rst-slides-program <span class="org-string">"chromium"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5b37966" class="outline-2">
+<div id="outline-container-org0273123" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -401,27 +406,27 @@ is optional. If not set, the default browser will be used.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>&lt;SPC&gt; m c c</code></td>
+<td class="org-left"><code>SPC m c c</code></td>
 <td class="org-left">compile projects</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>&lt;SPC&gt; m c C</code></td>
+<td class="org-left"><code>SPC m c C</code></td>
 <td class="org-left">clean projects</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>&lt;SPC&gt; m c r</code></td>
+<td class="org-left"><code>SPC m c r</code></td>
 <td class="org-left">rebuild projects</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>&lt;SPC&gt; m g c</code></td>
+<td class="org-left"><code>SPC m g c</code></td>
 <td class="org-left">open <code>conf.py</code> of current project</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>&lt;SPC&gt; m o</code></td>
+<td class="org-left"><code>SPC m o</code></td>
 <td class="org-left">open compiled HTML page of current page</td>
 </tr>
 </tbody>
@@ -431,7 +436,7 @@ is optional. If not set, the default browser will be used.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-01-25 Sat 15:22</p>
+<p class="date">Created: 2020-05-06 Wed 22:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-25 Sat 15:22 -->
+<!-- 2020-05-06 Wed 22:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ESS (R) layer</title>
@@ -227,7 +227,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -282,7 +282,13 @@ for the JavaScript code in this tag.
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a></li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#linting">2.2. Linting</a></li>
+<li><a href="#lsp">2.3. LSP</a></li>
+</ul>
+</li>
 <li><a href="#options">3. Options</a></li>
 <li><a href="#key-bindings">4. Key bindings</a>
 <ul>
@@ -291,7 +297,6 @@ for the JavaScript code in this tag.
 <li><a href="#more-interaction-with-the-repl">4.3. More interaction with the REPL</a></li>
 <li><a href="#r-devtools">4.4. R devtools</a></li>
 <li><a href="#debugging">4.5. Debugging</a></li>
-<li><a href="#editing-markdown">4.6. Editing Markdown</a></li>
 </ul>
 </li>
 </ul>
@@ -303,7 +308,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org0e8208a" class="outline-2">
+<div id="outline-container-orgd97da61" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -311,7 +316,7 @@ This layer adds support for statistical programming languages to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-org57ebc90" class="outline-3">
+<div id="outline-container-org471778a" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -329,17 +334,27 @@ This layer adds support for statistical programming languages to Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-org9033911" class="outline-2">
+<div id="outline-container-orgf998cad" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-org7935264" class="outline-3">
+<h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>ess</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
 file.
 </p>
+</div>
+</div>
 
+<div id="outline-container-org7d83fd5" class="outline-3">
+<h3 id="linting"><span class="section-number-3">2.2</span> Linting</h3>
+<div class="outline-text-3" id="text-linting">
 <p>
-Also install <a href="https://github.com/jimhester/lintr">lintr</a> library via the R terminal to enable syntax checking.
+Install <a href="https://github.com/jimhester/lintr">lintr</a> library via the R terminal to enable syntax checking.
 To do so start the R terminal and type below code.
 </p>
 
@@ -350,7 +365,37 @@ To do so start the R terminal and type below code.
 </div>
 </div>
 
-<div id="outline-container-orgd5fcaba" class="outline-2">
+<div id="outline-container-org6a45aa7" class="outline-3">
+<h3 id="lsp"><span class="section-number-3">2.3</span> LSP</h3>
+<div class="outline-text-3" id="text-lsp">
+<p>
+This backend uses an external server to provide the various IDE integrations
+and a more modern UI integration in <code>spacemacs</code>.
+</p>
+
+<p>
+It requires installing the external server via:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">install.packages('languageserver')
+</pre>
+</div>
+
+<p>
+Enable the <code>lsp</code> layer to activate this backend as well as setting the layer
+variable <code>ess-r-backend</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>ess <span class="org-builtin">:variables</span> ess-r-backend 'lsp<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbfb7658" class="outline-2">
 <h2 id="options"><span class="section-number-2">3</span> Options</h2>
 <div class="outline-text-2" id="text-options">
 <p>
@@ -365,12 +410,12 @@ Use a key binding to insert <code>&lt;-</code>:
 </div>
 </div>
 
-<div id="outline-container-orgcf6794e" class="outline-2">
+<div id="outline-container-orgc2bd296" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org6edfc68" class="outline-3">
+<div id="outline-container-org7a3685a" class="outline-3">
 <h3 id="inferior-repl-process"><span class="section-number-3">4.1</span> Inferior REPL process</h3>
 <div class="outline-text-3" id="text-inferior-repl-process">
 <p>
@@ -472,7 +517,7 @@ Send code to inferior process with these commands:
 </div>
 </div>
 
-<div id="outline-container-org5771fd4" class="outline-3">
+<div id="outline-container-org7ece6be" class="outline-3">
 <h3 id="help"><span class="section-number-3">4.2</span> Help</h3>
 <div class="outline-text-3" id="text-help">
 <p>
@@ -568,7 +613,7 @@ Get help and helpers for inspecting objects at point are available in R buffers 
 </div>
 </div>
 
-<div id="outline-container-org990bba1" class="outline-3">
+<div id="outline-container-org6938f30" class="outline-3">
 <h3 id="more-interaction-with-the-repl"><span class="section-number-3">4.3</span> More interaction with the REPL</h3>
 <div class="outline-text-3" id="text-more-interaction-with-the-repl">
 <p>
@@ -591,52 +636,52 @@ Helpers that provide further interaction with the REPL.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m r /</code></td>
+<td class="org-left"><code>SPC m E /</code></td>
 <td class="org-left">set working directory</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r TAB</code></td>
+<td class="org-left"><code>SPC m E TAB</code></td>
 <td class="org-left">install package</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r d</code></td>
+<td class="org-left"><code>SPC m E d</code></td>
 <td class="org-left">edit object source or dump() object into a new buffer</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r e</code></td>
+<td class="org-left"><code>SPC m E e</code></td>
 <td class="org-left">execute a command in the ESS process</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r i</code></td>
+<td class="org-left"><code>SPC m E i</code></td>
 <td class="org-left">install package</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r l</code></td>
+<td class="org-left"><code>SPC m E l</code></td>
 <td class="org-left">load installed package</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r r</code></td>
+<td class="org-left"><code>SPC m E r</code></td>
 <td class="org-left">reload ESS process</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r s</code></td>
+<td class="org-left"><code>SPC m E s</code></td>
 <td class="org-left">set source style</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r t</code></td>
+<td class="org-left"><code>SPC m E t</code></td>
 <td class="org-left">build tags for directory</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r w</code></td>
+<td class="org-left"><code>SPC m E w</code></td>
 <td class="org-left">set "width" option</td>
 </tr>
 </tbody>
@@ -644,7 +689,7 @@ Helpers that provide further interaction with the REPL.
 </div>
 </div>
 
-<div id="outline-container-org3e0ac1d" class="outline-3">
+<div id="outline-container-org56992dd" class="outline-3">
 <h3 id="r-devtools"><span class="section-number-3">4.4</span> R devtools</h3>
 <div class="outline-text-3" id="text-r-devtools">
 <p>
@@ -667,52 +712,52 @@ Interaction with the <code>R</code> <code>devtools</code> package.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m w TAB</code></td>
+<td class="org-left"><code>SPC m D TAB</code></td>
 <td class="org-left">interface for <code>devtools::install()</code></td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m w a</code></td>
+<td class="org-left"><code>SPC m D a</code></td>
 <td class="org-left">ask for a devtools command and runs it</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m w c</code></td>
+<td class="org-left"><code>SPC m D c</code></td>
 <td class="org-left">interface for <code>devtools::check()</code></td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m w d</code></td>
+<td class="org-left"><code>SPC m D d</code></td>
 <td class="org-left">interface for <code>devtools::document()</code></td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m w i</code></td>
+<td class="org-left"><code>SPC m D i</code></td>
 <td class="org-left">interface for <code>devtools::install()</code></td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m w l</code></td>
+<td class="org-left"><code>SPC m D l</code></td>
 <td class="org-left">interface for <code>devtools::load_all()</code></td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m w r</code></td>
+<td class="org-left"><code>SPC m D r</code></td>
 <td class="org-left">interface for <code>devtools::revdep_check()</code></td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m w s</code></td>
+<td class="org-left"><code>SPC m D s</code></td>
 <td class="org-left">set a package for ESS r-package commands</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m w t</code></td>
+<td class="org-left"><code>SPC m D t</code></td>
 <td class="org-left">interface for <code>devtools::tests()</code></td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m w u</code></td>
+<td class="org-left"><code>SPC m D u</code></td>
 <td class="org-left">interface for <code>devtools::unload()</code></td>
 </tr>
 </tbody>
@@ -720,7 +765,7 @@ Interaction with the <code>R</code> <code>devtools</code> package.
 </div>
 </div>
 
-<div id="outline-container-org1ae2eb0" class="outline-3">
+<div id="outline-container-org6fd0408" class="outline-3">
 <h3 id="debugging"><span class="section-number-3">4.5</span> Debugging</h3>
 <div class="outline-text-3" id="text-debugging">
 <p>
@@ -840,67 +885,11 @@ Tools for debugging
 </table>
 </div>
 </div>
-
-<div id="outline-container-orgdf2fede" class="outline-3">
-<h3 id="editing-markdown"><span class="section-number-3">4.6</span> Editing Markdown</h3>
-<div class="outline-text-3" id="text-editing-markdown">
-<p>
-Edit Markdown files
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m c C</code></td>
-<td class="org-left">send knitr/sweave chunk and switch to REPL in insert mode</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c c</code></td>
-<td class="org-left">send knitr/sweave chunk and keep buffer focused</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c d</code></td>
-<td class="org-left">send knitr/sweave chunk and step to next chunk</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c m</code></td>
-<td class="org-left">mark knitr/sweave chunk around point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c n</code></td>
-<td class="org-left">next knitr/sweave chunk</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c N</code></td>
-<td class="org-left">previous knitr/sweave chunk</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-01-25 Sat 15:22</p>
+<p class="date">Created: 2020-05-06 Wed 22:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

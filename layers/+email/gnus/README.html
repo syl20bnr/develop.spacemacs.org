@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-25 Sat 15:22 -->
+<!-- 2020-05-06 Wed 22:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gnus layer</title>
@@ -227,7 +227,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -287,7 +287,8 @@ for the JavaScript code in this tag.
 <li><a href="#adding-news-sources">4. Adding news sources</a></li>
 <li><a href="#configuring-gmail">5. Configuring gmail</a></li>
 <li><a href="#org-mime-in-org-layer">6. Org MIME in Org layer</a></li>
-<li><a href="#key-bindings">7. Key bindings</a></li>
+<li><a href="#setup-variables">7. Setup variables</a></li>
+<li><a href="#key-bindings">8. Key bindings</a></li>
 </ul>
 </div>
 </div>
@@ -297,7 +298,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org480e852" class="outline-2">
+<div id="outline-container-orgac80047" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -305,7 +306,7 @@ This layer integrates a general purpose email/newsgroup client into Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-orgc1175b2" class="outline-3">
+<div id="outline-container-org16d0453" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -317,7 +318,7 @@ This layer integrates a general purpose email/newsgroup client into Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-org8598b53" class="outline-2">
+<div id="outline-container-org40b64aa" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -328,7 +329,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orge176455" class="outline-2">
+<div id="outline-container-org5e8cb33" class="outline-2">
 <h2 id="basic-concepts"><span class="section-number-2">3</span> Basic Concepts</h2>
 <div class="outline-text-2" id="text-basic-concepts">
 <p>
@@ -343,7 +344,7 @@ the Group Buffer if Topic Mode is enabled(default).</li>
 </div>
 </div>
 
-<div id="outline-container-org4e6af88" class="outline-2">
+<div id="outline-container-orgb69477f" class="outline-2">
 <h2 id="adding-news-sources"><span class="section-number-2">4</span> Adding news sources</h2>
 <div class="outline-text-2" id="text-adding-news-sources">
 <p>
@@ -370,7 +371,7 @@ For adding RSS Feeds please see the <a href="#key-bindings">key bindings section
 </div>
 </div>
 
-<div id="outline-container-org7b88c68" class="outline-2">
+<div id="outline-container-org8364043" class="outline-2">
 <h2 id="configuring-gmail"><span class="section-number-2">5</span> Configuring gmail</h2>
 <div class="outline-text-2" id="text-configuring-gmail">
 <p>
@@ -427,7 +428,7 @@ password</a>.
 </div>
 </div>
 
-<div id="outline-container-org045459a" class="outline-2">
+<div id="outline-container-orgd7d7fe2" class="outline-2">
 <h2 id="org-mime-in-org-layer"><span class="section-number-2">6</span> Org MIME in Org layer</h2>
 <div class="outline-text-2" id="text-org-mime-in-org-layer">
 <p>
@@ -442,8 +443,46 @@ from org mode to html. An org mode buffer can be sent via html email by pressing
 </div>
 </div>
 
-<div id="outline-container-orgd3c9fdb" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">7</span> Key bindings</h2>
+<div id="outline-container-orgb19ada6" class="outline-2">
+<h2 id="setup-variables"><span class="section-number-2">7</span> Setup variables</h2>
+<div class="outline-text-2" id="text-setup-variables">
+<p>
+The Gnus layer defines the following variables like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">gnus-summary-line-format <span class="org-string">"%U%R%z %(%&amp;user-date;  %-15,15f  %B (%c) %s%)\n"</span>
+gnus-user-date-format-alist '<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>t . <span class="org-string">"%Y-%m-%d %H:%M"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+gnus-group-line-format <span class="org-string">"%M%S%p%P%5y:%B %G\n"</span><span class="org-comment-delimiter">;;</span><span class="org-comment">"%B%(%g%)"</span>
+gnus-summary-thread-gathering-function 'gnus-gather-threads-by-references
+gnus-thread-sort-functions '<span class="org-rainbow-delimiters-depth-1">(</span>gnus-thread-sort-by-most-recent-date<span class="org-rainbow-delimiters-depth-1">)</span>
+gnus-ignored-newsgroups <span class="org-string">"^to\\.</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">^[0-9. ]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string"> </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">$</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">^[</span><span class="org-string"><span class="org-warning">\</span></span><span class="org-string">&#8221;]</span><span class="org-string"><span class="org-warning">\</span></span><span class="org-string">&#8221;[#&#8217;()]"</span>
+gnus-sum-thread-tree-false-root <span class="org-string">""</span>
+gnus-sum-thread-tree-indent <span class="org-string">" "</span>
+gnus-sum-thread-tree-leaf-with-other <span class="org-string">"&#9500;&#9658; "</span>
+gnus-sum-thread-tree-root <span class="org-string">""</span>
+gnus-sum-thread-tree-single-leaf <span class="org-string">"&#9584;&#9658; "</span>
+gnus-sum-thread-tree-vertical <span class="org-string">"&#9474;"</span>
+gnus-article-browse-delete-temp t
+gnus-treat-strip-trailing-blank-lines 'last
+gnus-keep-backlog 'nil
+gnus-summary-display-arrow nil <span class="org-comment-delimiter">; </span><span class="org-comment">Don't show that annoying arrow:</span>
+gnus-mime-display-multipart-related-as-mixed t <span class="org-comment-delimiter">; </span><span class="org-comment">Show more MIME-stuff:</span>
+gnus-auto-select-first nil <span class="org-comment-delimiter">; </span><span class="org-comment">Don't get the first article automatically:</span>
+smiley-style 'medium
+gnus-keep-backlog '<span class="org-highlight-numbers-number">0</span>
+</pre>
+</div>
+
+<p>
+They can be configured as layer variables or from the <code>dotspacemacs/user-config</code>
+section of <code>.spacemacs</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7785578" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">8</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
 Gnus has very modal default keybindings.
@@ -530,7 +569,7 @@ Basic and Spacemacs specific key bindings can be found in the following table.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-01-25 Sat 15:22</p>
+<p class="date">Created: 2020-05-06 Wed 22:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

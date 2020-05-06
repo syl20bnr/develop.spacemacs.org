@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-25 Sat 15:22 -->
+<!-- 2020-05-06 Wed 22:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Auto-completion layer</title>
@@ -227,7 +227,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -290,11 +290,12 @@ for the JavaScript code in this tag.
 <li><a href="#show-snippets-in-auto-completion-popup">3.3. Show snippets in auto-completion popup</a></li>
 <li><a href="#tooltips">3.4. Tooltips</a></li>
 <li><a href="#sort-results-by-usage">3.5. Sort results by usage</a></li>
-<li><a href="#enable-company-or-auto-complete-globally">3.6. Enable company or auto-complete globally</a></li>
-<li><a href="#replacing-company-by-auto-complete">3.7. Replacing company by auto-complete</a></li>
-<li><a href="#add-auto-completion-in-a-layer">3.8. Add auto-completion in a layer</a></li>
-<li><a href="#completion-back-ends">3.9. Completion back ends</a></li>
-<li><a href="#improved-faces">3.10. Improved faces</a></li>
+<li><a href="#disable-auto-completion-in-specific-layers">3.6. Disable auto-completion in specific layers</a></li>
+<li><a href="#enable-company-globally">3.7. Enable company globally</a></li>
+<li><a href="#replacing-company-by-auto-complete">3.8. Replacing company by auto-complete</a></li>
+<li><a href="#add-auto-completion-in-a-layer">3.9. Add auto-completion in a layer</a></li>
+<li><a href="#completion-back-ends">3.10. Completion back ends</a></li>
+<li><a href="#improved-faces">3.11. Improved faces</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings-1">4. Key bindings</a>
@@ -309,7 +310,7 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orge0c3a30" class="outline-2">
+<div id="outline-container-org34a2892" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -317,7 +318,7 @@ This layer adds auto-completion to all supported language layers.
 </p>
 </div>
 
-<div id="outline-container-orgce5934c" class="outline-3">
+<div id="outline-container-orgc13e133" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -331,7 +332,7 @@ This layer adds auto-completion to all supported language layers.
 </div>
 </div>
 
-<div id="outline-container-org3bdc12f" class="outline-2">
+<div id="outline-container-org69a8435" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -347,12 +348,12 @@ layer for it to have any effect.
 </div>
 </div>
 
-<div id="outline-container-org41f9673" class="outline-2">
+<div id="outline-container-orgc097e8b" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org909346d" class="outline-3">
+<div id="outline-container-orgb88b2f1" class="outline-3">
 <h3 id="key-bindings"><span class="section-number-3">3.1</span> Key bindings</h3>
 <div class="outline-text-3" id="text-key-bindings">
 <p>
@@ -412,7 +413,7 @@ you don't use it already.
 </div>
 </div>
 
-<div id="outline-container-orgd63a362" class="outline-3">
+<div id="outline-container-org3ea091f" class="outline-3">
 <h3 id="snippets-directories"><span class="section-number-3">3.2</span> Snippets directories</h3>
 <div class="outline-text-3" id="text-snippets-directories">
 <p>
@@ -436,7 +437,7 @@ If its value is <code>nil</code> then the path <code>~/.emacs.d/private/snippets
 </div>
 </div>
 
-<div id="outline-container-org896e58e" class="outline-3">
+<div id="outline-container-org9fb815c" class="outline-3">
 <h3 id="show-snippets-in-auto-completion-popup"><span class="section-number-3">3.3</span> Show snippets in auto-completion popup</h3>
 <div class="outline-text-3" id="text-show-snippets-in-auto-completion-popup">
 <p>
@@ -453,7 +454,7 @@ the popup, set the variable <code>auto-completion-enable-snippets-in-popup</code
 </div>
 </div>
 
-<div id="outline-container-org9421ca8" class="outline-3">
+<div id="outline-container-org74279a8" class="outline-3">
 <h3 id="tooltips"><span class="section-number-3">3.4</span> Tooltips</h3>
 <div class="outline-text-3" id="text-tooltips">
 <p>
@@ -487,7 +488,7 @@ Emacs 26+ by setting <code>auto-completion-use-company-box</code> to <code>t</co
 </div>
 </div>
 
-<div id="outline-container-org1a9dec2" class="outline-3">
+<div id="outline-container-orgb39be73" class="outline-3">
 <h3 id="sort-results-by-usage"><span class="section-number-3">3.5</span> Sort results by usage</h3>
 <div class="outline-text-3" id="text-sort-results-by-usage">
 <p>
@@ -506,32 +507,34 @@ is used. The variable has no effect when <code>auto-complete</code> is used.
 </div>
 </div>
 
-<div id="outline-container-org9a4ae80" class="outline-3">
-<h3 id="enable-company-or-auto-complete-globally"><span class="section-number-3">3.6</span> Enable company or auto-complete globally</h3>
-<div class="outline-text-3" id="text-enable-company-or-auto-complete-globally">
+<div id="outline-container-orgf01fe35" class="outline-3">
+<h3 id="disable-auto-completion-in-specific-layers"><span class="section-number-3">3.6</span> Disable auto-completion in specific layers</h3>
+<div class="outline-text-3" id="text-disable-auto-completion-in-specific-layers">
 <p>
-By default Spacemacs enables auto-completion explicitly for each supported
-major-mode, it means that <code>company</code> and <code>auto-complete</code> are not enabled
-globally, it allows more flexibility to choose an auto-completion engine
-for a given mode.
-</p>
-
-<p>
-You may want to enable company globally to get auto-completion
-everywhere even in the modes which are not configured by Spacemacs. To do
-so, you just have to add <code>(global-company-mode)</code> in the
-<code>dotspacemacs/user-config</code> function of your dotfile.
-</p>
-
-<p>
-Note that if you want to enable <code>auto-complete</code> globally you will have to
-disable <code>company</code> first, see the next section to do so.
+See general documentation on how to <a href="../../../doc/DOCUMENTATION.html#disabling-layer-services-in-other-layers">disable a layer for specific layers</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org895f0c1" class="outline-3">
-<h3 id="replacing-company-by-auto-complete"><span class="section-number-3">3.7</span> Replacing company by auto-complete</h3>
+<div id="outline-container-org3aba8a0" class="outline-3">
+<h3 id="enable-company-globally"><span class="section-number-3">3.7</span> Enable company globally</h3>
+<div class="outline-text-3" id="text-enable-company-globally">
+<p>
+It can be done by adding <code>(global-company-mode)</code> in the
+<code>dotspacemacs/user-config</code> function of your dotfile. But it is not recommended
+to do so, you should instead open an issue to ask for auto-completion support
+for the major-modes where it is missing.
+</p>
+
+<p>
+If you choose to use <code>(global-company-mode)</code> then you loose some advantages
+provided by the layer system like <a href="../../../doc/DOCUMENTATION.html#disabling-layer-services-in-other-layers">disabling auto-completion for specific layers</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4dbea3d" class="outline-3">
+<h3 id="replacing-company-by-auto-complete"><span class="section-number-3">3.8</span> Replacing company by auto-complete</h3>
 <div class="outline-text-3" id="text-replacing-company-by-auto-complete">
 <p>
 You can disable <code>company</code> by adding it to the <code>dotspacemacs-excluded-packages</code>
@@ -540,8 +543,8 @@ variable, then you are free to enable <code>auto-complete</code> globally.
 </div>
 </div>
 
-<div id="outline-container-org06ef74e" class="outline-3">
-<h3 id="add-auto-completion-in-a-layer"><span class="section-number-3">3.8</span> Add auto-completion in a layer</h3>
+<div id="outline-container-org133291d" class="outline-3">
+<h3 id="add-auto-completion-in-a-layer"><span class="section-number-3">3.9</span> Add auto-completion in a layer</h3>
 <div class="outline-text-3" id="text-add-auto-completion-in-a-layer">
 <p>
 Here is an example to add <code>company</code> auto-completion to python buffers via the
@@ -572,8 +575,8 @@ In the file <code>packages.el</code> of the python layer:
 </div>
 </div>
 
-<div id="outline-container-org48b556f" class="outline-3">
-<h3 id="completion-back-ends"><span class="section-number-3">3.9</span> Completion back ends</h3>
+<div id="outline-container-orga1da0a3" class="outline-3">
+<h3 id="completion-back-ends"><span class="section-number-3">3.10</span> Completion back ends</h3>
 <div class="outline-text-3" id="text-completion-back-ends">
 <p>
 Many spacemacs layers (e.g., python, html, haskell) configure company mode
@@ -593,8 +596,8 @@ your <code>.spacemacs</code> file with (e.g.)
 </div>
 </div>
 
-<div id="outline-container-org7589b26" class="outline-3">
-<h3 id="improved-faces"><span class="section-number-3">3.10</span> Improved faces</h3>
+<div id="outline-container-org40e47e3" class="outline-3">
+<h3 id="improved-faces"><span class="section-number-3">3.11</span> Improved faces</h3>
 <div class="outline-text-3" id="text-improved-faces">
 <p>
 For nicer-looking faces, try adding the following to `custom-set-faces` in your dotspacemacs file.
@@ -612,12 +615,12 @@ For nicer-looking faces, try adding the following to `custom-set-faces` in your 
 </div>
 </div>
 
-<div id="outline-container-orgc59ee58" class="outline-2">
+<div id="outline-container-orgc38b5b2" class="outline-2">
 <h2 id="key-bindings-1"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings-1">
 </div>
 
-<div id="outline-container-org55d5f26" class="outline-3">
+<div id="outline-container-org9cf8b6b" class="outline-3">
 <h3 id="company"><span class="section-number-3">4.1</span> Company</h3>
 <div class="outline-text-3" id="text-company">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -726,7 +729,7 @@ Emacs style:
 </div>
 </div>
 
-<div id="outline-container-orgf6d618a" class="outline-3">
+<div id="outline-container-orgc826dad" class="outline-3">
 <h3 id="auto-complete"><span class="section-number-3">4.2</span> Auto-complete</h3>
 <div class="outline-text-3" id="text-auto-complete">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -773,7 +776,7 @@ Emacs style:
 </div>
 </div>
 
-<div id="outline-container-orgee5ffb6" class="outline-3">
+<div id="outline-container-orga7921fe" class="outline-3">
 <h3 id="yasnippet"><span class="section-number-3">4.3</span> Yasnippet</h3>
 <div class="outline-text-3" id="text-yasnippet">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -805,7 +808,7 @@ Emacs style:
 </div>
 </div>
 
-<div id="outline-container-org9b0f88c" class="outline-3">
+<div id="outline-container-orge4fee46" class="outline-3">
 <h3 id="auto-yasnippet"><span class="section-number-3">4.4</span> Auto-yasnippet</h3>
 <div class="outline-text-3" id="text-auto-yasnippet">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -845,7 +848,7 @@ Emacs style:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-01-25 Sat 15:22</p>
+<p class="date">Created: 2020-05-06 Wed 22:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

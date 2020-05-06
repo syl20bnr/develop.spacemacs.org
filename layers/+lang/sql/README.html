@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-25 Sat 15:22 -->
+<!-- 2020-05-06 Wed 22:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SQL layer</title>
@@ -227,7 +227,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -284,13 +284,14 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#install">2. Install</a>
 <ul>
-<li><a href="#sql-keywords-capitalization">2.1. SQL Keywords Capitalization</a>
+<li><a href="#external-dependencies">2.1. External Dependencies</a></li>
+<li><a href="#sql-keywords-capitalization">2.2. SQL Keywords Capitalization</a>
 <ul>
-<li><a href="#sql-interactive-mode">2.1.1. SQL Interactive Mode</a></li>
-<li><a href="#blacklisting-keywords">2.1.2. Blacklisting keywords</a></li>
+<li><a href="#sql-interactive-mode">2.2.1. SQL Interactive Mode</a></li>
+<li><a href="#blacklisting-keywords">2.2.2. Blacklisting keywords</a></li>
 </ul>
 </li>
-<li><a href="#auto-indent">2.2. Auto-Indent</a></li>
+<li><a href="#auto-indent">2.3. Auto-Indent</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key bindings</a>
@@ -298,7 +299,7 @@ for the JavaScript code in this tag.
 <li><a href="#highlighting">3.1. Highlighting</a></li>
 <li><a href="#inferior-process-interactions-sqli">3.2. Inferior Process Interactions (SQLi)</a>
 <ul>
-<li><a href="#send-sql-queries-to-sqli">3.2.1. Send SQL queries to SQLi:</a></li>
+<li><a href="#send-sql-queries-to-sqli">3.2.1. Send SQL queries to SQLi</a></li>
 </ul>
 </li>
 <li><a href="#sqli-buffer">3.3. SQLi buffer</a></li>
@@ -314,7 +315,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org802e3b6" class="outline-2">
+<div id="outline-container-orga5cfbc3" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -322,7 +323,7 @@ This layer adds support for a wide range of SQL dialects to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-orgc3ed12f" class="outline-3">
+<div id="outline-container-org89a5b40" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -344,7 +345,7 @@ This layer adds support for a wide range of SQL dialects to Spacemacs.
 <li>Vertica</li>
 </ul></li>
 <li>Syntax-checking via <a href="https://github.com/purcell/sqlint">sqlint</a> for ANSI SQL.</li>
-<li>Format code with <code>sqlfmt</code></li>
+<li>Format code with <a href="https://github.com/mjibson/sqlfmt"><code>sqlfmt</code></a></li>
 <li>Snippet insertion for the more general SQL constructs.</li>
 <li>REPL support via <code>SQLi</code> buffer.</li>
 <li>Automatic capitalization of keywords.</li>
@@ -353,7 +354,7 @@ This layer adds support for a wide range of SQL dialects to Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-org70b02e4" class="outline-2">
+<div id="outline-container-orgf27405d" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -361,19 +362,34 @@ To use this configuration layer, add it to your <code>~/.spacemacs</code>. You w
 add <code>sql</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
 file.
 </p>
+</div>
 
+<div id="outline-container-org6ef4e6d" class="outline-3">
+<h3 id="external-dependencies"><span class="section-number-3">2.1</span> External Dependencies</h3>
+<div class="outline-text-3" id="text-external-dependencies">
 <p>
-For syntax-checking you also need to install <a href="https://www.ruby-lang.org/en/about/">ruby</a> as well as <code>sqlint</code>.
+Some functionality, like linting, rely on external binaries:
 </p>
+<ul class="org-ul">
+<li><b>Syntax Checking</b>: Install <a href="https://www.ruby-lang.org/en/about/">ruby</a> and the <code>sqlint</code> gem.</li>
+<li><b>Formatting</b>: Install <a href="https://github.com/mjibson/sqlfmt">sqlfmt</a> and move it into your <code>$PATH</code></li>
+</ul>
 
 <div class="org-src-container">
 <pre class="src src-ruby">gem install sqlint
 </pre>
 </div>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span class="org-comment-delimiter"># </span><span class="org-comment">Download and extract the binary 0.4.0 for linux</span>
+wget -q -O - https://github.com/mjibson/sqlfmt/releases/latest/download/sqlfmt_0.4.0_linux_amd64.tar.gz | tar -xpvzf - --directory <span class="org-string">"${installdir}/bin"</span>
+</pre>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org16eb62d" class="outline-3">
-<h3 id="sql-keywords-capitalization"><span class="section-number-3">2.1</span> SQL Keywords Capitalization</h3>
+<div id="outline-container-orgba21885" class="outline-3">
+<h3 id="sql-keywords-capitalization"><span class="section-number-3">2.2</span> SQL Keywords Capitalization</h3>
 <div class="outline-text-3" id="text-sql-keywords-capitalization">
 <p>
 SQL, by convention, uses upper-case keywords, although lower-case works just as
@@ -393,8 +409,8 @@ variable <code>sql-capitalize-keywords</code> to <code>t</code>.
 </div>
 </div>
 
-<div id="outline-container-org98e9a32" class="outline-4">
-<h4 id="sql-interactive-mode"><span class="section-number-4">2.1.1</span> SQL Interactive Mode</h4>
+<div id="outline-container-org9a28e05" class="outline-4">
+<h4 id="sql-interactive-mode"><span class="section-number-4">2.2.1</span> SQL Interactive Mode</h4>
 <div class="outline-text-4" id="text-sql-interactive-mode">
 <p>
 If you want capitalization only in <code>sql-mode</code> and not in <code>sql-interactive-mode</code>
@@ -403,8 +419,8 @@ you can set the variable <code>sql-capitalize-keywords-disable-interactive</code
 </div>
 </div>
 
-<div id="outline-container-orgf47f390" class="outline-4">
-<h4 id="blacklisting-keywords"><span class="section-number-4">2.1.2</span> Blacklisting keywords</h4>
+<div id="outline-container-org160e440" class="outline-4">
+<h4 id="blacklisting-keywords"><span class="section-number-4">2.2.2</span> Blacklisting keywords</h4>
 <div class="outline-text-4" id="text-blacklisting-keywords">
 <p>
 <a href="https://github.com/Trevoke/sqlup-mode.el">sqlup-mode</a> can be configured to ignore certain keywords. For example if you use
@@ -429,8 +445,8 @@ column and NAME is non-reserved SQL keyword.
 </div>
 </div>
 
-<div id="outline-container-org59a8b7f" class="outline-3">
-<h3 id="auto-indent"><span class="section-number-3">2.2</span> Auto-Indent</h3>
+<div id="outline-container-org4f93d34" class="outline-3">
+<h3 id="auto-indent"><span class="section-number-3">2.3</span> Auto-Indent</h3>
 <div class="outline-text-3" id="text-auto-indent">
 <p>
 This mode use <a href="https://github.com/alex-hhh/emacs-sql-indent">sql-indent</a> to indent the code. You can check the package's README
@@ -447,12 +463,12 @@ auto-indent by setting the variable <code>sql-auto-indent</code> to <code>nil</c
 </div>
 </div>
 
-<div id="outline-container-orgdd0d8a4" class="outline-2">
+<div id="outline-container-orga37ec61" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org334ea64" class="outline-3">
+<div id="outline-container-org7ada07b" class="outline-3">
 <h3 id="highlighting"><span class="section-number-3">3.1</span> Highlighting</h3>
 <div class="outline-text-3" id="text-highlighting">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -479,7 +495,7 @@ auto-indent by setting the variable <code>sql-auto-indent</code> to <code>nil</c
 </div>
 </div>
 
-<div id="outline-container-orgd4b810d" class="outline-3">
+<div id="outline-container-orge588344" class="outline-3">
 <h3 id="inferior-process-interactions-sqli"><span class="section-number-3">3.2</span> Inferior Process Interactions (SQLi)</h3>
 <div class="outline-text-3" id="text-inferior-process-interactions-sqli">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -525,8 +541,8 @@ auto-indent by setting the variable <code>sql-auto-indent</code> to <code>nil</c
 </table>
 </div>
 
-<div id="outline-container-org4d0218c" class="outline-4">
-<h4 id="send-sql-queries-to-sqli"><span class="section-number-4">3.2.1</span> Send SQL queries to SQLi:</h4>
+<div id="outline-container-org68e33b2" class="outline-4">
+<h4 id="send-sql-queries-to-sqli"><span class="section-number-4">3.2.1</span> Send SQL queries to SQLi</h4>
 <div class="outline-text-4" id="text-send-sql-queries-to-sqli">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -603,7 +619,7 @@ auto-indent by setting the variable <code>sql-auto-indent</code> to <code>nil</c
 </div>
 </div>
 
-<div id="outline-container-org5cc9b36" class="outline-3">
+<div id="outline-container-orgd120709" class="outline-3">
 <h3 id="sqli-buffer"><span class="section-number-3">3.3</span> SQLi buffer</h3>
 <div class="outline-text-3" id="text-sqli-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -635,7 +651,7 @@ auto-indent by setting the variable <code>sql-auto-indent</code> to <code>nil</c
 </div>
 </div>
 
-<div id="outline-container-org12cc9c5" class="outline-3">
+<div id="outline-container-orgc72c3b5" class="outline-3">
 <h3 id="code-formatting"><span class="section-number-3">3.4</span> Code Formatting</h3>
 <div class="outline-text-3" id="text-code-formatting">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -646,10 +662,26 @@ auto-indent by setting the variable <code>sql-auto-indent</code> to <code>nil</c
 
 <col  class="org-left" />
 </colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td class="org-left"><code>SPC m = c</code></td>
 <td class="org-left">capitalize SQL keywords in region (if capitalize is enabled)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m = =</code></td>
+<td class="org-left"><code>sqlfmt</code> whole buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m = r</code></td>
+<td class="org-left"><code>sqlfmt</code> active region</td>
 </tr>
 </tbody>
 </table>
@@ -659,7 +691,7 @@ auto-indent by setting the variable <code>sql-auto-indent</code> to <code>nil</c
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-01-25 Sat 15:22</p>
+<p class="date">Created: 2020-05-06 Wed 22:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

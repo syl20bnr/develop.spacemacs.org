@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-25 Sat 15:22 -->
+<!-- 2020-05-06 Wed 22:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Clojure layer</title>
@@ -227,7 +227,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -279,35 +279,48 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#description">1. Description</a>
 <ul>
-<li><a href="#features">1.1. Features:</a></li>
+<li><a href="#features">1.1. Features:</a>
+<ul>
+<li><a href="#related-layers">1.1.1. Related layers</a></li>
+<li><a href="#other-optional-features">1.1.2. Other optional features</a></li>
+<li><a href="#references">1.1.3. References</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#install">2. Install</a>
 <ul>
-<li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#add-the-clojure-layer-manually">2.1. Add the Clojure Layer manually</a></li>
 <li><a href="#pretty-symbols">2.2. Pretty Symbols</a></li>
-<li><a href="#enabling-sayid-or-clj-refactor">2.3. Enabling sayid or clj-refactor</a></li>
-<li><a href="#enabling-automatic-linting">2.4. Enabling Automatic Linting</a>
+<li><a href="#enabling-automatic-linting">2.3. Enabling Automatic Linting</a>
 <ul>
-<li><a href="#enable-clj-kondo-linter">2.4.1. Enable clj-kondo linter</a></li>
-<li><a href="#enable-joker-linter">2.4.2. Enable joker linter</a></li>
-<li><a href="#enable-squiggly-linter">2.4.3. Enable Squiggly linter</a></li>
-<li><a href="#enable-multiple-linters">2.4.4. Enable multiple linters</a></li>
-</ul>
-</li>
-<li><a href="#starting-clojure-manually-outside-of-emacs">2.5. Starting Clojure manually (outside of Emacs)</a>
-<ul>
-<li><a href="#quick-start-with-boot">2.5.1. Quick Start with boot</a></li>
-<li><a href="#quick-start-with-lein">2.5.2. Quick Start with lein</a></li>
-<li><a href="#more-details">2.5.3. More details</a></li>
+<li><a href="#enable-clj-kondo-linter">2.3.1. Enable clj-kondo linter</a></li>
+<li><a href="#enable-joker-linter">2.3.2. Enable joker linter</a></li>
+<li><a href="#enable-squiggly-linter">2.3.3. Enable Squiggly linter</a></li>
+<li><a href="#enable-multiple-linters">2.3.4. Enable multiple linters</a></li>
+<li><a href="#enable-clojure-fancify-symbols">2.3.5. Enable Clojure fancify Symbols</a></li>
+<li><a href="#enabling-sayid-or-clj-refactor">2.3.6. Enabling sayid or clj-refactor</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#usage">3. Usage</a>
 <ul>
-<li><a href="#cheatsheet">3.1. Cheatsheet</a></li>
-<li><a href="#structuraly-safe-editing">3.2. Structuraly safe editing</a></li>
+<li><a href="#starting-a-repl-from-spacemacs">3.1. Starting a REPL from Spacemacs</a>
+<ul>
+<li><a href="#troubleshooting">3.1.1. Troubleshooting</a></li>
+</ul>
+</li>
+<li><a href="#connecting-to-a-clojure-repl-outside-of-emacs">3.2. Connecting to a Clojure REPL outside of Emacs</a>
+<ul>
+<li><a href="#quick-start-with-boot">3.2.1. Quick Start with boot</a></li>
+<li><a href="#quick-start-with-lein">3.2.2. Quick Start with lein</a></li>
+<li><a href="#more-details">3.2.3. More details</a></li>
+</ul>
+</li>
+<li><a href="#managing-repl-connections">3.3. Managing REPL connections</a></li>
+<li><a href="#cheatsheet">3.4. Cheatsheet</a></li>
+<li><a href="#structuraly-safe-editing">3.5. Structuraly safe editing</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">4. Key bindings</a>
@@ -315,16 +328,18 @@ for the JavaScript code in this tag.
 <li><a href="#working-with-clojure-files-barfage-slurpage--more">4.1. Working with clojure files (barfage, slurpage &amp; more)</a></li>
 <li><a href="#leader">4.2. Leader</a>
 <ul>
-<li><a href="#documentation">4.2.1. Documentation</a></li>
-<li><a href="#evaluation">4.2.2. Evaluation</a></li>
-<li><a href="#goto">4.2.3. Goto</a></li>
-<li><a href="#repl">4.2.4. REPL</a></li>
-<li><a href="#tests">4.2.5. Tests</a></li>
-<li><a href="#toggles">4.2.6. Toggles</a></li>
-<li><a href="#debugging">4.2.7. Debugging</a></li>
-<li><a href="#refactoring">4.2.8. Refactoring</a></li>
-<li><a href="#reformatting">4.2.9. Reformatting</a></li>
-<li><a href="#profiling">4.2.10. Profiling</a></li>
+<li><a href="#shortcuts">4.2.1. Shortcuts</a></li>
+<li><a href="#managing-repl-connections-1">4.2.2. Managing REPL connections</a></li>
+<li><a href="#documentation">4.2.3. Documentation</a></li>
+<li><a href="#evaluation">4.2.4. Evaluation</a></li>
+<li><a href="#goto">4.2.5. Goto</a></li>
+<li><a href="#send-code-to-repl">4.2.6. Send code to REPL</a></li>
+<li><a href="#tests">4.2.7. Tests</a></li>
+<li><a href="#toggles">4.2.8. Toggles</a></li>
+<li><a href="#debugging">4.2.9. Debugging</a></li>
+<li><a href="#refactoring">4.2.10. Refactoring</a></li>
+<li><a href="#reformatting">4.2.11. Reformatting</a></li>
+<li><a href="#profiling">4.2.12. Profiling</a></li>
 </ul>
 </li>
 <li><a href="#cider-buffers">4.3. CIDER Buffers</a>
@@ -356,15 +371,16 @@ for the JavaScript code in this tag.
 <img src="img/clojure.png" alt="clojure.png" /> <img src="img/cider.png" alt="cider.png" />
 </p>
 
-<div id="outline-container-org3a15d2b" class="outline-2">
+<div id="outline-container-orga738efb" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds support for <a href="https://clojure.org/">Clojure</a> language using <a href="https://github.com/clojure-emacs/cider">CIDER</a>.
+This layer adds support for <a href="https://clojure.org/">Clojure</a> language using <a href="https://github.com/clojure-emacs/cider">CIDER</a>, providing Clojure REPL management
+and a full suite of tooling for Clojure development.
 </p>
 </div>
 
-<div id="outline-container-org28ad20b" class="outline-3">
+<div id="outline-container-orgdee4c74" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -376,28 +392,66 @@ This layer adds support for <a href="https://clojure.org/">Clojure</a> language 
 <li>Debugging with <a href="https://github.com/clojure-emacs/sayid">sayid</a></li>
 <li>Clojure cheatsheet</li>
 <li>Structuraly safe editing using optional <a href="https://github.com/luxbock/evil-cleverparens">evil-cleverparens</a></li>
+<li>Linting via <a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> (<a href="https://github.com/candid82/joker">joker</a> and <a href="https://github.com/clojure-emacs/squiggly-clojure">squiggly-clojure</a> also available)</li>
+</ul>
+</div>
+
+<div id="outline-container-orgdb41855" class="outline-4">
+<h4 id="related-layers"><span class="section-number-4">1.1.1</span> Related layers</h4>
+<div class="outline-text-4" id="text-related-layers">
+<p>
+The following Spacemacs layers should also be added for a complete experience.
+</p>
+<ul class="org-ul">
+<li>auto-completion</li>
+<li>syntax-checking (provides flycheck for linter support)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb77633d" class="outline-4">
+<h4 id="other-optional-features"><span class="section-number-4">1.1.2</span> Other optional features</h4>
+<div class="outline-text-4" id="text-other-optional-features">
+<ul class="org-ul">
+<li>Refactoring via <a href="https://github.com/clojure-emacs/clj-refactor.el">clj-refactor</a></li>
+<li>Debugging with <a href="https://github.com/clojure-emacs/sayid">sayid</a> (beta)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc012658" class="outline-4">
+<h4 id="references"><span class="section-number-4">1.1.3</span> References</h4>
+<div class="outline-text-4" id="text-references">
+<ul class="org-ul">
+<li><a href="https://docs.cider.mx/cider/">CIDER documentation</a></li>
+<li><a href="https://practicalli.github.io/spacemacs">Practicalli Spacemacs</a></li>
 </ul>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org02486cb" class="outline-2">
-<h2 id="install"><span class="section-number-2">2</span> Install</h2>
-<div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org409555f" class="outline-3">
-<h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
-<div class="outline-text-3" id="text-layer">
+<div id="outline-container-org27a1685" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
 <p>
-To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>clojure</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
-file.
+Spacemacs will prompt to install the Clojure layer automatically when opening a file ending in <code>.clj</code>
+<code>.cljs</code>, <code>.cljc</code> or <code>.edn</code>. Replying <code>y</code> will download all the packages for the Clojure layer.
+Restarting Spacemacs, <code>SPC q r</code>, is recommended to ensure all changes are loaded.
+</p>
+</div>
+
+<div id="outline-container-orgb1cf9b1" class="outline-3">
+<h3 id="add-the-clojure-layer-manually"><span class="section-number-3">2.1</span> Add the Clojure Layer manually</h3>
+<div class="outline-text-3" id="text-add-the-clojure-layer-manually">
+<p>
+Edit the <code>~/.spacemacs</code> file and add the word <code>clojure</code> to the existing
+<code>dotspacemacs-configuration-layers</code> list.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgd630cd3" class="outline-3">
+<div id="outline-container-org01517b3" class="outline-3">
 <h3 id="pretty-symbols"><span class="section-number-3">2.2</span> Pretty Symbols</h3>
 <div class="outline-text-3" id="text-pretty-symbols">
 <p>
@@ -427,46 +481,8 @@ Or set this variable when loading the configuration layer:
 </div>
 </div>
 
-<div id="outline-container-org54a9189" class="outline-3">
-<h3 id="enabling-sayid-or-clj-refactor"><span class="section-number-3">2.3</span> Enabling sayid or clj-refactor</h3>
-<div class="outline-text-3" id="text-enabling-sayid-or-clj-refactor">
-<p>
-The packages sayid (Clojure debugger) and clj-refactor (automatic refactorings)
-are disabled by default. To enable them, add a <code>:variables</code> option when enabling
-the <code>clojure</code> layer, specifying <code>clojure-enable-sayid</code>, or
-<code>clojure-enable-clj-refactor</code>, or both.
-</p>
-
-<p>
-In your Spacemacs configuration:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">before</span>
-dotspacemacs-configuration-layers
-'<span class="org-rainbow-delimiters-depth-1">(</span>...
-  clojure
-  <span class="org-rainbow-delimiters-depth-1">)</span>
-
-<span class="org-comment-delimiter">;; </span><span class="org-comment">after</span>
-dotspacemacs-configuration-layers
-'<span class="org-rainbow-delimiters-depth-1">(</span>...
-  <span class="org-rainbow-delimiters-depth-2">(</span>clojure <span class="org-builtin">:variables</span>
-           clojure-enable-sayid t
-           clojure-enable-clj-refactor t<span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-Enabling either of these packages will cause extra nREPL middleware to be
-injected when jacking in CIDER.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org3816abd" class="outline-3">
-<h3 id="enabling-automatic-linting"><span class="section-number-3">2.4</span> Enabling Automatic Linting</h3>
+<div id="outline-container-orge99fc10" class="outline-3">
+<h3 id="enabling-automatic-linting"><span class="section-number-3">2.3</span> Enabling Automatic Linting</h3>
 <div class="outline-text-3" id="text-enabling-automatic-linting">
 <p>
 <a href="https://github.com/borkdude/clj-kondo">clj-kondo</a>, <a href="https://github.com/candid82/joker">joker</a> and <a href="https://github.com/clojure-emacs/squiggly-clojure">squiggly-clojure</a> provide automated linting via <code>flycheck</code>.
@@ -486,8 +502,8 @@ added to the development dependencies of your projects or build tool when using
 </p>
 </div>
 
-<div id="outline-container-orgb0378ca" class="outline-4">
-<h4 id="enable-clj-kondo-linter"><span class="section-number-4">2.4.1</span> Enable clj-kondo linter</h4>
+<div id="outline-container-org8c92a09" class="outline-4">
+<h4 id="enable-clj-kondo-linter"><span class="section-number-4">2.3.1</span> Enable clj-kondo linter</h4>
 <div class="outline-text-4" id="text-enable-clj-kondo-linter">
 <p>
 This linter based on static syntax checking and requires the <a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> binary
@@ -519,8 +535,8 @@ dotspacemacs-configuration-layers
 </div>
 </div>
 
-<div id="outline-container-org364be06" class="outline-4">
-<h4 id="enable-joker-linter"><span class="section-number-4">2.4.2</span> Enable joker linter</h4>
+<div id="outline-container-org48efa22" class="outline-4">
+<h4 id="enable-joker-linter"><span class="section-number-4">2.3.2</span> Enable joker linter</h4>
 <div class="outline-text-4" id="text-enable-joker-linter">
 <p>
 This linter is based on static syntax checking and requires the <a href="https://github.com/candid82/joker">joker</a> binary
@@ -552,8 +568,8 @@ dotspacemacs-configuration-layers
 </div>
 </div>
 
-<div id="outline-container-orgf10de20" class="outline-4">
-<h4 id="enable-squiggly-linter"><span class="section-number-4">2.4.3</span> Enable Squiggly linter</h4>
+<div id="outline-container-org83fd1b0" class="outline-4">
+<h4 id="enable-squiggly-linter"><span class="section-number-4">2.3.3</span> Enable Squiggly linter</h4>
 <div class="outline-text-4" id="text-enable-squiggly-linter">
 <p>
 <a href="https://github.com/clojure-emacs/squiggly-clojure">squiggly-clojure</a> uses <a href="https://github.com/jonase/eastwood">Eastwood</a> and <a href="https://github.com/jonase/kibit">Kibit</a> for linting. Please install these projects
@@ -596,8 +612,8 @@ Troubleshooting: please read <a href="https://github.com/clojure-emacs/squiggly-
 </div>
 </div>
 
-<div id="outline-container-org79cf70c" class="outline-4">
-<h4 id="enable-multiple-linters"><span class="section-number-4">2.4.4</span> Enable multiple linters</h4>
+<div id="outline-container-org3384057" class="outline-4">
+<h4 id="enable-multiple-linters"><span class="section-number-4">2.3.4</span> Enable multiple linters</h4>
 <div class="outline-text-4" id="text-enable-multiple-linters">
 <p>
 You can choose to enable multiple linters and have them all run together. This gives you better linting coverage, as they don't catch all the same issues.
@@ -629,16 +645,178 @@ dotspacemacs-configuration-layers
 </div>
 </div>
 </div>
+
+<div id="outline-container-org9d9d49f" class="outline-4">
+<h4 id="enable-clojure-fancify-symbols"><span class="section-number-4">2.3.5</span> Enable Clojure fancify Symbols</h4>
+<div class="outline-text-4" id="text-enable-clojure-fancify-symbols">
+<p>
+Fancify symbols re-writes your code and displays symbols for:
+</p>
+<ul class="org-ul">
+<li>function definitions with fn <code>(λ [a] (+ a 5))</code> and its syntax shortcut <code>ƒ(+ % 5)</code></li>
+<li>set literals <code>∈{2 4 6}</code></li>
+<li>partial functions <code>Ƥ</code>.</li>
+</ul>
+
+<p>
+To enable this feature, add the following snippet to the
+<code>dotspacemacs/user-config</code> section of your <code>~/.spacemacs</code> file:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> clojure-enable-fancify-symbols t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 
-<div id="outline-container-org13d90ec" class="outline-3">
-<h3 id="starting-clojure-manually-outside-of-emacs"><span class="section-number-3">2.5</span> Starting Clojure manually (outside of Emacs)</h3>
-<div class="outline-text-3" id="text-starting-clojure-manually-outside-of-emacs">
 <p>
-CIDER communicates with your Clojure process through nREPL, and for CIDER to
-function correctly extra nREPL middleware needs to be present
-(cider/cider-nrepl). The same is true for clj-refactor (refactor-nrepl), and for
-sayid (com.billpiel/sayid).
+Or set this variable when loading the configuration layer:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>clojure <span class="org-builtin">:variables</span> clojure-enable-fancify-symbols t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1bb60e0" class="outline-4">
+<h4 id="enabling-sayid-or-clj-refactor"><span class="section-number-4">2.3.6</span> Enabling sayid or clj-refactor</h4>
+<div class="outline-text-4" id="text-enabling-sayid-or-clj-refactor">
+<p>
+The packages sayid (Clojure debugger) and clj-refactor (automatic refactorings)
+are disabled by default. These packages are less active that the CIDER project
+and may cause issues when running CIDER.
+</p>
+
+<p>
+To enable them, add a <code>:variables</code> option when enabling the <code>clojure</code> layer,
+specifying <code>clojure-enable-sayid</code>, or <code>clojure-enable-clj-refactor</code>, or both.
+</p>
+
+<p>
+In your Spacemacs configuration:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">before</span>
+dotspacemacs-configuration-layers
+'<span class="org-rainbow-delimiters-depth-1">(</span>...
+  clojure
+  <span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">after</span>
+dotspacemacs-configuration-layers
+'<span class="org-rainbow-delimiters-depth-1">(</span>...
+  <span class="org-rainbow-delimiters-depth-2">(</span>clojure <span class="org-builtin">:variables</span>
+           clojure-enable-sayid t
+           clojure-enable-clj-refactor t<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Enabling either of these packages will cause extra nREPL middleware to be
+injected when jacking in CIDER.
+</p>
+
+<p>
+If you are experiencing issues when running a REPL, try disabling these
+packages first and restart Spacemacs to see if the error persists.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd30df15" class="outline-2">
+<h2 id="usage"><span class="section-number-2">3</span> Usage</h2>
+<div class="outline-text-2" id="text-usage">
+<p>
+Read the key bindings section to see all the functionality available, or simply
+use the <code>,</code> or <code>SPC m</code> to open the which-key menu for the Clojure layer.
+</p>
+</div>
+
+<div id="outline-container-orgc1ab23e" class="outline-3">
+<h3 id="starting-a-repl-from-spacemacs"><span class="section-number-3">3.1</span> Starting a REPL from Spacemacs</h3>
+<div class="outline-text-3" id="text-starting-a-repl-from-spacemacs">
+<p>
+Open a Clojure file (<code>.clj</code>, <code>.cljs</code>, <code>.cljc</code>, <code>.edn</code>) and start a Clojure REPL,
+choosing the REPL session type (Clojure, ClojureScript or both Clojure &amp; ClojureScript).
+</p>
+
+<p>
+<code>, '</code> and <code>, s i</code> calls the <code>sesman-start</code> command, a wrapper for all the
+<code>jack-in</code> and <code>connect</code> commands. A prompt appears allowing you to choose the
+type of REPL session required.
+</p>
+
+<p>
+<code>, s j</code> opens the cider-jack-in menu, providing commands to start specific REPL sessions,
+it is the same as using the <code>sesman-start</code> command described previously.
+</p>
+
+<p>
+Using the universal constant, <code>SPC u</code> before any of the previous commands enables editing
+of the command that starts the REPL. This is useful if you want to add a <code>deps.edn</code> alias
+or add your own dependencies to inject. The command is edited in the mini-buffer
+</p>
+
+<p>
+Once the REPL starts, a confirmation message is displayed in the mini-buffer.
+</p>
+
+<p>
+The REPL buffer does not open automatically (Clojure is typically evaluated in
+the source code buffer). <code>, s a</code> will switch between REPL and source code buffers,
+opening the REPL buffer if not already shown.
+</p>
+</div>
+
+<div id="outline-container-orgb5dc711" class="outline-4">
+<h4 id="troubleshooting"><span class="section-number-4">3.1.1</span> Troubleshooting</h4>
+<div class="outline-text-4" id="text-troubleshooting">
+<p>
+If the REPL does not start, <code>SPC b m</code> opens the message buffer and should show errors.
+Also check the REPL buffer, <code>, s a</code> for error messages.
+</p>
+
+<p>
+Remove optional features from the Clojure layer, specifically sayid and clj-refactor.
+Restart Emacs and confirm the issue still occurs.
+</p>
+
+<p>
+Visit <a href="https://clojurians.slack.com/messages/cider">#cider channel on Clojurians Slack community</a> for help with CIDER,
+and <a href="https://clojurians.slack.com/messages/spacemacs">#spacemacs channel</a> for Spacemacs specific help
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org86568cb" class="outline-3">
+<h3 id="connecting-to-a-clojure-repl-outside-of-emacs"><span class="section-number-3">3.2</span> Connecting to a Clojure REPL outside of Emacs</h3>
+<div class="outline-text-3" id="text-connecting-to-a-clojure-repl-outside-of-emacs">
+<p>
+Start a REPL outside of Emacs that includes an nREPL server. The IP address and port
+the nREPL runs on should be printed.
+</p>
+
+<p>
+<code>, '_</code> or <code>SPC m s i</code> displays the sesman prompt, select the connect command relevant
+to the type of REPL you wish to start.
+</p>
+
+<p>
+<code>, s c</code> opens the cider-connect menu, providing key bindings for connecting too the
+different REPL session types.
+</p>
+
+<p>
+CIDER communicates with your Clojure process through nREPL and for CIDER to
+function correctly extra nREPL middleware is needed (cider/cider-nrepl).
+The same is true for clj-refactor (refactor-nrepl), and for sayid (com.billpiel/sayid).
 </p>
 
 <p>
@@ -655,8 +833,8 @@ are enabled.
 </p>
 </div>
 
-<div id="outline-container-org5cf1ae7" class="outline-4">
-<h4 id="quick-start-with-boot"><span class="section-number-4">2.5.1</span> Quick Start with boot</h4>
+<div id="outline-container-orged97d6c" class="outline-4">
+<h4 id="quick-start-with-boot"><span class="section-number-4">3.2.1</span> Quick Start with boot</h4>
 <div class="outline-text-4" id="text-quick-start-with-boot">
 <ul class="org-ul">
 <li>Install <code>boot</code> 2.8.2 or newer (see <a href="https://github.com/boot-clj/boot#user-content-install">https://github.com/boot-clj/boot#user-content-install</a>)</li>
@@ -689,8 +867,8 @@ Create a file <code>~/.boot/profile.boot</code> with the following content:
 </div>
 </div>
 
-<div id="outline-container-org05f8211" class="outline-4">
-<h4 id="quick-start-with-lein"><span class="section-number-4">2.5.2</span> Quick Start with lein</h4>
+<div id="outline-container-orgb4b60ce" class="outline-4">
+<h4 id="quick-start-with-lein"><span class="section-number-4">3.2.2</span> Quick Start with lein</h4>
 <div class="outline-text-4" id="text-quick-start-with-lein">
 <ul class="org-ul">
 <li>Install <code>lein</code> version 2.9.0 or newer (see <a href="https://leiningen.org/#install">https://leiningen.org/#install</a>)</li>
@@ -723,8 +901,8 @@ Create a file <code>~/.lein/profiles.clj</code> with the following content:
 </div>
 </div>
 
-<div id="outline-container-org66b6fbf" class="outline-4">
-<h4 id="more-details"><span class="section-number-4">2.5.3</span> More details</h4>
+<div id="outline-container-org8f706e5" class="outline-4">
+<h4 id="more-details"><span class="section-number-4">3.2.3</span> More details</h4>
 <div class="outline-text-4" id="text-more-details">
 <p>
 More info regarding installation of nREPL middleware can be found here:
@@ -736,15 +914,29 @@ More info regarding installation of nREPL middleware can be found here:
 </div>
 </div>
 </div>
+
+<div id="outline-container-org8561536" class="outline-3">
+<h3 id="managing-repl-connections"><span class="section-number-3">3.3</span> Managing REPL connections</h3>
+<div class="outline-text-3" id="text-managing-repl-connections">
+<p>
+Sesman is used for <a href="https://docs.cider.mx/cider/usage/managing_connections.html">managing REPL connections</a> when working simultaneously on
+multiple projects or have multiple connections opened for the same project
+</p>
+
+<p>
+<code>SPC m m i</code> provides information about the current REPL.
+<code>SPC m m b</code> shows information about all REPLs currently active.
+<code>SPC m m l</code> menu links files, directories and projects to an existing session.
+</p>
+
+<p>
+See REPL connections in the key bindings section for all the commands.
+</p>
+</div>
 </div>
 
-<div id="outline-container-org68ab919" class="outline-2">
-<h2 id="usage"><span class="section-number-2">3</span> Usage</h2>
-<div class="outline-text-2" id="text-usage">
-</div>
-
-<div id="outline-container-orgcd9c3bc" class="outline-3">
-<h3 id="cheatsheet"><span class="section-number-3">3.1</span> Cheatsheet</h3>
+<div id="outline-container-orgdbd4f03" class="outline-3">
+<h3 id="cheatsheet"><span class="section-number-3">3.4</span> Cheatsheet</h3>
 <div class="outline-text-3" id="text-cheatsheet">
 <p>
 This layers installs the <a href="https://github.com/clojure-emacs/clojure-cheatsheet">clojure-cheatsheet</a> package which embeds this useful
@@ -759,22 +951,21 @@ some functions that deal with sorting maps.
 </div>
 </div>
 
-<div id="outline-container-org85db6f9" class="outline-3">
-<h3 id="structuraly-safe-editing"><span class="section-number-3">3.2</span> Structuraly safe editing</h3>
+<div id="outline-container-org25f4fc3" class="outline-3">
+<h3 id="structuraly-safe-editing"><span class="section-number-3">3.5</span> Structuraly safe editing</h3>
 <div class="outline-text-3" id="text-structuraly-safe-editing">
 <p>
-This layer adds support for <code>evil-cleverparens</code> which allows to safely edit
+The Clojure layer adds support for <code>evil-cleverparens</code> which allows to safely edit
 lisp code by keeping the s-expressions balanced.
 </p>
 
 <p>
-By default this mode is not activated. You can turn it on locally on the active
-buffer with <code>SPC m T s</code> (<code>s</code> for safe).
+<code>SPC m T s</code> will toggle safe structured editing, off by default.
 </p>
 
 <p>
-To turn it on automatically for all <code>clojure</code> buffers call the following
-function in your <code>dotspacemacs/user-config</code> function:
+Enable safe structural editing for all <code>clojure</code> buffers using the following
+in the <code>dotspacemacs/user-config</code> function of your .spacemacs file
 </p>
 
 <div class="org-src-container">
@@ -783,7 +974,7 @@ function in your <code>dotspacemacs/user-config</code> function:
 </div>
 
 <p>
-or to enable it for all supported modes:
+Or enable safe structural editing for all supported modes:
 </p>
 
 <div class="org-src-container">
@@ -792,18 +983,18 @@ or to enable it for all supported modes:
 </div>
 
 <p>
-When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
+When enabled the symbol <code>🆂</code> will display in the mode-line.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org217e566" class="outline-2">
+<div id="outline-container-orgb129f6b" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgcbce9cc" class="outline-3">
+<div id="outline-container-org3f0e4a1" class="outline-3">
 <h3 id="working-with-clojure-files-barfage-slurpage--more"><span class="section-number-3">4.1</span> Working with clojure files (barfage, slurpage &amp; more)</h3>
 <div class="outline-text-3" id="text-working-with-clojure-files-barfage-slurpage--more">
 <p>
@@ -819,13 +1010,135 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org317e055" class="outline-3">
+<div id="outline-container-orge0f911d" class="outline-3">
 <h3 id="leader"><span class="section-number-3">4.2</span> Leader</h3>
 <div class="outline-text-3" id="text-leader">
 </div>
 
-<div id="outline-container-orgb7a4c7b" class="outline-4">
-<h4 id="documentation"><span class="section-number-4">4.2.1</span> Documentation</h4>
+<div id="outline-container-orge9df0ef" class="outline-4">
+<h4 id="shortcuts"><span class="section-number-4">4.2.1</span> Shortcuts</h4>
+<div class="outline-text-4" id="text-shortcuts">
+<p>
+Shortcut key bindings for regularly used commands.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m '</code></td>
+<td class="org-left">start a REPL - prompted for REPL type (sesman-start)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m ,</code></td>
+<td class="org-left">command menu in REPL buffer (cider-repl-handle-shortcut)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org7e74bfb" class="outline-4">
+<h4 id="managing-repl-connections-1"><span class="section-number-4">4.2.2</span> Managing REPL connections</h4>
+<div class="outline-text-4" id="text-managing-repl-connections-1">
+<p>
+Managing CIDER REPL connections and sessions
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m m b</code></td>
+<td class="org-left">browse all REPL session (sesman-browser)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m m i</code></td>
+<td class="org-left">current REPL information, <code>SPC u</code> for all sessions (sesman-info)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m m g</code></td>
+<td class="org-left">go to most relevant REPL session (sesman-goto)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m m l b</code></td>
+<td class="org-left">link buffer to REPL session (sesman-link-with-buffer)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m m l d</code></td>
+<td class="org-left">link directory to REPL session (sesman-link-with-directory)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m m l p</code></td>
+<td class="org-left">link project to REPL session (sesman-link-with-project)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m m l u</code></td>
+<td class="org-left">unlink from REPL session (sesman-unlink)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m m S j</code></td>
+<td class="org-left">connect as sibling to existing Clojure REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m m S s</code></td>
+<td class="org-left">connect as sibling to existing ClojureScript REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m m s</code></td>
+<td class="org-left">start a REPL - prompted for REPL type (sesman-start)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m m q q</code></td>
+<td class="org-left">quit REPL session (sesman-quit)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m m q r</code></td>
+<td class="org-left">restart REPL (sesman-restart)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgbd6b52a" class="outline-4">
+<h4 id="documentation"><span class="section-number-4">4.2.3</span> Documentation</h4>
 <div class="outline-text-4" id="text-documentation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -876,14 +1189,28 @@ As this state works the same for all files, the documentation is in global
 <td class="org-left"><code>SPC m h N</code></td>
 <td class="org-left">cider browse all namespaces</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>SPC m h s</code></td>
+<td class="org-left">cider-browse-spec</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h S</code></td>
+<td class="org-left">cider-browse-spec-all</td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-org8c9f51a" class="outline-4">
-<h4 id="evaluation"><span class="section-number-4">4.2.2</span> Evaluation</h4>
+<div id="outline-container-org1e8a880" class="outline-4">
+<h4 id="evaluation"><span class="section-number-4">4.2.4</span> Evaluation</h4>
 <div class="outline-text-4" id="text-evaluation">
+<p>
+Evaluate Clojure code in the source code buffer
+</p>
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -902,6 +1229,11 @@ As this state works the same for all files, the documentation is in global
 <tr>
 <td class="org-left"><code>SPC m e ;</code></td>
 <td class="org-left">eval sexp and show result as comment</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e $</code></td>
+<td class="org-left">go to end of line and eval last sexp</td>
 </tr>
 
 <tr>
@@ -925,8 +1257,8 @@ As this state works the same for all files, the documentation is in global
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m e r</code></td>
-<td class="org-left">eval region</td>
+<td class="org-left"><code>SPC m e l</code></td>
+<td class="org-left">go to end of line and eval last sexp</td>
 </tr>
 
 <tr>
@@ -940,13 +1272,38 @@ As this state works the same for all files, the documentation is in global
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m e p</code></td>
-<td class="org-left">print last sexp (clojure interaction mode only)</td>
+<td class="org-left"><code>SPC m e n</code></td>
+<td class="org-left">refresh namespace (cider-ns-refresh)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m e P</code></td>
-<td class="org-left">eval last sexp and pretty print result in separate buffer</td>
+<td class="org-left"><code>SPC m e N</code></td>
+<td class="org-left">reload namespace (cider-ns-reload), <code>SPC u</code> (cider-ns-reload-all)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e p ;</code></td>
+<td class="org-left">eval top-level sexp, pretty print result as a comment</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e p :</code></td>
+<td class="org-left">eval last sexp, pretty print result as a comment</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e p f</code></td>
+<td class="org-left">eval top-level sexp, pretty print result in separate buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e p e</code></td>
+<td class="org-left">eval last sexp, pretty print result in separate buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e r</code></td>
+<td class="org-left">eval region</td>
 </tr>
 
 <tr>
@@ -968,8 +1325,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-orga1329f0" class="outline-4">
-<h4 id="goto"><span class="section-number-4">4.2.3</span> Goto</h4>
+<div id="outline-container-org0711f8b" class="outline-4">
+<h4 id="goto"><span class="section-number-4">4.2.5</span> Goto</h4>
 <div class="outline-text-4" id="text-goto">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1030,9 +1387,14 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org36209f3" class="outline-4">
-<h4 id="repl"><span class="section-number-4">4.2.4</span> REPL</h4>
-<div class="outline-text-4" id="text-repl">
+<div id="outline-container-org0c692ac" class="outline-4">
+<h4 id="send-code-to-repl"><span class="section-number-4">4.2.6</span> Send code to REPL</h4>
+<div class="outline-text-4" id="text-send-code-to-repl">
+<p>
+Use these key bindings when working directly with a REPL buffer.
+Use the Evaluation key bindings when evaluating in source code buffer.
+</p>
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1049,8 +1411,8 @@ As this state works the same for all files, the documentation is in global
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m ,</code></td>
-<td class="org-left">handle shortcut (cider-repl-handle-shortcut)</td>
+<td class="org-left"><code>SPC m s a</code></td>
+<td class="org-left">switch between REPL and last Clojure source code buffer (cider-repl)</td>
 </tr>
 
 <tr>
@@ -1064,13 +1426,18 @@ As this state works the same for all files, the documentation is in global
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m s c</code></td>
-<td class="org-left">connect to REPL (cider-connect) or clear repl buffer (cider-repl-clear-buffer)</td>
+<td class="org-left"><code>SPC m s c j</code></td>
+<td class="org-left">connect to a running Clojure REPL (cider-connect-clj)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m s C</code></td>
-<td class="org-left">clear REPL (cider-find-and-clear-repl-output)</td>
+<td class="org-left"><code>SPC m s c m</code></td>
+<td class="org-left">connect to a running Clojure &amp; ClojureScript REPL (cider-connect-clj&amp;cljs)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s c s</code></td>
+<td class="org-left">connect to a running ClojureScript REPL (cider-connect-cljs)</td>
 </tr>
 
 <tr>
@@ -1094,18 +1461,33 @@ As this state works the same for all files, the documentation is in global
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m s j c</code></td>
+<td class="org-left"><code>SPC m s i</code></td>
+<td class="org-left">start a REPL - prompt for REPL type (sesman-start)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s j j</code></td>
 <td class="org-left">start Clojure REPL (<code>cider-jack-in-clj</code>)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m s j f</code></td>
+<td class="org-left"><code>SPC m s j m</code></td>
 <td class="org-left">start Clojure REPL (<code>cider-jack-in-clj&amp;cljs</code>)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m s j s</code></td>
 <td class="org-left">start ClojureScript REPL (<code>cider-jack-in-cljs</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m l</code></td>
+<td class="org-left">clear REPL buffer (cider-repl-clear-buffer)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m L</code></td>
+<td class="org-left">clear and switch to REPL buffer (cider-find-and-clear-repl-output)</td>
 </tr>
 
 <tr>
@@ -1119,13 +1501,28 @@ As this state works the same for all files, the documentation is in global
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m s q</code></td>
-<td class="org-left">kill REPL (cider-quit)</td>
+<td class="org-left"><code>SPC m s o</code></td>
+<td class="org-left">switch to other repl instance (cider-repl-switch-to-other)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m s o</code></td>
-<td class="org-left">switch to other repl instance (cider-repl-switch-to-other)</td>
+<td class="org-left"><code>SPC m s q n</code></td>
+<td class="org-left">reload namespace in REPL (cider-ns-reload)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s q N</code></td>
+<td class="org-left">reload all namespace in REPL (cider-ns-reload-all)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s q q</code></td>
+<td class="org-left">quit REPL (cider-quit)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s q r</code></td>
+<td class="org-left">restart REPL (cider-restart)</td>
 </tr>
 
 <tr>
@@ -1139,31 +1536,21 @@ As this state works the same for all files, the documentation is in global
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m s s</code></td>
-<td class="org-left">switch to REPL or jump to last file or last clj buffer from repl (cider-repl)</td>
+<td class="org-left"><code>SPC m e u</code></td>
+<td class="org-left">require Clojure utils into current namespace - i.e. <code>doc</code> <code>source</code></td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m s u</code></td>
-<td class="org-left">require Clojure utils into current namespace - i.e. functions <code>doc</code> <code>source</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s x</code></td>
-<td class="org-left">refresh REPL</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m s X</code></td>
-<td class="org-left">restart REPL</td>
+<td class="org-left"><code>SPC m s p</code></td>
+<td class="org-left">print last sexp (clojure interaction mode only)</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-org29a3cce" class="outline-4">
-<h4 id="tests"><span class="section-number-4">4.2.5</span> Tests</h4>
+<div id="outline-container-org561911c" class="outline-4">
+<h4 id="tests"><span class="section-number-4">4.2.7</span> Tests</h4>
 <div class="outline-text-4" id="text-tests">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1199,8 +1586,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org7edbd2a" class="outline-4">
-<h4 id="toggles"><span class="section-number-4">4.2.6</span> Toggles</h4>
+<div id="outline-container-org3807fa8" class="outline-4">
+<h4 id="toggles"><span class="section-number-4">4.2.8</span> Toggles</h4>
 <div class="outline-text-4" id="text-toggles">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1246,9 +1633,13 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org8bac981" class="outline-4">
-<h4 id="debugging"><span class="section-number-4">4.2.7</span> Debugging</h4>
+<div id="outline-container-org044ff90" class="outline-4">
+<h4 id="debugging"><span class="section-number-4">4.2.9</span> Debugging</h4>
 <div class="outline-text-4" id="text-debugging">
+<p>
+TODO: separate clojure-mode and sayid key bindings
+</p>
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1398,8 +1789,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-orgd18b233" class="outline-4">
-<h4 id="refactoring"><span class="section-number-4">4.2.8</span> Refactoring</h4>
+<div id="outline-container-org34bfa0f" class="outline-4">
+<h4 id="refactoring"><span class="section-number-4">4.2.10</span> Refactoring</h4>
 <div class="outline-text-4" id="text-refactoring">
 <p>
 The following refactoring key bindings are enabled by default in clojure-mode:
@@ -1675,8 +2066,8 @@ The following refactorings require cljr-refactor to be enabled and generally dep
 </div>
 </div>
 
-<div id="outline-container-org243230d" class="outline-4">
-<h4 id="reformatting"><span class="section-number-4">4.2.9</span> Reformatting</h4>
+<div id="outline-container-org1db3c2e" class="outline-4">
+<h4 id="reformatting"><span class="section-number-4">4.2.11</span> Reformatting</h4>
 <div class="outline-text-4" id="text-reformatting">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1694,26 +2085,46 @@ The following refactorings require cljr-refactor to be enabled and generally dep
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m f b</code> or <code>SPC m =</code></td>
+<td class="org-left"><code>SPC m = =</code></td>
 <td class="org-left">reformat current buffer</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m f l</code></td>
+<td class="org-left"><code>SPC m = e b</code></td>
+<td class="org-left">reformat edn buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m = e e</code></td>
+<td class="org-left">reformat edn last sexp</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m = e r</code></td>
+<td class="org-left">reformat edn region</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m = f</code></td>
+<td class="org-left">reformat current sexp</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m = l</code></td>
 <td class="org-left">realign current form</td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>SPC m = r</code></td>
+<td class="org-left">realign current region</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-org49d63ce" class="outline-4">
-<h4 id="profiling"><span class="section-number-4">4.2.10</span> Profiling</h4>
+<div id="outline-container-org0bc74e8" class="outline-4">
+<h4 id="profiling"><span class="section-number-4">4.2.12</span> Profiling</h4>
 <div class="outline-text-4" id="text-profiling">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1770,7 +2181,7 @@ The following refactorings require cljr-refactor to be enabled and generally dep
 </div>
 </div>
 
-<div id="outline-container-org080b9e9" class="outline-3">
+<div id="outline-container-org9fd4527" class="outline-3">
 <h3 id="cider-buffers"><span class="section-number-3">4.3</span> CIDER Buffers</h3>
 <div class="outline-text-3" id="text-cider-buffers">
 <p>
@@ -1778,7 +2189,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </p>
 </div>
 
-<div id="outline-container-org84897ae" class="outline-4">
+<div id="outline-container-org92a0ce9" class="outline-4">
 <h4 id="cider-repl-mode"><span class="section-number-4">4.3.1</span> cider-repl-mode</h4>
 <div class="outline-text-4" id="text-cider-repl-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1810,7 +2221,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-orgb5f5c88" class="outline-4">
+<div id="outline-container-orgcada090" class="outline-4">
 <h4 id="stacktrace-mode"><span class="section-number-4">4.3.2</span> stacktrace-mode</h4>
 <div class="outline-text-4" id="text-stacktrace-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1907,7 +2318,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org66d2aae" class="outline-4">
+<div id="outline-container-orga4c03d1" class="outline-4">
 <h4 id="inspector-mode"><span class="section-number-4">4.3.3</span> inspector-mode</h4>
 <div class="outline-text-4" id="text-inspector-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1969,7 +2380,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org3825ac8" class="outline-4">
+<div id="outline-container-org0e08c32" class="outline-4">
 <h4 id="test-report-mode"><span class="section-number-4">4.3.4</span> test-report-mode</h4>
 <div class="outline-text-4" id="text-test-report-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2032,12 +2443,12 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org3797ca0" class="outline-3">
+<div id="outline-container-org7127eeb" class="outline-3">
 <h3 id="sayid-buffers"><span class="section-number-3">4.4</span> Sayid Buffers</h3>
 <div class="outline-text-3" id="text-sayid-buffers">
 </div>
 
-<div id="outline-container-org67777b6" class="outline-4">
+<div id="outline-container-org2fcfcf9" class="outline-4">
 <h4 id="sayid-mode"><span class="section-number-4">4.4.1</span> sayid-mode</h4>
 <div class="outline-text-4" id="text-sayid-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2144,7 +2555,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-orgb260e06" class="outline-4">
+<div id="outline-container-orga55e2f2" class="outline-4">
 <h4 id="sayid-traced-mode"><span class="section-number-4">4.4.2</span> sayid-traced-mode</h4>
 <div class="outline-text-4" id="text-sayid-traced-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2216,7 +2627,7 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-orgf54dd0b" class="outline-4">
+<div id="outline-container-org5ca29f6" class="outline-4">
 <h4 id="sayid-pprint"><span class="section-number-4">4.4.3</span> sayid-pprint</h4>
 <div class="outline-text-4" id="text-sayid-pprint">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2265,12 +2676,12 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 
-<div id="outline-container-org63a5499" class="outline-2">
+<div id="outline-container-org1d71d25" class="outline-2">
 <h2 id="development-notes"><span class="section-number-2">5</span> Development Notes</h2>
 <div class="outline-text-2" id="text-development-notes">
 </div>
 
-<div id="outline-container-org51c04d6" class="outline-3">
+<div id="outline-container-org40af440" class="outline-3">
 <h3 id="indentation"><span class="section-number-3">5.1</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
@@ -2285,7 +2696,7 @@ specific vars.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-01-25 Sat 15:22</p>
+<p class="date">Created: 2020-05-06 Wed 22:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-25 Sat 15:22 -->
+<!-- 2020-05-06 Wed 22:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs Lisp layer</title>
@@ -227,7 +227,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -298,6 +298,7 @@ for the JavaScript code in this tag.
 <li><a href="#additional-evaluation-functions">8.2. Additional evaluation functions</a></li>
 <li><a href="#format-code">8.3. Format code</a></li>
 <li><a href="#debugging">8.4. Debugging</a></li>
+<li><a href="#refactoring-with-emr">8.5. Refactoring with emr</a></li>
 </ul>
 </li>
 </ul>
@@ -309,7 +310,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgd6d9838" class="outline-2">
+<div id="outline-container-orge60a2b5" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -318,7 +319,7 @@ always be in your dotfile, it is not recommended to uninstall it.
 </p>
 </div>
 
-<div id="outline-container-org5ea1662" class="outline-3">
+<div id="outline-container-orgca79621" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -338,7 +339,7 @@ always be in your dotfile, it is not recommended to uninstall it.
 </div>
 </div>
 
-<div id="outline-container-orgc95e31f" class="outline-2">
+<div id="outline-container-org23ebd28" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -349,7 +350,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orge3eb1ba" class="outline-2">
+<div id="outline-container-orgdfd2b3a" class="outline-2">
 <h2 id="auto-compile"><span class="section-number-2">3</span> Auto-compile</h2>
 <div class="outline-text-2" id="text-auto-compile">
 <p>
@@ -372,7 +373,7 @@ You can also exclude the <code>auto-compile</code> package.
 </div>
 </div>
 
-<div id="outline-container-org28e6358" class="outline-2">
+<div id="outline-container-orgd10d2ba" class="outline-2">
 <h2 id="working-with-lisp-files-barfage-slurpage--more"><span class="section-number-2">4</span> Working with lisp files (barfage, slurpage &amp; more)</h2>
 <div class="outline-text-2" id="text-working-with-lisp-files-barfage-slurpage--more">
 <p>
@@ -388,7 +389,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 </div>
 
-<div id="outline-container-org1989879" class="outline-2">
+<div id="outline-container-orgce54327" class="outline-2">
 <h2 id="debugging-elisp"><span class="section-number-2">5</span> Debugging Elisp</h2>
 <div class="outline-text-2" id="text-debugging-elisp">
 <p>
@@ -456,7 +457,7 @@ function or press <code>o</code> to go out of it.
 </div>
 </div>
 
-<div id="outline-container-orgdadea1b" class="outline-2">
+<div id="outline-container-orgd26d921" class="outline-2">
 <h2 id="nameless"><span class="section-number-2">6</span> Nameless</h2>
 <div class="outline-text-2" id="text-nameless">
 <p>
@@ -481,7 +482,7 @@ terminal window, use with caution.
 </div>
 </div>
 
-<div id="outline-container-org7b06eb9" class="outline-3">
+<div id="outline-container-orgb1ee0c6" class="outline-3">
 <h3 id="aliases"><span class="section-number-3">6.1</span> Aliases</h3>
 <div class="outline-text-3" id="text-aliases">
 <p>
@@ -538,7 +539,7 @@ dotfile:
 </div>
 </div>
 
-<div id="outline-container-org3bab84f" class="outline-2">
+<div id="outline-container-org227cd55" class="outline-2">
 <h2 id="structurally-safe-editing"><span class="section-number-2">7</span> Structurally safe editing</h2>
 <div class="outline-text-2" id="text-structurally-safe-editing">
 <p>
@@ -576,7 +577,7 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </div>
 </div>
 
-<div id="outline-container-org70298cf" class="outline-2">
+<div id="outline-container-orge84fbef" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">8</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -677,7 +678,7 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </table>
 </div>
 
-<div id="outline-container-org2b75823" class="outline-3">
+<div id="outline-container-org6da441d" class="outline-3">
 <h3 id="additional-testing-functions-with-overseer"><span class="section-number-3">8.1</span> Additional testing functions with overseer</h3>
 <div class="outline-text-3" id="text-additional-testing-functions-with-overseer">
 <p>
@@ -748,7 +749,7 @@ Function related to test are present under the <code>SPC m t</code> prefix:
 </div>
 </div>
 
-<div id="outline-container-org2831dc8" class="outline-3">
+<div id="outline-container-org0741344" class="outline-3">
 <h3 id="additional-evaluation-functions"><span class="section-number-3">8.2</span> Additional evaluation functions</h3>
 <div class="outline-text-3" id="text-additional-evaluation-functions">
 <p>
@@ -784,7 +785,7 @@ If <code>smartparens</code> is used the following additional key bindings are av
 </div>
 </div>
 
-<div id="outline-container-org08e8564" class="outline-3">
+<div id="outline-container-orgac5b1d8" class="outline-3">
 <h3 id="format-code"><span class="section-number-3">8.3</span> Format code</h3>
 <div class="outline-text-3" id="text-format-code">
 <p>
@@ -830,7 +831,7 @@ The <a href="../../%2Bemacs/semantic/README.html">semantic</a> layer should be i
 </div>
 </div>
 
-<div id="outline-container-org381f9f0" class="outline-3">
+<div id="outline-container-org7a27e0a" class="outline-3">
 <h3 id="debugging"><span class="section-number-3">8.4</span> Debugging</h3>
 <div class="outline-text-3" id="text-debugging">
 <p>
@@ -888,11 +889,103 @@ TODO
 </p>
 </div>
 </div>
+
+<div id="outline-container-org986bdd3" class="outline-3">
+<h3 id="refactoring-with-emr"><span class="section-number-3">8.5</span> Refactoring with emr</h3>
+<div class="outline-text-3" id="text-refactoring-with-emr">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m r f e</code></td>
+<td class="org-left">implement function</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r f d</code></td>
+<td class="org-left">find unused definitions</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r e f</code></td>
+<td class="org-left">extract function</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r e v</code></td>
+<td class="org-left">extract variable</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r e l</code></td>
+<td class="org-left">extract to let</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r e c</code></td>
+<td class="org-left">extract constant</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r e a</code></td>
+<td class="org-left">extract autoload</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r i v</code></td>
+<td class="org-left">inline variable</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r i s</code></td>
+<td class="org-left">inline let variable</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r i f</code></td>
+<td class="org-left">inline function</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r i a</code></td>
+<td class="org-left">insert autoload directive</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r d l</code></td>
+<td class="org-left">delete let binding form</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r d d</code></td>
+<td class="org-left">delete unused definition</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e w</code></td>
+<td class="org-left">eval and replace</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-01-25 Sat 15:22</p>
+<p class="date">Created: 2020-05-06 Wed 22:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
