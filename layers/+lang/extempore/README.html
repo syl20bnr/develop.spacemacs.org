@@ -6,7 +6,7 @@
 <!-- 2020-05-21 Thu 10:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>nlinum layer</title>
+<title>Extempore layer</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="root" />
 <style type="text/css">
@@ -272,7 +272,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">nlinum layer</h1>
+<h1 class="title">Extempore layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -282,34 +282,124 @@ for the JavaScript code in this tag.
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#configuration">2.1. Configuration</a></li>
+</ul>
+</li>
+<li><a href="#key-bindings">3. Key bindings</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org5ed9fd3" class="outline-2">
+<div id="outline-container-orgdcea520" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer provides various styles of line numbering in Spacemacs. It replaces
-<code>linum</code> and <code>linum-relative</code> with the improved <code>nlinum</code> and <code>nlinum-relative</code>
-packages.
-</p>
-
-<p>
-Please note that on Emacs 26 and newer, this layer also replaces the new native
-line numbers mode (<code>display-line-numbers-mode</code>), and because of that it is not
-recommended to use <code>nlinum</code> layer on Emacs 26 or newer.
+This layer adds support for the <a href="https://github.com/digego/extempore">Extempore</a> programming environment.
 </p>
 </div>
 
-<div id="outline-container-org2858e85" class="outline-3">
+<div id="outline-container-org943fc27" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Support for classic ascending line numbering.</li>
-<li>Support for line numbering relative to the current cursor position.</li>
+<li>run Extempore (inferior extempore buffer)</li>
+<li>connect to &amp; evaluate code</li>
+<li>eldoc support</li>
 </ul>
 </div>
+</div>
+</div>
+
+<div id="outline-container-orgff04324" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+<p>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>extempore</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
+</p>
+</div>
+
+<div id="outline-container-orgdaae055" class="outline-3">
+<h3 id="configuration"><span class="section-number-3">2.1</span> Configuration</h3>
+<div class="outline-text-3" id="text-configuration">
+<p>
+The only configuration variable you might want to set out-of-the-box is
+<code>extempore-path</code>, so that you don't have to answer the "which directory?" prompt
+every time you call <code>switch-to-extempore</code>. You can set it when you add
+<code>extempore</code> to your <code>dotspacemacs-configuration-layers</code> like so:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>extempore <span class="org-builtin">:variables</span> extempore-path <span class="org-string">"/path/to/extempore/"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Alternately, you could set it elsewhere in your init file, or through the
+<code>customize</code> interface.
+</p>
+
+<p>
+There are a few other config variables to tweak, but in most cases the defaults
+will be ok if you're just starting out. If you want to see them all, open up
+<code>M-x customize</code> and look in the <code>extempore</code> group.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfcaea2f" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m c c</code></td>
+<td class="org-left">Switch to Extempore</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c j</code></td>
+<td class="org-left">Connect to Extempore</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e f</code></td>
+<td class="org-left">Eval current definition</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e e</code></td>
+<td class="org-left">Eval last sexp</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e r</code></td>
+<td class="org-left">Eval region</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e b</code></td>
+<td class="org-left">Eval buffer</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

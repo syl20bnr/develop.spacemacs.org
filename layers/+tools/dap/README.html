@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-06 Wed 22:56 -->
+<!-- 2020-05-21 Thu 10:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>DAP layer</title>
@@ -305,7 +305,7 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org5100e27" class="outline-2">
+<div id="outline-container-orgb428462" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -319,7 +319,7 @@ server.
 </p>
 </div>
 
-<div id="outline-container-orgd12db1a" class="outline-3">
+<div id="outline-container-orgfe1cafa" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <p>
@@ -342,7 +342,7 @@ Fully featured IDE-like debugger providing:
 </div>
 </div>
 
-<div id="outline-container-org48150cc" class="outline-2">
+<div id="outline-container-org50155ff" class="outline-2">
 <h2 id="layer-installation"><span class="section-number-2">2</span> Layer installation</h2>
 <div class="outline-text-2" id="text-layer-installation">
 <p>
@@ -353,16 +353,16 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org47da50b" class="outline-2">
+<div id="outline-container-orge90e4b7" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org1a90c04" class="outline-3">
+<div id="outline-container-org741268f" class="outline-3">
 <h3 id="dap-configuration-in-supported-layers"><span class="section-number-3">3.1</span> DAP configuration in supported layers</h3>
 <div class="outline-text-3" id="text-dap-configuration-in-supported-layers">
 <p>
-By default <code>dap</code> layer registers global key binding defined under <code>SPC m</code>. If you
+By default <code>dap</code> layer registers global key binding defined under <code>SPC d</code>. If you
 want to have debug bindings under major mode leader you may do the following:
 </p>
 
@@ -372,17 +372,19 @@ For instance the <code>java</code> layer:
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">java/pre-init-dap-mode</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>add-to-list 'spacemacs--dap-supported-modes 'java-mode<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">pcase</span> <span class="org-rainbow-delimiters-depth-3">(</span>spacemacs//java-backend<span class="org-rainbow-delimiters-depth-3">)</span>
+     <span class="org-rainbow-delimiters-depth-3">(</span>`lsp <span class="org-rainbow-delimiters-depth-4">(</span>add-to-list 'spacemacs--dap-supported-modes 'java-mode<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>add-hook 'java-mode-local-vars-hook #'spacemacs//java-setup-dap<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
-See the <code>java</code> layer for further example on how to setup correctly <code>dap-mode</code>.
+See the <code>java</code> layer for further example on how to setup <code>dap-mode</code> correctly
 </p>
 </div>
 </div>
 
-<div id="outline-container-org55a7ef1" class="outline-3">
+<div id="outline-container-org5f61f19" class="outline-3">
 <h3 id="variables"><span class="section-number-3">3.2</span> Variables</h3>
 <div class="outline-text-3" id="text-variables">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -414,12 +416,12 @@ See the <code>java</code> layer for further example on how to setup correctly <c
 </div>
 </div>
 
-<div id="outline-container-org1e0b7ea" class="outline-2">
+<div id="outline-container-orge6435c3" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org5801a5e" class="outline-3">
+<div id="outline-container-org0aece22" class="outline-3">
 <h3 id="declared-prefixes"><span class="section-number-3">4.1</span> Declared prefixes</h3>
 <div class="outline-text-3" id="text-declared-prefixes">
 <p>
@@ -453,7 +455,7 @@ The following prefixes have been declared:
 
 <tr>
 <td class="org-left"><code>SPC d d</code></td>
-<td class="org-left">launching</td>
+<td class="org-left">debugging</td>
 </tr>
 
 <tr>
@@ -467,7 +469,7 @@ The following prefixes have been declared:
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC d l</code></td>
+<td class="org-left"><code>SPC d w</code></td>
 <td class="org-left">debug windows</td>
 </tr>
 
@@ -485,7 +487,7 @@ The following prefixes have been declared:
 </div>
 </div>
 
-<div id="outline-container-org26ec477" class="outline-3">
+<div id="outline-container-org684c57c" class="outline-3">
 <h3 id="transient-state"><span class="section-number-3">4.2</span> Transient state</h3>
 <div class="outline-text-3" id="text-transient-state">
 <p>
@@ -517,7 +519,7 @@ transient state which can be initiate with <code>SPC m d .</code>.
 </div>
 </div>
 
-<div id="outline-container-org60b0ed9" class="outline-3">
+<div id="outline-container-orgaf6c971" class="outline-3">
 <h3 id="startstop"><span class="section-number-3">4.3</span> Start/Stop</h3>
 <div class="outline-text-3" id="text-startstop">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -569,7 +571,7 @@ transient state which can be initiate with <code>SPC m d .</code>.
 </div>
 </div>
 
-<div id="outline-container-org231be1b" class="outline-3">
+<div id="outline-container-orgb8b6da9" class="outline-3">
 <h3 id="breakpoints"><span class="section-number-3">4.4</span> Breakpoints</h3>
 <div class="outline-text-3" id="text-breakpoints">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -631,7 +633,7 @@ transient state which can be initiate with <code>SPC m d .</code>.
 </div>
 </div>
 
-<div id="outline-container-org487936a" class="outline-3">
+<div id="outline-container-orgb07703c" class="outline-3">
 <h3 id="navigation"><span class="section-number-3">4.5</span> Navigation</h3>
 <div class="outline-text-3" id="text-navigation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -703,7 +705,7 @@ transient state which can be initiate with <code>SPC m d .</code>.
 </div>
 </div>
 
-<div id="outline-container-orgb14e573" class="outline-3">
+<div id="outline-container-orgc6bb368" class="outline-3">
 <h3 id="evaluation-and-repl"><span class="section-number-3">4.6</span> Evaluation and REPL</h3>
 <div class="outline-text-3" id="text-evaluation-and-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -745,7 +747,7 @@ transient state which can be initiate with <code>SPC m d .</code>.
 </div>
 </div>
 
-<div id="outline-container-org620b911" class="outline-3">
+<div id="outline-container-org6e9e89e" class="outline-3">
 <h3 id="inspection"><span class="section-number-3">4.7</span> Inspection</h3>
 <div class="outline-text-3" id="text-inspection">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -798,7 +800,7 @@ transient state which can be initiate with <code>SPC m d .</code>.
 </div>
 </div>
 
-<div id="outline-container-orgb298808" class="outline-2">
+<div id="outline-container-org42cbcc5" class="outline-2">
 <h2 id="references"><span class="section-number-2">5</span> References</h2>
 <div class="outline-text-2" id="text-references">
 <ul class="org-ul">
@@ -810,7 +812,7 @@ transient state which can be initiate with <code>SPC m d .</code>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-05-06 Wed 22:56</p>
+<p class="date">Created: 2020-05-21 Thu 10:14</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
