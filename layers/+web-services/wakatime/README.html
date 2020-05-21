@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-06 Wed 22:56 -->
+<!-- 2020-05-21 Thu 10:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Wakatime layer</title>
@@ -285,7 +285,11 @@ for the JavaScript code in this tag.
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#wakatime-program">2.1. Wakatime Program</a></li>
-<li><a href="#layer">2.2. Layer</a></li>
+<li><a href="#layer">2.2. Layer</a>
+<ul>
+<li><a href="#note-about-api-key-and-bug-submission">2.2.1. Note about api key and bug submission</a></li>
+</ul>
+</li>
 <li><a href="#api-keys">2.3. API Keys</a>
 <ul>
 <li><a href="#note-to-venv-workon-users">2.3.1. Note to <code>venv-workon</code> users:</a></li>
@@ -302,7 +306,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgc2e3004" class="outline-2">
+<div id="outline-container-orgd3460dc" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -321,7 +325,7 @@ P.S. wakati means time in Swahili
 </p>
 </div>
 
-<div id="outline-container-org47beb48" class="outline-3">
+<div id="outline-container-org675ba8f" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -331,12 +335,12 @@ P.S. wakati means time in Swahili
 </div>
 </div>
 
-<div id="outline-container-org2917aef" class="outline-2">
+<div id="outline-container-org7e33203" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org3fb5818" class="outline-3">
+<div id="outline-container-orgf462a05" class="outline-3">
 <h3 id="wakatime-program"><span class="section-number-3">2.1</span> Wakatime Program</h3>
 <div class="outline-text-3" id="text-wakatime-program">
 <p>
@@ -364,7 +368,7 @@ And for some linux users
 </div>
 </div>
 
-<div id="outline-container-org2d8097e" class="outline-3">
+<div id="outline-container-orgdeb1b0b" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.2</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -390,9 +394,34 @@ Example:
 </pre>
 </div>
 </div>
+
+<div id="outline-container-org65f5554" class="outline-4">
+<h4 id="note-about-api-key-and-bug-submission"><span class="section-number-4">2.2.1</span> Note about api key and bug submission</h4>
+<div class="outline-text-4" id="text-note-about-api-key-and-bug-submission">
+<p>
+If you use the built-in Spacemacs bug submission tool it will include
+all of your layer configs including your secret api key.
+Please remove it before submitting.
+</p>
+
+<p>
+Even better don't store your key directly in the layer config.
+Instead put the following code in your user-config which is set after your layer config:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> wakatime-api-key <span class="org-string">"your-api-key"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 
-<div id="outline-container-orge951dfe" class="outline-3">
+<p>
+Everything you set there won't appear in the bug submitting tool.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org757ce75" class="outline-3">
 <h3 id="api-keys"><span class="section-number-3">2.3</span> API Keys</h3>
 <div class="outline-text-3" id="text-api-keys">
 <p>
@@ -407,7 +436,7 @@ Restart emacs and it will prompt you for the location of the wakatime installer
 </p>
 </div>
 
-<div id="outline-container-org993c34a" class="outline-4">
+<div id="outline-container-org7e874ee" class="outline-4">
 <h4 id="note-to-venv-workon-users"><span class="section-number-4">2.3.1</span> Note to <code>venv-workon</code> users:</h4>
 <div class="outline-text-4" id="text-note-to-venv-workon-users">
 <p>
@@ -429,7 +458,7 @@ wakatime can always find it's stuff, via this variable:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-05-06 Wed 22:56</p>
+<p class="date">Created: 2020-05-21 Thu 10:14</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-06 Wed 22:56 -->
+<!-- 2020-05-21 Thu 10:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ruby layer</title>
@@ -314,7 +314,12 @@ for the JavaScript code in this tag.
 <li><a href="#seeing-is-believing">3.9. Seeing is believing</a></li>
 </ul>
 </li>
-<li><a href="#layer-options">4. Layer options</a></li>
+<li><a href="#configuration">4. Configuration</a>
+<ul>
+<li><a href="#layer-options">4.1. Layer options</a></li>
+<li><a href="#disabling-the-automatic-insertion-of-encoding-comment">4.2. Disabling the automatic insertion of encoding comment</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -324,7 +329,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgfde5859" class="outline-2">
+<div id="outline-container-org6e7bc6f" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -332,7 +337,7 @@ This layer provides support for the Ruby programming language.
 </p>
 </div>
 
-<div id="outline-container-orge56d10b" class="outline-3">
+<div id="outline-container-org214e847" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -348,7 +353,7 @@ This layer provides support for the Ruby programming language.
 </div>
 </div>
 
-<div id="outline-container-org489d9b4" class="outline-2">
+<div id="outline-container-orgad6d8e7" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -370,7 +375,7 @@ This layer supports two different Ruby modes: Emacs's built-in Ruby Mode and
 </div>
 </div>
 
-<div id="outline-container-orgb690126" class="outline-3">
+<div id="outline-container-org5532839" class="outline-3">
 <h3 id="choosing-a-backend"><span class="section-number-3">2.1</span> Choosing a backend</h3>
 <div class="outline-text-3" id="text-choosing-a-backend">
 <p>
@@ -406,7 +411,7 @@ Backend can be chosen on a per project basis using directory local variables
 </p>
 </div>
 
-<div id="outline-container-org9f3f860" class="outline-4">
+<div id="outline-container-org59bc7ba" class="outline-4">
 <h4 id="robe"><span class="section-number-4">2.1.1</span> Robe</h4>
 <div class="outline-text-4" id="text-robe">
 <p>
@@ -415,7 +420,7 @@ The default Ruby-mode backend. See Prerequisites for the necessary Gems to suppo
 </div>
 </div>
 
-<div id="outline-container-orgd2007f7" class="outline-4">
+<div id="outline-container-org22c0c82" class="outline-4">
 <h4 id="language-server-protocol"><span class="section-number-4">2.1.2</span> Language Server Protocol</h4>
 <div class="outline-text-4" id="text-language-server-protocol">
 <p>
@@ -437,7 +442,7 @@ using the LSP backend. Dap-mode can be setup here:
 </div>
 </div>
 
-<div id="outline-container-org4d0236d" class="outline-3">
+<div id="outline-container-org9bda5ec" class="outline-3">
 <h3 id="prerequisites"><span class="section-number-3">2.2</span> Prerequisites</h3>
 <div class="outline-text-3" id="text-prerequisites">
 <p>
@@ -475,7 +480,7 @@ specific documentation for details and caveats):
 </div>
 </div>
 
-<div id="outline-container-org5bd12a7" class="outline-3">
+<div id="outline-container-org009ee4d" class="outline-3">
 <h3 id="ruby-version-management"><span class="section-number-3">2.3</span> Ruby version management</h3>
 <div class="outline-text-3" id="text-ruby-version-management">
 <p>
@@ -504,7 +509,7 @@ Note: Only one version manager at a time can be enabled.
 </div>
 </div>
 
-<div id="outline-container-org0bc9a16" class="outline-3">
+<div id="outline-container-orgb7b1cb4" class="outline-3">
 <h3 id="test-runner"><span class="section-number-3">2.4</span> Test runner</h3>
 <div class="outline-text-3" id="text-test-runner">
 <p>
@@ -531,12 +536,12 @@ directory local variables.
 </div>
 </div>
 
-<div id="outline-container-orge9f68fb" class="outline-2">
+<div id="outline-container-org5b9c78c" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org814c740" class="outline-3">
+<div id="outline-container-orgfc3a44b" class="outline-3">
 <h3 id="ruby-enh-ruby-mode-robe-inf-ruby-ruby-tools"><span class="section-number-3">3.1</span> Ruby (enh-ruby-mode, robe, inf-ruby, ruby-tools)</h3>
 <div class="outline-text-3" id="text-ruby-enh-ruby-mode-robe-inf-ruby-ruby-tools">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -643,7 +648,7 @@ directory local variables.
 </div>
 </div>
 
-<div id="outline-container-orgebe3a5a" class="outline-3">
+<div id="outline-container-org87e4644" class="outline-3">
 <h3 id="debugger"><span class="section-number-3">3.2</span> Debugger</h3>
 <div class="outline-text-3" id="text-debugger">
 <p>
@@ -653,7 +658,7 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 </div>
 
-<div id="outline-container-org92c592b" class="outline-3">
+<div id="outline-container-orgb49b04b" class="outline-3">
 <h3 id="bundler"><span class="section-number-3">3.3</span> Bundler</h3>
 <div class="outline-text-3" id="text-bundler">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -705,7 +710,7 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 </div>
 
-<div id="outline-container-org39db649" class="outline-3">
+<div id="outline-container-orgde5df7b" class="outline-3">
 <h3 id="rubocop"><span class="section-number-3">3.4</span> RuboCop</h3>
 <div class="outline-text-3" id="text-rubocop">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -762,12 +767,12 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 </div>
 
-<div id="outline-container-orgeb1b681" class="outline-3">
+<div id="outline-container-orga1600e1" class="outline-3">
 <h3 id="tests"><span class="section-number-3">3.5</span> Tests</h3>
 <div class="outline-text-3" id="text-tests">
 </div>
 
-<div id="outline-container-org90b302a" class="outline-4">
+<div id="outline-container-org90e33d3" class="outline-4">
 <h4 id="rspec-mode"><span class="section-number-4">3.5.1</span> RSpec-mode</h4>
 <div class="outline-text-4" id="text-rspec-mode">
 <p>
@@ -853,7 +858,7 @@ When <code>ruby-test-runner</code> equals <code>rspec</code>.
 </div>
 </div>
 
-<div id="outline-container-org0affa2d" class="outline-4">
+<div id="outline-container-org4319dcb" class="outline-4">
 <h4 id="ruby-test-mode"><span class="section-number-4">3.5.2</span> Ruby-test-mode</h4>
 <div class="outline-text-4" id="text-ruby-test-mode">
 <p>
@@ -889,7 +894,7 @@ When <code>ruby-test-runner</code> equals <code>ruby-test</code>.
 </div>
 </div>
 
-<div id="outline-container-orgfc4ed77" class="outline-4">
+<div id="outline-container-org78a076c" class="outline-4">
 <h4 id="minitest-mode"><span class="section-number-4">3.5.3</span> minitest-mode</h4>
 <div class="outline-text-4" id="text-minitest-mode">
 <p>
@@ -936,7 +941,7 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-org779e485" class="outline-3">
+<div id="outline-container-org1e68cb9" class="outline-3">
 <h3 id="toggles"><span class="section-number-3">3.6</span> Toggles</h3>
 <div class="outline-text-3" id="text-toggles">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -968,7 +973,7 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-orgaf64961" class="outline-3">
+<div id="outline-container-orga9a9b17" class="outline-3">
 <h3 id="rake"><span class="section-number-3">3.7</span> Rake</h3>
 <div class="outline-text-3" id="text-rake">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1010,7 +1015,7 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-org65ee74d" class="outline-3">
+<div id="outline-container-org056aed1" class="outline-3">
 <h3 id="refactor"><span class="section-number-3">3.8</span> Refactor</h3>
 <div class="outline-text-3" id="text-refactor">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1052,7 +1057,7 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-org683bebb" class="outline-3">
+<div id="outline-container-org64a6de1" class="outline-3">
 <h3 id="seeing-is-believing"><span class="section-number-3">3.9</span> Seeing is believing</h3>
 <div class="outline-text-3" id="text-seeing-is-believing">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1085,9 +1090,14 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-org20bd0c5" class="outline-2">
-<h2 id="layer-options"><span class="section-number-2">4</span> Layer options</h2>
-<div class="outline-text-2" id="text-layer-options">
+<div id="outline-container-org1e3e82b" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">4</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+</div>
+
+<div id="outline-container-orge07e551" class="outline-3">
+<h3 id="layer-options"><span class="section-number-3">4.1</span> Layer options</h3>
+<div class="outline-text-3" id="text-layer-options">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1139,10 +1149,30 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </table>
 </div>
 </div>
+
+<div id="outline-container-org9141465" class="outline-3">
+<h3 id="disabling-the-automatic-insertion-of-encoding-comment"><span class="section-number-3">4.2</span> Disabling the automatic insertion of encoding comment</h3>
+<div class="outline-text-3" id="text-disabling-the-automatic-insertion-of-encoding-comment">
+<p>
+Note that <code>ruby-mode</code> and <code>enh-ruby-mode</code> will automatically insert the encoding comment <code># coding: utf-8</code> at the top of a <code>`.rb</code> file, if it contains UTF-8 characters. This might not be desired in Ruby 2.0+, since UTF-8 has become the default encoding. In fact, this will trigger <a href="https://www.rubydoc.info/github/bbatsov/RuboCop/RuboCop/Cop/Style/Encoding">an error</a> with Robocop.
+</p>
+
+<p>
+<a href="https://stackoverflow.com/questions/6453955/how-do-i-prevent-emacs-from-adding-coding-information-in-the-first-line">The fix</a> is to set the variable <code>ruby-insert-encoding-magic-comment</code> (<code>ruby-mode</code>) or <code>enh-ruby-add-encoding-comment-on-save</code> (<code>enh-ruby-mode</code>) to <code>nil</code>, e.g.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>ruby <span class="org-builtin">:variables</span> ruby-insert-encoding-magic-comment nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-05-06 Wed 22:56</p>
+<p class="date">Created: 2020-05-21 Thu 10:13</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

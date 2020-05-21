@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-06 Wed 22:56 -->
+<!-- 2020-05-21 Thu 10:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>plantuml layer</title>
@@ -294,7 +294,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org78f1a1d" class="outline-2">
+<div id="outline-container-org5d02e60" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -334,7 +334,7 @@ robbyoconnor-&gt;theOtherPerson : And they thinks it's funny? Yup, they definite
 </div>
 </div>
 
-<div id="outline-container-org143f996" class="outline-3">
+<div id="outline-container-org75da428" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -347,7 +347,7 @@ robbyoconnor-&gt;theOtherPerson : And they thinks it's funny? Yup, they definite
 </div>
 </div>
 
-<div id="outline-container-orga1b56b7" class="outline-2">
+<div id="outline-container-org0930893" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -375,17 +375,20 @@ the native package <a href="http://graphviz.org/">graphviz</a> installed on your
 </p>
 
 <p>
-Additionally, to compile the image locally, you need to set <code>plantuml-default-exec-mode</code> to <code>jar</code>, e.g.:
+If you don't want to compile locally you can set <code>plantuml-exec-mode</code> to <code>server</code>.
+This will make plantuml try to use an online compile server. Be warned these resources
+change often and plantuml-mode is not always up-to-date. For a stable user experience
+we recommend using the default jar option instead.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> plantuml-default-exec-mode 'jar<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>plantuml <span class="org-builtin">:variables</span> plantuml-default-exec-mode 'server<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org829231d" class="outline-2">
+<div id="outline-container-org2da0934" class="outline-2">
 <h2 id="org-babel-integration"><span class="section-number-2">3</span> Org-Babel Integration</h2>
 <div class="outline-text-2" id="text-org-babel-integration">
 <p>
@@ -394,13 +397,13 @@ documents, define a value for <code>org-plantuml-jar-path</code> in your <code>~
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>plantuml <span class="org-builtin">:variables</span> org-plantuml-jar-path <span class="org-string">"~/plantUml.jar"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>plantuml <span class="org-builtin">:variables</span> plantuml-jar-path <span class="org-string">"~/plantUml.jar"</span> org-plantuml-jar-path <span class="org-string">"~/plantUml.jar"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0ebb816" class="outline-2">
+<div id="outline-container-org48566db" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -434,7 +437,7 @@ documents, define a value for <code>org-plantuml-jar-path</code> in your <code>~
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-05-06 Wed 22:56</p>
+<p class="date">Created: 2020-05-21 Thu 10:13</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
