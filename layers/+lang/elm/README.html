@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-27 Wed 16:38 -->
+<!-- 2020-08-09 Sun 09:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elm layer</title>
@@ -292,38 +292,48 @@ for the JavaScript code in this tag.
 <li><a href="#source-code">2.2.3. Source code</a></li>
 </ul>
 </li>
-<li><a href="#elm-oracle">2.3. elm-oracle</a></li>
-<li><a href="#elm-format">2.4. elm-format</a></li>
+<li><a href="#elm-format">2.3. elm-format</a></li>
+<li><a href="#elm-test">2.4. elm-test</a></li>
 </ul>
 </li>
-<li><a href="#basic-usage-tips">3. Basic usage tips</a>
+<li><a href="#configuration">3. Configuration</a>
 <ul>
-<li><a href="#compilation">3.1. Compilation</a></li>
-<li><a href="#reactor">3.2. Reactor</a></li>
-<li><a href="#on-save-usage">3.3. On save usage</a>
+<li><a href="#choosing-a-backend">3.1. Choosing a backend</a>
 <ul>
-<li><a href="#imports-sort">3.3.1. Imports sort</a></li>
-<li><a href="#file-format">3.3.2. File format</a></li>
+<li><a href="#company-elm">3.1.1. Company-elm</a></li>
+<li><a href="#lsp">3.1.2. LSP</a></li>
 </ul>
 </li>
-<li><a href="#indentation">3.4. Indentation</a></li>
-<li><a href="#test-runner-settings">3.5. Test runner settings</a></li>
 </ul>
 </li>
-<li><a href="#key-bindings">4. Key bindings</a>
+<li><a href="#basic-usage-tips">4. Basic usage tips</a>
 <ul>
-<li><a href="#elm-make">4.1. elm-make</a></li>
-<li><a href="#elm-repl">4.2. elm-repl</a></li>
-<li><a href="#elm-reactor">4.3. elm-reactor</a></li>
-<li><a href="#elm-test-runner">4.4. elm-test-runner</a></li>
-<li><a href="#elm-package">4.5. elm-package</a>
+<li><a href="#compilation">4.1. Compilation</a></li>
+<li><a href="#reactor">4.2. Reactor</a></li>
+<li><a href="#on-save-usage">4.3. On save usage</a>
 <ul>
-<li><a href="#package-list-buffer">4.5.1. package list buffer</a></li>
+<li><a href="#imports-sort">4.3.1. Imports sort</a></li>
+<li><a href="#file-format">4.3.2. File format</a></li>
 </ul>
 </li>
-<li><a href="#elm-oracle-1">4.6. elm-oracle</a></li>
-<li><a href="#elm-format-1">4.7. elm-format</a></li>
-<li><a href="#refactoring">4.8. Refactoring</a></li>
+<li><a href="#indentation">4.4. Indentation</a></li>
+<li><a href="#test-runner-settings">4.5. Test runner settings</a></li>
+</ul>
+</li>
+<li><a href="#key-bindings">5. Key bindings</a>
+<ul>
+<li><a href="#elm-make">5.1. elm-make</a></li>
+<li><a href="#elm-repl">5.2. elm-repl</a></li>
+<li><a href="#elm-reactor">5.3. elm-reactor</a></li>
+<li><a href="#elm-test-runner">5.4. elm-test-runner</a></li>
+<li><a href="#elm-package">5.5. elm-package</a>
+<ul>
+<li><a href="#package-list-buffer">5.5.1. package list buffer</a></li>
+</ul>
+</li>
+<li><a href="#elm-oracle-1">5.6. elm-oracle</a></li>
+<li><a href="#elm-format-1">5.7. elm-format</a></li>
+<li><a href="#refactoring">5.8. Refactoring</a></li>
 </ul>
 </li>
 </ul>
@@ -335,7 +345,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgf054a3c" class="outline-2">
+<div id="outline-container-orga05db73" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -347,14 +357,13 @@ It relies on <a href="https://github.com/jcollard/elm-mode">elm-mode</a> and <a 
 </p>
 </div>
 
-<div id="outline-container-org0375fc0" class="outline-3">
+<div id="outline-container-org18e4c0f" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Syntax highlighting.</li>
 <li>Intelligent indentation</li>
-<li>Auto-completion integration for company (default) or auto-complete modes,
-with using elm-oracle</li>
+<li>Auto-completion integration for company (default) or auto-complete modes</li>
 <li>Syntax checking support using flycheck</li>
 <li>Integration with elm-make</li>
 <li>Integration with elm-repl</li>
@@ -365,12 +374,12 @@ with using elm-oracle</li>
 </div>
 </div>
 
-<div id="outline-container-org31a79f7" class="outline-2">
+<div id="outline-container-orgb87fa0b" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgc902328" class="outline-3">
+<div id="outline-container-org5577ba7" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -381,7 +390,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org91a70c8" class="outline-3">
+<div id="outline-container-orgad6e62e" class="outline-3">
 <h3 id="elm-platform"><span class="section-number-3">2.2</span> Elm Platform</h3>
 <div class="outline-text-3" id="text-elm-platform">
 <p>
@@ -395,7 +404,7 @@ able to access commands such as <code>elm-reactor</code> or <code>elm-make</code
 </p>
 </div>
 
-<div id="outline-container-org43c63b2" class="outline-4">
+<div id="outline-container-org88ef012" class="outline-4">
 <h4 id="macos-and-windows-installers"><span class="section-number-4">2.2.1</span> macOS and Windows installers</h4>
 <div class="outline-text-4" id="text-macos-and-windows-installers">
 <p>
@@ -405,7 +414,7 @@ Official installers for these operating systems are available from:
 </div>
 </div>
 
-<div id="outline-container-orgc3207a0" class="outline-4">
+<div id="outline-container-org2ae2ed9" class="outline-4">
 <h4 id="universal-installer-using-npm"><span class="section-number-4">2.2.2</span> Universal installer using npm</h4>
 <div class="outline-text-4" id="text-universal-installer-using-npm">
 <p>
@@ -435,7 +444,7 @@ run, see this issue <a href="https://github.com/kevva/elm-bin/issues/28">https:/
 </div>
 </div>
 
-<div id="outline-container-org6b97f8e" class="outline-4">
+<div id="outline-container-org36369a1" class="outline-4">
 <h4 id="source-code"><span class="section-number-4">2.2.3</span> Source code</h4>
 <div class="outline-text-4" id="text-source-code">
 <p>
@@ -446,9 +455,97 @@ To build from source, see instructions here:
 </div>
 </div>
 
-<div id="outline-container-orge4c12e3" class="outline-3">
-<h3 id="elm-oracle"><span class="section-number-3">2.3</span> elm-oracle</h3>
-<div class="outline-text-3" id="text-elm-oracle">
+<div id="outline-container-org1520458" class="outline-3">
+<h3 id="elm-format"><span class="section-number-3">2.3</span> elm-format</h3>
+<div class="outline-text-3" id="text-elm-format">
+<p>
+<code>elm-format</code> can be used to format elm code according to a standard set of
+rules.
+</p>
+
+<p>
+To install <code>elm-format</code> run below command:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">npm install --global elm-format
+</pre>
+</div>
+
+<p>
+If this does not work for you please check <a href="https://github.com/avh4/elm-format">here</a>.
+</p>
+
+<p>
+Also, note that if you use homebrew to install <code>elm-format</code> the installed exe
+has a version suffix, the installed command name can be set in your
+<code>~/spacemacs</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elm <span class="org-builtin">:variables</span>
+     elm-format-command <span class="org-string">"elm-format-0.17"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga0e5c50" class="outline-3">
+<h3 id="elm-test"><span class="section-number-3">2.4</span> elm-test</h3>
+<div class="outline-text-3" id="text-elm-test">
+<p>
+<code>elm-test</code> can be used to run unit tests.
+</p>
+
+<p>
+To install <code>elm-test</code> run below command:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">npm install --global elm-test
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org79f6a2e" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+<p>
+All layer configurations can be done by setting layer variables in your dotfile.
+No custom user config lines are necessary
+</p>
+</div>
+
+<div id="outline-container-orgdd700f3" class="outline-3">
+<h3 id="choosing-a-backend"><span class="section-number-3">3.1</span> Choosing a backend</h3>
+<div class="outline-text-3" id="text-choosing-a-backend">
+<p>
+This layer provides two alternative backends to choose from.
+</p>
+</div>
+
+<div id="outline-container-orgd0c9656" class="outline-4">
+<h4 id="company-elm"><span class="section-number-4">3.1.1</span> Company-elm</h4>
+<div class="outline-text-4" id="text-company-elm">
+<p>
+This is the default choice if nothing is set and no lsp layer
+is loaded in your dotfile. This mode only provides very
+limited IDE capabilities. Used best if only small programs
+are edited. To set explicitly set the following in your
+dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elm <span class="org-builtin">:variables</span> elm-backend 'company-elm<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+
+<ol class="org-ol">
+<li><a id="elm-oracle"></a>elm-oracle<br />
+<div class="outline-text-5" id="text-elm-oracle">
 <p>
 <code>elm-oracle</code> can be used to show type signatures and docs for tokens under the
 cursor and provide support for auto-completion, but it is not part of the
@@ -470,43 +567,60 @@ run this command:
 </pre>
 </div>
 </div>
+</li>
+</ol>
 </div>
 
-<div id="outline-container-org2efa529" class="outline-3">
-<h3 id="elm-format"><span class="section-number-3">2.4</span> elm-format</h3>
-<div class="outline-text-3" id="text-elm-format">
+<div id="outline-container-org86fab27" class="outline-4">
+<h4 id="lsp"><span class="section-number-4">3.1.2</span> LSP</h4>
+<div class="outline-text-4" id="text-lsp">
 <p>
-<code>elm-format</code> can be used to format elm code according to a standard set of
-rules.
+For proper IDE support this backend should be used. It is
+based on an external server which will be started automatically
+by emacs, once an elm file is opened. The key bindings are
+the same for all lsp modes so if you are already familiar with
+one you should be able to work the same in all modes.
 </p>
 
 <p>
-To install <code>elm-format</code> follow the instructions for the version of elm
-installed: <a href="https://github.com/avh4/elm-format">https://github.com/avh4/elm-format</a>
-</p>
-
-<p>
-Also, note that if you use homebrew to install <code>elm-format</code> the installed exe
-has a version suffix, the installed command name can be set in your
-<code>~/spacemacs</code>:
+To set explicitly do the following in your dotfile:
 </p>
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elm <span class="org-builtin">:variables</span>
-     elm-format-command <span class="org-string">"elm-format-0.17"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+        elm-backend 'lsp<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
+</div>
+
+<p>
+For this to work you will also need to install
+the lsp server and separate dependencies with below
+command:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">npm install -g elm-analysis @elm-tooling/elm-language-server
+</pre>
+</div>
+
+<p>
+NOTE: Key bindings for LSP are defined in the
+LSP layer. Also it is advisable to have a look
+at the autocomplete layer for an optimal
+intellisense config for LSP.
+</p>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc115a8c" class="outline-2">
-<h2 id="basic-usage-tips"><span class="section-number-2">3</span> Basic usage tips</h2>
+<div id="outline-container-org645c7cf" class="outline-2">
+<h2 id="basic-usage-tips"><span class="section-number-2">4</span> Basic usage tips</h2>
 <div class="outline-text-2" id="text-basic-usage-tips">
 </div>
 
-<div id="outline-container-org1cd0663" class="outline-3">
-<h3 id="compilation"><span class="section-number-3">3.1</span> Compilation</h3>
+<div id="outline-container-orgb8b03af" class="outline-3">
+<h3 id="compilation"><span class="section-number-3">4.1</span> Compilation</h3>
 <div class="outline-text-3" id="text-compilation">
 <p>
 To control the name of the compiled JavaScript file, use <code>SPC m c B</code> instead of
@@ -516,8 +630,8 @@ To control the name of the compiled JavaScript file, use <code>SPC m c B</code> 
 </div>
 </div>
 
-<div id="outline-container-org5d05139" class="outline-3">
-<h3 id="reactor"><span class="section-number-3">3.2</span> Reactor</h3>
+<div id="outline-container-org8c135a0" class="outline-3">
+<h3 id="reactor"><span class="section-number-3">4.2</span> Reactor</h3>
 <div class="outline-text-3" id="text-reactor">
 <p>
 <code>elm-reactor</code> is an interactive development tool, used to develop and debug Elm
@@ -552,13 +666,13 @@ can be controlled by passing in these variables in your <code>~/.spacemacs</code
 </div>
 </div>
 
-<div id="outline-container-org9f34bd4" class="outline-3">
-<h3 id="on-save-usage"><span class="section-number-3">3.3</span> On save usage</h3>
+<div id="outline-container-orgfde01f1" class="outline-3">
+<h3 id="on-save-usage"><span class="section-number-3">4.3</span> On save usage</h3>
 <div class="outline-text-3" id="text-on-save-usage">
 </div>
 
-<div id="outline-container-org319e36c" class="outline-4">
-<h4 id="imports-sort"><span class="section-number-4">3.3.1</span> Imports sort</h4>
+<div id="outline-container-orgfe1aaea" class="outline-4">
+<h4 id="imports-sort"><span class="section-number-4">4.3.1</span> Imports sort</h4>
 <div class="outline-text-4" id="text-imports-sort">
 <p>
 Set <code>elm-sort-imports-on-save</code> to <code>t</code> to sort the imports in the current file on
@@ -572,8 +686,8 @@ every save.
 </div>
 </div>
 
-<div id="outline-container-orgfa5d994" class="outline-4">
-<h4 id="file-format"><span class="section-number-4">3.3.2</span> File format</h4>
+<div id="outline-container-orgfbe1b77" class="outline-4">
+<h4 id="file-format"><span class="section-number-4">4.3.2</span> File format</h4>
 <div class="outline-text-4" id="text-file-format">
 <p>
 Set <code>elm-format-on-save</code> to <code>t</code> to format current file on every save.
@@ -587,8 +701,8 @@ Set <code>elm-format-on-save</code> to <code>t</code> to format current file on 
 </div>
 </div>
 
-<div id="outline-container-org9ed618e" class="outline-3">
-<h3 id="indentation"><span class="section-number-3">3.4</span> Indentation</h3>
+<div id="outline-container-orgd8a1ced" class="outline-3">
+<h3 id="indentation"><span class="section-number-3">4.4</span> Indentation</h3>
 <div class="outline-text-3" id="text-indentation">
 <p>
 elm-mode indentation is based on cycling: every time you insert a new line there
@@ -601,8 +715,8 @@ cycle through the list (note that hitting any other key will cancel the cycle).
 </div>
 </div>
 
-<div id="outline-container-orge7a2d48" class="outline-3">
-<h3 id="test-runner-settings"><span class="section-number-3">3.5</span> Test runner settings</h3>
+<div id="outline-container-org74bca0f" class="outline-3">
+<h3 id="test-runner-settings"><span class="section-number-3">4.5</span> Test runner settings</h3>
 <div class="outline-text-3" id="text-test-runner-settings">
 <p>
 You may want to customize the default suffix for test files. For example, if you
@@ -624,13 +738,13 @@ using a <code>dir-locals.el</code> file.
 </div>
 </div>
 
-<div id="outline-container-org4f7c683" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org98ee8e3" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org37252a4" class="outline-3">
-<h3 id="elm-make"><span class="section-number-3">4.1</span> elm-make</h3>
+<div id="outline-container-org91d731e" class="outline-3">
+<h3 id="elm-make"><span class="section-number-3">5.1</span> elm-make</h3>
 <div class="outline-text-3" id="text-elm-make">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -666,8 +780,8 @@ using a <code>dir-locals.el</code> file.
 </div>
 </div>
 
-<div id="outline-container-org46871b9" class="outline-3">
-<h3 id="elm-repl"><span class="section-number-3">4.2</span> elm-repl</h3>
+<div id="outline-container-org0971d78" class="outline-3">
+<h3 id="elm-repl"><span class="section-number-3">5.2</span> elm-repl</h3>
 <div class="outline-text-3" id="text-elm-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -713,8 +827,8 @@ using a <code>dir-locals.el</code> file.
 </div>
 </div>
 
-<div id="outline-container-orgd4ee70f" class="outline-3">
-<h3 id="elm-reactor"><span class="section-number-3">4.3</span> elm-reactor</h3>
+<div id="outline-container-org8c334ab" class="outline-3">
+<h3 id="elm-reactor"><span class="section-number-3">5.3</span> elm-reactor</h3>
 <div class="outline-text-3" id="text-elm-reactor">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -745,8 +859,8 @@ using a <code>dir-locals.el</code> file.
 </div>
 </div>
 
-<div id="outline-container-org5287314" class="outline-3">
-<h3 id="elm-test-runner"><span class="section-number-3">4.4</span> elm-test-runner</h3>
+<div id="outline-container-orgcf98dc0" class="outline-3">
+<h3 id="elm-test-runner"><span class="section-number-3">5.4</span> elm-test-runner</h3>
 <div class="outline-text-3" id="text-elm-test-runner">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -797,8 +911,8 @@ using a <code>dir-locals.el</code> file.
 </div>
 </div>
 
-<div id="outline-container-org4035aca" class="outline-3">
-<h3 id="elm-package"><span class="section-number-3">4.5</span> elm-package</h3>
+<div id="outline-container-org2a85814" class="outline-3">
+<h3 id="elm-package"><span class="section-number-3">5.5</span> elm-package</h3>
 <div class="outline-text-3" id="text-elm-package">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -833,8 +947,8 @@ using a <code>dir-locals.el</code> file.
 </table>
 </div>
 
-<div id="outline-container-org83df8f3" class="outline-4">
-<h4 id="package-list-buffer"><span class="section-number-4">4.5.1</span> package list buffer</h4>
+<div id="outline-container-orgb70c4f4" class="outline-4">
+<h4 id="package-list-buffer"><span class="section-number-4">5.5.1</span> package list buffer</h4>
 <div class="outline-text-4" id="text-package-list-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -886,8 +1000,8 @@ using a <code>dir-locals.el</code> file.
 </div>
 </div>
 
-<div id="outline-container-org7c1d276" class="outline-3">
-<h3 id="elm-oracle-1"><span class="section-number-3">4.6</span> elm-oracle</h3>
+<div id="outline-container-org0503dcf" class="outline-3">
+<h3 id="elm-oracle-1"><span class="section-number-3">5.6</span> elm-oracle</h3>
 <div class="outline-text-3" id="text-elm-oracle-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -918,8 +1032,8 @@ using a <code>dir-locals.el</code> file.
 </div>
 </div>
 
-<div id="outline-container-orgabdea61" class="outline-3">
-<h3 id="elm-format-1"><span class="section-number-3">4.7</span> elm-format</h3>
+<div id="outline-container-orgc156f13" class="outline-3">
+<h3 id="elm-format-1"><span class="section-number-3">5.7</span> elm-format</h3>
 <div class="outline-text-3" id="text-elm-format-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -944,8 +1058,8 @@ using a <code>dir-locals.el</code> file.
 </div>
 </div>
 
-<div id="outline-container-org4e3d656" class="outline-3">
-<h3 id="refactoring"><span class="section-number-3">4.8</span> Refactoring</h3>
+<div id="outline-container-org819ab5d" class="outline-3">
+<h3 id="refactoring"><span class="section-number-3">5.8</span> Refactoring</h3>
 <div class="outline-text-3" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -974,7 +1088,7 @@ using a <code>dir-locals.el</code> file.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-05-27 Wed 16:38</p>
+<p class="date">Created: 2020-08-09 Sun 09:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-27 Wed 16:38 -->
+<!-- 2020-08-09 Sun 09:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Treemacs layer</title>
@@ -291,6 +291,7 @@ for the JavaScript code in this tag.
 <li><a href="#git-mode">3.4. Git mode</a></li>
 <li><a href="#flattening-of-directories">3.5. Flattening of directories</a></li>
 <li><a href="#locking-width">3.6. Locking width</a></li>
+<li><a href="#theme">3.7. Theme</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">4. Key bindings</a>
@@ -312,7 +313,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org2846a87" class="outline-2">
+<div id="outline-container-orge7e54c3" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -320,7 +321,7 @@ This layer sets up a file navigation and project explorer side-window via <a hre
 </p>
 </div>
 
-<div id="outline-container-org829da23" class="outline-3">
+<div id="outline-container-org78ae392" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <p>
@@ -349,7 +350,7 @@ after) changes to the shown filesystem.</li>
 </div>
 </div>
 
-<div id="outline-container-org859083c" class="outline-2">
+<div id="outline-container-orga733f6b" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -359,12 +360,12 @@ To use this layer, add <code>treemacs</code> to <code>dotspacemacs-configuration
 </div>
 </div>
 
-<div id="outline-container-orgf3b63f6" class="outline-2">
+<div id="outline-container-org7f43b14" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org9d7a93c" class="outline-3">
+<div id="outline-container-org782c063" class="outline-3">
 <h3 id="follow-mode"><span class="section-number-3">3.1</span> Follow mode</h3>
 <div class="outline-text-3" id="text-follow-mode">
 <p>
@@ -387,7 +388,7 @@ Default is <code>t</code>.
 </div>
 </div>
 
-<div id="outline-container-org258c460" class="outline-3">
+<div id="outline-container-org6f05f5c" class="outline-3">
 <h3 id="file-watch"><span class="section-number-3">3.2</span> File watch</h3>
 <div class="outline-text-3" id="text-file-watch">
 <p>
@@ -408,7 +409,7 @@ Default is <code>t</code>.
 </div>
 </div>
 
-<div id="outline-container-org92638ac" class="outline-3">
+<div id="outline-container-orgdd07baa" class="outline-3">
 <h3 id="scope-settings"><span class="section-number-3">3.3</span> Scope Settings</h3>
 <div class="outline-text-3" id="text-scope-settings">
 <p>
@@ -436,7 +437,7 @@ Default is <code>'Frames</code>.
 </div>
 </div>
 
-<div id="outline-container-org6ea4435" class="outline-3">
+<div id="outline-container-org7a944ad" class="outline-3">
 <h3 id="git-mode"><span class="section-number-3">3.4</span> Git mode</h3>
 <div class="outline-text-3" id="text-git-mode">
 <p>
@@ -458,7 +459,7 @@ Default is <code>nil</code>.
 </div>
 </div>
 
-<div id="outline-container-org866b950" class="outline-3">
+<div id="outline-container-org03082e1" class="outline-3">
 <h3 id="flattening-of-directories"><span class="section-number-3">3.5</span> Flattening of directories</h3>
 <div class="outline-text-3" id="text-flattening-of-directories">
 <p>
@@ -483,7 +484,7 @@ Default is 3 (or 0 when Python is not installed).
 </div>
 </div>
 
-<div id="outline-container-orgca8c474" class="outline-3">
+<div id="outline-container-org289d5e9" class="outline-3">
 <h3 id="locking-width"><span class="section-number-3">3.6</span> Locking width</h3>
 <div class="outline-text-3" id="text-locking-width">
 <p>
@@ -503,14 +504,29 @@ Default is <code>nil</code>.
 </p>
 </div>
 </div>
+
+<div id="outline-container-org64c6b60" class="outline-3">
+<h3 id="theme"><span class="section-number-3">3.7</span> Theme</h3>
+<div class="outline-text-3" id="text-theme">
+<p>
+To use the `all-the-icons` theme rather than the default one, set the `treemacs-use-all-the-icons-theme` variable:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>treemacs <span class="org-builtin">:variables</span> treemacs-use-all-the-icons-theme t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org9b01784" class="outline-2">
+<div id="outline-container-org52eacad" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org7f55468" class="outline-3">
+<div id="outline-container-org1823fec" class="outline-3">
 <h3 id="global"><span class="section-number-3">4.1</span> Global</h3>
 <div class="outline-text-3" id="text-global">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -567,7 +583,7 @@ Default is <code>nil</code>.
 </div>
 </div>
 
-<div id="outline-container-orgf8151ed" class="outline-3">
+<div id="outline-container-org56a41c6" class="outline-3">
 <h3 id="inside-treemacs"><span class="section-number-3">4.2</span> Inside Treemacs</h3>
 <div class="outline-text-3" id="text-inside-treemacs">
 <p>
@@ -650,26 +666,6 @@ many other commands.
 <tr>
 <td class="org-left"><code>C-c C-p r</code></td>
 <td class="org-left">Rename project at point.</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>th</code></td>
-<td class="org-left">Toggle the hiding and displaying of dotfiles.</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>tw</code></td>
-<td class="org-left">Toggle whether the treemacs buffer should have a fixed width.</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>tf</code></td>
-<td class="org-left">Toggle treemacs-follow-mode.</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>ta</code></td>
-<td class="org-left">treemacs-filewatch-mode.</td>
 </tr>
 
 <tr>
@@ -773,13 +769,18 @@ many other commands.
 </tr>
 
 <tr>
+<td class="org-left"><code>tf</code></td>
+<td class="org-left">Toggle <code>treemacs-follow-mode</code>.</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>ta</code></td>
 <td class="org-left">Toggle <code>treemacs-filewatch-mode</code>.</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>tf</code></td>
-<td class="org-left">Toggle <code>treemacs-follow-mode</code>.</td>
+<td class="org-left"><code>tg</code></td>
+<td class="org-left">Toggle <code>git-mode</code>.</td>
 </tr>
 
 <tr>
@@ -790,6 +791,11 @@ many other commands.
 <tr>
 <td class="org-left"><code>tw</code></td>
 <td class="org-left">Toggle whether the treemacs buffer should have a fixed width.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>tv</code></td>
+<td class="org-left">Toggle the hiding and displaying of dotfiles.</td>
 </tr>
 
 <tr>
@@ -805,7 +811,7 @@ many other commands.
 </table>
 </div>
 
-<div id="outline-container-org03a9237" class="outline-4">
+<div id="outline-container-org6b0c171" class="outline-4">
 <h4 id="ace-mode-to-open-files"><span class="section-number-4">4.2.1</span> Ace mode to open files</h4>
 <div class="outline-text-4" id="text-ace-mode-to-open-files">
 <p>
@@ -825,8 +831,9 @@ To do this add following configuration to your dotfile.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>treemacs-define-RET-action 'file-node-closed #'treemacs-visit-node-ace<span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>treemacs-define-RET-action 'file-node-open #'treemacs-visit-node-ace<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'treemacs
+  <span class="org-rainbow-delimiters-depth-2">(</span>treemacs-define-RET-action 'file-node-closed #'treemacs-visit-node-ace<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>treemacs-define-RET-action 'file-node-open #'treemacs-visit-node-ace<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -852,7 +859,7 @@ Please note that the following code changes ace mode globally.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-05-27 Wed 16:38</p>
+<p class="date">Created: 2020-08-09 Sun 09:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
