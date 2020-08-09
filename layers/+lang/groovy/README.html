@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-27 Wed 16:38 -->
+<!-- 2020-08-09 Sun 09:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Groovy layer</title>
@@ -283,10 +283,20 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#key-bindings">3. Key bindings</a>
+<li><a href="#configuration">3. Configuration</a>
 <ul>
-<li><a href="#imports">3.1. Imports</a></li>
-<li><a href="#repl">3.2. REPL</a></li>
+<li><a href="#choosing-a-backend">3.1. Choosing a backend</a>
+<ul>
+<li><a href="#company-groovy">3.1.1. Company-groovy</a></li>
+<li><a href="#lsp">3.1.2. LSP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#key-bindings">4. Key bindings</a>
+<ul>
+<li><a href="#imports">4.1. Imports</a></li>
+<li><a href="#repl">4.2. REPL</a></li>
 </ul>
 </li>
 </ul>
@@ -298,7 +308,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org9cc89e3" class="outline-2">
+<div id="outline-container-org43964a8" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -306,19 +316,21 @@ This layer supports <a href="http://www.groovy-lang.org/">Groovy</a> development
 </p>
 </div>
 
-<div id="outline-container-org9a2888c" class="outline-3">
+<div id="outline-container-orgb690607" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Basic dabbrev auto-completion with company</li>
+<li>Auto-completion</li>
+<li>Syntax-checking</li>
 <li>Auto-generate imports with <a href="https://github.com/mbezjak/emacs-groovy-imports">groovy-imports</a></li>
 <li>Groovy REPL integration</li>
+<li>Syntax highlighting</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc910cd7" class="outline-2">
+<div id="outline-container-orgcf288f2" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -329,13 +341,88 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgc58b23c" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-org3b06cff" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+<p>
+All layer configurations can be done by setting layer variables in your dotfile.
+No custom user config lines are necessary
+</p>
+</div>
+
+<div id="outline-container-org501d9b9" class="outline-3">
+<h3 id="choosing-a-backend"><span class="section-number-3">3.1</span> Choosing a backend</h3>
+<div class="outline-text-3" id="text-choosing-a-backend">
+<p>
+This layer provides two alternative backends to choose from.
+</p>
+</div>
+
+<div id="outline-container-org4694407" class="outline-4">
+<h4 id="company-groovy"><span class="section-number-4">3.1.1</span> Company-groovy</h4>
+<div class="outline-text-4" id="text-company-groovy">
+<p>
+This is the default choice if nothing is set and no lsp layer
+is loaded in your dotfile. This mode only provides very
+limited IDE capabilities. Used best if only small scripts
+are edited. To set explicitly set the following in your
+dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>groovy <span class="org-builtin">:variables</span> groovy-backend 'company-groovy<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2a83626" class="outline-4">
+<h4 id="lsp"><span class="section-number-4">3.1.2</span> LSP</h4>
+<div class="outline-text-4" id="text-lsp">
+<p>
+For proper IDE support this backend should be used. It is
+based on an external server which will be started automatically
+by emacs, once a groovy file is opened. The key bindings are
+the same for all lsp modes so if you are already familiar with
+one you should be able to work the same in all modes.
+</p>
+
+<p>
+To set explicitly do the following in your dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>groovy <span class="org-builtin">:variables</span>
+        groovy-backend 'lsp
+        groovy-lsp-jar-path <span class="org-string">"path/to/groovy/lsp/jar.jar"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+For this to work you will also need to obtain
+the latest version of the lsp server from <a href="https://github.com/prominic/groovy-language-server">here</a>.
+The path to the server jar must be given in the layer
+variable <code>groovy-lsp-jar-path</code>.
+</p>
+
+<p>
+NOTE: Key bindings for LSP are defined in the
+LSP layer. Also it is advisable to have a look
+at the autocomplete layer for an optimal
+intellisense config for LSP.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org886b938" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgaac7011" class="outline-3">
-<h3 id="imports"><span class="section-number-3">3.1</span> Imports</h3>
+<div id="outline-container-orga58b5e6" class="outline-3">
+<h3 id="imports"><span class="section-number-3">4.1</span> Imports</h3>
 <div class="outline-text-3" id="text-imports">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -361,8 +448,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org60c538b" class="outline-3">
-<h3 id="repl"><span class="section-number-3">3.2</span> REPL</h3>
+<div id="outline-container-org9a96cad" class="outline-3">
+<h3 id="repl"><span class="section-number-3">4.2</span> REPL</h3>
 <div class="outline-text-3" id="text-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -421,7 +508,7 @@ file.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-05-27 Wed 16:38</p>
+<p class="date">Created: 2020-08-09 Sun 09:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

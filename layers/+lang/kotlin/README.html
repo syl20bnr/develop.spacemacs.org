@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-27 Wed 16:38 -->
+<!-- 2020-08-09 Sun 09:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>kotlin layer</title>
@@ -288,6 +288,16 @@ for the JavaScript code in this tag.
 <li><a href="#ktlint">2.2. Ktlint</a></li>
 </ul>
 </li>
+<li><a href="#configuration">3. Configuration</a>
+<ul>
+<li><a href="#choosing-a-backend">3.1. Choosing a backend</a>
+<ul>
+<li><a href="#company-kotlin">3.1.1. Company-kotlin</a></li>
+<li><a href="#lsp">3.1.2. LSP</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -297,31 +307,33 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgaef4b52" class="outline-2">
+<div id="outline-container-org0f0b611" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds support for <a href="http://kotlinlang.org/">Kotlin</a> in Spacemacs
+This layer adds support for <a href="http://kotlinlang.org/">Kotlin</a> to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-org0c2fe9d" class="outline-3">
+<div id="outline-container-org3e6b946" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Linting with <a href="https://github.com/shyiko/ktlint">ktlint</a> and <a href="https://github.com/whirm/flycheck-kotlin">flycheck-kotlin</a></li>
-<li>navigation with <code>ggtags</code></li>
+<li>Syntax highlighting</li>
+<li>Auto-completion</li>
+<li>Syntax-checking with <a href="https://github.com/shyiko/ktlint">ktlint</a> and <a href="https://github.com/whirm/flycheck-kotlin">flycheck-kotlin</a></li>
+<li>Navigation with <code>ggtags</code></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org524cd56" class="outline-2">
+<div id="outline-container-org0f26f5b" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgd727549" class="outline-3">
+<div id="outline-container-orgb88a2c0" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -332,7 +344,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgecc448a" class="outline-3">
+<div id="outline-container-orge4213bf" class="outline-3">
 <h3 id="ktlint"><span class="section-number-3">2.2</span> Ktlint</h3>
 <div class="outline-text-3" id="text-ktlint">
 <p>
@@ -342,10 +354,85 @@ You must install <a href="https://github.com/shyiko/ktlint">ktlint</a> and make 
 </div>
 </div>
 </div>
+
+<div id="outline-container-orge95287f" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+<p>
+All layer configurations can be done by setting layer variables in your dotfile.
+No custom user config lines are necessary
+</p>
+</div>
+
+<div id="outline-container-orgbbe66e4" class="outline-3">
+<h3 id="choosing-a-backend"><span class="section-number-3">3.1</span> Choosing a backend</h3>
+<div class="outline-text-3" id="text-choosing-a-backend">
+<p>
+This layer provides two alternative backends to choose from.
+</p>
+</div>
+
+<div id="outline-container-orge6cdc6e" class="outline-4">
+<h4 id="company-kotlin"><span class="section-number-4">3.1.1</span> Company-kotlin</h4>
+<div class="outline-text-4" id="text-company-kotlin">
+<p>
+This is the default choice if nothing is set and no lsp layer
+is loaded in your dotfile. This mode only provides very
+limited IDE capabilities. Used best if only small applications
+are edited. To set explicitly set the following in your
+dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>kotlin <span class="org-builtin">:variables</span> kotlin-backend 'company-kotlin<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc037eb2" class="outline-4">
+<h4 id="lsp"><span class="section-number-4">3.1.2</span> LSP</h4>
+<div class="outline-text-4" id="text-lsp">
+<p>
+For proper IDE support this backend should be used. It is
+based on an external server which will be started automatically
+by emacs, once a kotlin file is opened. The key bindings are
+the same for all lsp modes so if you are already familiar with
+one you should be able to work the same in all modes.
+</p>
+
+<p>
+To set explicitly do the following in your dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>kotlin <span class="org-builtin">:variables</span>
+        kotlin-backend 'lsp
+        kotlin-lsp-jar-path <span class="org-string">"path/to/kotlin/installdir/install/server/bin/kotlin-language-server"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+For this to work you will also need to obtain
+the latest version of the lsp server from <a href="https://github.com/fwcd/kotlin-language-server">here</a>.
+The path to the server jar must be given in the layer
+variable <code>kotlin-lsp-jar-path</code>.
+</p>
+
+<p>
+NOTE: Key bindings for LSP are defined in the
+LSP layer. Also it is advisable to have a look
+at the autocomplete layer for an optimal
+intellisense config for LSP.
+</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-05-27 Wed 16:38</p>
+<p class="date">Created: 2020-08-09 Sun 09:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

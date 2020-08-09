@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-27 Wed 16:38 -->
+<!-- 2020-08-09 Sun 09:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Factor Layer</title>
@@ -290,6 +290,7 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#snippets">4. Snippets</a></li>
+<li><a href="#starting-a-graphical-listener">5. Starting a Graphical Listener</a></li>
 </ul>
 </div>
 </div>
@@ -299,7 +300,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org009ecd4" class="outline-2">
+<div id="outline-container-org46699fc" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -307,7 +308,7 @@ A spacemacs layer for Factor language support.
 </p>
 </div>
 
-<div id="outline-container-org144243a" class="outline-3">
+<div id="outline-container-org1423924" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -316,12 +317,14 @@ A spacemacs layer for Factor language support.
 <li>Auto-Completion in REPL</li>
 <li>Scaffolding support</li>
 <li>Refactoring support</li>
+<li>Running graphical Listeners</li>
+<li>Reloading emacs-lisp portion of FUEL</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgf1bdd86" class="outline-2">
+<div id="outline-container-org37a7ef7" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -337,12 +340,12 @@ To use this layer, add it to your <code>./spacemacs</code> file. Add <code>facto
 </div>
 </div>
 
-<div id="outline-container-orga86db4d" class="outline-2">
+<div id="outline-container-org7cbf524" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgf0400ca" class="outline-3">
+<div id="outline-container-orgff7962f" class="outline-3">
 <h3 id="factor-mode-editing-source-files"><span class="section-number-3">3.1</span> factor-mode (editing source files)</h3>
 <div class="outline-text-3" id="text-factor-mode-editing-source-files">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -524,7 +527,7 @@ To use this layer, add it to your <code>./spacemacs</code> file. Add <code>facto
 </div>
 </div>
 
-<div id="outline-container-org39e7e83" class="outline-3">
+<div id="outline-container-org5054426" class="outline-3">
 <h3 id="fuel-listener-mode"><span class="section-number-3">3.2</span> fuel-listener-mode</h3>
 <div class="outline-text-3" id="text-fuel-listener-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -572,7 +575,7 @@ To use this layer, add it to your <code>./spacemacs</code> file. Add <code>facto
 </div>
 </div>
 
-<div id="outline-container-org979b37a" class="outline-2">
+<div id="outline-container-orgbfb4e9b" class="outline-2">
 <h2 id="snippets"><span class="section-number-2">4</span> Snippets</h2>
 <div class="outline-text-2" id="text-snippets">
 <p>
@@ -584,10 +587,40 @@ prog-mode instead of advancing to the next field when pressing <code>&lt;TAB&gt;
 </p>
 </div>
 </div>
+
+<div id="outline-container-org7b54fda" class="outline-2">
+<h2 id="starting-a-graphical-listener"><span class="section-number-2">5</span> Starting a Graphical Listener</h2>
+<div class="outline-text-2" id="text-starting-a-graphical-listener">
+<p>
+The command <code>factor/start-ui-listener</code> can be used to run a Factor process which
+sets up a FUEL server on the standard port and runs the graphical listener. If successful, the
+command <code>connect-to-factor</code> will connect to that factor instance.
+</p>
+
+<p>
+This procedure can be influenced with the following variables, which can also be
+set as directory-local variables to make it easier to work with projects which
+require different Factor versions, for example. (See their respective
+documentation for details)
+</p>
+<ul class="org-ul">
+<li><code>fuel-factor-root-dir</code></li>
+<li><code>fuel-listener-factor-binary</code></li>
+<li><code>fuel-listener-factor-image</code></li>
+<li><code>factor-ui-listener-args</code></li>
+</ul>
+
+<p>
+Note that the commands described in the <a href="#key-bindings">Key bindings</a> section which start a
+factor listener are supplied by FUEL and don't take the last of these variables,
+<code>factor-ui-listener-args</code> into account.
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-05-27 Wed 16:38</p>
+<p class="date">Created: 2020-08-09 Sun 09:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

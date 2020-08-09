@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-27 Wed 16:38 -->
+<!-- 2020-08-09 Sun 09:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spacemacs-purpose layer</title>
@@ -289,7 +289,12 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#install">3. Install</a></li>
-<li><a href="#usage">4. Usage</a></li>
+<li><a href="#usage">4. Usage</a>
+<ul>
+<li><a href="#allocate-purposes-in-layers">4.1. Allocate purposes in layers</a></li>
+<li><a href="#overwrite-purposes-in-dotfile">4.2. Overwrite purposes in dotfile</a></li>
+</ul>
+</li>
 <li><a href="#key-bindings">5. Key bindings</a></li>
 <li><a href="#caveats">6. Caveats</a>
 <ul>
@@ -301,7 +306,7 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org2386dcf" class="outline-2">
+<div id="outline-container-orga7d4f23" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -317,7 +322,7 @@ brings popwin's behavior to window-purpose and solves that problem.
 </p>
 </div>
 
-<div id="outline-container-org9fa5976" class="outline-3">
+<div id="outline-container-org6526f2d" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -334,7 +339,7 @@ brings popwin's behavior to window-purpose and solves that problem.
 </div>
 </div>
 
-<div id="outline-container-org8189d9c" class="outline-2">
+<div id="outline-container-orgc0258f7" class="outline-2">
 <h2 id="purposes"><span class="section-number-2">2</span> Purposes</h2>
 <div class="outline-text-2" id="text-purposes">
 <p>
@@ -358,7 +363,7 @@ reserved only for buffers that share that purpose.
 </p>
 </div>
 
-<div id="outline-container-org4ff7a55" class="outline-3">
+<div id="outline-container-org7dd5c97" class="outline-3">
 <h3 id="switch-to-buffer-and-display-buffer"><span class="section-number-3">2.1</span> switch-to-buffer and display-buffer</h3>
 <div class="outline-text-3" id="text-switch-to-buffer-and-display-buffer">
 <p>
@@ -371,7 +376,7 @@ result is a better control over how buffers are displayed, since
 </div>
 </div>
 
-<div id="outline-container-org98465d2" class="outline-3">
+<div id="outline-container-orgd56bb6d" class="outline-3">
 <h3 id="misc"><span class="section-number-3">2.2</span> misc</h3>
 <div class="outline-text-3" id="text-misc">
 <ul class="org-ul">
@@ -381,7 +386,7 @@ result is a better control over how buffers are displayed, since
 </div>
 </div>
 
-<div id="outline-container-org85ebc83" class="outline-2">
+<div id="outline-container-org45e695f" class="outline-2">
 <h2 id="install"><span class="section-number-2">3</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -392,7 +397,7 @@ this file.
 </div>
 </div>
 
-<div id="outline-container-org581ab16" class="outline-2">
+<div id="outline-container-orgc960b3d" class="outline-2">
 <h2 id="usage"><span class="section-number-2">4</span> Usage</h2>
 <div class="outline-text-2" id="text-usage">
 <p>
@@ -412,9 +417,80 @@ changes.
 See <a href="https://github.com/bmag/emacs-purpose/wiki">window-purpose wiki</a> to learn more about window-purpose.
 </p>
 </div>
+
+<div id="outline-container-org911fa7e" class="outline-3">
+<h3 id="allocate-purposes-in-layers"><span class="section-number-3">4.1</span> Allocate purposes in layers</h3>
+<div class="outline-text-3" id="text-allocate-purposes-in-layers">
+<p>
+Layers can allocated buffers, which have been created by their
+packages, to certain purposes. This can either be done
+by a simple mode mapping or according to the buffer's name.
+This follows the same idea as the autocomplete and
+syntax-checking layers.
+</p>
+
+<p>
+This means the configuration is not centralised in this layer but
+spread among the individual language layers. To ensure
+that users can still overwrite these configs it is important
+to declare them uniformly in Spacemacs.
+</p>
+
+<p>
+To do so copy and adjust the following code:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">This will only be called if `window-purpose` is listed</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">among the layer packages.</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">This code also takes care that the right loading</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">order is followed so there is no need for any</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">`with-eval-after-load` constructs.</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">shell/post-init-window-purpose</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>purpose-set-extension-configuration
+   <span class="org-builtin">:shell-layer</span>
+   <span class="org-rainbow-delimiters-depth-3">(</span>purpose-conf <span class="org-builtin">:mode-purposes</span> '<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">(</span>vterm-mode . terminal<span class="org-rainbow-delimiters-depth-5">)</span>
+                                  <span class="org-rainbow-delimiters-depth-5">(</span>eshell-mode . terminal<span class="org-rainbow-delimiters-depth-5">)</span>
+                                  <span class="org-rainbow-delimiters-depth-5">(</span>shell-mode . terminal<span class="org-rainbow-delimiters-depth-5">)</span>
+                                  <span class="org-rainbow-delimiters-depth-5">(</span>term-mode . terminal<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+   <span class="org-comment-delimiter">;; </span><span class="org-comment">This can also be a static name allocation</span>
+   <span class="org-comment-delimiter">;;            </span><span class="org-comment">:name-purposes '(("*Anaconda Help*" . Help))</span>
+   <span class="org-comment-delimiter">;; </span><span class="org-comment">or a dynamic one following a regexp</span>
+   <span class="org-comment-delimiter">;;            </span><span class="org-comment">:regexp-purposes '(("^\\*Anaconda" . general))</span>
+
+</pre>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org52cdbe0" class="outline-2">
+<div id="outline-container-org89cd441" class="outline-3">
+<h3 id="overwrite-purposes-in-dotfile"><span class="section-number-3">4.2</span> Overwrite purposes in dotfile</h3>
+<div class="outline-text-3" id="text-overwrite-purposes-in-dotfile">
+<p>
+With layers defining all kinds of purposes there will surely
+come the point where one wishes to change one or two of
+these allocations to match ones own personal needs.
+</p>
+
+<p>
+This can easily be achieved by adding below code in
+`dotspacemacs/user-config`:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">This will add user allocations with a higher</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">priority than the ones from the layers.</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">With this allocations can be completely</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">customised.</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>purpose-add-user-purposes <span class="org-builtin">:names</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"*Anaconda Help*"</span> . general<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+                           <span class="org-builtin">:regexps</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"\\.hy$"</span> . python<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5ad7d71" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -466,12 +542,12 @@ See <a href="https://github.com/bmag/emacs-purpose/wiki">window-purpose wiki</a>
 </div>
 </div>
 
-<div id="outline-container-org41859dd" class="outline-2">
+<div id="outline-container-org3ec0db6" class="outline-2">
 <h2 id="caveats"><span class="section-number-2">6</span> Caveats</h2>
 <div class="outline-text-2" id="text-caveats">
 </div>
 
-<div id="outline-container-orgb1143cf" class="outline-3">
+<div id="outline-container-org9f49477" class="outline-3">
 <h3 id="popwin-and-guide-key"><span class="section-number-3">6.1</span> Popwin and guide-key</h3>
 <div class="outline-text-3" id="text-popwin-and-guide-key">
 <p>
@@ -482,7 +558,7 @@ purpose-dedicated.
 </div>
 </div>
 
-<div id="outline-container-orgcb3927d" class="outline-3">
+<div id="outline-container-org52ba2a7" class="outline-3">
 <h3 id="packages-that-do-display-management"><span class="section-number-3">6.2</span> Packages that do display management</h3>
 <div class="outline-text-3" id="text-packages-that-do-display-management">
 <p>
@@ -497,7 +573,7 @@ with <code>window-purpose</code>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-05-27 Wed 16:38</p>
+<p class="date">Created: 2020-08-09 Sun 09:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

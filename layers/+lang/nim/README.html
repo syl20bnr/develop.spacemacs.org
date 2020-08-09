@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-27 Wed 16:38 -->
+<!-- 2020-08-09 Sun 09:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nim layer</title>
@@ -283,11 +283,17 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#working-with-nim">3. Working with Nim</a>
+<li><a href="#configuration">3. Configuration</a>
 <ul>
-<li><a href="#nim-commands-start-with-m">3.1. Nim commands (start with <code>m</code>):</a></li>
+<li><a href="#choosing-a-backend">3.1. Choosing a backend</a>
+<ul>
+<li><a href="#company-vim">3.1.1. Company-vim</a></li>
+<li><a href="#lsp">3.1.2. LSP</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#key-bindings">4. Key bindings</a></li>
 </ul>
 </div>
 </div>
@@ -297,7 +303,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org58db876" class="outline-2">
+<div id="outline-container-org5aff0c0" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -305,19 +311,19 @@ This layer adds support for the multi-paradigm language <code>Nim</code>.
 </p>
 </div>
 
-<div id="outline-container-org9f6453c" class="outline-3">
+<div id="outline-container-orgd3fb98b" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Code completion.</li>
+<li>Auto-completion</li>
+<li>Syntax-checking</li>
 <li>Jump to definition.</li>
-<li>Syntax checking.</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org6713e87" class="outline-2">
+<div id="outline-container-org2c31e93" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -329,22 +335,94 @@ file.
 <p>
 For syntax checking, the <code>syntax-checking</code> layer must also be added.
 </p>
+</div>
+</div>
+
+<div id="outline-container-orgca49cea" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+<p>
+All layer configurations can be done by setting layer variables in your dotfile.
+No custom user config lines are necessary
+</p>
+</div>
+
+<div id="outline-container-org46b2926" class="outline-3">
+<h3 id="choosing-a-backend"><span class="section-number-3">3.1</span> Choosing a backend</h3>
+<div class="outline-text-3" id="text-choosing-a-backend">
+<p>
+This layer provides two alternative backends to choose from.
+</p>
+</div>
+
+<div id="outline-container-org60f2aff" class="outline-4">
+<h4 id="company-vim"><span class="section-number-4">3.1.1</span> Company-vim</h4>
+<div class="outline-text-4" id="text-company-vim">
+<p>
+This is the default choice if nothing is set and no lsp layer
+is loaded in your dotfile. This mode only provides very
+limited IDE capabilities. Used best if only small scripts
+are edited. To set explicitly set the following in your
+dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>nim <span class="org-builtin">:variables</span> nim-backend 'company-nim<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5d0c9f9" class="outline-4">
+<h4 id="lsp"><span class="section-number-4">3.1.2</span> LSP</h4>
+<div class="outline-text-4" id="text-lsp">
+<p>
+For proper IDE support this backend should be used. It is
+based on an external server which will be started automatically
+by emacs, once a nim file is opened. The key bindings are
+the same for all lsp modes so if you are already familiar with
+one you should be able to work the same in all modes.
+</p>
 
 <p>
-For all the features to work properly, <code>nimsuggest</code> must be installed properly
-and <code>nimsuggest</code> binary must be in $PATH.
+To set explicitly do the following in your dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>nim <span class="org-builtin">:variables</span>
+      nim-backend 'lsp<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+For this to work you will also need to install the
+latest version of the lsp server by running:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">nimble install nimlsp
+</pre>
+</div>
+
+<p>
+Should this not work than further instructions can
+be obtained from <a href="https://github.com/PMunch/nimlsp">here</a>.
+</p>
+
+<p>
+NOTE: Key bindings for LSP are defined in the
+LSP layer. Also it is advisable to have a look
+at the autocomplete layer for an optimal
+intellisense config for LSP.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org4069d4d" class="outline-2">
-<h2 id="working-with-nim"><span class="section-number-2">3</span> Working with Nim</h2>
-<div class="outline-text-2" id="text-working-with-nim">
+</div>
 </div>
 
-<div id="outline-container-orgf3b14c9" class="outline-3">
-<h3 id="nim-commands-start-with-m"><span class="section-number-3">3.1</span> Nim commands (start with <code>m</code>):</h3>
-<div class="outline-text-3" id="text-nim-commands-start-with-m">
+<div id="outline-container-orgc2d39d9" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -366,12 +444,7 @@ and <code>nimsuggest</code> binary must be in $PATH.
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m g g</code> or <code>M-.</code></td>
-<td class="org-left">Jump to definition</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g b</code> or <code>M-,</code></td>
+<td class="org-left"><code>SPC m g b</code></td>
 <td class="org-left">Jump back</td>
 </tr>
 
@@ -384,10 +457,9 @@ and <code>nimsuggest</code> binary must be in $PATH.
 </div>
 </div>
 </div>
-</div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-05-27 Wed 16:38</p>
+<p class="date">Created: 2020-08-09 Sun 09:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
