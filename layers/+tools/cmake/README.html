@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-08-09 Sun 09:12 -->
+<!-- 2020-08-28 Fri 18:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CMake layer</title>
@@ -282,13 +282,19 @@ for the JavaScript code in this tag.
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a>
+<li><a href="#install">2. Install</a></li>
+<li><a href="#configuration">3. Configuration</a>
 <ul>
-<li><a href="#layer">2.1. Layer</a></li>
-<li><a href="#cmake-ide-configuration">2.2. CMake-ide configuration</a></li>
+<li><a href="#choosing-a-backend">3.1. Choosing a backend</a>
+<ul>
+<li><a href="#company-cmake">3.1.1. Company-cmake</a></li>
+<li><a href="#lsp">3.1.2. LSP</a></li>
 </ul>
 </li>
-<li><a href="#key-bindings">3. Key bindings</a></li>
+<li><a href="#cmake-ide">3.2. CMake-ide</a></li>
+</ul>
+</li>
+<li><a href="#key-bindings">4. Key bindings</a></li>
 </ul>
 </div>
 </div>
@@ -298,7 +304,7 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgaef5765" class="outline-2">
+<div id="outline-container-org51c412a" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -306,27 +312,24 @@ This layer adds support <a href="https://cmake.org/">CMake</a> scripts.
 </p>
 </div>
 
-<div id="outline-container-orgc720724" class="outline-3">
+<div id="outline-container-orgd31dc6e" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Support for CMake configure/build (with limited support for other build systems),
-automatic generation of <code>compile_commands.json</code> (compile flags), on-the-fly configuration
-of flycheck, company-clang and RTags (if installed) with <a href="https://github.com/atilaneves/cmake-ide">cmake-ide</a>.</li>
+<li>Syntax highlighting</li>
+<li>Auto-completion</li>
+<li>Support for CMake configure/build (with limited support for other build systems) and
+automatic generation of <code>compile_commands.json</code> (compile flags).</li>
 <li>Run selected test using <code>Helm</code> interface via <code>helm-ctest</code>.</li>
+<li>Extraction of compile parameters from <code>compile_commands.json</code> with <a href="https://github.com/atilaneves/cmake-ide">cmake-ide</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgedb80aa" class="outline-2">
+<div id="outline-container-orgdc5ef17" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
-</div>
-
-<div id="outline-container-orgfc39157" class="outline-3">
-<h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
-<div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>cmake</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
@@ -335,12 +338,92 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org9d5137b" class="outline-3">
-<h3 id="cmake-ide-configuration"><span class="section-number-3">2.2</span> CMake-ide configuration</h3>
-<div class="outline-text-3" id="text-cmake-ide-configuration">
+<div id="outline-container-orgecd6c3d" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+<p>
+All layer configurations can be done by setting layer variables in your dotfile.
+No custom user config lines are necessary
+</p>
+</div>
+
+<div id="outline-container-org38d13d1" class="outline-3">
+<h3 id="choosing-a-backend"><span class="section-number-3">3.1</span> Choosing a backend</h3>
+<div class="outline-text-3" id="text-choosing-a-backend">
+<p>
+This layer provides two alternative backends to choose from.
+</p>
+</div>
+
+<div id="outline-container-org48d0928" class="outline-4">
+<h4 id="company-cmake"><span class="section-number-4">3.1.1</span> Company-cmake</h4>
+<div class="outline-text-4" id="text-company-cmake">
+<p>
+This is the default choice if nothing is set and no lsp layer
+is loaded in your dotfile. This mode only provides very
+limited IDE capabilities. Used best if only small scripts
+are edited. To set explicitly set the following in your
+dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>cmake <span class="org-builtin">:variables</span> cmake-backend 'company-cmake<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfc0b74f" class="outline-4">
+<h4 id="lsp"><span class="section-number-4">3.1.2</span> LSP</h4>
+<div class="outline-text-4" id="text-lsp">
+<p>
+For proper IDE support this backend should be used. It is
+based on an external server which will be started automatically
+by emacs, once a cmake file is opened. The key bindings are
+the same for all lsp modes so if you are already familiar with
+one you should be able to work the same in all modes.
+</p>
+
+<p>
+To set explicitly do the following in your dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>cmake <span class="org-builtin">:variables</span>
+        cmake-backend 'lsp<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+For this to work you will also need to obtain
+the latest version of the lsp server from <a href="https://github.com/regen100/cmake-language-server">here</a>.
+</p>
+
+<p>
+You can also simply install it with pip:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">pip install cmake-language-server
+</pre>
+</div>
+
+<p>
+NOTE: Key bindings for LSP are defined in the
+LSP layer. Also it is advisable to have a look
+at the autocomplete layer for an optimal
+intellisense config for LSP.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6a6d3c5" class="outline-3">
+<h3 id="cmake-ide"><span class="section-number-3">3.2</span> CMake-ide</h3>
+<div class="outline-text-3" id="text-cmake-ide">
 <p>
 To enable CMake projects support set the layer variable <code>cmake-enable-cmake-ide-support</code>
-to <code>t</code> in the dotfile:
+to <code>t</code> in your dotfile:
 </p>
 
 <div class="org-src-container">
@@ -351,10 +434,13 @@ to <code>t</code> in the dotfile:
 
 <p>
 <code>cmake-ide</code> plugin has several useful configuration options.
+Normally all should just work well as long as there is a standard
+cmake compilation database available. If not some manual configuration
+may be necessary. Details can be found below.
 </p>
 
 <p>
-To configure project you need to create <code>.dir-locals.el</code> file. In case of using
+To configure a project you need to create <code>.dir-locals.el</code> file. In case of using
 make as CMake backend you can use <code>helm-make</code> to select required build target.
 </p>
 
@@ -403,8 +489,8 @@ In case of projectile it's possible to configure project like:
 </div>
 </div>
 
-<div id="outline-container-orgc4580d0" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-orgf0be890" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -447,7 +533,7 @@ In case of projectile it's possible to configure project like:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-08-09 Sun 09:12</p>
+<p class="date">Created: 2020-08-28 Fri 18:29</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
