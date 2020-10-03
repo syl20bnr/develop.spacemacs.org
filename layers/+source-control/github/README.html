@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-16 Wed 21:43 -->
+<!-- 2020-10-03 Sat 18:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GitHub layer</title>
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -223,50 +223,26 @@
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -300,12 +276,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div class="figure">
+<div id="org44888ca" class="figure">
 <p><img src="img/github.png" alt="github.png" />
 </p>
 </div>
 
-<div id="outline-container-orgf12b206" class="outline-2">
+<div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -313,7 +289,7 @@ This layers adds support for <a href="http://github.com">GitHub</a>.
 </p>
 </div>
 
-<div id="outline-container-orgabe3d59" class="outline-3">
+<div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -326,12 +302,12 @@ This layers adds support for <a href="http://github.com">GitHub</a>.
 </div>
 </div>
 
-<div id="outline-container-orgf56111d" class="outline-2">
+<div id="outline-container-install" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-org31519e3" class="outline-3">
+<div id="outline-container-layer" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -342,7 +318,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org55816b3" class="outline-3">
+<div id="outline-container-git-configuration" class="outline-3">
 <h3 id="git-configuration"><span class="section-number-3">2.2</span> Git configuration</h3>
 <div class="outline-text-3" id="text-git-configuration">
 <p>
@@ -362,7 +338,7 @@ You will also need to <a href="https://help.github.com/articles/generating-a-new
 </div>
 </div>
 
-<div id="outline-container-org7f2bca9" class="outline-3">
+<div id="outline-container-forge" class="outline-3">
 <h3 id="forge"><span class="section-number-3">2.3</span> Forge</h3>
 <div class="outline-text-3" id="text-forge">
 <p>
@@ -385,12 +361,12 @@ dotfile:
 </div>
 </div>
 
-<div id="outline-container-org7513542" class="outline-2">
+<div id="outline-container-key-bindings" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org08a3f7a" class="outline-3">
+<div id="outline-container-forge-1" class="outline-3">
 <h3 id="forge-1"><span class="section-number-3">3.1</span> Forge</h3>
 <div class="outline-text-3" id="text-forge-1">
 <p>
@@ -533,7 +509,7 @@ In a <code>forge-post</code> buffer (assuming the major mode leader key is <code
 </div>
 </div>
 
-<div id="outline-container-org010cd37" class="outline-3">
+<div id="outline-container-gistel" class="outline-3">
 <h3 id="gistel"><span class="section-number-3">3.2</span> gist.el</h3>
 <div class="outline-text-3" id="text-gistel">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -681,7 +657,7 @@ In the gist list buffer:
 </div>
 </div>
 
-<div id="outline-container-org40e5eb1" class="outline-3">
+<div id="outline-container-clone-repositories" class="outline-3">
 <h3 id="clone-repositories"><span class="section-number-3">3.3</span> Clone repositories</h3>
 <div class="outline-text-3" id="text-clone-repositories">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -731,8 +707,8 @@ In the gist list buffer:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-09-16 Wed 21:43</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2020-10-03 Sat 18:56</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

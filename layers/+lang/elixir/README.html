@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-16 Wed 21:43 -->
+<!-- 2020-10-03 Sat 18:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elixir layer</title>
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -223,50 +223,26 @@
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -335,12 +311,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div class="figure">
+<div id="orga3a51ac" class="figure">
 <p><img src="img/elixir.png" alt="elixir.png" />
 </p>
 </div>
 
-<div id="outline-container-org613eb80" class="outline-2">
+<div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -357,7 +333,7 @@ As Alchemist is no longer maintained, elixir-ls is a preferred solution, even th
 </p>
 </div>
 
-<div id="outline-container-org7a5f8af" class="outline-3">
+<div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -378,12 +354,12 @@ As Alchemist is no longer maintained, elixir-ls is a preferred solution, even th
 </div>
 </div>
 
-<div id="outline-container-orgd59a58c" class="outline-2">
+<div id="outline-container-install" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgac1701f" class="outline-3">
+<div id="outline-container-layer" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -394,7 +370,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org415b482" class="outline-3">
+<div id="outline-container-choosing-a-backend" class="outline-3">
 <h3 id="choosing-a-backend"><span class="section-number-3">2.2</span> Choosing a backend</h3>
 <div class="outline-text-3" id="text-choosing-a-backend">
 <p>
@@ -461,7 +437,7 @@ The available options are:
 </table>
 </div>
 
-<div id="outline-container-orgcc4bbe7" class="outline-4">
+<div id="outline-container-feature-comparison-in-backends" class="outline-4">
 <h4 id="feature-comparison-in-backends"><span class="section-number-4">2.2.1</span> Feature comparison in backends</h4>
 <div class="outline-text-4" id="text-feature-comparison-in-backends">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -548,12 +524,12 @@ The available options are:
 </div>
 </div>
 
-<div id="outline-container-orgb56a41a" class="outline-2">
+<div id="outline-container-configuration" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org709b223" class="outline-3">
+<div id="outline-container-flycheck" class="outline-3">
 <h3 id="flycheck"><span class="section-number-3">3.1</span> Flycheck</h3>
 <div class="outline-text-3" id="text-flycheck">
 <p>
@@ -562,7 +538,7 @@ time.
 </p>
 </div>
 
-<div id="outline-container-org3bd18ee" class="outline-4">
+<div id="outline-container-credo" class="outline-4">
 <h4 id="credo"><span class="section-number-4">3.1.1</span> Credo</h4>
 <div class="outline-text-4" id="text-credo">
 <p>
@@ -599,7 +575,7 @@ You can tell flycheck-credo to call credo with the '&#x2013;strict' argument.
 </div>
 </div>
 
-<div id="outline-container-org2ab45f0" class="outline-4">
+<div id="outline-container-dogma" class="outline-4">
 <h4 id="dogma"><span class="section-number-4">3.1.2</span> Dogma</h4>
 <div class="outline-text-4" id="text-dogma">
 <p>
@@ -624,7 +600,7 @@ Then run in your shell:
 </div>
 </div>
 
-<div id="outline-container-org1a54ac0" class="outline-3">
+<div id="outline-container-language-server-protocol" class="outline-3">
 <h3 id="language-server-protocol"><span class="section-number-3">3.2</span> Language server protocol</h3>
 <div class="outline-text-3" id="text-language-server-protocol">
 <p>
@@ -657,7 +633,7 @@ by default <code>elixir-ls-path</code> is equal to <code>"~/elixir-ls/release"</
 </div>
 </div>
 
-<div id="outline-container-orga27b606" class="outline-3">
+<div id="outline-container-debugger" class="outline-3">
 <h3 id="debugger"><span class="section-number-3">3.3</span> Debugger</h3>
 <div class="outline-text-3" id="text-debugger">
 <p>
@@ -673,17 +649,17 @@ as well as make sure to read this elixir-ls <a href="https://github.com/elixir-l
 </div>
 </div>
 
-<div id="outline-container-org7f74dc3" class="outline-2">
+<div id="outline-container-key-bindings" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgb4731fc" class="outline-3">
+<div id="outline-container-alchemist" class="outline-3">
 <h3 id="alchemist"><span class="section-number-3">4.1</span> Alchemist</h3>
 <div class="outline-text-3" id="text-alchemist">
 </div>
 
-<div id="outline-container-orgdb4a309" class="outline-4">
+<div id="outline-container-refcard" class="outline-4">
 <h4 id="refcard"><span class="section-number-4">4.1.1</span> Refcard</h4>
 <div class="outline-text-4" id="text-refcard">
 <p>
@@ -692,7 +668,7 @@ You find and overview of all the key bindings on the <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-orgc88bae9" class="outline-4">
+<div id="outline-container-help" class="outline-4">
 <h4 id="help"><span class="section-number-4">4.1.2</span> Help</h4>
 <div class="outline-text-4" id="text-help">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -734,7 +710,7 @@ You find and overview of all the key bindings on the <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-orgbe99358" class="outline-4">
+<div id="outline-container-mix" class="outline-4">
 <h4 id="mix"><span class="section-number-4">4.1.3</span> Mix</h4>
 <div class="outline-text-4" id="text-mix">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -776,7 +752,7 @@ You find and overview of all the key bindings on the <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-org40a7e53" class="outline-4">
+<div id="outline-container-project" class="outline-4">
 <h4 id="project"><span class="section-number-4">4.1.4</span> Project</h4>
 <div class="outline-text-4" id="text-project">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -808,7 +784,7 @@ You find and overview of all the key bindings on the <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-orgdf11066" class="outline-4">
+<div id="outline-container-evaluation-in-place" class="outline-4">
 <h4 id="evaluation-in-place"><span class="section-number-4">4.1.5</span> Evaluation in place</h4>
 <div class="outline-text-4" id="text-evaluation-in-place">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -860,7 +836,7 @@ You find and overview of all the key bindings on the <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-orga60b3da" class="outline-4">
+<div id="outline-container-repl-interactions" class="outline-4">
 <h4 id="repl-interactions"><span class="section-number-4">4.1.6</span> REPL interactions</h4>
 <div class="outline-text-4" id="text-repl-interactions">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -922,7 +898,7 @@ You find and overview of all the key bindings on the <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-org2d62a03" class="outline-4">
+<div id="outline-container-tests" class="outline-4">
 <h4 id="tests"><span class="section-number-4">4.1.7</span> Tests</h4>
 <div class="outline-text-4" id="text-tests">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1004,7 +980,7 @@ You find and overview of all the key bindings on the <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-org2f3a90b" class="outline-4">
+<div id="outline-container-compile" class="outline-4">
 <h4 id="compile"><span class="section-number-4">4.1.8</span> Compile</h4>
 <div class="outline-text-4" id="text-compile">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1041,7 +1017,7 @@ You find and overview of all the key bindings on the <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-orga5a21eb" class="outline-4">
+<div id="outline-container-execute" class="outline-4">
 <h4 id="execute"><span class="section-number-4">4.1.9</span> Execute</h4>
 <div class="outline-text-4" id="text-execute">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1078,7 +1054,7 @@ You find and overview of all the key bindings on the <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-org304511c" class="outline-4">
+<div id="outline-container-code-definition-jump" class="outline-4">
 <h4 id="code-definition-jump"><span class="section-number-4">4.1.10</span> Code Definition Jump</h4>
 <div class="outline-text-4" id="text-code-definition-jump">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1135,7 +1111,7 @@ You find and overview of all the key bindings on the <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-org98b4441" class="outline-4">
+<div id="outline-container-hex-packages" class="outline-4">
 <h4 id="hex-packages"><span class="section-number-4">4.1.11</span> Hex (packages)</h4>
 <div class="outline-text-4" id="text-hex-packages">
 <p>
@@ -1186,7 +1162,7 @@ Hex is the package manager for Elixir &amp; Erlang ecosystem. See <a href="https
 </div>
 </div>
 
-<div id="outline-container-org2c7fc29" class="outline-4">
+<div id="outline-container-macro-expand" class="outline-4">
 <h4 id="macro-expand"><span class="section-number-4">4.1.12</span> Macro expand</h4>
 <div class="outline-text-4" id="text-macro-expand">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1248,7 +1224,7 @@ Hex is the package manager for Elixir &amp; Erlang ecosystem. See <a href="https
 </div>
 </div>
 
-<div id="outline-container-org1c39787" class="outline-4">
+<div id="outline-container-formatting" class="outline-4">
 <h4 id="formatting"><span class="section-number-4">4.1.13</span> Formatting</h4>
 <div class="outline-text-4" id="text-formatting">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1275,7 +1251,7 @@ Hex is the package manager for Elixir &amp; Erlang ecosystem. See <a href="https
 </div>
 </div>
 
-<div id="outline-container-org136d885" class="outline-4">
+<div id="outline-container-debugging" class="outline-4">
 <h4 id="debugging"><span class="section-number-4">4.1.14</span> Debugging</h4>
 <div class="outline-text-4" id="text-debugging">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1303,7 +1279,7 @@ Hex is the package manager for Elixir &amp; Erlang ecosystem. See <a href="https
 </div>
 </div>
 
-<div id="outline-container-org650a492" class="outline-3">
+<div id="outline-container-lsp" class="outline-3">
 <h3 id="lsp"><span class="section-number-3">4.2</span> LSP</h3>
 <div class="outline-text-3" id="text-lsp">
 <p>
@@ -1311,7 +1287,7 @@ You find and overview of all the key bindings on the <a href="https://github.com
 </p>
 </div>
 
-<div id="outline-container-org8a8792b" class="outline-4">
+<div id="outline-container-debugging-1" class="outline-4">
 <h4 id="debugging-1"><span class="section-number-4">4.2.1</span> Debugging</h4>
 <div class="outline-text-4" id="text-debugging-1">
 <p>
@@ -1325,8 +1301,8 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-09-16 Wed 21:43</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2020-10-03 Sat 18:56</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

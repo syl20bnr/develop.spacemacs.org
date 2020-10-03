@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-16 Wed 21:43 -->
+<!-- 2020-10-03 Sat 18:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spell Checking layer</title>
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -223,50 +223,26 @@
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -302,7 +278,7 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org326a377" class="outline-2">
+<div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -310,7 +286,7 @@ This layer provides spell checking capabilities to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-org8f455bb" class="outline-3">
+<div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -323,12 +299,12 @@ This layer provides spell checking capabilities to Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-orga4ac4c5" class="outline-2">
+<div id="outline-container-install" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgf8b5a84" class="outline-3">
+<div id="outline-container-layer" class="outline-3">
 <h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
@@ -339,7 +315,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org1067050" class="outline-3">
+<div id="outline-container-spell-checker-configuration" class="outline-3">
 <h3 id="spell-checker-configuration"><span class="section-number-3">2.2</span> Spell Checker Configuration</h3>
 <div class="outline-text-3" id="text-spell-checker-configuration">
 <p>
@@ -354,7 +330,7 @@ also use the key binding <code>SPC S d</code>).
 </div>
 </div>
 
-<div id="outline-container-org9cb6c17" class="outline-3">
+<div id="outline-container-disabling-by-default" class="outline-3">
 <h3 id="disabling-by-default"><span class="section-number-3">2.3</span> Disabling by default</h3>
 <div class="outline-text-3" id="text-disabling-by-default">
 <p>
@@ -371,7 +347,7 @@ toggled off with <code>SPC t S</code>. You can default this to off by setting th
 </div>
 </div>
 
-<div id="outline-container-org5d78b27" class="outline-3">
+<div id="outline-container-enabling-auto-dictionary-mode" class="outline-3">
 <h3 id="enabling-auto-dictionary-mode"><span class="section-number-3">2.4</span> Enabling auto-dictionary-mode</h3>
 <div class="outline-text-3" id="text-enabling-auto-dictionary-mode">
 <p>
@@ -488,7 +464,7 @@ currently supported language:
 </div>
 </div>
 
-<div id="outline-container-org287546e" class="outline-3">
+<div id="outline-container-enabling-multi-dictionary-support-with-hunspell" class="outline-3">
 <h3 id="enabling-multi-dictionary-support-with-hunspell"><span class="section-number-3">2.5</span> Enabling multi-dictionary support with hunspell</h3>
 <div class="outline-text-3" id="text-enabling-multi-dictionary-support-with-hunspell">
 <p>
@@ -517,7 +493,7 @@ tested with version coming from Emacs 25.2 repository.
 </div>
 </div>
 
-<div id="outline-container-orgf581f3d" class="outline-3">
+<div id="outline-container-enable-auto-completion-popup" class="outline-3">
 <h3 id="enable-auto-completion-popup"><span class="section-number-3">2.6</span> Enable auto-completion popup</h3>
 <div class="outline-text-3" id="text-enable-auto-completion-popup">
 <p>
@@ -534,7 +510,7 @@ set the layer variable <code>enable-flyspell-auto-completion</code> to t:
 </div>
 </div>
 
-<div id="outline-container-org6b51026" class="outline-2">
+<div id="outline-container-key-bindings" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -610,7 +586,7 @@ set the layer variable <code>enable-flyspell-auto-completion</code> to t:
 </table>
 </div>
 
-<div id="outline-container-org5ae0199" class="outline-3">
+<div id="outline-container-spell-checking-transient-state" class="outline-3">
 <h3 id="spell-checking-transient-state"><span class="section-number-3">3.1</span> Spell Checking Transient-state</h3>
 <div class="outline-text-3" id="text-spell-checking-transient-state">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -693,7 +669,7 @@ set the layer variable <code>enable-flyspell-auto-completion</code> to t:
 </div>
 </div>
 
-<div id="outline-container-orge028634" class="outline-2">
+<div id="outline-container-known-issues" class="outline-2">
 <h2 id="known-issues"><span class="section-number-2">4</span> Known issues</h2>
 <div class="outline-text-2" id="text-known-issues">
 <p>
@@ -707,8 +683,8 @@ disable it.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-09-16 Wed 21:43</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2020-10-03 Sat 18:56</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

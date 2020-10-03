@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-16 Wed 21:43 -->
+<!-- 2020-10-03 Sat 18:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mu4e layer</title>
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -223,50 +223,26 @@
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -311,7 +287,7 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org25e11e2" class="outline-2">
+<div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -319,7 +295,7 @@ This layer adds support for the <code>Mu4e</code> email client.
 </p>
 </div>
 
-<div id="outline-container-orgba41a0e" class="outline-3">
+<div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -335,7 +311,7 @@ This layer adds support for the <code>Mu4e</code> email client.
 </div>
 </div>
 
-<div id="outline-container-org6b91a3e" class="outline-2">
+<div id="outline-container-install" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -374,12 +350,12 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </div>
 </div>
 
-<div id="outline-container-org53d1c7f" class="outline-2">
+<div id="outline-container-commands" class="outline-2">
 <h2 id="commands"><span class="section-number-2">3</span> Commands</h2>
 <div class="outline-text-2" id="text-commands">
 </div>
 
-<div id="outline-container-org63bff05" class="outline-3">
+<div id="outline-container-global-bindings" class="outline-3">
 <h3 id="global-bindings"><span class="section-number-3">3.1</span> Global bindings</h3>
 <div class="outline-text-3" id="text-global-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -421,7 +397,7 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </div>
 </div>
 
-<div id="outline-container-org20bbfac" class="outline-3">
+<div id="outline-container-headers-mode" class="outline-3">
 <h3 id="headers-mode"><span class="section-number-3">3.2</span> Headers mode</h3>
 <div class="outline-text-3" id="text-headers-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -458,7 +434,7 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </div>
 </div>
 
-<div id="outline-container-org3aba5e3" class="outline-3">
+<div id="outline-container-view-mode" class="outline-3">
 <h3 id="view-mode"><span class="section-number-3">3.3</span> View mode</h3>
 <div class="outline-text-3" id="text-view-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -496,7 +472,7 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </div>
 </div>
 
-<div id="outline-container-org867c25c" class="outline-2">
+<div id="outline-container-configuration" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">4</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
@@ -506,7 +482,7 @@ instructions.
 </p>
 </div>
 
-<div id="outline-container-orgbb9abcf" class="outline-3">
+<div id="outline-container-maildirs-extension" class="outline-3">
 <h3 id="maildirs-extension"><span class="section-number-3">4.1</span> Maildirs extension</h3>
 <div class="outline-text-3" id="text-maildirs-extension">
 <p>
@@ -529,7 +505,7 @@ variable <code>mu4e-use-maildirs-extension</code> to a non-nil value:
 </div>
 </div>
 
-<div id="outline-container-orgf6f39cf" class="outline-3">
+<div id="outline-container-multiple-accounts" class="outline-3">
 <h3 id="multiple-accounts"><span class="section-number-3">4.2</span> Multiple Accounts</h3>
 <div class="outline-text-3" id="text-multiple-accounts">
 <p>
@@ -593,7 +569,7 @@ new contexts feature.
 </div>
 </div>
 
-<div id="outline-container-org130e083" class="outline-3">
+<div id="outline-container-async-mode" class="outline-3">
 <h3 id="async-mode"><span class="section-number-3">4.3</span> Async mode</h3>
 <div class="outline-text-3" id="text-async-mode">
 <p>
@@ -612,7 +588,7 @@ layer.
 </div>
 </div>
 
-<div id="outline-container-org733f4a6" class="outline-3">
+<div id="outline-container-attachment-directory" class="outline-3">
 <h3 id="attachment-directory"><span class="section-number-3">4.4</span> Attachment directory</h3>
 <div class="outline-text-3" id="text-attachment-directory">
 <p>
@@ -628,7 +604,7 @@ that to <code>$HOME/Downloads</code> if it exists. You can override this in your
 </div>
 </div>
 
-<div id="outline-container-org76807f5" class="outline-3">
+<div id="outline-container-example-configuration" class="outline-3">
 <h3 id="example-configuration"><span class="section-number-3">4.5</span> Example configuration</h3>
 <div class="outline-text-3" id="text-example-configuration">
 <div class="org-src-container">
@@ -664,7 +640,7 @@ that to <code>$HOME/Downloads</code> if it exists. You can override this in your
 </div>
 </div>
 
-<div id="outline-container-org4d9a4eb" class="outline-3">
+<div id="outline-container-notifications" class="outline-3">
 <h3 id="notifications"><span class="section-number-3">4.6</span> Notifications</h3>
 <div class="outline-text-3" id="text-notifications">
 <p>
@@ -673,7 +649,7 @@ count of unread messages to the modeline.
 </p>
 
 
-<div class="figure">
+<div id="org5714e7f" class="figure">
 <p><img src="https://raw.githubusercontent.com/iqbalansari/mu4e-alert/master/screenshots/mu4e-alert-in-action.png" alt="mu4e-alert-in-action.png" />
 </p>
 </div>
@@ -684,7 +660,7 @@ For an extended documentation of the available customizations please refer to
 </p>
 </div>
 
-<div id="outline-container-orga3e4007" class="outline-4">
+<div id="outline-container-os-notifications" class="outline-4">
 <h4 id="os-notifications"><span class="section-number-4">4.6.1</span> OS notifications</h4>
 <div class="outline-text-4" id="text-os-notifications">
 <p>
@@ -727,7 +703,7 @@ installed libraries:
 </div>
 </div>
 
-<div id="outline-container-org11ad23d" class="outline-4">
+<div id="outline-container-mode-line-notifications" class="outline-4">
 <h4 id="mode-line-notifications"><span class="section-number-4">4.6.2</span> Mode-line notifications</h4>
 <div class="outline-text-4" id="text-mode-line-notifications">
 <p>
@@ -753,7 +729,7 @@ or use layer variables when you add the layer to
 </div>
 </div>
 
-<div id="outline-container-org9a79c1f" class="outline-3">
+<div id="outline-container-spacemacs-layout-integration" class="outline-3">
 <h3 id="spacemacs-layout-integration"><span class="section-number-3">4.7</span> Spacemacs layout integration</h3>
 <div class="outline-text-3" id="text-spacemacs-layout-integration">
 <p>
@@ -782,7 +758,7 @@ By default the values are:
 </div>
 </div>
 
-<div id="outline-container-org01f27c5" class="outline-2">
+<div id="outline-container-see-also" class="outline-2">
 <h2 id="see-also"><span class="section-number-2">5</span> See also</h2>
 <div class="outline-text-2" id="text-see-also">
 <p>
@@ -796,8 +772,8 @@ Refer to the official <code>mu</code> and <code>mu4e</code> documentation for ad
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-09-16 Wed 21:43</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2020-10-03 Sat 18:56</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-16 Wed 21:43 -->
+<!-- 2020-10-03 Sat 18:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Configuration layers</title>
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -223,50 +223,26 @@
           </script>
 <link rel="stylesheet" type="text/css" href="../css/readtheorg.css" />
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -328,7 +304,7 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org406da42" class="outline-2">
+<div id="outline-container-introduction" class="outline-2">
 <h2 id="introduction"><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-introduction">
 <p>
@@ -340,7 +316,7 @@ how Spacemacs (and Emacs) loads packages.
 </div>
 </div>
 
-<div id="outline-container-orgfe7a745" class="outline-2">
+<div id="outline-container-nomenclature" class="outline-2">
 <h2 id="nomenclature"><span class="section-number-2">2</span> Nomenclature</h2>
 <div class="outline-text-2" id="text-nomenclature">
 <p>
@@ -368,7 +344,7 @@ write a package first, and then a layer that uses your package.
 </div>
 </div>
 
-<div id="outline-container-orgff9a4b8" class="outline-2">
+<div id="outline-container-the-emacs-loading-process" class="outline-2">
 <h2 id="the-emacs-loading-process"><span class="section-number-2">3</span> The Emacs loading process</h2>
 <div class="outline-text-2" id="text-the-emacs-loading-process">
 <p>
@@ -377,7 +353,7 @@ loads code.
 </p>
 </div>
 
-<div id="outline-container-orgee5e48b" class="outline-3">
+<div id="outline-container-emacs-lisp-files" class="outline-3">
 <h3 id="emacs-lisp-files"><span class="section-number-3">3.1</span> Emacs Lisp files</h3>
 <div class="outline-text-3" id="text-emacs-lisp-files">
 <p>
@@ -398,7 +374,7 @@ How is this done in Emacs, and how is it done in Spacemacs?
 </p>
 </div>
 
-<div id="outline-container-org21c3a35" class="outline-4">
+<div id="outline-container-loading-a-file" class="outline-4">
 <h4 id="loading-a-file"><span class="section-number-4">3.1.1</span> Loading a file</h4>
 <div class="outline-text-4" id="text-loading-a-file">
 <p>
@@ -419,7 +395,7 @@ byte-compiled <code>.elc</code> file. It will simply load exactly what you tell 
 </div>
 </div>
 
-<div id="outline-container-orgc3d40ca" class="outline-3">
+<div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">3.2</span> Features</h3>
 <div class="outline-text-3" id="text-features">
 <p>
@@ -468,7 +444,7 @@ loaded before their code runs.
 </p>
 </div>
 
-<div id="outline-container-orge678104" class="outline-4">
+<div id="outline-container-the-load-path" class="outline-4">
 <h4 id="the-load-path"><span class="section-number-4">3.2.1</span> The load path</h4>
 <div class="outline-text-4" id="text-the-load-path">
 <p>
@@ -486,7 +462,7 @@ simply add to this list, e.g.
 </div>
 </div>
 
-<div id="outline-container-orgb5b20e4" class="outline-3">
+<div id="outline-container-auto-loading" class="outline-3">
 <h3 id="auto-loading"><span class="section-number-3">3.3</span> Auto-loading</h3>
 <div class="outline-text-3" id="text-auto-loading">
 <p>
@@ -581,7 +557,7 @@ loaded when needed instead of right away.
 </div>
 </div>
 
-<div id="outline-container-org6256947" class="outline-3">
+<div id="outline-container-eval-after-load" class="outline-3">
 <h3 id="eval-after-load"><span class="section-number-3">3.4</span> Eval after load</h3>
 <div class="outline-text-3" id="text-eval-after-load">
 <p>
@@ -615,7 +591,7 @@ not have to be quoted.
 </div>
 </div>
 
-<div id="outline-container-orgf5ce2d6" class="outline-3">
+<div id="outline-container-use-package" class="outline-3">
 <h3 id="use-package"><span class="section-number-3">3.5</span> Use-package</h3>
 <div class="outline-text-3" id="text-use-package">
 <p>
@@ -702,7 +678,7 @@ more.
 </div>
 </div>
 
-<div id="outline-container-org6c06bd2" class="outline-2">
+<div id="outline-container-anatomy-of-a-layer" class="outline-2">
 <h2 id="anatomy-of-a-layer"><span class="section-number-2">4</span> Anatomy of a layer</h2>
 <div class="outline-text-2" id="text-anatomy-of-a-layer">
 <p>
@@ -725,7 +701,7 @@ path for you.
 </p>
 </div>
 
-<div id="outline-container-orgb67fc2e" class="outline-3">
+<div id="outline-container-layersel" class="outline-3">
 <h3 id="layersel"><span class="section-number-3">4.1</span> layers.el</h3>
 <div class="outline-text-3" id="text-layersel">
 <p>
@@ -750,7 +726,7 @@ was added to <code>dotspacemacs-configuration-layers</code> variables.
 </div>
 </div>
 
-<div id="outline-container-orgf2c0aac" class="outline-3">
+<div id="outline-container-packagesel" class="outline-3">
 <h3 id="packagesel"><span class="section-number-3">4.2</span> packages.el</h3>
 <div class="outline-text-3" id="text-packagesel">
 <p>
@@ -841,7 +817,7 @@ discuss later.
 </div>
 </div>
 
-<div id="outline-container-orgc39c7a4" class="outline-3">
+<div id="outline-container-funcsel" class="outline-3">
 <h3 id="funcsel"><span class="section-number-3">4.3</span> funcs.el</h3>
 <div class="outline-text-3" id="text-funcsel">
 <p>
@@ -871,7 +847,7 @@ is not used.
 </div>
 </div>
 
-<div id="outline-container-org67e49f4" class="outline-3">
+<div id="outline-container-configel" class="outline-3">
 <h3 id="configel"><span class="section-number-3">4.4</span> config.el</h3>
 <div class="outline-text-3" id="text-configel">
 <p>
@@ -885,7 +861,7 @@ This file is loaded after <code>funcs.el</code>.
 </div>
 </div>
 
-<div id="outline-container-org4c9a06d" class="outline-3">
+<div id="outline-container-keybindingsel" class="outline-3">
 <h3 id="keybindingsel"><span class="section-number-3">4.5</span> keybindings.el</h3>
 <div class="outline-text-3" id="text-keybindingsel">
 <p>
@@ -911,7 +887,7 @@ More on this in the next section.
 </div>
 </div>
 
-<div id="outline-container-orgf13f882" class="outline-2">
+<div id="outline-container-the-spacemacs-loading-process" class="outline-2">
 <h2 id="the-spacemacs-loading-process"><span class="section-number-2">5</span> The Spacemacs loading process</h2>
 <div class="outline-text-2" id="text-the-spacemacs-loading-process">
 <p>
@@ -966,7 +942,7 @@ ownership of a package that was owned by a previously enabled layer.
 </div>
 </div>
 
-<div id="outline-container-orgf1d1039" class="outline-2">
+<div id="outline-container-case-study-auto-completion" class="outline-2">
 <h2 id="case-study-auto-completion"><span class="section-number-2">6</span> Case study: auto-completion</h2>
 <div class="outline-text-2" id="text-case-study-auto-completion">
 <p>
@@ -1017,12 +993,12 @@ which is not what we want.
 </div>
 </div>
 
-<div id="outline-container-orgfffbf5f" class="outline-2">
+<div id="outline-container-layer-tips-and-tricks" class="outline-2">
 <h2 id="layer-tips-and-tricks"><span class="section-number-2">7</span> Layer tips and tricks</h2>
 <div class="outline-text-2" id="text-layer-tips-and-tricks">
 </div>
 
-<div id="outline-container-orgba19000" class="outline-3">
+<div id="outline-container-cross-dependencies" class="outline-3">
 <h3 id="cross-dependencies"><span class="section-number-3">7.1</span> Cross-dependencies</h3>
 <div class="outline-text-3" id="text-cross-dependencies">
 <p>
@@ -1048,7 +1024,7 @@ Calls to these functions must go in the <code>layers.el</code> file.
 </div>
 </div>
 
-<div id="outline-container-org28dba44" class="outline-3">
+<div id="outline-container-shadowing" class="outline-3">
 <h3 id="shadowing"><span class="section-number-3">7.2</span> Shadowing</h3>
 <div class="outline-text-3" id="text-shadowing">
 <p>
@@ -1118,7 +1094,7 @@ We will prefer the first form as it is more intuitive.
 </div>
 </div>
 
-<div id="outline-container-orgfd63ece" class="outline-3">
+<div id="outline-container-use-package-init-and-config" class="outline-3">
 <h3 id="use-package-init-and-config"><span class="section-number-3">7.3</span> Use-package init and config</h3>
 <div class="outline-text-3" id="text-use-package-init-and-config">
 <p>
@@ -1150,7 +1126,7 @@ have both!
 </div>
 </div>
 
-<div id="outline-container-org225c996" class="outline-3">
+<div id="outline-container-use-package-hooks" class="outline-3">
 <h3 id="use-package-hooks"><span class="section-number-3">7.4</span> Use-package hooks</h3>
 <div class="outline-text-3" id="text-use-package-hooks">
 <p>
@@ -1185,7 +1161,7 @@ in the <code>init-&lt;package&gt;</code> function, calls to <code>spacemacs|use-
 </div>
 </div>
 
-<div id="outline-container-org11772ac" class="outline-3">
+<div id="outline-container-best-practices" class="outline-3">
 <h3 id="best-practices"><span class="section-number-3">7.5</span> Best practices</h3>
 <div class="outline-text-3" id="text-best-practices">
 <p>
@@ -1194,7 +1170,7 @@ good reason for doing it.
 </p>
 </div>
 
-<div id="outline-container-org2e69c47" class="outline-4">
+<div id="outline-container-package-ownership" class="outline-4">
 <h4 id="package-ownership"><span class="section-number-4">7.5.1</span> Package ownership</h4>
 <div class="outline-text-4" id="text-package-ownership">
 <p>
@@ -1205,7 +1181,7 @@ package should define its <code>init</code> function. Other layers should rely o
 </div>
 </div>
 
-<div id="outline-container-orgf23760f" class="outline-4">
+<div id="outline-container-localize-your-configuration" class="outline-4">
 <h4 id="localize-your-configuration"><span class="section-number-4">7.5.2</span> Localize your configuration</h4>
 <div class="outline-text-4" id="text-localize-your-configuration">
 <p>
@@ -1226,7 +1202,7 @@ intention to prevent this at all costs.
 </div>
 </div>
 
-<div id="outline-container-orgc6080c9" class="outline-4">
+<div id="outline-container-load-ordering" class="outline-4">
 <h4 id="load-ordering"><span class="section-number-4">7.5.3</span> Load ordering</h4>
 <div class="outline-text-4" id="text-load-ordering">
 <p>
@@ -1245,7 +1221,7 @@ Preferably, write your layer so that it is independent of load ordering. The
 </div>
 </div>
 
-<div id="outline-container-org892b903" class="outline-4">
+<div id="outline-container-no-require" class="outline-4">
 <h4 id="no-require"><span class="section-number-4">7.5.4</span> No require</h4>
 <div class="outline-text-4" id="text-no-require">
 <p>
@@ -1260,7 +1236,7 @@ missing appropriate auto-loads.
 </div>
 </div>
 
-<div id="outline-container-org205ecc1" class="outline-4">
+<div id="outline-container-auto-load-everything" class="outline-4">
 <h4 id="auto-load-everything"><span class="section-number-4">7.5.5</span> Auto-load everything</h4>
 <div class="outline-text-4" id="text-auto-load-everything">
 <p>
@@ -1274,8 +1250,8 @@ of a package.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-09-16 Wed 21:43</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2020-10-03 Sat 18:56</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

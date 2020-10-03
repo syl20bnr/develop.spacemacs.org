@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-16 Wed 21:43 -->
+<!-- 2020-10-03 Sat 18:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gnus layer</title>
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -223,50 +223,26 @@
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -293,12 +269,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div class="figure">
+<div id="orgd00d7ff" class="figure">
 <p><img src="img/gnus.gif" alt="gnus.gif" />
 </p>
 </div>
 
-<div id="outline-container-orgf64be38" class="outline-2">
+<div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -306,7 +282,7 @@ This layer integrates a general purpose email/newsgroup client into Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-orga0ecebb" class="outline-3">
+<div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -318,7 +294,7 @@ This layer integrates a general purpose email/newsgroup client into Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-orgd211829" class="outline-2">
+<div id="outline-container-install" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -329,7 +305,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org73c9bb4" class="outline-2">
+<div id="outline-container-basic-concepts" class="outline-2">
 <h2 id="basic-concepts"><span class="section-number-2">3</span> Basic Concepts</h2>
 <div class="outline-text-2" id="text-basic-concepts">
 <p>
@@ -344,7 +320,7 @@ the Group Buffer if Topic Mode is enabled(default).</li>
 </div>
 </div>
 
-<div id="outline-container-org560b2ae" class="outline-2">
+<div id="outline-container-adding-news-sources" class="outline-2">
 <h2 id="adding-news-sources"><span class="section-number-2">4</span> Adding news sources</h2>
 <div class="outline-text-2" id="text-adding-news-sources">
 <p>
@@ -371,7 +347,7 @@ For adding RSS Feeds please see the <a href="#key-bindings">key bindings section
 </div>
 </div>
 
-<div id="outline-container-orgf30723f" class="outline-2">
+<div id="outline-container-configuring-gmail" class="outline-2">
 <h2 id="configuring-gmail"><span class="section-number-2">5</span> Configuring gmail</h2>
 <div class="outline-text-2" id="text-configuring-gmail">
 <p>
@@ -416,7 +392,7 @@ Authentication for your gmail account is best stored in an <code>authinfo</code>
 <code>authinfo.pgp</code> file. It must be of the form:
 </p>
 
-<pre class="example">
+<pre class="example" id="orgc33f132">
 machine smtp.gmail.com login name@gmail.com password SUPER_SECRET_PASS
 machine imap.gmail.com login name@gmail.com port 993 password SUPER_SECRET_PASS
 </pre>
@@ -428,7 +404,7 @@ password</a>.
 </div>
 </div>
 
-<div id="outline-container-orgdc61f80" class="outline-2">
+<div id="outline-container-org-mime-in-org-layer" class="outline-2">
 <h2 id="org-mime-in-org-layer"><span class="section-number-2">6</span> Org MIME in Org layer</h2>
 <div class="outline-text-2" id="text-org-mime-in-org-layer">
 <p>
@@ -443,7 +419,7 @@ from org mode to html. An org mode buffer can be sent via html email by pressing
 </div>
 </div>
 
-<div id="outline-container-org13af669" class="outline-2">
+<div id="outline-container-setup-variables" class="outline-2">
 <h2 id="setup-variables"><span class="section-number-2">7</span> Setup variables</h2>
 <div class="outline-text-2" id="text-setup-variables">
 <p>
@@ -481,7 +457,7 @@ section of <code>.spacemacs</code>.
 </div>
 </div>
 
-<div id="outline-container-org6cb2599" class="outline-2">
+<div id="outline-container-key-bindings" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">8</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
@@ -569,8 +545,8 @@ Basic and Spacemacs specific key bindings can be found in the following table.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-09-16 Wed 21:43</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2020-10-03 Sat 18:56</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>
