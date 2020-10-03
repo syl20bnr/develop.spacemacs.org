@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-16 Wed 21:43 -->
+<!-- 2020-10-03 Sat 18:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Scala layer</title>
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -223,50 +223,26 @@
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -335,7 +311,7 @@ for the JavaScript code in this tag.
 <img src="img/scala.png" alt="scala.png" /> with <img src="img/ensime.png" alt="ensime.png" />
 </p>
 
-<div id="outline-container-orgb825b59" class="outline-2">
+<div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -343,7 +319,7 @@ This layer adds support for the Scala language to Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-org3ea897f" class="outline-3">
+<div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -366,7 +342,7 @@ This layer adds support for the Scala language to Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-org0f1dcca" class="outline-2">
+<div id="outline-container-layer-installation" class="outline-2">
 <h2 id="layer-installation"><span class="section-number-2">2</span> Layer Installation</h2>
 <div class="outline-text-2" id="text-layer-installation">
 <p>
@@ -377,7 +353,7 @@ file.
 </div>
 </div>
 
-<div id="outline-container-org0592a32" class="outline-2">
+<div id="outline-container-backends" class="outline-2">
 <h2 id="backends"><span class="section-number-2">3</span> Backends</h2>
 <div class="outline-text-2" id="text-backends">
 <p>
@@ -399,7 +375,7 @@ To set your choice of backend, configure the layer variable <code>scala-backend<
 </div>
 </div>
 
-<div id="outline-container-org051264b" class="outline-3">
+<div id="outline-container-metals" class="outline-3">
 <h3 id="metals"><span class="section-number-3">3.1</span> Metals</h3>
 <div class="outline-text-3" id="text-metals">
 <p>
@@ -427,7 +403,7 @@ You will then have the common LSP key bindings; see
 </div>
 </div>
 
-<div id="outline-container-org33ccc5d" class="outline-3">
+<div id="outline-container-ensime-deprecated" class="outline-3">
 <h3 id="ensime-deprecated"><span class="section-number-3">3.2</span> Ensime (deprecated)</h3>
 <div class="outline-text-3" id="text-ensime-deprecated">
 <p>
@@ -457,7 +433,7 @@ list) to generate these files.
 </p>
 </div>
 
-<div id="outline-container-org45c91bb" class="outline-4">
+<div id="outline-container-installation-when-using-sbt" class="outline-4">
 <h4 id="installation-when-using-sbt"><span class="section-number-4">3.2.1</span> Installation when using SBT</h4>
 <div class="outline-text-4" id="text-installation-when-using-sbt">
 <p>
@@ -475,7 +451,7 @@ or refer to <a href="http://www.scala-sbt.org/download.html">the sbt installatio
 </div>
 </div>
 
-<div id="outline-container-org992a1c9" class="outline-4">
+<div id="outline-container-installation-when-using-gradle" class="outline-4">
 <h4 id="installation-when-using-gradle"><span class="section-number-4">3.2.2</span> Installation when using Gradle</h4>
 <div class="outline-text-4" id="text-installation-when-using-gradle">
 <p>
@@ -485,7 +461,7 @@ plugin.
 </div>
 </div>
 
-<div id="outline-container-orgfd5ed5c" class="outline-4">
+<div id="outline-container-configuration" class="outline-4">
 <h4 id="configuration"><span class="section-number-4">3.2.3</span> Configuration</h4>
 <div class="outline-text-4" id="text-configuration">
 <p>
@@ -506,7 +482,7 @@ For example,
 </div>
 </div>
 
-<div id="outline-container-org9f7f227" class="outline-4">
+<div id="outline-container-usage" class="outline-4">
 <h4 id="usage"><span class="section-number-4">3.2.4</span> Usage</h4>
 <div class="outline-text-4" id="text-usage">
 <p>
@@ -519,7 +495,7 @@ will suffice do the trick.
 </div>
 </div>
 
-<div id="outline-container-org0a46cb0" class="outline-2">
+<div id="outline-container-scalastyle" class="outline-2">
 <h2 id="scalastyle"><span class="section-number-2">4</span> Scalastyle</h2>
 <div class="outline-text-2" id="text-scalastyle">
 <p>
@@ -564,7 +540,7 @@ configuration instructions.
 </p>
 </div>
 
-<div id="outline-container-org9f54ed3" class="outline-3">
+<div id="outline-container-use-java-doc-style" class="outline-3">
 <h3 id="use-java-doc-style"><span class="section-number-3">4.1</span> Use Java doc-style</h3>
 <div class="outline-text-3" id="text-use-java-doc-style">
 <p>
@@ -581,7 +557,7 @@ To enable <code>java-doc-style</code>, set the variable <code>scala-indent:use-j
 </div>
 </div>
 
-<div id="outline-container-org43b9ae5" class="outline-2">
+<div id="outline-container-enable-debug-adapter-protocol-dap" class="outline-2">
 <h2 id="enable-debug-adapter-protocol-dap"><span class="section-number-2">5</span> Enable Debug Adapter Protocol (DAP)</h2>
 <div class="outline-text-2" id="text-enable-debug-adapter-protocol-dap">
 <p>
@@ -590,7 +566,7 @@ The metals backend enables integration with the DAP layer for debugging support.
 </div>
 </div>
 
-<div id="outline-container-org58c192a" class="outline-2">
+<div id="outline-container-automatically-show-the-type-of-the-symbol-under-the-cursor" class="outline-2">
 <h2 id="automatically-show-the-type-of-the-symbol-under-the-cursor"><span class="section-number-2">6</span> Automatically show the type of the symbol under the cursor</h2>
 <div class="outline-text-2" id="text-automatically-show-the-type-of-the-symbol-under-the-cursor">
 <p>
@@ -610,7 +586,7 @@ Enabling this option can cause slow editor performance.
 </div>
 </div>
 
-<div id="outline-container-orgc7c1fc7" class="outline-2">
+<div id="outline-container-automatically-insert-asterisk-in-multiline-comments" class="outline-2">
 <h2 id="automatically-insert-asterisk-in-multiline-comments"><span class="section-number-2">7</span> Automatically insert asterisk in multiline comments</h2>
 <div class="outline-text-2" id="text-automatically-insert-asterisk-in-multiline-comments">
 <p>
@@ -626,7 +602,7 @@ variable <code>scala-auto-insert-asterisk-in-comments</code> to <code>t</code>.
 </div>
 </div>
 
-<div id="outline-container-orgafde005" class="outline-2">
+<div id="outline-container-deprecated-automatic-replacement-of-arrows-with-unicode-ones" class="outline-2">
 <h2 id="deprecated-automatic-replacement-of-arrows-with-unicode-ones"><span class="section-number-2">8</span> Deprecated: Automatic replacement of arrows with Unicode ones</h2>
 <div class="outline-text-2" id="text-deprecated-automatic-replacement-of-arrows-with-unicode-ones">
 <p>
@@ -654,7 +630,7 @@ Then you will need to remove it:
 </div>
 </div>
 
-<div id="outline-container-org6928fbf" class="outline-2">
+<div id="outline-container-enable-gtags-as-a-fallback-navigation-utility" class="outline-2">
 <h2 id="enable-gtags-as-a-fallback-navigation-utility"><span class="section-number-2">9</span> Enable GTags as a fallback navigation utility</h2>
 <div class="outline-text-2" id="text-enable-gtags-as-a-fallback-navigation-utility">
 <p>
@@ -670,7 +646,7 @@ functioning set the variable <code>scala-enable-gtags</code> to <code>t</code>.
 </div>
 </div>
 
-<div id="outline-container-orgcf7a635" class="outline-2">
+<div id="outline-container-auto-start" class="outline-2">
 <h2 id="auto-start"><span class="section-number-2">10</span> Auto-start</h2>
 <div class="outline-text-2" id="text-auto-start">
 <p>
@@ -686,17 +662,17 @@ with
 </div>
 </div>
 
-<div id="outline-container-org91c80f5" class="outline-2">
+<div id="outline-container-key-bindings" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">11</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgd28c10d" class="outline-3">
+<div id="outline-container-ensime" class="outline-3">
 <h3 id="ensime"><span class="section-number-3">11.1</span> Ensime</h3>
 <div class="outline-text-3" id="text-ensime">
 </div>
 
-<div id="outline-container-org3413d91" class="outline-4">
+<div id="outline-container-search" class="outline-4">
 <h4 id="search"><span class="section-number-4">11.1.1</span> Search</h4>
 <div class="outline-text-4" id="text-search">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -728,7 +704,7 @@ with
 </div>
 </div>
 
-<div id="outline-container-org1fb81f3" class="outline-4">
+<div id="outline-container-ensime-search-mode" class="outline-4">
 <h4 id="ensime-search-mode"><span class="section-number-4">11.1.2</span> Ensime Search Mode</h4>
 <div class="outline-text-4" id="text-ensime-search-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -775,7 +751,7 @@ with
 </div>
 </div>
 
-<div id="outline-container-orga847e12" class="outline-4">
+<div id="outline-container-sbt" class="outline-4">
 <h4 id="sbt"><span class="section-number-4">11.1.3</span> sbt</h4>
 <div class="outline-text-4" id="text-sbt">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -832,7 +808,7 @@ with
 </div>
 </div>
 
-<div id="outline-container-orga705245" class="outline-4">
+<div id="outline-container-typecheck" class="outline-4">
 <h4 id="typecheck"><span class="section-number-4">11.1.4</span> Typecheck</h4>
 <div class="outline-text-4" id="text-typecheck">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -859,7 +835,7 @@ with
 </div>
 </div>
 
-<div id="outline-container-org5310526" class="outline-4">
+<div id="outline-container-debug" class="outline-4">
 <h4 id="debug"><span class="section-number-4">11.1.5</span> Debug</h4>
 <div class="outline-text-4" id="text-debug">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -945,7 +921,7 @@ with
 </div>
 </div>
 
-<div id="outline-container-orga2ab0cb" class="outline-4">
+<div id="outline-container-errors" class="outline-4">
 <h4 id="errors"><span class="section-number-4">11.1.6</span> Errors</h4>
 <div class="outline-text-4" id="text-errors">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -977,7 +953,7 @@ with
 </div>
 </div>
 
-<div id="outline-container-orge0a2241" class="outline-4">
+<div id="outline-container-goto" class="outline-4">
 <h4 id="goto"><span class="section-number-4">11.1.7</span> Goto</h4>
 <div class="outline-text-4" id="text-goto">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1004,7 +980,7 @@ with
 </div>
 </div>
 
-<div id="outline-container-org2f81681" class="outline-4">
+<div id="outline-container-print-and-yank-types" class="outline-4">
 <h4 id="print-and-yank-types"><span class="section-number-4">11.1.8</span> Print and yank types</h4>
 <div class="outline-text-4" id="text-print-and-yank-types">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1040,7 +1016,7 @@ with
 </div>
 </div>
 
-<div id="outline-container-orgaa899e4" class="outline-4">
+<div id="outline-container-documentation-inspect" class="outline-4">
 <h4 id="documentation-inspect"><span class="section-number-4">11.1.9</span> Documentation, Inspect</h4>
 <div class="outline-text-4" id="text-documentation-inspect">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1072,7 +1048,7 @@ with
 </div>
 </div>
 
-<div id="outline-container-org8ab3358" class="outline-4">
+<div id="outline-container-server" class="outline-4">
 <h4 id="server"><span class="section-number-4">11.1.10</span> Server</h4>
 <div class="outline-text-4" id="text-server">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1109,7 +1085,7 @@ with
 </div>
 </div>
 
-<div id="outline-container-org69177ee" class="outline-4">
+<div id="outline-container-refactoring" class="outline-4">
 <h4 id="refactoring"><span class="section-number-4">11.1.11</span> Refactoring</h4>
 <div class="outline-text-4" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1176,7 +1152,7 @@ with
 </div>
 </div>
 
-<div id="outline-container-org5f50814" class="outline-4">
+<div id="outline-container-tests" class="outline-4">
 <h4 id="tests"><span class="section-number-4">11.1.12</span> Tests</h4>
 <div class="outline-text-4" id="text-tests">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1213,7 +1189,7 @@ with
 </div>
 </div>
 
-<div id="outline-container-org0496851" class="outline-4">
+<div id="outline-container-repl" class="outline-4">
 <h4 id="repl"><span class="section-number-4">11.1.13</span> REPL</h4>
 <div class="outline-text-4" id="text-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1269,8 +1245,8 @@ with
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-09-16 Wed 21:43</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2020-10-03 Sat 18:56</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

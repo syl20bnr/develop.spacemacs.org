@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-16 Wed 21:43 -->
+<!-- 2020-10-03 Sat 18:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ruby layer</title>
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -223,50 +223,26 @@
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -324,12 +300,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div class="figure">
+<div id="org0fe7114" class="figure">
 <p><img src="img/ruby.png" alt="ruby.png" />
 </p>
 </div>
 
-<div id="outline-container-org3dfdc16" class="outline-2">
+<div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -337,7 +313,7 @@ This layer provides support for the Ruby programming language.
 </p>
 </div>
 
-<div id="outline-container-org1de8149" class="outline-3">
+<div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -353,7 +329,7 @@ This layer provides support for the Ruby programming language.
 </div>
 </div>
 
-<div id="outline-container-orgd974472" class="outline-2">
+<div id="outline-container-install" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -375,7 +351,7 @@ This layer supports two different Ruby modes: Emacs's built-in Ruby Mode and
 </div>
 </div>
 
-<div id="outline-container-orgd8fce85" class="outline-3">
+<div id="outline-container-choosing-a-backend" class="outline-3">
 <h3 id="choosing-a-backend"><span class="section-number-3">2.1</span> Choosing a backend</h3>
 <div class="outline-text-3" id="text-choosing-a-backend">
 <p>
@@ -411,7 +387,7 @@ Backend can be chosen on a per project basis using directory local variables
 </p>
 </div>
 
-<div id="outline-container-orgeadcbb9" class="outline-4">
+<div id="outline-container-robe" class="outline-4">
 <h4 id="robe"><span class="section-number-4">2.1.1</span> Robe</h4>
 <div class="outline-text-4" id="text-robe">
 <p>
@@ -420,7 +396,7 @@ The default Ruby-mode backend. See Prerequisites for the necessary Gems to suppo
 </div>
 </div>
 
-<div id="outline-container-org88c3b8c" class="outline-4">
+<div id="outline-container-language-server-protocol" class="outline-4">
 <h4 id="language-server-protocol"><span class="section-number-4">2.1.2</span> Language Server Protocol</h4>
 <div class="outline-text-4" id="text-language-server-protocol">
 <p>
@@ -442,7 +418,7 @@ using the LSP backend. Dap-mode can be setup here:
 </div>
 </div>
 
-<div id="outline-container-org6f6df07" class="outline-3">
+<div id="outline-container-prerequisites" class="outline-3">
 <h3 id="prerequisites"><span class="section-number-3">2.2</span> Prerequisites</h3>
 <div class="outline-text-3" id="text-prerequisites">
 <p>
@@ -480,7 +456,7 @@ specific documentation for details and caveats):
 </div>
 </div>
 
-<div id="outline-container-org97fbddb" class="outline-3">
+<div id="outline-container-ruby-version-management" class="outline-3">
 <h3 id="ruby-version-management"><span class="section-number-3">2.3</span> Ruby version management</h3>
 <div class="outline-text-3" id="text-ruby-version-management">
 <p>
@@ -509,7 +485,7 @@ Note: Only one version manager at a time can be enabled.
 </div>
 </div>
 
-<div id="outline-container-org96091ab" class="outline-3">
+<div id="outline-container-test-runner" class="outline-3">
 <h3 id="test-runner"><span class="section-number-3">2.4</span> Test runner</h3>
 <div class="outline-text-3" id="text-test-runner">
 <p>
@@ -536,12 +512,12 @@ directory local variables.
 </div>
 </div>
 
-<div id="outline-container-orgfb3b42a" class="outline-2">
+<div id="outline-container-key-bindings" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org0899cd3" class="outline-3">
+<div id="outline-container-ruby-enh-ruby-mode-robe-inf-ruby-ruby-tools" class="outline-3">
 <h3 id="ruby-enh-ruby-mode-robe-inf-ruby-ruby-tools"><span class="section-number-3">3.1</span> Ruby (enh-ruby-mode, robe, inf-ruby, ruby-tools)</h3>
 <div class="outline-text-3" id="text-ruby-enh-ruby-mode-robe-inf-ruby-ruby-tools">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -648,7 +624,7 @@ directory local variables.
 </div>
 </div>
 
-<div id="outline-container-org408dce0" class="outline-3">
+<div id="outline-container-debugger" class="outline-3">
 <h3 id="debugger"><span class="section-number-3">3.2</span> Debugger</h3>
 <div class="outline-text-3" id="text-debugger">
 <p>
@@ -658,7 +634,7 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 </div>
 
-<div id="outline-container-org4e6f9e9" class="outline-3">
+<div id="outline-container-bundler" class="outline-3">
 <h3 id="bundler"><span class="section-number-3">3.3</span> Bundler</h3>
 <div class="outline-text-3" id="text-bundler">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -710,7 +686,7 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 </div>
 
-<div id="outline-container-org3bbf763" class="outline-3">
+<div id="outline-container-rubocop" class="outline-3">
 <h3 id="rubocop"><span class="section-number-3">3.4</span> RuboCop</h3>
 <div class="outline-text-3" id="text-rubocop">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -767,12 +743,12 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 </div>
 
-<div id="outline-container-org4a2e645" class="outline-3">
+<div id="outline-container-tests" class="outline-3">
 <h3 id="tests"><span class="section-number-3">3.5</span> Tests</h3>
 <div class="outline-text-3" id="text-tests">
 </div>
 
-<div id="outline-container-org3024fba" class="outline-4">
+<div id="outline-container-rspec-mode" class="outline-4">
 <h4 id="rspec-mode"><span class="section-number-4">3.5.1</span> RSpec-mode</h4>
 <div class="outline-text-4" id="text-rspec-mode">
 <p>
@@ -858,7 +834,7 @@ When <code>ruby-test-runner</code> equals <code>rspec</code>.
 </div>
 </div>
 
-<div id="outline-container-orgffdaf98" class="outline-4">
+<div id="outline-container-ruby-test-mode" class="outline-4">
 <h4 id="ruby-test-mode"><span class="section-number-4">3.5.2</span> Ruby-test-mode</h4>
 <div class="outline-text-4" id="text-ruby-test-mode">
 <p>
@@ -894,7 +870,7 @@ When <code>ruby-test-runner</code> equals <code>ruby-test</code>.
 </div>
 </div>
 
-<div id="outline-container-orgd765269" class="outline-4">
+<div id="outline-container-minitest-mode" class="outline-4">
 <h4 id="minitest-mode"><span class="section-number-4">3.5.3</span> minitest-mode</h4>
 <div class="outline-text-4" id="text-minitest-mode">
 <p>
@@ -941,7 +917,7 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-org7a59a25" class="outline-3">
+<div id="outline-container-toggles" class="outline-3">
 <h3 id="toggles"><span class="section-number-3">3.6</span> Toggles</h3>
 <div class="outline-text-3" id="text-toggles">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -973,7 +949,7 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-org8f618e7" class="outline-3">
+<div id="outline-container-rake" class="outline-3">
 <h3 id="rake"><span class="section-number-3">3.7</span> Rake</h3>
 <div class="outline-text-3" id="text-rake">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1015,7 +991,7 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-org7cb00cc" class="outline-3">
+<div id="outline-container-refactor" class="outline-3">
 <h3 id="refactor"><span class="section-number-3">3.8</span> Refactor</h3>
 <div class="outline-text-3" id="text-refactor">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1057,7 +1033,7 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-org6744595" class="outline-3">
+<div id="outline-container-seeing-is-believing" class="outline-3">
 <h3 id="seeing-is-believing"><span class="section-number-3">3.9</span> Seeing is believing</h3>
 <div class="outline-text-3" id="text-seeing-is-believing">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1090,12 +1066,12 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-orgbb8edbb" class="outline-2">
+<div id="outline-container-configuration" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">4</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-org8b920fc" class="outline-3">
+<div id="outline-container-layer-options" class="outline-3">
 <h3 id="layer-options"><span class="section-number-3">4.1</span> Layer options</h3>
 <div class="outline-text-3" id="text-layer-options">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -1150,7 +1126,7 @@ When <code>ruby-test-runner</code> equals <code>minitest</code>.
 </div>
 </div>
 
-<div id="outline-container-org7a0242a" class="outline-3">
+<div id="outline-container-disabling-the-automatic-insertion-of-encoding-comment" class="outline-3">
 <h3 id="disabling-the-automatic-insertion-of-encoding-comment"><span class="section-number-3">4.2</span> Disabling the automatic insertion of encoding comment</h3>
 <div class="outline-text-3" id="text-disabling-the-automatic-insertion-of-encoding-comment">
 <p>
@@ -1172,8 +1148,8 @@ Note that <code>ruby-mode</code> and <code>enh-ruby-mode</code> will automatical
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-09-16 Wed 21:43</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2020-10-03 Sat 18:56</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

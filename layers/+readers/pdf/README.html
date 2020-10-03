@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-16 Wed 21:43 -->
+<!-- 2020-10-03 Sat 18:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PDF layer</title>
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -223,50 +223,26 @@
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -303,12 +279,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div class="figure">
+<div id="org3c69bae" class="figure">
 <p><img src="img/pdf.png" alt="pdf.png" />
 </p>
 </div>
 
-<div id="outline-container-orgfe1925c" class="outline-2">
+<div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -328,7 +304,7 @@ stored in the file-system, but rather created on-demand and stored in memory."
 </blockquote>
 </div>
 
-<div id="outline-container-org0405883" class="outline-3">
+<div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -341,12 +317,12 @@ stored in the file-system, but rather created on-demand and stored in memory."
 </div>
 </div>
 
-<div id="outline-container-org42c5fdd" class="outline-2">
+<div id="outline-container-install" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orga352a3c" class="outline-3">
+<div id="outline-container-prerequisites" class="outline-3">
 <h3 id="prerequisites"><span class="section-number-3">2.1</span> Prerequisites</h3>
 <div class="outline-text-3" id="text-prerequisites">
 <p>
@@ -368,7 +344,7 @@ automatically all dependencies using <code>apt-get</code>.
 </div>
 </div>
 
-<div id="outline-container-orgc58a450" class="outline-3">
+<div id="outline-container-dotfile" class="outline-3">
 <h3 id="dotfile"><span class="section-number-3">2.2</span> Dotfile</h3>
 <div class="outline-text-3" id="text-dotfile">
 <p>
@@ -405,7 +381,7 @@ dependencies are properly installed and run the command <code>pdf-tools-install<
 </div>
 </div>
 
-<div id="outline-container-org2f677a4" class="outline-2">
+<div id="outline-container-usage" class="outline-2">
 <h2 id="usage"><span class="section-number-2">3</span> Usage</h2>
 <div class="outline-text-2" id="text-usage">
 <p>
@@ -441,7 +417,7 @@ use the bookmarks commands on <code>SPC j b</code> to save and go to a bookmark.
 </div>
 </div>
 
-<div id="outline-container-org55090a1" class="outline-2">
+<div id="outline-container-known-issues" class="outline-2">
 <h2 id="known-issues"><span class="section-number-2">4</span> Known Issues</h2>
 <div class="outline-text-2" id="text-known-issues">
 <p>
@@ -453,7 +429,7 @@ the previous page in history with <code>pdf-history-backward</code> (<code>``</c
 </div>
 </div>
 
-<div id="outline-container-org3d9cd34" class="outline-2">
+<div id="outline-container-key-bindings" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
@@ -461,7 +437,7 @@ If you use Emacs editing style, check the key bindings at the <a href="https://g
 </p>
 </div>
 
-<div id="outline-container-org05090a4" class="outline-3">
+<div id="outline-container-pdf-view" class="outline-3">
 <h3 id="pdf-view"><span class="section-number-3">5.1</span> PDF View</h3>
 <div class="outline-text-3" id="text-pdf-view">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -640,7 +616,7 @@ differently from the default Evil search. To go to the next match, use <code>C-s
 </div>
 </div>
 
-<div id="outline-container-org5dc56ca" class="outline-3">
+<div id="outline-container-leader-keys" class="outline-3">
 <h3 id="leader-keys"><span class="section-number-3">5.2</span> Leader keys</h3>
 <div class="outline-text-3" id="text-leader-keys">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -779,7 +755,7 @@ differently from the default Evil search. To go to the next match, use <code>C-s
 </div>
 </div>
 
-<div id="outline-container-orga3a1c4b" class="outline-3">
+<div id="outline-container-outline-buffer-mode" class="outline-3">
 <h3 id="outline-buffer-mode"><span class="section-number-3">5.3</span> Outline buffer mode</h3>
 <div class="outline-text-3" id="text-outline-buffer-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -855,7 +831,7 @@ Note that you can use also typical Vim keys such as <code>j</code> and <code>G</
 </div>
 </div>
 
-<div id="outline-container-org1b07b84" class="outline-3">
+<div id="outline-container-annotation-list-mode" class="outline-3">
 <h3 id="annotation-list-mode"><span class="section-number-3">5.4</span> Annotation list mode</h3>
 <div class="outline-text-3" id="text-annotation-list-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -897,7 +873,7 @@ Note that you can use also typical Vim keys such as <code>j</code> and <code>G</
 </div>
 </div>
 
-<div id="outline-container-org12884c8" class="outline-3">
+<div id="outline-container-occur-mode" class="outline-3">
 <h3 id="occur-mode"><span class="section-number-3">5.5</span> Occur mode</h3>
 <div class="outline-text-3" id="text-occur-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -937,8 +913,8 @@ Note that you can use also typical Vim keys such as <code>j</code> and <code>G</
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-09-16 Wed 21:43</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2020-10-03 Sat 18:56</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

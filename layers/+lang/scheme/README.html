@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-16 Wed 21:43 -->
+<!-- 2020-10-03 Sat 18:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Scheme layer</title>
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -223,50 +223,26 @@
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -299,7 +275,7 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgeab2df9" class="outline-2">
+<div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
@@ -307,7 +283,7 @@ This layer adds support for Scheme via <a href="http://geiser.nongnu.org">Geiser
 </p>
 </div>
 
-<div id="outline-container-org556e141" class="outline-3">
+<div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
@@ -319,7 +295,7 @@ This layer adds support for Scheme via <a href="http://geiser.nongnu.org">Geiser
 </div>
 </div>
 
-<div id="outline-container-orga9e0d76" class="outline-2">
+<div id="outline-container-install" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
@@ -363,7 +339,7 @@ Additionally, as of 2018-12-12 there is a <a href="https://git.archlinux.org/svn
 in some of the Linux package repos:
 </p>
 
-<pre class="example">
+<pre class="example" id="org612d6c1">
 # Chicken had csc and csi first, but then mono introduced a conflict and
 # does not seem to want to change this. OpenBSD renamed csc and csi to
 # chicken-csc and chicken-csi 2018-12-12.
@@ -385,7 +361,7 @@ to your <code>dotspacemacs/user-config</code> in order for the REPL to start in 
 </div>
 </div>
 
-<div id="outline-container-orgc9ed047" class="outline-2">
+<div id="outline-container-structurally-safe-editing" class="outline-2">
 <h2 id="structurally-safe-editing"><span class="section-number-2">3</span> Structurally safe editing</h2>
 <div class="outline-text-2" id="text-structurally-safe-editing">
 <p>
@@ -423,12 +399,12 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </div>
 </div>
 
-<div id="outline-container-orgd3d57ce" class="outline-2">
+<div id="outline-container-key-bindings" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-org3709543" class="outline-3">
+<div id="outline-container-compiling" class="outline-3">
 <h3 id="compiling"><span class="section-number-3">4.1</span> Compiling</h3>
 <div class="outline-text-3" id="text-compiling">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -460,7 +436,7 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </div>
 </div>
 
-<div id="outline-container-orga9abbf4" class="outline-3">
+<div id="outline-container-navigation" class="outline-3">
 <h3 id="navigation"><span class="section-number-3">4.2</span> Navigation</h3>
 <div class="outline-text-3" id="text-navigation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -507,7 +483,7 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </div>
 </div>
 
-<div id="outline-container-orga8cf09a" class="outline-3">
+<div id="outline-container-documentation" class="outline-3">
 <h3 id="documentation"><span class="section-number-3">4.3</span> Documentation</h3>
 <div class="outline-text-3" id="text-documentation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -554,7 +530,7 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </div>
 </div>
 
-<div id="outline-container-orgccea78d" class="outline-3">
+<div id="outline-container-insertion" class="outline-3">
 <h3 id="insertion"><span class="section-number-3">4.4</span> Insertion</h3>
 <div class="outline-text-3" id="text-insertion">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -581,7 +557,7 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </div>
 </div>
 
-<div id="outline-container-org623ffb9" class="outline-3">
+<div id="outline-container-macroexpansion" class="outline-3">
 <h3 id="macroexpansion"><span class="section-number-3">4.5</span> Macroexpansion</h3>
 <div class="outline-text-3" id="text-macroexpansion">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -618,7 +594,7 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </div>
 </div>
 
-<div id="outline-container-org54eb2c0" class="outline-3">
+<div id="outline-container-repl" class="outline-3">
 <h3 id="repl"><span class="section-number-3">4.6</span> REPL</h3>
 <div class="outline-text-3" id="text-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -685,7 +661,7 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </div>
 </div>
 
-<div id="outline-container-org5e3575f" class="outline-3">
+<div id="outline-container-evaluation" class="outline-3">
 <h3 id="evaluation"><span class="section-number-3">4.7</span> Evaluation</h3>
 <div class="outline-text-3" id="text-evaluation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -735,8 +711,8 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-09-16 Wed 21:43</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2020-10-03 Sat 18:56</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>
