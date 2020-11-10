@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-10-05 Mon 18:52 -->
+<!-- 2020-11-10 Tue 22:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spacemacs documentation</title>
@@ -600,7 +600,6 @@
 <ul>
 <li><a href="#connecting-to-the-emacs-server">17.1. Connecting to the Emacs server</a></li>
 <li><a href="#keeping-the-server-alive">17.2. Keeping the server alive</a></li>
-<li><a href="#disabling-the-emacs-server">17.3. Disabling the Emacs server</a></li>
 </ul>
 </li>
 <li><a href="#troubleshoot">18. Troubleshoot</a>
@@ -872,7 +871,7 @@ to install. To install all the <code>python</code> features the user has just to
 Configuration is organized in layers. Each layer has the following structure:
 </p>
 
-<pre class="example" id="org3d28347">
+<pre class="example" id="orgf7b8ad1">
 [layer_name]
   |__ [local]
   | |__ [package 1]
@@ -1975,7 +1974,7 @@ Auto-highlight-symbol transient state:
 </p>
 
 
-<div id="orgb1d8fec" class="figure">
+<div id="org76493c7" class="figure">
 <p><img src="img/spacemacs-scale-transient-state.png" alt="spacemacs-scale-transient-state.png" />
 </p>
 </div>
@@ -4242,7 +4241,7 @@ this variable <code>spacemacs-layouts-restrict-spc-tab</code> to <code>nil</code
 your used layer list with layer variables:
 </p>
 
-<pre class="example" id="org33e107b">
+<pre class="example" id="org17bbf78">
 (spacemacs-layouts :variables spacemacs-layouts-restrict-spc-tab t)
 </pre>
 </div>
@@ -4263,7 +4262,7 @@ take effect.
 Default value for this variable is:
 </p>
 
-<pre class="example" id="org3b96a24">
+<pre class="example" id="org6970893">
 '(spacemacs/window-split-double-columns
   spacemacs/window-split-triple-columns
   spacemacs/window-split-grid)
@@ -4274,7 +4273,7 @@ If you want to add the function <code>my-func</code> to this list you need to re
 the complete list using layer variables:
 </p>
 
-<pre class="example" id="org94ac2e9">
+<pre class="example" id="org26a657a">
 (spacemacs-layouts :variables
                    spacemacs-layouts-restricted-functions
                    '(spacemacs/window-split-double-columns
@@ -8382,7 +8381,7 @@ During the symbol highlight transient state, the following bindings are active:
 The minibuffer displays the following information during the transient state:
 </p>
 
-<pre class="example" id="org2273fc8">
+<pre class="example" id="org06a694a">
 Buffer [6/11]*
 </pre>
 
@@ -9358,8 +9357,28 @@ The displayed text of a buffer can be narrowed with the commands (start with
 <td class="org-left"><code>SPC n w</code></td>
 <td class="org-left">widen, i.e. show the whole buffer again</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>SPC n F</code></td>
+<td class="org-left">narrow to the current function in an indirect buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC n P</code></td>
+<td class="org-left">narrow to the visible page in an indirect buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC n R</code></td>
+<td class="org-left">narrow to the selected text in an indirect buffer</td>
+</tr>
 </tbody>
 </table>
+
+<p>
+Narrowing in an indirect buffer overcomes the problem that a buffer can only be
+narrowed in one place at a given time.
+</p>
 </div>
 </div>
 
@@ -11182,9 +11201,15 @@ documentation</a>.
 <h2 id="emacs-server"><span class="section-number-2">17</span> Emacs Server</h2>
 <div class="outline-text-2" id="text-emacs-server">
 <p>
-Spacemacs starts a server at launch. This server is killed whenever you close
-your Emacs windows.
+Spacemacs provides the ability to start a server at launch, and to kill that
+server whenever you close your Emacs windows. This can be enabled by setting the
+variable <code>dotspacemacs-enable-server</code> to <code>t</code> in your <code>~./spacemacs</code>.
 </p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-enable-server t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
 </div>
 
 <div id="outline-container-connecting-to-the-emacs-server" class="outline-3">
@@ -11306,21 +11331,6 @@ server is to use the following bindings:
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-
-<div id="outline-container-disabling-the-emacs-server" class="outline-3">
-<h3 id="disabling-the-emacs-server"><span class="section-number-3">17.3</span> Disabling the Emacs server</h3>
-<div class="outline-text-3" id="text-disabling-the-emacs-server">
-<p>
-You can disable the built-in server by setting the variable
-<code>dotspacemacs-enable-server</code> to <code>nil</code> in your <code>~/.spacemacs</code>.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-enable-server nil<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 </div>
 </div>
 </div>
@@ -12026,7 +12036,7 @@ developers to elisp hackers!
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-10-05 Mon 18:52</p>
+<p class="date">Created: 2020-11-10 Tue 22:56</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-10-05 Mon 18:53 -->
+<!-- 2020-11-10 Tue 22:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ranger layer</title>
@@ -324,11 +324,17 @@ session. Any settings that are desired on startup should be set below.
 <h3 id="customizing"><span class="section-number-3">2.1</span> Customizing</h3>
 <div class="outline-text-3" id="text-customizing">
 <p>
-You toggle the use of <code>-</code> to enter ranger with `ranger-enter-with-minus`.
+Toggle the use of <code>-</code> to enter deer or ranger with <code>ranger-enter-with-minus</code>.
+The possible values are:
 </p>
+<ul class="org-ul">
+<li><code>'deer</code> (default)</li>
+<li><code>'ranger</code></li>
+<li><code>nil</code> (restores the default behavior of <code>-</code>)</li>
+</ul>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-enter-with-minus t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-enter-with-minus 'deer<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -634,7 +640,7 @@ To set the max files size (in MB), set the following parameter:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-10-05 Mon 18:53</p>
+<p class="date">Created: 2020-11-10 Tue 22:56</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

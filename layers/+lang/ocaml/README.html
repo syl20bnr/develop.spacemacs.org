@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-10-05 Mon 18:53 -->
+<!-- 2020-11-10 Tue 22:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ocaml layer</title>
@@ -263,6 +263,7 @@
 <li><a href="#layer">2.1. Layer</a></li>
 <li><a href="#using-merlin-for-error-reporting">2.2. Using merlin for error reporting</a></li>
 <li><a href="#opam-packages">2.3. OPAM packages</a></li>
+<li><a href="#enabling-formatting-on-save">2.4. Enabling formatting on save</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key bindings</a>
@@ -276,7 +277,7 @@
 </div>
 </div>
 
-<div id="org5d5d4e9" class="figure">
+<div id="orgfc262b4" class="figure">
 <p><img src="img/ocaml.png" alt="ocaml.png" />
 </p>
 </div>
@@ -298,6 +299,7 @@ This is a very basic layer for editing ocaml files.
 <li>auto-completion with company mode via <a href="https://github.com/ocaml/merlin">merlin</a></li>
 <li>syntax-checking via <a href="https://github.com/flycheck/flycheck-ocaml">flycheck-ocaml</a> (or alternatively <a href="https://github.com/ocaml/merlin">merlin</a>)</li>
 <li><code>dune</code> file syntax highlighting and template insertion via <a href="https://github.com/ocaml/dune/">dune-mode</a></li>
+<li>Automatic formatting via <a href="https://github.com/ocaml-ppx/ocamlformat">ocamlformat</a></li>
 </ul>
 </div>
 </div>
@@ -346,6 +348,7 @@ This layer requires some <a href="http://opam.ocaml.org">opam</a> packages:
 <li><code>merlin</code> for auto-completion</li>
 <li><code>utop</code></li>
 <li><code>ocp-indent</code></li>
+<li><code>ocamlformat</code> for auto-formatting</li>
 </ul>
 
 <p>
@@ -353,7 +356,7 @@ To install them, use the following command:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">opam install merlin utop ocp-indent
+<pre class="src src-sh">opam install merlin utop ocp-indent ocamlformat
 </pre>
 </div>
 
@@ -364,6 +367,21 @@ Make sure opam is initialized and configured.
 <div class="org-src-container">
 <pre class="src src-sh">opam init
 opam config setup -a
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-enabling-formatting-on-save" class="outline-3">
+<h3 id="enabling-formatting-on-save"><span class="section-number-3">2.4</span> Enabling formatting on save</h3>
+<div class="outline-text-3" id="text-enabling-formatting-on-save">
+<p>
+To enable automatic formatting on save with <a href="https://github.com/ocaml-ppx/ocamlformat">ocamlformat</a>, set the layer
+variable <code>ocaml-format-on-save</code>, e.g.,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>ocaml <span class="org-builtin">:variables</span> ocaml-format-on-save t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -679,7 +697,7 @@ opam config setup -a
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-10-05 Mon 18:53</p>
+<p class="date">Created: 2020-11-10 Tue 22:56</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

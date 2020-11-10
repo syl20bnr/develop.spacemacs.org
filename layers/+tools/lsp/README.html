@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-10-05 Mon 18:53 -->
+<!-- 2020-11-10 Tue 22:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LSP layer</title>
@@ -261,7 +261,11 @@
 <li><a href="#configuration">2. Configuration</a>
 <ul>
 <li><a href="#variables">2.1. Variables</a></li>
-<li><a href="#navigation-mode">2.2. Navigation mode</a></li>
+<li><a href="#code-lens">2.2. Code Lens</a></li>
+<li><a href="#error-statistics-on-modeline">2.3. Error statistics on modeline</a></li>
+<li><a href="#code-actions-on-modeline">2.4. Code actions on modeline</a></li>
+<li><a href="#navigation-mode">2.5. Navigation mode</a></li>
+<li><a href="#breadcrumb-on-headerline">2.6. Breadcrumb on headerline</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key bindings</a>
@@ -276,8 +280,9 @@
 </li>
 </ul>
 </li>
-<li><a href="#diagnostics">4. Diagnostics</a></li>
-<li><a href="#references">5. References</a></li>
+<li><a href="#dap-integration">4. DAP integration</a></li>
+<li><a href="#diagnostics">5. Diagnostics</a></li>
+<li><a href="#references">6. References</a></li>
 </ul>
 </div>
 </div>
@@ -307,12 +312,12 @@ search and others)</li>
 <li>Workspace-wide symbol rename</li>
 <li>Symbol highlighting</li>
 <li>Flycheck</li>
-<li>Completion with <code>lsp</code></li>
-<li>Signature help with eldoc</li>
+<li>Completion with <code>LSP</code></li>
+<li>Signature help with <code>eldoc</code></li>
 <li>Symbol documentation in a child frame (<code>lsp-ui-doc</code>)</li>
-<li>Navigation using imenu</li>
+<li>Navigation using <code>imenu</code></li>
 <li>Consistent core key bindings in LSP modes</li>
-<li>Code folding (lsp-origami)</li>
+<li>Code folding (<code>lsp-origami</code>)</li>
 </ul>
 </div>
 </div>
@@ -323,7 +328,7 @@ search and others)</li>
 <div class="outline-text-2" id="text-configuration">
 <p>
 Enabling this layer will set the used backend for all supported languages to
-<code>lsp</code> unless you explicitly set a specific backend for the language.
+<code>LSP</code> unless you explicitly set a specific backend for the language.
 </p>
 
 <p>
@@ -332,8 +337,8 @@ Please check out their documentation.
 </p>
 
 <p>
-If you add <code>lsp-*-enable</code> to major mode hooks for auto initialization of
-language clients, customize <code>lsp-project-whitelist</code> <code>lsp-project-blacklist</code> to
+If you add <code>lsp-**-enable</code> to major mode hooks for auto initialization of
+language clients, customize <code>lsp-project-whitelist</code> and <code>lsp-project-blacklist</code> to
 disable projects you don't want to enable LSP.
 </p>
 </div>
@@ -366,47 +371,176 @@ under the derived mode t prefix by <code>(spacemacs/lsp-bind-keys-for-mode mode)
 </thead>
 <tbody>
 <tr>
+<td class="org-left"><code>lsp-headerline-breadcrumb-enable</code></td>
+<td class="org-left">nil</td>
+<td class="org-left">When non-nil, shows breadcrumb on headerline.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lsp-headerline-breadcrumb-segments</code></td>
+<td class="org-left">`'(path-up-to-project file symbols)'</td>
+<td class="org-left">Display the path to the root of project, the name of the current file, and also its symbols. See details below.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lsp-lens-enable</code></td>
+<td class="org-left">nil</td>
+<td class="org-left">When non-nil, shows code lens when it's supported.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lsp-modeline-diagnostics-enable</code></td>
+<td class="org-left">t</td>
+<td class="org-left">When non-nil, shows error diagnostics in modeline.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lsp-modeline-diagnostics-scope</code></td>
+<td class="org-left">`:project'</td>
+<td class="org-left">Displays all error statistcs per projects. See details below.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lsp-modeline-code-actions-enable</code></td>
+<td class="org-left">t</td>
+<td class="org-left">When non-nil, shows available code actions in modeline.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lsp-modeline-code-actions-segments</code></td>
+<td class="org-left">`'(count icon)'</td>
+<td class="org-left">Display the number of available code actions and an icon. See details below.</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>lsp-navigation</code></td>
 <td class="org-left">`both'</td>
-<td class="org-left">`simple' or `peek' to bind only xref OR lsp-ui-peek navigation functions</td>
+<td class="org-left">`simple' or `peek' to bind only xref OR lsp-ui-peek navigation functions.</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>lsp-ui-remap-xref-keybindings</code></td>
 <td class="org-left">nil</td>
-<td class="org-left">When non-nil, xref key bindings remapped to lsp-ui-peek-find-{definition,references}</td>
+<td class="org-left">When non-nil, xref key bindings remapped to lsp-ui-peek-find-{definition,references}.</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>lsp-ui-doc-enable</code></td>
 <td class="org-left">t</td>
-<td class="org-left">When non-nil, the documentation overlay is displayed</td>
+<td class="org-left">When non-nil, the documentation overlay is displayed.</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>lsp-ui-doc-include-signature</code></td>
 <td class="org-left">nil</td>
-<td class="org-left">When nil, signature omitted from lsp-ui-doc overlay (this is usually redundant)</td>
+<td class="org-left">When nil, signature omitted from lsp-ui-doc overlay (this is usually redundant).</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>lsp-ui-sideline-enable</code></td>
 <td class="org-left">t</td>
-<td class="org-left">When non-nil, the symbol information overlay is displayed</td>
+<td class="org-left">When non-nil, the symbol information overlay is displayed.</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>lsp-ui-sideline-show-symbol</code></td>
 <td class="org-left">nil</td>
-<td class="org-left">When non-nil, the symbol information overlay includes symbol name (redundant for c-modes)</td>
+<td class="org-left">When non-nil, the symbol information overlay includes symbol name (redundant for c-modes).</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 
+<div id="outline-container-code-lens" class="outline-3">
+<h3 id="code-lens"><span class="section-number-3">2.2</span> Code Lens</h3>
+<div class="outline-text-3" id="text-code-lens">
+<p>
+Code lens is a feature that displays <code>"actionable contextual information interspersed"</code> in your source code.
+In other words, it displays extra information of the source code, and allows you to perform certain actions.
+For example, the LSP server may decorate the entry point of a program, and also provides a quick access for running/debugging the program.
+</p>
+
+<p>
+To always display code lens,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>lsp <span class="org-builtin">:variables</span> lsp-lens-enable nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+This doesn't have any effect when code lens is not supported by current language server.
+</p>
+</div>
+</div>
+
+<div id="outline-container-error-statistics-on-modeline" class="outline-3">
+<h3 id="error-statistics-on-modeline"><span class="section-number-3">2.3</span> Error statistics on modeline</h3>
+<div class="outline-text-3" id="text-error-statistics-on-modeline">
+<p>
+By default, all error statistics of a project is displayed in the modeline.
+To disable this feature, set <code>lsp-modeline-diagnostics-enable</code> to <code>nil</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>lsp <span class="org-builtin">:variables</span> lsp-modeline-diagnostics-enable nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+To only display errors for the current file, you can set <code>lsp-modeline-diagnostics-scope</code> to <code>:file</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>lsp <span class="org-builtin">:variables</span> lsp-modeline-diagnostics-scope <span class="org-builtin">:file</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Alternatively, if you want to see all errors across all projects, you can set it to <code>:global</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-code-actions-on-modeline" class="outline-3">
+<h3 id="code-actions-on-modeline"><span class="section-number-3">2.4</span> Code actions on modeline</h3>
+<div class="outline-text-3" id="text-code-actions-on-modeline">
+<p>
+By default, available code actions are displayed in modeline. To disable this feature, set <code>lsp-modeline-code-actions-enable</code> to <code>nil</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>lsp <span class="org-builtin">:variables</span> lsp-modeline-code-actions-enable nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+You can also customize its appearance via <code>lsp-modeline-code-actions-segments</code>. Available segments are:
+</p>
+<ul class="org-ul">
+<li><code>icon</code> shows a lightbulb icon.</li>
+<li><code>name</code> shows the name of the preferred code action.</li>
+<li><code>count</code> shows the how many code actions are available.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>lsp <span class="org-builtin">:variables</span>
+                     <span class="org-comment-delimiter">;; </span><span class="org-comment">default segments</span>
+                     lsp-modeline-code-actions-segments '<span class="org-rainbow-delimiters-depth-4">(</span>count icon<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
 <div id="outline-container-navigation-mode" class="outline-3">
-<h3 id="navigation-mode"><span class="section-number-3">2.2</span> Navigation mode</h3>
+<h3 id="navigation-mode"><span class="section-number-3">2.5</span> Navigation mode</h3>
 <div class="outline-text-3" id="text-navigation-mode">
 <p>
 The <code>lsp-navigation</code> variable defined in <code>config.el</code> allows you to define a preference for lightweight or pretty
@@ -414,6 +548,45 @@ The <code>lsp-navigation</code> variable defined in <code>config.el</code> allow
 and the <code>lsp-ui-peek</code> variants under <code>SPC m G</code>. Setting <code>lsp-navigation</code> to either <code>'simple</code> or <code>'peek</code> eliminates
 the bindings under <code>SPC m G</code> and creates bindings under <code>SPC m g</code> according to the specified preference.
 </p>
+</div>
+</div>
+
+<div id="outline-container-breadcrumb-on-headerline" class="outline-3">
+<h3 id="breadcrumb-on-headerline"><span class="section-number-3">2.6</span> Breadcrumb on headerline</h3>
+<div class="outline-text-3" id="text-breadcrumb-on-headerline">
+<p>
+To display breadcrumb in the headerline, set <code>lsp-headerline-breadcrumb-segments</code> to <code>t</code>.
+</p>
+
+<p>
+You can customize the breadcrumb segments via <code>lsp-headerline-breadcrumb-segments</code>. Available segments are:
+</p>
+<ul class="org-ul">
+<li><code>project</code> shows the name of the current project.</li>
+<li><code>file</code> shows the name of the current file.</li>
+<li><code>path-up-to-project</code> shows the path up to the current project.</li>
+<li><code>symbols</code> shows the document symbols.</li>
+</ul>
+
+<p>
+For example, to display only the symbols,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>lsp <span class="org-builtin">:variables</span> lsp-headerline-breadcrumb-segments '<span class="org-rainbow-delimiters-depth-4">(</span>symbols<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+To display the current project, current file, and document symbols,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>lsp <span class="org-builtin">:variables</span> lsp-headerline-breadcrumb-segments '<span class="org-rainbow-delimiters-depth-4">(</span>project file symbols<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -452,6 +625,12 @@ The key bindings are grouped under the following prefixes:
 </tr>
 </thead>
 <tbody>
+<tr>
+<td class="org-left"><code>SPC m a</code></td>
+<td class="org-left">action</td>
+<td class="org-left">Code actions</td>
+</tr>
+
 <tr>
 <td class="org-left"><code>SPC m =</code></td>
 <td class="org-left">format</td>
@@ -570,12 +749,12 @@ The lsp minor mode bindings are:
 <tbody>
 <tr>
 <td class="org-left"><code>SPC m = b</code></td>
-<td class="org-left">format buffer (lsp)</td>
+<td class="org-left">format buffer (<code>lsp-mode</code>)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m = r</code></td>
-<td class="org-left">format region (lsp)</td>
+<td class="org-left">format region (<code>lsp-mode</code>)</td>
 </tr>
 
 <tr>
@@ -612,69 +791,69 @@ The lsp minor mode bindings are:
 <tbody>
 <tr>
 <td class="org-left"><code>SPC m g t</code></td>
-<td class="org-left">goto type-definition (lsp)</td>
+<td class="org-left">goto type-definition (<code>lsp-mode</code>)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m g k</code></td>
-<td class="org-left">goto viewport word (avy) (See Note 1)</td>
+<td class="org-left">goto viewport word (<code>avy</code>) (See Note 1)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m g K</code></td>
-<td class="org-left">goto viewport symbol (avy) (See Note 1)</td>
+<td class="org-left">goto viewport symbol (<code>avy</code>) (See Note 1)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m g e</code></td>
-<td class="org-left">browse flycheck errors (lsp-treemacs)</td>
+<td class="org-left">browse flycheck errors (<code>lsp-treemacs</code>)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m g M</code></td>
-<td class="org-left">browse file symbols (lsp-ui-imenu)</td>
+<td class="org-left">browse file symbols (<code>lsp-ui-imenu</code>)</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
 <td class="org-left">Note</td>
-<td class="org-left"><i>Replaced by the lsp-ui-peek equivalents when <code>lsp-navigation</code> <code>= ='peek</code></i></td>
+<td class="org-left">/Replaced by the lsp-ui-peek equivalents when <code>lsp-navigation</code> is <code>'peek</code> /</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m g i</code></td>
-<td class="org-left">find implementations (lsp)</td>
+<td class="org-left">find implementations (<code>lsp-mode</code>)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m g d</code></td>
-<td class="org-left">find definitions (xref/lsp)</td>
+<td class="org-left">find definitions (<code>xref</code> / <code>lsp-mode</code>)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m g r</code></td>
-<td class="org-left">find references (xref/lsp)</td>
+<td class="org-left">find references (<code>xref</code> / <code>lsp</code>)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m g s</code></td>
-<td class="org-left">find symbol in project (helm-lsp)</td>
+<td class="org-left">find symbol in project (<code>helm-lsp</code>)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m g S</code></td>
-<td class="org-left">find symbol in all projects (helm-lsp)</td>
+<td class="org-left">find symbol in all projects (<code>helm-lsp</code>)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m g p</code></td>
-<td class="org-left">goto previous (xref-pop-marker-stack)</td>
+<td class="org-left">goto previous (<code>xref-pop-marker-stack</code>)</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
 <td class="org-left">Note</td>
-<td class="org-left"><i>Omitted when <code>lsp-navigation</code> <code>= ='peek</code> or <code>'simple</code></i></td>
+<td class="org-left">/Omitted when <code>lsp-navigation</code> is <code>'peek</code> or <code>'simple</code> /</td>
 </tr>
 
 <tr>
@@ -684,42 +863,42 @@ The lsp minor mode bindings are:
 
 <tr>
 <td class="org-left"><code>SPC m G i</code></td>
-<td class="org-left">find implementation (lsp-ui-peek)</td>
+<td class="org-left">find implementation (<code>lsp-ui-peek</code>)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m G d</code></td>
-<td class="org-left">find definitions (lsp-ui-peek)</td>
+<td class="org-left">find definitions (<code>lsp-ui-peek</code>)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m G r</code></td>
-<td class="org-left">find references (lsp-ui-peek)</td>
+<td class="org-left">find references (<code>lsp-ui-peek</code>)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m G s</code></td>
-<td class="org-left">find workspace symbol (lsp-ui-peek)</td>
+<td class="org-left">find workspace symbol (<code>lsp-ui-peek</code>)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m G S</code></td>
-<td class="org-left">goto workspace symbol (lsp-treemacs-symbols)</td>
+<td class="org-left">goto workspace symbol (<code>lsp-treemacs-symbols</code>)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m G p</code></td>
-<td class="org-left">goto previous (lsp-ui-peek stack - see Note 2)</td>
+<td class="org-left">goto previous (<code>lsp-ui-peek</code> stack - see Note 2)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m G n</code></td>
-<td class="org-left">goto next (lsp-ui-peek stack - see Note 2)</td>
+<td class="org-left">goto next (<code>lsp-ui-peek stack</code> - see Note 2)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m G E</code></td>
-<td class="org-left">browse flycheck errors (lsp-ui)</td>
+<td class="org-left">browse flycheck errors (<code>lsp-ui</code>)</td>
 </tr>
 </tbody>
 <tbody>
@@ -731,17 +910,22 @@ The lsp minor mode bindings are:
 <tbody>
 <tr>
 <td class="org-left"><code>SPC m b s</code></td>
-<td class="org-left">lsp-workspace-shutdown</td>
+<td class="org-left"><code>lsp-workspace-shutdown</code></td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m b r</code></td>
-<td class="org-left">lsp-workspace-restart</td>
+<td class="org-left"><code>lsp-workspace-restart</code></td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m b d</code></td>
-<td class="org-left">lsp-describe-session</td>
+<td class="org-left"><code>lsp-describe-session</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m b v</code></td>
+<td class="org-left"><code>lsp-version</code></td>
 </tr>
 </tbody>
 <tbody>
@@ -919,8 +1103,17 @@ etc.
 </div>
 </div>
 
+<div id="outline-container-dap-integration" class="outline-2">
+<h2 id="dap-integration"><span class="section-number-2">4</span> DAP integration</h2>
+<div class="outline-text-2" id="text-dap-integration">
+<p>
+<code>lsp-mode</code> integrates with <code>dap-mode</code>, which implements DAP(Debugger Adapter Protocol). See documentation on <code>DAP</code> layer for details.
+</p>
+</div>
+</div>
+
 <div id="outline-container-diagnostics" class="outline-2">
-<h2 id="diagnostics"><span class="section-number-2">4</span> Diagnostics</h2>
+<h2 id="diagnostics"><span class="section-number-2">5</span> Diagnostics</h2>
 <div class="outline-text-2" id="text-diagnostics">
 <p>
 If some features do not work as expected, here is a common check list.
@@ -936,7 +1129,7 @@ completion</li>
 </div>
 
 <div id="outline-container-references" class="outline-2">
-<h2 id="references"><span class="section-number-2">5</span> References</h2>
+<h2 id="references"><span class="section-number-2">6</span> References</h2>
 <div class="outline-text-2" id="text-references">
 <ul class="org-ul">
 <li><a href="https://github.com/emacs-lsp/lsp-mode">lsp-mode repo</a></li>
@@ -947,7 +1140,7 @@ completion</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-10-05 Mon 18:53</p>
+<p class="date">Created: 2020-11-10 Tue 22:56</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
