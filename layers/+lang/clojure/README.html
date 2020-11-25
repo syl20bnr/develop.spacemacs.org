@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-10 Tue 22:56 -->
+<!-- 2020-11-25 Wed 09:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Clojure layer</title>
@@ -268,14 +268,15 @@
 <ul>
 <li><a href="#add-the-clojure-layer-manually">2.1. Add the Clojure Layer manually</a></li>
 <li><a href="#pretty-symbols">2.2. Pretty Symbols</a></li>
-<li><a href="#enabling-automatic-linting">2.3. Enabling Automatic Linting</a>
+<li><a href="#optional-lsp-server">2.3. Optional LSP server</a></li>
+<li><a href="#enabling-automatic-linting">2.4. Enabling Automatic Linting</a>
 <ul>
-<li><a href="#enable-clj-kondo-linter">2.3.1. Enable clj-kondo linter</a></li>
-<li><a href="#enable-joker-linter">2.3.2. Enable joker linter</a></li>
-<li><a href="#enable-squiggly-linter">2.3.3. Enable Squiggly linter</a></li>
-<li><a href="#enable-multiple-linters">2.3.4. Enable multiple linters</a></li>
-<li><a href="#enable-clojure-fancify-symbols">2.3.5. Enable Clojure fancify Symbols</a></li>
-<li><a href="#enabling-sayid-or-clj-refactor">2.3.6. Enabling sayid or clj-refactor</a></li>
+<li><a href="#enable-clj-kondo-linter">2.4.1. Enable clj-kondo linter</a></li>
+<li><a href="#enable-joker-linter">2.4.2. Enable joker linter</a></li>
+<li><a href="#enable-squiggly-linter">2.4.3. Enable Squiggly linter</a></li>
+<li><a href="#enable-multiple-linters">2.4.4. Enable multiple linters</a></li>
+<li><a href="#enable-clojure-fancify-symbols">2.4.5. Enable Clojure fancify Symbols</a></li>
+<li><a href="#enabling-sayid-or-clj-refactor">2.4.6. Enabling sayid or clj-refactor</a></li>
 </ul>
 </li>
 </ul>
@@ -380,6 +381,7 @@ The following Spacemacs layers should also be added for a complete experience.
 <ul class="org-ul">
 <li>auto-completion</li>
 <li>syntax-checking (provides flycheck for linter support)</li>
+<li>LSP</li>
 </ul>
 </div>
 </div>
@@ -389,7 +391,7 @@ The following Spacemacs layers should also be added for a complete experience.
 <div class="outline-text-4" id="text-other-optional-features">
 <ul class="org-ul">
 <li>Refactoring via <a href="https://github.com/clojure-emacs/clj-refactor.el">clj-refactor</a></li>
-<li>Debugging with <a href="https://github.com/clojure-emacs/sayid">sayid</a> (beta)</li>
+<li>Debugging with <a href="https://github.com/clojure-emacs/sayid">sayid</a></li>
 </ul>
 </div>
 </div>
@@ -456,8 +458,46 @@ Or set this variable when loading the configuration layer:
 </div>
 </div>
 
+<div id="outline-container-optional-lsp-server" class="outline-3">
+<h3 id="optional-lsp-server"><span class="section-number-3">2.3</span> Optional LSP server</h3>
+<div class="outline-text-3" id="text-optional-lsp-server">
+<p>
+Traditionally the clojure developing environment is working
+exclusively with an external server called CIDER.
+This has some drawbacks especially that most features require
+a working REPL session in the background. Newer layers work
+with a standard LSP server providing standard
+bindings for most features. In addition <code>lsp-UI</code> provides a more
+modern UI for visualising linter results and providing
+code actions.
+</p>
+
+<p>
+The server is automatically activated when you have the <code>lsp-layer</code>
+installed in your dotfile. Alternatively you can force a
+certain backend by setting the <code>clojure-backend</code> variable
+in your dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>clojure <span class="org-builtin">:variables</span> clojure-backend 'lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+The server is started automatically when a supported file is opened.
+It will also provide a flycheck integration via <code>lsp-flycheck</code> which
+will run the configured linter from your project config.
+See <a href="https://github.com/snoe/clojure-lsp">here</a> for details. The server is installed automatically
+in your emacs directory however if this does not work
+it can also be installed manually from <a href="https://github.com/snoe/clojure-lsp/releases/latest/download/clojure-lsp">here</a>.
+</p>
+</div>
+</div>
+
 <div id="outline-container-enabling-automatic-linting" class="outline-3">
-<h3 id="enabling-automatic-linting"><span class="section-number-3">2.3</span> Enabling Automatic Linting</h3>
+<h3 id="enabling-automatic-linting"><span class="section-number-3">2.4</span> Enabling Automatic Linting</h3>
 <div class="outline-text-3" id="text-enabling-automatic-linting">
 <p>
 <a href="https://github.com/borkdude/clj-kondo">clj-kondo</a>, <a href="https://github.com/candid82/joker">joker</a> and <a href="https://github.com/clojure-emacs/squiggly-clojure">squiggly-clojure</a> provide automated linting via <code>flycheck</code>.
@@ -478,7 +518,7 @@ added to the development dependencies of your projects or build tool when using
 </div>
 
 <div id="outline-container-enable-clj-kondo-linter" class="outline-4">
-<h4 id="enable-clj-kondo-linter"><span class="section-number-4">2.3.1</span> Enable clj-kondo linter</h4>
+<h4 id="enable-clj-kondo-linter"><span class="section-number-4">2.4.1</span> Enable clj-kondo linter</h4>
 <div class="outline-text-4" id="text-enable-clj-kondo-linter">
 <p>
 This linter based on static syntax checking and requires the <a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> binary
@@ -511,7 +551,7 @@ dotspacemacs-configuration-layers
 </div>
 
 <div id="outline-container-enable-joker-linter" class="outline-4">
-<h4 id="enable-joker-linter"><span class="section-number-4">2.3.2</span> Enable joker linter</h4>
+<h4 id="enable-joker-linter"><span class="section-number-4">2.4.2</span> Enable joker linter</h4>
 <div class="outline-text-4" id="text-enable-joker-linter">
 <p>
 This linter is based on static syntax checking and requires the <a href="https://github.com/candid82/joker">joker</a> binary
@@ -544,7 +584,7 @@ dotspacemacs-configuration-layers
 </div>
 
 <div id="outline-container-enable-squiggly-linter" class="outline-4">
-<h4 id="enable-squiggly-linter"><span class="section-number-4">2.3.3</span> Enable Squiggly linter</h4>
+<h4 id="enable-squiggly-linter"><span class="section-number-4">2.4.3</span> Enable Squiggly linter</h4>
 <div class="outline-text-4" id="text-enable-squiggly-linter">
 <p>
 <a href="https://github.com/clojure-emacs/squiggly-clojure">squiggly-clojure</a> uses <a href="https://github.com/jonase/eastwood">Eastwood</a> and <a href="https://github.com/jonase/kibit">Kibit</a> for linting. Please install these projects
@@ -588,7 +628,7 @@ Troubleshooting: please read <a href="https://github.com/clojure-emacs/squiggly-
 </div>
 
 <div id="outline-container-enable-multiple-linters" class="outline-4">
-<h4 id="enable-multiple-linters"><span class="section-number-4">2.3.4</span> Enable multiple linters</h4>
+<h4 id="enable-multiple-linters"><span class="section-number-4">2.4.4</span> Enable multiple linters</h4>
 <div class="outline-text-4" id="text-enable-multiple-linters">
 <p>
 You can choose to enable multiple linters and have them all run together. This gives you better linting coverage, as they don't catch all the same issues.
@@ -622,7 +662,7 @@ dotspacemacs-configuration-layers
 </div>
 
 <div id="outline-container-enable-clojure-fancify-symbols" class="outline-4">
-<h4 id="enable-clojure-fancify-symbols"><span class="section-number-4">2.3.5</span> Enable Clojure fancify Symbols</h4>
+<h4 id="enable-clojure-fancify-symbols"><span class="section-number-4">2.4.5</span> Enable Clojure fancify Symbols</h4>
 <div class="outline-text-4" id="text-enable-clojure-fancify-symbols">
 <p>
 Fancify symbols re-writes your code and displays symbols for:
@@ -656,7 +696,7 @@ Or set this variable when loading the configuration layer:
 </div>
 
 <div id="outline-container-enabling-sayid-or-clj-refactor" class="outline-4">
-<h4 id="enabling-sayid-or-clj-refactor"><span class="section-number-4">2.3.6</span> Enabling sayid or clj-refactor</h4>
+<h4 id="enabling-sayid-or-clj-refactor"><span class="section-number-4">2.4.6</span> Enabling sayid or clj-refactor</h4>
 <div class="outline-text-4" id="text-enabling-sayid-or-clj-refactor">
 <p>
 The packages sayid (Clojure debugger) and clj-refactor (automatic refactorings)
@@ -1257,12 +1297,22 @@ Evaluate Clojure code in the source code buffer
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m e n</code></td>
+<td class="org-left"><code>SPC m e n a</code></td>
+<td class="org-left">reload all namespaces (cider-ns-reload-all)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e n n</code></td>
+<td class="org-left">eval current namespace form (cider-eval-ns-form)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e n r</code></td>
 <td class="org-left">refresh namespace (cider-ns-refresh)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m e N</code></td>
+<td class="org-left"><code>SPC m e n l</code></td>
 <td class="org-left">reload namespace (cider-ns-reload), <code>SPC u</code> (cider-ns-reload-all)</td>
 </tr>
 
@@ -1756,7 +1806,27 @@ TODO: separate clojure-mode and sayid key bindings
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m d v</code></td>
+<td class="org-left"><code>SPC m d v e</code></td>
+<td class="org-left">inspect last expression</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d v f</code></td>
+<td class="org-left">inspect function at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d v i</code></td>
+<td class="org-left">inspect value at point (<code>cider-inspect</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d v l</code></td>
+<td class="org-left">inspect last result</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d v v</code></td>
 <td class="org-left">inspect expression at point</td>
 </tr>
 
@@ -2701,7 +2771,7 @@ specific vars.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-11-10 Tue 22:56</p>
+<p class="date">Created: 2020-11-25 Wed 09:08</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-10 Tue 22:56 -->
+<!-- 2020-11-25 Wed 09:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spacemacs documentation</title>
@@ -580,7 +580,13 @@
 <li><a href="#emacs-keyboard-macros">15.8.17.2. Emacs keyboard macros</a></li>
 </ul>
 </li>
-<li><a href="#mouse-usage">15.8.18. Mouse usage</a></li>
+<li><a href="#scratch-buffer">15.8.18. Scratch buffer</a>
+<ul>
+<li><a href="#persistent-scratch">15.8.18.1. Persistent scratch</a></li>
+<li><a href="#unkillable-scratch">15.8.18.2. Unkillable scratch</a></li>
+</ul>
+</li>
+<li><a href="#mouse-usage">15.8.19. Mouse usage</a></li>
 </ul>
 </li>
 <li><a href="#comparing-diff">15.9. Comparing (diff)</a></li>
@@ -871,7 +877,7 @@ to install. To install all the <code>python</code> features the user has just to
 Configuration is organized in layers. Each layer has the following structure:
 </p>
 
-<pre class="example" id="orgf7b8ad1">
+<pre class="example" id="org886e076">
 [layer_name]
   |__ [local]
   | |__ [package 1]
@@ -1974,7 +1980,7 @@ Auto-highlight-symbol transient state:
 </p>
 
 
-<div id="org76493c7" class="figure">
+<div id="orgdf92355" class="figure">
 <p><img src="img/spacemacs-scale-transient-state.png" alt="spacemacs-scale-transient-state.png" />
 </p>
 </div>
@@ -2340,13 +2346,14 @@ Example to create binding in major mode:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/declare-prefix-for-mode 'org-mode <span class="org-string">"o"</span> <span class="org-string">"custom"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/declare-prefix-for-mode 'org-mode <span class="org-string">"mo"</span> <span class="org-string">"custom"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/set-leader-keys-for-major-mode 'org-mode <span class="org-string">"oi"</span> 'org-id-get-create<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
-This would add binding as <code>, oi</code> and <code>SPC moi</code>.
+This would add binding as <code>, oi</code> and <code>SPC moi</code> (note that the "m" in the prefix
+declaration must be include).
 </p>
 
 <p>
@@ -4241,7 +4248,7 @@ this variable <code>spacemacs-layouts-restrict-spc-tab</code> to <code>nil</code
 your used layer list with layer variables:
 </p>
 
-<pre class="example" id="org17bbf78">
+<pre class="example" id="org1e7b5fe">
 (spacemacs-layouts :variables spacemacs-layouts-restrict-spc-tab t)
 </pre>
 </div>
@@ -4262,7 +4269,7 @@ take effect.
 Default value for this variable is:
 </p>
 
-<pre class="example" id="org6970893">
+<pre class="example" id="org69ef3cd">
 '(spacemacs/window-split-double-columns
   spacemacs/window-split-triple-columns
   spacemacs/window-split-grid)
@@ -4273,7 +4280,7 @@ If you want to add the function <code>my-func</code> to this list you need to re
 the complete list using layer variables:
 </p>
 
-<pre class="example" id="org26a657a">
+<pre class="example" id="orgfdebe7b">
 (spacemacs-layouts :variables
                    spacemacs-layouts-restricted-functions
                    '(spacemacs/window-split-double-columns
@@ -8381,7 +8388,7 @@ During the symbol highlight transient state, the following bindings are active:
 The minibuffer displays the following information during the transient state:
 </p>
 
-<pre class="example" id="org06a694a">
+<pre class="example" id="org322fe7f">
 Buffer [6/11]*
 </pre>
 
@@ -10521,8 +10528,37 @@ When recording a macro it's possible to insert the current value by pressing:
 </div>
 </div>
 
+<div id="outline-container-scratch-buffer" class="outline-4">
+<h4 id="scratch-buffer"><span class="section-number-4">15.8.18</span> Scratch buffer</h4>
+<div class="outline-text-4" id="text-scratch-buffer">
+<p>
+Some features which could improve editing experience in <code>*scratch*</code> buffer.
+</p>
+</div>
+
+<div id="outline-container-persistent-scratch" class="outline-5">
+<h5 id="persistent-scratch"><span class="section-number-5">15.8.18.1</span> Persistent scratch</h5>
+<div class="outline-text-5" id="text-persistent-scratch">
+<p>
+Make your <code>*scratch*</code> buffer persistent. Everything you write down in <code>*scratch*</code> buffer will be automatically saved and restored.
+You can set variable <code>dotspacemacs-scratch-buffer-persistent</code> with a non-nil value in your <code>.spacemacs</code> file to enable this feature.
+</p>
+</div>
+</div>
+
+<div id="outline-container-unkillable-scratch" class="outline-5">
+<h5 id="unkillable-scratch"><span class="section-number-5">15.8.18.2</span> Unkillable scratch</h5>
+<div class="outline-text-5" id="text-unkillable-scratch">
+<p>
+Make your <code>*scratch*</code> buffer not killable (bury instead).
+You can set variable <code>dotspacemacs-scratch-buffer-unkillable</code> with a non-nil value in your <code>.spacemacs</code> file to enable this feature.
+</p>
+</div>
+</div>
+</div>
+
 <div id="outline-container-mouse-usage" class="outline-4">
-<h4 id="mouse-usage"><span class="section-number-4">15.8.18</span> Mouse usage</h4>
+<h4 id="mouse-usage"><span class="section-number-4">15.8.19</span> Mouse usage</h4>
 <div class="outline-text-4" id="text-mouse-usage">
 <p>
 There are some added mouse features set for the line number margin (if shown):
@@ -12036,7 +12072,7 @@ developers to elisp hackers!
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-11-10 Tue 22:56</p>
+<p class="date">Created: 2020-11-25 Wed 09:08</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
