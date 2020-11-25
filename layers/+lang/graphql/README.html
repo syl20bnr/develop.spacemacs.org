@@ -6,7 +6,7 @@
 <!-- 2020-11-25 Wed 09:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Extra Languages</title>
+<title>graphql layer</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="root" />
 <style type="text/css">
@@ -248,7 +248,7 @@
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Extra Languages</h1>
+<h1 class="title">graphql layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -258,21 +258,23 @@
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#key-bindings">2. Key bindings</a>
-<ul>
-<li><a href="#arch-linux-pkgbuilds">2.1. Arch Linux PKGBUILDs</a></li>
-<li><a href="#gentoo-ebuilds">2.2. Gentoo ebuilds</a></li>
-</ul>
-</li>
+<li><a href="#install">2. Install</a></li>
+<li><a href="#key-bindings">3. Key bindings</a></li>
 </ul>
 </div>
+</div>
+
+<div id="org4d63aab" class="figure">
+<p><img src="img/graphql.png" alt="graphql.png" />
+</p>
 </div>
 
 <div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds a number of packages for less common languages and major modes.
+This layer adds support for graphql file. It builds around <a href="https://github.com/davazp/graphql-mode">graphql-mode</a>. Please
+check its site for extra info.
 </p>
 </div>
 
@@ -280,34 +282,33 @@ This layer adds a number of packages for less common languages and major modes.
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Support for:
-<ul class="org-ul">
-<li>Arch Linux PKGBUILDs</li>
-<li>Arduino</li>
-<li>Android Logcat (not associated with any file types by default)</li>
-<li>Gentoo ebuilds</li>
-<li>Hoon</li>
-<li>MATLAB</li>
-<li>QML</li>
-<li>OpenScad</li>
-<li>Stan</li>
-<li>Thrift</li>
-<li>Vala</li>
-<li>Wolfram Language / Mathematica</li>
-</ul></li>
+<li>Syntax highlight and graphql calls with <code>graphql-mode</code></li>
+<li>Autocomplete with <code>comapy-dabbrev</code></li>
+<li>Format buffer with <code>prettier</code></li>
+<li>Go to definition with <code>ahs</code></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-key-bindings" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">2</span> Key bindings</h2>
-<div class="outline-text-2" id="text-key-bindings">
+<div id="outline-container-install" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+<p>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>graphql</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
+</p>
+
+<p>
+If you want to format graphql buffers you need to enable <code>prettier</code> layer also.
+</p>
+</div>
 </div>
 
-<div id="outline-container-arch-linux-pkgbuilds" class="outline-3">
-<h3 id="arch-linux-pkgbuilds"><span class="section-number-3">2.1</span> Arch Linux PKGBUILDs</h3>
-<div class="outline-text-3" id="text-arch-linux-pkgbuilds">
+<div id="outline-container-key-bindings" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -324,84 +325,36 @@ This layer adds a number of packages for less common languages and major modes.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m b</code></td>
-<td class="org-left">Run makepkg</td>
+<td class="org-left"><code>SPC m = =</code></td>
+<td class="org-left">graphql-edit-headers</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r</code></td>
-<td class="org-left">Increase the pkgrel number</td>
+<td class="org-left"><code>SPC m e</code></td>
+<td class="org-left">graphql-select-endpoint</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m u</code></td>
-<td class="org-left">Browse URL</td>
+<td class="org-left"><code>SPC m g G</code></td>
+<td class="org-left">jump to definition new window</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m m</code></td>
-<td class="org-left">Update package sums</td>
+<td class="org-left"><code>SPC m g g</code></td>
+<td class="org-left">jump to definition</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h</code></td>
+<td class="org-left">graphql-edit-headers</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m s</code></td>
-<td class="org-left">Update .SRCINFO file</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m e</code></td>
-<td class="org-left">Build ETAGS file</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m a</code></td>
-<td class="org-left">Make a source tarball</td>
+<td class="org-left">graphql-send-query</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-
-<div id="outline-container-gentoo-ebuilds" class="outline-3">
-<h3 id="gentoo-ebuilds"><span class="section-number-3">2.2</span> Gentoo ebuilds</h3>
-<div class="outline-text-3" id="text-gentoo-ebuilds">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m n</code></td>
-<td class="org-left">Insert skeleton ebuild</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m k</code></td>
-<td class="org-left">Edit keywords</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m e</code></td>
-<td class="org-left">Run ebuild command</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m a</code></td>
-<td class="org-left">Add ChangeLog entry</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 </div>
 </div>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-10 Tue 22:56 -->
+<!-- 2020-11-25 Wed 09:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs Lisp layer</title>
@@ -281,7 +281,7 @@
 </div>
 </div>
 
-<div id="org1904f18" class="figure">
+<div id="org934bcae" class="figure">
 <p><img src="img/emacs.png" alt="emacs.png" />
 </p>
 </div>
@@ -369,12 +369,17 @@ As this state works the same for all files, the documentation is in global
 <h2 id="debugging-elisp"><span class="section-number-2">5</span> Debugging Elisp</h2>
 <div class="outline-text-2" id="text-debugging-elisp">
 <p>
-Here is an interactive quick start to debug Emacs Lisp.
+Here is an interactive quick start to debug Emacs Lisp from an <code>emacs-lisp-mode</code> buffer.
 </p>
 
 <p>
-First you need to read this file in Emacs in order to have the following code
-block to be interactively opened as Emacs Lisp.
+To follow this tutorial open the code of the following source block in an
+<code>emacs-lisp-mode</code> buffer. One way to do this is to first find this emacs-lisp
+layer documentation file in Spacemacs using <code>SPC h l emacs-lisp RET</code>. This will
+open the current file in <code>space-doc-mode</code>. Toggle off <code>space-doc-mode</code> using <code>,
+T V</code> so that Spacemacs will switch to <code>org-mode</code>. Now you can place the cursor
+somewhere inside the code block and press <code>, '</code> to open the code in an
+interactive <code>emacs-lisp-buffer</code>. 
 </p>
 
 <div class="org-src-container">
@@ -391,16 +396,11 @@ block to be interactively opened as Emacs Lisp.
 
 <p>
 Steps:
+Now from within the <code>emacs-lisp-buffer</code>
 </p>
 <ol class="org-ol">
-<li>To start the tutorial put your point in the source block above and press <code>, '</code></li>
-</ol>
-
-<p>
-it will open a new buffer in <code>emacs-lisp-mode</code>.
-</p>
-<ol class="org-ol">
-<li>Evaluate each sexp by putting your point in each of them and press <code>, e f</code>.</li>
+<li>Evaluate each sexp by putting your point in each of them and press <code>, e f</code> or
+press <code>, e b</code> to evaluate all code in the buffer at once.</li>
 <li>To debug the <code>helloworld</code> function, put your cursor on the <code>defun</code> keyword and</li>
 </ol>
 
@@ -1182,7 +1182,7 @@ line)
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-11-10 Tue 22:56</p>
+<p class="date">Created: 2020-11-25 Wed 09:08</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
