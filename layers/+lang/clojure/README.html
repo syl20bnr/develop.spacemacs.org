@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-12-18 Fri 16:09 -->
+<!-- 2020-12-22 Tue 12:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Clojure layer</title>
@@ -493,6 +493,17 @@ See <a href="https://github.com/snoe/clojure-lsp">here</a> for details. The serv
 in your emacs directory however if this does not work
 it can also be installed manually from <a href="https://github.com/snoe/clojure-lsp/releases/latest/download/clojure-lsp">here</a>.
 </p>
+
+<p>
+You can also explicitly disable lsp support by setting <code>cider</code> as
+backend explicitly:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>clojure <span class="org-builtin">:variables</span> clojure-backend 'cider<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
 </div>
 </div>
 
@@ -2771,7 +2782,7 @@ specific vars.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-12-18 Fri 16:09</p>
+<p class="date">Created: 2020-12-22 Tue 12:40</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
