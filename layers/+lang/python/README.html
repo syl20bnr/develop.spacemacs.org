@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-12-30 Wed 09:35 -->
+<!-- 2021-01-02 Sat 19:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python layer</title>
@@ -293,7 +293,7 @@
 <li><a href="#fill-column">5.1. Fill column</a></li>
 <li><a href="#sort-imports">5.2. Sort imports</a></li>
 <li><a href="#importmagic">5.3. Importmagic</a></li>
-<li><a href="#pyvenv-pyenv-and-pipenv">5.4. Pyvenv, pyenv and pipenv</a></li>
+<li><a href="#pyvenv-pyenv-pipenv-and-poetry">5.4. Pyvenv, pyenv, pipenv and poetry</a></li>
 </ul>
 </li>
 <li><a href="#management-of-python-versions-and-virtual-environments">6. Management of Python versions and virtual environments</a>
@@ -309,6 +309,7 @@
 </ul>
 </li>
 <li><a href="#manage-environments-and-packages-with-pipenv">6.3. Manage environments and packages with pipenv</a></li>
+<li><a href="#manage-environments-and-packages-with-poetry">6.4. Manage environments and packages with Poetry</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">7. Key bindings</a>
@@ -327,7 +328,7 @@
 </div>
 </div>
 
-<div id="org3ddd001" class="figure">
+<div id="org8d2ae57" class="figure">
 <p><img src="img/python.png" alt="python.png" />
 </p>
 </div>
@@ -357,7 +358,7 @@ This layer adds support for the Python language.
 <li>Code Navigation</li>
 <li>Documentation Lookup using <a href="https://github.com/proofit404/anaconda-mode">anaconda-mode</a> and <a href="https://github.com/tsgates/pylookup">pylookup</a></li>
 <li>Test Runners using <a href="https://github.com/syl20bnr/nose.el">nose.el</a> or <a href="https://github.com/ionrock/pytest-el">pytest</a></li>
-<li>Virtual Environment using <a href="https://github.com/jorgenschaefer/pyvenv">pyvenv</a> and <a href="https://github.com/yyuu/pyenv">pyenv</a> as well as <a href="https://github.com/pypa/pipenv">pipenv</a></li>
+<li>Virtual Environment using <a href="https://github.com/jorgenschaefer/pyvenv">pyvenv</a> and <a href="https://github.com/yyuu/pyenv">pyenv</a> as well as <a href="https://github.com/pypa/pipenv">pipenv</a> and <a href="https://github.com/galaunay/poetry.el">poetry</a></li>
 <li>semantic mode is enabled</li>
 <li>PEP8 compliant formatting via <a href="https://github.com/google/yapf">YAPF</a> or <a href="https://github.com/ambv/black">black</a></li>
 <li>PEP8 checks with <a href="https://pypi.python.org/pypi/flake8">flake8</a> or <a href="https://pypi.python.org/pypi/pylint/1.6.4">pylint</a></li>
@@ -471,7 +472,7 @@ it does not work and you may encounter the following message when
 opening a python buffer:
 </p>
 
-<pre class="example" id="org6fa0d80">
+<pre class="example" id="org4294fca">
 Blocking call to accept-process-output with quit inhibited!!
 </pre>
 
@@ -589,7 +590,7 @@ pip install pyls-black
 If you've installed the language server and related packages as development
 dependencies in a pipenv environment, you'll want to set the <code>python-pipenv-activate</code>
 config variable to <code>t</code>. This activates your pipenv before enabling the
-lsp backend.
+lsp backend. The same applies for <code>python-poetry-activate</code>.
 </p>
 </div>
 </div>
@@ -879,15 +880,16 @@ Install importmagic and epc for importmagic functionality.
 </div>
 </div>
 
-<div id="outline-container-pyvenv-pyenv-and-pipenv" class="outline-3">
-<h3 id="pyvenv-pyenv-and-pipenv"><span class="section-number-3">5.4</span> Pyvenv, pyenv and pipenv</h3>
-<div class="outline-text-3" id="text-pyvenv-pyenv-and-pipenv">
+<div id="outline-container-pyvenv-pyenv-pipenv-and-poetry" class="outline-3">
+<h3 id="pyvenv-pyenv-pipenv-and-poetry"><span class="section-number-3">5.4</span> Pyvenv, pyenv, pipenv and poetry</h3>
+<div class="outline-text-3" id="text-pyvenv-pyenv-pipenv-and-poetry">
 <p>
 Sometimes, it is convenient to be able to use python virtual environments from
 other modes. For this reason, the python layer provides the variables
-<code>spacemacs--python-pyenv-modes</code>, <code>spacemacs--python-pyvenv-modes</code> and
-<code>spacemacs--python-pipenv-modes</code>. If you wish to be able to access these
-functionalities from other modes, in your user config section, do:
+<code>spacemacs--python-pyenv-modes</code>, <code>spacemacs--python-pyvenv-modes</code>,
+<code>spacemacs--python-poetry-modes</code> and <code>spacemacs--python-pipenv-modes</code>.
+If you wish to be able to access these functionalities from other modes,
+in your user config section, do:
 </p>
 
 <div class="org-src-container">
@@ -1109,6 +1111,54 @@ It provides the following key bindings:
 <tr>
 <td class="org-left"><code>SPC m v p u</code></td>
 <td class="org-left">uninstall a package from a virtual environment with <a href="https://github.com/pwalsh/pipenv.el">pipenv</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-manage-environments-and-packages-with-poetry" class="outline-3">
+<h3 id="manage-environments-and-packages-with-poetry"><span class="section-number-3">6.4</span> Manage environments and packages with Poetry</h3>
+<div class="outline-text-3" id="text-manage-environments-and-packages-with-poetry">
+<p>
+Poetry is a tool for dependency management and packaging in Python.
+It allows you to declare the libraries your project depends on and it will
+manage (install/update) them for you.
+</p>
+
+<p>
+Spacemacs integration for Poetry is provided by the <a href="https://github.com/galaunay/poetry.el">poetry</a> package.
+It provides the following key bindings:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m v o d</code></td>
+<td class="org-left">De-activate the virtualenv associated to the current poetry project</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m v o a</code></td>
+<td class="org-left">Activate the virtualenv associated to the current poetry project</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m v o t</code></td>
+<td class="org-left">Toggle the virtualenv associated to the current poetry project</td>
 </tr>
 </tbody>
 </table>
@@ -1642,7 +1692,7 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2020-12-30 Wed 09:35</p>
+<p class="date">Created: 2021-01-02 Sat 19:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
