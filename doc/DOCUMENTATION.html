@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-01-02 Sat 19:44 -->
+<!-- 2021-01-14 Thu 11:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spacemacs documentation</title>
@@ -450,7 +450,8 @@
 <li><a href="#key-bindings">15.4.1. Key bindings</a>
 <ul>
 <li><a href="#which-key">15.4.1.1. Which-key</a></li>
-<li><a href="#describe-key-bindings">15.4.1.2. Describe key bindings</a></li>
+<li><a href="#which-key-persistent">15.4.1.2. Which-key persistent</a></li>
+<li><a href="#describe-key-bindings">15.4.1.3. Describe key bindings</a></li>
 </ul>
 </li>
 <li><a href="#getting-help">15.4.2. Getting help</a></li>
@@ -877,7 +878,7 @@ to install. To install all the <code>python</code> features the user has just to
 Configuration is organized in layers. Each layer has the following structure:
 </p>
 
-<pre class="example" id="org065d86e">
+<pre class="example" id="orgae23ea2">
 [layer_name]
   |__ [local]
   | |__ [package 1]
@@ -1980,7 +1981,7 @@ Auto-highlight-symbol transient state:
 </p>
 
 
-<div id="org7886c55" class="figure">
+<div id="orgadea616" class="figure">
 <p><img src="img/spacemacs-scale-transient-state.png" alt="spacemacs-scale-transient-state.png" />
 </p>
 </div>
@@ -4248,7 +4249,7 @@ this variable <code>spacemacs-layouts-restrict-spc-tab</code> to <code>nil</code
 your used layer list with layer variables:
 </p>
 
-<pre class="example" id="org33e4454">
+<pre class="example" id="org93e9ea4">
 (spacemacs-layouts :variables spacemacs-layouts-restrict-spc-tab t)
 </pre>
 </div>
@@ -4269,7 +4270,7 @@ take effect.
 Default value for this variable is:
 </p>
 
-<pre class="example" id="org2132334">
+<pre class="example" id="org7a2ab1f">
 '(spacemacs/window-split-double-columns
   spacemacs/window-split-triple-columns
   spacemacs/window-split-grid)
@@ -4280,7 +4281,7 @@ If you want to add the function <code>my-func</code> to this list you need to re
 the complete list using layer variables:
 </p>
 
-<pre class="example" id="org27ae7e8">
+<pre class="example" id="org8808455">
 (spacemacs-layouts :variables
                    spacemacs-layouts-restricted-functions
                    '(spacemacs/window-split-double-columns
@@ -4727,8 +4728,66 @@ pressed. You can change the delay by setting the variable
 </div>
 </div>
 
+<div id="outline-container-which-key-persistent" class="outline-5">
+<h5 id="which-key-persistent"><span class="section-number-5">15.4.1.2</span> Which-key persistent</h5>
+<div class="outline-text-5" id="text-which-key-persistent">
+<p>
+Sometimes it can be handy to show some keymap persistently with which-key,
+especially in buffers with merely evilified key bindings or using Emacs state,
+e.g. Info buffers, gnus, eww etc. The persistent <code>which-key</code> state can be
+toggled with <code>SPC t k k</code>. For some specific keymaps, dedicated key bindings are
+also available behind the <code>SPC t k</code> prefix:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC t k k</code></td>
+<td class="org-left">toggle which-key persistent state</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC t k m</code></td>
+<td class="org-left">show persistent major-mode keymap. Toggle off with <code>SPC t k k</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC t k M</code></td>
+<td class="org-left">show persistent full-major-mode keymap. Toggle off with <code>SPC t k k</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC t k t</code></td>
+<td class="org-left">show persistent top-level keymap. Toggle off with <code>SPC t k k</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The key bindings just set the <code>which-key-persistent-popup</code> to <code>t</code>, hence the
+which-key buffer will keep updating. Therefore the latter 3 key bindings (<code>SPC t
+k m/M/t</code>) can be used to return focus to their respective keymaps, while only
+the first key binding <code>SPC t k k</code> can be used for toggling off the persistent
+state.
+</p>
+</div>
+</div>
+
 <div id="outline-container-describe-key-bindings" class="outline-5">
-<h5 id="describe-key-bindings"><span class="section-number-5">15.4.1.2</span> Describe key bindings</h5>
+<h5 id="describe-key-bindings"><span class="section-number-5">15.4.1.3</span> Describe key bindings</h5>
 <div class="outline-text-5" id="text-describe-key-bindings">
 <p>
 It is possible to search for specific key bindings by pressing <code>SPC ?</code>.
@@ -4983,12 +5042,12 @@ Navigation key bindings in <code>help-mode</code>:
 <tbody>
 <tr>
 <td class="org-left"><code>J</code></td>
-<td class="org-left">Scroll up (or next node)</td>
+<td class="org-left">scroll up (or next node)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>K</code></td>
-<td class="org-left">Scroll down (or next node)</td>
+<td class="org-left">scroll down (or next node)</td>
 </tr>
 
 <tr>
@@ -8398,7 +8457,7 @@ During the symbol highlight transient state, the following bindings are active:
 The minibuffer displays the following information during the transient state:
 </p>
 
-<pre class="example" id="org3d1f26c">
+<pre class="example" id="org862be61">
 Buffer [6/11]*
 </pre>
 
@@ -12082,7 +12141,7 @@ developers to elisp hackers!
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-01-02 Sat 19:44</p>
+<p class="date">Created: 2021-01-14 Thu 11:27</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

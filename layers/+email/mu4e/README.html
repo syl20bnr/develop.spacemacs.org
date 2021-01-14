@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-01-02 Sat 19:44 -->
+<!-- 2021-01-14 Thu 11:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mu4e layer</title>
@@ -264,6 +264,7 @@
 <li><a href="#global-bindings">3.1. Global bindings</a></li>
 <li><a href="#headers-mode">3.2. Headers mode</a></li>
 <li><a href="#view-mode">3.3. View mode</a></li>
+<li><a href="#compose-mode">3.4. Compose mode</a></li>
 </ul>
 </li>
 <li><a href="#configuration">4. Configuration</a>
@@ -280,6 +281,12 @@
 </ul>
 </li>
 <li><a href="#spacemacs-layout-integration">4.7. Spacemacs layout integration</a></li>
+<li><a href="#org-mu4e-integration">4.8. Org-mu4e integration</a>
+<ul>
+<li><a href="#mu4e-link-support-in-org-mode">4.8.1. Mu4e link support in Org mode</a></li>
+<li><a href="#composing-org-mode-messages-in-mu4e">4.8.2. Composing Org mode messages in mu4e</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#see-also">5. See also</a></li>
@@ -470,6 +477,53 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </table>
 </div>
 </div>
+
+<div id="outline-container-compose-mode" class="outline-3">
+<h3 id="compose-mode"><span class="section-number-3">3.4</span> Compose mode</h3>
+<div class="outline-text-3" id="text-compose-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m c</code> or <code>SPC m ,</code></td>
+<td class="org-left">Send the message and exit</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m k</code> or <code>SPC m a</code></td>
+<td class="org-left">Kill the message buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s</code></td>
+<td class="org-left">Auto-save and bury the message</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m f</code></td>
+<td class="org-left">Add file as attachment</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m o</code></td>
+<td class="org-left">Compose in Org-mode syntax</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 
 <div id="outline-container-configuration" class="outline-2">
@@ -649,7 +703,7 @@ count of unread messages to the modeline.
 </p>
 
 
-<div id="org7e0c360" class="figure">
+<div id="orgb0f45ca" class="figure">
 <p><img src="https://raw.githubusercontent.com/iqbalansari/mu4e-alert/master/screenshots/mu4e-alert-in-action.png" alt="mu4e-alert-in-action.png" />
 </p>
 </div>
@@ -756,6 +810,55 @@ By default the values are:
 </div>
 </div>
 </div>
+
+<div id="outline-container-org-mu4e-integration" class="outline-3">
+<h3 id="org-mu4e-integration"><span class="section-number-3">4.8</span> Org-mu4e integration</h3>
+<div class="outline-text-3" id="text-org-mu4e-integration">
+</div>
+
+<div id="outline-container-mu4e-link-support-in-org-mode" class="outline-4">
+<h4 id="mu4e-link-support-in-org-mode"><span class="section-number-4">4.8.1</span> Mu4e link support in Org mode</h4>
+<div class="outline-text-4" id="text-mu4e-link-support-in-org-mode">
+<p>
+Feature <code>mu4e-org</code> supports links to mu4e messages in Org mode in the form of
+<code>[[mu4e:msgid::***][link text]]</code>. Enabled by default. You can disable it by
+setting the <code>mu4e-org-link-support</code> variable when including the layer.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>mu4e <span class="org-builtin">:variables</span>
+                      mu4e-org-link-support nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-composing-org-mode-messages-in-mu4e" class="outline-4">
+<h4 id="composing-org-mode-messages-in-mu4e"><span class="section-number-4">4.8.2</span> Composing Org mode messages in mu4e</h4>
+<div class="outline-text-4" id="text-composing-org-mode-messages-in-mu4e">
+<p>
+Feature <code>org-mu4e</code> supports composing emails in Org mode format. Disabled by
+default. You can enable it by setting the <code>mu4e-org-compose-support</code> variable
+when including the layer.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>mu4e <span class="org-builtin">:variables</span>
+                      mu4e-org-compose-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Then when composing, hit keys <code>SPC m o</code> to enable the
+<code>org-mu4e-compose-org-mode</code> mode. Note that you need to set the variable
+<code>org-mu4e-convert-to-html</code> if you want the message to be converted before
+sending.
+</p>
+</div>
+</div>
+</div>
 </div>
 
 <div id="outline-container-see-also" class="outline-2">
@@ -772,7 +875,7 @@ Refer to the official <code>mu</code> and <code>mu4e</code> documentation for ad
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-01-02 Sat 19:44</p>
+<p class="date">Created: 2021-01-14 Thu 11:27</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
