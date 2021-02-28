@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-01-14 Thu 11:27 -->
+<!-- 2021-02-28 Sun 21:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tabs layer</title>
@@ -278,6 +278,7 @@ This layer adds support for tabs. Implementation is done using <a href="https://
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Sets up tabs using Centaur tabs as backend</li>
+<li>Optionally auto hide tabs after delay</li>
 </ul>
 </div>
 </div>
@@ -301,6 +302,18 @@ file.
 You can set hooks for buffers in which it isn't desired to have tabs by
 customizing <code>centaur-tabs-hide-tabs-hooks</code>
 </p>
+
+<p>
+Alternatively you can set <code>tabs-auto-hide</code> to <code>t</code> to auto hide tabs after some
+delay <code>tabs-auto-hide-delay</code> via the :variables keyword in your dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>tabs <span class="org-builtin">:variables</span>
+      tabs-auto-hide t
+      tabs-auto-hide-delay <span class="org-highlight-numbers-number">3</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
 </div>
 </div>
 
@@ -363,7 +376,7 @@ customizing <code>centaur-tabs-hide-tabs-hooks</code>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-01-14 Thu 11:27</p>
+<p class="date">Created: 2021-02-28 Sun 21:26</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-01-14 Thu 11:27 -->
+<!-- 2021-02-28 Sun 21:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spacemacs layers list</title>
@@ -518,10 +518,11 @@
 <li><a href="#web-services">24. Web services</a>
 <ul>
 <li><a href="#confluence">24.1. Confluence</a></li>
-<li><a href="#evernote">24.2. Evernote</a></li>
-<li><a href="#search-engine">24.3. Search Engine</a></li>
-<li><a href="#twitter">24.4. Twitter</a></li>
-<li><a href="#wakatime">24.5. Wakatime</a></li>
+<li><a href="#eaf">24.2. Eaf</a></li>
+<li><a href="#evernote">24.3. Evernote</a></li>
+<li><a href="#search-engine">24.4. Search Engine</a></li>
+<li><a href="#twitter">24.5. Twitter</a></li>
+<li><a href="#wakatime">24.6. Wakatime</a></li>
 </ul>
 </li>
 </ul>
@@ -923,9 +924,9 @@ key bindings.
 </p>
 
 <p>
-However the <code>emacs</code> editing style is not required, you can still use this layer
+However the <code>emacs</code> editing style is not required. You can still use this layer
 while you are using the <code>vim</code> editing style if you have some kind of mixed
-style.
+style, but some of the layer bindings might be shadowed by the evil key bindings.
 </p>
 
 <p>
@@ -1010,6 +1011,7 @@ Features:
 <li>Project-specific TODOs via <a href="https://github.com/IvanMalison/org-projectile">org-projectile</a></li>
 <li>Easy insert of URLs from clipboard with org format via <a href="https://github.com/rexim/org-cliplink">org-cliplink</a></li>
 <li>Rich insert of code (into a source block with highlighting, and a link) from other buffers via <a href="https://github.com/unhammer/org-rich-yank">org-rich-yank</a></li>
+<li>Pixel-perfect visual alignment for Org and Markdown tables via <a href="https://github.com/casouri/valign">valign</a></li>
 </ul>
 </div>
 </div>
@@ -1134,6 +1136,7 @@ Features:
 </p>
 <ul class="org-ul">
 <li>Sets up tabs using Centaur tabs as backend</li>
+<li>Optionally auto hide tabs after delay</li>
 </ul>
 </div>
 </div>
@@ -1777,6 +1780,7 @@ Features:
 <li>Improves the comment function to be able to also do the inverse operation</li>
 <li>Persistent highlight of searched text with <code>evil-search-highlight-persist</code></li>
 <li>Display tildes in non-buffer area with <code>vi-tilde-fringe</code></li>
+<li>Add <code>evil-collection</code></li>
 </ul>
 </div>
 </div>
@@ -2650,7 +2654,7 @@ robbyoconnor-&gt;theOtherPerson : And they thinks it's funny? Yup, they definite
 </div>
 
 
-<div id="org45bca16" class="figure">
+<div id="orgb7a30fb" class="figure">
 <p><img src="+lang/plantuml/img/dia.png" alt="dia.png" />
 </p>
 </div>
@@ -4357,19 +4361,15 @@ Features:
 </p>
 <ul class="org-ul">
 <li>Syntax highlighting</li>
-<li>Support for language backend. Either using <a href="https://ensime.github.io/">ENSIME</a> or <a href="https://scalameta.org/metals/">Metals</a></li>
-<li>Debugging support via dap</li>
+<li>Support for language backend using LSP and <a href="https://scalameta.org/metals/">Metals</a></li>
+<li>Debugging support via <code>dap</code></li>
 <li>Auto-completion</li>
 <li>Treeview support for viewing project structure and triggering compilation</li>
 <li>Syntax-checking</li>
 <li>Refactoring</li>
 <li>Incremental compilation</li>
-<li>Scala Repl</li>
 <li>Style linting</li>
-<li>Eldoc integration</li>
 <li>Optional GGTags search</li>
-<li>Test execution directly from Emacs</li>
-<li>Automatic replacement of ASCII arrows with unicode ones</li>
 </ul>
 </div>
 </li>
@@ -5356,7 +5356,7 @@ automatic generation of <code>compile_commands.json</code> (compile flags).</li>
 </p>
 
 <p>
-This layer adds a handy command demonstration mode to Spacemacs.
+This layer adds handy commands for demonstrating Spacemacs.
 </p>
 
 <p>
@@ -5364,6 +5364,7 @@ Features:
 </p>
 <ul class="org-ul">
 <li>Support for logging all entered keys and triggered commands in a designated buffer via <a href="https://github.com/lewang/command-log-mode">command-log-mode</a>.</li>
+<li>Experimental support for logging the last command directly in the mode line via <a href="https://github.com/tarsius/keycast">keycast</a>.</li>
 <li>Provides the best way to demonstrate the connection between keystrokes and commands in Emacs.</li>
 <li>Provides an easy way to create command logs for training classes.</li>
 </ul>
@@ -6325,8 +6326,32 @@ Features:
 </div>
 </div>
 
+<div id="outline-container-eaf" class="outline-3">
+<h3 id="eaf"><span class="section-number-3">24.2</span> Eaf</h3>
+<div class="outline-text-3" id="text-eaf">
+<p>
+<a href="+tools/eaf/README.html">+tools/eaf/README.org</a>
+</p>
+
+<p>
+This layer adds support for the <a href="https://github.com/manateelazycat/emacs-application-framework">Emacs Application Framework (EAF)</a>.
+</p>
+
+<p>
+Features:
+</p>
+<ul class="org-ul">
+<li>Browse using a full-fledged browser within Emacs</li>
+<li>PDF viewer (with continuous scroll)</li>
+<li>Video player</li>
+<li>Image viewer</li>
+<li>See <a href="https://github.com/manateelazycat/emacs-application-framework#launch-eaf-applications">EAF documentation</a> for many more features</li>
+</ul>
+</div>
+</div>
+
 <div id="outline-container-evernote" class="outline-3">
-<h3 id="evernote"><span class="section-number-3">24.2</span> Evernote</h3>
+<h3 id="evernote"><span class="section-number-3">24.3</span> Evernote</h3>
 <div class="outline-text-3" id="text-evernote">
 <p>
 <a href="+web-services/evernote/README.html">+web-services/evernote/README.org</a>
@@ -6349,7 +6374,7 @@ Features:
 </div>
 
 <div id="outline-container-search-engine" class="outline-3">
-<h3 id="search-engine"><span class="section-number-3">24.3</span> Search Engine</h3>
+<h3 id="search-engine"><span class="section-number-3">24.4</span> Search Engine</h3>
 <div class="outline-text-3" id="text-search-engine">
 <p>
 <a href="+web-services/search-engine/README.html">+web-services/search-engine/README.org</a>
@@ -6369,7 +6394,7 @@ Features:
 </div>
 
 <div id="outline-container-twitter" class="outline-3">
-<h3 id="twitter"><span class="section-number-3">24.4</span> Twitter</h3>
+<h3 id="twitter"><span class="section-number-3">24.5</span> Twitter</h3>
 <div class="outline-text-3" id="text-twitter">
 <p>
 <a href="+web-services/twitter/README.html">+web-services/twitter/README.org</a>
@@ -6413,7 +6438,7 @@ Features:
 </div>
 
 <div id="outline-container-wakatime" class="outline-3">
-<h3 id="wakatime"><span class="section-number-3">24.5</span> Wakatime</h3>
+<h3 id="wakatime"><span class="section-number-3">24.6</span> Wakatime</h3>
 <div class="outline-text-3" id="text-wakatime">
 <p>
 <a href="+web-services/wakatime/README.html">+web-services/wakatime/README.org</a>
@@ -6446,7 +6471,7 @@ Features:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-01-14 Thu 11:27</p>
+<p class="date">Created: 2021-02-28 Sun 21:26</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

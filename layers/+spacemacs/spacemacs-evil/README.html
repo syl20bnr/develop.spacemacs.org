@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-01-14 Thu 11:27 -->
+<!-- 2021-02-28 Sun 21:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>spacemacs-evil layer</title>
@@ -258,6 +258,8 @@
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
+<li><a href="#install">2. Install</a></li>
+<li><a href="#note-about-evil-collection">3. Note about evil-collection</a></li>
 </ul>
 </div>
 </div>
@@ -295,14 +297,67 @@ throughout the entirety of Spacemacs.
 <li>Improves the comment function to be able to also do the inverse operation</li>
 <li>Persistent highlight of searched text with <code>evil-search-highlight-persist</code></li>
 <li>Display tildes in non-buffer area with <code>vi-tilde-fringe</code></li>
+<li>Add <code>evil-collection</code></li>
 </ul>
 </div>
+</div>
+</div>
+
+<div id="outline-container-install" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+<p>
+The <code>spacemacs-evil</code> layer is included by default in the Spacemacs distribution.
+</p>
+</div>
+</div>
+
+<div id="outline-container-note-about-evil-collection" class="outline-2">
+<h2 id="note-about-evil-collection"><span class="section-number-2">3</span> Note about evil-collection</h2>
+<div class="outline-text-2" id="text-note-about-evil-collection">
+<p>
+<a href="https://github.com/emacs-evil/evil-collection">evil-collection</a> is a collection of Evil bindings for the parts of Emacs that
+Evil does not cover properly by default, such as help-mode, M-x calendar, Eshell
+and more.
+</p>
+
+<p>
+However, there is a large overlap of features provided by both <code>Spacemacs</code> and
+<code>evil-collection</code>. For the same feature, <code>Spacemacs</code> implementation is often better
+than <code>evil-collection</code>.
+</p>
+
+<p>
+That's said, when <code>evil-collection</code> is used carefully we can reduce the amount of
+effort wasted on <code>reinventing the wheel</code> on <code>Spacemacs</code> side.
+</p>
+
+<p>
+Spacemacs provides a layer variable <code>spacemacs-evil-collection-allowed-list</code> for
+users and layer hackers to enable evil-collection on their desired modes.
+</p>
+
+<p>
+For users, if you want to enable evil-collection on <code>eglot</code>, then you will need
+to declare this layer with it variable explicitly:
+</p>
+
+<pre class="example" id="org0131629">
+(spacemacs-evil :variables
+                    spacemacs-evil-collection-allowed-list
+                   '(eglot))
+</pre>
+
+<p>
+For Spacemacs hackers check out git layer to see how we apply <code>evil-collection</code> to
+<code>magit.</code>
+</p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-01-14 Thu 11:27</p>
+<p class="date">Created: 2021-02-28 Sun 21:26</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

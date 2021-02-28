@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-01-14 Thu 11:27 -->
+<!-- 2021-02-28 Sun 21:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>C/C++ layer</title>
@@ -298,7 +298,7 @@
 </div>
 </div>
 
-<div id="orgfa4f479" class="figure">
+<div id="org1a593fe" class="figure">
 <p><img src="img/ccpp.jpg" alt="ccpp.jpg" />
 </p>
 </div>
@@ -618,12 +618,100 @@ as recommended by <code>ccls</code> wikis.
 
 <li><a id="debugger-dap-integration"></a>Debugger (dap integration)<br />
 <div class="outline-text-5" id="text-debugger-dap-integration">
+</div>
+
+<ol class="org-ol">
+<li><a id="adapter-selection"></a>Adapter selection<br />
+<div class="outline-text-6" id="text-adapter-selection">
+<p>
+To select the active adapters, configure the <code>c-c++-dap-adapters</code> layer variable.
+By default only the Microsoft extension is available.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Adapter</th>
+<th scope="col" class="org-left">Supported debuggers</th>
+<th scope="col" class="org-left">DAP mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Microsoft</td>
+<td class="org-left">gdb, lldb, Visual Studio Debugger</td>
+<td class="org-left"><code>dap-cpptools</code></td>
+</tr>
+
+<tr>
+<td class="org-left">CodeFreak</td>
+<td class="org-left">gdb, lldb</td>
+<td class="org-left"><code>dap-gdb-lldb</code></td>
+</tr>
+
+<tr>
+<td class="org-left">LLVM Project</td>
+<td class="org-left">lldb</td>
+<td class="org-left"><code>dap-lldb</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Example configuration with two adapters selected:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span>
+                       c-c++-dap-adapters '<span class="org-rainbow-delimiters-depth-4">(</span>dap-lldb dap-cpptools<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="microsoft-adapter-installation"></a>Microsoft adapter installation<br />
+<div class="outline-text-6" id="text-microsoft-adapter-installation">
+<p>
+To install the debug adapter you may run <code>M-x dap-cpptools-setup</code> when you are
+on Linux.
+</p>
+</div>
+</li>
+
+<li><a id="codefreak-adapter-installation"></a>CodeFreak adapter installation<br />
+<div class="outline-text-6" id="text-codefreak-adapter-installation">
 <p>
 To install the debug adapter you may run <code>M-x dap-gdb-lldb-setup</code> when you are
 on Linux or download it manually from <a href="https://marketplace.visualstudio.com/items?itemName=webfreak.debug">Native Debug</a> and adjust the
 <code>dap-gdb-lldb-path</code> variable.
 </p>
 </div>
+</li>
+
+<li><a id="lldb-adapter-installation"></a>LLDB adapter installation<br />
+<div class="outline-text-6" id="text-lldb-adapter-installation">
+<p>
+Install the <code>lldb-vscode</code> program. It usually comes with <code>lldb</code> from your
+distribution's package repository.
+Alternatively build directly following the <a href="https://github.com/llvm/llvm-project/tree/master/lldb/tools/lldb-vscode#installation-for-visual-studio-code">official installation instructions</a>.
+</p>
+
+<p>
+Adjust the <code>dap-lldb-debug-program</code> variable to match the executable.
+</p>
+</div>
+</li>
+</ol>
 </li>
 </ol>
 </div>
@@ -1559,7 +1647,7 @@ A <code>[ccls]</code> suffix indicates that the binding is for the indicated bac
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-01-14 Thu 11:27</p>
+<p class="date">Created: 2021-02-28 Sun 21:26</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

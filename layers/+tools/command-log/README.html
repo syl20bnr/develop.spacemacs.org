@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-01-14 Thu 11:27 -->
+<!-- 2021-02-28 Sun 21:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>command-log layer</title>
@@ -259,7 +259,9 @@
 </ul>
 </li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#key-bindings">3. Key bindings</a></li>
+<li><a href="#command-log">3. Command log</a></li>
+<li><a href="#keycast">4. Keycast</a></li>
+<li><a href="#key-bindings">5. Key bindings</a></li>
 </ul>
 </div>
 </div>
@@ -268,7 +270,7 @@
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds a handy command demonstration mode to Spacemacs.
+This layer adds handy commands for demonstrating Spacemacs.
 </p>
 </div>
 
@@ -277,6 +279,7 @@ This layer adds a handy command demonstration mode to Spacemacs.
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Support for logging all entered keys and triggered commands in a designated buffer via <a href="https://github.com/lewang/command-log-mode">command-log-mode</a>.</li>
+<li>Experimental support for logging the last command directly in the mode line via <a href="https://github.com/tarsius/keycast">keycast</a>.</li>
 <li>Provides the best way to demonstrate the connection between keystrokes and commands in Emacs.</li>
 <li>Provides an easy way to create command logs for training classes.</li>
 </ul>
@@ -295,8 +298,35 @@ file.
 </div>
 </div>
 
+<div id="outline-container-command-log" class="outline-2">
+<h2 id="command-log"><span class="section-number-2">3</span> Command log</h2>
+<div class="outline-text-2" id="text-command-log">
+<p>
+This is the default way to demonstrate Spacemacs commands. It works by opening a new
+buffer which logs all executed commands in the current window.
+</p>
+</div>
+</div>
+
+<div id="outline-container-keycast" class="outline-2">
+<h2 id="keycast"><span class="section-number-2">4</span> Keycast</h2>
+<div class="outline-text-2" id="text-keycast">
+<p>
+This is an experimental addition to this layer which will show the last
+used keystroke and command in the modeline. However as we support multiple
+modelines it may require some tweaking of <code>keycast-insert-after</code> which will
+be defaulted to <code>%e</code> for now.
+</p>
+
+<p>
+If you have a working configuration for your modeline feel free to share it
+with the rest of the project.
+</p>
+</div>
+</div>
+
 <div id="outline-container-key-bindings" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
+<h2 id="key-bindings"><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -314,8 +344,13 @@ file.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC a t l</code></td>
+<td class="org-left"><code>SPC a t l l</code></td>
 <td class="org-left">Toggle the command log</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a t l k</code></td>
+<td class="org-left">Toggle keycast</td>
 </tr>
 </tbody>
 </table>
@@ -324,7 +359,7 @@ file.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-01-14 Thu 11:27</p>
+<p class="date">Created: 2021-02-28 Sun 21:27</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-01-14 Thu 11:27 -->
+<!-- 2021-02-28 Sun 21:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JavaScript layer</title>
@@ -304,22 +304,23 @@
 <ul>
 <li><a href="#js2-mode">5.1. js2-mode</a></li>
 <li><a href="#folding-js2-mode">5.2. Folding (js2-mode)</a></li>
-<li><a href="#importing-import-js">5.3. Importing (import-js)</a></li>
-<li><a href="#refactoring-js2-refactor">5.4. Refactoring (js2-refactor)</a>
+<li><a href="#running-npm-npm-mode">5.3. Running NPM (npm-mode)</a></li>
+<li><a href="#importing-import-js">5.4. Importing (import-js)</a></li>
+<li><a href="#refactoring-js2-refactor">5.5. Refactoring (js2-refactor)</a>
 <ul>
-<li><a href="#documentation-js-doc">5.4.1. Documentation (js-doc)</a></li>
+<li><a href="#documentation-js-doc">5.5.1. Documentation (js-doc)</a></li>
 </ul>
 </li>
-<li><a href="#browser-based-repl-skewer-mode">5.5. Browser based REPL (skewer-mode)</a></li>
-<li><a href="#server-based-repl-nodejs-repl">5.6. Server based REPL (nodejs-repl)</a></li>
-<li><a href="#debugger-dap-mode">5.7. debugger (dap mode)</a></li>
+<li><a href="#browser-based-repl-skewer-mode">5.6. Browser based REPL (skewer-mode)</a></li>
+<li><a href="#server-based-repl-nodejs-repl">5.7. Server based REPL (nodejs-repl)</a></li>
+<li><a href="#debugger-dap-mode">5.8. debugger (dap mode)</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="orgd1a20d7" class="figure">
+<div id="org4e50b6a" class="figure">
 <p><img src="img/javascript.png" alt="javascript.png" />
 </p>
 </div>
@@ -892,8 +893,75 @@ parse warnings:
 </div>
 </div>
 
+<div id="outline-container-running-npm-npm-mode" class="outline-3">
+<h3 id="running-npm-npm-mode"><span class="section-number-3">5.3</span> Running NPM (npm-mode)</h3>
+<div class="outline-text-3" id="text-running-npm-npm-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m n i</code></td>
+<td class="org-left">Run the <code>npm install</code> command in the project root</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m n r</code></td>
+<td class="org-left">Show a list of available npm scripts, and execute the selected one</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m n c</code></td>
+<td class="org-left">Run the <code>npm clean</code> command in the project root</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m n s</code></td>
+<td class="org-left">Prompt for the name of an npm package, install it and save to <code>dependencies</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m n d</code></td>
+<td class="org-left">Prompt for the name of an npm package, install it and save to <code>devDependencies</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m n n</code></td>
+<td class="org-left">Initialize new project</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m n u</code></td>
+<td class="org-left">Remove project dependency</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m n l</code></td>
+<td class="org-left">List installed project dependencies</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m n p</code></td>
+<td class="org-left">Visit project <code>package.json</code> file</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
 <div id="outline-container-importing-import-js" class="outline-3">
-<h3 id="importing-import-js"><span class="section-number-3">5.3</span> Importing (import-js)</h3>
+<h3 id="importing-import-js"><span class="section-number-3">5.4</span> Importing (import-js)</h3>
 <div class="outline-text-3" id="text-importing-import-js">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -930,7 +998,7 @@ parse warnings:
 </div>
 
 <div id="outline-container-refactoring-js2-refactor" class="outline-3">
-<h3 id="refactoring-js2-refactor"><span class="section-number-3">5.4</span> Refactoring (js2-refactor)</h3>
+<h3 id="refactoring-js2-refactor"><span class="section-number-3">5.5</span> Refactoring (js2-refactor)</h3>
 <div class="outline-text-3" id="text-refactoring-js2-refactor">
 <p>
 Bindings should match the plain emacs assignments.
@@ -1105,7 +1173,7 @@ Bindings should match the plain emacs assignments.
 </div>
 
 <div id="outline-container-documentation-js-doc" class="outline-4">
-<h4 id="documentation-js-doc"><span class="section-number-4">5.4.1</span> Documentation (js-doc)</h4>
+<h4 id="documentation-js-doc"><span class="section-number-4">5.5.1</span> Documentation (js-doc)</h4>
 <div class="outline-text-4" id="text-documentation-js-doc">
 <p>
 You can check more <a href="https://github.com/mooz/js-doc/">here</a>
@@ -1152,7 +1220,7 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 
 <div id="outline-container-browser-based-repl-skewer-mode" class="outline-3">
-<h3 id="browser-based-repl-skewer-mode"><span class="section-number-3">5.5</span> Browser based REPL (skewer-mode)</h3>
+<h3 id="browser-based-repl-skewer-mode"><span class="section-number-3">5.6</span> Browser based REPL (skewer-mode)</h3>
 <div class="outline-text-3" id="text-browser-based-repl-skewer-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1246,7 +1314,7 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 
 <div id="outline-container-server-based-repl-nodejs-repl" class="outline-3">
-<h3 id="server-based-repl-nodejs-repl"><span class="section-number-3">5.6</span> Server based REPL (nodejs-repl)</h3>
+<h3 id="server-based-repl-nodejs-repl"><span class="section-number-3">5.7</span> Server based REPL (nodejs-repl)</h3>
 <div class="outline-text-3" id="text-server-based-repl-nodejs-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1318,7 +1386,7 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 
 <div id="outline-container-debugger-dap-mode" class="outline-3">
-<h3 id="debugger-dap-mode"><span class="section-number-3">5.7</span> debugger (dap mode)</h3>
+<h3 id="debugger-dap-mode"><span class="section-number-3">5.8</span> debugger (dap mode)</h3>
 <div class="outline-text-3" id="text-debugger-dap-mode">
 <p>
 Using the <code>dap</code> layer you'll get access to all the DAP key bindings, see the
@@ -1330,7 +1398,7 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-01-14 Thu 11:27</p>
+<p class="date">Created: 2021-02-28 Sun 21:26</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
