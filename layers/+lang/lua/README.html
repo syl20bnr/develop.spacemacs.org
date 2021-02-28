@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-01-14 Thu 11:27 -->
+<!-- 2021-02-28 Sun 21:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lua layer</title>
@@ -263,8 +263,8 @@
 <li><a href="#layer">2.1. Layer</a></li>
 <li><a href="#backends">2.2. Backends</a>
 <ul>
-<li><a href="#lsp">2.2.1. LSP</a></li>
-<li><a href="#lua-mode">2.2.2. Lua mode</a></li>
+<li><a href="#lua-mode">2.2.1. Lua mode</a></li>
+<li><a href="#lsp">2.2.2. LSP</a></li>
 </ul>
 </li>
 </ul>
@@ -279,7 +279,7 @@
 </div>
 </div>
 
-<div id="org9369db0" class="figure">
+<div id="org9655ce1" class="figure">
 <p><img src="img/lua.gif" alt="lua.gif" />
 </p>
 </div>
@@ -333,47 +333,128 @@ In order to enable code linting, install <a href="https://github.com/mpeterv/lua
 Supported backends are:
 </p>
 <ul class="org-ul">
-<li><code>lsp-emmy</code> using clangd LSP server</li>
-<li><code>lua-mode</code> using emacs package</li>
+<li><code>lua-mode</code> using emacs packages</li>
+<li><code>lsp</code> using one of below LSP servers
+<ul class="org-ul">
+<li>emmy LSP server (default)</li>
+<li>lua-language-server.</li>
+<li>lua-lsp.</li>
+</ul></li>
 </ul>
 </div>
 
-<div id="outline-container-lsp" class="outline-4">
-<h4 id="lsp"><span class="section-number-4">2.2.1</span> LSP</h4>
-<div class="outline-text-4" id="text-lsp">
+<div id="outline-container-lua-mode" class="outline-4">
+<h4 id="lua-mode"><span class="section-number-4">2.2.1</span> Lua mode</h4>
+<div class="outline-text-4" id="text-lua-mode">
 <p>
-LSP support is provided via the <a href="../../+tools/lsp/README.html">LSP layer</a>, currently only <a href="https://github.com/EmmyLua/EmmyLua-LanguageServer">EmmyLua</a> is supported.
-</p>
-
-<p>
-To use the <code>lsp-emmy</code> backend, please download the <a href="https://github.com/EmmyLua/EmmyLua-LanguageServer">EmmyLua-LS-all.jar</a> and put it into <code>~/.emacs.d/</code>,
-then set the layer variable lua-backend to <code>lsp-emmy</code>.
-</p>
-
-<p>
-<code>Lsp-emmy</code> requires a working java installation in the path as well as the path to the LSP server jar.
-The java path and the path to the server executable can be configured as is shown below:
+This backend provides basic support via pure emacs packages. It requires less setup than a full blown LSP setup
+but also provides less features. To enable it set the <code>lua-backend</code> to <code>lua-mode</code>.
 </p>
 
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>lua <span class="org-builtin">:variables</span>
-     lua-backend 'lsp-emmy
-     lua-lsp-emmy-jar-path <span class="org-string">"~/.emacs.d/EmmyLua-LS-all.jar"</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
-     lua-lsp-emmy-java-path <span class="org-string">"java"</span>                         <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
-     lua-lsp-emmy-enable-file-watchers t<span class="org-rainbow-delimiters-depth-1">)</span>                  <span class="org-comment-delimiter">; </span><span class="org-comment">enabled default</span>
+     lua-backend 'lua-mode<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-lua-mode" class="outline-4">
-<h4 id="lua-mode"><span class="section-number-4">2.2.2</span> Lua mode</h4>
-<div class="outline-text-4" id="text-lua-mode">
+<div id="outline-container-lsp" class="outline-4">
+<h4 id="lsp"><span class="section-number-4">2.2.2</span> LSP</h4>
+<div class="outline-text-4" id="text-lsp">
 <p>
-This backend provides support via pure emacs packages. It requires less setup than a full blown LSP setup
-but also provides less features. To enable it just set the <code>lua-backend</code> to <code>nil</code>.
+This is the prefered backend choice. It relies on an external server implementing the LSP protocol.
+It requires installing one of the supported server implementations below:
 </p>
+<ul class="org-ul">
+<li><a href="https://github.com/EmmyLua/EmmyLua-LanguageServer">EmmyLua</a></li>
+<li><a href="https://github.com/sumneko/lua-language-server">lua-language-server</a></li>
+<li><a href="https://github.com/Alloyed/lua-lsp">lua-lsp</a></li>
+</ul>
+
+<p>
+Once it is installed the key bindings are provided by <a href="../../+tools/lsp/README.html">LSP layer</a> allowing
+consistent key bindings among different layers.
+</p>
+
+<p>
+To enable LSP set <code>lua-backend</code> to <code>lsp</code>. If <code>lua-backend</code> is <code>nil</code> and the <code>LSP layer</code> is loaded
+<code>LSP</code> will be used automatically otherwise it will fallback to <code>lua-mode</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>lua <span class="org-builtin">:variables</span>
+     lua-backend 'lsp<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
+</div>
+
+<ol class="org-ol">
+<li><a id="emmy-server-setup"></a>Emmy server setup<br />
+<div class="outline-text-5" id="text-emmy-server-setup">
+<p>
+To use the <code>emmy</code> lsp server, please download the <a href="https://github.com/EmmyLua/EmmyLua-LanguageServer">EmmyLua-LS-all.jar</a> and put it into <code>~/.emacs.d/</code>.
+Then set the layer variable <code>lua-lsp-server</code> to <code>emmy</code>. This is also the default choice if no specific
+lsp server has been selected.
+</p>
+
+<p>
+<code>emmy</code> requires a working java installation in the path as well as the path to the LSP server jar.
+The java path and the path to the server executable can be configured as is shown below:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>lua <span class="org-builtin">:variables</span>
+     lua-backend 'lsp
+     lua-lsp-server 'emmy
+     lsp-clients-emmy-lua-jar-path <span class="org-string">"~/.emacs.d/.cache/lsp/EmmyLua-LS-all.jar"</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
+     lsp-clients-emmy-lua-java-path <span class="org-string">"java"</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="lua-language-server-setup"></a>Lua-language server setup<br />
+<div class="outline-text-5" id="text-lua-language-server-setup">
+<p>
+To use the <code>lua-language-server</code> lsp server, please follow <a href="https://github.com/sumneko/lua-language-server">lua-language-server</a> to compile the standalone binary. 
+Then set the layer variables as shown below:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>lua <span class="org-builtin">:variables</span>
+     lua-backend 'lsp
+     lua-lsp-server 'lua-language-server
+     lsp-clients-lua-language-server-bin <span class="org-string">"~/.emacs.d/.cache/lsp/lua-language-server/bin/Linux/lua-language-server"</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
+     lsp-clients-lua-language-server-main-location <span class="org-string">"~/.emacs.d/.cache/lsp/lua-language-server/main.lua"</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="lua-lsp-server-setup"></a>Lua-lsp server setup<br />
+<div class="outline-text-5" id="text-lua-lsp-server-setup">
+<p>
+To use the <code>lua-lsp</code> lsp server, please follow <a href="https://github.com/Alloyed/lua-lsp">lua-lsp</a> to install the server via
+luarocks. Remember that the capabilities of this server are mainly dependent
+on the installed luarocks packages, so make sure you have them all installed
+for maximum benefit.
+</p>
+
+<p>
+To instruct Spacemacs to use this server set your config as shown below:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>lua <span class="org-builtin">:variables</span>
+     lua-backend 'lsp
+     lua-lsp-server 'lua-lsp
+     lsp-clients-luarocks-bin-dir <span class="org-string">"~/.luarocks/bin/"</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
+</pre>
+</div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -448,7 +529,7 @@ the <a href="../../+tools/lsp/README.html">LSP layer</a>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-01-14 Thu 11:27</p>
+<p class="date">Created: 2021-02-28 Sun 21:26</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
