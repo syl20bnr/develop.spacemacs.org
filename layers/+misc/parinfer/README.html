@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-02-28 Sun 21:27 -->
+<!-- 2021-03-14 Sun 00:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Parinfer layer</title>
@@ -52,7 +52,7 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
@@ -265,7 +265,7 @@
 </div>
 </div>
 
-<div id="orgf95eb6c" class="figure">
+<div id="orgf2d5a56" class="figure">
 <p><img src="img/parinfer.png" alt="parinfer.png" />
 </p>
 </div>
@@ -284,6 +284,7 @@ controls indentation based on parentheses or vice versa.
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Automatic management of parenthesis in clojure, emacs lisp, common-lisp and scheme following the parinfer editing paradigm.</li>
+<li>Powered by a native library in the background</li>
 </ul>
 </div>
 </div>
@@ -304,8 +305,15 @@ file.
 <h2 id="configuration"><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
-See the official package <a href="https://github.com/DogLooksGood/parinfer-mode">documentation</a> for information about how the parinfer
-works and how to configure it.
+This package comes preconfigured to auto install the native library in your cache
+directory. It uses the new <code>smart-mode</code> instead of the <code>indent-mode</code> traditionally
+used with <code>parinfer</code>. For the autoinstallation <code>curl</code> is required to be in your
+path.
+</p>
+
+<p>
+If you still want to manually configure it please check the respective package
+repo <a href="https://github.com/justinbarclay/parinfer-rust-mode">here</a>.
 </p>
 </div>
 </div>
@@ -330,7 +338,7 @@ works and how to configure it.
 <tbody>
 <tr>
 <td class="org-left"><code>SPC t P</code></td>
-<td class="org-left">Toggle between parinfer indent and paren mode</td>
+<td class="org-left">Toggle between parinfer smart indent and paren mode</td>
 </tr>
 </tbody>
 </table>
@@ -339,7 +347,7 @@ works and how to configure it.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-02-28 Sun 21:27</p>
+<p class="date">Created: 2021-03-14 Sun 00:01</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
