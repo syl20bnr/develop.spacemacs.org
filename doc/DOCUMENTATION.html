@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-02-28 Sun 21:26 -->
+<!-- 2021-03-14 Sun 00:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spacemacs documentation</title>
@@ -52,7 +52,7 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
@@ -541,7 +541,11 @@
 <li><a href="#auto-indent-pasted-text">15.8.1.2. Auto-indent pasted text</a></li>
 </ul>
 </li>
-<li><a href="#text-manipulation-commands">15.8.2. Text manipulation commands</a></li>
+<li><a href="#text-manipulation-commands">15.8.2. Text manipulation commands</a>
+<ul>
+<li><a href="#drag-stuff-transient-state">15.8.2.1. Drag stuff transient state</a></li>
+</ul>
+</li>
 <li><a href="#text-insertion-commands">15.8.3. Text insertion commands</a></li>
 <li><a href="#smartparens-strict-mode">15.8.4. Smartparens Strict mode</a></li>
 <li><a href="#zooming">15.8.5. Zooming</a>
@@ -878,7 +882,7 @@ to install. To install all the <code>python</code> features the user has just to
 Configuration is organized in layers. Each layer has the following structure:
 </p>
 
-<pre class="example" id="org13f7ac9">
+<pre class="example" id="org73ab59d">
 [layer_name]
   |__ [local]
   | |__ [package 1]
@@ -1981,7 +1985,7 @@ Auto-highlight-symbol transient state:
 </p>
 
 
-<div id="org20e4505" class="figure">
+<div id="orgdc934a4" class="figure">
 <p><img src="img/spacemacs-scale-transient-state.png" alt="spacemacs-scale-transient-state.png" />
 </p>
 </div>
@@ -4249,7 +4253,7 @@ this variable <code>spacemacs-layouts-restrict-spc-tab</code> to <code>nil</code
 your used layer list with layer variables:
 </p>
 
-<pre class="example" id="org5e3ac93">
+<pre class="example" id="orge1c810d">
 (spacemacs-layouts :variables spacemacs-layouts-restrict-spc-tab t)
 </pre>
 </div>
@@ -4270,7 +4274,7 @@ take effect.
 Default value for this variable is:
 </p>
 
-<pre class="example" id="orgb739cc6">
+<pre class="example" id="org08ed558">
 '(spacemacs/window-split-double-columns
   spacemacs/window-split-triple-columns
   spacemacs/window-split-grid)
@@ -4281,7 +4285,7 @@ If you want to add the function <code>my-func</code> to this list you need to re
 the complete list using layer variables:
 </p>
 
-<pre class="example" id="org7dc084d">
+<pre class="example" id="org7b332e8">
 (spacemacs-layouts :variables
                    spacemacs-layouts-restricted-functions
                    '(spacemacs/window-split-double-columns
@@ -8462,7 +8466,7 @@ During the symbol highlight transient state, the following bindings are active:
 The minibuffer displays the following information during the transient state:
 </p>
 
-<pre class="example" id="orge978f77">
+<pre class="example" id="org1d61233">
 Buffer [6/11]*
 </pre>
 
@@ -8614,6 +8618,11 @@ Text related commands (start with <code>x</code>):
 </tr>
 </thead>
 <tbody>
+<tr>
+<td class="org-left"><code>SPC x .</code></td>
+<td class="org-left">enter the drag stuff transient state</td>
+</tr>
+
 <tr>
 <td class="org-left"><code>SPC x TAB</code></td>
 <td class="org-left">indent or dedent a region rigidly</td>
@@ -8826,12 +8835,12 @@ Text related commands (start with <code>x</code>):
 
 <tr>
 <td class="org-left"><code>SPC x J</code></td>
-<td class="org-left">move down a line of text (enter transient state)</td>
+<td class="org-left">drag down a line of text (enter drag stuff transient state)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC x K</code></td>
-<td class="org-left">move up a line of text (enter transient state)</td>
+<td class="org-left">drag up a line of text (enter drag stuff transient state)</td>
 </tr>
 
 <tr>
@@ -8930,6 +8939,57 @@ Text related commands (start with <code>x</code>):
 </tr>
 </tbody>
 </table>
+</div>
+
+<div id="outline-container-drag-stuff-transient-state" class="outline-5">
+<h5 id="drag-stuff-transient-state"><span class="section-number-5">15.8.2.1</span> Drag stuff transient state</h5>
+<div class="outline-text-5" id="text-drag-stuff-transient-state">
+<p>
+The drag stuff transient state is opened with <code>SPC x .</code>:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>k</code>, <code>K</code>, <code>Up</code></td>
+<td class="org-left">drag up</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>j</code>, <code>J</code>, <code>Down</code></td>
+<td class="org-left">drag down</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>h</code>, <code>H</code>, <code>Left</code></td>
+<td class="org-left">drag left (word or region)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>l</code>, <code>L</code>, <code>Right</code></td>
+<td class="org-left">drag right (word or region)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>q</code></td>
+<td class="org-left">quit transient state</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 
@@ -12161,7 +12221,7 @@ developers to elisp hackers!
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-02-28 Sun 21:26</p>
+<p class="date">Created: 2021-03-14 Sun 00:01</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
