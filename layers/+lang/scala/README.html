@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-16 Tue 22:31 -->
+<!-- 2021-03-21 Sun 01:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Scala layer</title>
@@ -320,7 +320,7 @@ add <code>scala</code> to the existing <code>dotspacemacs-configuration-layers</
 file.
 </p>
 <ul class="org-ul">
-<li>To turn off the Metals tree view side bar, set <code>scala-auto-treeview</code> to <code>nil</code>.</li>
+<li>To turn on the Metals tree view side bar, set <code>scala-auto-treeview</code> to <code>t</code>.</li>
 <li>To display SBT in a small buffer at the bottom of the frame, set the
 <code>scala-sbt-window-position</code> layer variable to <code>bottom</code>.</li>
 </ul>
@@ -356,6 +356,11 @@ where <code>0.9.8</code> can be replaced with the current version of <a href="ht
   -o /usr/local/bin/metals-emacs -f
 </pre>
 </div>
+
+<p>
+Notice that the layer by default overwrites Metals-scala tree view to nil.
+This to avoid issues with buffers when rendering VSCode like view, issue described <a href="https://github.com/syl20bnr/spacemacs/pull/14470">Here</a>.
+</p>
 
 <p>
 You will then have the common LSP key bindings; see
@@ -510,7 +515,7 @@ Additional major mode key bindings are populated by LSP and DAP.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-03-16 Tue 22:31</p>
+<p class="date">Created: 2021-03-21 Sun 01:00</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
