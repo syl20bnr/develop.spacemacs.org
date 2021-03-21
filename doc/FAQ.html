@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-16 Tue 22:31 -->
+<!-- 2021-03-21 Sun 01:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Frequently Asked Questions</title>
@@ -284,24 +284,25 @@
 <li><a href="#how-do-i">2. How do I</a>
 <ul>
 <li><a href="#install-a-package-not-provided-by-a-layer">2.1. Install a package not provided by a layer?</a></li>
-<li><a href="#disable-a-package-completely">2.2. Disable a package completely?</a></li>
-<li><a href="#disable-a-package-only-for-a-specific-major-mode">2.3. Disable a package only for a specific major-mode?</a></li>
-<li><a href="#disable-company-for-a-specific-major-mode">2.4. Disable company for a specific major-mode?</a></li>
-<li><a href="#change-special-buffer-rules">2.5. Change special buffer rules?</a></li>
-<li><a href="#enable-navigation-by-visual-lines">2.6. Enable navigation by visual lines?</a></li>
-<li><a href="#disable-evilification-of-a-mode">2.7. Disable evilification of a mode?</a></li>
-<li><a href="#include-underscores-and-dashes-in-word-motions">2.8. Include underscores and dashes in word motions?</a></li>
-<li><a href="#setup-path">2.9. Setup <code>$PATH</code>?</a></li>
-<li><a href="#change-or-define-an-alias-for-a-leader-key">2.10. Change or define an alias for a leader key?</a></li>
-<li><a href="#restore-the-sentence-delimiter-to-two-spaces">2.11. Restore the sentence delimiter to two spaces?</a></li>
-<li><a href="#prevent-the-visual-selection-overriding-my-system-clipboard">2.12. Prevent the visual selection overriding my system clipboard?</a></li>
-<li><a href="#make-spell-checking-support-curly-quotes-or-any-other-character">2.13. Make spell-checking support curly quotes (or any other character)?</a></li>
-<li><a href="#use-spacemacs-as-the-editor-for-git-commits">2.14. Use Spacemacs as the <code>$EDITOR</code> for git commits?</a></li>
-<li><a href="#try-spacemacs-without-modifying-my-existing-emacs-configuration">2.15. Try Spacemacs without modifying my existing Emacs configuration?</a></li>
-<li><a href="#make-copypaste-working-with-the-mouse-in-x11-terminals">2.16. Make copy/paste working with the mouse in X11 terminals?</a></li>
-<li><a href="#use-helm-ag-to-search-only-in-files-of-a-certain-type">2.17. Use <code>helm-ag</code> to search only in files of a certain type?</a></li>
-<li><a href="#modify-spacemacs-documentation-look-space-doc-mode">2.18. Modify spacemacs documentation look (space-doc-mode)</a></li>
-<li><a href="#remap-paste-key-to-be-able-to-paste-copied-text-multiple-times">2.19. Remap paste key to be able to paste copied text multiple times</a></li>
+<li><a href="#how-to-override-a-layer-package">2.2. How to override a layer package?</a></li>
+<li><a href="#disable-a-package-completely">2.3. Disable a package completely?</a></li>
+<li><a href="#disable-a-package-only-for-a-specific-major-mode">2.4. Disable a package only for a specific major-mode?</a></li>
+<li><a href="#disable-company-for-a-specific-major-mode">2.5. Disable company for a specific major-mode?</a></li>
+<li><a href="#change-special-buffer-rules">2.6. Change special buffer rules?</a></li>
+<li><a href="#enable-navigation-by-visual-lines">2.7. Enable navigation by visual lines?</a></li>
+<li><a href="#disable-evilification-of-a-mode">2.8. Disable evilification of a mode?</a></li>
+<li><a href="#include-underscores-and-dashes-in-word-motions">2.9. Include underscores and dashes in word motions?</a></li>
+<li><a href="#setup-path">2.10. Setup <code>$PATH</code>?</a></li>
+<li><a href="#change-or-define-an-alias-for-a-leader-key">2.11. Change or define an alias for a leader key?</a></li>
+<li><a href="#restore-the-sentence-delimiter-to-two-spaces">2.12. Restore the sentence delimiter to two spaces?</a></li>
+<li><a href="#prevent-the-visual-selection-overriding-my-system-clipboard">2.13. Prevent the visual selection overriding my system clipboard?</a></li>
+<li><a href="#make-spell-checking-support-curly-quotes-or-any-other-character">2.14. Make spell-checking support curly quotes (or any other character)?</a></li>
+<li><a href="#use-spacemacs-as-the-editor-for-git-commits">2.15. Use Spacemacs as the <code>$EDITOR</code> for git commits?</a></li>
+<li><a href="#try-spacemacs-without-modifying-my-existing-emacs-configuration">2.16. Try Spacemacs without modifying my existing Emacs configuration?</a></li>
+<li><a href="#make-copypaste-working-with-the-mouse-in-x11-terminals">2.17. Make copy/paste working with the mouse in X11 terminals?</a></li>
+<li><a href="#use-helm-ag-to-search-only-in-files-of-a-certain-type">2.18. Use <code>helm-ag</code> to search only in files of a certain type?</a></li>
+<li><a href="#modify-spacemacs-documentation-look-space-doc-mode">2.19. Modify spacemacs documentation look (space-doc-mode)</a></li>
+<li><a href="#remap-paste-key-to-be-able-to-paste-copied-text-multiple-times">2.20. Remap paste key to be able to paste copied text multiple times</a></li>
 </ul>
 </li>
 <li><a href="#windows">3. Windows</a>
@@ -749,8 +750,42 @@ to the list and it will be installed when you reload your configuration with
 </div>
 </div>
 
+<div id="outline-container-how-to-override-a-layer-package" class="outline-3">
+<h3 id="how-to-override-a-layer-package"><span class="section-number-3">2.2</span> How to override a layer package?</h3>
+<div class="outline-text-3" id="text-how-to-override-a-layer-package">
+<p>
+To replace a package that is installed and configured by a layer, without
+losing the layer's configuration for that package, add the package to your
+<code>dotspacemacs-additional-packages</code> with the <code>:location</code> keyword set to the
+value <code>local</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>package-name <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+The package should reside at <code>&lt;layer&gt;/local/&lt;package&gt;/</code> (this could be a
+symbolic link to the real package (repo) directory). The package will still
+get configured (but not loaded) by the layer. To load the package, require it
+from your <code>dotspacemacs/user-config</code>: <code>(require 'package-name)</code>. In this way
+you can easily switch between the custom version and the version configured by
+the layer by commenting in/out the line in <code>dotspacemacs-additional-packages</code>
+(to restore deferred loading also comment out the <code>require</code> form in
+<code>dotspacemacs/user-config</code>).
+</p>
+
+<p>
+You could also fully replace (i.e. overwrite) the layer version of the package
+by using a Quelpa recipe with the pseudo-fetcher <code>local</code> as described <a href="https://develop.spacemacs.org/doc/LAYERS.html#packagesel">here</a> and
+<a href="https://github.com/quelpa/quelpa#file">here</a>.
+</p>
+</div>
+</div>
+
 <div id="outline-container-disable-a-package-completely" class="outline-3">
-<h3 id="disable-a-package-completely"><span class="section-number-3">2.2</span> Disable a package completely?</h3>
+<h3 id="disable-a-package-completely"><span class="section-number-3">2.3</span> Disable a package completely?</h3>
 <div class="outline-text-3" id="text-disable-a-package-completely">
 <p>
 To completely disable a package and effectively uninstalling it even if it is
@@ -766,7 +801,7 @@ in your dotfile and add the package name to it:
 </div>
 
 <div id="outline-container-disable-a-package-only-for-a-specific-major-mode" class="outline-3">
-<h3 id="disable-a-package-only-for-a-specific-major-mode"><span class="section-number-3">2.3</span> Disable a package only for a specific major-mode?</h3>
+<h3 id="disable-a-package-only-for-a-specific-major-mode"><span class="section-number-3">2.4</span> Disable a package only for a specific major-mode?</h3>
 <div class="outline-text-3" id="text-disable-a-package-only-for-a-specific-major-mode">
 <p>
 This is done by removing the hook added by Spacemacs. For example to remove
@@ -787,7 +822,7 @@ v major-mode RET</code>
 </div>
 
 <div id="outline-container-disable-company-for-a-specific-major-mode" class="outline-3">
-<h3 id="disable-company-for-a-specific-major-mode"><span class="section-number-3">2.4</span> Disable company for a specific major-mode?</h3>
+<h3 id="disable-company-for-a-specific-major-mode"><span class="section-number-3">2.5</span> Disable company for a specific major-mode?</h3>
 <div class="outline-text-3" id="text-disable-company-for-a-specific-major-mode">
 <p>
 It may be handy to disable <code>company</code> for a given mode if you plan on configuring
@@ -804,7 +839,7 @@ dotfile. The following snippet disables company for <code>python-mode</code>:
 </div>
 
 <div id="outline-container-change-special-buffer-rules" class="outline-3">
-<h3 id="change-special-buffer-rules"><span class="section-number-3">2.5</span> Change special buffer rules?</h3>
+<h3 id="change-special-buffer-rules"><span class="section-number-3">2.6</span> Change special buffer rules?</h3>
 <div class="outline-text-3" id="text-change-special-buffer-rules">
 <p>
 To change the way spacemacs marks buffers as useless, you can customize
@@ -829,7 +864,7 @@ Examples:
 </div>
 
 <div id="outline-container-enable-navigation-by-visual-lines" class="outline-3">
-<h3 id="enable-navigation-by-visual-lines"><span class="section-number-3">2.6</span> Enable navigation by visual lines?</h3>
+<h3 id="enable-navigation-by-visual-lines"><span class="section-number-3">2.7</span> Enable navigation by visual lines?</h3>
 <div class="outline-text-3" id="text-enable-navigation-by-visual-lines">
 <p>
 Add the following snippet to your <code>dotspacemacs/user-config</code> function:
@@ -843,7 +878,7 @@ Add the following snippet to your <code>dotspacemacs/user-config</code> function
 </div>
 
 <div id="outline-container-disable-evilification-of-a-mode" class="outline-3">
-<h3 id="disable-evilification-of-a-mode"><span class="section-number-3">2.7</span> Disable evilification of a mode?</h3>
+<h3 id="disable-evilification-of-a-mode"><span class="section-number-3">2.8</span> Disable evilification of a mode?</h3>
 <div class="outline-text-3" id="text-disable-evilification-of-a-mode">
 <p>
 You can ensure a mode opens in emacs state by using <code>evil-set-initial-state</code>.
@@ -880,7 +915,7 @@ binding in the mode's map, e.g. for <code>magit-status-mode</code>,
 </div>
 
 <div id="outline-container-include-underscores-and-dashes-in-word-motions" class="outline-3">
-<h3 id="include-underscores-and-dashes-in-word-motions"><span class="section-number-3">2.8</span> Include underscores and dashes in word motions?</h3>
+<h3 id="include-underscores-and-dashes-in-word-motions"><span class="section-number-3">2.9</span> Include underscores and dashes in word motions?</h3>
 <div class="outline-text-3" id="text-include-underscores-and-dashes-in-word-motions">
 <p>
 If you want <code>*</code> and <code>#</code> searches to include underscores and dashes as a
@@ -914,7 +949,7 @@ For more details, see the <a href="https://evil.readthedocs.io/en/latest/faq.htm
 </div>
 
 <div id="outline-container-setup-path" class="outline-3">
-<h3 id="setup-path"><span class="section-number-3">2.9</span> Setup <code>$PATH</code>?</h3>
+<h3 id="setup-path"><span class="section-number-3">2.10</span> Setup <code>$PATH</code>?</h3>
 <div class="outline-text-3" id="text-setup-path">
 <p>
 Some layers require certain tools to be available on your <code>$PATH</code>. This means
@@ -986,7 +1021,7 @@ In that case you have the option of updating the value of <code>exec-path</code>
 </div>
 
 <div id="outline-container-change-or-define-an-alias-for-a-leader-key" class="outline-3">
-<h3 id="change-or-define-an-alias-for-a-leader-key"><span class="section-number-3">2.10</span> Change or define an alias for a leader key?</h3>
+<h3 id="change-or-define-an-alias-for-a-leader-key"><span class="section-number-3">2.11</span> Change or define an alias for a leader key?</h3>
 <div class="outline-text-3" id="text-change-or-define-an-alias-for-a-leader-key">
 <p>
 It is possible to change a leader key by binding its keymap to another sequence.
@@ -1020,7 +1055,7 @@ management), you can use this:
 </div>
 
 <div id="outline-container-restore-the-sentence-delimiter-to-two-spaces" class="outline-3">
-<h3 id="restore-the-sentence-delimiter-to-two-spaces"><span class="section-number-3">2.11</span> Restore the sentence delimiter to two spaces?</h3>
+<h3 id="restore-the-sentence-delimiter-to-two-spaces"><span class="section-number-3">2.12</span> Restore the sentence delimiter to two spaces?</h3>
 <div class="outline-text-3" id="text-restore-the-sentence-delimiter-to-two-spaces">
 <p>
 To restore the sentence delimiter to two spaces, add the following code to the
@@ -1035,7 +1070,7 @@ To restore the sentence delimiter to two spaces, add the following code to the
 </div>
 
 <div id="outline-container-prevent-the-visual-selection-overriding-my-system-clipboard" class="outline-3">
-<h3 id="prevent-the-visual-selection-overriding-my-system-clipboard"><span class="section-number-3">2.12</span> Prevent the visual selection overriding my system clipboard?</h3>
+<h3 id="prevent-the-visual-selection-overriding-my-system-clipboard"><span class="section-number-3">2.13</span> Prevent the visual selection overriding my system clipboard?</h3>
 <div class="outline-text-3" id="text-prevent-the-visual-selection-overriding-my-system-clipboard">
 <p>
 On some operating systems, there is only one clipboard for both <b>copied</b> and
@@ -1054,7 +1089,7 @@ adding the following code to the <code>dotspacemacs/user-config</code> of your
 </div>
 
 <div id="outline-container-make-spell-checking-support-curly-quotes-or-any-other-character" class="outline-3">
-<h3 id="make-spell-checking-support-curly-quotes-or-any-other-character"><span class="section-number-3">2.13</span> Make spell-checking support curly quotes (or any other character)?</h3>
+<h3 id="make-spell-checking-support-curly-quotes-or-any-other-character"><span class="section-number-3">2.14</span> Make spell-checking support curly quotes (or any other character)?</h3>
 <div class="outline-text-3" id="text-make-spell-checking-support-curly-quotes-or-any-other-character">
 <p>
 To have spell-checking support curly quotes (or any other character), you need
@@ -1082,7 +1117,7 @@ to use the dictionary supporting your newly added characters.
 </div>
 
 <div id="outline-container-use-spacemacs-as-the-editor-for-git-commits" class="outline-3">
-<h3 id="use-spacemacs-as-the-editor-for-git-commits"><span class="section-number-3">2.14</span> Use Spacemacs as the <code>$EDITOR</code> for git commits?</h3>
+<h3 id="use-spacemacs-as-the-editor-for-git-commits"><span class="section-number-3">2.15</span> Use Spacemacs as the <code>$EDITOR</code> for git commits?</h3>
 <div class="outline-text-3" id="text-use-spacemacs-as-the-editor-for-git-commits">
 <p>
 Spacemacs can be used as the <code>$EDITOR</code> (or <code>$GIT_EDITOR</code>) for editing git
@@ -1098,7 +1133,7 @@ commits messages. To enable this you have to add the following line to your
 </div>
 
 <div id="outline-container-try-spacemacs-without-modifying-my-existing-emacs-configuration" class="outline-3">
-<h3 id="try-spacemacs-without-modifying-my-existing-emacs-configuration"><span class="section-number-3">2.15</span> Try Spacemacs without modifying my existing Emacs configuration?</h3>
+<h3 id="try-spacemacs-without-modifying-my-existing-emacs-configuration"><span class="section-number-3">2.16</span> Try Spacemacs without modifying my existing Emacs configuration?</h3>
 <div class="outline-text-3" id="text-try-spacemacs-without-modifying-my-existing-emacs-configuration">
 <p>
 Emacs's ability to use any directory as the home for launching it allows us to
@@ -1122,7 +1157,7 @@ If you're on Fish shell, you will need to modify the last command to:
 </div>
 
 <div id="outline-container-make-copypaste-working-with-the-mouse-in-x11-terminals" class="outline-3">
-<h3 id="make-copypaste-working-with-the-mouse-in-x11-terminals"><span class="section-number-3">2.16</span> Make copy/paste working with the mouse in X11 terminals?</h3>
+<h3 id="make-copypaste-working-with-the-mouse-in-x11-terminals"><span class="section-number-3">2.17</span> Make copy/paste working with the mouse in X11 terminals?</h3>
 <div class="outline-text-3" id="text-make-copypaste-working-with-the-mouse-in-x11-terminals">
 <p>
 It is possible to disable the mouse support in X11 terminals in order to
@@ -1138,7 +1173,7 @@ enable copying/pasting with the mouse. You need to add this line to your
 </div>
 
 <div id="outline-container-use-helm-ag-to-search-only-in-files-of-a-certain-type" class="outline-3">
-<h3 id="use-helm-ag-to-search-only-in-files-of-a-certain-type"><span class="section-number-3">2.17</span> Use <code>helm-ag</code> to search only in files of a certain type?</h3>
+<h3 id="use-helm-ag-to-search-only-in-files-of-a-certain-type"><span class="section-number-3">2.18</span> Use <code>helm-ag</code> to search only in files of a certain type?</h3>
 <div class="outline-text-3" id="text-use-helm-ag-to-search-only-in-files-of-a-certain-type">
 <p>
 It is possible to restrict the scope of <code>helm-ag</code> to search only expressions in
@@ -1167,7 +1202,7 @@ arguments of the <code>ag</code> program.
 </div>
 
 <div id="outline-container-modify-spacemacs-documentation-look-space-doc-mode" class="outline-3">
-<h3 id="modify-spacemacs-documentation-look-space-doc-mode"><span class="section-number-3">2.18</span> Modify spacemacs documentation look (space-doc-mode)</h3>
+<h3 id="modify-spacemacs-documentation-look-space-doc-mode"><span class="section-number-3">2.19</span> Modify spacemacs documentation look (space-doc-mode)</h3>
 <div class="outline-text-3" id="text-modify-spacemacs-documentation-look-space-doc-mode">
 <p>
 You can modify the list of visual enhancements applied by the <code>space-doc-mode</code>:
@@ -1197,7 +1232,7 @@ with "Easy Customization Interface".
 </div>
 
 <div id="outline-container-remap-paste-key-to-be-able-to-paste-copied-text-multiple-times" class="outline-3">
-<h3 id="remap-paste-key-to-be-able-to-paste-copied-text-multiple-times"><span class="section-number-3">2.19</span> Remap paste key to be able to paste copied text multiple times</h3>
+<h3 id="remap-paste-key-to-be-able-to-paste-copied-text-multiple-times"><span class="section-number-3">2.20</span> Remap paste key to be able to paste copied text multiple times</h3>
 <div class="outline-text-3" id="text-remap-paste-key-to-be-able-to-paste-copied-text-multiple-times">
 <p>
 In vim and evil, pasting over a text would cause it to be copied, hence making it impossible to paste
@@ -1279,7 +1314,7 @@ You can follow <a href="http://mschulte.nl/posts/using-powerline-in-PuTTY.html">
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-03-16 Tue 22:31</p>
+<p class="date">Created: 2021-03-21 Sun 01:00</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
