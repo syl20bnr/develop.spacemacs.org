@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-26 Fri 23:02 -->
+<!-- 2021-04-09 Fri 11:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>DAP layer</title>
@@ -348,8 +348,8 @@ For instance the <code>java</code> layer:
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">java/pre-init-dap-mode</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">pcase</span> <span class="org-rainbow-delimiters-depth-3">(</span>spacemacs//java-backend<span class="org-rainbow-delimiters-depth-3">)</span>
-     <span class="org-rainbow-delimiters-depth-3">(</span>`lsp <span class="org-rainbow-delimiters-depth-4">(</span>add-to-list 'spacemacs--dap-supported-modes 'java-mode<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-3">(</span>eq java-backend 'lsp<span class="org-rainbow-delimiters-depth-3">)</span>
+     <span class="org-rainbow-delimiters-depth-3">(</span>add-to-list 'spacemacs--dap-supported-modes 'java-mode<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>add-hook 'java-mode-local-vars-hook #'spacemacs//java-setup-dap<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -788,7 +788,7 @@ transient state which can be initiate with <code>SPC m d .</code>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-03-26 Fri 23:02</p>
+<p class="date">Created: 2021-04-09 Fri 11:57</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

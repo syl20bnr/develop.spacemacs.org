@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-26 Fri 23:02 -->
+<!-- 2021-04-09 Fri 11:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Org layer</title>
@@ -279,7 +279,11 @@
 <li><a href="#different-bullets">4.11. Different bullets</a></li>
 <li><a href="#project-support">4.12. Project support</a></li>
 <li><a href="#org-brain-support">4.13. Org-brain support</a></li>
-<li><a href="#org-roam-support">4.14. Org-roam support</a></li>
+<li><a href="#org-roam-support">4.14. Org-roam support</a>
+<ul>
+<li><a href="#org-roam-server-support">4.14.1. Org-roam-server support</a></li>
+</ul>
+</li>
 <li><a href="#mode-line-support">4.15. Mode line support</a></li>
 <li><a href="#sticky-header-support">4.16. Sticky header support</a></li>
 <li><a href="#epub-support">4.17. Epub support</a></li>
@@ -341,7 +345,7 @@
 </div>
 </div>
 
-<div id="orgfdaaa72" class="figure">
+<div id="orgd2bcb65" class="figure">
 <p><img src="img/org.png" alt="org.png" />
 </p>
 </div>
@@ -557,7 +561,7 @@ as it described in the <a href="https://gitlab.com/oer/org-re-reveal#set-the-loc
 Alternatively, add the following line to each <code>.org</code> file you want to process:
 </p>
 
-<pre class="example" id="org1f8b966">
+<pre class="example" id="org32884b7">
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@3.8.0
 </pre>
 </div>
@@ -686,7 +690,7 @@ alter <code>org-journal-date-prefix</code> and <code>org-journal-date-format</co
 For example, to have new journal files created with this header:
 </p>
 
-<pre class="example" id="orgc88578d">
+<pre class="example" id="org4325f09">
 #+TITLE: Tuesday, September 06 2016
 </pre></li>
 
@@ -858,6 +862,16 @@ To install org-roam support set the variable <code>org-enable-roam-support</code
 <p>
 More information about org-roam package (including manual) can be found at <a href="https://www.orgroam.com/">Org-roam</a> website.
 </p>
+</div>
+
+<div id="outline-container-org-roam-server-support" class="outline-4">
+<h4 id="org-roam-server-support"><span class="section-number-4">4.14.1</span> Org-roam-server support</h4>
+<div class="outline-text-4" id="text-org-roam-server-support">
+<p>
+To install support for <a href="https://github.com/org-roam/org-roam-server">org-roam-server</a> set the variable <code>org-enable-roam-server</code>
+to <code>t</code>.
+</p>
+</div>
 </div>
 </div>
 
@@ -3601,68 +3615,73 @@ Key binding prefixes:
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>[prefix] r l</code></td>
+<td class="org-left"><code>SPC m r l</code></td>
 <td class="org-left">Toggle org-roam links visibility</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>[prefix] r f</code></td>
+<td class="org-left"><code>SPC m r f</code></td>
 <td class="org-left">Find file in org-roam</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>[prefix] r i</code></td>
+<td class="org-left"><code>SPC m r i</code></td>
 <td class="org-left">Insert file into org-roam</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>[prefix] r I</code></td>
+<td class="org-left"><code>SPC m r I</code></td>
 <td class="org-left">Immediately insert file into org-roam</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>[prefix] r g</code></td>
+<td class="org-left"><code>SPC m r g</code></td>
 <td class="org-left">Visualize org-roam graph</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>[prefix] r b</code></td>
+<td class="org-left"><code>SPC m r b</code></td>
 <td class="org-left">Switch org-roam buffer</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>[prefix] r d y</code></td>
+<td class="org-left"><code>SPC m r d y</code></td>
 <td class="org-left">Open yesterday's daily note</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>[prefix] r d t</code></td>
+<td class="org-left"><code>SPC m r d t</code></td>
 <td class="org-left">Open today's daily note</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>[prefix] r d T</code></td>
+<td class="org-left"><code>SPC m r d T</code></td>
 <td class="org-left">Open tomorrow's daily note</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>[prefix] r d d</code></td>
+<td class="org-left"><code>SPC m r d d</code></td>
 <td class="org-left">Open daily note via calendar view</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>[prefix] r t a</code></td>
-<td class="org-left">add org-roam tag to file</td>
+<td class="org-left"><code>SPC m r t a</code></td>
+<td class="org-left">Add org-roam tag to file</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>[prefix] r t d</code></td>
-<td class="org-left">delete org-roam tag from file</td>
+<td class="org-left"><code>SPC m r t d</code></td>
+<td class="org-left">Delete org-roam tag from file</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>[prefix] r a</code></td>
-<td class="org-left">add org-roam alias to file</td>
+<td class="org-left"><code>SPC m r a</code></td>
+<td class="org-left">Add org-roam alias to file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r s</code></td>
+<td class="org-left">Start org-roam server mode</td>
 </tr>
 </tbody>
 </table>
@@ -3672,7 +3691,7 @@ Key binding prefixes:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-03-26 Fri 23:02</p>
+<p class="date">Created: 2021-04-09 Fri 11:57</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
