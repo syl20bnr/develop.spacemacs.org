@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-04-09 Fri 11:56 -->
+<!-- 2021-04-09 Fri 11:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Agda layer</title>
+<title>Pocket layer</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="root" />
 <style type="text/css">
@@ -248,7 +248,7 @@
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Agda layer</h1>
+<h1 class="title">Pocket layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -258,22 +258,28 @@
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a>
+<li><a href="#install">2. Install</a></li>
+<li><a href="#authentication">3. Authentication</a></li>
+<li><a href="#key-bindings">4. Key bindings</a>
 <ul>
-<li><a href="#layer">2.1. Layer</a></li>
-<li><a href="#agda">2.2. Agda</a></li>
+<li><a href="#bindings-in-pocket-reader-buffer">4.1. Bindings in pocket-reader buffer</a></li>
 </ul>
 </li>
-<li><a href="#key-bindings">3. Key bindings</a></li>
 </ul>
 </div>
+</div>
+
+<div id="orga04b08e" class="figure">
+<p><img src="img/pocket.png" alt="pocket.png" />
+</p>
 </div>
 
 <div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds support for the <a href="http://wiki.portal.chalmers.se/agda/pmwiki.php">Agda</a> programming language.
+This layer adds <a href="https://getpocket.com/">Pocket</a> support to Spacemacs via the package
+<a href="https://github.com/alphapapa/pocket-reader.el">pocket-reader</a>.
 </p>
 </div>
 
@@ -281,13 +287,12 @@ This layer adds support for the <a href="http://wiki.portal.chalmers.se/agda/pmw
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Faces redefined to correctly play with themes.</li>
-<li>Spacemacs bindings to Agda's interactive tools.</li>
+<li>Manage reading list: add, remove, delete, tag, view, favorite, etc.</li>
+<li>Open links in Emacs or external browser</li>
+<li>Sort views by date, title, domain, tags, favorite, etc.</li>
+<li>Search items by keywords, tags, favorite status, unread/archived
+status, etc.</li>
 </ul>
-
-<p>
-<b>This layer is in construction, it needs your contributions and bug reports.</b>
-</p>
 </div>
 </div>
 </div>
@@ -295,68 +300,36 @@ This layer adds support for the <a href="http://wiki.portal.chalmers.se/agda/pmw
 <div id="outline-container-install" class="outline-2">
 <h2 id="install"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
-</div>
-
-<div id="outline-container-layer" class="outline-3">
-<h3 id="layer"><span class="section-number-3">2.1</span> Layer</h3>
-<div class="outline-text-3" id="text-layer">
 <p>
-To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>agda</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
-file.
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You
+will need to add <code>pocket</code> to the existing
+<code>dotspacemacs-configuration-layers</code> list in this file.
 </p>
 </div>
 </div>
 
-<div id="outline-container-agda" class="outline-3">
-<h3 id="agda"><span class="section-number-3">2.2</span> Agda</h3>
-<div class="outline-text-3" id="text-agda">
+<div id="outline-container-authentication" class="outline-2">
+<h2 id="authentication"><span class="section-number-2">3</span> Authentication</h2>
+<div class="outline-text-2" id="text-authentication">
 <p>
-Quick instructions to install Agda assuming you have cabal installed:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-sh">cabal install alex happy <span class="org-string">"cpphs &lt; 1.19"</span> agda
-</pre>
-</div>
-
-<p>
-Then check that <code>agda</code> is available on your <code>$PATH</code> and seen by Emacs. For
-information about setting up <code>$PATH</code>, check out the corresponding section in the
-FAQ (<code>SPC h SPC $PATH RET</code>).
+Just run the <code>pocket-reader</code> command. A URL will be copied to the
+clipboard/kill ring. Open the URL in a web browser and follow the
+instructions to log into your Pocket account.
 </p>
 
 <p>
-By default the <code>agda-mode</code> executable bundled with most agda installations is
-used to locate the agda-mode package. If you don't have it and want to use a
-local agda-mode package, you can customize the layer variable <code>agda-mode-path</code>
-to your needs. Set it to <code>nil</code> if <code>agda2.el</code> is already discoverable in Emacs'
-load path, otherwise set it to the path at which <code>agda2.el</code> can be found. For
-example,
+Note: Please ignore any <code>Page Not Found</code> error you might see on the
+Pocket Web site after authorizing. Just run the <code>pocket-reader</code>
+command after authorizing, and it should work. You can verify that
+authorization completed by checking the file
+<code>~/.cache/emacs-pocket-lib-token.json</code>.
 </p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>agda <span class="org-builtin">:variables</span> agda-mode-path <span class="org-string">"/some/path/to/agda2.el"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
 </div>
 </div>
 
 <div id="outline-container-key-bindings" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
+<h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
-<p>
-The key bindings of this layer don't follow the Spacemacs conventions,
-we opted to a simple transcription of stock Agda mode key bindings to
-Spacemacs leader key.
-</p>
-
-<p>
-All Agda specific bindings are prefixed with the major-mode leader
-<code>SPC m</code>.
-</p>
-
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -373,127 +346,159 @@ All Agda specific bindings are prefixed with the major-mode leader
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m =</code></td>
-<td class="org-left">Show constraints.</td>
+<td class="org-left"><code>SPC a w p</code></td>
+<td class="org-left">Open pocket-reader buffer</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-bindings-in-pocket-reader-buffer" class="outline-3">
+<h3 id="bindings-in-pocket-reader-buffer"><span class="section-number-3">4.1</span> Bindings in pocket-reader buffer</h3>
+<div class="outline-text-3" id="text-bindings-in-pocket-reader-buffer">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>RET</code></td>
+<td class="org-left">Open with default browse function</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m ?</code></td>
-<td class="org-left">Show all goals.</td>
+<td class="org-left"><code>TAB</code></td>
+<td class="org-left">Open with default pop-to function</td>
 </tr>
 
 <tr>
-<td class="org-left">~SPC m ​,​~</td>
-<td class="org-left">Shows the type of the goal at point and the currect context.</td>
+<td class="org-left"><code>b</code></td>
+<td class="org-left">Open with external browser function</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m .</code></td>
-<td class="org-left">Shows the context, the goal and the given expression's inferred type.</td>
+<td class="org-left"><code>a</code></td>
+<td class="org-left">Toggle archived/unread status</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m a</code></td>
-<td class="org-left">Simple proof search.</td>
+<td class="org-left"><code>c</code></td>
+<td class="org-left">Copy URL to the kill ring</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m b</code></td>
-<td class="org-left">Go to the previous goal, if any and activate goal-navigation transient-state.</td>
+<td class="org-left"><code>d</code></td>
+<td class="org-left">Show default view</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m c</code></td>
-<td class="org-left">Refine the pattern variables given in the goal.</td>
+<td class="org-left"><code>D</code></td>
+<td class="org-left">Delete item</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m d</code></td>
-<td class="org-left">Infers the type of the given expression.</td>
+<td class="org-left"><code>e</code></td>
+<td class="org-left">Show excerpt</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m e</code></td>
-<td class="org-left">Show the context of the goal at point.</td>
+<td class="org-left"><code>E</code></td>
+<td class="org-left">Show excerpt for all items</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m f</code></td>
-<td class="org-left">Go to the next goal, if any and activate goal-navigation transient-state.</td>
+<td class="org-left"><code>*</code>, <code>f</code></td>
+<td class="org-left">Toggle favorite status</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m h</code></td>
-<td class="org-left">Compute the type of a hypothetical helper function.</td>
+<td class="org-left"><code>F</code></td>
+<td class="org-left">Show unread, favorite items</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m l</code></td>
-<td class="org-left">Load current buffer.</td>
+<td class="org-left"><code>gr</code></td>
+<td class="org-left">Re-sort list</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m n</code></td>
-<td class="org-left">Computes the normal form of the given expression, using the scope of the current goal or, if point is not in a goal, the top-level scope.</td>
+<td class="org-left"><code>gR</code></td>
+<td class="org-left">Refresh list using last query (or default query)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m p</code></td>
-<td class="org-left">Shows all the top-level names in the given module.</td>
+<td class="org-left"><code>s</code></td>
+<td class="org-left">Search for items (or display default view if no query is entered)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r</code></td>
-<td class="org-left">Refine the goal at point.</td>
+<td class="org-left"><code>m</code></td>
+<td class="org-left">Toggle mark of current item</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m s</code></td>
-<td class="org-left">Solves all goals that are already instantiated internally.</td>
+<td class="org-left"><code>M</code></td>
+<td class="org-left">Mark all items</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m t</code></td>
-<td class="org-left">Show the type of the goal at point.</td>
+<td class="org-left"><code>U</code></td>
+<td class="org-left">Unmark all items</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m x c</code></td>
-<td class="org-left">Compile current module.</td>
+<td class="org-left"><code>o</code></td>
+<td class="org-left">Show more items (using the current count limit)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m x d</code></td>
-<td class="org-left">Removes buffer annotations (overlays and text properties).</td>
+<td class="org-left"><code>l</code></td>
+<td class="org-left">Limit current view to items matching string</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m x h</code></td>
-<td class="org-left">Toggle display of implicit arguments.</td>
+<td class="org-left"><code>R</code></td>
+<td class="org-left">Open random item from current items</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m x q</code></td>
-<td class="org-left">Quit and clean up after agda2.</td>
+<td class="org-left"><code>ta</code></td>
+<td class="org-left">Add tags</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m x r</code></td>
-<td class="org-left">Kill and restart the <b>agda2</b> buffer and load <code>agda2-toplevel-module</code>.</td>
+<td class="org-left"><code>tr</code></td>
+<td class="org-left">Remove tags</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m w</code></td>
-<td class="org-left">Explains why a given name is in scope.</td>
+<td class="org-left"><code>tt</code></td>
+<td class="org-left">Set tags</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ts</code></td>
+<td class="org-left">Search for a tag</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
+</div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-04-09 Fri 11:56</p>
+<p class="date">Created: 2021-04-09 Fri 11:57</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

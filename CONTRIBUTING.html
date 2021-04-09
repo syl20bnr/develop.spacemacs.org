@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-26 Fri 23:02 -->
+<!-- 2021-04-09 Fri 11:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Contribution guidelines</title>
@@ -307,7 +307,8 @@ contributors to follow.
 </p>
 
 <p>
-You can only consider reading the sections relevant to what you are going to do or just watch this video <a href="https://www.youtube.com/watch?v=OMS-3Jl05mE&amp;feature=youtu.be&amp;list=PLpr9V-R8ZxiCHMl2_dn1Fovcd34Oz45sua">here</a>:
+You can only consider reading the sections relevant to what you are going to do
+or just watch this video <a href="https://www.youtube.com/watch?v=OMS-3Jl05mE&amp;feature=youtu.be&amp;list=PLpr9V-R8ZxiCHMl2_dn1Fovcd34Oz45sua">here</a>:
 </p>
 <ul class="org-ul">
 <li><a href="#asking-for-help">Asking for help</a> if you are about to open an issue to ask a question.</li>
@@ -377,8 +378,8 @@ step guide.</li>
 <h2 id="contributing-code"><span class="section-number-2">3</span> Contributing code</h2>
 <div class="outline-text-2" id="text-contributing-code">
 <p>
-Code contributions are welcome. Please read the following sections carefully. In
-any case, feel free to join us on the <a href="https://gitter.im/syl20bnr/spacemacs">gitter chat</a> to ask questions about
+Code contributions are welcome. Please read the following sections carefully.
+In any case, feel free to join us on the <a href="https://gitter.im/syl20bnr/spacemacs">gitter chat</a> to ask questions about
 contributing!
 </p>
 </div>
@@ -459,7 +460,8 @@ You may want to <a href="https://github.com/syl20bnr/spacemacs/wiki/Beginner%27s
 <li>One commit per PR</li>
 <li>If you have several commits on different topics, close the PR and
 create one PR per topic</li>
-<li>If you still have several commits, squash them into only one commit (<a href="https://github.com/syl20bnr/spacemacs/pull/13381#pullrequestreview-380313280">here's a guide</a>)</li>
+<li>If you still have several commits, squash them into only one commit
+(<a href="https://github.com/syl20bnr/spacemacs/pull/13381#pullrequestreview-380313280">here's a guide</a>)</li>
 <li>Rebase your PR branch on top of upstream <code>develop</code> before submitting
 the PR</li>
 </ul>
@@ -505,7 +507,7 @@ characters.</li>
 This is a model commit message:
 </p>
 
-<pre class="example" id="orgb1466df">
+<pre class="example" id="orgd211598">
 Capitalized, short (72 chars or less) summary
 
 More detailed explanatory text, if necessary.  Wrap it to about 72
@@ -570,26 +572,39 @@ variable <code>dotspacemacs-additional-packages</code>.
 The file header for <code>elisp</code> files should look like the following template:
 </p>
 
-<pre class="example" id="orgd20df8f">
-;;; FILENAME --- NAME Layer packages File for Spacemacs
+<pre class="example" id="org9c8e596">
+
+;;; FILENAME --- NAME Layer &lt;TYPE&gt; File for Spacemacs
 ;;
-;; Copyright (c) 2012-2021 Sylvain Benner &amp; Contributors
+;; Copyright (c) 2012-&lt;YEAR&gt; Sylvain Benner &amp; Contributors
 ;;
 ;; Author: YOUR_NAME &lt;YOUR_EMAIL&gt;
 ;; URL: https://github.com/syl20bnr/spacemacs
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
-;;; License: GPLv3
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
 </pre>
 
 <p>
-You should replace <code>FILENAME</code> by the name of the file (e.g. <code>packages.el</code>)
-and <code>NAME</code> by the name of the layer you are creating, don't forget to replace
-<code>YOUR_NAME</code> and <code>YOUR_EMAIL</code> also. Some files already have a template inside
-<code>core/templates/</code>, so look in there first.
-Note that if you use <code>configuration-layer/create-layer</code>, spacemacs will prepare
-files and headers for you, and for free :smile: !
+You should replace <code>FILENAME</code> by the name of the file (e.g. <code>packages.el</code>), and
+<code>NAME</code> by the name of the layer you are creating. <code>TYPE</code> should match the
+<code>FILENAME</code> (e.g. <code>funcs</code> for <code>funcs.el</code>). Don't forget to replace <code>YEAR</code>,
+<code>YOUR_NAME</code>, and <code>YOUR_EMAIL</code> also. Some files already have a template inside
+<code>core/templates/</code>, so look in there first. Note that if you use
+<code>configuration-layer/create-layer</code>, Spacemacs will prepare files and headers for
+you, and for free :smile: !
 </p>
 </div>
 </div>
@@ -610,7 +625,7 @@ name.
 Every README.org file of a layer should have <code>#+TAGS:</code> line:
 </p>
 
-<pre class="example" id="orga9af079">
+<pre class="example" id="orgf42b7a3">
 #+TITLE: My layer
 
 #+TAGS: layer|web service
@@ -638,24 +653,25 @@ Tags are listed in <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.
 <p>
 Labels are used to name headlines in <a href="layers/LAYERS.html">LAYERS.org</a> file and
 <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.ci/spacedoc-cfg.edn">:spacetools.spacedoc.config/layers-org-query</a> defines structure of the file by
-chaining tags into a tree where every leaf turns into a list of
-descriptions pulled out of README.org files which tags match leaf's path in the tree.
-You can see how the shape of <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.ci/spacedoc-cfg.edn">&lt;spacemacs<sub>root</sub>&gt;/.ci/spacedoc-cfg.edn</a>
-repeats in <a href="layers/LAYERS.html#table-of-contents">TOC of LAYERS.org</a>.
+chaining tags into a tree where every leaf turns into a list of descriptions
+pulled out of README.org files which tags match leaf's path in the tree. You can
+see how the shape of <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.ci/spacedoc-cfg.edn">&lt;spacemacs<sub>root</sub>&gt;/.ci/spacedoc-cfg.edn</a> repeats in
+<a href="layers/LAYERS.html#table-of-contents">TOC of LAYERS.org</a>.
 </p>
 
 <p>
 Important details:
 </p>
 <ul class="org-ul">
-<li>Every layer description will be displayed exacly one time.</li>
-<li>In the case when a README.org file of a layer doesn't have <code>#+TAGS:</code>
-documentation formatting tool will inster dummy tags <code>layer|uncategorized</code>,
-such files will be listed in <a href="layers/LAYERS.html#readmeorg-files-that-need-proper-tags">LAYERS.org#readmeorg-files-that-need-proper-tags</a>.</li>
-<li>Files which tag set has not being matched by <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.ci/spacedoc-cfg.edn">:spacetools.spacedoc.config/layers-org-query</a>
-will appire in <a href="layers/LAYERS.html#skipped-layers">LAYERS.org#skipped-layers</a></li>
-<li>If <a href="layers/LAYERS.html">LAYERS.org</a> file has <code>Skipped layers:</code> and/or
-<code>README.org files that need proper tags</code> sections - someone is slacking :wink:</li>
+<li>Every layer description will be displayed exactly one time.</li>
+<li>When a README.org layer file doesn't have <code>#+TAGS:</code>, then the documentation
+formatting tool will insert dummy tags <code>layer|uncategorized</code>, and such files
+will be listed in <a href="layers/LAYERS.html#readmeorg-files-that-need-proper-tags">LAYERS.org#readmeorg-files-that-need-proper-tags</a>.</li>
+<li>Files with tags, that have not been matched by
+<a href="https://github.com/syl20bnr/spacemacs/blob/develop/.ci/spacedoc-cfg.edn">:spacetools.spacedoc.config/layers-org-query</a> will appear in
+<a href="layers/LAYERS.html#skipped-layers">LAYERS.org#skipped-layers</a></li>
+<li>If <a href="layers/LAYERS.html">LAYERS.org</a> has either or both of these sections: <code>Skipped layers:</code> and/or
+<code>README.org files that need proper tags</code>, then someone is slacking :wink:</li>
 </ul>
 
 <p>
@@ -688,7 +704,7 @@ header file.
 <h3 id="contributing-a-key-binding"><span class="section-number-3">3.3</span> Contributing a key binding</h3>
 <div class="outline-text-3" id="text-contributing-a-key-binding">
 <p>
-Key bindings are an important part of spacemacs.
+Key bindings are an important part of Spacemacs.
 </p>
 
 <p>
@@ -699,16 +715,15 @@ file and don't require any contribution to Spacemacs.
 </p>
 
 <p>
-If you think it worth contributing a new key bindings then be sure to read
-the <a href="doc/CONVENTIONS.html">CONVENTIONS.org</a> file to find the best key bindings, then create a
-PR with your changes.
+If you think it worth contributing a new key bindings then be sure to read the
+<a href="doc/CONVENTIONS.html">CONVENTIONS.org</a> file to find the best key bindings, then create a PR with your
+changes.
 </p>
 
 <p>
 <b>ALWAYS</b> document your new key bindings or key bindings changes inside the
 relevant documentation file. It should be the layer's <code>README.org</code> file for
-layer's key bindings, or <code>DOCUMENTATION.org</code> for general Spacemacs key
-bindings.
+layer's key bindings, or <code>DOCUMENTATION.org</code> for general Spacemacs key bindings.
 </p>
 </div>
 </div>
@@ -751,7 +766,7 @@ more testing is required. Be creative in trying to find bugs! Preferably, use
 the PR branch for hours or days to help stumble on unforeseen issues. Of
 course, common sense can be used and typo fixes do not need to be tested
 against bugs, but be thorough in actual code changes. Testing with a fresh
-spacemacs installation might be a good idea as well.</li>
+Spacemacs installation might be a good idea as well.</li>
 <li>Step back and think if the proposed changes could cause any other problems not
 covered by your testing. You should also ask yourself whether or not you feel
 that your testing is adequate to confidently state that this PR introduces no
@@ -768,7 +783,7 @@ the code conventions. Copy the following line to your approving review to notify
 the collaborators:
 </p>
 
-<pre class="example" id="org8b15d31">
+<pre class="example" id="orgf5df420">
 Ready to be merged! (@syl20bnr @TheBB @d12frosted @bmag @JAremko)
 </pre>
 
@@ -793,7 +808,7 @@ Magit actions will get some additional delay due to the refresh of the PRs list.
 </p>
 
 <p>
-Now, from the magit status buffer you can:
+Now, from the Magit status buffer you can:
 </p>
 <ul class="org-ul">
 <li>checkout a PR with <code>b y</code> and searching it by name or ID</li>
@@ -881,7 +896,7 @@ guidelines</a> and <a href="https://github.com/flycheck/flycheck/blob/master/doc
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-03-26 Fri 23:02</p>
+<p class="date">Created: 2021-04-09 Fri 11:56</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
