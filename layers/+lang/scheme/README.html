@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-04-09 Fri 11:56 -->
+<!-- 2021-04-17 Sat 07:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Scheme layer</title>
@@ -258,7 +258,11 @@
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a></li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#install-chicken-scheme-example">2.1. Install Chicken scheme example</a></li>
+</ul>
+</li>
 <li><a href="#structurally-safe-editing">3. Structurally safe editing</a></li>
 <li><a href="#key-bindings">4. Key bindings</a>
 <ul>
@@ -305,6 +309,45 @@ file.
 </p>
 
 <p>
+Additionally, before geiser can be used with a scheme implementation, support
+for the implementation must be enabled by adding its name to the list of
+<code>scheme-implementations</code>. It is recommended to set the value of the list
+directly in the <code>dotspacemacs-configuration-layers</code> list as shown in the
+following example for guile and racket:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">dotspacemacs-configuration-layers
+'<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>scheme <span class="org-builtin">:variables</span>
+           scheme-implementations '<span class="org-rainbow-delimiters-depth-3">(</span>guile racket<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Currently support is available for the following scheme implementations:
+chez, chibi, chicken, gambit, gauche, guile, kawa, mit and racket.
+</p>
+
+<p>
+Finally, to use a scheme implementation its binary must be available in your
+PATH (or you can manually set the location of the binary as explained in <a href="https://nongnu.org/geiser/geiser_3.html">this
+section of the geiser documentation</a>).
+</p>
+
+<p>
+The following subsection shows how to install Chicken scheme and activate geiser
+support.
+</p>
+</div>
+
+<div id="outline-container-install-chicken-scheme-example" class="outline-3">
+<h3 id="install-chicken-scheme-example"><span class="section-number-3">2.1</span> Install Chicken scheme example</h3>
+<div class="outline-text-3" id="text-install-chicken-scheme-example">
+<p>
+First add <code>chicken</code> to the list of <code>scheme-implementations</code> as explained above.
+</p>
+
+<p>
 For full Chicken support, the following commands should be run:
 </p>
 
@@ -339,7 +382,7 @@ Additionally, as of 2018-12-12 there is a <a href="https://git.archlinux.org/svn
 in some of the Linux package repos:
 </p>
 
-<pre class="example" id="org59a52f5">
+<pre class="example" id="org76d9cbb">
 # Chicken had csc and csi first, but then mono introduced a conflict and
 # does not seem to want to change this. OpenBSD renamed csc and csi to
 # chicken-csc and chicken-csi 2018-12-12.
@@ -358,6 +401,7 @@ REPL binary on your system is <code>chicken-csi</code>, you will also need to ad
 <p>
 to your <code>dotspacemacs/user-config</code> in order for the REPL to start in spacemacs.
 </p>
+</div>
 </div>
 </div>
 
@@ -711,7 +755,7 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-04-09 Fri 11:56</p>
+<p class="date">Created: 2021-04-17 Sat 07:10</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
