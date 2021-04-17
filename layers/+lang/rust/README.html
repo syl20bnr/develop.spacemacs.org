@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-04-09 Fri 11:56 -->
+<!-- 2021-04-17 Sat 07:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rust layer</title>
@@ -271,6 +271,7 @@
 <ul>
 <li><a href="#cargo-edit">2.3.1. cargo-edit</a></li>
 <li><a href="#cargo-audit">2.3.2. cargo-audit</a></li>
+<li><a href="#cargo-outdated">2.3.3. cargo-outdated</a></li>
 </ul>
 </li>
 <li><a href="#rustfmt">2.4. Rustfmt</a></li>
@@ -279,14 +280,14 @@
 </li>
 <li><a href="#key-bindings">3. Key bindings</a>
 <ul>
-<li><a href="#debugger">3.1. debugger</a></li>
+<li><a href="#debugger">3.1. Debugger</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="org7b8372c" class="figure">
+<div id="org9e767a9" class="figure">
 <p><img src="img/rust.png" alt="rust.png" />
 </p>
 </div>
@@ -396,7 +397,8 @@ To choose the experimental <a href="https://github.com/rust-analyzer/rust-analyz
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>lsp <span class="org-builtin">:variables</span> lsp-rust-server 'rust-analyzer<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+               '<span class="org-rainbow-delimiters-depth-2">(</span>lsp <span class="org-builtin">:variables</span> lsp-rust-server 'rust-analyzer<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -427,6 +429,32 @@ By default, currently <a href="https://github.com/phildawes/racer">Racer</a> is 
 <p>
 To install the debug adapter you may run <code>M-x dap-gdb-lldb-setup</code> when you are on Linux or download it manually from <a href="https://marketplace.visualstudio.com/items?itemName=webfreak.debug">Native Debug</a> and adjust <code>dap-gdb-lldb-path</code>.
 </p>
+</div>
+</li>
+
+<li><a id="automatically-reload-workspace"></a>Automatically Reload Workspace<br />
+<div class="outline-text-5" id="text-automatically-reload-workspace">
+<p>
+When the LSP server is <code>rust-analyzer</code>, it may needs to reload the workspace to pickup changes made in <code>Cargo.toml</code>.
+You can call <code>spacemacs/lsp-rust-analyzer-reload-workspace</code>, which would be faster than restarting the LSP backend.
+</p>
+
+<p>
+You can also set <code>cargo-process-reload-on-modify</code> to <code>t</code>, then it will automatically reload the workspace after
+one of the following is run:
+</p>
+<ul class="org-ul">
+<li><code>cargo-process-add</code></li>
+<li><code>cargo-process-rm</code></li>
+<li><code>cargo-process-upgrade</code></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+               '<span class="org-rainbow-delimiters-depth-2">(</span>lsp <span class="org-builtin">:variables</span> lsp-rust-server 'rust-analyzer
+                                cargo-process-reload-on-modify t<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
 </div>
 </li>
 </ol>
@@ -465,6 +493,20 @@ instructions can be found on the main page of <a href="http://doc.crates.io/inde
 
 <div class="org-src-container">
 <pre class="src src-sh">cargo install cargo-audit
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-cargo-outdated" class="outline-4">
+<h4 id="cargo-outdated"><span class="section-number-4">2.3.3</span> cargo-outdated</h4>
+<div class="outline-text-4" id="text-cargo-outdated">
+<p>
+<a href="https://github.com/kbknapp/cargo-outdated">cargo-outdated</a> displays dependencies that have new version available.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">cargo install cargo-outdated
 </pre>
 </div>
 </div>
@@ -538,6 +580,16 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC m c /</code></td>
+<td class="org-left">search for packages on crates.io with Cargo</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c =</code></td>
+<td class="org-left">format all project files with rustfmt</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m c a</code></td>
 <td class="org-left">add a new dependency with cargo-edit</td>
 </tr>
@@ -548,18 +600,13 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m c C</code></td>
-<td class="org-left">remove build artifacts</td>
-</tr>
-
-<tr>
 <td class="org-left"><code>SPC m c c</code></td>
 <td class="org-left">compile project</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m c D</code></td>
-<td class="org-left">generate documentation and open it in default browser</td>
+<td class="org-left"><code>SPC m c C</code></td>
+<td class="org-left">remove build artifacts</td>
 </tr>
 
 <tr>
@@ -568,8 +615,8 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m c E</code></td>
-<td class="org-left">run a project example</td>
+<td class="org-left"><code>SPC m c D</code></td>
+<td class="org-left">generate documentation and open it in default browser</td>
 </tr>
 
 <tr>
@@ -578,8 +625,8 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m c f</code></td>
-<td class="org-left">format all project files with rustfmt</td>
+<td class="org-left"><code>SPC m c E</code></td>
+<td class="org-left">run a project example</td>
 </tr>
 
 <tr>
@@ -599,22 +646,12 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 
 <tr>
 <td class="org-left"><code>SPC m c o</code></td>
-<td class="org-left">run all tests in current file with Cargo</td>
+<td class="org-left">display outdated dependencies (<a href="https://github.com/kbknapp/cargo-outdated">cargo-outdated</a>)</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m c r</code></td>
 <td class="org-left">remove a dependency with cargo-edit</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c s</code></td>
-<td class="org-left">search for packages on crates.io with Cargo</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c t</code></td>
-<td class="org-left">run the current test with Cargo</td>
 </tr>
 
 <tr>
@@ -633,13 +670,13 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m c X</code></td>
-<td class="org-left">execute a specific binary</td>
+<td class="org-left"><code>SPC m c x</code></td>
+<td class="org-left">execute the default binary</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m c x</code></td>
-<td class="org-left">execute the default binary</td>
+<td class="org-left"><code>SPC m c X</code></td>
+<td class="org-left">execute a specific binary</td>
 </tr>
 
 <tr>
@@ -658,15 +695,25 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m t</code></td>
-<td class="org-left">run tests with Cargo</td>
+<td class="org-left"><code>SPC m t a</code></td>
+<td class="org-left">test current project</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t t</code></td>
+<td class="org-left">run the current test</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t b</code></td>
+<td class="org-left">run all tests in current buffe</td>
 </tr>
 </tbody>
 </table>
 </div>
 
 <div id="outline-container-debugger" class="outline-3">
-<h3 id="debugger"><span class="section-number-3">3.1</span> debugger</h3>
+<h3 id="debugger"><span class="section-number-3">3.1</span> Debugger</h3>
 <div class="outline-text-3" id="text-debugger">
 <p>
 Using the <code>dap</code> layer you'll get access to all the DAP key bindings, see the
@@ -678,7 +725,7 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-04-09 Fri 11:56</p>
+<p class="date">Created: 2021-04-17 Sat 07:11</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
