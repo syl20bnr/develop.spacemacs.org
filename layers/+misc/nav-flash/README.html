@@ -6,7 +6,7 @@
 <!-- 2021-04-19 Mon 20:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>yang layer</title>
+<title>nav-flash layer</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="root" />
 <style type="text/css">
@@ -248,7 +248,7 @@
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">yang layer</h1>
+<h1 class="title">nav-flash layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -259,11 +259,6 @@
 </ul>
 </li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#syntax-checking-with-flycheck">3. Syntax checking with flycheck</a>
-<ul>
-<li><a href="#configuration">3.1. Configuration</a></li>
-</ul>
-</li>
 </ul>
 </div>
 </div>
@@ -272,7 +267,9 @@
 <h2 id="description"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer provides support for the YANG file format.
+This layer adds <a href="https://github.com/rolandwalker/nav-flash">nav-flash</a> package which temporarily highlights the line
+containing the point, which is sometimes useful for orientation after a
+navigation command.
 </p>
 </div>
 
@@ -280,8 +277,7 @@ This layer provides support for the YANG file format.
 <h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Syntax highlighting</li>
-<li>Syntax checking via <a href="http://www.flycheck.org/en/latest/languages.html#yaml">flycheck</a></li>
+<li>Fancy flashing line on navigation.</li>
 </ul>
 </div>
 </div>
@@ -292,60 +288,9 @@ This layer provides support for the YANG file format.
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>yang</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+add <code>nav-flash</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
 file.
 </p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>yang<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-syntax-checking-with-flycheck" class="outline-2">
-<h2 id="syntax-checking-with-flycheck"><span class="section-number-2">3</span> Syntax checking with flycheck</h2>
-<div class="outline-text-2" id="text-syntax-checking-with-flycheck">
-<p>
-Flycheck is used to check the yang syntax utilizing <code>pyang</code> which needs to be
-installed on your system. Documentation for pyang can be found at the <a href="https://github.com/mbj4668/pyang">pyang
-repository</a>, and can be installed using python packaging mechanisms
-</p>
-</div>
-
-<div id="outline-container-configuration" class="outline-3">
-<h3 id="configuration"><span class="section-number-3">3.1</span> Configuration</h3>
-<div class="outline-text-3" id="text-configuration">
-<p>
-By default the syntax checking is done according to <code>pyang --lint</code> which uses
-rules outlined in RFC 6020. To use a different set of rules set the
-<code>yang-pyang-rules</code> variable. The valid values at the time of writing were:
-</p>
-<ul class="org-ul">
-<li>mef Validate the module(s) according to MEF rules.</li>
-<li>ietf Validate the module(s) according to IETF rules.</li>
-<li>bbf Validate the module(s) according to BBF rules.</li>
-<li>ieee Validate the module(s) according to IEEE rules.</li>
-<li>lint Validate the module(s) according to RFC 6087 rules.</li>
-</ul>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>yang <span class="org-builtin">:variables</span> yang-pyang-rules <span class="org-string">"ietf"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-To allow further customization one can set the <code>yang-pyang-extra-args</code>
-variable to a string that will be passed directly to the <code>pyang</code> command.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>yang <span class="org-builtin">:variables</span> yang-pyang-extra-args <span class="org-string">"--max-line-length=69"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
 </div>
 </div>
 </div>
