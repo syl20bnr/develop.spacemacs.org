@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-04-17 Sat 07:10 -->
+<!-- 2021-04-19 Mon 20:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spacemacs documentation</title>
@@ -500,6 +500,7 @@
 <li><a href="#frame-manipulation-key-bindings">15.5.6.5. Frame manipulation key bindings</a></li>
 <li><a href="#emacs-and-spacemacs-files">15.5.6.6. Emacs and Spacemacs files</a></li>
 <li><a href="#browsing-files-in-completion-buffer">15.5.6.7. Browsing files in completion buffer</a></li>
+<li><a href="#popup-buffers">15.5.6.8. Popup buffers</a></li>
 </ul>
 </li>
 <li><a href="#ido">15.5.7. Ido</a></li>
@@ -605,6 +606,7 @@
 </ul>
 </li>
 <li><a href="#compiling">15.13. Compiling</a></li>
+<li><a href="#quickrun">15.14. Quickrun</a></li>
 </ul>
 </li>
 <li><a href="#editorconfig">16. EditorConfig</a></li>
@@ -883,7 +885,7 @@ to install. To install all the <code>python</code> features the user has just to
 Configuration is organized in layers. Each layer has the following structure:
 </p>
 
-<pre class="example" id="orgcbd0b2e">
+<pre class="example" id="orgccf3a27">
 [layer_name]
   |__ [local]
   | |__ [package 1]
@@ -1995,7 +1997,7 @@ Auto-highlight-symbol transient state:
 </p>
 
 
-<div id="org33dc3f0" class="figure">
+<div id="org481b78e" class="figure">
 <p><img src="img/spacemacs-scale-transient-state.png" alt="spacemacs-scale-transient-state.png" />
 </p>
 </div>
@@ -4263,7 +4265,7 @@ this variable <code>spacemacs-layouts-restrict-spc-tab</code> to <code>nil</code
 your used layer list with layer variables:
 </p>
 
-<pre class="example" id="org497c957">
+<pre class="example" id="org965f8f0">
 (spacemacs-layouts :variables spacemacs-layouts-restrict-spc-tab t)
 </pre>
 </div>
@@ -4284,7 +4286,7 @@ take effect.
 Default value for this variable is:
 </p>
 
-<pre class="example" id="orgc20ab4e">
+<pre class="example" id="org66683bf">
 '(spacemacs/window-split-double-columns
   spacemacs/window-split-triple-columns
   spacemacs/window-split-grid)
@@ -4295,7 +4297,7 @@ If you want to add the function <code>my-func</code> to this list you need to re
 the complete list using layer variables:
 </p>
 
-<pre class="example" id="org7fe67ba">
+<pre class="example" id="org44f59bd">
 (spacemacs-layouts :variables
                    spacemacs-layouts-restricted-functions
                    '(spacemacs/window-split-double-columns
@@ -7218,6 +7220,17 @@ In <code>vim</code> style and <code>hybrid</code> style with the variable
 </table>
 </div>
 </div>
+
+<div id="outline-container-popup-buffers" class="outline-5">
+<h5 id="popup-buffers"><span class="section-number-5">15.5.6.8</span> Popup buffers</h5>
+<div class="outline-text-5" id="text-popup-buffers">
+<p>
+<code>popwin</code> is used to manage buffers such as <code>*Help*</code>, <code>*Completions*</code>,
+<code>*compilation*</code>, and etc. Use <code>C-g</code> to close them or most of the time you can
+close them with <code>q</code> also. Use <code>SPC-r-w</code> to view the last closed popup buffer.
+</p>
+</div>
+</div>
 </div>
 
 <div id="outline-container-ido" class="outline-4">
@@ -8481,7 +8494,7 @@ During the symbol highlight transient state, the following bindings are active:
 The minibuffer displays the following information during the transient state:
 </p>
 
-<pre class="example" id="org8e78b78">
+<pre class="example" id="org21f2dd5">
 Buffer [6/11]*
 </pre>
 
@@ -11376,6 +11389,42 @@ Spacemacs binds a few commands to support compiling a project.
 </table>
 </div>
 </div>
+
+<div id="outline-container-quickrun" class="outline-3">
+<h3 id="quickrun"><span class="section-number-3">15.14</span> Quickrun</h3>
+<div class="outline-text-3" id="text-quickrun">
+<p>
+Spacemacs can execute current buffer or region.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC x x</code></td>
+<td class="org-left">smart <code>quickrun</code> or <code>quickrun-region</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-g</code></td>
+<td class="org-left">to dismiss a quickrun buffer without selecting it</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 
 <div id="outline-container-editorconfig" class="outline-2">
@@ -12236,7 +12285,7 @@ developers to elisp hackers!
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-04-17 Sat 07:10</p>
+<p class="date">Created: 2021-04-19 Mon 20:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
