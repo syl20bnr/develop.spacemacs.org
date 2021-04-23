@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-04-19 Mon 20:29 -->
+<!-- 2021-04-23 Fri 20:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Org layer</title>
@@ -283,6 +283,7 @@
 <li><a href="#org-roam-support">4.15. Org-roam support</a>
 <ul>
 <li><a href="#org-roam-server-support">4.15.1. Org-roam-server support</a></li>
+<li><a href="#org-roam-protocol-support">4.15.2. Org-roam-protocol support</a></li>
 </ul>
 </li>
 <li><a href="#mode-line-support">4.16. Mode line support</a></li>
@@ -292,7 +293,8 @@
 <li><a href="#valign-support">4.20. Valign support</a></li>
 <li><a href="#org-appear-support">4.21. Org-appear support</a></li>
 <li><a href="#verb-support">4.22. Verb support</a></li>
-<li><a href="#spacemacs-layout-integration">4.23. Spacemacs layout integration</a></li>
+<li><a href="#asciidoc-support">4.23. AsciiDoc support</a></li>
+<li><a href="#spacemacs-layout-integration">4.24. Spacemacs layout integration</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">5. Key bindings</a>
@@ -346,7 +348,7 @@
 </div>
 </div>
 
-<div id="org09f1b2a" class="figure">
+<div id="orgfa699ba" class="figure">
 <p><img src="img/org.png" alt="org.png" />
 </p>
 </div>
@@ -601,7 +603,7 @@ as it described in the <a href="https://gitlab.com/oer/org-re-reveal#set-the-loc
 Alternatively, add the following line to each <code>.org</code> file you want to process:
 </p>
 
-<pre class="example" id="org5961743">
+<pre class="example" id="orgb61a135">
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@3.8.0
 </pre>
 </div>
@@ -730,7 +732,7 @@ alter <code>org-journal-date-prefix</code> and <code>org-journal-date-format</co
 For example, to have new journal files created with this header:
 </p>
 
-<pre class="example" id="org2ce9ee8">
+<pre class="example" id="org268fd7c">
 #+TITLE: Tuesday, September 06 2016
 </pre></li>
 
@@ -913,6 +915,27 @@ to <code>t</code>.
 </p>
 </div>
 </div>
+
+<div id="outline-container-org-roam-protocol-support" class="outline-4">
+<h4 id="org-roam-protocol-support"><span class="section-number-4">4.15.2</span> Org-roam-protocol support</h4>
+<div class="outline-text-4" id="text-org-roam-protocol-support">
+<p>
+To enable support for <a href="https://www.orgroam.com/manual.html#Roam-Protocol">Org Roam Protocol</a> set the variable
+<code>org-enable-roam-protocol</code> to <code>t</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
+       org-enable-roam-protocol t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+And create a desktop file as described in the <a href="https://www.orgroam.com/manual.html#Roam-Protocol">org-roam manual</a>.
+</p>
+</div>
+</div>
 </div>
 
 <div id="outline-container-mode-line-support" class="outline-3">
@@ -1048,8 +1071,24 @@ To install <a href="https://github.com/federicotdn/verb">Verb</a>, an HTTP clien
 </div>
 </div>
 
+<div id="outline-container-asciidoc-support" class="outline-3">
+<h3 id="asciidoc-support"><span class="section-number-3">4.23</span> AsciiDoc support</h3>
+<div class="outline-text-3" id="text-asciidoc-support">
+<p>
+To install Org exporter <a href="https://github.com/yashi/org-asciidoc">ox-asciidoc</a>, that generates AsciiDoc documents, set the
+variable <code>org-enable-asciidoc-support</code> to <code>t</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-asciidoc-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
 <div id="outline-container-spacemacs-layout-integration" class="outline-3">
-<h3 id="spacemacs-layout-integration"><span class="section-number-3">4.23</span> Spacemacs layout integration</h3>
+<h3 id="spacemacs-layout-integration"><span class="section-number-3">4.24</span> Spacemacs layout integration</h3>
 <div class="outline-text-3" id="text-spacemacs-layout-integration">
 <p>
 A <a href="../../../doc/DOCUMENTATION.html#layouts-and-workspaces">Spacemacs custom layout</a> <code>@Org</code> is defined by the layer and accessible via <code>SPC l o</code>. The startup behavior can be customized with the following layer variables:
@@ -3731,7 +3770,7 @@ Key binding prefixes:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-04-19 Mon 20:29</p>
+<p class="date">Created: 2021-04-23 Fri 20:04</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

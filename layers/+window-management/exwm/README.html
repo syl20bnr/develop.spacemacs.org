@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-04-23 Fri 20:04 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EXWM layer</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="root" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+                 href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script>
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
+          </script>
+<link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
+<h1 class="title">EXWM layer</h1>
+<div id="table-of-contents">
+<h2>Table of Contents<a href="#">Close</a></h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#note-about-display-managers">2.1. Note about Display Managers</a></li>
+<li><a href="#not-having-display-managers">2.2. Not having Display Managers</a></li>
+<li><a href="#osx">2.3. OSX</a></li>
+</ul>
+</li>
+<li><a href="#key-bindings">3. Key bindings</a></li>
+</ul>
+</div>
+</div>
+
+<div id="orgff49ebd" class="figure">
+<p><img src="img/spacemacsOS.jpg" alt="spacemacsOS.jpg" />
+</p>
+</div>
+
+<div id="outline-container-description" class="outline-2">
+<h2 id="description"><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
+<p>
+The time has arrived when one can finally use Emacs as a Window Manager, long
+ago the concepts of <b>windows</b> and <b>frames</b> made so much sense when one was
+working in a TTY, and basically that's all the window management you got. In
+these <b>modern</b> times though, it sounds silly to have those names. But not
+Anymore!
+</p>
+
+<p>
+Thanks to @ch11ng and his <a href="https://github.com/ch11ng/exwm">EXWM</a> project we can now use Emacs as our window
+manager, and all those <b>windows</b> that didn't make sense before, now can not only
+hold buffers, but X Windows, that means that you can spawn a Browser Window, or
+your music player, or anything.
+</p>
+
+<p>
+I urge you to read the <a href="https://github.com/ch11ng/exwm/wiki">EXWM Wiki</a> for a more in depth explanation and if you can
+contribute, please do so! The purpose of me making this layer is that I find it
+awesome and having nice defaults would make more people dive into it and the
+project would receive more attention and contributions which will only make it
+more awesome, so if you try it and like it, share it!
+</p>
+</div>
+
+<div id="outline-container-features" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
+<ul class="org-ul">
+<li>Support for using Spacemacs as window manager</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-install" class="outline-2">
+<h2 id="install"><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+<p>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>exwm</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
+</p>
+</div>
+
+<div id="outline-container-note-about-display-managers" class="outline-3">
+<h3 id="note-about-display-managers"><span class="section-number-3">2.1</span> Note about Display Managers</h3>
+<div class="outline-text-3" id="text-note-about-display-managers">
+<p>
+This is most common among Ubuntu and derivative users:
+</p>
+
+<p>
+LightDM, GDM, and other Display managers that need a session file will need you
+to copy the <a href="files/exwm.desktop">desktop file</a> I bundled with this layer to
+<code>/usr/local/xsessions/exwm.desktop</code>, that's what I used on my Ubuntu box, but
+make sure the <a href="files/exwm-start">exwm-start script</a> is in your PATH, you can put it in
+<code>/usr/local/bin/exwm-start</code> and that should be enough, next time you log out,
+select the EXWM session instead of the Ubuntu one and you should be alright.
+</p>
+</div>
+</div>
+
+<div id="outline-container-not-having-display-managers" class="outline-3">
+<h3 id="not-having-display-managers"><span class="section-number-3">2.2</span> Not having Display Managers</h3>
+<div class="outline-text-3" id="text-not-having-display-managers">
+<p>
+If you use Arch, Gentoo, or any other Linux, most probably you'll start your
+configurations via a <code>.xinitrc</code> file, just append <code>exwm-start</code> to the end of
+that file and you should be fine. I do recommend to check the <a href="https://github.com/ch11ng/exwm/wiki">EXWM Wiki</a> for more
+details.
+</p>
+</div>
+</div>
+
+<div id="outline-container-osx" class="outline-3">
+<h3 id="osx"><span class="section-number-3">2.3</span> OSX</h3>
+<div class="outline-text-3" id="text-osx">
+<p>
+If you are an OSX user, please report back on whether this works with xQuartz,
+always back up your data before attempting to try stuff like this.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-key-bindings" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">3</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+<p>
+As other window managers the <code>s</code> or <b>Super</b> key (Windows Key) is the one that
+is the prefix to every action. We'll use a lot of <code>s</code>.
+</p>
+
+<p>
+I have, for convenience, disabled the use of <code>C-x</code> and <code>C-c</code> in X windows,
+mainly because that's something we could use for Cutting and Copying text, but if
+you want you can enable it, this layer focuses on less Emacs-y bindings.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>C-q</code></td>
+<td class="org-left">Send next key pressed to the X window</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-'</code></td>
+<td class="org-left">Pop shell</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-g</code></td>
+<td class="org-left">Universal GetMeOuttaHere Key from Emacs</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-u</code></td>
+<td class="org-left">Universal Argument</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-[0-9]</code></td>
+<td class="org-left">Universal Prefix for [0-9]</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-m</code></td>
+<td class="org-left">Spacemacs Leader Key</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s-[1 2 3 ... 8 9 0]</code></td>
+<td class="org-left">Switch to workspace [1 2 3 &#x2026; 8 9 10]</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s-TAB</code></td>
+<td class="org-left">Switch to last workspace</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s-w</code></td>
+<td class="org-left">Workspace Switch Menu (kinda like micro-state)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s-r</code></td>
+<td class="org-left">Reset window state</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s-SPC</code></td>
+<td class="org-left">App Launcher</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s-ESC</code></td>
+<td class="org-left">Lock Screen</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s-:</code> and <code>s-;</code></td>
+<td class="org-left">Helm M-x (same as <code>SCP :</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s-u,U</code></td>
+<td class="org-left">Undo, Redo window configurations</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s-b</code></td>
+<td class="org-left">Show all opened buffers</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s-h,j,k,l</code></td>
+<td class="org-left">Switch to left,lower,upper,right window</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s-H,J,K,L</code></td>
+<td class="org-left">Move window to far left,down,lower,upper,right</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-s-h,j,k,l</code></td>
+<td class="org-left">Resizing (try them, it's too hard to explain)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s-[,]</code></td>
+<td class="org-left">Switch to prev,next workspace</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: root</p>
+<p class="date">Created: 2021-04-23 Fri 20:04</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
