@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-04-27 Tue 03:14 -->
+<!-- 2021-05-04 Tue 20:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Org layer</title>
@@ -263,38 +263,39 @@
 <li><a href="#install">4. Install</a>
 <ul>
 <li><a href="#layer">4.1. Layer</a></li>
-<li><a href="#agenda-notifications">4.2. Agenda notifications</a></li>
-<li><a href="#agenda-recommendations">4.3. Agenda recommendations</a></li>
-<li><a href="#github-support">4.4. GitHub support</a></li>
-<li><a href="#twitter-bootstrap-support">4.5. Twitter Bootstrap support</a></li>
-<li><a href="#gnuplot-support">4.6. Gnuplot support</a></li>
-<li><a href="#revealjs-support">4.7. Reveal.js support</a></li>
-<li><a href="#org-contacts-support">4.8. Org-contacts support</a>
+<li><a href="#todo-dependencies">4.2. <code>TODO</code> dependencies</a></li>
+<li><a href="#agenda-notifications">4.3. Agenda notifications</a></li>
+<li><a href="#agenda-recommendations">4.4. Agenda recommendations</a></li>
+<li><a href="#github-support">4.5. GitHub support</a></li>
+<li><a href="#twitter-bootstrap-support">4.6. Twitter Bootstrap support</a></li>
+<li><a href="#gnuplot-support">4.7. Gnuplot support</a></li>
+<li><a href="#revealjs-support">4.8. Reveal.js support</a></li>
+<li><a href="#org-contacts-support">4.9. Org-contacts support</a>
 <ul>
-<li><a href="#v-card-importexport">4.8.1. V-Card import/export</a></li>
+<li><a href="#v-card-importexport">4.9.1. V-Card import/export</a></li>
 </ul>
 </li>
-<li><a href="#org-journal-support">4.9. Org-journal support</a></li>
-<li><a href="#hugo-support">4.10. Hugo support</a></li>
-<li><a href="#trello-support">4.11. Trello support</a></li>
-<li><a href="#different-bullets">4.12. Different bullets</a></li>
-<li><a href="#project-support">4.13. Project support</a></li>
-<li><a href="#org-brain-support">4.14. Org-brain support</a></li>
-<li><a href="#org-roam-support">4.15. Org-roam support</a>
+<li><a href="#org-journal-support">4.10. Org-journal support</a></li>
+<li><a href="#hugo-support">4.11. Hugo support</a></li>
+<li><a href="#trello-support">4.12. Trello support</a></li>
+<li><a href="#different-bullets">4.13. Different bullets</a></li>
+<li><a href="#project-support">4.14. Project support</a></li>
+<li><a href="#org-brain-support">4.15. Org-brain support</a></li>
+<li><a href="#org-roam-support">4.16. Org-roam support</a>
 <ul>
-<li><a href="#org-roam-server-support">4.15.1. Org-roam-server support</a></li>
-<li><a href="#org-roam-protocol-support">4.15.2. Org-roam-protocol support</a></li>
+<li><a href="#org-roam-server-support">4.16.1. Org-roam-server support</a></li>
+<li><a href="#org-roam-protocol-support">4.16.2. Org-roam-protocol support</a></li>
 </ul>
 </li>
-<li><a href="#mode-line-support">4.16. Mode line support</a></li>
-<li><a href="#sticky-header-support">4.17. Sticky header support</a></li>
-<li><a href="#epub-support">4.18. Epub support</a></li>
-<li><a href="#jira-support">4.19. Jira support</a></li>
-<li><a href="#valign-support">4.20. Valign support</a></li>
-<li><a href="#org-appear-support">4.21. Org-appear support</a></li>
-<li><a href="#verb-support">4.22. Verb support</a></li>
-<li><a href="#asciidoc-support">4.23. AsciiDoc support</a></li>
-<li><a href="#spacemacs-layout-integration">4.24. Spacemacs layout integration</a></li>
+<li><a href="#mode-line-support">4.17. Mode line support</a></li>
+<li><a href="#sticky-header-support">4.18. Sticky header support</a></li>
+<li><a href="#epub-support">4.19. Epub support</a></li>
+<li><a href="#jira-support">4.20. Jira support</a></li>
+<li><a href="#valign-support">4.21. Valign support</a></li>
+<li><a href="#org-appear-support">4.22. Org-appear support</a></li>
+<li><a href="#verb-support">4.23. Verb support</a></li>
+<li><a href="#asciidoc-support">4.24. AsciiDoc support</a></li>
+<li><a href="#spacemacs-layout-integration">4.25. Spacemacs layout integration</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">5. Key bindings</a>
@@ -348,7 +349,7 @@
 </div>
 </div>
 
-<div id="orgd521898" class="figure">
+<div id="org4751855" class="figure">
 <p><img src="img/org.png" alt="org.png" />
 </p>
 </div>
@@ -442,8 +443,59 @@ add the <code>org</code> entry.
 </div>
 </div>
 
+<div id="outline-container-todo-dependencies" class="outline-3">
+<h3 id="todo-dependencies"><span class="section-number-3">4.2</span> <code>TODO</code> dependencies</h3>
+<div class="outline-text-3" id="text-todo-dependencies">
+<p>
+If you would like to enforce dependencies in your <code>TODO</code> hierarchy, this layer has
+some sane default configurations to try via its <code>org-todo-dependencies-strategy</code>
+configuration variable.
+</p>
+
+<p>
+Setting it to <code>'naive-auto</code>, will cause an entry to switch to <code>DONE</code> when all its
+subentries are done, and to <code>TODO</code> otherwise. This does not result in extra
+prompts for the user, but doesn't work well with more workflow states because of
+the literal <code>DONE</code> and <code>TODO</code>; it is an excellent place for beginners and
+minimalists:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
+       org-todo-dependencies-strategy 'naive-auto<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Setting it to <code>'semiauto</code>, will cause the user to be prompted to change an entry's
+state when the state of the subentries imply it: that is, when they are either
+all done while it is still a todo, or the when they are all still todo's while
+it is done. This assumes next to nothing about your workflow states (it does not
+use literal <code>TODO</code> and <code>DONE</code>), but may result in additional, possibly surprising,
+prompting for the user; and it has no intelligence to attempt to determine the
+destination state. It is a good thing to try if <code>'naive-auto</code> does not accomplish
+what you need:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
+       org-todo-dependencies-strategy 'naive-auto<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+If neither of these suffice for you, <code>org-mode</code> can be configured directly by
+setting <code>org-enforce-todo-dependencies</code> to <code>t</code> and writing your own function to
+register on the <code>org-after-todo-statistics-hook</code>. The layer implementation is a
+good reference.
+</p>
+</div>
+</div>
+
 <div id="outline-container-agenda-notifications" class="outline-3">
-<h3 id="agenda-notifications"><span class="section-number-3">4.2</span> Agenda notifications</h3>
+<h3 id="agenda-notifications"><span class="section-number-3">4.3</span> Agenda notifications</h3>
 <div class="outline-text-3" id="text-agenda-notifications">
 <p>
 To enable notifications for agenda events, set the variable
@@ -492,7 +544,7 @@ settings</a>. Additional notification times can be added using the
 </div>
 
 <div id="outline-container-agenda-recommendations" class="outline-3">
-<h3 id="agenda-recommendations"><span class="section-number-3">4.3</span> Agenda recommendations</h3>
+<h3 id="agenda-recommendations"><span class="section-number-3">4.4</span> Agenda recommendations</h3>
 <div class="outline-text-3" id="text-agenda-recommendations">
 <p>
 Emacs comes with its own diary package included. It is recommended not to use
@@ -511,7 +563,7 @@ syntax:
 <div class="org-src-container">
 <pre class="src src-org"><span class="org-org-level-1"><span class="org-org-superstar-header-bullet">*</span></span><span class="org-org-level-1"> Friday, 04/02/2021</span>
   ** Appointment 1
-  <span class="org-org-date">&lt;2021-04-02 Fri 10:10&gt;</span> 
+  <span class="org-org-date">&lt;2021-04-02 Fri 10:10&gt;</span>
   ** TODO Appointment 2
   <span class="org-org-date">&lt;2021-04-02 Fri 10:11&gt;</span>
 </pre>
@@ -529,7 +581,7 @@ notifications</a>).
 </div>
 
 <div id="outline-container-github-support" class="outline-3">
-<h3 id="github-support"><span class="section-number-3">4.4</span> GitHub support</h3>
+<h3 id="github-support"><span class="section-number-3">4.5</span> GitHub support</h3>
 <div class="outline-text-3" id="text-github-support">
 <p>
 To install GitHub related extensions like <a href="https://github.com/larstvei/ox-gfm">ox-gfm</a> to export to GitHub
@@ -545,7 +597,7 @@ flavored markdown set the variable <code>org-enable-github-support</code> to <co
 </div>
 
 <div id="outline-container-twitter-bootstrap-support" class="outline-3">
-<h3 id="twitter-bootstrap-support"><span class="section-number-3">4.5</span> Twitter Bootstrap support</h3>
+<h3 id="twitter-bootstrap-support"><span class="section-number-3">4.6</span> Twitter Bootstrap support</h3>
 <div class="outline-text-3" id="text-twitter-bootstrap-support">
 <p>
 To enable the export to Twitter Bootstrap-formatted HTML - set
@@ -563,7 +615,7 @@ This would install the <a href="https://github.com/marsmining/ox-twbs">ox-twbs</
 </div>
 
 <div id="outline-container-gnuplot-support" class="outline-3">
-<h3 id="gnuplot-support"><span class="section-number-3">4.6</span> Gnuplot support</h3>
+<h3 id="gnuplot-support"><span class="section-number-3">4.7</span> Gnuplot support</h3>
 <div class="outline-text-3" id="text-gnuplot-support">
 <p>
 Org-mode supports the plotting of data within tables through <a href="http://www.gnuplot.info/">Gnuplot</a> as
@@ -579,7 +631,7 @@ the <code>gnuplot</code> package to your <code>dotspacemacs-excluded-packages</c
 </div>
 
 <div id="outline-container-revealjs-support" class="outline-3">
-<h3 id="revealjs-support"><span class="section-number-3">4.7</span> Reveal.js support</h3>
+<h3 id="revealjs-support"><span class="section-number-3">4.8</span> Reveal.js support</h3>
 <div class="outline-text-3" id="text-revealjs-support">
 <p>
 To enable the export of org files as a <a href="http://lab.hakim.se/reveal-js/">reveal.js</a> presentation - set the
@@ -603,14 +655,14 @@ as it described in the <a href="https://gitlab.com/oer/org-re-reveal#set-the-loc
 Alternatively, add the following line to each <code>.org</code> file you want to process:
 </p>
 
-<pre class="example" id="org1818f33">
+<pre class="example" id="org4e70ae1">
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@3.8.0
 </pre>
 </div>
 </div>
 
 <div id="outline-container-org-contacts-support" class="outline-3">
-<h3 id="org-contacts-support"><span class="section-number-3">4.8</span> Org-contacts support</h3>
+<h3 id="org-contacts-support"><span class="section-number-3">4.9</span> Org-contacts support</h3>
 <div class="outline-text-3" id="text-org-contacts-support">
 <p>
 <a href="https://github.com/tkf/org-mode/blob/master/contrib/lisp/org-contacts.el">org-contacts</a> is a handy contacts management system. It can be used to manage
@@ -661,7 +713,7 @@ to the beginning or the end of one of your contacts files.
 </div>
 
 <div id="outline-container-v-card-importexport" class="outline-4">
-<h4 id="v-card-importexport"><span class="section-number-4">4.8.1</span> V-Card import/export</h4>
+<h4 id="v-card-importexport"><span class="section-number-4">4.9.1</span> V-Card import/export</h4>
 <div class="outline-text-4" id="text-v-card-importexport">
 <p>
 Importing/exporting contacts can be done via the `org-vcard-import/export`
@@ -673,7 +725,7 @@ automatically after enabling org contacts support.
 </div>
 
 <div id="outline-container-org-journal-support" class="outline-3">
-<h3 id="org-journal-support"><span class="section-number-3">4.9</span> Org-journal support</h3>
+<h3 id="org-journal-support"><span class="section-number-3">4.10</span> Org-journal support</h3>
 <div class="outline-text-3" id="text-org-journal-support">
 <p>
 <a href="https://github.com/bastibe/org-journal">org-journal</a> is a simple journal management system that:
@@ -732,7 +784,7 @@ alter <code>org-journal-date-prefix</code> and <code>org-journal-date-format</co
 For example, to have new journal files created with this header:
 </p>
 
-<pre class="example" id="org8e37726">
+<pre class="example" id="orga613c60">
 #+TITLE: Tuesday, September 06 2016
 </pre></li>
 
@@ -786,7 +838,7 @@ For example:
 </div>
 
 <div id="outline-container-hugo-support" class="outline-3">
-<h3 id="hugo-support"><span class="section-number-3">4.10</span> Hugo support</h3>
+<h3 id="hugo-support"><span class="section-number-3">4.11</span> Hugo support</h3>
 <div class="outline-text-3" id="text-hugo-support">
 <p>
 To install the Org exporter <a href="https://ox-hugo.scripter.co">ox-hugo</a> that generates <a href="https://gohugo.io">Hugo</a> -compatible Markdown
@@ -804,7 +856,7 @@ To install the Org exporter <a href="https://ox-hugo.scripter.co">ox-hugo</a> th
 </div>
 
 <div id="outline-container-trello-support" class="outline-3">
-<h3 id="trello-support"><span class="section-number-3">4.11</span> Trello support</h3>
+<h3 id="trello-support"><span class="section-number-3">4.12</span> Trello support</h3>
 <div class="outline-text-3" id="text-trello-support">
 <p>
 To install Trello support set the variable <code>org-enable-trello-support</code> to <code>t</code>.
@@ -820,7 +872,7 @@ To install Trello support set the variable <code>org-enable-trello-support</code
 </div>
 
 <div id="outline-container-different-bullets" class="outline-3">
-<h3 id="different-bullets"><span class="section-number-3">4.12</span> Different bullets</h3>
+<h3 id="different-bullets"><span class="section-number-3">4.13</span> Different bullets</h3>
 <div class="outline-text-3" id="text-different-bullets">
 <p>
 You can tweak the bullets displayed in the org buffer in the function
@@ -845,7 +897,7 @@ You can disable the fancy bullets entirely by adding <code>org-superstar</code> 
 </div>
 
 <div id="outline-container-project-support" class="outline-3">
-<h3 id="project-support"><span class="section-number-3">4.13</span> Project support</h3>
+<h3 id="project-support"><span class="section-number-3">4.14</span> Project support</h3>
 <div class="outline-text-3" id="text-project-support">
 <p>
 Set the layer variable <code>org-projectile-file</code> to the filename where you want to
@@ -878,7 +930,7 @@ the following snippet.
 </div>
 
 <div id="outline-container-org-brain-support" class="outline-3">
-<h3 id="org-brain-support"><span class="section-number-3">4.14</span> Org-brain support</h3>
+<h3 id="org-brain-support"><span class="section-number-3">4.15</span> Org-brain support</h3>
 <div class="outline-text-3" id="text-org-brain-support">
 <p>
 For Emacs 25 or later, support for <a href="https://kungsgeten.github.io/org-brain.html">org-brain</a> is included. See the <a href="https://github.com/Kungsgeten/org-brain">org-brain
@@ -888,7 +940,7 @@ package documentation</a> for more information.
 </div>
 
 <div id="outline-container-org-roam-support" class="outline-3">
-<h3 id="org-roam-support"><span class="section-number-3">4.15</span> Org-roam support</h3>
+<h3 id="org-roam-support"><span class="section-number-3">4.16</span> Org-roam support</h3>
 <div class="outline-text-3" id="text-org-roam-support">
 <p>
 To install org-roam support set the variable <code>org-enable-roam-support</code> to <code>t</code>.
@@ -907,7 +959,7 @@ More information about org-roam package (including manual) can be found at <a hr
 </div>
 
 <div id="outline-container-org-roam-server-support" class="outline-4">
-<h4 id="org-roam-server-support"><span class="section-number-4">4.15.1</span> Org-roam-server support</h4>
+<h4 id="org-roam-server-support"><span class="section-number-4">4.16.1</span> Org-roam-server support</h4>
 <div class="outline-text-4" id="text-org-roam-server-support">
 <p>
 To install support for <a href="https://github.com/org-roam/org-roam-server">org-roam-server</a> set the variable <code>org-enable-roam-server</code>
@@ -917,7 +969,7 @@ to <code>t</code>.
 </div>
 
 <div id="outline-container-org-roam-protocol-support" class="outline-4">
-<h4 id="org-roam-protocol-support"><span class="section-number-4">4.15.2</span> Org-roam-protocol support</h4>
+<h4 id="org-roam-protocol-support"><span class="section-number-4">4.16.2</span> Org-roam-protocol support</h4>
 <div class="outline-text-4" id="text-org-roam-protocol-support">
 <p>
 To enable support for <a href="https://www.orgroam.com/manual.html#Roam-Protocol">Org Roam Protocol</a> set the variable
@@ -939,7 +991,7 @@ And create a desktop file as described in the <a href="https://www.orgroam.com/m
 </div>
 
 <div id="outline-container-mode-line-support" class="outline-3">
-<h3 id="mode-line-support"><span class="section-number-3">4.16</span> Mode line support</h3>
+<h3 id="mode-line-support"><span class="section-number-3">4.17</span> Mode line support</h3>
 <div class="outline-text-3" id="text-mode-line-support">
 <p>
 To temporarily enable mode line display of org clock, press <code>SPC t m c</code>.
@@ -958,7 +1010,7 @@ To permanently enable mode line display of org clock, add this snippet to your
 </div>
 
 <div id="outline-container-sticky-header-support" class="outline-3">
-<h3 id="sticky-header-support"><span class="section-number-3">4.17</span> Sticky header support</h3>
+<h3 id="sticky-header-support"><span class="section-number-3">4.18</span> Sticky header support</h3>
 <div class="outline-text-3" id="text-sticky-header-support">
 <p>
 To install sticky header support set the variable <code>org-enable-sticky-header</code> to <code>t</code>.
@@ -974,7 +1026,7 @@ To install sticky header support set the variable <code>org-enable-sticky-header
 </div>
 
 <div id="outline-container-epub-support" class="outline-3">
-<h3 id="epub-support"><span class="section-number-3">4.18</span> Epub support</h3>
+<h3 id="epub-support"><span class="section-number-3">4.19</span> Epub support</h3>
 <div class="outline-text-3" id="text-epub-support">
 <p>
 To install the Org exporter <a href="https://github.com/ofosos/ox-epub">ox-epub</a> that generates e-book file format <a href="https://en.wikipedia.org/wiki/EPUB">epub</a>, set
@@ -991,7 +1043,7 @@ the variable <code>org-enable-epub-support</code> to <code>t</code>.
 </div>
 
 <div id="outline-container-jira-support" class="outline-3">
-<h3 id="jira-support"><span class="section-number-3">4.19</span> Jira support</h3>
+<h3 id="jira-support"><span class="section-number-3">4.20</span> Jira support</h3>
 <div class="outline-text-3" id="text-jira-support">
 <p>
 To bring Jira and OrgMode together over <a href="https://github.com/ahungry/org-jira">org-jira</a> set the variable
@@ -1020,7 +1072,7 @@ you connect, add your authentication credentials to <code>~/.authinfo.gpg</code>
 </div>
 
 <div id="outline-container-valign-support" class="outline-3">
-<h3 id="valign-support"><span class="section-number-3">4.20</span> Valign support</h3>
+<h3 id="valign-support"><span class="section-number-3">4.21</span> Valign support</h3>
 <div class="outline-text-3" id="text-valign-support">
 <p>
 To install <a href="https://github.com/casouri/valign">valign</a>. Which provides:
@@ -1041,7 +1093,7 @@ Set the variable <code>org-enable-valign</code> to <code>t</code>:
 </div>
 
 <div id="outline-container-org-appear-support" class="outline-3">
-<h3 id="org-appear-support"><span class="section-number-3">4.21</span> Org-appear support</h3>
+<h3 id="org-appear-support"><span class="section-number-3">4.22</span> Org-appear support</h3>
 <div class="outline-text-3" id="text-org-appear-support">
 <p>
 To install <a href="https://github.com/awth13/org-appear">org-appear</a>, which toggles visibility of emphasis markers, links, subscripts, and superscripts in org mode, set the <code>org-enable-appear-support</code> to <code>t</code>:
@@ -1056,7 +1108,7 @@ To install <a href="https://github.com/awth13/org-appear">org-appear</a>, which 
 </div>
 
 <div id="outline-container-verb-support" class="outline-3">
-<h3 id="verb-support"><span class="section-number-3">4.22</span> Verb support</h3>
+<h3 id="verb-support"><span class="section-number-3">4.23</span> Verb support</h3>
 <div class="outline-text-3" id="text-verb-support">
 <p>
 To install <a href="https://github.com/federicotdn/verb">Verb</a>, an HTTP client based on Org mode, set the
@@ -1072,7 +1124,7 @@ To install <a href="https://github.com/federicotdn/verb">Verb</a>, an HTTP clien
 </div>
 
 <div id="outline-container-asciidoc-support" class="outline-3">
-<h3 id="asciidoc-support"><span class="section-number-3">4.23</span> AsciiDoc support</h3>
+<h3 id="asciidoc-support"><span class="section-number-3">4.24</span> AsciiDoc support</h3>
 <div class="outline-text-3" id="text-asciidoc-support">
 <p>
 To install Org exporter <a href="https://github.com/yashi/org-asciidoc">ox-asciidoc</a>, that generates AsciiDoc documents, set the
@@ -1088,7 +1140,7 @@ variable <code>org-enable-asciidoc-support</code> to <code>t</code>.
 </div>
 
 <div id="outline-container-spacemacs-layout-integration" class="outline-3">
-<h3 id="spacemacs-layout-integration"><span class="section-number-3">4.24</span> Spacemacs layout integration</h3>
+<h3 id="spacemacs-layout-integration"><span class="section-number-3">4.25</span> Spacemacs layout integration</h3>
 <div class="outline-text-3" id="text-spacemacs-layout-integration">
 <p>
 A <a href="../../../doc/DOCUMENTATION.html#layouts-and-workspaces">Spacemacs custom layout</a> <code>@Org</code> is defined by the layer and accessible via <code>SPC l o</code>. The startup behavior can be customized with the following layer variables:
@@ -3770,7 +3822,7 @@ Key binding prefixes:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-04-27 Tue 03:14</p>
+<p class="date">Created: 2021-05-04 Tue 20:11</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
