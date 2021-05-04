@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-04-27 Tue 03:14 -->
+<!-- 2021-05-04 Tue 20:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LSP layer</title>
@@ -278,6 +278,7 @@
 <li><a href="#spacemacslsp-bind-extensions-for-mode">3.3.2. <code>spacemacs/lsp-bind-extensions-for-mode</code></a></li>
 </ul>
 </li>
+<li><a href="#bind-to-lsp-upstreams">3.4. Bind to lsp upstreams</a></li>
 </ul>
 </li>
 <li><a href="#dap-integration">4. DAP integration</a></li>
@@ -1118,6 +1119,55 @@ etc.
 </div>
 </div>
 </div>
+
+<div id="outline-container-bind-to-lsp-upstreams" class="outline-3">
+<h3 id="bind-to-lsp-upstreams"><span class="section-number-3">3.4</span> Bind to lsp upstreams</h3>
+<div class="outline-text-3" id="text-bind-to-lsp-upstreams">
+<p>
+Alternatively, you can have <code>lsp-mode</code> handle the bindings for you,
+by setting <code>lsp-use-upstream-bindings</code> to <code>t</code>.
+In this case Spacemacs will bind the <code>lsp-command-map</code> behind <code>SPC m</code>, <code>,</code> and
+<code>M-m</code>.
+</p>
+
+<p>
+The detailed bindings can be found <a href="https://emacs-lsp.github.io/lsp-mode/page/keybindings/">here</a>
+where Spacemacs only replaces the prefix <code>s-l</code> with <code>SPC m</code>.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">lsp binding</th>
+<th scope="col" class="org-left">Spacemacs binding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>s-l w s</code></td>
+<td class="org-left"><code>SPC m w s</code> or <code>, w s</code> or <code>M-m w s</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+As <code>lsp-mode</code> and has a deep integration into <code>Spacemacs</code>. <code>Spacemacs</code> hackers
+should pay attention to avoid any binding collision with <code>lsp-mode</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>lsp <span class="org-builtin">:variables</span> lsp-use-upstream-bindings t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
 </div>
 
 <div id="outline-container-dap-integration" class="outline-2">
@@ -1157,7 +1207,7 @@ completion</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-04-27 Tue 03:14</p>
+<p class="date">Created: 2021-05-04 Tue 20:11</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

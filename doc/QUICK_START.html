@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-04-27 Tue 03:13 -->
+<!-- 2021-05-04 Tue 20:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Quick start</title>
@@ -277,13 +277,34 @@
 <div class="outline-text-2" id="text-configuration-layers">
 <p>
 Spacemacs divides its configuration into self-contained units called
-<code>configuration layers</code>. These layers are stacked on top of each other
-to achieve a custom configuration.
+<code>configuration layers</code>. These layers are stacked on top of each other to achieve
+a custom configuration.
 </p>
 
 <p>
 By default Spacemacs uses a dotfile called <code>~/.spacemacs</code> to control which
-layers to load. Within this file you can also configure certain features.
+layers to load. Within this file you can also configure certain features. This
+design makes it extremely easy to turn Spacemacs into a fully integrated
+development environment.
+</p>
+
+<p>
+For example to get python support, simply add <code>python</code> to the list of
+<code>dotspacemacs-configuration-layers</code> in your <code>~/.spacemacs</code>. Find the
+<code>~/.spacemacs</code> file by pressing <code>SPC f e d</code> and then after adding the layer,
+reload it with <code>SPC f e R</code>. Now open a <code>.py</code> file (<code>SPC f f</code>) to find the python
+environment has been fully configured. Some extra configuration might make the
+environment even more powerful, which is very well described in the <a href="https://develop.spacemacs.org/layers/+lang/python/README.html">layer's
+documentation</a> that can be accessed by pressing <code>SPC h l</code> and selecting the
+<code>python</code> layer entry. For configuration of specific packages within a layer,
+<code>SPC h SPC</code> provides quick navigation functionality for jumping directly to the
+relevant location within the configuration files.
+</p>
+
+<p>
+A list of pre-configured layers is available <a href="https://develop.spacemacs.org/layers/LAYERS.html">here</a>. If you still would like to
+configure anything not covered by any layer, then it is easy to build a personal
+layer.
 </p>
 
 <p>
@@ -301,7 +322,7 @@ own layer.
 The following command creates a layer in the <code>private</code> directory:
 </p>
 
-<pre class="example" id="orgc803093">
+<pre class="example" id="org9786949">
 SPC SPC configuration-layer/create-layer RET
 </pre>
 
@@ -329,7 +350,7 @@ is also a means to customizing Spacemacs.
 The following command will create a <code>.spacemacs</code> file in your home directory:
 </p>
 
-<pre class="example" id="orgda40769">
+<pre class="example" id="org52c81d5">
 SPC SPC dotspacemacs/install RET
 </pre>
 
@@ -337,7 +358,7 @@ SPC SPC dotspacemacs/install RET
 To open the installed dotfile:
 </p>
 
-<pre class="example" id="org127070f">
+<pre class="example" id="org59bb192">
 SPC f e d
 </pre>
 
@@ -501,7 +522,7 @@ a buffer appears after one second listing the possible keys for this prefix.
 It is also possible to search for specific key bindings by pressing:
 </p>
 
-<pre class="example" id="orga7edb2c">
+<pre class="example" id="orge143347">
 SPC ?
 </pre>
 
@@ -510,7 +531,7 @@ To narrow the bindings list to those prefixed with <code>SPC</code>,
 type a pattern like this regular expression:
 </p>
 
-<pre class="example" id="orgd76c4e1">
+<pre class="example" id="org3c426ac">
 SPC\ b
 </pre>
 
@@ -586,7 +607,7 @@ Some quick <code>how-to's</code> are compiled in the <a href="FAQ.html#how-do-i"
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-04-27 Tue 03:13</p>
+<p class="date">Created: 2021-05-04 Tue 20:10</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
