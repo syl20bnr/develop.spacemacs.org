@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-05 Wed 17:32 -->
+<!-- 2021-05-22 Sat 18:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>spacemacs-layouts layer</title>
@@ -223,7 +223,7 @@
           </script>
 <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 <script type="text/javascript">
-// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
      function CodeHighlightOn(elem, id)
      {
@@ -272,7 +272,7 @@
 </div>
 
 <div id="outline-container-description" class="outline-2">
-<h2 id="description"><span class="section-number-2">1</span> Description</h2>
+<h2 id="description"><span class="section-number-2">1.</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for distinct layouts/workspaces to Spacemacs.
@@ -286,7 +286,7 @@ the current layout.
 </div>
 
 <div id="outline-container-features" class="outline-3">
-<h3 id="features"><span class="section-number-3">1.1</span> Features:</h3>
+<h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Support for distinct layouts via <code>eyebrowse</code></li>
@@ -297,7 +297,7 @@ the current layout.
 </div>
 
 <div id="outline-container-install" class="outline-2">
-<h2 id="install"><span class="section-number-2">2</span> Install</h2>
+<h2 id="install"><span class="section-number-2">2.</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 The <code>spacemacs-layouts</code> layer is included by default in the Spacemacs distribution.
@@ -310,7 +310,7 @@ To set configuration layer variables, add <code>spacemacs-layouts</code> to the 
 </div>
 
 <div id="outline-container-restrict-functions-to-the-current-layouts-buffers" class="outline-3">
-<h3 id="restrict-functions-to-the-current-layouts-buffers"><span class="section-number-3">2.1</span> Restrict functions to the current layout's buffers</h3>
+<h3 id="restrict-functions-to-the-current-layouts-buffers"><span class="section-number-3">2.1.</span> Restrict functions to the current layout's buffers</h3>
 <div class="outline-text-3" id="text-restrict-functions-to-the-current-layouts-buffers">
 <p>
 Besides <code>helm-mini</code> and <code>ivy-switch-buffer</code> that are aware of a layout's
@@ -323,7 +323,7 @@ layout's buffers.
 Default value of <code>spacemacs-layouts-restricted-functions</code> is:
 </p>
 
-<pre class="example" id="orga94cb6b">
+<pre class="example" id="org38c3a20">
 '(spacemacs/window-split-double-columns
   spacemacs/window-split-triple-columns
   spacemacs/window-split-grid)
@@ -334,7 +334,7 @@ The list can be edited in the <code>dotspacemacs-configuration-layers</code> var
 the top of <code>.spacemacs</code> like this:
 </p>
 
-<pre class="example" id="orgdfdc4ce">
+<pre class="example" id="org1379a07">
 (spacemacs-layouts :variables
                    spacemacs-layouts-restricted-functions
                    '(spacemacs/window-split-double-columns
@@ -351,7 +351,7 @@ current Emacs session. A restart is required.
 </div>
 
 <div id="outline-container-restrict-spc-tab-to-the-current-layouts-buffers" class="outline-3">
-<h3 id="restrict-spc-tab-to-the-current-layouts-buffers"><span class="section-number-3">2.2</span> Restrict SPC-TAB to the current layout's buffers</h3>
+<h3 id="restrict-spc-tab-to-the-current-layouts-buffers"><span class="section-number-3">2.2.</span> Restrict SPC-TAB to the current layout's buffers</h3>
 <div class="outline-text-3" id="text-restrict-spc-tab-to-the-current-layouts-buffers">
 <p>
 When the <code>spacemacs-layouts-restrict-spc-tab</code> variable is set to <code>t</code>, then
@@ -368,7 +368,7 @@ It can be enabled in the <code>dotspacemacs-configuration-layers</code> variable
 top of <code>.spacemacs</code> like this:
 </p>
 
-<pre class="example" id="org3a69ab2">
+<pre class="example" id="org30f745c">
 (spacemacs-layouts :variables
                    spacemacs-layouts-restrict-spc-tab t)
 </pre>
@@ -378,14 +378,14 @@ Note that <code>spacemacs-layouts-restrict-spc-tab</code> also can be toggle on 
 evaluating it like this:
 </p>
 
-<pre class="example" id="org2d03210">
+<pre class="example" id="org9088a62">
 (setq spacemacs-layouts-restrict-spc-tab t)
 </pre>
 </div>
 </div>
 
 <div id="outline-container-kill-buffers-when-killing-current-layout" class="outline-3">
-<h3 id="kill-buffers-when-killing-current-layout"><span class="section-number-3">2.3</span> Kill buffers when killing current layout</h3>
+<h3 id="kill-buffers-when-killing-current-layout"><span class="section-number-3">2.3.</span> Kill buffers when killing current layout</h3>
 <div class="outline-text-3" id="text-kill-buffers-when-killing-current-layout">
 <p>
 <code>SPC l x</code> kills the current layout and the buffers stay open by default.
@@ -395,7 +395,7 @@ evaluating it like this:
 <code>t</code> will kill all buffers in the current layout
 </p>
 
-<pre class="example" id="org9aaa933">
+<pre class="example" id="orge3c064e">
 (spacemacs-layouts :variables
                    persp-autokill-buffer-on-remove 'kill-weak)
 </pre>
@@ -409,7 +409,7 @@ remain open and listed in the default layout.
 </div>
 
 <div id="outline-container-usage" class="outline-2">
-<h2 id="usage"><span class="section-number-2">3</span> Usage</h2>
+<h2 id="usage"><span class="section-number-2">3.</span> Usage</h2>
 <div class="outline-text-2" id="text-usage">
 <p>
 Layout 1 is the default layout and has global scope, so <code>SPC b b</code> lists all open
@@ -436,7 +436,7 @@ See key bindings for more layout commands.
 </div>
 
 <div id="outline-container-key-bindings" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">4</span> Key bindings</h2>
+<h2 id="key-bindings"><span class="section-number-2">4.</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -699,7 +699,7 @@ See key bindings for more layout commands.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-05-05 Wed 17:32</p>
+<p class="date">Created: 2021-05-22 Sat 18:45</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

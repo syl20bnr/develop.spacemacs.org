@@ -6,7 +6,7 @@
 <!-- 2021-05-22 Sat 18:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>JSON layer</title>
+<title>evil-better-jumper layer</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="root" />
 <style type="text/css">
@@ -248,7 +248,7 @@
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">JSON layer</h1>
+<h1 class="title">evil-better-jumper layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -259,40 +259,18 @@
 </ul>
 </li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#configuration">3. Configuration</a>
-<ul>
-<li><a href="#web-beautify">3.1. web-beautify</a></li>
-<li><a href="#prettier">3.2. prettier</a></li>
-<li><a href="#choosing-a-formatter">3.3. Choosing a formatter</a></li>
-<li><a href="#formatting-on-save">3.4. Formatting on save</a></li>
-<li><a href="#lsp">3.5. LSP</a></li>
-</ul>
-</li>
-<li><a href="#usage">4. Usage</a>
-<ul>
-<li><a href="#reformat">4.1. Reformat</a></li>
-<li><a href="#display-navigable-hierarchy">4.2. Display navigable hierarchy</a></li>
-</ul>
-</li>
-<li><a href="#key-bindings">5. Key bindings</a>
-<ul>
-<li><a href="#json-hierarchy">5.1. JSON hierarchy</a></li>
-</ul>
-</li>
+<li><a href="#key-bindings">3. Key bindings</a></li>
 </ul>
 </div>
-</div>
-
-<div id="orga1c5254" class="figure">
-<p><img src="img/json.png" alt="json.png" />
-</p>
 </div>
 
 <div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1.</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds support for JSON files with <a href="https://github.com/joshwnj/json-mode">json-mode</a>
+This layer adds support for <a href="https://github.com/gilbertw1/better-jumper">better-jumper</a>. A configurable jump list
+implementation for Emacs that can be used to easily jump back to previous
+locations.
 </p>
 </div>
 
@@ -300,11 +278,7 @@ This layer adds support for JSON files with <a href="https://github.com/joshwnj/
 <h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Syntax highlighting</li>
-<li>Auto-completion</li>
-<li>Get the path to a JSON value with <a href="https://github.com/Sterlingg/json-snatcher">json-snatcher</a></li>
-<li>Navigate JSON hierarchy with <a href="https://github.com/DamienCassou/json-navigator">json-nagivator</a></li>
-<li>Formatting with <a href="https://github.com/yasuyk/web-beautify">web-beautify</a> or <a href="https://github.com/prettier/prettier">prettier</a></li>
+<li>jump back and forth</li>
 </ul>
 </div>
 </div>
@@ -315,159 +289,24 @@ This layer adds support for JSON files with <a href="https://github.com/joshwnj/
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>json</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this file.
-</p>
-</div>
-</div>
-
-<div id="outline-container-configuration" class="outline-2">
-<h2 id="configuration"><span class="section-number-2">3.</span> Configuration</h2>
-<div class="outline-text-2" id="text-configuration">
-<p>
-To define the default indentation set the variable <code>js-indent-level</code>.
-</p>
-</div>
-
-<div id="outline-container-web-beautify" class="outline-3">
-<h3 id="web-beautify"><span class="section-number-3">3.1.</span> web-beautify</h3>
-<div class="outline-text-3" id="text-web-beautify">
-<p>
-See <a href="../../+tools/web-beautify/README.html">web-beautify layer</a> documentation.
-</p>
-</div>
-</div>
-
-<div id="outline-container-prettier" class="outline-3">
-<h3 id="prettier"><span class="section-number-3">3.2.</span> prettier</h3>
-<div class="outline-text-3" id="text-prettier">
-<p>
-See <a href="../../+tools/prettier/README.html">prettier layer</a> documentation.
-</p>
-</div>
-</div>
-
-<div id="outline-container-choosing-a-formatter" class="outline-3">
-<h3 id="choosing-a-formatter"><span class="section-number-3">3.3.</span> Choosing a formatter</h3>
-<div class="outline-text-3" id="text-choosing-a-formatter">
-<p>
-To choose a formatter, set the layer variable <code>json-fmt-tool</code>:
+add <code>evil-better-jumper</code> to the existing <code>dotspacemacs-configuration-layers</code> list in
+this file. If <code>C-i</code> acts like <code>TAB</code> instead of <code>better-jumper-jump-forward</code>, please
+use <code>M-x describe-variable</code> to check the value of the symbol
+<code>dotspacemacs-distinguish-gui-tab</code> and ensure it is set to <code>t</code> in the dotspacemacs
+file.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>json <span class="org-builtin">:variables</span> json-fmt-tool 'web-beautify<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/init</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">...</span>
+  dotspacemacs-distinguish-gui-tab t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
-</div>
-
-<p>
-The formatter can be chosen on a per project basis using directory local variables
-(files named <code>.dir-locals.el</code> at the root of a project), an example to use the
-<code>prettier</code> formatter:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
-<span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
-
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>json-mode <span class="org-rainbow-delimiters-depth-3">(</span>json-fmt-tool . prettier<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-<b>Note:</b> you can easily add a directory local variable with <code>SPC f v d</code>.
-</p>
-</div>
-</div>
-
-<div id="outline-container-formatting-on-save" class="outline-3">
-<h3 id="formatting-on-save"><span class="section-number-3">3.4.</span> Formatting on save</h3>
-<div class="outline-text-3" id="text-formatting-on-save">
-<p>
-To enable using the selected formatter on save, set the layer variable <code>json-fmt-on-save</code>:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>json <span class="org-builtin">:variables</span> json-fmt-on-save t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-lsp" class="outline-3">
-<h3 id="lsp"><span class="section-number-3">3.5.</span> LSP</h3>
-<div class="outline-text-3" id="text-lsp">
-<p>
-To enable LSP, install the lsp server via npm,
-then set the layer variable <code>json-backend</code> to <code>'lsp</code> like shown below:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>json <span class="org-builtin">:variables</span> json-backend 'lsp<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-Alternatively you can also keep the variable on nil, then lsp will be used if lsp
-layer is loaded.
-</p>
-
-<p>
-Installing the lsp server dependency can be done like this:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-sh">npm install -g vscode-json-languageserver
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-usage" class="outline-2">
-<h2 id="usage"><span class="section-number-2">4.</span> Usage</h2>
-<div class="outline-text-2" id="text-usage">
-</div>
-
-<div id="outline-container-reformat" class="outline-3">
-<h3 id="reformat"><span class="section-number-3">4.1.</span> Reformat</h3>
-<div class="outline-text-3" id="text-reformat">
-<p>
-<code>SPC m = =</code> will reformat the whole buffer or the active region. Use numerical
-prefix argument to specify a different indentation than <code>js-indent-level</code>.
-Use the universal prefix argument to print decoded strings, for instance:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-json">{"name":"foo\"bar","nick":"foo \u00e4 bar","description":"&lt;pre&gt;\nbaz\n&lt;/pre&gt;","home":"/home/foobar"}
-
-Will be reformatted:
-
-{
-  "name": "foo\"bar",
-  "nick": "foo ä bar",
-  "description": "&lt;pre&gt;
-  baz
-  &lt;/pre&gt;",
-  "home": "/home/foobar"
-}
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-display-navigable-hierarchy" class="outline-3">
-<h3 id="display-navigable-hierarchy"><span class="section-number-3">4.2.</span> Display navigable hierarchy</h3>
-<div class="outline-text-3" id="text-display-navigable-hierarchy">
-<p>
-<code>SPC m T h</code> toggle the display of a hierarchy for the whole JSON document or the active
-region. Use the universal prefix argument <code>SPC u SPC m T h</code> to create the
-hierarchy for the JSON <b>after</b> the point.
-</p>
 </div>
 </div>
 </div>
 
 <div id="outline-container-key-bindings" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">5.</span> Key bindings</h2>
+<h2 id="key-bindings"><span class="section-number-2">3.</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -485,58 +324,16 @@ hierarchy for the JSON <b>after</b> the point.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m = =</code></td>
-<td class="org-left">Reformat thing under point</td>
+<td class="org-left"><code>C-o</code></td>
+<td class="org-left">better-jumper-jump-backward</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m h p</code></td>
-<td class="org-left">Print the path to the json element under point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m T h</code></td>
-<td class="org-left">Toggle graphical JSON hierarchy</td>
+<td class="org-left"><code>C-i</code></td>
+<td class="org-left">better-jumper-jump-forward</td>
 </tr>
 </tbody>
 </table>
-</div>
-
-<div id="outline-container-json-hierarchy" class="outline-3">
-<h3 id="json-hierarchy"><span class="section-number-3">5.1.</span> JSON hierarchy</h3>
-<div class="outline-text-3" id="text-json-hierarchy">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>RET</code></td>
-<td class="org-left">Expand/Collapse node</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>TAB</code></td>
-<td class="org-left">Select next node</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>S-TAB</code></td>
-<td class="org-left">Select previous node</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 </div>
 </div>
