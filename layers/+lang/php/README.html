@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-22 Sat 18:45 -->
+<!-- 2021-07-08 Thu 12:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PHP layer</title>
@@ -282,7 +282,7 @@
 </div>
 </div>
 
-<div id="org18dc6f4" class="figure">
+<div id="orgcce1482" class="figure">
 <p><img src="img/php.png" alt="php.png" />
 </p>
 </div>
@@ -421,13 +421,33 @@ installation command: <code>&lt;M-x&gt; dap-php-setup</code>.
 After that You can try to debug something. For example add a breakpoint to any
 of Your phpunit tests with <code>SPC m d b a</code>. And start debugging with <code>SPC m d d d</code>
 and selecting a debug template. Now run the test to ensure everything is
-working. The command to run the test while debugging could look like this:
+working. You may refer to one of the following examples to run Your tests.
+</p>
+
+<p>
+For xdebug v2:
 </p>
 
 <div class="org-src-container">
 <pre class="src src-sh">php -d xdebug.idekey=PHPSTORM -d xdebug.remote_autostart=<span class="org-highlight-numbers-number">1</span> -d xdebug.remote_enable=<span class="org-highlight-numbers-number">1</span> -d xdebug.remote_host=<span class="org-highlight-numbers-number">127.0.0.1</span> -d xdebug.remote_port=<span class="org-highlight-numbers-number">9000</span> bin/phpunit ./path/to/Test.php
 </pre>
 </div>
+
+<p>
+For xdebug v3:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">php -d xdebug.idekey=PHPSTORM -d xdebug.start_with_request=yes -d xdebug.mode=debug -d xdebug.client_host=<span class="org-highlight-numbers-number">127.0.0.1</span> -d xdebug.client_port=<span class="org-highlight-numbers-number">9000</span> bin/phpunit ./path/to/Test.php
+</pre>
+</div>
+
+<p>
+Make sure You use the proper host. For example both <code>localhost</code> and <code>127.0.0.1</code>
+most likely will not work while debugging inside of docker. You have to use either
+<code>host.docker.internal</code> or Your machine's external IP if it doesn't work.
+See <a href="https://github.com/docker/for-linux/issues/264">this docker issue</a> for reasons of troubles with <code>host.docker.internal</code>.
+</p>
 
 <p>
 The test is now expected to be paused by emacs/dap when it catches code at the
@@ -910,7 +930,7 @@ See README.org file of the <code>dap-layer</code> for key bindings available in 
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-05-22 Sat 18:45</p>
+<p class="date">Created: 2021-07-08 Thu 12:34</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

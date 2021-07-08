@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-22 Sat 18:45 -->
+<!-- 2021-07-08 Thu 12:33 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spacemacs documentation</title>
@@ -885,7 +885,7 @@ to install. To install all the <code>python</code> features the user has just to
 Configuration is organized in layers. Each layer has the following structure:
 </p>
 
-<pre class="example" id="org1f7e07f">
+<pre class="example" id="org9912501">
 [layer_name]
   |__ [local]
   | |__ [package 1]
@@ -1050,7 +1050,7 @@ Example:
 <h5 id="overriding-a-layer-package"><span class="section-number-5">6.3.1.4.</span> Overriding a layer package</h5>
 <div class="outline-text-5" id="text-overriding-a-layer-package">
 <p>
-See <a href="https://www.spacemacs.org/doc/FAQ.html#how-to-override-a-layer-package">this answer in the FAQ's</a>.
+See <a href="https://develop.spacemacs.org/doc/FAQ.html#how-to-override-a-layer-package">this answer in the FAQ's</a>.
 </p>
 </div>
 </div>
@@ -1061,7 +1061,7 @@ See <a href="https://www.spacemacs.org/doc/FAQ.html#how-to-override-a-layer-pack
 <div class="outline-text-4" id="text-without-a-layer">
 <p>
 Sometimes a layer can be an unnecessary overhead, this is the case if you just
-want to install a package with very few configuration associated to it. A good
+want to install a package with very few configurations associated to it. A good
 example is some niche language where you are only interested in syntax
 highlighting.
 </p>
@@ -1997,7 +1997,7 @@ Auto-highlight-symbol transient state:
 </p>
 
 
-<div id="orgd4b0b04" class="figure">
+<div id="org07dd2e8" class="figure">
 <p><img src="img/spacemacs-scale-transient-state.png" alt="spacemacs-scale-transient-state.png" />
 </p>
 </div>
@@ -2063,7 +2063,7 @@ for the toggle to turn on and off the <code>which-key</code> minor mode.
 <p>
 Major mode specific toggles can be turned on by registering a hook on them to
 call the "toggle on" function automatically whenever a buffer using this major
-mode is opened. It can be done convenienty using the function
+mode is opened. It can be done conveniently using the function
 <code>spacemacs/toggle-NAME-on-register-hooks</code>. It also exists variants of this
 function for each supported major mode like
 <code>spacemacs/toggle-NAME-on-register-hook-MODE</code>.
@@ -3347,7 +3347,7 @@ errors, warnings and info.
 <h5 id="anzu-integration"><span class="section-number-5">13.4.4.2.</span> Anzu integration</h5>
 <div class="outline-text-5" id="text-anzu-integration">
 <p>
-<a href="https://github.com/syohex/emacs-anzu">Anzu</a> shows the number of occurrence when performing a search. Spacemacs
+<a href="https://github.com/syohex/emacs-anzu">Anzu</a> shows the number of occurrences when performing a search. Spacemacs
 integrates the Anzu status nicely by displaying it temporarily when <code>n</code> or <code>N</code>
 are being pressed. See the <code>5/6</code> segment on the screenshot below.
 </p>
@@ -3477,7 +3477,7 @@ toggle them.
 </p>
 
 <p>
-Some toggle have two flavors: local and global. The global version of the toggle
+Some toggles have two flavors: local and global. The global version of the toggle
 can be reached using the <code>control</code> key.
 </p>
 
@@ -4265,7 +4265,7 @@ this variable <code>spacemacs-layouts-restrict-spc-tab</code> to <code>nil</code
 your used layer list with layer variables:
 </p>
 
-<pre class="example" id="org592e628">
+<pre class="example" id="orgb5f43b2">
 (spacemacs-layouts :variables spacemacs-layouts-restrict-spc-tab t)
 </pre>
 </div>
@@ -4286,7 +4286,7 @@ take effect.
 Default value for this variable is:
 </p>
 
-<pre class="example" id="orgeb43be9">
+<pre class="example" id="org19a9210">
 '(spacemacs/window-split-double-columns
   spacemacs/window-split-triple-columns
   spacemacs/window-split-grid)
@@ -4297,7 +4297,7 @@ If you want to add the function <code>my-func</code> to this list you need to re
 the complete list using layer variables:
 </p>
 
-<pre class="example" id="org74ca969">
+<pre class="example" id="org7b37bc4">
 (spacemacs-layouts :variables
                    spacemacs-layouts-restricted-functions
                    '(spacemacs/window-split-double-columns
@@ -7174,7 +7174,7 @@ navigate between <code>Emacs</code> and Spacemacs specific files.
 <div class="outline-text-5" id="text-browsing-files-in-completion-buffer">
 <p>
 In <code>vim</code> style and <code>hybrid</code> style with the variable
-<code>hybrid-mode-enable-hjkl-bindings</code> set to <code>t</code>, you can navigation with <code>hjkl</code>.
+<code>hybrid-mode-enable-hjkl-bindings</code> set to <code>t</code>, you can navigate with <code>hjkl</code>.
 </p>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -8494,7 +8494,7 @@ During the symbol highlight transient state, the following bindings are active:
 The minibuffer displays the following information during the transient state:
 </p>
 
-<pre class="example" id="org8af31a9">
+<pre class="example" id="orge575588">
 Buffer [6/11]*
 </pre>
 
@@ -10159,6 +10159,10 @@ Examples:
 These commands automatically switch to <code>lisp state</code>.
 </p>
 
+<p>
+Navigation:
+</p>
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -10175,75 +10179,224 @@ These commands automatically switch to <code>lisp state</code>.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC k %</code></td>
-<td class="org-left">evil jump item</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Forward + Backward pairs</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC k j</code></td>
+<td class="org-left">go forward to next closing parenthesis</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC k :</code></td>
-<td class="org-left">ex command</td>
+<td class="org-left"><code>SPC k k</code></td>
+<td class="org-left">go backward to previous opening parenthesis</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC k (</code></td>
-<td class="org-left">insert expression before (same level as current one)</td>
+<td class="org-left"><code>SPC k l</code></td>
+<td class="org-left">go forward to next symbol</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC k )</code></td>
-<td class="org-left">insert expression after (same level as current one)</td>
+<td class="org-left"><code>SPC k h</code></td>
+<td class="org-left">go backward to previous symbol</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC k L</code></td>
+<td class="org-left">go forward to next sexp</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC k H</code></td>
+<td class="org-left">go backward to previous sexp</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC k $</code></td>
-<td class="org-left">go to the end of current sexp</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k ` k</code></td>
-<td class="org-left">hybrid version of push sexp (can be used in non lisp dialects)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k ` p</code></td>
-<td class="org-left">hybrid version of push sexp (can be used in non lisp dialects)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k ` s</code></td>
-<td class="org-left">hybrid version of slurp sexp (can be used in non lisp dialects)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k ` t</code></td>
-<td class="org-left">hybrid version of transpose sexp (can be used in non lisp dialects)</td>
+<td class="org-left">go forward to the end of current sexp</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC k 0</code></td>
-<td class="org-left">go to the beginning of current sexp</td>
+<td class="org-left">go backward to the beginning of current sexp</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Other</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC k U</code></td>
+<td class="org-left">go "up": to parent sexp backward</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC k a</code></td>
-<td class="org-left">absorb expression</td>
+<td class="org-left"><code>SPC k %</code></td>
+<td class="org-left">go to other paren of the same pair</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC k I</code></td>
+<td class="org-left">go back to beginning of current expression and switch to <code>insert</code> state</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Manipulation:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC k s</code></td>
+<td class="org-left">slurp forward: <code>a (bs) c</code> -&gt; <code>a (bs c)</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC k S</code></td>
+<td class="org-left">slurp backward: <code>a (bs) c</code> -&gt; <code>(a bs) c</code></td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC k b</code></td>
-<td class="org-left">forward barf expression</td>
+<td class="org-left">barf forward: <code>(a bs c)</code> -&gt; <code>(a bs) c</code></td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC k B</code></td>
-<td class="org-left">backward barf expression</td>
+<td class="org-left">barf backward: <code>(a bs c)</code> -&gt; <code>a (bs c)</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC k a</code></td>
+<td class="org-left">absorb: <code>(a (bs &lt;point&gt; ..))</code> -&gt; <code>((bs a &lt;point&gt; ..))</code></td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC k c</code></td>
-<td class="org-left">convolute expression</td>
+<td class="org-left">convolute: <code>(as (bs &lt;point&gt; ..))</code> -&gt; <code>(bs (as &lt;point&gt; ..))</code></td>
 </tr>
 
+<tr>
+<td class="org-left"><code>SPC k t</code></td>
+<td class="org-left">transpose: <code>(as &lt;point&gt; bs)</code> -&gt; <code>(bs &lt;point&gt; as)</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC k J</code></td>
+<td class="org-left">join: <code>(as) &lt;point&gt; (bs)</code> -&gt; <code>(as &lt;point&gt; bs)</code></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Hybrid (= better for non-Lisp languages) commands</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC k ` s</code></td>
+<td class="org-left">hybrid slurp forward</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC k ` p</code></td>
+<td class="org-left">hybrid push: <code>&lt;point&gt;as bs</code> -&gt; <code>&lt;point&gt;bs as</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC k ` t</code></td>
+<td class="org-left">hybrid transpose: <code>as &lt;point&gt; bs</code> -&gt; <code>bs &lt;point&gt; as</code></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Note 1:</td>
+<td class="org-left"><code>xs</code> is one or multiple sexp, <code>x</code> is a single sexp</td>
+</tr>
+
+<tr>
+<td class="org-left">Note 2:</td>
+<td class="org-left">point is at &lt;point&gt; when presented, or in the list otherwise</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Insertion:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC k (</code></td>
+<td class="org-left">insert sexp before current one</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC k )</code></td>
+<td class="org-left">insert sexp after current one</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC k w</code></td>
+<td class="org-left">wrap a symbol with parenthesis</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Deletion:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td class="org-left"><code>SPC k ds</code></td>
 <td class="org-left">delete symbol</td>
@@ -10251,7 +10404,7 @@ These commands automatically switch to <code>lisp state</code>.
 
 <tr>
 <td class="org-left"><code>SPC k Ds</code></td>
-<td class="org-left">backward delete symbol</td>
+<td class="org-left">delete symbol backward</td>
 </tr>
 
 <tr>
@@ -10261,72 +10414,130 @@ These commands automatically switch to <code>lisp state</code>.
 
 <tr>
 <td class="org-left"><code>SPC k Dw</code></td>
-<td class="org-left">backward delete word</td>
+<td class="org-left">delete word backward</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC k dx</code></td>
-<td class="org-left">delete expression</td>
+<td class="org-left">delete sexp: <code>(as &lt;point&gt; a ..)</code> -&gt; <code>(as &lt;point&gt; ..)</code></td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC k Dx</code></td>
-<td class="org-left">backward delete expression</td>
+<td class="org-left">delete sexp backward: <code>(as a &lt;point&gt; ..)</code> -&gt; <code>(as &lt;point&gt; ..)</code></td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC k e</code></td>
-<td class="org-left">unwrap current expression and kill all symbols after point</td>
+<td class="org-left">splice, killing forward: <code>(as (bs &lt;point&gt; cs) ds)</code> -&gt; <code>(as bs ds)</code></td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC k E</code></td>
-<td class="org-left">unwrap current expression and kill all symbols before point</td>
+<td class="org-left">splice, killing backward: <code>(as (bs &lt;point&gt; cs) ds)</code> -&gt; <code>(as cs ds)</code></td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC k h</code></td>
-<td class="org-left">previous symbol</td>
+<td class="org-left"><code>SPC k r</code></td>
+<td class="org-left">raise: <code>(as &lt;point&gt; b ..)</code> -&gt; <code>&lt;point&gt;b</code></td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC k H</code></td>
-<td class="org-left">go to previous sexp</td>
+<td class="org-left"><code>SPC k W</code></td>
+<td class="org-left">unwrap sexp: <code>(as)</code> -&gt; <code>as</code></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Hybrid (= better for non-Lisp languages) commands</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC k ` k</code></td>
+<td class="org-left">hybrid delete sexp</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Note 1:</td>
+<td class="org-left"><code>xs</code> is one or multiple sexp, <code>x</code> is a single sexp</td>
+</tr>
+
+<tr>
+<td class="org-left">Note 2:</td>
+<td class="org-left">point is at <code>&lt;point&gt;</code> when presented, or in the list otherwise</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Bindings from normal state:
+</p>
+
+<p>
+For convenience, a number of normal state evil binding are available in lisp state as well:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC k :</code></td>
+<td class="org-left">ex command</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC k i</code></td>
-<td class="org-left">switch to <code>insert state</code></td>
+<td class="org-left">switch to <code>insert</code> state</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC k I</code></td>
-<td class="org-left">go to beginning of current expression and switch to <code>insert state</code></td>
+<td class="org-left">switch to <code>insert</code> state at beginning of current line</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC k j</code></td>
-<td class="org-left">next closing parenthesis</td>
+<td class="org-left"><code>SPC k v</code></td>
+<td class="org-left">switch to <code>visual</code> state and begin character-wise selection</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC k J</code></td>
-<td class="org-left">join expression</td>
+<td class="org-left"><code>SPC k V</code></td>
+<td class="org-left">switch to <code>visual</code> state and begin line-wise selection</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC k k</code></td>
-<td class="org-left">previous opening parenthesis</td>
+<td class="org-left"><code>SPC k C-v</code></td>
+<td class="org-left">switch to <code>visual</code> state and begin block-wise selection</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC k l</code></td>
-<td class="org-left">next symbol</td>
+<td class="org-left"><code>SPC k u</code></td>
+<td class="org-left">undo</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC k L</code></td>
-<td class="org-left">go to next sexp</td>
+<td class="org-left"><code>SPC k C-r</code></td>
+<td class="org-left">redo</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC k y</code></td>
+<td class="org-left">copy expression</td>
 </tr>
 
 <tr>
@@ -10337,71 +10548,6 @@ These commands automatically switch to <code>lisp state</code>.
 <tr>
 <td class="org-left"><code>SPC k P</code></td>
 <td class="org-left">paste before</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k r</code></td>
-<td class="org-left">raise expression (replace parent expression by current one)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k s</code></td>
-<td class="org-left">forward slurp expression</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k S</code></td>
-<td class="org-left">backward slurp expression</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k t</code></td>
-<td class="org-left">transpose expression</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k u</code></td>
-<td class="org-left">undo</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k U</code></td>
-<td class="org-left">got to parent sexp backward</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k C-r</code></td>
-<td class="org-left">redo</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k v</code></td>
-<td class="org-left">switch to <code>visual state</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k V</code></td>
-<td class="org-left">switch to <code>visual line state</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k C-v</code></td>
-<td class="org-left">switch to <code>visual block state</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k w</code></td>
-<td class="org-left">wrap expression with parenthesis</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k W</code></td>
-<td class="org-left">unwrap expression</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC k y</code></td>
-<td class="org-left">copy expression</td>
 </tr>
 </tbody>
 </table>
@@ -12285,7 +12431,7 @@ developers to elisp hackers!
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-05-22 Sat 18:45</p>
+<p class="date">Created: 2021-07-08 Thu 12:33</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

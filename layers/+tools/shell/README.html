@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-22 Sat 18:45 -->
+<!-- 2021-07-08 Thu 12:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shell layer</title>
@@ -296,7 +296,7 @@
 </div>
 </div>
 
-<div id="org8be92cd" class="figure">
+<div id="orged557f7" class="figure">
 <p><img src="img/shell.png" alt="shell.png" />
 </p>
 </div>
@@ -765,7 +765,7 @@ layer is installed)</li>
 <tbody>
 <tr>
 <td class="org-left">~SPC '​~</td>
-<td class="org-left">Open, close or go to the default shell</td>
+<td class="org-left">Toggle pop-shell with your default shell</td>
 </tr>
 
 <tr>
@@ -774,8 +774,39 @@ layer is installed)</li>
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC a t s e</code></td>
+<td class="org-left">Toggle pop-shell with <code>eshell</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a t s i</code></td>
+<td class="org-left">Toggle pop-shell with <code>shell</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a t s m</code></td>
+<td class="org-left">Toggle pop-shell with <code>multi-term</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a t s t</code></td>
+<td class="org-left">Toggle pop-shell with <code>ansi-term</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a t s T</code></td>
+<td class="org-left">Toggle pop-shell with <code>term</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a t s v</code></td>
+<td class="org-left">Toggle pop-shell with <code>vterm</code></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
 <td class="org-left">~SPC p '​~</td>
-<td class="org-left">Open a shell in the project's root</td>
+<td class="org-left">Toggle pop-shell with your default shell in project root</td>
 </tr>
 
 <tr>
@@ -784,53 +815,29 @@ layer is installed)</li>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC a t s e</code></td>
-<td class="org-left">Open, close or go to an <code>eshell</code></td>
+<td class="org-left"><code>SPC p $</code></td>
+<td class="org-left">Open a new buffer with default shell in project root</td>
 </tr>
-
-<tr>
-<td class="org-left"><code>SPC a t s i</code></td>
-<td class="org-left">Open, close or go to a <code>shell</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC a t s m</code></td>
-<td class="org-left">Open, close or go to a <code>multi-term</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC a t s t</code></td>
-<td class="org-left">Open, close or go to a <code>ansi-term</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC a t s T</code></td>
-<td class="org-left">Open, close or go to a <code>term</code></td>
-</tr>
-
+</tbody>
+<tbody>
 <tr>
 <td class="org-left"><code>TAB</code></td>
-<td class="org-left">browse completion with <code>helm</code></td>
+<td class="org-left">In a shell buffer, browse completions</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m H</code></td>
-<td class="org-left">browse history with <code>helm</code> (works in <code>eshell</code> and <code>shell</code>)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC a t s v</code></td>
-<td class="org-left">Open, close or go to a <code>vterm</code></td>
+<td class="org-left">In <code>shell</code> or <code>eshell</code>, browse history</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>C-j</code></td>
-<td class="org-left">next item in history</td>
+<td class="org-left">Next item in history</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>C-k</code></td>
-<td class="org-left">previous item in history</td>
+<td class="org-left">Previous item in history</td>
 </tr>
 </tbody>
 </table>
@@ -889,11 +896,6 @@ in the current buffer instead of a popup.
 <td class="org-left"><code>SPC m N</code> or <code>SPC m p</code></td>
 <td class="org-left">go to previous multi-term</td>
 </tr>
-
-<tr>
-<td class="org-left"><code>SPC p $ t</code></td>
-<td class="org-left">run multi-term shell in root</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -919,7 +921,7 @@ in the current buffer instead of a popup.
 <tbody>
 <tr>
 <td class="org-left"><code>SPC m H</code> or <code>M-l</code></td>
-<td class="org-left">shell commands history using a helm or ivy buffer</td>
+<td class="org-left">search shell command history</td>
 </tr>
 </tbody>
 </table>
@@ -929,9 +931,32 @@ in the current buffer instead of a popup.
 <div id="outline-container-vterm" class="outline-3">
 <h3 id="vterm"><span class="section-number-3">5.3.</span> vterm</h3>
 <div class="outline-text-3" id="text-vterm">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>M-r</code></td>
+<td class="org-left">search shell command history*</td>
+</tr>
+</tbody>
+</table>
+
 <p>
-<code>M-r</code> will be bound to search for the command history when the variable
-<code>spacemacs-vterm-history-file-location</code> is set to the path to your shell history file.
+Note*: <code>M-r</code> will only be bound to search for the command history when the
+variable <code>spacemacs-vterm-history-file-location</code> is set to the path to your
+shell history file.
 </p>
 
 <p>
@@ -949,7 +974,7 @@ For example with bash
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-05-22 Sat 18:45</p>
+<p class="date">Created: 2021-07-08 Thu 12:35</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

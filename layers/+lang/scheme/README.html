@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-22 Sat 18:45 -->
+<!-- 2021-07-08 Thu 12:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Scheme layer</title>
@@ -273,7 +273,8 @@
 <li><a href="#macroexpansion">4.5. Macroexpansion</a></li>
 <li><a href="#repl-interaction">4.6. REPL interaction</a></li>
 <li><a href="#evaluation">4.7. Evaluation</a></li>
-<li><a href="#repl">4.8. REPL</a></li>
+<li><a href="#repl-mode">4.8. REPL-mode</a></li>
+<li><a href="#geiser-doc-mode">4.9. Geiser-doc-mode</a></li>
 </ul>
 </li>
 </ul>
@@ -383,7 +384,7 @@ Additionally, as of 2018-12-12 there is a <a href="https://git.archlinux.org/svn
 in some of the Linux package repos:
 </p>
 
-<pre class="example" id="orgeb3a67e">
+<pre class="example" id="org8697cfd">
 # Chicken had csc and csi first, but then mono introduced a conflict and
 # does not seem to want to change this. OpenBSD renamed csc and csi to
 # chicken-csc and chicken-csi 2018-12-12.
@@ -500,7 +501,7 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m g g</code></td>
+<td class="org-left"><code>SPC m g d</code></td>
 <td class="org-left">Goto Definition</td>
 </tr>
 
@@ -753,9 +754,13 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </div>
 </div>
 
-<div id="outline-container-repl" class="outline-3">
-<h3 id="repl"><span class="section-number-3">4.8.</span> REPL</h3>
-<div class="outline-text-3" id="text-repl">
+<div id="outline-container-repl-mode" class="outline-3">
+<h3 id="repl-mode"><span class="section-number-3">4.8.</span> REPL-mode</h3>
+<div class="outline-text-3" id="text-repl-mode">
+<p>
+<b>Insert state</b>
+</p>
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -772,43 +777,162 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>g j</code></td>
-<td class="org-left">geiser-repl-next-prompt</td>
+<td class="org-left"><code>S-RET</code></td>
+<td class="org-left">Insert newline</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>g k</code></td>
-<td class="org-left">geiser-repl-previous-prompt</td>
+<td class="org-left"><code>C-l</code></td>
+<td class="org-left">Clear buffer</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m h</code></td>
-<td class="org-left">geiser-doc-symbol-at-point</td>
+<td class="org-left"><code>C-d</code></td>
+<td class="org-left">Exit</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Normal state</b>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>g j</code> / <code>]]</code></td>
+<td class="org-left">Goto next prompt</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m i</code></td>
-<td class="org-left">geiser-repl-interrupt</td>
+<td class="org-left"><code>g k</code> / <code>[[</code></td>
+<td class="org-left">Goto previous prompt</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m h h</code></td>
+<td class="org-left">Show documentation for symbol at point</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m c</code></td>
-<td class="org-left">geiser-repl-clear-buffer</td>
+<td class="org-left"><code>SPC m C</code></td>
+<td class="org-left">Clear buffer</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m m</code></td>
-<td class="org-left">geiser-repl-import-module</td>
+<td class="org-left"><code>SPC m i l</code></td>
+<td class="org-left">Insert lambda</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i m</code></td>
+<td class="org-left">Import module</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m u</code></td>
-<td class="org-left">geiser-repl-unload-function</td>
+<td class="org-left">Unload function</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s</code></td>
+<td class="org-left">Toggle surrounding parenthesis &lt;-&gt; brackets</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m k</code></td>
+<td class="org-left">REPL interrupt</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m q</code></td>
-<td class="org-left">geiser-repl-exit</td>
+<td class="org-left">REPL exit</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-geiser-doc-mode" class="outline-3">
+<h3 id="geiser-doc-mode"><span class="section-number-3">4.9.</span> Geiser-doc-mode</h3>
+<div class="outline-text-3" id="text-geiser-doc-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>o</code></td>
+<td class="org-left">Follow link</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>]]/[[</code></td>
+<td class="org-left">Next/previous-section</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g p</code> / <code>&lt;</code></td>
+<td class="org-left">Previous page</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g n</code> / <code>&gt;</code></td>
+<td class="org-left">Next page</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g d</code></td>
+<td class="org-left">Goto definition</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g z</code></td>
+<td class="org-left">Switch to repl</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>TAB</code> / <code>C-j</code></td>
+<td class="org-left">Next button</td>
+</tr>
+
+<tr>
+<td class="org-left">S-TAB~ / <code>C-k</code></td>
+<td class="org-left">Previous button</td>
 </tr>
 </tbody>
 </table>
@@ -818,7 +942,7 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-05-22 Sat 18:45</p>
+<p class="date">Created: 2021-07-08 Thu 12:34</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
