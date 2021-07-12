@@ -1,0 +1,30 @@
+name: linkchecker
+
+on: [push, pull_request]
+
+jobs:
+  check_links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull linkchecker image
+        run: docker pull ghcr.io/jaremko/docker-linkchecker/linkchecker:latest
+      # - name: Redirect develop.spacemacs.org to localhost
+      #   run: sudo echo "127.0.0.1 develop.spacemacs.org" | sudo tee -a /etc/hosts
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - name: Serve static files
+        run: cd "${GITHUB_WORKSPACE}" && npx github:vercel/serve -p "8080" & 
+      - name: Wait for the server to start
+        run: sleep 5 
+      - name: Check links
+        run: |
+          docker run \
+          --name linkchecker \
+          --net=host \
+          --add-host develop.spacemacs.org:127.0.0.1 \
+          -v "${GITHUB_WORKSPACE}/.github/workflows/linkcheckerrc:\
+          /root/.linkchecker/linkcheckerrc:ro" \
+          jare/linkchecker \
+          --no-robots \
+          http://develop.spacemacs.org:8080
