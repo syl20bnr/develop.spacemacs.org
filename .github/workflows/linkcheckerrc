@@ -124,7 +124,7 @@ warnings=off
 ##################### checking options ##########################
 [checking]
 # number of threads
-threads=16
+threads=2
 # connection timeout in seconds
 #timeout=60
 # Time to wait for checks to finish after the user aborts the first time
@@ -173,6 +173,8 @@ sslverify=0
 ignore=
   ^http://localhost
   ^https://localhost
+  ^http://validator.w3.org
+  ^https://validator.w3.org
 # ignore everything with 'lconline' in the URL name
 #  lconline
 # and ignore everything with 'bookmark' in the URL name
@@ -181,7 +183,9 @@ ignore=
 #  ^mailto:
 # do not recurse into the following URLs
 
-#nofollow=
+nofollow=
+  http://github\.com/*
+  https://github\.com/*
 # just an example
 #  http://www\.example\.com/bla
 
