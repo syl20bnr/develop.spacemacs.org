@@ -14,9 +14,17 @@ jobs:
         with:
           fetch-depth: 2
       - name: Serve static files
-        run: cd "${GITHUB_WORKSPACE}" && npx github:vercel/serve -p "8080" & 
-      - name: Wait for the server to start
-        run: sleep 5 
+        run: |
+          cd "${GITHUB_WORKSPACE}"
+          npx github:vercel/serve -p 8080 > /tmp/server_log 2>&1 &
+      - name: Waiting for the server to start
+        run: |
+          ( tail -f -n0 /tmp/server_log & ) | grep -q "Accepting connections at"
+          if [ $? == 1 ]; then
+          echo "Server died. Here's log:"
+          cat /tmp/server_log
+          exit 1
+          fi
       - name: Check links
         run: |
           docker run \
