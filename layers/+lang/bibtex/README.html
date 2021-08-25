@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-07-31 Sat 14:33 -->
+<!-- 2021-08-25 Wed 23:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>BibTeX layer</title>
@@ -259,13 +259,17 @@
 </ul>
 </li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#configuration">3. Configuration</a></li>
+<li><a href="#configuration">3. Configuration</a>
+<ul>
+<li><a href="#ebib-and-biblio">3.1. Ebib and biblio</a></li>
+</ul>
+</li>
 <li><a href="#key-bindings">4. Key bindings</a></li>
 </ul>
 </div>
 </div>
 
-<div id="org256fee0" class="figure">
+<div id="orgd068016" class="figure">
 <p><img src="img/logo.png" alt="logo.png" />
 </p>
 </div>
@@ -291,6 +295,7 @@ This layer adds support to manipulate BibTeX and BibLaTeX files in Spacemacs.
 <li>Syntax highlighting for BibTeX and BibLaTeX files.</li>
 <li>Utilities for automatically adding entries from different data sources.</li>
 <li>Support for inserting citations in various other modes.</li>
+<li>Optionally install full fledged <a href="https://joostkremers.github.io/ebib/ebib-manual.html">ebib reference manager</a></li>
 </ul>
 </div>
 </div>
@@ -344,8 +349,38 @@ to use Zathura:
 
 <p>
 More configuration options are available and are detailed in the <code>org-ref</code>,
-<code>helm-bibtex</code> and <code>ivy-bibtex</code> package documentations.
+<code>helm-bibtex</code>, <code>ivy-bibtex</code> and <a href="https://github.com/cpitclaudel/biblio.el">biblio</a> package documentations.
 </p>
+</div>
+
+<div id="outline-container-ebib-and-biblio" class="outline-3">
+<h3 id="ebib-and-biblio"><span class="section-number-3">3.1.</span> Ebib and biblio</h3>
+<div class="outline-text-3" id="text-ebib-and-biblio">
+<p>
+To enable installation of the <a href="https://joostkremers.github.io/ebib/ebib-manual.html">ebib reference manager</a> set the variable
+<code>bibtex-enable-ebib-support</code> as shown in the following code block:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>bibtex <span class="org-builtin">:variables</span>
+        bibtex-enable-ebib-support t
+        ebib-preload-bib-files '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"path-to-bib-file.bib"</span><span class="org-rainbow-delimiters-depth-2">)</span>
+        ebib-file-search-dirs '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"/path-to-documents-directory"</span><span class="org-rainbow-delimiters-depth-2">)</span>
+        ebib-import-directory <span class="org-string">"path-to-e.g.-download-directory"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+The code block also shows how to set some optional <a href="https://joostkremers.github.io/ebib/ebib-manual.html">ebib</a> variables.
+</p>
+
+<p>
+With the installation of the <code>ebib</code> package, Spacemacs automatically loads the
+<a href="https://joostkremers.github.io/ebib/ebib-manual.html#integration-with-the-biblio-package">ebib-biblio</a> package that uses the <a href="https://github.com/cpitclaudel/biblio.el">biblio</a> package to provide an easy way of
+fetching citations from the web into the database (follow the links to the
+packages additional descriptions and usage instructions).
+</p>
+</div>
 </div>
 </div>
 
@@ -469,12 +504,132 @@ key binding added:
 </tr>
 </tbody>
 </table>
+
+<p>
+<b>EBIB</b>
+</p>
+
+<p>
+<b>Index buffer</b>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>J/K</code></td>
+<td class="org-left">scroll page down/up</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g j</code></td>
+<td class="org-left">jump to entry (searches only author and title fields)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC u g j</code></td>
+<td class="org-left">jump to entry (only) in current database</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>/</code></td>
+<td class="org-left">ebib-search (searches in all fields)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>n</code></td>
+<td class="org-left">ebib-search-next</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>e</code></td>
+<td class="org-left">switch to entry buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m k</code></td>
+<td class="org-left">delete current entry</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m b</code></td>
+<td class="org-left">fetch current entry bibtex from web</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>q</code></td>
+<td class="org-left">quit ebib</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Entry buffer</b>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>q</code></td>
+<td class="org-left">quit entry buffer</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Biblio selection buffer</b>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>e</code></td>
+<td class="org-left">import entry to current database (requires 'active' database in ebib index buffer)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-j</code></td>
+<td class="org-left">Next entry</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-k</code></td>
+<td class="org-left">Previous entry</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-07-31 Sat 14:33</p>
+<p class="date">Created: 2021-08-25 Wed 23:01</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
