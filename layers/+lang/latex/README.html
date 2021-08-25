@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-07-31 Sat 14:34 -->
+<!-- 2021-08-25 Wed 23:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LaTeX layer</title>
@@ -287,7 +287,7 @@
 </div>
 </div>
 
-<div id="orga210ca3" class="figure">
+<div id="org0e38ac1" class="figure">
 <p><img src="img/latex.png" alt="latex.png" />
 </p>
 </div>
@@ -561,19 +561,19 @@ and build options according to the buffer-local variable <code>TeX-engine</code>
 </p>
 
 <p>
-It should be one of the symbol defined in <code>TeX-engine-alise</code>. The default valid
+It should be one of the symbol defined in <code>TeX-engine-alist</code>. The default valid
 symbols are:
 </p>
 <ul class="org-ul">
-<li><code>'default</code></li>
-<li><code>'luatex</code></li>
-<li><code>'omega</code></li>
-<li><code>'xetex</code></li>
+<li><code>default</code></li>
+<li><code>luatex</code></li>
+<li><code>omega</code></li>
+<li><code>xetex</code></li>
 </ul>
 
 <p>
 An appropriate <code>TeX-engine</code> is required for high-quality typesetting in certain
-languages. For convenience, <code>'xetex</code> is chosen when it's found on PATH and when
+languages. For convenience, <code>xetex</code> is chosen when it's found on PATH and when
 either <code>chinese</code> or <code>japanese</code> layer is enabled.
 </p>
 
@@ -584,13 +584,20 @@ variable. For example, you can append these code to the end of a <code>.tex</cod
 
 <div class="org-src-container">
 <pre class="src src-tex"><span class="org-comment-delimiter">%%% </span><span class="org-comment">Local Variables&#58;</span>
-<span class="org-comment-delimiter">%%% </span><span class="org-comment">TeX-engine: 'xetex</span>
+<span class="org-comment-delimiter">%%% </span><span class="org-comment">TeX-engine: xetex</span>
 <span class="org-comment-delimiter">%%% </span><span class="org-comment">End:</span>
 </pre>
 </div>
 
 <p>
-If you predominantly works with one specific engine, you can set it as a layer
+Should you use AUCTeX's keystroke <code>C-c C-c</code> for compilation instead of
+Spacemacs' <code>SPC m b</code>, the minibuffer will still show <code>LaTeX</code> as compilation
+command, however <code>xetex</code> will be used on the background and no specific
+<code>Xe(La)TeX</code> command is needed. Likewise for the other engines.
+</p>
+
+<p>
+If you predominantly work with one specific engine, you can set it as a layer
 variable.
 </p>
 
@@ -1083,7 +1090,7 @@ Available only when <code>latex-enable-folding</code> is non nil.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-07-31 Sat 14:34</p>
+<p class="date">Created: 2021-08-25 Wed 23:01</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

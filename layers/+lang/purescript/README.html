@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-07-31 Sat 14:34 -->
+<!-- 2021-08-25 Wed 23:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Purescript layer</title>
@@ -261,10 +261,11 @@
 <li><a href="#install">2. Install</a></li>
 <li><a href="#configuration">3. Configuration</a>
 <ul>
-<li><a href="#add-import-on-completion">3.1. Add import on completion</a></li>
-<li><a href="#node-modules">3.2. Node Modules</a></li>
-<li><a href="#error-popup">3.3. Error popup</a></li>
-<li><a href="#lsp">3.4. LSP</a></li>
+<li><a href="#formatting">3.1. Formatting</a></li>
+<li><a href="#add-import-on-completion">3.2. Add import on completion</a></li>
+<li><a href="#node-modules">3.3. Node Modules</a></li>
+<li><a href="#error-popup">3.4. Error popup</a></li>
+<li><a href="#lsp">3.5. LSP</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">4. Key bindings</a>
@@ -273,6 +274,7 @@
 <ul>
 <li><a href="#imports">4.1.1. Imports</a></li>
 <li><a href="#psc-ide">4.1.2. psc-ide</a></li>
+<li><a href="#formatting-1">4.1.3. Formatting</a></li>
 </ul>
 </li>
 <li><a href="#repl">4.2. REPL</a></li>
@@ -282,7 +284,7 @@
 </div>
 </div>
 
-<div id="org914c865" class="figure">
+<div id="org973a46c" class="figure">
 <p><img src="img/purescript-logo.png" alt="purescript-logo.png" />
 </p>
 </div>
@@ -331,8 +333,49 @@ can be found <a href="https://github.com/purescript/documentation/blob/master/gu
 <div class="outline-text-2" id="text-configuration">
 </div>
 
+<div id="outline-container-formatting" class="outline-3">
+<h3 id="formatting"><span class="section-number-3">3.1.</span> Formatting</h3>
+<div class="outline-text-3" id="text-formatting">
+<p>
+The following formatting tools are currently supported:
+</p>
+<ul class="org-ul">
+<li><code>purs-tidy</code> (default): [ <a href="https://github.com/natefaubion/purescript-tidy">https://github.com/natefaubion/purescript-tidy</a> ][Purs-tidy]]</li>
+</ul>
+
+<p>
+You can choose the formatting tool by setting <code>purescript-fmt-tool</code>
+variable in your <code>purescript</code> config section:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>purescript <span class="org-builtin">:variables</span>
+              purescript-fmt-tool 'purs-tidy<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+You can run the formatter manually with either `M-x spacemacs/purescript-format`
+or with the shortcut `SPC m =`.
+</p>
+
+<p>
+To enable automatic formatting of the buffer on save, enable <code>purescript-fmt-on-save</code>
+variable in your <code>purescript</code> config section:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>purescript <span class="org-builtin">:variables</span>
+              purescript-fmt-on-save t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
 <div id="outline-container-add-import-on-completion" class="outline-3">
-<h3 id="add-import-on-completion"><span class="section-number-3">3.1.</span> Add import on completion</h3>
+<h3 id="add-import-on-completion"><span class="section-number-3">3.2.</span> Add import on completion</h3>
 <div class="outline-text-3" id="text-add-import-on-completion">
 <p>
 Set <code>purescript-add-import-on-completion</code> to nil to make <code>psc-ide</code> stop adding
@@ -342,7 +385,7 @@ imports on completion. Default value is <code>t</code>.
 </div>
 
 <div id="outline-container-node-modules" class="outline-3">
-<h3 id="node-modules"><span class="section-number-3">3.2.</span> Node Modules</h3>
+<h3 id="node-modules"><span class="section-number-3">3.3.</span> Node Modules</h3>
 <div class="outline-text-3" id="text-node-modules">
 <p>
 If you would like <code>node_modules/.bin</code> to be automatically added to the buffer
@@ -360,7 +403,7 @@ doing this <a href="https://stackoverflow.com/questions/9679932#comment33532258_
 </div>
 
 <div id="outline-container-error-popup" class="outline-3">
-<h3 id="error-popup"><span class="section-number-3">3.3.</span> Error popup</h3>
+<h3 id="error-popup"><span class="section-number-3">3.4.</span> Error popup</h3>
 <div class="outline-text-3" id="text-error-popup">
 <p>
 If you set <code>purescript-enable-rebuild-on-save</code> to non-nil, you will get a popup
@@ -371,7 +414,7 @@ meant as an alternative to using flycheck. Default value is nil.
 </div>
 
 <div id="outline-container-lsp" class="outline-3">
-<h3 id="lsp"><span class="section-number-3">3.4.</span> LSP</h3>
+<h3 id="lsp"><span class="section-number-3">3.5.</span> LSP</h3>
 <div class="outline-text-3" id="text-lsp">
 <p>
 For proper IDE support this backend should be used. It is
@@ -540,6 +583,33 @@ intellisense config for LSP.
 </table>
 </div>
 </div>
+
+<div id="outline-container-formatting-1" class="outline-4">
+<h4 id="formatting-1"><span class="section-number-4">4.1.3.</span> Formatting</h4>
+<div class="outline-text-4" id="text-formatting-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m =</code></td>
+<td class="org-left">Format the buffer</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 
 <div id="outline-container-repl" class="outline-3">
@@ -592,7 +662,7 @@ bindings are available:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-07-31 Sat 14:34</p>
+<p class="date">Created: 2021-08-25 Wed 23:01</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

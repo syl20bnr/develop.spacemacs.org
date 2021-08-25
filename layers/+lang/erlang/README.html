@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-07-31 Sat 14:33 -->
+<!-- 2021-08-25 Wed 23:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Erlang layer</title>
@@ -268,19 +268,21 @@
 <ul>
 <li><a href="#erlang-mode">3.1. erlang-mode</a></li>
 <li><a href="#lsp">3.2. LSP</a></li>
+<li><a href="#debugger">3.3. Debugger</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">4. Key bindings</a>
 <ul>
 <li><a href="#erlang-mode-1">4.1. erlang-mode</a></li>
 <li><a href="#lsp-1">4.2. LSP</a></li>
+<li><a href="#dap">4.3. DAP</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="org4455eba" class="figure">
+<div id="org698b488" class="figure">
 <p><img src="img/erlang.png" alt="erlang.png" />
 </p>
 </div>
@@ -318,6 +320,7 @@ features following <code>Language Server Protocol</code>, through <a href="https
 <li>Outline</li>
 <li>Workspace Symbols</li>
 <li>Code Folding</li>
+<li>Interactive debugger using <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a></li>
 </ul>
 </div>
 </div>
@@ -420,6 +423,47 @@ You can install it:
 </div>
 </div>
 </div>
+
+<div id="outline-container-debugger" class="outline-3">
+<h3 id="debugger"><span class="section-number-3">3.3.</span> Debugger</h3>
+<div class="outline-text-3" id="text-debugger">
+<p>
+The <code>dap</code> backend uses <a href="https://erlang-ls.github.io/">erlang<sub>ls</sub>-dap</a> implementation. Information about configuring
+a project to use the debugger can be found <a href="https://erlang-ls.github.io/articles/tutorial-debugger/">here</a>.
+</p>
+
+<p>
+If you are using <code>erlang_ls</code> backend, probably you have <code>els_dap</code> already
+installed, otherwise, follow the instructions.
+</p>
+
+<p>
+Clone the project to your system and compile it to produce the <code>els_dap</code> escript:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">rebar3 as dap escriptize
+</pre>
+</div>
+
+<p>
+or
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">make
+</pre>
+</div>
+
+<p>
+<code>els_dap</code> will be found at "erlang<sub>ls</sub>/<sub>build</sub>/dap/bin/"
+</p>
+
+<p>
+<b>Note:</b> Ensure you have <code>els_dap</code> in your <code>PATH</code>&#x2026;
+</p>
+</div>
+</div>
 </div>
 
 <div id="outline-container-key-bindings" class="outline-2">
@@ -512,11 +556,20 @@ You will find an overview of all the key bindings on the <a href="https://github
 </p>
 </div>
 </div>
+
+<div id="outline-container-dap" class="outline-3">
+<h3 id="dap"><span class="section-number-3">4.3.</span> DAP</h3>
+<div class="outline-text-3" id="text-dap">
+<p>
+You will find an overview of all the key bindings on the <a href="https://github.com/syl20bnr/spacemacs/tree/develop/layers/%2Btools/dap#key-bindings">dap layer description</a>.
+</p>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-07-31 Sat 14:33</p>
+<p class="date">Created: 2021-08-25 Wed 23:01</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

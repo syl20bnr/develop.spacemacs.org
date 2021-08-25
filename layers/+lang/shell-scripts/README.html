@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-07-31 Sat 14:34 -->
+<!-- 2021-08-25 Wed 23:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shell Scripts layer</title>
@@ -263,10 +263,11 @@
 <li><a href="#layer">2.1. Layer</a></li>
 <li><a href="#linting">2.2. Linting</a></li>
 <li><a href="#style-checking">2.3. Style checking</a></li>
-<li><a href="#backends">2.4. Backends</a>
+<li><a href="#format-on-save">2.4. Format on save</a></li>
+<li><a href="#backends">2.5. Backends</a>
 <ul>
-<li><a href="#shell-script-mode">2.4.1. Shell-script-mode</a></li>
-<li><a href="#lsp">2.4.2. LSP</a></li>
+<li><a href="#shell-script-mode">2.5.1. Shell-script-mode</a></li>
+<li><a href="#lsp">2.5.2. LSP</a></li>
 </ul>
 </li>
 </ul>
@@ -276,7 +277,7 @@
 </div>
 </div>
 
-<div id="orged9ad66" class="figure">
+<div id="orgadbb02a" class="figure">
 <p><img src="img/fish.png" alt="fish.png" />
 </p>
 </div>
@@ -309,6 +310,7 @@ Supported scripting files:
 <li><code>Sh</code> scripts linting using <a href="https://www.shellcheck.net/">shellcheck</a></li>
 <li><code>Sh</code> scripts style checking using <a href="https://github.com/openstack-dev/bashate">bashate</a></li>
 <li>Support for the <a href="https://langserver.org/">Language Server Protocol</a> (experimental)</li>
+<li>Automatic formatting via <a href="https://github.com/mvdan/sh">shfmt</a></li>
 </ul>
 </div>
 </div>
@@ -348,8 +350,23 @@ In order to enable <code>sh</code> scripts style checking, install <a href="http
 </div>
 </div>
 
+<div id="outline-container-format-on-save" class="outline-3">
+<h3 id="format-on-save"><span class="section-number-3">2.4.</span> Format on save</h3>
+<div class="outline-text-3" id="text-format-on-save">
+<p>
+To enable automatic formatting on save, set the layer variable
+<code>shell-scripts-format-on-save</code> to <code>t</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>shell-scripts <span class="org-builtin">:variables</span> shell-scripts-format-on-save t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
 <div id="outline-container-backends" class="outline-3">
-<h3 id="backends"><span class="section-number-3">2.4.</span> Backends</h3>
+<h3 id="backends"><span class="section-number-3">2.5.</span> Backends</h3>
 <div class="outline-text-3" id="text-backends">
 <p>
 You have the choice between two different backends
@@ -358,7 +375,7 @@ with different setup instructions and different capabilities.
 </div>
 
 <div id="outline-container-shell-script-mode" class="outline-4">
-<h4 id="shell-script-mode"><span class="section-number-4">2.4.1.</span> Shell-script-mode</h4>
+<h4 id="shell-script-mode"><span class="section-number-4">2.5.1.</span> Shell-script-mode</h4>
 <div class="outline-text-4" id="text-shell-script-mode">
 <p>
 This is the recommended way for working with shell scripts in emacs. It works
@@ -376,7 +393,7 @@ No additional setup is necessary.
 </div>
 
 <div id="outline-container-lsp" class="outline-4">
-<h4 id="lsp"><span class="section-number-4">2.4.2.</span> LSP</h4>
+<h4 id="lsp"><span class="section-number-4">2.5.2.</span> LSP</h4>
 <div class="outline-text-4" id="text-lsp">
 <p>
 This backend uses an external server to provide the various IDE integrations
@@ -496,6 +513,11 @@ You can find further information about the project at its <a href="https://githu
 <td class="org-left"><code>SPC m i g</code></td>
 <td class="org-left">insert a getopts while loop if supported by shell</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>SPC m =</code></td>
+<td class="org-left">format the buffer using shfmt</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -503,7 +525,7 @@ You can find further information about the project at its <a href="https://githu
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-07-31 Sat 14:34</p>
+<p class="date">Created: 2021-08-25 Wed 23:01</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

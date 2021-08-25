@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-07-31 Sat 14:34 -->
+<!-- 2021-08-25 Wed 23:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>NixOS layer</title>
@@ -261,6 +261,7 @@
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#format-on-save">2.2. Format on save</a></li>
 </ul>
 </li>
 <li><a href="#configuration">3. Configuration</a></li>
@@ -273,7 +274,7 @@
 </div>
 </div>
 
-<div id="org4b56d85" class="figure">
+<div id="orgee619e8" class="figure">
 <p><img src="img/nixos.png" alt="nixos.png" />
 </p>
 </div>
@@ -291,6 +292,7 @@ This layer adds tools for better integration of Emacs in NixOS.
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Nix-mode using <a href="https://github.com/NixOS/nix-mode">nix-mode</a></li>
+<li>Automatic formatting via <a href="https://github.com/serokell/nixfmt">nixfmt</a></li>
 <li>Auto-completion of NixOS Options using <a href="https://github.com/travisbhartwell/nix-emacs/blob/master/company-nixos-options.el">company-nixos-options</a></li>
 <li>Helm Lookup for NixOS Options <a href="https://github.com/travisbhartwell/nix-emacs/blob/master/helm-nixos-options.el">helm-nixos-options</a></li>
 </ul>
@@ -311,6 +313,21 @@ To use this configuration layer, add it to your <code>~/.spacemacs</code>. You w
 add <code>nixos</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
 file.
 </p>
+</div>
+</div>
+
+<div id="outline-container-format-on-save" class="outline-3">
+<h3 id="format-on-save"><span class="section-number-3">2.2.</span> Format on save</h3>
+<div class="outline-text-3" id="text-format-on-save">
+<p>
+To enable automatic formatting on save, set the layer variable
+<code>nixos-format-on-save</code> to <code>t</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>nixos <span class="org-builtin">:variables</span> nixos-format-on-save t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -352,6 +369,11 @@ see the section on disabling the <a href="../../../doc/DOCUMENTATION.html#disabl
 <td class="org-left"><code>SPC h &gt;</code></td>
 <td class="org-left">Call helm-nixos-options</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>SPC m = =</code></td>
+<td class="org-left">Format buffer using nixfmt</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -360,7 +382,7 @@ see the section on disabling the <a href="../../../doc/DOCUMENTATION.html#disabl
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-07-31 Sat 14:34</p>
+<p class="date">Created: 2021-08-25 Wed 23:01</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
