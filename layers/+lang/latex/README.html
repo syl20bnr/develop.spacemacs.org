@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-04 Sat 18:52 -->
+<!-- 2021-09-04 Sat 19:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LaTeX layer</title>
@@ -269,12 +269,13 @@
 <li><a href="#company-auctex">4.2.2. Company-auctex</a></li>
 </ul>
 </li>
-<li><a href="#previewing">4.3. Previewing</a></li>
-<li><a href="#build-command">4.4. Build command</a></li>
-<li><a href="#tex-engine">4.5. TeX Engine</a></li>
-<li><a href="#auto-fill">4.6. Auto-fill</a></li>
-<li><a href="#folding">4.7. Folding</a></li>
-<li><a href="#magic-latex-buffer">4.8. Magic latex buffer</a></li>
+<li><a href="#pdf-viewer">4.3. PDF viewer</a></li>
+<li><a href="#previewing">4.4. Previewing</a></li>
+<li><a href="#build-command">4.5. Build command</a></li>
+<li><a href="#tex-engine">4.6. TeX Engine</a></li>
+<li><a href="#auto-fill">4.7. Auto-fill</a></li>
+<li><a href="#folding">4.8. Folding</a></li>
+<li><a href="#magic-latex-buffer">4.9. Magic latex buffer</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">5. Key bindings</a>
@@ -287,7 +288,7 @@
 </div>
 </div>
 
-<div id="org3dd7820" class="figure">
+<div id="orgcc9120c" class="figure">
 <p><img src="img/latex.png" alt="latex.png" />
 </p>
 </div>
@@ -340,7 +341,9 @@ file.
 <div class="outline-text-2" id="text-configuration">
 <p>
 Most layer configurations can be done by setting layer variables in your
-dotfile. Some however require adding lines to your user-config.
+dotfile. Some however require adding lines to your user-config. If the <code>pdf</code>
+layer is used, then the layer automatically configures <code>pdf-tools</code> as the
+'output-pdf' viewer, see <a href="#pdf-viewer">4.3</a>.
 </p>
 </div>
 
@@ -417,6 +420,24 @@ Sensible defaults have been provided, however they may all be overridden in your
 <td class="org-left"><code>latex-refresh-preview</code></td>
 <td class="org-left"><code>nil</code></td>
 <td class="org-left">When non-nil, enable refresh preview buffer when file changes</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>latex-refresh-preview</code></td>
+<td class="org-left"><code>nil</code></td>
+<td class="org-left">When non-nil, enable refresh preview buffer when file changes</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>latex-view-with-pdf-tools</code></td>
+<td class="org-left"><code>t</code> if pdf layer is installed, else <code>nil</code></td>
+<td class="org-left">When non-nil, use <code>pdf-tools</code> for viewing output pdf files</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>latex-view-pdf-in-split-window</code></td>
+<td class="org-left"><code>nil</code> setting is neglected if <code>latex-view-with-pdf-tools</code> is <code>nil</code></td>
+<td class="org-left">When non-nil, open <code>pdf-tools</code> in split window (when using <code>TeX-view</code> command)</td>
 </tr>
 </tbody>
 </table>
@@ -500,8 +521,25 @@ use <code>company-auctex</code> for math symbols completion set the following in
 </div>
 </div>
 
+<div id="outline-container-pdf-viewer" class="outline-3">
+<h3 id="pdf-viewer"><span class="section-number-3">4.3.</span> PDF viewer</h3>
+<div class="outline-text-3" id="text-pdf-viewer">
+<p>
+If the <code>pdf</code> layer is used, then the layer automatically configures <code>pdf-tools</code>
+as the 'output-pdf' viewer, see <a href="#pdf-viewer">4.3</a>. To additionally make <code>pdf-tools</code>
+open in a split window, set the layer variable <code>latex-view-pdf-in-split-window</code>
+to <code>t</code>.
+</p>
+
+<p>
+If, despite using the pdf layer, you prefer to use another pdf viewer to preview
+the output pdf's, set the layer variable <code>latex-view-with-pdf-tools</code> to <code>nil</code>.
+</p>
+</div>
+</div>
+
 <div id="outline-container-previewing" class="outline-3">
-<h3 id="previewing"><span class="section-number-3">4.3.</span> Previewing</h3>
+<h3 id="previewing"><span class="section-number-3">4.4.</span> Previewing</h3>
 <div class="outline-text-3" id="text-previewing">
 <p>
 <code>LaTex</code> layer support full-document previews and inline preview (via <code>SPC m p</code>).
@@ -526,7 +564,7 @@ To update the preview buffer whenever the compiled PDF file changes, set
 </div>
 
 <div id="outline-container-build-command" class="outline-3">
-<h3 id="build-command"><span class="section-number-3">4.4.</span> Build command</h3>
+<h3 id="build-command"><span class="section-number-3">4.5.</span> Build command</h3>
 <div class="outline-text-3" id="text-build-command">
 <p>
 A build command can be specified via the layer variable <code>latex-build-command</code>.
@@ -553,7 +591,7 @@ shown below.
 </div>
 
 <div id="outline-container-tex-engine" class="outline-3">
-<h3 id="tex-engine"><span class="section-number-3">4.5.</span> TeX Engine</h3>
+<h3 id="tex-engine"><span class="section-number-3">4.6.</span> TeX Engine</h3>
 <div class="outline-text-3" id="text-tex-engine">
 <p>
 <code>auctex</code> and <code>auctex-latexmk</code> have default rules to determine build command
@@ -615,7 +653,7 @@ More information on TeX engine and languages support can be found in <code>aucte
 </div>
 
 <div id="outline-container-auto-fill" class="outline-3">
-<h3 id="auto-fill"><span class="section-number-3">4.6.</span> Auto-fill</h3>
+<h3 id="auto-fill"><span class="section-number-3">4.7.</span> Auto-fill</h3>
 <div class="outline-text-3" id="text-auto-fill">
 <p>
 To disable auto-fill (which is on by default) set the variable
@@ -647,7 +685,7 @@ The variable <code>latex-nofill-env</code> provides the list of environment name
 </div>
 
 <div id="outline-container-folding" class="outline-3">
-<h3 id="folding"><span class="section-number-3">4.7.</span> Folding</h3>
+<h3 id="folding"><span class="section-number-3">4.8.</span> Folding</h3>
 <div class="outline-text-3" id="text-folding">
 <p>
 Enable folding of text by setting <code>latex-enable-folding</code> to <code>t</code>. Default value
@@ -663,7 +701,7 @@ is nil.
 </div>
 
 <div id="outline-container-magic-latex-buffer" class="outline-3">
-<h3 id="magic-latex-buffer"><span class="section-number-3">4.8.</span> Magic latex buffer</h3>
+<h3 id="magic-latex-buffer"><span class="section-number-3">4.9.</span> Magic latex buffer</h3>
 <div class="outline-text-3" id="text-magic-latex-buffer">
 <p>
 To enable "magic" symbols in latex buffers, set the variable
@@ -1090,7 +1128,7 @@ Available only when <code>latex-enable-folding</code> is non nil.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-04 Sat 18:52</p>
+<p class="date">Created: 2021-09-04 Sat 19:50</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
