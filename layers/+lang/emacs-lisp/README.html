@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-04 Sat 19:50 -->
+<!-- 2021-09-10 Fri 20:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs Lisp layer</title>
@@ -247,6 +247,15 @@
 </head>
 <body>
 <div id="content">
+<div class="admonition warning">
+<p class="first last">
+You are viewing the documentation for the develop branch.
+The documentation for the release version is
+<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
+onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
+.
+</p>
+</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">Emacs Lisp layer</h1>
 <div id="table-of-contents">
@@ -261,7 +270,11 @@
 <li><a href="#install">2. Install</a></li>
 <li><a href="#auto-compile">3. Auto-compile</a></li>
 <li><a href="#working-with-lisp-files-barfage-slurpage--more">4. Working with lisp files (barfage, slurpage &amp; more)</a></li>
-<li><a href="#debugging-elisp">5. Debugging Elisp</a></li>
+<li><a href="#debugging-elisp">5. Debugging Elisp</a>
+<ul>
+<li><a href="#using-the-inspector">5.1. Using the inspector</a></li>
+</ul>
+</li>
 <li><a href="#nameless">6. Nameless</a>
 <ul>
 <li><a href="#aliases">6.1. Aliases</a></li>
@@ -275,13 +288,14 @@
 <li><a href="#format-code">8.3. Format code</a></li>
 <li><a href="#debugging">8.4. Debugging</a></li>
 <li><a href="#refactoring-with-emr">8.5. Refactoring with emr</a></li>
+<li><a href="#inspector">8.6. Inspector</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="orgf78608e" class="figure">
+<div id="org3c39cdf" class="figure">
 <p><img src="img/emacs.png" alt="emacs.png" />
 </p>
 </div>
@@ -430,6 +444,16 @@ function or press <code>o</code> to go out of it.
 <ol class="org-ol">
 <li>Press <code>a</code> to stop debugging.</li>
 </ol>
+</div>
+
+<div id="outline-container-using-the-inspector" class="outline-3">
+<h3 id="using-the-inspector"><span class="section-number-3">5.1.</span> Using the inspector</h3>
+<div class="outline-text-3" id="text-using-the-inspector">
+<p>
+This layer adds the <a href="https://github.com/mmontone/emacs-inspector">inspector</a> package to provide an easy way for inspecting
+data structures. Find more information about its usage <a href="https://github.com/mmontone/emacs-inspector">here</a> and see key bindings.
+</p>
+</div>
 </div>
 </div>
 
@@ -1234,11 +1258,72 @@ line)
 </table>
 </div>
 </div>
+
+<div id="outline-container-inspector" class="outline-3">
+<h3 id="inspector"><span class="section-number-3">8.6.</span> Inspector</h3>
+<div class="outline-text-3" id="text-inspector">
+<p>
+<b>inspector buffer</b>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>RET</code></td>
+<td class="org-left">inspect object</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>L</code></td>
+<td class="org-left">navigate to previous object</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>q</code></td>
+<td class="org-left">quit inspector</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>backtrace buffer</b>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>i</code></td>
+<td class="org-left">inspect object</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-04 Sat 19:50</p>
+<p class="date">Created: 2021-09-10 Fri 20:24</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
