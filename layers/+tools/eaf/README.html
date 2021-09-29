@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-11 Sat 23:13 -->
+<!-- 2021-09-29 Wed 20:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>eaf layer</title>
@@ -270,7 +270,8 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 <li><a href="#install">2. Install</a></li>
 <li><a href="#usage">3. Usage</a>
 <ul>
-<li><a href="#configuring-key-bindings">3.1. Configuring key bindings</a></li>
+<li><a href="#configuring-applications">3.1. Configuring applications</a></li>
+<li><a href="#configuring-key-bindings">3.2. Configuring key bindings</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">4. Key bindings</a>
@@ -299,7 +300,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 <h2 id="description"><span class="section-number-2">1.</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds support for the <a href="https://github.com/manateelazycat/emacs-application-framework">Emacs Application Framework (EAF)</a>.
+This layer adds support for the <a href="https://github.com/emacs-eaf/emacs-application-framework">Emacs Application Framework (EAF)</a>.
 </p>
 </div>
 
@@ -311,7 +312,7 @@ This layer adds support for the <a href="https://github.com/manateelazycat/emacs
 <li>PDF viewer (with continuous scroll)</li>
 <li>Video player</li>
 <li>Image viewer</li>
-<li>See <a href="https://github.com/manateelazycat/emacs-application-framework#launch-eaf-applications">EAF documentation</a> for many more features</li>
+<li>See <a href="https://github.com/emacs-eaf/emacs-application-framework#launch-eaf-applications">EAF documentation</a> for many more features</li>
 </ul>
 </div>
 </div>
@@ -322,17 +323,33 @@ This layer adds support for the <a href="https://github.com/manateelazycat/emacs
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>eaf</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
-file.
+add <code>eaf</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this file.
+Then after (re-)loading the dotfile, run <code>M-x eaf-install</code> to automatically
+install required dependencies, and to select the eaf applications you would like
+to get installed. The script let's you select from the following list
+of applications:
 </p>
-
-<p>
-Subsequently install the required dependencies with <code>SPC SPC
-  eaf-install-dependencies</code>. This command only works for Ubuntu and Fedora based
-distributions. Users of Arch (based) distributions can run the script manually
-in their terminal. If the script does not work for you then <a href="https://github.com/manateelazycat/emacs-application-framework#dependency-list">install the
-required dependencies manually</a>.
-</p>
+<ul class="org-ul">
+<li>eaf-jupyter</li>
+<li>eaf-browser</li>
+<li>eaf-airshare</li>
+<li>eaf-file-browser</li>
+<li>eaf-file-manager</li>
+<li>eaf-file-sender</li>
+<li>eaf-music-player</li>
+<li>eaf-system-monitor</li>
+<li>eaf-mindmap</li>
+<li>eaf-org-previewer</li>
+<li>eaf-terminal</li>
+<li>eaf-netease-cloud-music</li>
+<li>eaf-video-player</li>
+<li>eaf-image-viewer</li>
+<li>eaf-demo</li>
+<li>eaf-vue-demo</li>
+<li>eaf-pdf-viewer</li>
+<li>eaf-markdown-previewer</li>
+<li>eaf-camera</li>
+</ul>
 </div>
 </div>
 
@@ -341,11 +358,24 @@ required dependencies manually</a>.
 <div class="outline-text-2" id="text-usage">
 </div>
 
+<div id="outline-container-configuring-applications" class="outline-3">
+<h3 id="configuring-applications"><span class="section-number-3">3.1.</span> Configuring applications</h3>
+<div class="outline-text-3" id="text-configuring-applications">
+<p>
+By default, all applications that were selected to be installed when running
+<code>eaf-install</code> command are loaded. By default all installed applications get
+loaded when eaf gets loaded. If you prefer to load some of the applications by
+default then adjust the variable <code>eaf-apps</code>.
+</p>
+</div>
+</div>
+
 <div id="outline-container-configuring-key-bindings" class="outline-3">
-<h3 id="configuring-key-bindings"><span class="section-number-3">3.1.</span> Configuring key bindings</h3>
+<h3 id="configuring-key-bindings"><span class="section-number-3">3.2.</span> Configuring key bindings</h3>
 <div class="outline-text-3" id="text-configuring-key-bindings">
 <p>
-Configuration of EAF key bindings works in a different way than normally in Spacemacs.
+Configuration of EAF key bindings works in a different way than normally in
+Spacemacs.
 </p>
 
 <p>
@@ -356,12 +386,12 @@ keybindings.
 </p>
 
 <p>
-For information about configuration of other key bindings for EAF, see <a href="https://github.com/manateelazycat/emacs-application-framework/wiki/Keybindings">here</a>. 
+For information about configuration of other key bindings for EAF, see <a href="https://github.com/emacs-eaf/emacs-application-framework/wiki/Keybindings">here</a>.
 </p>
 
 <p>
 If you do want to modify the leader keys, then information about the tricks
-implemented in this layer can be found <a href="https://github.com/manateelazycat/emacs-application-framework/issues/498">here</a> and <a href="https://github.com/manateelazycat/emacs-application-framework/pull/500">here</a>.
+implemented in this layer can be found <a href="https://github.com/emacs-eaf/emacs-application-framework/issues/498">here</a> and <a href="https://github.com/emacs-eaf/emacs-application-framework/pull/500">here</a>.
 </p>
 </div>
 </div>
@@ -372,7 +402,13 @@ implemented in this layer can be found <a href="https://github.com/manateelazyca
 <div class="outline-text-2" id="text-key-bindings">
 <p>
 Except for the few Spacemacs specific modifications listed below, all EAF
-keybindings are documented <a href="https://github.com/manateelazycat/emacs-application-framework/wiki/Keybindings">here.</a>
+keybindings are documented <a href="https://github.com/emacs-eaf/emacs-application-framework/wiki/Keybindings">here.</a>
+</p>
+
+<p>
+Eaf provides some key bindings only conditionally, so if some key binding does not
+work, then be sure that the relevant eaf application has been correctly
+installed.
 </p>
 
 <p>
@@ -406,7 +442,7 @@ Use <code>SPC t k m</code> to <a href="https://develop.spacemacs.org/doc/DOCUMEN
 <tbody>
 <tr>
 <td class="org-left"><code>SPC a a f</code></td>
-<td class="org-left">EAF open file (<a href="https://github.com/manateelazycat/emacs-application-framework#launch-eaf-applications">see EAF doc for supported file types</a>)</td>
+<td class="org-left">EAF open file (<a href="https://github.com/emacs-eaf/emacs-application-framework#launch-eaf-applications">see EAF doc for supported file types</a>)</td>
 </tr>
 
 <tr>
@@ -458,7 +494,7 @@ Use <code>SPC t k m</code> to <a href="https://develop.spacemacs.org/doc/DOCUMEN
 
 <tr>
 <td class="org-left"><code>SPC a a b s</code></td>
-<td class="org-left">Search with <a href="https://github.com/manateelazycat/emacs-application-framework/wiki/Customization#default-search-engine">your favorite search engine</a>. Defaults to symbol at point or region string</td>
+<td class="org-left">Search with <a href="https://github.com/emacs-eaf/emacs-application-framework/wiki/Customization#default-search-engine">your favorite search engine</a>. Defaults to symbol at point or region string</td>
 </tr>
 
 <tr>
@@ -558,7 +594,7 @@ Use <code>SPC t k m</code> to <a href="https://develop.spacemacs.org/doc/DOCUMEN
 
 <tr>
 <td class="org-left"><code>SPC m s</code></td>
-<td class="org-left">Search web with <a href="https://github.com/manateelazycat/emacs-application-framework/wiki/Customization#default-search-engine">favorite search engine</a></td>
+<td class="org-left">Search web with <a href="https://github.com/emacs-eaf/emacs-application-framework/wiki/Customization#default-search-engine">favorite search engine</a></td>
 </tr>
 </tbody>
 </table>
@@ -623,7 +659,7 @@ Use <code>SPC t k m</code> to <a href="https://develop.spacemacs.org/doc/DOCUMEN
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-11 Sat 23:13</p>
+<p class="date">Created: 2021-09-29 Wed 20:46</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

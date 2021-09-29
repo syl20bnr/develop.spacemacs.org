@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-11 Sat 23:12 -->
+<!-- 2021-09-29 Wed 20:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ivy layer</title>
@@ -279,6 +279,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 <ul>
 <li><a href="#transient-state">4.1. Transient state</a></li>
 <li><a href="#colorsfaces">4.2. Colors/Faces</a></li>
+<li><a href="#search-files-with-ivy">4.3. Search files with ivy</a></li>
 </ul>
 </li>
 </ul>
@@ -628,11 +629,136 @@ are found in <a href="https://oremacs.com/swiper/#minibuffer-key-bindings">the H
 </table>
 </div>
 </div>
+
+<div id="outline-container-search-files-with-ivy" class="outline-3">
+<h3 id="search-files-with-ivy"><span class="section-number-3">4.3.</span> Search files with ivy</h3>
+<div class="outline-text-3" id="text-search-files-with-ivy">
+<p>
+<code>ripgrep</code> is recommended and <code>Spacemacs</code> will pick it up as the default seach
+app if found. To pass parameters to <code>ripgrep</code> use double dash then everything
+after it is treated as parameters for search app.
+</p>
+
+<p>
+For example:
+</p>
+<pre class="example" id="org00f296a">
+phrase I want to search -- -t lisp
+</pre>
+
+<p>
+will search only on lisp files.
+</p>
+
+<p>
+Commands available while browsing the search result:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>C-SPC</code> or <code>C-l</code></td>
+<td class="org-left">Preview result</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-x C-d</code></td>
+<td class="org-left">Change search folder</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-q</code></td>
+<td class="org-left"><code>counsel-git-grep-query-replace</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-c C-o</code></td>
+<td class="org-left"><code>ivy-occur</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-c C-e</code></td>
+<td class="org-left">Spacemacs's <code>counsel-edit</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+When you <code>M-o</code> on the result list of <code>counsel-find-file</code> and file search result
+you have these following extra actions:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>f</code></td>
+<td class="org-left"><code>find-file-other-frame</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>j</code></td>
+<td class="org-left"><code>find-file-other-window</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>v</code></td>
+<td class="org-left"><code>spacemacs/find-file-vsplit</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s</code></td>
+<td class="org-left"><code>spacemacs/find-file-split</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>l</code></td>
+<td class="org-left"><code>find-file-literally</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>d</code></td>
+<td class="org-left"><code>spacemacs/delete-file-confirm</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>r</code></td>
+<td class="org-left"><code>spacemacs/rename-file</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-11 Sat 23:12</p>
+<p class="date">Created: 2021-09-29 Wed 20:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
