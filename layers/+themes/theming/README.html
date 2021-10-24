@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-29 Wed 20:46 -->
+<!-- 2021-10-24 Sun 13:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Theming layer</title>
@@ -322,13 +322,13 @@ It should be a list of the following form:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>theme1 <span class="org-rainbow-delimiters-depth-3">(</span>face1 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
-         <span class="org-rainbow-delimiters-depth-3">(</span>face2 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
-         ...<span class="org-rainbow-delimiters-depth-2">)</span>
- <span class="org-rainbow-delimiters-depth-2">(</span>theme2 <span class="org-rainbow-delimiters-depth-3">(</span>face1 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
-         <span class="org-rainbow-delimiters-depth-3">(</span>face2 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
-         ...<span class="org-rainbow-delimiters-depth-2">)</span>
- ...<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">((theme1 (face1 attributes...)
+         (face2 attributes...)
+         ...)
+ (theme2 (face1 attributes...)
+         (face2 attributes...)
+         ...)
+ ...)
 </pre>
 </div>
 </div>
@@ -337,18 +337,18 @@ It should be a list of the following form:
 <h3 id="example"><span class="section-number-3">3.1.</span> Example</h3>
 <div class="outline-text-3" id="text-example">
 <div class="org-src-container">
-<pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-init</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>setq theming-modifications
-        '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>monokai
+<pre class="src src-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-init</span> ()
+  (setq theming-modifications
+        '((monokai
            <span class="org-comment-delimiter">;; </span><span class="org-comment">Font locking</span>
-           <span class="org-rainbow-delimiters-depth-5">(</span>font-lock-comment-face <span class="org-builtin">:slant</span> italic<span class="org-rainbow-delimiters-depth-5">)</span>
-           <span class="org-rainbow-delimiters-depth-5">(</span>web-mode-html-attr-name-face <span class="org-builtin">:inherit</span> font-lock-variable-name-face
-                                         <span class="org-builtin">:foreground</span> nil<span class="org-rainbow-delimiters-depth-5">)</span>
+           (font-lock-comment-face <span class="org-builtin">:slant</span> italic)
+           (web-mode-html-attr-name-face <span class="org-builtin">:inherit</span> font-lock-variable-name-face
+                                         <span class="org-builtin">:foreground</span> nil)
            <span class="org-comment-delimiter">;; </span><span class="org-comment">Modeline</span>
-           <span class="org-rainbow-delimiters-depth-5">(</span>powerline-active1 <span class="org-builtin">:box</span> <span class="org-rainbow-delimiters-depth-6">(</span><span class="org-builtin">:color</span> <span class="org-string">"#999999"</span>
-                                    <span class="org-builtin">:line-width</span> <span class="org-highlight-numbers-number">1</span>
-                                    <span class="org-builtin">:style</span> released-button<span class="org-rainbow-delimiters-depth-6">)</span>
-                              <span class="org-builtin">:background</span> <span class="org-string">"#5a5a5a"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+           (powerline-active1 <span class="org-builtin">:box</span> (<span class="org-builtin">:color</span> <span class="org-string">"#999999"</span>
+                                    <span class="org-builtin">:line-width</span> 1
+                                    <span class="org-builtin">:style</span> released-button)
+                              <span class="org-builtin">:background</span> <span class="org-string">"#5a5a5a"</span>)))))
 </pre>
 </div>
 
@@ -449,17 +449,17 @@ An example of how to set the default font colour to be black in a custom theme l
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-init</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-init</span> ()
 
   <span class="org-comment-delimiter">; </span><span class="org-comment">custom theme modification - overriding default font colour</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq-default</span>
+  (<span class="org-keyword">setq-default</span>
     theming-modifications
-      '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>leuven
-          <span class="org-rainbow-delimiters-depth-5">(</span>default <span class="org-builtin">:foreground</span> <span class="org-string">"#000000"</span><span class="org-rainbow-delimiters-depth-5">)</span>
-       <span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-  <span class="org-rainbow-delimiters-depth-2">)</span>
+      '((leuven
+          (default <span class="org-builtin">:foreground</span> <span class="org-string">"#000000"</span>)
+       ))
+  )
 
-<span class="org-rainbow-delimiters-depth-1">)</span>
+)
 </pre>
 </div>
 </div>
@@ -467,7 +467,7 @@ An example of how to set the default font colour to be black in a custom theme l
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-29 Wed 20:46</p>
+<p class="date">Created: 2021-10-24 Sun 13:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

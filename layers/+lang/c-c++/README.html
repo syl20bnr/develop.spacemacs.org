@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-29 Wed 20:45 -->
+<!-- 2021-10-24 Sun 13:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>C/C++ layer</title>
@@ -309,7 +309,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </div>
 </div>
 
-<div id="org9bea753" class="figure">
+<div id="org02ab91b" class="figure">
 <p><img src="img/ccpp.jpg" alt="ccpp.jpg" />
 </p>
 </div>
@@ -389,7 +389,7 @@ To choose a default backend set the layer variable <code>c-c++-backend</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-backend 'lsp-clangd<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(c-c++ <span class="org-builtin">:variables</span> c-c++-backend 'lsp-clangd)
 </pre>
 </div>
 
@@ -412,7 +412,7 @@ The backend can be chosen on a per project basis using directory local variables
 <pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
 <span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
 
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>c++-mode <span class="org-rainbow-delimiters-depth-3">(</span>c-c++-backend . lsp-ccls<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+((c++-mode (c-c++-backend . lsp-ccls)))
 </pre>
 </div>
 
@@ -502,8 +502,8 @@ layer backend by adding the following to your dotfile:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-backend 'lsp-clangd<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((c-c++ <span class="org-builtin">:variables</span> c-c++-backend 'lsp-clangd)))
 </pre>
 </div>
 </div>
@@ -517,8 +517,8 @@ another supported backend, for instance <code>lsp-ccls</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-backend 'lsp-ccls<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((c-c++ <span class="org-builtin">:variables</span> c-c++-backend 'lsp-ccls)))
 </pre>
 </div>
 </div>
@@ -606,11 +606,11 @@ See the full list of configuration options you can set at:
 <li><a id="example-dotspacemacs-configuration-layers-entry"></a>Example dotspacemacs-configuration-layers entry<br />
 <div class="outline-text-6" id="text-example-dotspacemacs-configuration-layers-entry">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((c-c++ <span class="org-builtin">:variables</span>
                        c-c++-adopt-subprojects t
                        c-c++-backend 'lsp-ccls
-                       c-c++-lsp-enable-semantic-highlight 'rainbow<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+                       c-c++-lsp-enable-semantic-highlight 'rainbow)))
 </pre>
 </div>
 </div>
@@ -683,9 +683,9 @@ Example configuration with two adapters selected:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span>
-                       c-c++-dap-adapters '<span class="org-rainbow-delimiters-depth-4">(</span>dap-lldb dap-cpptools<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((c-c++ <span class="org-builtin">:variables</span>
+                       c-c++-dap-adapters '(dap-lldb dap-cpptools)))
 </pre>
 </div>
 </div>
@@ -758,8 +758,8 @@ To enable support for <code>rtags</code>, set the layer variable <code>c-c++-bac
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-backend 'rtags<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((c-c++ <span class="org-builtin">:variables</span> c-c++-backend 'rtags)))
 </pre>
 </div>
 
@@ -771,10 +771,10 @@ set the variable <code>c-c++-rtags-completion</code> to <code>nil</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((c-c++ <span class="org-builtin">:variables</span>
                        c-c++-backend 'rtags
-                       c-c++-enable-rtags-completion nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+                       c-c++-enable-rtags-completion nil)))
 </pre>
 </div>
 </div>
@@ -793,8 +793,8 @@ Older versions of Emacs will open header files in <code>c-mode</code> by default
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-default-mode-for-headers 'c++-mode<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((c-c++ <span class="org-builtin">:variables</span> c-c++-default-mode-for-headers 'c++-mode)))
 </pre>
 </div>
 
@@ -815,8 +815,8 @@ To organize the file header includes on save, set the layer variable
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-enable-organize-includes-on-save t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((c-c++ <span class="org-builtin">:variables</span> c-c++-enable-organize-includes-on-save t)))
 </pre>
 </div>
 </div>
@@ -839,8 +839,8 @@ To enable automatic buffer formatting on save, set the variable
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-enable-clang-format-on-save t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((c-c++ <span class="org-builtin">:variables</span> c-c++-enable-clang-format-on-save t)))
 </pre>
 </div>
 </div>
@@ -870,7 +870,7 @@ an entry like
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-enable-google-style t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(c-c++ <span class="org-builtin">:variables</span> c-c++-enable-google-style t)
 </pre>
 </div>
 
@@ -881,8 +881,8 @@ set that up like this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-enable-google-style t
-                  c-c++-enable-google-newline t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(c-c++ <span class="org-builtin">:variables</span> c-c++-enable-google-style t
+                  c-c++-enable-google-newline t)
 </pre>
 </div>
 </div>
@@ -897,7 +897,7 @@ after certain characters by setting the <code>c-c++-enable-auto-newline</code> v
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-enable-auto-newline t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(c-c++ <span class="org-builtin">:variables</span> c-c++-enable-auto-newline t)
 </pre>
 </div>
 </div>
@@ -912,7 +912,7 @@ set <code>c-c++-adopt-subprojects</code> to <code>t</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>c-c++ <span class="org-builtin">:variables</span> c-c++-adopt-subprojects t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(c-c++ <span class="org-builtin">:variables</span> c-c++-adopt-subprojects t)
 </pre>
 </div>
 
@@ -1725,7 +1725,7 @@ A <code>[ccls]</code> suffix indicates that the binding is for the indicated bac
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-29 Wed 20:45</p>
+<p class="date">Created: 2021-10-24 Sun 13:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

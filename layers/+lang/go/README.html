@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-29 Wed 20:45 -->
+<!-- 2021-10-24 Sun 13:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Go layer</title>
@@ -301,7 +301,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </div>
 </div>
 
-<div id="org1234d5e" class="figure">
+<div id="org69d3566" class="figure">
 <p><img src="img/go.png" alt="go.png" />
 </p>
 </div>
@@ -397,7 +397,7 @@ To choose this backend set the layer variable <code>go-backend</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-backend 'lsp<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(go <span class="org-builtin">:variables</span> go-backend 'lsp)
 </pre>
 </div>
 
@@ -439,7 +439,7 @@ To choose it nevertheless set the layer variable <code>go-backend</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-backend 'go-mode<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(go <span class="org-builtin">:variables</span> go-backend 'go-mode)
 </pre>
 </div>
 
@@ -476,7 +476,7 @@ the layer variable:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> godoc-at-point-function 'godoc-gogetdoc<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(go <span class="org-builtin">:variables</span> godoc-at-point-function 'godoc-gogetdoc)
 </pre>
 </div>
 
@@ -507,7 +507,7 @@ language backend, most are installed directly via <code>go get</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><span class="org-variable-name">GO111MODULE</span>=on <span class="org-variable-name">CGO_ENABLED</span>=<span class="org-highlight-numbers-number">0</span> go get -v -trimpath -ldflags <span class="org-string">'-s -w'</span> github.com/golangci/golangci-lint/cmd/golangci-lint
+<pre class="src src-sh"><span class="org-variable-name">GO111MODULE</span>=on <span class="org-variable-name">CGO_ENABLED</span>=0 go get -v -trimpath -ldflags <span class="org-string">'-s -w'</span> github.com/golangci/golangci-lint/cmd/golangci-lint
 go get -u -v golang.org/x/tools/cmd/godoc
 go get -u -v golang.org/x/tools/cmd/goimports
 go get -u -v golang.org/x/tools/cmd/gorename
@@ -540,7 +540,7 @@ command or run with environment variables, set the layer variable
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-run-command <span class="org-string">"ENV_VAR=foo go run"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(go <span class="org-builtin">:variables</span> go-run-command <span class="org-string">"ENV_VAR=foo go run"</span>)
 </pre>
 </div>
 
@@ -567,7 +567,7 @@ the layer variable <code>go-tab-width</code>, e.g.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-tab-width <span class="org-highlight-numbers-number">4</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(go <span class="org-builtin">:variables</span> go-tab-width 4)
 </pre>
 </div>
 
@@ -577,7 +577,7 @@ conflicts, i.e.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-tab-width nil<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(go <span class="org-builtin">:variables</span> go-tab-width nil)
 </pre>
 </div>
 </div>
@@ -591,7 +591,7 @@ To run <code>gofmt</code> before save, set the value to a non-nil, i.e.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-format-before-save t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(go <span class="org-builtin">:variables</span> go-format-before-save t)
 </pre>
 </div>
 
@@ -600,7 +600,7 @@ To use a different formatter, set the value of <code>gofmt-command</code>, e.g.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> gofmt-command <span class="org-string">"goimports"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(go <span class="org-builtin">:variables</span> gofmt-command <span class="org-string">"goimports"</span>)
 </pre>
 </div>
 </div>
@@ -614,7 +614,7 @@ If you wish to use <code>golangci-lint</code>, set the following layer variable 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-use-golangci-lint t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(go <span class="org-builtin">:variables</span> go-use-golangci-lint t)
 </pre>
 </div>
 
@@ -667,7 +667,7 @@ command or test with environment variables, set the layer variable
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-test-command <span class="org-string">"ENV_VAR=foo go test"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(go <span class="org-builtin">:variables</span> go-test-command <span class="org-string">"ENV_VAR=foo go test"</span>)
 </pre>
 </div>
 
@@ -676,7 +676,7 @@ To provide additional arguments to <code>go test</code>, specify <code>go-use-te
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>go <span class="org-builtin">:variables</span> go-use-test-args <span class="org-string">"-race -timeout 10s"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(go <span class="org-builtin">:variables</span> go-use-test-args <span class="org-string">"-race -timeout 10s"</span>)
 </pre>
 </div>
 </div>
@@ -985,7 +985,7 @@ prefix it with <code>-</code> to exclude a package from searching.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-29 Wed 20:45</p>
+<p class="date">Created: 2021-10-24 Sun 13:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

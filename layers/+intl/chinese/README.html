@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-29 Wed 20:45 -->
+<!-- 2021-10-24 Sun 13:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Chinese layer</title>
@@ -294,7 +294,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </div>
 </div>
 
-<div id="orgbea0ad6" class="figure">
+<div id="orgb4792e8" class="figure">
 <p><img src="img/Chinese.png" alt="Chinese.png" />
 </p>
 </div>
@@ -355,8 +355,8 @@ you could set the variable <code>chinese-default-input-method</code> to <code>wu
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>chinese <span class="org-builtin">:variables</span> chinese-default-input-method 'wubi<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '(
+  (chinese <span class="org-builtin">:variables</span> chinese-default-input-method 'wubi)))
 </pre>
 </div>
 </div>
@@ -387,8 +387,8 @@ By default, <code>opencc</code> will be used as the backend, set
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>chinese <span class="org-builtin">:variables</span>
-                                                           chinese-conv-backend <span class="org-string">"cconv"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '((chinese <span class="org-builtin">:variables</span>
+                                                           chinese-conv-backend <span class="org-string">"cconv"</span>)))
 </pre>
 </div>
 
@@ -422,8 +422,8 @@ to replace the current selection in-place.
 <h4 id="enable-fcitx"><span class="section-number-4">2.2.4.</span> Enable fcitx</h4>
 <div class="outline-text-4" id="text-enable-fcitx">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>chinese <span class="org-builtin">:variables</span>
-                                                           chinese-enable-fcitx t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '((chinese <span class="org-builtin">:variables</span>
+                                                           chinese-enable-fcitx t)))
 </pre>
 </div>
 
@@ -442,15 +442,15 @@ If you want to use fcitx5 instead of fcitx4, enable the variable
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>chinese <span class="org-builtin">:variables</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((chinese <span class="org-builtin">:variables</span>
                          chinese-use-fcitx5 t
-                         chinese-enable-fcitx t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+                         chinese-enable-fcitx t)))
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>fcitx-aggressive-setup<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(fcitx-aggressive-setup)
 </pre>
 </div>
 </div>
@@ -472,9 +472,9 @@ It's recommended to use the dbus interface to speed up <code>fcitx</code> a litt
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>chinese <span class="org-builtin">:variables</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '((chinese <span class="org-builtin">:variables</span>
                                                            chinese-enable-fcitx t
-                                                           chinese-fcitx-use-dbus t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+                                                           chinese-fcitx-use-dbus t)))
 </pre>
 </div>
 
@@ -509,7 +509,7 @@ You can use <code>brew info fcitx-remote-for-osx</code> to get more options info
 method support.
 </p>
 
-<pre class="example" id="orge65821b">
+<pre class="example" id="org596c82a">
 --with-input-method=
   Select input method: baidu-pinyin(default), baidu-wubi, sogou-pinyin, qq-wubi, squirrel-rime, osx-pinyin
 </pre>
@@ -537,8 +537,8 @@ You should set <code>chinese-enable-youdao-dict</code> to <code>t</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>chinese <span class="org-builtin">:variables</span>
-                                                           chinese-enable-youdao-dict t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '((chinese <span class="org-builtin">:variables</span>
+                                                           chinese-enable-youdao-dict t)))
 </pre>
 </div>
 </div>
@@ -561,7 +561,7 @@ Example configuration:
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Note: The Hiragino Sans GB is bundled with macOS.</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">If you are not using macOS, you should change it to another Chinese font name.</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>spacemacs//set-monospaced-font   <span class="org-string">"Source Code Pro"</span> <span class="org-string">"Hiragino Sans GB"</span> <span class="org-highlight-numbers-number">14</span> <span class="org-highlight-numbers-number">16</span><span class="org-rainbow-delimiters-depth-1">)</span>
+(spacemacs//set-monospaced-font   <span class="org-string">"Source Code Pro"</span> <span class="org-string">"Hiragino Sans GB"</span> 14 16)
 </pre>
 </div>
 </div>
@@ -576,8 +576,8 @@ disable it. You can set <code>chinese-enable-avy-pinyin</code> to <code>nil</cod
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>chinese <span class="org-builtin">:variables</span>
-                                                           chinese-enable-avy-pinyin nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '((chinese <span class="org-builtin">:variables</span>
+                                                           chinese-enable-avy-pinyin nil)))
 </pre>
 </div>
 </div>
@@ -627,11 +627,11 @@ Add the following in <code>dotspacemacs-user-config</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> configuration-layer-elpa-archives
-      '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"melpa-cn"</span> . <span class="org-string">"http://mirrors.bfsu.edu.cn/elpa/melpa/"</span><span class="org-rainbow-delimiters-depth-3">)</span>
-        <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"org-cn"</span> . <span class="org-string">"http://mirrors.bfsu.edu.cn/elpa/org/"</span><span class="org-rainbow-delimiters-depth-3">)</span>
-        <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"gnu-cn"</span> . <span class="org-string">"http://mirrors.bfsu.edu.cn/elpa/gnu/"</span><span class="org-rainbow-delimiters-depth-3">)</span>
-        <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"non-gnu"</span> . <span class="org-string">"https://elpa.nongnu.org/nongnu/"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> configuration-layer-elpa-archives
+      '((<span class="org-string">"melpa-cn"</span> . <span class="org-string">"http://mirrors.bfsu.edu.cn/elpa/melpa/"</span>)
+        (<span class="org-string">"org-cn"</span> . <span class="org-string">"http://mirrors.bfsu.edu.cn/elpa/org/"</span>)
+        (<span class="org-string">"gnu-cn"</span> . <span class="org-string">"http://mirrors.bfsu.edu.cn/elpa/gnu/"</span>)
+        (<span class="org-string">"non-gnu"</span> . <span class="org-string">"https://elpa.nongnu.org/nongnu/"</span>)))
 </pre>
 </div>
 </div>
@@ -639,7 +639,7 @@ Add the following in <code>dotspacemacs-user-config</code>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-29 Wed 20:45</p>
+<p class="date">Created: 2021-10-24 Sun 13:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

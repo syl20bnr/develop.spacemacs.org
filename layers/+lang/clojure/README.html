@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-29 Wed 20:45 -->
+<!-- 2021-10-24 Sun 13:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Clojure layer</title>
@@ -451,7 +451,7 @@ To enable this feature, add the following snippet to the
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> clojure-enable-fancify-symbols t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> clojure-enable-fancify-symbols t)
 </pre>
 </div>
 
@@ -460,8 +460,8 @@ Or set this variable when loading the configuration layer:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>clojure <span class="org-builtin">:variables</span> clojure-enable-fancify-symbols t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+'((clojure <span class="org-builtin">:variables</span> clojure-enable-fancify-symbols t)))
 </pre>
 </div>
 </div>
@@ -489,8 +489,8 @@ in your dotfile:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>clojure <span class="org-builtin">:variables</span> clojure-backend 'lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+'((clojure <span class="org-builtin">:variables</span> clojure-backend 'lsp)))
 </pre>
 </div>
 
@@ -509,8 +509,8 @@ backend explicitly:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>clojure <span class="org-builtin">:variables</span> clojure-backend 'cider<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+'((clojure <span class="org-builtin">:variables</span> clojure-backend 'cider)))
 </pre>
 </div>
 </div>
@@ -554,17 +554,17 @@ to your Spacemacs configuration:
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Witout any variables your configuration would just include clojure</span>
 dotspacemacs-configuration-layers
-'<span class="org-rainbow-delimiters-depth-1">(</span>...
+'(...
   clojure
-  <span class="org-rainbow-delimiters-depth-1">)</span>
+  )
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">to use clj-kondo as a linter, add this variable to the clojure layer</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">wrapping the clojure layer in a list</span>
 dotspacemacs-configuration-layers
-'<span class="org-rainbow-delimiters-depth-1">(</span>...
-  <span class="org-rainbow-delimiters-depth-2">(</span>clojure <span class="org-builtin">:variables</span>
-           clojure-enable-linters 'clj-kondo<span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-1">)</span>
+'(...
+  (clojure <span class="org-builtin">:variables</span>
+           clojure-enable-linters 'clj-kondo)
+  )
 </pre>
 </div>
 </div>
@@ -587,17 +587,17 @@ to your Spacemacs configuration:
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Witout any variables your configuration would just include clojure</span>
 dotspacemacs-configuration-layers
-'<span class="org-rainbow-delimiters-depth-1">(</span>...
+'(...
   clojure
-  <span class="org-rainbow-delimiters-depth-1">)</span>
+  )
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">to use joker as a linter, add this variable to the clojure layer</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">wrapping the clojure layer in a list</span>
 dotspacemacs-configuration-layers
-'<span class="org-rainbow-delimiters-depth-1">(</span>...
-  <span class="org-rainbow-delimiters-depth-2">(</span>clojure <span class="org-builtin">:variables</span>
-           clojure-enable-linters 'joker<span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-1">)</span>
+'(...
+  (clojure <span class="org-builtin">:variables</span>
+           clojure-enable-linters 'joker)
+  )
 </pre>
 </div>
 </div>
@@ -626,17 +626,17 @@ Enable the squiggly (eastwood, kibit and core.typed) automatic linter in Spacema
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Without any variables your configuration would just include Clojure</span>
 dotspacemacs-configuration-layers
-'<span class="org-rainbow-delimiters-depth-1">(</span>...
+'(...
   clojure
-  <span class="org-rainbow-delimiters-depth-1">)</span>
+  )
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">to use squiggly as a linter, add this variable to the clojure layer</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">wrapping the clojure layer in a list</span>
 dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-1">(</span>...
-    <span class="org-rainbow-delimiters-depth-2">(</span>clojure <span class="org-builtin">:variables</span>
-             clojure-enable-linters 'squiggly<span class="org-rainbow-delimiters-depth-2">)</span>
-    <span class="org-rainbow-delimiters-depth-1">)</span>
+  '(...
+    (clojure <span class="org-builtin">:variables</span>
+             clojure-enable-linters 'squiggly)
+    )
 
 </pre>
 </div>
@@ -665,17 +665,17 @@ Once all the linters you want to enable are installed, you simply need to specif
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Witout any variables your configuration would just include clojure</span>
 dotspacemacs-configuration-layers
-'<span class="org-rainbow-delimiters-depth-1">(</span>...
+'(...
   clojure
-  <span class="org-rainbow-delimiters-depth-1">)</span>
+  )
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">to enable multiple linters, say clj-kondo and joker, add a list variable to the clojure layer</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">listing each one in the order you want them running, wrapping the clojure layer in a list</span>
 dotspacemacs-configuration-layers
-'<span class="org-rainbow-delimiters-depth-1">(</span>...
-  <span class="org-rainbow-delimiters-depth-2">(</span>clojure <span class="org-builtin">:variables</span>
-           clojure-enable-linters '<span class="org-rainbow-delimiters-depth-3">(</span>clj-kondo joker<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-1">)</span>
+'(...
+  (clojure <span class="org-builtin">:variables</span>
+           clojure-enable-linters '(clj-kondo joker))
+  )
 </pre>
 </div>
 </div>
@@ -699,7 +699,7 @@ To enable this feature, add the following snippet to the
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> clojure-enable-fancify-symbols t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> clojure-enable-fancify-symbols t)
 </pre>
 </div>
 
@@ -708,8 +708,8 @@ Or set this variable when loading the configuration layer:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>clojure <span class="org-builtin">:variables</span> clojure-enable-fancify-symbols t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+'((clojure <span class="org-builtin">:variables</span> clojure-enable-fancify-symbols t)))
 </pre>
 </div>
 </div>
@@ -736,17 +736,17 @@ In your Spacemacs configuration:
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">before</span>
 dotspacemacs-configuration-layers
-'<span class="org-rainbow-delimiters-depth-1">(</span>...
+'(...
   clojure
-  <span class="org-rainbow-delimiters-depth-1">)</span>
+  )
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">after</span>
 dotspacemacs-configuration-layers
-'<span class="org-rainbow-delimiters-depth-1">(</span>...
-  <span class="org-rainbow-delimiters-depth-2">(</span>clojure <span class="org-builtin">:variables</span>
+'(...
+  (clojure <span class="org-builtin">:variables</span>
            clojure-enable-sayid t
-           clojure-enable-clj-refactor t<span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-1">)</span>
+           clojure-enable-clj-refactor t)
+  )
 </pre>
 </div>
 
@@ -1009,7 +1009,7 @@ in the <code>dotspacemacs/user-config</code> function of your .spacemacs file
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-clojure-mode<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-clojure-mode)
 </pre>
 </div>
 
@@ -1018,7 +1018,7 @@ Or enable safe structural editing for all supported modes:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks)
 </pre>
 </div>
 
@@ -2791,7 +2791,7 @@ specific vars.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-29 Wed 20:45</p>
+<p class="date">Created: 2021-10-24 Sun 13:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
