@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-29 Wed 20:44 -->
+<!-- 2021-10-24 Sun 13:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Newsletter #01: About the 0.200 release</title>
@@ -376,13 +376,13 @@ We renamed <code>extensions</code> directories in layers to <code>local</code> a
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">in extensions.el</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> python-post-extensions
-  '<span class="org-rainbow-delimiters-depth-2">(</span>
+(<span class="org-keyword">setq</span> python-post-extensions
+  '(
     nose
     pylookup
     python-compile
     py-yapf
-    <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+    ))
 </pre>
 </div>
 
@@ -392,13 +392,13 @@ We renamed <code>extensions</code> directories in layers to <code>local</code> a
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">in packages.el</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> python-packages
-  '<span class="org-rainbow-delimiters-depth-2">(</span>
+(<span class="org-keyword">setq</span> python-packages
+  '(
     <span class="org-comment-delimiter">;; </span><span class="org-comment">skipping packages before...</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>nose <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>pylookup <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-3">)</span>
+    (nose <span class="org-builtin">:location</span> local)
+    (pylookup <span class="org-builtin">:location</span> local)
     <span class="org-comment-delimiter">;; </span><span class="org-comment">skipping packages after...</span>
-    <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+    ))
 </pre>
 </div>
 
@@ -412,13 +412,13 @@ replaced by the <code>:excluded</code> keyword in <code>&lt;layer&gt;-packages</
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> vim-empty-lines-packages
-      '<span class="org-rainbow-delimiters-depth-2">(</span>
-        <span class="org-rainbow-delimiters-depth-3">(</span>vim-empty-lines-mode <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-3">)</span>
-        <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> vim-empty-lines-packages
+      '(
+        (vim-empty-lines-mode <span class="org-builtin">:location</span> local)
+        ))
 
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> vim-empty-lines-excluded-packages
-      '<span class="org-rainbow-delimiters-depth-2">(</span>vi-tilde-fringe<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+(<span class="org-keyword">setq</span> vim-empty-lines-excluded-packages
+      '(vi-tilde-fringe))
 </pre>
 </div>
 
@@ -427,11 +427,11 @@ replaced by the <code>:excluded</code> keyword in <code>&lt;layer&gt;-packages</
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> vim-empty-lines-packages
-      '<span class="org-rainbow-delimiters-depth-2">(</span>
-        <span class="org-rainbow-delimiters-depth-3">(</span>vim-empty-lines-mode <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-3">)</span>
-        <span class="org-rainbow-delimiters-depth-3">(</span>vi-tilde-fringe <span class="org-builtin">:excluded</span> t<span class="org-rainbow-delimiters-depth-3">)</span>
-        <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> vim-empty-lines-packages
+      '(
+        (vim-empty-lines-mode <span class="org-builtin">:location</span> local)
+        (vi-tilde-fringe <span class="org-builtin">:excluded</span> t)
+        ))
 </pre>
 </div>
 
@@ -649,8 +649,8 @@ packages <code>fill-column-indicator</code> and <code>golden-ratio</code> in the
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-configuration-layers
-  <span class="org-rainbow-delimiters-depth-2">(</span>spacemacs-ui-visual <span class="org-builtin">:packages</span> fill-column-indicator golden-ratio<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> dotspacemacs-configuration-layers
+  (spacemacs-ui-visual <span class="org-builtin">:packages</span> fill-column-indicator golden-ratio))
 </pre>
 </div>
 
@@ -659,8 +659,8 @@ Another example to select all the packages except <code>fancy-battery</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-configuration-layers
-  <span class="org-rainbow-delimiters-depth-2">(</span>spacemacs-ui-visual <span class="org-builtin">:packages</span> <span class="org-rainbow-delimiters-depth-3">(</span>not fancy-battery<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> dotspacemacs-configuration-layers
+  (spacemacs-ui-visual <span class="org-builtin">:packages</span> (not fancy-battery))
 </pre>
 </div>
 </div>
@@ -750,10 +750,10 @@ To define these new variables use the <code>:variables</code> keyword. For examp
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-editing-style '<span class="org-rainbow-delimiters-depth-2">(</span>hybrid <span class="org-builtin">:variables</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> dotspacemacs-editing-style '(hybrid <span class="org-builtin">:variables</span>
                                    hybrid-mode-enable-evilified-state t
                                    hybrid-mode-enable-hjkl-bindings t
-                                   hybrid-mode-default-state 'normal<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+                                   hybrid-mode-default-state 'normal))
 </pre>
 </div>
 </div>
@@ -923,8 +923,8 @@ of 7 items for the projects list:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-startup-lists '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>recents  . <span class="org-highlight-numbers-number">5</span><span class="org-rainbow-delimiters-depth-3">)</span>
-                                   <span class="org-rainbow-delimiters-depth-3">(</span>projects . <span class="org-highlight-numbers-number">7</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> dotspacemacs-startup-lists '((recents  . 5)
+                                   (projects . 7)))
 </pre>
 </div>
 
@@ -1071,7 +1071,7 @@ of <code>evil</code>.</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-29 Wed 20:44</p>
+<p class="date">Created: 2021-10-24 Sun 13:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

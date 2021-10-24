@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-29 Wed 20:45 -->
+<!-- 2021-10-24 Sun 13:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ruby layer</title>
@@ -310,7 +310,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </div>
 </div>
 
-<div id="orgb232178" class="figure">
+<div id="orgee44158" class="figure">
 <p><img src="img/ruby.png" alt="ruby.png" />
 </p>
 </div>
@@ -356,8 +356,8 @@ This layer supports two different Ruby modes: Emacs's built-in Ruby Mode and
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>ruby <span class="org-builtin">:variables</span> ruby-enable-enh-ruby-mode t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> ()
+   '((ruby <span class="org-builtin">:variables</span> ruby-enable-enh-ruby-mode t)))
 </pre>
 </div>
 </div>
@@ -370,7 +370,7 @@ To choose a default backend set the layer variable <code>ruby-backend</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>ruby <span class="org-builtin">:variables</span> ruby-backend 'robe<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(ruby <span class="org-builtin">:variables</span> ruby-backend 'robe)
 </pre>
 </div>
 
@@ -389,7 +389,7 @@ Backend can be chosen on a per project basis using directory local variables
 <pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
 <span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
 
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>ruby-mode <span class="org-rainbow-delimiters-depth-3">(</span>ruby-backend . lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+((ruby-mode (ruby-backend . lsp)))
 </pre>
 </div>
 
@@ -478,8 +478,8 @@ example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>ruby <span class="org-builtin">:variables</span> ruby-version-manager 'rvm<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> ()
+   '((ruby <span class="org-builtin">:variables</span> ruby-version-manager 'rvm)))
 </pre>
 </div>
 
@@ -511,8 +511,8 @@ Example to set the test runner to <code>RSpec</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>ruby <span class="org-builtin">:variables</span> ruby-test-runner 'rspec<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> ()
+   '((ruby <span class="org-builtin">:variables</span> ruby-test-runner 'rspec)))
 </pre>
 </div>
 
@@ -531,8 +531,8 @@ If you'd like to use <a href="https://github.com/prettier/plugin-ruby">prettier/
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>ruby <span class="org-builtin">:variables</span> ruby-prettier-on-save t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> ()
+   '((ruby <span class="org-builtin">:variables</span> ruby-prettier-on-save t)))
 </pre>
 </div>
 
@@ -1175,8 +1175,8 @@ Note that <code>ruby-mode</code> and <code>enh-ruby-mode</code> will automatical
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>ruby <span class="org-builtin">:variables</span> ruby-insert-encoding-magic-comment nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> ()
+   '((ruby <span class="org-builtin">:variables</span> ruby-insert-encoding-magic-comment nil)))
 </pre>
 </div>
 </div>
@@ -1185,7 +1185,7 @@ Note that <code>ruby-mode</code> and <code>enh-ruby-mode</code> will automatical
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-29 Wed 20:45</p>
+<p class="date">Created: 2021-10-24 Sun 13:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

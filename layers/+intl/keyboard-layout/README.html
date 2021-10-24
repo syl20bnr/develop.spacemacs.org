@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-29 Wed 20:45 -->
+<!-- 2021-10-24 Sun 13:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>keyboard-layout layer</title>
@@ -291,7 +291,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </div>
 </div>
 
-<div id="orgb0299ae" class="figure">
+<div id="orga30a2e4" class="figure">
 <p><img src="img/keyboard-layout-layer-logo.png" alt="keyboard-layout-layer-logo.png" />
 </p>
 </div>
@@ -328,8 +328,8 @@ in this file. You can then select the desired layout by specifying the
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>keyboard-layout <span class="org-builtin">:variables</span> kl-layout 'dvorak<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '(
+  (keyboard-layout <span class="org-builtin">:variables</span> kl-layout 'dvorak)))
 </pre>
 </div>
 </div>
@@ -361,10 +361,10 @@ whether it is in the enabled list or not (default: <code>nil</code>).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>keyboard-layout <span class="org-builtin">:variables</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '(
+  (keyboard-layout <span class="org-builtin">:variables</span>
                    kl-layout 'dvorak
-                   kl-disabled-configurations '<span class="org-rainbow-delimiters-depth-4">(</span>org magit<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+                   kl-disabled-configurations '(org magit))))
 </pre>
 </div>
 </div>
@@ -387,9 +387,9 @@ Example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">kl/post-config-company</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">kl/post-config-company</span> ()
   <span class="org-doc">"Company delete backward."</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>kl/set-in-state company-active-map <span class="org-rainbow-delimiters-depth-3">(</span>kbd <span class="org-string">"C-w"</span><span class="org-rainbow-delimiters-depth-3">)</span> 'evil-delete-backward-word<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+  (kl/set-in-state company-active-map (kbd <span class="org-string">"C-w"</span>) 'evil-delete-backward-word))
 </pre>
 </div>
 
@@ -443,7 +443,7 @@ The following keyboard-layouts are available with this layer:
 <h3 id="bepo"><span class="section-number-3">5.1.</span> Bepo</h3>
 <div class="outline-text-3" id="text-bepo">
 
-<div id="org9902482" class="figure">
+<div id="orgcab9bc2" class="figure">
 <p><img src="img/bepo-logo.png" alt="bepo-logo.png" />
 </p>
 </div>
@@ -453,7 +453,7 @@ Bepo is a keyboard layout that's optimized for the French language.
 </p>
 
 
-<div id="orgeb314f5" class="figure">
+<div id="org930774b" class="figure">
 <p><img src="img/bepo-layout.png" alt="bepo-layout.png" />
 </p>
 </div>
@@ -540,7 +540,7 @@ operating systems.
 </p>
 
 
-<div id="org5431a74" class="figure">
+<div id="org7bb74cc" class="figure">
 <p><img src="img/dvorak-simplified-layout.png" alt="dvorak-simplified-layout.png" />
 </p>
 </div>
@@ -550,7 +550,7 @@ operating systems.
 </p>
 
 
-<div id="org0e85846" class="figure">
+<div id="orgacfeceb" class="figure">
 <p><img src="img/programmer-dvorak-layout.png" alt="programmer-dvorak-layout.png" />
 </p>
 </div>
@@ -617,7 +617,7 @@ the <a href="https://colemak.com/">Colemak website</a>.
 </p>
 
 
-<div id="org1008fad" class="figure">
+<div id="orge8abb55" class="figure">
 <p><img src="img/colemak-layout.png" alt="colemak-layout.png" />
 </p>
 </div>
@@ -656,7 +656,7 @@ wikipedia keyboard layout page.
 </p>
 
 
-<div id="org7f04df4" class="figure">
+<div id="org722d124" class="figure">
 <p><img src="img/workman-layout.png" alt="workman-layout.png" />
 </p>
 </div>
@@ -771,7 +771,7 @@ They are all licensed under the <a href="https://creativecommons.org/licenses/by
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-29 Wed 20:45</p>
+<p class="date">Created: 2021-10-24 Sun 13:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

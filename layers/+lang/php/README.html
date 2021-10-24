@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-29 Wed 20:45 -->
+<!-- 2021-10-24 Sun 13:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PHP layer</title>
@@ -291,7 +291,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </div>
 </div>
 
-<div id="org57c771a" class="figure">
+<div id="orgfd99f64" class="figure">
 <p><img src="img/php.png" alt="php.png" />
 </p>
 </div>
@@ -368,7 +368,7 @@ layer variable <code>php-backend</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>php <span class="org-builtin">:variables</span> php-backend 'lsp<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(php <span class="org-builtin">:variables</span> php-backend 'lsp)
 </pre>
 </div>
 
@@ -438,7 +438,7 @@ For xdebug v2:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">php -d xdebug.idekey=PHPSTORM -d xdebug.remote_autostart=<span class="org-highlight-numbers-number">1</span> -d xdebug.remote_enable=<span class="org-highlight-numbers-number">1</span> -d xdebug.remote_host=<span class="org-highlight-numbers-number">127.0.0.1</span> -d xdebug.remote_port=<span class="org-highlight-numbers-number">9000</span> bin/phpunit ./path/to/Test.php
+<pre class="src src-sh">php -d xdebug.idekey=PHPSTORM -d xdebug.remote_autostart=1 -d xdebug.remote_enable=1 -d xdebug.remote_host=127.0.0.1 -d xdebug.remote_port=9000 bin/phpunit ./path/to/Test.php
 </pre>
 </div>
 
@@ -447,7 +447,7 @@ For xdebug v3:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">php -d xdebug.idekey=PHPSTORM -d xdebug.start_with_request=yes -d xdebug.mode=debug -d xdebug.client_host=<span class="org-highlight-numbers-number">127.0.0.1</span> -d xdebug.client_port=<span class="org-highlight-numbers-number">9000</span> bin/phpunit ./path/to/Test.php
+<pre class="src src-sh">php -d xdebug.idekey=PHPSTORM -d xdebug.start_with_request=yes -d xdebug.mode=debug -d xdebug.client_host=127.0.0.1 -d xdebug.client_port=9000 bin/phpunit ./path/to/Test.php
 </pre>
 </div>
 
@@ -474,15 +474,15 @@ config. For spacemacs it could be done for example by adding a next call to
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'dap-php
-  <span class="org-rainbow-delimiters-depth-2">(</span>dap-register-debug-template <span class="org-string">"PHP debug with custom path"</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>list <span class="org-builtin">:type</span> <span class="org-string">"php"</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">with-eval-after-load</span> 'dap-php
+  (dap-register-debug-template <span class="org-string">"PHP debug with custom path"</span>
+    (list <span class="org-builtin">:type</span> <span class="org-string">"php"</span>
           <span class="org-builtin">:cwd</span> nil
           <span class="org-builtin">:request</span> <span class="org-string">"launch"</span>
           <span class="org-builtin">:name</span> <span class="org-string">"Php Debug with path"</span>
-          <span class="org-builtin">:args</span> '<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">"--server=4711"</span><span class="org-rainbow-delimiters-depth-4">)</span>
-          <span class="org-builtin">:pathMappings</span> <span class="org-rainbow-delimiters-depth-4">(</span>ht <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-string">"/docker/src/path"</span> <span class="org-string">"/emacs/src/path"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
-          <span class="org-builtin">:sourceMaps</span> t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+          <span class="org-builtin">:args</span> '(<span class="org-string">"--server=4711"</span>)
+          <span class="org-builtin">:pathMappings</span> (ht (<span class="org-string">"/docker/src/path"</span> <span class="org-string">"/emacs/src/path"</span>))
+          <span class="org-builtin">:sourceMaps</span> t)))
 </pre>
 </div>
 </div>
@@ -939,7 +939,7 @@ See README.org file of the <code>dap-layer</code> for key bindings available in 
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-29 Wed 20:45</p>
+<p class="date">Created: 2021-10-24 Sun 13:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

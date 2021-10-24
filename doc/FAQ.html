@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-29 Wed 20:44 -->
+<!-- 2021-10-24 Sun 13:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Frequently Asked Questions</title>
@@ -549,10 +549,10 @@ like this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'org
+<pre class="src src-emacs-lisp">(<span class="org-keyword">with-eval-after-load</span> 'org
   <span class="org-comment-delimiter">;; </span><span class="org-comment">Org config goes here</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">....</span>
-  <span class="org-rainbow-delimiters-depth-1">)</span>
+  )
 </pre>
 </div>
 </div>
@@ -573,8 +573,8 @@ configuration:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> tramp-ssh-controlmaster-options
-      <span class="org-string">"-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> tramp-ssh-controlmaster-options
+      <span class="org-string">"-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no"</span>)
 </pre>
 </div>
 
@@ -654,7 +654,7 @@ disable this behaviour:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> create-lockfiles nil<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> create-lockfiles nil)
 </pre>
 </div>
 </div>
@@ -714,7 +714,7 @@ warning, e.g. from <code>dotspacemacs/user-init</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> exec-path-from-shell-check-startup-files nil<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> exec-path-from-shell-check-startup-files nil)
 </pre>
 </div>
 
@@ -770,7 +770,7 @@ value <code>local</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>package-name <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(package-name <span class="org-builtin">:location</span> local)
 </pre>
 </div>
 
@@ -803,7 +803,7 @@ in your dotfile and add the package name to it:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-excluded-packages '<span class="org-rainbow-delimiters-depth-2">(</span>package1 package2 ...<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-excluded-packages '(package1 package2 ...))
 </pre>
 </div>
 </div>
@@ -819,7 +819,7 @@ This is done by removing the hook added by Spacemacs. For example to remove
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>remove-hook 'python-mode-hook 'flycheck-mode<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(remove-hook 'python-mode-hook 'flycheck-mode)
 </pre>
 </div>
 
@@ -841,7 +841,7 @@ dotfile. The following snippet disables company for <code>python-mode</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs|disable-company python-mode<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(spacemacs|disable-company python-mode)
 </pre>
 </div>
 </div>
@@ -863,10 +863,10 @@ Examples:
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Only mark helm buffers as useless</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> spacemacs-useless-buffers-regexp '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"\\*helm</span><span class="org-string"><span class="org-warning">\</span></span><span class="org-string">.</span><span class="org-string"><span class="org-warning">\</span></span><span class="org-string">+\\*"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+(<span class="org-keyword">setq</span> spacemacs-useless-buffers-regexp '(<span class="org-string">"\\*helm</span><span class="org-string"><span class="org-warning">\</span></span><span class="org-string">.</span><span class="org-string"><span class="org-warning">\</span></span><span class="org-string">+\\*"</span>))
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Marking the *Messages* buffer as useful</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">push</span> <span class="org-string">"\\*Messages\\*"</span> spacemacs-useful-buffers-regexp<span class="org-rainbow-delimiters-depth-1">)</span>
+(<span class="org-keyword">push</span> <span class="org-string">"\\*Messages\\*"</span> spacemacs-useful-buffers-regexp)
 </pre>
 </div>
 </div>
@@ -880,7 +880,7 @@ Add the following snippet to your <code>dotspacemacs/user-config</code> function
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/toggle-visual-line-navigation-globally-on<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(spacemacs/toggle-visual-line-navigation-globally-on)
 </pre>
 </div>
 </div>
@@ -894,7 +894,7 @@ You can ensure a mode opens in emacs state by using <code>evil-set-initial-state
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>evil-set-initial-state 'magit-status-mode 'emacs<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(evil-set-initial-state 'magit-status-mode 'emacs)
 </pre>
 </div>
 
@@ -904,7 +904,7 @@ which has a number of different major modes, you can catch them all with
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">push</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"magit*"</span> . emacs<span class="org-rainbow-delimiters-depth-2">)</span> evil-buffer-regexps<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">push</span> '(<span class="org-string">"magit*"</span> . emacs) evil-buffer-regexps)
 </pre>
 </div>
 
@@ -915,9 +915,9 @@ binding in the mode's map, e.g. for <code>magit-status-mode</code>,
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'magit
-  <span class="org-rainbow-delimiters-depth-2">(</span>define-key magit-status-mode-map
-    <span class="org-rainbow-delimiters-depth-3">(</span>kbd dotspacemacs-leader-key<span class="org-rainbow-delimiters-depth-3">)</span> spacemacs-default-map<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">with-eval-after-load</span> 'magit
+  (define-key magit-status-mode-map
+    (kbd dotspacemacs-leader-key) spacemacs-default-map))
 </pre>
 </div>
 </div>
@@ -939,15 +939,15 @@ by also adding the following.
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">For python</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'python-mode-hook #'<span class="org-rainbow-delimiters-depth-2">(</span>lambda <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>modify-syntax-entry ?_ <span class="org-string">"w"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+(add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ <span class="org-string">"w"</span>)))
 <span class="org-comment-delimiter">;; </span><span class="org-comment">For ruby</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'ruby-mode-hook #'<span class="org-rainbow-delimiters-depth-2">(</span>lambda <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>modify-syntax-entry ?_ <span class="org-string">"w"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+(add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ <span class="org-string">"w"</span>)))
 <span class="org-comment-delimiter">;; </span><span class="org-comment">For Javascript</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'js2-mode-hook #'<span class="org-rainbow-delimiters-depth-2">(</span>lambda <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>modify-syntax-entry ?_ <span class="org-string">"w"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+(add-hook 'js2-mode-hook #'(lambda () (modify-syntax-entry ?_ <span class="org-string">"w"</span>)))
 <span class="org-comment-delimiter">;; </span><span class="org-comment">For all programming modes</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'prog-mode-hook #'<span class="org-rainbow-delimiters-depth-2">(</span>lambda <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>modify-syntax-entry ?_ <span class="org-string">"w"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+(add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ <span class="org-string">"w"</span>)))
 <span class="org-comment-delimiter">;; </span><span class="org-comment">For all modes</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'after-change-major-mode-hook #'<span class="org-rainbow-delimiters-depth-2">(</span>lambda <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>modify-syntax-entry ?_ <span class="org-string">"w"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+(add-hook 'after-change-major-mode-hook #'(lambda () (modify-syntax-entry ?_ <span class="org-string">"w"</span>)))
 </pre>
 </div>
 
@@ -1023,7 +1023,7 @@ In that case you have the option of updating the value of <code>exec-path</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'exec-path <span class="org-string">"~/.local/bin/"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(add-to-list 'exec-path <span class="org-string">"~/.local/bin/"</span>)
 </pre>
 </div>
 </div>
@@ -1039,11 +1039,11 @@ dash) to make the former easier to reach, you can use:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dear-leader/swap-keys</span> <span class="org-rainbow-delimiters-depth-2">(</span>key1 key2<span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>map1 <span class="org-rainbow-delimiters-depth-5">(</span>lookup-key spacemacs-default-map key1<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
-        <span class="org-rainbow-delimiters-depth-4">(</span>map2 <span class="org-rainbow-delimiters-depth-5">(</span>lookup-key spacemacs-default-map key2<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>spacemacs/set-leader-keys key1 map2 key2 map1<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>dear-leader/swap-keys <span class="org-string">"S"</span> <span class="org-string">"d"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">dear-leader/swap-keys</span> (key1 key2)
+  (<span class="org-keyword">let</span> ((map1 (lookup-key spacemacs-default-map key1))
+        (map2 (lookup-key spacemacs-default-map key2)))
+    (spacemacs/set-leader-keys key1 map2 key2 map1)))
+(dear-leader/swap-keys <span class="org-string">"S"</span> <span class="org-string">"d"</span>)
 </pre>
 </div>
 
@@ -1054,10 +1054,10 @@ management), you can use this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dear-leader/alias-of</span> <span class="org-rainbow-delimiters-depth-2">(</span>key1 key2<span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>map <span class="org-rainbow-delimiters-depth-5">(</span>lookup-key spacemacs-default-map key2<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>spacemacs/set-leader-keys key1 map<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>dear-leader/alias-of <span class="org-string">"&#233;"</span> <span class="org-string">"w"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">dear-leader/alias-of</span> (key1 key2)
+  (<span class="org-keyword">let</span> ((map (lookup-key spacemacs-default-map key2)))
+    (spacemacs/set-leader-keys key1 map)))
+(dear-leader/alias-of <span class="org-string">"&#233;"</span> <span class="org-string">"w"</span>)
 </pre>
 </div>
 </div>
@@ -1072,7 +1072,7 @@ To restore the sentence delimiter to two spaces, add the following code to the
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> sentence-end-double-space t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> sentence-end-double-space t)
 </pre>
 </div>
 </div>
@@ -1091,7 +1091,7 @@ adding the following code to the <code>dotspacemacs/user-config</code> of your
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>fset 'evil-visual-update-x-selection 'ignore<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(fset 'evil-visual-update-x-selection 'ignore)
 </pre>
 </div>
 </div>
@@ -1107,8 +1107,8 @@ following code in the <code>dotspacemacs/user-config</code> of your <code>.space
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'ispell-local-dictionary-alist
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">quote</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"my_english"</span> <span class="org-string">"[[:alpha:]]"</span> <span class="org-string">"[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string">[:alpha:]]"</span> <span class="org-string">"['&#8217;]"</span> t <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">"-d"</span> <span class="org-string">"en_US"</span><span class="org-rainbow-delimiters-depth-4">)</span> nil utf-8<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(add-to-list 'ispell-local-dictionary-alist
+  (<span class="org-keyword">quote</span> (<span class="org-string">"my_english"</span> <span class="org-string">"[[:alpha:]]"</span> <span class="org-string">"[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string">[:alpha:]]"</span> <span class="org-string">"['&#8217;]"</span> t (<span class="org-string">"-d"</span> <span class="org-string">"en_US"</span>) nil utf-8)))
 </pre>
 </div>
 
@@ -1135,7 +1135,7 @@ commits messages. To enable this you have to add the following line to your
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>global-git-commit-mode t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(global-git-commit-mode t)
 </pre>
 </div>
 </div>
@@ -1175,7 +1175,7 @@ enable copying/pasting with the mouse. You need to add this line to your
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>xterm-mouse-mode <span class="org-highlight-numbers-number">-1</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(xterm-mouse-mode -1)
 </pre>
 </div>
 </div>
@@ -1218,8 +1218,8 @@ You can modify the list of visual enhancements applied by the <code>space-doc-mo
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> spacemacs-space-doc-modificators
-      '<span class="org-rainbow-delimiters-depth-2">(</span>center-buffer-mode
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> spacemacs-space-doc-modificators
+      '(center-buffer-mode
         org-indent-mode
         view-mode
         hide-line-numbers
@@ -1228,7 +1228,7 @@ You can modify the list of visual enhancements applied by the <code>space-doc-mo
         link-protocol
         org-block-line-face-remap
         org-kbd-face-remap
-        resize-inline-images<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+        resize-inline-images))
 </pre>
 </div>
 
@@ -1253,12 +1253,12 @@ To fix this, add the following snippet to your <code>user-config</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">evil-paste-after-from-0</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">interactive</span><span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>evil-this-register ?0<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>call-interactively 'evil-paste-after<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">evil-paste-after-from-0</span> ()
+  (<span class="org-keyword">interactive</span>)
+  (<span class="org-keyword">let</span> ((evil-this-register ?0))
+    (call-interactively 'evil-paste-after)))
 
-<span class="org-rainbow-delimiters-depth-1">(</span>define-key evil-visual-state-map <span class="org-string">"p"</span> 'evil-paste-after-from-0<span class="org-rainbow-delimiters-depth-1">)</span>
+(define-key evil-visual-state-map <span class="org-string">"p"</span> 'evil-paste-after-from-0)
 </pre>
 </div>
 </div>
@@ -1300,7 +1300,7 @@ Check if your Emacs has HTTPS capabilities by doing <code>M-:</code> and then:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>gnutls-available-p<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(gnutls-available-p)
 </pre>
 </div>
 
@@ -1323,7 +1323,7 @@ You can follow <a href="http://mschulte.nl/posts/using-powerline-in-PuTTY.html">
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-29 Wed 20:44</p>
+<p class="date">Created: 2021-10-24 Sun 13:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

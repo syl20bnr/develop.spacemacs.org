@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-29 Wed 20:45 -->
+<!-- 2021-10-24 Sun 13:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JavaScript layer</title>
@@ -329,7 +329,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </div>
 </div>
 
-<div id="org92153eb" class="figure">
+<div id="org105ebda" class="figure">
 <p><img src="img/javascript.png" alt="javascript.png" />
 </p>
 </div>
@@ -393,7 +393,7 @@ If you install these in non-standard locations, add the following to your
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'exec-path <span class="org-string">"/path/to/node/bins"</span> t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(add-to-list 'exec-path <span class="org-string">"/path/to/node/bins"</span> t)
 </pre>
 </div>
 
@@ -403,7 +403,7 @@ in conflict with the linter you are using via flycheck:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span> js2-mode-show-strict-warnings nil<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(javascript <span class="org-builtin">:variables</span> js2-mode-show-strict-warnings nil)
 </pre>
 </div>
 </div>
@@ -448,7 +448,7 @@ To enable it, set the layer variable <code>javascript-import-tool</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span> javascript-import-tool 'import-js<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(javascript <span class="org-builtin">:variables</span> javascript-import-tool 'import-js)
 </pre>
 </div>
 </div>
@@ -462,7 +462,7 @@ To choose a default backend set the layer variable <code>javascript-backend</cod
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span> javascript-backend 'tern<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(javascript <span class="org-builtin">:variables</span> javascript-backend 'tern)
 </pre>
 </div>
 
@@ -481,7 +481,7 @@ Backend can be chosen on a per project basis using directory local variables
 <pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
 <span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
 
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>js2-mode <span class="org-rainbow-delimiters-depth-3">(</span>javascript-backend . lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+((js2-mode (javascript-backend . lsp)))
 </pre>
 </div>
 
@@ -491,9 +491,9 @@ set the variable <code>javascript-lsp-linter</code> to <code>nil</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span>
+<pre class="src src-elisp">(javascript <span class="org-builtin">:variables</span>
             javascript-backend 'lsp
-            javascript-lsp-linter nil<span class="org-rainbow-delimiters-depth-1">)</span>
+            javascript-lsp-linter nil)
 </pre>
 </div>
 </div>
@@ -507,7 +507,7 @@ To choose a formatter, set the layer variable <code>javascript-fmt-tool</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span> javascript-fmt-tool 'web-beautify<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(javascript <span class="org-builtin">:variables</span> javascript-fmt-tool 'web-beautify)
 </pre>
 </div>
 
@@ -521,7 +521,7 @@ to use the <code>prettier</code> formatter:
 <pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
 <span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
 
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>js2-mode <span class="org-rainbow-delimiters-depth-3">(</span>javascript-fmt-tool . prettier<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+((js2-mode (javascript-fmt-tool . prettier)))
 </pre>
 </div>
 
@@ -534,9 +534,9 @@ You can choose formatting tool:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>javascript <span class="org-builtin">:variables</span>
-              javascript-fmt-tool 'prettier<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '(
+  (javascript <span class="org-builtin">:variables</span>
+              javascript-fmt-tool 'prettier)))
 </pre>
 </div>
 
@@ -550,7 +550,7 @@ Default is <code>’web-beautify</code>.
 <h3 id="format-buffer-before-saving"><span class="section-number-3">2.7.</span> Format buffer before saving</h3>
 <div class="outline-text-3" id="text-format-buffer-before-saving">
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span> javascript-fmt-on-save t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(javascript <span class="org-builtin">:variables</span> javascript-fmt-on-save t)
 </pre>
 </div>
 </div>
@@ -589,9 +589,9 @@ To use an LSP server with JavaScript, add it as a <code>javascript-backend</code
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>javascript <span class="org-builtin">:variables</span>
-                            javascript-backend 'lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((javascript <span class="org-builtin">:variables</span>
+                            javascript-backend 'lsp)))
 </pre>
 </div>
 </div>
@@ -668,7 +668,7 @@ such:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> js2-basic-offset <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> js2-basic-offset 2)
 </pre>
 </div>
 
@@ -677,7 +677,7 @@ or when adding the <code>javascript</code> configuration layer:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span> js2-basic-offset <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(javascript <span class="org-builtin">:variables</span> js2-basic-offset 2)
 </pre>
 </div>
 
@@ -687,7 +687,7 @@ Similarly, to change how js-mode indents JSON files, set the variable
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> js-indent-level <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> js-indent-level 2)
 </pre>
 </div>
 
@@ -696,7 +696,7 @@ or when adding the <code>javascript</code> configuration layer:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span> js-indent-level <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(javascript <span class="org-builtin">:variables</span> js-indent-level 2)
 </pre>
 </div>
 </div>
@@ -715,8 +715,8 @@ To use the browser based REPL set the <code>javascript-repl</code> variable as s
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>javascript <span class="org-builtin">:variables</span> javascript-repl `skewer<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '((javascript <span class="org-builtin">:variables</span> javascript-repl `skewer)))
 </pre>
 </div>
 
@@ -738,8 +738,8 @@ To use the server based REPL set the <code>javascript-repl</code> variable as sh
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>javascript <span class="org-builtin">:variables</span> javascript-repl `nodejs<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '((javascript <span class="org-builtin">:variables</span> javascript-repl `nodejs)))
 </pre>
 </div>
 
@@ -766,8 +766,8 @@ doing this <a href="https://stackoverflow.com/questions/9679932#comment33532258_
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>javascript <span class="org-builtin">:variables</span> node-add-modules-path t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '((javascript <span class="org-builtin">:variables</span> node-add-modules-path t)))
 </pre>
 </div>
 </div>
@@ -783,8 +783,8 @@ variable to <code>t</code> in the <code>javascript</code> config section:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>javascript <span class="org-builtin">:variables</span> js2-include-node-externs t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '((javascript <span class="org-builtin">:variables</span> js2-include-node-externs t)))
 </pre>
 </div>
 </div>
@@ -804,9 +804,9 @@ parse warnings:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>javascript <span class="org-builtin">:variables</span> javascript-backend 'lsp
+<pre class="src src-emacs-lisp">(javascript <span class="org-builtin">:variables</span> javascript-backend 'lsp
             js2-mode-show-strict-warnings nil
-            js2-mode-show-parse-errors nil<span class="org-rainbow-delimiters-depth-1">)</span>
+            js2-mode-show-parse-errors nil)
 </pre>
 </div>
 </div>
@@ -1407,7 +1407,7 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-29 Wed 20:45</p>
+<p class="date">Created: 2021-10-24 Sun 13:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

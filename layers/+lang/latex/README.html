@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-29 Wed 20:45 -->
+<!-- 2021-10-24 Sun 13:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LaTeX layer</title>
@@ -297,7 +297,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </div>
 </div>
 
-<div id="org62e3b0d" class="figure">
+<div id="org4a16c8a" class="figure">
 <p><img src="img/latex.png" alt="latex.png" />
 </p>
 </div>
@@ -432,12 +432,6 @@ Sensible defaults have been provided, however they may all be overridden in your
 </tr>
 
 <tr>
-<td class="org-left"><code>latex-refresh-preview</code></td>
-<td class="org-left"><code>nil</code></td>
-<td class="org-left">When non-nil, enable refresh preview buffer when file changes</td>
-</tr>
-
-<tr>
 <td class="org-left"><code>latex-view-with-pdf-tools</code></td>
 <td class="org-left"><code>t</code> if pdf layer is installed, else <code>nil</code></td>
 <td class="org-left">When non-nil, use <code>pdf-tools</code> for viewing output pdf files</td>
@@ -481,8 +475,8 @@ To explicitly choose LSP backend for <code>LaTeX</code> layer, add the following
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>latex <span class="org-builtin">:variables</span> latex-backend 'lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((latex <span class="org-builtin">:variables</span> latex-backend 'lsp)))
 </pre>
 </div>
 </div>
@@ -507,8 +501,8 @@ To explicitly choose <code>company-auctex</code> as the backend, set the followi
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>latex <span class="org-builtin">:variables</span> latex-backend 'company-auctex<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((latex <span class="org-builtin">:variables</span> latex-backend 'company-auctex)))
 </pre>
 </div>
 
@@ -522,8 +516,8 @@ use <code>company-auctex</code> for math symbols completion set the following in
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>latex <span class="org-builtin">:packages</span> <span class="org-rainbow-delimiters-depth-4">(</span>not company-math<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((latex <span class="org-builtin">:packages</span> (not company-math))))
 </pre>
 </div>
 </div>
@@ -560,8 +554,8 @@ To update the preview buffer whenever the compiled PDF file changes, set
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>latex <span class="org-builtin">:variables</span> latex-refresh-preview t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((latex <span class="org-builtin">:variables</span> latex-refresh-preview t)))
 </pre>
 </div>
 
@@ -592,8 +586,8 @@ shown below.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>latex <span class="org-builtin">:variables</span> latex-build-command <span class="org-string">"LaTeX"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((latex <span class="org-builtin">:variables</span> latex-build-command <span class="org-string">"LaTeX"</span>)))
 </pre>
 </div>
 </div>
@@ -649,8 +643,8 @@ variable.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>latex <span class="org-builtin">:variables</span> latex-build-engine 'xetex<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((latex <span class="org-builtin">:variables</span> latex-build-engine 'xetex)))
 </pre>
 </div>
 
@@ -670,8 +664,8 @@ To disable auto-fill (which is on by default) set the variable
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>latex <span class="org-builtin">:variables</span> latex-enable-auto-fill nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((latex <span class="org-builtin">:variables</span> latex-enable-auto-fill nil)))
 </pre>
 </div>
 
@@ -702,8 +696,8 @@ is nil.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>latex <span class="org-builtin">:variables</span> latex-enable-folding t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((latex <span class="org-builtin">:variables</span> latex-enable-folding t)))
 </pre>
 </div>
 </div>
@@ -718,8 +712,8 @@ To enable "magic" symbols in latex buffers, set the variable
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>latex <span class="org-builtin">:variables</span> latex-enable-magic t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '((latex <span class="org-builtin">:variables</span> latex-enable-magic t)))
 </pre>
 </div>
 
@@ -1137,7 +1131,7 @@ Available only when <code>latex-enable-folding</code> is non nil.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-29 Wed 20:45</p>
+<p class="date">Created: 2021-10-24 Sun 13:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

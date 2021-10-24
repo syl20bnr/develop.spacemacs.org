@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-29 Wed 20:46 -->
+<!-- 2021-10-24 Sun 13:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Helm Gtags layer</title>
@@ -505,7 +505,7 @@ With fish:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><span class="org-builtin">echo</span> export set -x GTAGSLABEL pygments &gt;&gt; $<span class="org-rainbow-delimiters-depth-1">{</span><span class="org-variable-name">HOME</span><span class="org-rainbow-delimiters-depth-1">}</span>/.config/fish/config.fish
+<pre class="src src-sh"><span class="org-builtin">echo</span> export set -x GTAGSLABEL pygments &gt;&gt; ${<span class="org-variable-name">HOME</span>}/.config/fish/config.fish
 </pre>
 </div>
 </div>
@@ -553,11 +553,11 @@ will need to add <code>gtags</code> to the existing <code>dotspacemacs-configura
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-configuration-layers
-      '<span class="org-rainbow-delimiters-depth-2">(</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">...</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> dotspacemacs-configuration-layers
+      '( <span class="org-comment-delimiter">;; </span><span class="org-comment">...</span>
         gtags
          <span class="org-comment-delimiter">;; </span><span class="org-comment">...</span>
-        <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+        ))
 </pre>
 </div>
 </div>
@@ -571,8 +571,8 @@ layer variable <code>gtags-enable-by-default</code> to <code>nil</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>gtags <span class="org-builtin">:variables</span> gtags-enable-by-default t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '((gtags <span class="org-builtin">:variables</span> gtags-enable-by-default t)))
 </pre>
 </div>
 
@@ -938,7 +938,7 @@ In addition <code>gtags</code> commands are also supported for symbols in the
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-09-29 Wed 20:46</p>
+<p class="date">Created: 2021-10-24 Sun 13:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
