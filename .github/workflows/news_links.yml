@@ -13,10 +13,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Link Checker
-        working-directory: news/
         uses: lycheeverse/lychee-action@v1.0.9
         with:
-          args: --verbose --exclude validator.w3.org --no-progress **/*.html
+          args: --verbose --exclude validator.w3.org --no-progress news/**/*.html
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         
