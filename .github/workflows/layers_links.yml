@@ -15,8 +15,15 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@v1.0.9
         with:
+          # NOTE: Adding to args this line:
+          #  --accept 200,429
+          # Should make Lynchee ignore "too many requests" error.
+          # Additional adding:
+          #  --threads 100
+          # Could increase randomness in the order of checked links
+          # so the CI would have better chances to check all links
+          # eventually...
           args: >
-            --accept 200,429
             --verbose
             --exclude-loopback
             --exclude-mail
