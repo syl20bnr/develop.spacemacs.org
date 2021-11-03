@@ -36,6 +36,12 @@ jobs:
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v3
         with:
+          # The action can update an issue instead of
+          # creating a new one, if
+          # issue-number: N
+          # provided.
+          # The problem is that it would probably update an
+          # issue even if it closed (by mistake).
           title: Link Checker Report [root dir]
           content-filepath: ./lychee/out.md
           labels: report, automated issue
