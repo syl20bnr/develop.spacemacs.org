@@ -15,7 +15,12 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@v1.0.9
         with:
-          args: --verbose --exclude validator.w3.org --no-progress *.html
+          args: >
+            --verbose
+            --exclude-mail
+            --exclude validator.w3.org
+            --no-progress
+            *.html
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         
