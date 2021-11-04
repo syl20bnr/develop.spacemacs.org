@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-10-24 Sun 14:09 -->
+<!-- 2021-11-04 Thu 18:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GitHub layer</title>
@@ -276,16 +276,15 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </li>
 <li><a href="#key-bindings">3. Key bindings</a>
 <ul>
-<li><a href="#gistel">3.1. gist.el</a></li>
-<li><a href="#clone-repositories">3.2. Clone repositories</a></li>
-<li><a href="#grip-mode-1">3.3. Grip-mode</a></li>
+<li><a href="#clone-repositories">3.1. Clone repositories</a></li>
+<li><a href="#grip-mode-1">3.2. Grip-mode</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="org5740a52" class="figure">
+<div id="org49a6d5b" class="figure">
 <p><img src="img/github.png" alt="github.png" />
 </p>
 </div>
@@ -303,7 +302,6 @@ This layers adds support for <a href="http://github.com">GitHub</a>.
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li><a href="https://github.com/magit/forge">forge</a>: integration with various forges, such as GitHub and GitLab.</li>
-<li><a href="https://github.com/defunkt/gist.el">gist.el</a>: full-featured mode to browse and post GitHub gists.</li>
 <li><a href="https://github.com/sshaw/git-link">git-link</a>: quickly generate URLs for commits or files.</li>
 <li><a href="https://github.com/dgtized/github-clone.el">github-clone</a> allows for easy cloning and forking of repositories.</li>
 <li><a href="https://github.com/seagle0128/grip-mode">grip-mode</a> Github-flavored Markdown/Org preview using <a href="https://github.com/joeyespo/grip">Grip</a>.</li>
@@ -366,156 +364,8 @@ of pip, it is normally called <code>pip3</code>.
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-gistel" class="outline-3">
-<h3 id="gistel"><span class="section-number-3">3.1.</span> gist.el</h3>
-<div class="outline-text-3" id="text-gistel">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC g g b</code></td>
-<td class="org-left">create a public gist with the buffer content</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g g B</code></td>
-<td class="org-left">create a private gist with the buffer content</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g g l</code></td>
-<td class="org-left">open the gist list buffer</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g g r</code></td>
-<td class="org-left">create a public gist with the region content</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g g R</code></td>
-<td class="org-left">create a private gist with the region content</td>
-</tr>
-</tbody>
-</table>
-
-<p>
-In the gist list buffer:
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>/</code></td>
-<td class="org-left">evil search</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>+</code></td>
-<td class="org-left">add buffer to gist</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>-</code></td>
-<td class="org-left">remove file for gist</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>b</code> or <code>o</code></td>
-<td class="org-left">open current gist in browser</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>f</code></td>
-<td class="org-left">fetch current gist</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>g</code></td>
-<td class="org-left">refresh the list</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>h</code></td>
-<td class="org-left">go left</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>j</code></td>
-<td class="org-left">go down</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>k</code></td>
-<td class="org-left">go up</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>K</code></td>
-<td class="org-left">kill current gist</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>l</code></td>
-<td class="org-left">go right</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>n</code></td>
-<td class="org-left">next search occurrence</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>N</code></td>
-<td class="org-left">next previous occurrence</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>v</code></td>
-<td class="org-left"><code>visual state</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>V</code></td>
-<td class="org-left"><code>visual-line state</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>y</code></td>
-<td class="org-left">print URL and copy it</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
 <div id="outline-container-clone-repositories" class="outline-3">
-<h3 id="clone-repositories"><span class="section-number-3">3.2.</span> Clone repositories</h3>
+<h3 id="clone-repositories"><span class="section-number-3">3.1.</span> Clone repositories</h3>
 <div class="outline-text-3" id="text-clone-repositories">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -562,7 +412,7 @@ In the gist list buffer:
 </div>
 
 <div id="outline-container-grip-mode-1" class="outline-3">
-<h3 id="grip-mode-1"><span class="section-number-3">3.3.</span> Grip-mode</h3>
+<h3 id="grip-mode-1"><span class="section-number-3">3.2.</span> Grip-mode</h3>
 <div class="outline-text-3" id="text-grip-mode-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -591,7 +441,7 @@ In the gist list buffer:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-10-24 Sun 14:09</p>
+<p class="date">Created: 2021-11-04 Thu 18:37</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
