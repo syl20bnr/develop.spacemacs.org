@@ -1,0 +1,47 @@
+name: root dir links
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: "00 2 * * *"
+
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1.0.9
+        with:
+          # NOTE: Adding to args this line:
+          #  --accept 200,429
+          # Should make Lynchee ignore "too many requests" error.
+          # Additionally adding:
+          #  --threads 10
+          # Could increase randomness in the order of checked links
+          # so the CI would have better chances to check every link
+          # eventually...
+          args: >
+            --verbose
+            --exclude-loopback
+            --exclude-mail
+            --exclude validator.w3.org localhost domain.com
+            --no-progress
+            *.html
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        
+      - name: Create Issue From File
+        uses: peter-evans/create-issue-from-file@v3
+        with:
+          # The action can update an issue instead of
+          # creating a new one, if
+          # issue-number: N
+          # provided.
+          # The problem is that it would probably update an
+          # issue even if it closed (by mistake).
+          title: Link Checker Report [root dir]
+          content-filepath: ./lychee/out.md
+          labels: report, automated issue
