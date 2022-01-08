@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-11-30 Tue 19:25 -->
+<!-- 2022-01-08 Sat 20:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spacemacs documentation</title>
@@ -255,9 +255,9 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 <ul>
 <li><a href="#update-spacemacs-repository">5.1. Update Spacemacs repository</a>
 <ul>
-<li><a href="#automatic-updates">5.1.1. Automatic Updates</a></li>
-<li><a href="#updating-from-the-spacemacs-buffer">5.1.2. Updating from the Spacemacs Buffer</a></li>
-<li><a href="#updating-manually-with-git">5.1.3. Updating Manually with git</a></li>
+<li><a href="#updating-manually-with-git-for-develop">5.1.1. Updating Manually with git (for develop)</a></li>
+<li><a href="#automatic-updates-for-master">5.1.2. Automatic Updates (for master)</a></li>
+<li><a href="#updating-from-the-spacemacs-buffer-for-master">5.1.3. Updating from the Spacemacs Buffer (for master)</a></li>
 </ul>
 </li>
 <li><a href="#update-packages">5.2. Update packages</a></li>
@@ -765,13 +765,40 @@ Spacemacs comfortably.</li>
 <div class="outline-text-3" id="text-update-spacemacs-repository">
 <p>
 There are several methods of updating the core files and layer information for
-Spacemacs. It is recommended to update the packages first; see the next section.
+Spacemacs. However afterwards you should always update all your packages; see the next section.
+</p>
+
+<p>
+Spacemacs supports two different update schemes, the default is a rolling update scheme based
+on the latest version of packages available. This version can be found on the <code>develop</code> branch
+and is updated by a simple git pull.
+</p>
+
+<p>
+The second depreciated one is a fixed version scheme which is based on a stable set
+of packages. This version can be found on the <code>master</code> branch and will show a notification when
+a new version is available. Be warned this has not been updated in a long time now so packages
+will be very old.
 </p>
 </div>
 
-<div id="outline-container-automatic-updates" class="outline-4">
-<h4 id="automatic-updates"><span class="section-number-4">5.1.1.</span> Automatic Updates</h4>
-<div class="outline-text-4" id="text-automatic-updates">
+<div id="outline-container-updating-manually-with-git-for-develop" class="outline-4">
+<h4 id="updating-manually-with-git-for-develop"><span class="section-number-4">5.1.1.</span> Updating Manually with git (for develop)</h4>
+<div class="outline-text-4" id="text-updating-manually-with-git-for-develop">
+<p>
+To update manually close Emacs and update the git repository:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ git pull --rebase
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-automatic-updates-for-master" class="outline-4">
+<h4 id="automatic-updates-for-master"><span class="section-number-4">5.1.2.</span> Automatic Updates (for master)</h4>
+<div class="outline-text-4" id="text-automatic-updates-for-master">
 <p>
 Spacemacs will automatically check for a new version periodically. When it
 detects that a new version is available an arrow will appear in the modeline.
@@ -779,39 +806,16 @@ Click it to update Spacemacs. You must restart Emacs after updating.
 <img src="img/powerline-update.png" alt="powerline-update.png" />
 <i>Update Button</i>
 </p>
-
-<p>
-<b>Note</b>: If you use the <code>develop</code> branch of Spacemacs, automatic update is
-disabled&#x2014;you have to update manually using git.
-</p>
 </div>
 </div>
 
-<div id="outline-container-updating-from-the-spacemacs-buffer" class="outline-4">
-<h4 id="updating-from-the-spacemacs-buffer"><span class="section-number-4">5.1.2.</span> Updating from the Spacemacs Buffer</h4>
-<div class="outline-text-4" id="text-updating-from-the-spacemacs-buffer">
+<div id="outline-container-updating-from-the-spacemacs-buffer-for-master" class="outline-4">
+<h4 id="updating-from-the-spacemacs-buffer-for-master"><span class="section-number-4">5.1.3.</span> Updating from the Spacemacs Buffer (for master)</h4>
+<div class="outline-text-4" id="text-updating-from-the-spacemacs-buffer-for-master">
 <p>
 Use the button labeled "Update Spacemacs" in the Spacemacs buffer. You will be
 prompted for the version you would like to use.
 </p>
-
-<p>
-<b>Note</b>: If you use the <code>develop</code> branch of Spacemacs, you cannot use this method.
-</p>
-</div>
-</div>
-
-<div id="outline-container-updating-manually-with-git" class="outline-4">
-<h4 id="updating-manually-with-git"><span class="section-number-4">5.1.3.</span> Updating Manually with git</h4>
-<div class="outline-text-4" id="text-updating-manually-with-git">
-<p>
-To update manually close Emacs and update the git repository:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-sh">$ git pull origin master
-</pre>
-</div>
 
 <p>
 <b>Note</b>: The master branch is considered to be immutable in the sense that you
@@ -873,7 +877,7 @@ to install. To install all the <code>python</code> features the user has just to
 Configuration is organized in layers. Each layer has the following structure:
 </p>
 
-<pre class="example" id="org6154cd1">
+<pre class="example" id="org6aaa88a">
 [layer_name]
   |__ [local]
   | |__ [package 1]
@@ -1909,8 +1913,8 @@ certain operations. These often conflict with Vim bindings. To make such buffers
 behave more like Vim in a consistent manner, they use a special state called
 <i>evilified</i> state. In evilified state, a handful of keys work as in Evil, namely
 <code>/</code>, <code>:</code>, <code>h</code>, <code>j</code>, <code>k</code>, <code>l</code>, <code>n</code>, <code>N</code>, <code>v</code>, <code>V</code>, <code>gg</code>, <code>G</code>, <code>C-f</code>, <code>C-b</code>,
-<code>C-d</code>, <code>C-e</code>, <code>C-u</code>, <code>C-y</code> and <code>C-z</code>. All other keys work as intended by the
-underlying mode.
+<code>C-d</code>, <code>C-e</code>, <code>C-o</code>, <code>C-i</code>, <code>C-u</code>, <code>C-y</code> and <code>C-z</code>. All other keys work as
+intended by the underlying mode.
 </p>
 
 <p>
@@ -1997,7 +2001,7 @@ Auto-highlight-symbol transient state:
 </p>
 
 
-<div id="org5333bcb" class="figure">
+<div id="org864e80a" class="figure">
 <p><img src="img/spacemacs-scale-transient-state.png" alt="spacemacs-scale-transient-state.png" />
 </p>
 </div>
@@ -4275,7 +4279,7 @@ this variable <code>spacemacs-layouts-restrict-spc-tab</code> to <code>nil</code
 your used layer list with layer variables:
 </p>
 
-<pre class="example" id="orge51a471">
+<pre class="example" id="orga282462">
 (spacemacs-layouts :variables spacemacs-layouts-restrict-spc-tab t)
 </pre>
 </div>
@@ -4296,7 +4300,7 @@ take effect.
 Default value for this variable is:
 </p>
 
-<pre class="example" id="org02f7312">
+<pre class="example" id="org0e66c0b">
 '(spacemacs/window-split-double-columns
   spacemacs/window-split-triple-columns
   spacemacs/window-split-grid)
@@ -4307,7 +4311,7 @@ If you want to add the function <code>my-func</code> to this list you need to re
 the complete list using layer variables:
 </p>
 
-<pre class="example" id="org922c8fd">
+<pre class="example" id="org8082e47">
 (spacemacs-layouts :variables
                    spacemacs-layouts-restricted-functions
                    '(spacemacs/window-split-double-columns
@@ -8504,7 +8508,7 @@ During the symbol highlight transient state, the following bindings are active:
 The minibuffer displays the following information during the transient state:
 </p>
 
-<pre class="example" id="orgcb2f8b0">
+<pre class="example" id="orgf4f74b4">
 Buffer [6/11]*
 </pre>
 
@@ -12441,7 +12445,7 @@ developers to elisp hackers!
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2021-11-30 Tue 19:25</p>
+<p class="date">Created: 2022-01-08 Sat 20:39</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
