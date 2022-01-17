@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-01-08 Sat 20:39 -->
+<!-- 2022-01-17 Mon 21:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Clojure layer</title>
@@ -266,6 +266,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 <li><a href="#enabling-sayid-or-clj-refactor">2.4.6. Enabling sayid or clj-refactor</a></li>
 </ul>
 </li>
+<li><a href="#enabling-kaocha-runner">2.5. Enabling Kaocha Runner</a></li>
 </ul>
 </li>
 <li><a href="#usage">3. Usage</a>
@@ -738,6 +739,49 @@ If you are experiencing issues when running a REPL, try disabling these
 packages first and restart Spacemacs to see if the error persists.
 </p>
 </div>
+</div>
+</div>
+
+<div id="outline-container-enabling-kaocha-runner" class="outline-3">
+<h3 id="enabling-kaocha-runner"><span class="section-number-3">2.5.</span> Enabling Kaocha Runner</h3>
+<div class="outline-text-3" id="text-enabling-kaocha-runner">
+<p>
+Run unit tests with Kaocha via CIDER.
+</p>
+
+<p>
+Enable the Kaocha feature via setting the <code>clojure-enable-kaocha-runner</code> variable
+in your dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+'((clojure <span class="org-builtin">:variables</span> clojure-enable-kaocha-runner t)))
+</pre>
+</div>
+
+<p>
+The kaocha library must be included when starting a REPL, either through
+Leiningen dev profile dependency
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-builtin">:profiles</span> {:dev {:dependencies [[lambdaisland/kaocha <span class="org-string">"1.60.977"</span>]]}}
+</pre>
+</div>
+
+<p>
+or a Clojure CLI alias in a project deps.edn or user wide deps.edn file
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-builtin">:lib/kaocha</span> {:extra-deps {lambdaisland/kaocha {:mvn/version <span class="org-string">"1.60.977"</span>}}}
+</pre>
+</div>
+
+<p>
+<a href="https://github.com/practicalli/clojure-deps-edn">practicalli/clojure-deps-edn</a> contains an example <code>:lib/kaocha</code> alias
+</p>
 </div>
 </div>
 </div>
@@ -2769,7 +2813,7 @@ specific vars.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-01-08 Sat 20:39</p>
+<p class="date">Created: 2022-01-17 Mon 21:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
