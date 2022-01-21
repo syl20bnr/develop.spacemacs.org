@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-01-21 Fri 03:01 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Continuous Integration</title>
+<meta name="author" content="root" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+<link rel="stylesheet" type="text/css"
+                 href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script>
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
+          </script>
+<link rel="stylesheet" type="text/css" href="../css/readtheorg.css" />
+</head>
+<body>
+<div id="content" class="content">
+<div class="admonition warning">
+<p class="first last">
+You are viewing the documentation for the develop branch.
+The documentation for the release version is
+<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
+onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
+.
+</p>
+</div>
+<div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
+<h1 class="title">Continuous Integration</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents<a href="#">Close</a></h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#description">1. Description</a></li>
+<li><a href="#overview">2. Overview</a>
+<ul>
+<li><a href="#tldr">2.1. TLDR</a></li>
+<li><a href="#current-stack">2.2. Current stack</a>
+<ul>
+<li><a href="#circleci">2.2.1. CircleCI</a></li>
+<li><a href="#github-actions">2.2.2. GitHub Actions</a></li>
+<li><a href="#docker">2.2.3. Docker</a></li>
+<li><a href="#clojure">2.2.4. Clojure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#ci-files-and-directories">3. CI files and directories</a></li>
+<li><a href="#workflows-groups-of-ci-jobs">4. Workflows (groups of CI jobs)</a>
+<ul>
+<li><a href="#pull-request-jobs">4.1. Pull request jobs</a>
+<ul>
+<li><a href="#emacs-lisp-tests">4.1.1. Emacs Lisp Tests</a></li>
+<li><a href="#documentation-validation">4.1.2. Documentation validation</a></li>
+<li><a href="#pr-validation">4.1.3. PR validation</a></li>
+</ul>
+</li>
+<li><a href="#branch-updates-runs-on-merge">4.2. Branch updates (runs on merge)</a>
+<ul>
+<li><a href="#emacs-lisp-tests-1">4.2.1. Emacs Lisp Tests</a></li>
+<li><a href="#project-files-updates">4.2.2. Project files updates</a>
+<ul>
+<li><a href="#how-updates-end-up-in-spacemacs-repositories">4.2.2.1. How updates end up in Spacemacs repositories</a></li>
+<li><a href="#built-in-updates">4.2.2.2. Built-in updates</a></li>
+<li><a href="#documentation-updates">4.2.2.3. Documentation updates</a></li>
+<li><a href="#web-site-updates">4.2.2.4. Web site updates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#scheduled-jobs">4.3. Scheduled jobs</a></li>
+</ul>
+</li>
+<li><a href="#potential-improvements-pr-ideas">5. Potential improvements (PR ideas)</a></li>
+<li><a href="#side-notes">6. Side notes</a>
+<ul>
+<li><a href="#we-used-to-have-travisci-3-ci-providers-at-the-same-time">6.1. We used to have TravisCI (3 CI providers at the same time)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-description" class="outline-2">
+<h2 id="description"><span class="section-number-2">1.</span> Description</h2>
+<div class="outline-text-2" id="text-description">
+<p>
+This file will help you understand CI setup of <a href="https://github.com/syl20bnr/spacemacs">Spacemacs GitHub</a> repository.
+</p>
+</div>
+</div>
+
+<div id="outline-container-overview" class="outline-2">
+<h2 id="overview"><span class="section-number-2">2.</span> Overview</h2>
+<div class="outline-text-2" id="text-overview">
+</div>
+
+<div id="outline-container-tldr" class="outline-3">
+<h3 id="tldr"><span class="section-number-3">2.1.</span> TLDR</h3>
+<div class="outline-text-3" id="text-tldr">
+<p>
+Spacemacs is big - the active maintainers team is small. The more we can
+automate - the better. We use  <a href="https://circleci.com/">CircleCI</a>, <a href="https://github.com/features/actions">GitHub Actions</a> and <a href="https://www.docker.com/">Docker</a> to test PRs,
+update built-in files, fix documentation and export it to <a href="https://develop.spacemacs.org/">develop.spacemacs.org</a>.
+Most of the code consists of bash/EmacsLisp scripts and yml files, but some of
+the documentation tools are written in Clojure.
+If you prefer reading code instead of documentation, dive into <a href="https://github.com/syl20bnr/spacemacs/tree/develop/.circleci">CircleCI</a> and
+<a href="https://github.com/syl20bnr/spacemacs/tree/develop/.github/workflows">GitHub Actions</a> directories.
+</p>
+</div>
+</div>
+
+<div id="outline-container-current-stack" class="outline-3">
+<h3 id="current-stack"><span class="section-number-3">2.2.</span> Current stack</h3>
+<div class="outline-text-3" id="text-current-stack">
+<p>
+Wait, what? Why Clojure, why 2 CI providers?
+I knew you would ask this question, dear reader, so here's my rationale:
+</p>
+</div>
+
+<div id="outline-container-circleci" class="outline-4">
+<h4 id="circleci"><span class="section-number-4">2.2.1.</span> CircleCI</h4>
+<div class="outline-text-4" id="text-circleci">
+<p>
+It has a cool set of features and a generous quota for open source projects.
+But most importantly, unlike GitHub Actions, there is a straight forward way
+to cache build dependencies between runs and using it in tandem with
+GH Actions provides us with even more concurrency. It means that PR authors
+have to wait less time for feedback. This is crucial since we have a lot of
+tests and platforms to cover. Also, CircleCI can run jobs from user provided
+Docker images that it caches, so we do not hit the DockerHub pull quota.
+On the downside, the CircleCI configuration file can be pretty involved,
+has unexpected limitations that can leave you puzzled for quite a while.
+</p>
+</div>
+</div>
+
+<div id="outline-container-github-actions" class="outline-4">
+<h4 id="github-actions"><span class="section-number-4">2.2.2.</span> GitHub Actions</h4>
+<div class="outline-text-4" id="text-github-actions">
+<p>
+Quality CI! It is clear that GitHub team had the benefit of hindsight
+while developing their CI platform. And it runs really fast (at least for now).
+Maybe, one day we'll fully switch to Actions. The biggest concern here is
+the vendor lock-in since all of the good stuff is highly specific, while
+CircleCI allows you to run a job locally for free. And run whole CI
+on your own hardware with "strings attached".
+</p>
+</div>
+</div>
+
+<div id="outline-container-docker" class="outline-4">
+<h4 id="docker"><span class="section-number-4">2.2.3.</span> Docker</h4>
+<div class="outline-text-4" id="text-docker">
+<p>
+Having a stable pre-build environment reduces headaches and improves
+setup time. Duh!
+Also DockerHub used to be a cool place to store and build huge images for
+free, but now it has all sorts of quotas + RAM is pretty limited for memory
+hungry JVM builds (((foreshadowing))). And DockerHub no longer provides
+auto-builds for standard free accounts.
+</p>
+</div>
+</div>
+
+<div id="outline-container-clojure" class="outline-4">
+<h4 id="clojure"><span class="section-number-4">2.2.4.</span> Clojure</h4>
+<div class="outline-text-4" id="text-clojure">
+<p>
+Besides the obvious fact that Rich Hickey's talks are the best,
+before we started with automation, Spacemacs already had a huge set of
+documentation files that couldn't be fixed by a bunch of regular expressions
+wrapped into bash/ELisp code.
+The options were to either fix all README.org files by hand and keep fixing
+them forever, since contributors often forget to format org blocks properly and
+nagging them constantly both wastes PR reviewer time and makes the contributor
+less likely to stick or go all-in and create a system that can extract data out
+of documentation files and rebuild them from scratch. The choice was pretty
+obvious.
+Clojure is a good fit for such task since it is designed to process data and
+it has specs that can be used to validate documents, generative testing and
+define handy constructors for org-mode elements.
+The code is compiled to <a href="https://www.graalvm.org/reference-manual/native-image/">native-image</a> so most of the JVM drawbacks such as huge
+image size and startup delay are mitigated.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-ci-files-and-directories" class="outline-2">
+<h2 id="ci-files-and-directories"><span class="section-number-2">3.</span> CI files and directories</h2>
+<div class="outline-text-2" id="text-ci-files-and-directories">
+<ul class="org-ul">
+<li><a href="https://github.com/syl20bnr/spacemacs/tree/develop/.ci">.ci</a> is a shared CI directory that holds two config files:
+<ol class="org-ol">
+<li><a href="https://github.com/syl20bnr/spacemacs/blob/develop/.ci/built_in_manifest">built<sub>in</sub><sub>manifest</sub></a> list of upstream URL and target locations for
+built-in files.</li>
+<li><a href="https://github.com/syl20bnr/spacemacs/blob/develop/.ci/spacedoc-cfg.edn">spacedoc-cfg.edn</a> configuration file for Spacemacs documentation tools.
+More details in <a href="#documentation-updates">Documentation updates</a>.</li>
+</ol></li>
+<li><a href="https://github.com/syl20bnr/spacemacs/tree/develop/.github/workflows">.github/workflows</a> place where GitHub workflow files live:
+<ul class="org-ul">
+<li><code>workflows/scripts/test</code> runner script for EmacsLisp tests.</li>
+<li><code>workflows/scripts/dot_lock.el</code> package lock file that adds local ELPA
+mirror.</li>
+<li><code>elisp_test.yml</code> runs EmacsLisp tests on PR and branch updates.</li>
+<li><code>rebase.yml</code> Rebases PR onto current HEAD, it doesn't always work and
+requires personal token to run automatically so we rarely use it.</li>
+<li><code>stale.yml</code> manages stale issues and PRs.</li>
+</ul></li>
+<li><a href="https://github.com/syl20bnr/spacemacs/tree/develop/.circleci">.circleci</a> everything specific for CircleCI. Documentation related files
+stored in the <code>org</code> sub folder, <code>web</code> is where HTML export stuff hides,
+<code>built_in</code> is all about updating built-in files and <code>update</code> contains helpers
+related to making patches and pushing changes. The rest is a bunch of
+shared script files. The specific cases are <code>shared</code> file that's loaded before
+each script run for every job, <code>config.yml</code> - CircleCI bootstrap script that
+generates the config that CircleCI runs for actual jobs. It does so by
+rendering <code>config_tmpl.yml</code> template file.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-workflows-groups-of-ci-jobs" class="outline-2">
+<h2 id="workflows-groups-of-ci-jobs"><span class="section-number-2">4.</span> Workflows (groups of CI jobs)</h2>
+<div class="outline-text-2" id="text-workflows-groups-of-ci-jobs">
+</div>
+
+<div id="outline-container-pull-request-jobs" class="outline-3">
+<h3 id="pull-request-jobs"><span class="section-number-3">4.1.</span> Pull request jobs</h3>
+<div class="outline-text-3" id="text-pull-request-jobs">
+</div>
+
+<div id="outline-container-emacs-lisp-tests" class="outline-4">
+<h4 id="emacs-lisp-tests"><span class="section-number-4">4.1.1.</span> Emacs Lisp Tests</h4>
+<div class="outline-text-4" id="text-emacs-lisp-tests">
+<p>
+Code tests are handled by GitHub Actions exclusively.
+The stages are:
+</p>
+<ol class="org-ol">
+<li>Emacs installation with <a href="https://github.com/purcell/setup-emacs">purcell/setup-emacs</a> - for UNIX and
+<a href="https://github.com/jcs090218/setup-emacs-windows">jcs090218/setup-emacs-windows</a> for Windows. The step is configured
+by a job matrix. With two keys <code>os</code> and <code>emacs_version</code>. CI runs test for
+every possible combination. The stage ended up seriously bloated with
+repetition since the actions sometimes fail (especially for MacOS)
+so I added sets of retires for both actions. Currently GitHub
+<a href="https://github.community/t/how-to-retry-a-failed-step-in-github-actions-workflow/125880">doesn't provide a better way to implement this</a>.</li>
+<li>Checkout - clones the repo.</li>
+<li>Installation of a local ELPA mirror with packages used be the tests.
+The archive is build daily in <a href="https://github.com/JAremko/testelpa-develop">JAremko/testelpa-develop</a> repository and
+configured by .spacemacs files used in test. The mirror is set as a top
+priority package repository via <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.github/workflows/scripts/dot_lock.el">Spacemacs lock file</a> this way Emacs actually
+installs the packages(it is important to test that the system works) and
+if some packages are missing (for example, the mirror can be outdated)
+then they will be installed from a remote repository.</li>
+<li>Run the tests! CI run core, base and layer tests sequentially because
+heaving 20+ CI results for a PR makes people ignore them. And this way
+they start faster since we cut on setup time. But the tests have to
+<code>always</code> clean after themselves to avoid affecting the fallowing stages.</li>
+</ol>
+
+<p>
+For more details see the <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.github/workflows/elisp_test.yml">workflow</a> file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-documentation-validation" class="outline-4">
+<h4 id="documentation-validation"><span class="section-number-4">4.1.2.</span> Documentation validation</h4>
+<div class="outline-text-4" id="text-documentation-validation">
+<p>
+This job uses <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.circleci/select_pr_changed">.circleci/select<sub>pr</sub><sub>changed</sub></a> to find changed files in the tested PR
+and for every .org file in the list it will check if it can be processed by
+exporting and validating the file. The process will be explored further
+in the <a href="#documentation-updates">Documentation updates</a> section.
+</p>
+</div>
+</div>
+
+<div id="outline-container-pr-validation" class="outline-4">
+<h4 id="pr-validation"><span class="section-number-4">4.1.3.</span> PR validation</h4>
+<div class="outline-text-4" id="text-pr-validation">
+<p>
+There are only two jobs here. <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.circleci/PR_base">.circleci/PR<sub>base</sub></a> makes sure that the PR
+is against develop branch and <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.circleci/PR_rebased">.circleci/PR<sub>rebased</sub></a> checks if the PR
+needs a rebase (only when it's updated, so Spacemacs HEAD can actually get,
+well&#x2026; Ahead, sorry).
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-branch-updates-runs-on-merge" class="outline-3">
+<h3 id="branch-updates-runs-on-merge"><span class="section-number-3">4.2.</span> Branch updates (runs on merge)</h3>
+<div class="outline-text-3" id="text-branch-updates-runs-on-merge">
+</div>
+
+<div id="outline-container-emacs-lisp-tests-1" class="outline-4">
+<h4 id="emacs-lisp-tests-1"><span class="section-number-4">4.2.1.</span> Emacs Lisp Tests</h4>
+<div class="outline-text-4" id="text-emacs-lisp-tests-1">
+<p>
+Same as <a href="#emacs-lisp-tests">Emacs Lisp Tests</a> on PRs.
+</p>
+</div>
+</div>
+
+<div id="outline-container-project-files-updates" class="outline-4">
+<h4 id="project-files-updates"><span class="section-number-4">4.2.2.</span> Project files updates</h4>
+<div class="outline-text-4" id="text-project-files-updates">
+<p>
+All updates are handled by CircleCI. There are two config files:
+<a href="https://github.com/syl20bnr/spacemacs/blob/develop/.circleci/config.yml">.circleci/config.yml</a> workflow that injects <code>IS_BRANCH_UDATE</code> environment
+variable into the second file <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.circleci/config_tmpl.yml">.circleci/config<sub>tmpl.yml</sub></a> - actual config that the
+CI uses. It has to be done this way because environment variables aren't
+accessible outside workflows, but CI needs <code>IS_BRANCH_UDATE</code> to choose what
+workflows to run.
+<a href="https://github.com/syl20bnr/spacemacs/blob/develop/.circleci/config_tmpl.yml">.circleci/config<sub>tmpl.yml</sub></a> begins with declarations of <code>parameters</code> (they
+are used to configure jobs) and <code>spacetools</code> executor - docker image alias with
+some configs.
+Every job runs inside of a freshly spawned <code>jare/spacemacs-circleci:latest</code>
+container that has Emacs and documentation tools binaries, hub CLI and some
+other stuff. Here's its <a href="https://github.com/JAremko/spacemacs-circleci/blob/master/Dockerfile">docker file</a> and its bases image <a href="https://github.com/JAremko/spacetools/blob/master/Dockerfile.noemacs">docker file</a>.
+The middle section of the workflow config defines jobs and their names.
+At the end of the file we have workflow definitions that aggregate jobs by
+names. Here you can see how <code>is_branch_update</code> parameter is used to select which
+workflows should be ran. Its value is set by inlined <code>IS_BRANCH_UDATE</code>
+environment variable that comes from environment variables page under CircleCI
+project settings.
+</p>
+</div>
+
+<div id="outline-container-how-updates-end-up-in-spacemacs-repositories" class="outline-5">
+<h5 id="how-updates-end-up-in-spacemacs-repositories"><span class="section-number-5">4.2.2.1.</span> How updates end up in Spacemacs repositories</h5>
+<div class="outline-text-5" id="text-how-updates-end-up-in-spacemacs-repositories">
+<p>
+Merging updates is semi-automatic. Bot (specified by <code>UPD_BOT_LOGIN</code> job
+environment variable) uses GitHub token (stored in CircleCI project settings) to
+push updated version of Spacemacs develop branch into its fork (<code>UPD_BOT_REPO</code>)
+then it opens pull request to <code>PRJ_REPO</code> owned by <code>PRJ_OWNER</code> (the fork is based
+on it). <code>PUBLISH</code> variable also used as a name for the fork repo branch while
+<code>PR_BRANCH</code> is the branch against which PR will be opened by the bot.
+See <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.circleci/update/push">.circleci/update/push</a> and <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.circleci/update/maybe_pr">.circleci/update/maybe<sub>pr</sub></a> files for inner-works.
+Most of bash variables are configured in the <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.circleci/shared">.circleci/shared</a> file.
+The PRs are merged manually.
+</p>
+</div>
+</div>
+
+<div id="outline-container-built-in-updates" class="outline-5">
+<h5 id="built-in-updates"><span class="section-number-5">4.2.2.2.</span> Built-in updates</h5>
+<div class="outline-text-5" id="text-built-in-updates">
+<p>
+Bash script <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.circleci/built_in/upd_built_in">.circleci/built<sub>in</sub>/upd<sub>built</sub><sub>in</sub></a> reads <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.ci/built_in_manifest">.ci/built<sub>in</sub><sub>manifest</sub></a> file
+line by line and downloads every listed file into its specified location
+overriding existing ones.
+</p>
+</div>
+</div>
+
+<div id="outline-container-documentation-updates" class="outline-5">
+<h5 id="documentation-updates"><span class="section-number-5">4.2.2.3.</span> Documentation updates</h5>
+<div class="outline-text-5" id="text-documentation-updates">
+<p>
+Firstly, files are exported into <a href="https://github.com/edn-format/edn">edn</a> format. The file extension is .sdn
+"Spacemacs Documentation Notation" - if you will. New file extension needed to
+avoid collisions with config .edn files. The exporting is done by Emacs Lisp
+program based on <a href="https://github.com/emacsmirror/org/blob/master/lisp/ox.el">ox.el</a>. <a href="https://github.com/JAremko/sdnize.el">Here's repository</a>. The program extracts data and
+performs basic validation. The resulting .sdn files then process by
+<a href="https://github.com/JAremko/spacetools">spacetools</a> binary(I'll work on documentation) but it boils down to those steps:
+</p>
+<ol class="org-ol">
+<li>parse and validate .sdn files</li>
+<li>Generate LAYERS.sdn file from them.</li>
+<li>Generate new set of .org files and replace the old ones.</li>
+</ol>
+
+<p>
+<code>spacetools</code> configured by <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.ci/spacedoc-cfg.edn">.ci/spacedoc-cfg.edn</a> file. For details on how
+LAYERS.org generation works see <a href="../CONTRIBUTING.html#readmeorg-tags">"README.org tags" section of CONTRIBUTING.org</a>
+The rest of configs(and their default values) are listed <a href="https://github.com/JAremko/spacetools/blob/master/components/spacedoc/src/spacetools/spacedoc/config.clj">here</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-web-site-updates" class="outline-5">
+<h5 id="web-site-updates"><span class="section-number-5">4.2.2.4.</span> Web site updates</h5>
+<div class="outline-text-5" id="text-web-site-updates">
+<p>
+HTML generation code lives in <a href="https://github.com/syl20bnr/spacemacs/blob/develop/core/core-documentation.el">core/core-documentation.el</a>.
+<code>spacemacs/publish-doc</code> is the entry function. All the interesting parts are in
+preprocessors. Search for <code>Add preprocessors here</code> comment.
+Overall - pretty basic. When I finish with documenting/refactoring <code>spacetools</code>
+I'll probably use it to generate HTML similarly to how it generates .org files.
+What makes this job special is that CircleCI caches EmacsLisp dependencies of
+the HTML exporter script. See <code>save_cache</code> and <code>restore_cache</code> sections
+in the <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.circleci/config_tmpl.yml">config file</a>. Even with this, export is pretty slow since Emacs processes
+files sequentially.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-scheduled-jobs" class="outline-3">
+<h3 id="scheduled-jobs"><span class="section-number-3">4.3.</span> Scheduled jobs</h3>
+<div class="outline-text-3" id="text-scheduled-jobs">
+<p>
+We have 2 cron(scheduled) jobs: <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.github/workflows/stale.yml">Managing stale issues</a> with <a href="https://github.com/actions/stale">actions/stale</a> and
+running built-in update job. The last one is ran by CircleCI and currently seems
+to bug out since CircleCI <a href="https://discuss.circleci.com/t/setup-workflow-and-scheduled-workflow-in-the-same-configuration/39932/6">doesn't support cron jobs with setup configs</a>.
+As a fall-back mechanism, CI updates built-in files every time Spacemacs
+develop branch is pushed.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-potential-improvements-pr-ideas" class="outline-2">
+<h2 id="potential-improvements-pr-ideas"><span class="section-number-2">5.</span> Potential improvements (PR ideas)</h2>
+<div class="outline-text-2" id="text-potential-improvements-pr-ideas">
+<ul class="org-ul">
+<li>CircleCI config generation stage can test if a PR changes any .org file
+and schedule documentation testing job only if it does.</li>
+<li>PR validation job can be moved to CircleCI config generation stage. If
+it isn't valid - all CircleCI jobs can be skipped.</li>
+<li>Web site repo becomes too heavy and PR diffs are meaningless. Removing update
+dates that are embedded into each exported HTML files would reduce the
+patch size drastically.</li>
+<li>Figure out how to retry installation of Emacs for EmacsLisp tests in more
+concise manner.</li>
+<li>EmacsLisp step that executes the tests isn't DRY.</li>
+<li>Emacs Install retries can use some delay between the attempts since it is
+likely that a failed upstream repo will fail again if you don't give it any
+time to recover/change state. But it shouldn't add delay to runs without
+failures since they vastly outnumber failed ones and it is very important to
+giving PR author fast feedback.</li>
+<li>See if we actually properly clean all they side effects between running
+EmacsLisp tests.</li>
+<li>CircleCI script files can have better names.</li>
+<li>Better error reporting in scripts. It is hard to debug CI so knowing what
+exactly went wrong would help a lot.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-side-notes" class="outline-2">
+<h2 id="side-notes"><span class="section-number-2">6.</span> Side notes</h2>
+<div class="outline-text-2" id="text-side-notes">
+</div>
+
+<div id="outline-container-we-used-to-have-travisci-3-ci-providers-at-the-same-time" class="outline-3">
+<h3 id="we-used-to-have-travisci-3-ci-providers-at-the-same-time"><span class="section-number-3">6.1.</span> We used to have TravisCI (3 CI providers at the same time)</h3>
+<div class="outline-text-3" id="text-we-used-to-have-travisci-3-ci-providers-at-the-same-time">
+<p>
+We ran long running jobs with it but ended up dropping the CI since TravisCI
+doesn't allow collaborators to read/set environment variables anymore,
+<a href="https://pbs.twimg.com/media/Eoq3OnWW4AIy7ih?format=jpg&amp;name=large">they could be in some kind of trouble</a> or <a href="https://blog.travis-ci.com/oss-announcement">maybe not</a>. Anyway, when TravisCI
+stopped running jobs on their old domain (as a part of the migration from
+<a href="https://travis-ci.org/">https://travis-ci.org/</a> to <a href="https://www.travis-ci.com/">https://www.travis-ci.com/</a>) I decided to use this
+disruption as an opportunity to have fewer kinds of configs. Still, it's
+a good environment for heavy jobs(both in build time and RAM).
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: root</p>
+<p class="date">Created: 2022-01-21 Fri 03:01</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
