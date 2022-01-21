@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-01-21 Fri 03:02 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>djvu layer</title>
+<meta name="author" content="root" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+<link rel="stylesheet" type="text/css"
+                 href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script>
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
+          </script>
+<link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+</head>
+<body>
+<div id="content" class="content">
+<div class="admonition warning">
+<p class="first last">
+You are viewing the documentation for the develop branch.
+The documentation for the release version is
+<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
+onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
+.
+</p>
+</div>
+<div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
+<h1 class="title">djvu layer</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents<a href="#">Close</a></h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#prerequisites">2.1. Prerequisites</a></li>
+<li><a href="#dotfile">2.2. Dotfile</a></li>
+</ul>
+</li>
+<li><a href="#key-bindings">3. Key bindings</a>
+<ul>
+<li><a href="#djvu-read-mode">3.1. djvu-read-mode</a></li>
+<li><a href="#annotations">3.2. Annotations</a></li>
+<li><a href="#djvu-image-minor-mode">3.3. djvu-image-minor-mode</a></li>
+<li><a href="#djvu-occur-mode">3.4. djvu-occur-mode</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="org0a515af" class="figure">
+<p><img src="img/djvu-logo.svg" alt="djvu-logo.svg" class="org-svg" />
+</p>
+</div>
+
+<div id="outline-container-description" class="outline-2">
+<h2 id="description"><span class="section-number-2">1.</span> Description</h2>
+<div class="outline-text-2" id="text-description">
+<p>
+This layer adds support for reading djvu files with spacemacs.
+</p>
+
+<p>
+Because of some difficulties, the layer does not lazy load the <code>djvu.el</code> and
+<code>djvu3.el</code> packages.
+</p>
+</div>
+
+<div id="outline-container-features" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
+<p>
+This layer provides a full featured djvu editor by implementing the <a href="https://github.com/dalanicolai/djvu2.el">djvu.el
+package</a> along with the <a href="https://github.com/dalanicolai/djvu3">djvu3</a> extension (a newer alternative to <a href="https://github.com/dalanicolai/djvu2.el">djvu2.el</a>).
+</p>
+<ul class="org-ul">
+<li>flexible annotation editing and rendering, covering most (but not all) of
+<a href="https://linux.die.net/man/1/djvused">djvused</a> annotation definitions</li>
+<li>fast navigation with imenu</li>
+<li>fast search with djvu-occur</li>
+<li>remember last view with djvu-restore</li>
+<li>dark mode</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-install" class="outline-2">
+<h2 id="install"><span class="section-number-2">2.</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-prerequisites" class="outline-3">
+<h3 id="prerequisites"><span class="section-number-3">2.1.</span> Prerequisites</h3>
+<div class="outline-text-3" id="text-prerequisites">
+<p>
+The <code>djvu</code> package requires the command <code>djvused</code> (from <a href="http://djvu.sourceforge.net/">djvulibre</a>) to be
+available in <code>exec-path</code>.
+</p>
+
+<p>
+Additionally, for <code>dark-mode</code> the command <code>pnminvert</code> (from
+<a href="http://netpbm.sourceforge.net/">netpbm</a>) is required.
+</p>
+</div>
+</div>
+
+<div id="outline-container-dotfile" class="outline-3">
+<h3 id="dotfile"><span class="section-number-3">2.2.</span> Dotfile</h3>
+<div class="outline-text-3" id="text-dotfile">
+<p>
+After installing the dependencies, add this to your ~/.spacemacs.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '(djvu))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-key-bindings" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">3.</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+</div>
+
+<div id="outline-container-djvu-read-mode" class="outline-3">
+<h3 id="djvu-read-mode"><span class="section-number-3">3.1.</span> djvu-read-mode</h3>
+<div class="outline-text-3" id="text-djvu-read-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>i</code></td>
+<td class="org-left">djvu-image-toggle</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>j</code></td>
+<td class="org-left">scroll up</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>k</code></td>
+<td class="org-left">scroll down</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>J</code></td>
+<td class="org-left">next page</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>K</code></td>
+<td class="org-left">previous page</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g</code></td>
+<td class="org-left">goto page</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>d</code></td>
+<td class="org-left">djvu-toggle-invert (dark-mode)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>c</code></td>
+<td class="org-left">djvu-toggle-semi-continuous-scrolling (works only when image larger than window)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>+/-</code></td>
+<td class="org-left">zoom-in/out</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>, s</code></td>
+<td class="org-left">djvu-occur</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>/</code></td>
+<td class="org-left">djvu fast search</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>n</code></td>
+<td class="org-left">djvu search continue</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC j i</code></td>
+<td class="org-left">imenu navigation</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>o</code></td>
+<td class="org-left">outline</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-annotations" class="outline-3">
+<h3 id="annotations"><span class="section-number-3">3.2.</span> Annotations</h3>
+<div class="outline-text-3" id="text-annotations">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m h</code></td>
+<td class="org-left">keyboard highlight</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>mouse-1-drag</code></td>
+<td class="org-left">highlight</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>S-mouse-1-drag</code></td>
+<td class="org-left">text annotation (<a href="https://github.com/dalanicolai/djvu3#comments">comment</a>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-mouse-1-drag</code></td>
+<td class="org-left">text pushpin (rendering pushpin not yet implemented)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>mouse-2-drag</code></td>
+<td class="org-left">line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>S-mouse-2-drag</code></td>
+<td class="org-left">horizontal line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-mouse-2-drag</code></td>
+<td class="org-left">vertical line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-S-mouse-2-drag</code></td>
+<td class="org-left">arrow</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-djvu-image-minor-mode" class="outline-3">
+<h3 id="djvu-image-minor-mode"><span class="section-number-3">3.3.</span> djvu-image-minor-mode</h3>
+<div class="outline-text-3" id="text-djvu-image-minor-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>s</code></td>
+<td class="org-left">save-image</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-djvu-occur-mode" class="outline-3">
+<h3 id="djvu-occur-mode"><span class="section-number-3">3.4.</span> djvu-occur-mode</h3>
+<div class="outline-text-3" id="text-djvu-occur-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>C-j</code></td>
+<td class="org-left">next entry and follow</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-k</code></td>
+<td class="org-left">prevoius entry and follow</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: root</p>
+<p class="date">Created: 2022-01-21 Fri 03:02</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
