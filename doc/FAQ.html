@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-01-21 Fri 03:01 -->
+<!-- 2022-01-27 Thu 04:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Frequently Asked Questions</title>
@@ -292,12 +292,17 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 <li><a href="#remap-paste-key-to-be-able-to-paste-copied-text-multiple-times">2.20. Remap paste key to be able to paste copied text multiple times</a></li>
 </ul>
 </li>
-<li><a href="#windows">3. Windows</a>
+<li><a href="#linux">3. Linux</a>
 <ul>
-<li><a href="#why-do-the-fonts-look-crappy-on-windows">3.1. Why do the fonts look crappy on Windows?</a></li>
-<li><a href="#why-is-there-no-spacemacs-logo-in-the-startup-buffer">3.2. Why is there no Spacemacs logo in the startup buffer?</a></li>
-<li><a href="#why-are-all-packages-unavailable">3.3. Why are all packages unavailable?</a></li>
-<li><a href="#the-powerline-isnt-shown-correctly-when-spacemacs-is-used-within-putty">3.4. The powerline isn't shown correctly when Spacemacs is used within <code>PuTTY</code></a></li>
+<li><a href="#error-on-deleting-a-system-package">3.1. Error on deleting a system package</a></li>
+</ul>
+</li>
+<li><a href="#windows">4. Windows</a>
+<ul>
+<li><a href="#why-do-the-fonts-look-crappy-on-windows">4.1. Why do the fonts look crappy on Windows?</a></li>
+<li><a href="#why-is-there-no-spacemacs-logo-in-the-startup-buffer">4.2. Why is there no Spacemacs logo in the startup buffer?</a></li>
+<li><a href="#why-are-all-packages-unavailable">4.3. Why are all packages unavailable?</a></li>
+<li><a href="#the-powerline-isnt-shown-correctly-when-spacemacs-is-used-within-putty">4.4. The powerline isn't shown correctly when Spacemacs is used within <code>PuTTY</code></a></li>
 </ul>
 </li>
 </ul>
@@ -1243,13 +1248,44 @@ To fix this, add the following snippet to your <code>user-config</code>:
 </div>
 </div>
 
+<div id="outline-container-linux" class="outline-2">
+<h2 id="linux"><span class="section-number-2">3.</span> Linux</h2>
+<div class="outline-text-2" id="text-linux">
+</div>
+
+<div id="outline-container-error-on-deleting-a-system-package" class="outline-3">
+<h3 id="error-on-deleting-a-system-package"><span class="section-number-3">3.1.</span> Error on deleting a system package</h3>
+<div class="outline-text-3" id="text-error-on-deleting-a-system-package">
+<p>
+If you see the an error message when either Spacemacs is trying to delete an orphaned package,
+or when you are trying to a package manually:
+</p>
+
+<pre class="example" id="orgfffdcff">
+Package ‘PACKAGE-NAME’ is a system package, not deleting
+</pre>
+
+<p>
+it means this package comes with your distribution's package manager and is not installed by
+Spacemacs. You can suppress this by adding the package to <code>dotspacemacs-additional-packages</code>
+in your <code>.spacemacs</code> file.
+</p>
+
+<p>
+In addition, you also need to add the said package to <code>dotspacemacs-frozen-packages</code> in your
+<code>.spacemacs</code>, so that you will be able to update your Emacs packages successfully.
+</p>
+</div>
+</div>
+</div>
+
 <div id="outline-container-windows" class="outline-2">
-<h2 id="windows"><span class="section-number-2">3.</span> Windows</h2>
+<h2 id="windows"><span class="section-number-2">4.</span> Windows</h2>
 <div class="outline-text-2" id="text-windows">
 </div>
 
 <div id="outline-container-why-do-the-fonts-look-crappy-on-windows" class="outline-3">
-<h3 id="why-do-the-fonts-look-crappy-on-windows"><span class="section-number-3">3.1.</span> Why do the fonts look crappy on Windows?</h3>
+<h3 id="why-do-the-fonts-look-crappy-on-windows"><span class="section-number-3">4.1.</span> Why do the fonts look crappy on Windows?</h3>
 <div class="outline-text-3" id="text-why-do-the-fonts-look-crappy-on-windows">
 <p>
 You can install <a href="https://code.google.com/archive/p/gdipp/">GDIPP</a> (simplest) or <a href="https://code.google.com/p/mactype/">MacType</a> (more complete) on Windows to get
@@ -1260,7 +1296,7 @@ Windows.
 </div>
 
 <div id="outline-container-why-is-there-no-spacemacs-logo-in-the-startup-buffer" class="outline-3">
-<h3 id="why-is-there-no-spacemacs-logo-in-the-startup-buffer"><span class="section-number-3">3.2.</span> Why is there no Spacemacs logo in the startup buffer?</h3>
+<h3 id="why-is-there-no-spacemacs-logo-in-the-startup-buffer"><span class="section-number-3">4.2.</span> Why is there no Spacemacs logo in the startup buffer?</h3>
 <div class="outline-text-3" id="text-why-is-there-no-spacemacs-logo-in-the-startup-buffer">
 <p>
 A GUI build of emacs supporting image display is required. You can follow the
@@ -1271,7 +1307,7 @@ support included such as <a href="http://emacsbinw64.sourceforge.net/">this one<
 </div>
 
 <div id="outline-container-why-are-all-packages-unavailable" class="outline-3">
-<h3 id="why-are-all-packages-unavailable"><span class="section-number-3">3.3.</span> Why are all packages unavailable?</h3>
+<h3 id="why-are-all-packages-unavailable"><span class="section-number-3">4.3.</span> Why are all packages unavailable?</h3>
 <div class="outline-text-3" id="text-why-are-all-packages-unavailable">
 <p>
 Check if your Emacs has HTTPS capabilities by doing <code>M-:</code> and then:
@@ -1290,7 +1326,7 @@ directory as Emacs. See <a href="https://www.gnu.org/software/emacs/manual/html_
 </div>
 
 <div id="outline-container-the-powerline-isnt-shown-correctly-when-spacemacs-is-used-within-putty" class="outline-3">
-<h3 id="the-powerline-isnt-shown-correctly-when-spacemacs-is-used-within-putty"><span class="section-number-3">3.4.</span> The powerline isn't shown correctly when Spacemacs is used within <code>PuTTY</code></h3>
+<h3 id="the-powerline-isnt-shown-correctly-when-spacemacs-is-used-within-putty"><span class="section-number-3">4.4.</span> The powerline isn't shown correctly when Spacemacs is used within <code>PuTTY</code></h3>
 <div class="outline-text-3" id="text-the-powerline-isnt-shown-correctly-when-spacemacs-is-used-within-putty">
 <p>
 You can follow <a href="http://mschulte.nl/posts/using-powerline-in-PuTTY.html">this explanation</a> explaining how to correct this.
@@ -1301,7 +1337,7 @@ You can follow <a href="http://mschulte.nl/posts/using-powerline-in-PuTTY.html">
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-01-21 Fri 03:01</p>
+<p class="date">Created: 2022-01-27 Thu 04:05</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
