@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-01-31 Mon 04:17 -->
+<!-- 2022-02-05 Sat 18:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tabs layer</title>
@@ -246,7 +246,12 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </ul>
 </li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#hide-tabs">3. Hide tabs</a></li>
+<li><a href="#configuration">3. Configuration</a>
+<ul>
+<li><a href="#selected-tab-bar">3.1. Selected tab bar</a></li>
+<li><a href="#hide-tabs-after-a-delay">3.2. Hide tabs after a delay</a></li>
+</ul>
+</li>
 <li><a href="#key-bindings">4. Key bindings</a></li>
 </ul>
 </div>
@@ -282,24 +287,55 @@ file.
 </div>
 </div>
 
-<div id="outline-container-hide-tabs" class="outline-2">
-<h2 id="hide-tabs"><span class="section-number-2">3.</span> Hide tabs</h2>
-<div class="outline-text-2" id="text-hide-tabs">
+<div id="outline-container-configuration" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">3.</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+</div>
+
+<div id="outline-container-selected-tab-bar" class="outline-3">
+<h3 id="selected-tab-bar"><span class="section-number-3">3.1.</span> Selected tab bar</h3>
+<div class="outline-text-3" id="text-selected-tab-bar">
+<p>
+To display a bar in the given direction to the selected tab, set <code>tabs-highlight-current-tab</code> to
+one of <code>left</code> (default), <code>under</code>, <code>over</code>.
+</p>
+
+<p>
+For example,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '(tabs <span class="org-builtin">:variables</span> tabs-highlight-current-tab 'left))
+</pre>
+</div>
+
+<p>
+Note that this has no effect when Emacs is running in daemon mode.
+</p>
+</div>
+</div>
+
+<div id="outline-container-hide-tabs-after-a-delay" class="outline-3">
+<h3 id="hide-tabs-after-a-delay"><span class="section-number-3">3.2.</span> Hide tabs after a delay</h3>
+<div class="outline-text-3" id="text-hide-tabs-after-a-delay">
 <p>
 You can set hooks for buffers in which it isn't desired to have tabs by
-customizing <code>centaur-tabs-hide-tabs-hooks</code>
+customizing <code>centaur-tabs-hide-tabs-hooks</code>.
 </p>
 
 <p>
 Alternatively you can set <code>tabs-auto-hide</code> to <code>t</code> to auto hide tabs after some
-delay <code>tabs-auto-hide-delay</code> via the :variables keyword in your dotfile:
+delay <code>tabs-auto-hide-delay</code> via the :variables keyword in your <code>.spacemacs</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(tabs <span class="org-builtin">:variables</span>
-      tabs-auto-hide t
-      tabs-auto-hide-delay 3)
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '(tabs <span class="org-builtin">:variables</span>
+                     tabs-auto-hide t
+                     tabs-auto-hide-delay 3))
 </pre>
+</div>
 </div>
 </div>
 </div>
@@ -323,23 +359,23 @@ delay <code>tabs-auto-hide-delay</code> via the :variables keyword in your dotfi
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>C-{</code></td>
-<td class="org-left">Select the previous available tab</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>C-}</code></td>
+<td class="org-left"><code>g t</code></td>
 <td class="org-left">Select the next available tab</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>C-M-{</code></td>
-<td class="org-left">Move current tabe to left</td>
+<td class="org-left"><code>g T</code></td>
+<td class="org-left">Select the previous available tab</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>C-M-}</code></td>
+<td class="org-left"><code>g C-t</code></td>
 <td class="org-left">Move current tabe to right</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g C-T</code></td>
+<td class="org-left">Move current tabe to left</td>
 </tr>
 
 <tr>
@@ -363,7 +399,7 @@ delay <code>tabs-auto-hide-delay</code> via the :variables keyword in your dotfi
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-01-31 Mon 04:17</p>
+<p class="date">Created: 2022-02-05 Sat 18:31</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

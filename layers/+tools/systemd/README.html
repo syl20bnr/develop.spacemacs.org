@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-01-31 Mon 04:18 -->
+<!-- 2022-02-05 Sat 18:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>systemd layer</title>
@@ -246,7 +246,12 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </ul>
 </li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#key-bindings">3. Key bindings</a></li>
+<li><a href="#key-bindings">3. Key bindings</a>
+<ul>
+<li><a href="#systemd">3.1. Systemd</a></li>
+<li><a href="#journalctl-mode">3.2. Journalctl-mode</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -266,6 +271,7 @@ This layer adds support for editing <code>systemd</code> configuration files in 
 <li>Syntax highlighting</li>
 <li>Auto completion</li>
 <li>Syntax checking via <code>systemd-analyze</code></li>
+<li>Viewing systemd system and user unit via <a href="https://github.com/SebastianMeisel/journalctl-mode">journalctl-mode</a></li>
 </ul>
 </div>
 </div>
@@ -288,6 +294,11 @@ To use this contribution add it to your <code>~/.spacemacs</code>
 <div id="outline-container-key-bindings" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3.</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
+</div>
+
+<div id="outline-container-systemd" class="outline-3">
+<h3 id="systemd"><span class="section-number-3">3.1.</span> Systemd</h3>
+<div class="outline-text-3" id="text-systemd">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -316,10 +327,53 @@ To use this contribution add it to your <code>~/.spacemacs</code>
 </table>
 </div>
 </div>
+
+<div id="outline-container-journalctl-mode" class="outline-3">
+<h3 id="journalctl-mode"><span class="section-number-3">3.2.</span> Journalctl-mode</h3>
+<div class="outline-text-3" id="text-journalctl-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC a t j b</code></td>
+<td class="org-left">Select and show boot-log with <code>journalctl-mode</code>.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a t j j</code></td>
+<td class="org-left">Run <code>journalctl-mode</code> with custom option</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a t j s</code></td>
+<td class="org-left">Select and show journal for UNIT in <code>journalctl-mode</code>.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a t j u</code></td>
+<td class="org-left">Select and show journal for the user-unit UNIT in <code>journalctl-mode</code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-01-31 Mon 04:18</p>
+<p class="date">Created: 2022-02-05 Sat 18:31</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
