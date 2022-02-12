@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-05 Sat 18:31 -->
+<!-- 2022-02-12 Sat 06:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>tree-sitter layer</title>
@@ -318,12 +318,28 @@ you use a <code>dotspacemacs-editing-style</code> other than <code>'vim</code> o
 the integration with <code>ts-fold</code> wanting. Contributions are encouraged!
 Default: <code>nil</code>.
 </p>
+
+<p>
+Set <code>spacemacs-tree-sitter-hl-black-list</code> for a list of modes that should
+not enable highlight by <code>tree-sitter-hl-mode</code>, such as
+<code>js2-mode</code> and <code>rjsx-mode</code> for example.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              (tree-sitter <span class="org-builtin">:variables</span>
+                           spacemacs-tree-sitter-hl-black-list '(js2-mode rjsx-mode)
+                           tree-sitter-syntax-highlight-enable t
+                           tree-sitter-fold-enable t
+                           tree-sitter-fold-indicators-enable nil))
+</pre>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-02-05 Sat 18:31</p>
+<p class="date">Created: 2022-02-12 Sat 06:02</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
