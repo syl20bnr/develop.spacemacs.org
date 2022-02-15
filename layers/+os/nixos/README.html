@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-12 Sat 06:02 -->
+<!-- 2022-02-15 Tue 02:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>NixOS layer</title>
@@ -248,10 +248,15 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
-<li><a href="#format-on-save">2.2. Format on save</a></li>
 </ul>
 </li>
-<li><a href="#configuration">3. Configuration</a></li>
+<li><a href="#configuration">3. Configuration</a>
+<ul>
+<li><a href="#enabling-lsp-experimental">3.1. Enabling LSP (Experimental)</a></li>
+<li><a href="#format-on-save">3.2. Format on save</a></li>
+<li><a href="#opt-out-from-auto-complete">3.3. Opt-out from <code>auto-complete</code></a></li>
+</ul>
+</li>
 <li><a href="#key-bindings">4. Key bindings</a>
 <ul>
 <li><a href="#nixos-options">4.1. NixOS Options</a></li>
@@ -261,7 +266,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </div>
 </div>
 
-<div id="org5f5b4a3" class="figure">
+<div id="org4683d5a" class="figure">
 <p><img src="img/nixos.png" alt="nixos.png" />
 </p>
 </div>
@@ -282,6 +287,7 @@ This layer adds tools for better integration of Emacs in NixOS.
 <li>Automatic formatting via <a href="https://github.com/serokell/nixfmt">nixfmt</a></li>
 <li>Auto-completion of NixOS Options using <a href="https://github.com/travisbhartwell/nix-emacs/blob/master/company-nixos-options.el">company-nixos-options</a></li>
 <li>Helm Lookup for NixOS Options <a href="https://github.com/travisbhartwell/nix-emacs/blob/master/helm-nixos-options.el">helm-nixos-options</a></li>
+<li>WIP support for LSP backend using <code>rnix-lsp</code></li>
 </ul>
 </div>
 </div>
@@ -302,9 +308,40 @@ file.
 </p>
 </div>
 </div>
+</div>
+
+<div id="outline-container-configuration" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">3.</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+</div>
+
+<div id="outline-container-enabling-lsp-experimental" class="outline-3">
+<h3 id="enabling-lsp-experimental"><span class="section-number-3">3.1.</span> Enabling LSP (Experimental)</h3>
+<div class="outline-text-3" id="text-enabling-lsp-experimental">
+<p>
+To use the <i>experimental</i> LSP backend, set variable <code>nix-backend</code> to <code>lsp</code> in
+your <code>~./spacemacs</code>. (You would also need to enable <a href="../../+tools/lsp/README.html">LSP</a> layer).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              (nixos <span class="org-builtin">:variables</span> nixos-backend 'lsp))
+</pre>
+</div>
+
+<p>
+To install <a href="https://github.com/nix-community/rnix-lsp">rnix-lsp</a> from <code>nix</code>, run the following command in shell:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">nix-env -i -f https://github.com/nix-community/rnix-lsp/archive/master.tar.gz
+</pre>
+</div>
+</div>
+</div>
 
 <div id="outline-container-format-on-save" class="outline-3">
-<h3 id="format-on-save"><span class="section-number-3">2.2.</span> Format on save</h3>
+<h3 id="format-on-save"><span class="section-number-3">3.2.</span> Format on save</h3>
 <div class="outline-text-3" id="text-format-on-save">
 <p>
 To enable automatic formatting on save, set the layer variable
@@ -312,20 +349,21 @@ To enable automatic formatting on save, set the layer variable
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(nixos <span class="org-builtin">:variables</span> nixos-format-on-save t)
+<pre class="src src-elisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              (nixos <span class="org-builtin">:variables</span> nixos-format-on-save t))
 </pre>
 </div>
 </div>
 </div>
-</div>
 
-<div id="outline-container-configuration" class="outline-2">
-<h2 id="configuration"><span class="section-number-2">3.</span> Configuration</h2>
-<div class="outline-text-2" id="text-configuration">
+<div id="outline-container-opt-out-from-auto-complete" class="outline-3">
+<h3 id="opt-out-from-auto-complete"><span class="section-number-3">3.3.</span> Opt-out from <code>auto-complete</code></h3>
+<div class="outline-text-3" id="text-opt-out-from-auto-complete">
 <p>
 On some systems, <code>company-nixos-options</code> may be very slow. If this is the case,
 see the section on disabling the <a href="../../../doc/DOCUMENTATION.html#disabling-layer-services-in-other-layers">disabling auto-complete</a> for the <code>nixos</code> layer.
 </p>
+</div>
 </div>
 </div>
 
@@ -369,7 +407,7 @@ see the section on disabling the <a href="../../../doc/DOCUMENTATION.html#disabl
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-02-12 Sat 06:02</p>
+<p class="date">Created: 2022-02-15 Tue 02:51</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
