@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-03-17 Thu 15:35 -->
+<!-- 2022-03-28 Mon 15:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GitHub layer</title>
@@ -248,21 +248,19 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
-<li><a href="#git-configuration">2.2. Git configuration</a></li>
-<li><a href="#grip-mode">2.3. grip-mode</a></li>
+<li><a href="#grip-mode">2.2. grip-mode</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key bindings</a>
 <ul>
-<li><a href="#clone-repositories">3.1. Clone repositories</a></li>
-<li><a href="#grip-mode-1">3.2. Grip-mode</a></li>
+<li><a href="#grip-mode-1">3.1. Grip-mode</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="org7a7e400" class="figure">
+<div id="orgae12c58" class="figure">
 <p><img src="img/github.png" alt="github.png" />
 </p>
 </div>
@@ -271,7 +269,18 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 <h2 id="description"><span class="section-number-2">1.</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layers adds support for <a href="http://github.com">GitHub</a>.
+<b>This layer is deprecated</b>.
+</p>
+
+<p>
+The layer had support searching for and cloning <a href="http://github.com">GitHub</a> repositories,
+although that did not provide a secure way to store an access token
+to connect to GitHub.
+</p>
+
+<p>
+The git layer provides interaction with GitHub and can securely
+store the access token using PGP.
 </p>
 </div>
 
@@ -279,9 +288,6 @@ This layers adds support for <a href="http://github.com">GitHub</a>.
 <h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li><a href="https://github.com/magit/forge">forge</a>: integration with various forges, such as GitHub and GitLab.</li>
-<li><a href="https://github.com/sshaw/git-link">git-link</a>: quickly generate URLs for commits or files.</li>
-<li><a href="https://github.com/dgtized/github-clone.el">github-clone</a> allows for easy cloning and forking of repositories.</li>
 <li><a href="https://github.com/seagle0128/grip-mode">grip-mode</a> Github-flavored Markdown/Org preview using <a href="https://github.com/joeyespo/grip">Grip</a>.</li>
 </ul>
 </div>
@@ -304,28 +310,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-git-configuration" class="outline-3">
-<h3 id="git-configuration"><span class="section-number-3">2.2.</span> Git configuration</h3>
-<div class="outline-text-3" id="text-git-configuration">
-<p>
-You will need to generate a <a href="https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line">personal access token</a> on GitHub. This token should
-have the <code>gist</code> and <code>repo</code> permissions. Once this token is created, it needs to
-be added to your <code>~/.gitconfig</code>
-</p>
-
-<p>
-You will also need to <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/">generate an SSH key</a> and <a href="https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/">add it to your GitHub account</a>.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-sh">git config --global github.oauth-token &lt;token&gt;
-</pre>
-</div>
-</div>
-</div>
-
 <div id="outline-container-grip-mode" class="outline-3">
-<h3 id="grip-mode"><span class="section-number-3">2.3.</span> grip-mode</h3>
+<h3 id="grip-mode"><span class="section-number-3">2.2.</span> grip-mode</h3>
 <div class="outline-text-3" id="text-grip-mode">
 <p>
 Grip-mode <a href="https://github.com/seagle0128/grip-mode#prerequisite">requires python and the python package grip</a> to be installed on the
@@ -342,55 +328,8 @@ of pip, it is normally called <code>pip3</code>.
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-clone-repositories" class="outline-3">
-<h3 id="clone-repositories"><span class="section-number-3">3.1.</span> Clone repositories</h3>
-<div class="outline-text-3" id="text-clone-repositories">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC g h c /</code></td>
-<td class="org-left">search for a repository to clone it</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g h c c</code></td>
-<td class="org-left">clone and optionally fork repository</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g h c r</code></td>
-<td class="org-left">add a remote that is an existing fork of selected remote</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g h c f</code></td>
-<td class="org-left">fork remote in current user namespace</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g h c u</code></td>
-<td class="org-left">add upstream as remote</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
 <div id="outline-container-grip-mode-1" class="outline-3">
-<h3 id="grip-mode-1"><span class="section-number-3">3.2.</span> Grip-mode</h3>
+<h3 id="grip-mode-1"><span class="section-number-3">3.1.</span> Grip-mode</h3>
 <div class="outline-text-3" id="text-grip-mode-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -419,7 +358,7 @@ of pip, it is normally called <code>pip3</code>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-03-17 Thu 15:35</p>
+<p class="date">Created: 2022-03-28 Mon 15:39</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
