@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-03-28 Mon 15:39 -->
+<!-- 2022-05-11 Wed 17:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python layer</title>
@@ -273,6 +273,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 <li><a href="#autoflake">4.6. autoflake</a></li>
 <li><a href="#pylookup">4.7. pylookup</a></li>
 <li><a href="#dap-mode-debugger-only-for-lsp-backend">4.8. dap-mode debugger (only for lsp backend)</a></li>
+<li><a href="#notebook-and-code-cells">4.9. Notebook and code cells</a></li>
 </ul>
 </li>
 <li><a href="#configuration">5. Configuration</a>
@@ -315,7 +316,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </div>
 </div>
 
-<div id="org9b86565" class="figure">
+<div id="org6c1fa97" class="figure">
 <p><img src="img/python.png" alt="python.png" />
 </p>
 </div>
@@ -355,6 +356,7 @@ This layer adds support for the Python language.
 <li>Fix a missing import statement with <a href="https://github.com/anachronic/importmagic.el">importmagic</a></li>
 <li>Pip package manager with <a href="https://github.com/brotzeit/pippel">pippel</a></li>
 <li>Interactive debugger using <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a></li>
+<li>Support for ipython notebook and MATLAB-like cells using using <a href="https://github.com/astoff/code-cells.el">code-cells</a></li>
 </ul>
 </div>
 </div>
@@ -459,7 +461,7 @@ it does not work and you may encounter the following message when
 opening a python buffer:
 </p>
 
-<pre class="example" id="org5442a3b">
+<pre class="example" id="orgbb873a4">
 Blocking call to accept-process-output with quit inhibited!!
 </pre>
 
@@ -808,6 +810,23 @@ To use <code>dap-mode</code> for debugging do:
 <pre class="src src-bash">pip install <span class="org-string">"ptvsd&gt;=4.2"</span>
 </pre>
 </div>
+</div>
+</div>
+
+<div id="outline-container-notebook-and-code-cells" class="outline-3">
+<h3 id="notebook-and-code-cells"><span class="section-number-3">4.9.</span> Notebook and code cells</h3>
+<div class="outline-text-3" id="text-notebook-and-code-cells">
+<p>
+To use <code>code-cells-mode</code> with ipython notebook automatically you should install
+<a href="https://github.com/mwouts/jupytext">jupytext</a>. Make sure that the <code>ipython-notebook</code> layer is not used.
+</p>
+
+<p>
+Then you can evaluate the current cell in a REPL process with <code>SPC m s c</code> or all
+the cells above with <code>SPC m s a</code>.
+You can also move to the next cell with <code>SPC m g F</code> and to the previous cell
+with <code>SPC m g B</code>.
+</p>
 </div>
 </div>
 </div>
@@ -1695,7 +1714,7 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-03-28 Mon 15:39</p>
+<p class="date">Created: 2022-05-11 Wed 17:40</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
