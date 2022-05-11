@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-03-28 Mon 15:39 -->
+<!-- 2022-05-11 Wed 17:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LaTeX layer</title>
@@ -269,13 +269,14 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 <ul>
 <li><a href="#folding-1">5.1. Folding</a></li>
 <li><a href="#reftex">5.2. RefTeX</a></li>
+<li><a href="#evil-tex">5.3. evil-tex</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="orgda4078e" class="figure">
+<div id="org8c9bd70" class="figure">
 <p><img src="img/latex.png" alt="latex.png" />
 </p>
 </div>
@@ -297,6 +298,7 @@ This layer adds support for LaTeX files with <a href="https://savannah.gnu.org/p
 <li>Auto-completion</li>
 <li>Tags navigation on <code>%</code> with <a href="https://github.com/redguardtoo/evil-matchit">evil-matchit</a></li>
 <li>Labels, references, citations and index entries management with <a href="http://www.gnu.org/software/emacs/manual/html_node/reftex/index.html">RefTeX</a></li>
+<li>LaTeX-specific text objects and much more with <a href="https://github.com/iyefrat/evil-tex">evil-tex</a></li>
 </ul>
 </div>
 </div>
@@ -1105,11 +1107,62 @@ Available only when <code>latex-enable-folding</code> is non nil.
 </table>
 </div>
 </div>
+
+<div id="outline-container-evil-tex" class="outline-3">
+<h3 id="evil-tex"><span class="section-number-3">5.3.</span> evil-tex</h3>
+<div class="outline-text-3" id="text-evil-tex">
+<p>
+See the <a href="https://github.com/iyefrat/evil-tex/blob/master/README.org">evil-tex documentation</a> for more comprehensive explanation of text
+objects it provides and its other features, including its integration with
+<code>evil-surround</code>.
+</p>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>]]</code> / <code>[[</code></td>
+<td class="org-left">jump between section headings</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-n</code></td>
+<td class="org-left">Move between braces, similar to <code>TAB</code> in <code>cd-latex</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m q</code></td>
+<td class="org-left">Prefix for <a href="https://github.com/iyefrat/evil-tex#toggles">evil-tex toggle commands</a></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+In order to <a href="https://github.com/iyefrat/evil-tex#user-options">preserve both the precious <code>t</code> mark and the indispensable <code>ts</code>
+motion</a>, the <a href="https://github.com/iyefrat/evil-tex/blob/master/README.org#toggles">evil-tex "magnificent toggles"</a> are bound under <code>SPC m q</code> rather than
+<code>mt</code> or <code>ts</code>. This binding can be remembered with mnemonic "quite magnificent
+toggle".
+</p>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-03-28 Mon 15:39</p>
+<p class="date">Created: 2022-05-11 Wed 17:40</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
