@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-05-24 Tue 11:52 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Translate Layer</title>
+<meta name="author" content="root" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+<link rel="stylesheet" type="text/css"
+                 href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script>
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
+          </script>
+<link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+</head>
+<body>
+<div id="content" class="content">
+<div class="admonition warning">
+<p class="first last">
+You are viewing the documentation for the develop branch.
+The documentation for the release version is
+<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
+onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
+.
+</p>
+</div>
+<div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
+<h1 class="title">Translate Layer</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents<a href="#">Close</a></h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
+<li><a href="#install">2. Install</a></li>
+<li><a href="#usage">3. Usage</a></li>
+<li><a href="#configuration">4. Configuration</a>
+<ul>
+<li><a href="#language-pair">4.1. Language Pair</a></li>
+<li><a href="#highlighting">4.2. Highlighting</a></li>
+<li><a href="#read-only">4.3. Read-only</a></li>
+<li><a href="#face">4.4. Face</a></li>
+</ul>
+</li>
+<li><a href="#key-bindings">5. Key bindings</a></li>
+</ul>
+</div>
+</div>
+
+<div id="orga52ae13" class="figure">
+<p><img src="img/screen-record.gif" alt="screen-record.gif" />
+</p>
+</div>
+
+<div id="outline-container-description" class="outline-2">
+<h2 id="description"><span class="section-number-2">1.</span> Description</h2>
+<div class="outline-text-2" id="text-description">
+<p>
+This layer is designed for Paragraph-oriented minor mode for
+side-by-side document translation workflow.
+</p>
+</div>
+
+<div id="outline-container-features" class="outline-3">
+<h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
+<ul class="org-ul">
+<li>Paragraph-oriented side-by-side document translation workflow</li>
+<li>Integrate word/paragraph online translation</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-install" class="outline-2">
+<h2 id="install"><span class="section-number-2">2.</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+<p>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>translate</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-usage" class="outline-2">
+<h2 id="usage"><span class="section-number-2">3.</span> Usage</h2>
+<div class="outline-text-2" id="text-usage">
+<p>
+It's quite simple to use this layer. Open the translation file you are currently working
+on, and call command <code>translate-open-reference-file</code> or <code>translate-select-reference-buffer</code>
+to set the reference buffer or open an existed reference file. Now you can just keep your
+cursor in your translation buffer. The cursor in the reference buffer will be kept in
+sync with the cursor in the translation buffer.
+</p>
+</div>
+</div>
+
+<div id="outline-container-configuration" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">4.</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+<p>
+All layer configurations can be done by setting layer variables in your dotfile.
+No custom user config lines are necessary. For more details please see the homepage
+of package <a href="https://github.com/rayw000/translate-mode">translate-mode</a> and <a href="https://github.com/lorniu/go-translate/">go-translate</a>.
+</p>
+</div>
+
+<div id="outline-container-language-pair" class="outline-3">
+<h3 id="language-pair"><span class="section-number-3">4.1.</span> Language Pair</h3>
+<div class="outline-text-3" id="text-language-pair">
+<p>
+You need to set language pairs to make online translation work.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(translate <span class="org-builtin">:variables</span> gts-translate-list '((<span class="org-string">"en"</span> <span class="org-string">"zh"</span>) (<span class="org-string">"en"</span> <span class="org-string">"fr"</span>)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-highlighting" class="outline-3">
+<h3 id="highlighting"><span class="section-number-3">4.2.</span> Highlighting</h3>
+<div class="outline-text-3" id="text-highlighting">
+<p>
+Set <code>translate-enable-highlight</code> to <code>nil</code> to disable highlighting.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(translate <span class="org-builtin">:variables</span> translate-enable-highlight nil)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-read-only" class="outline-3">
+<h3 id="read-only"><span class="section-number-3">4.3.</span> Read-only</h3>
+<div class="outline-text-3" id="text-read-only">
+<p>
+You can set <code>translate-reference-buffer-read-only</code> to <code>t</code> to make the reference buffer read-only.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(translate <span class="org-builtin">:variables</span> translate-reference-buffer-read-only t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-face" class="outline-3">
+<h3 id="face"><span class="section-number-3">4.4.</span> Face</h3>
+<div class="outline-text-3" id="text-face">
+<p>
+The face of highlight paragraph can be customized by <code>translate-paragraph-highlight-face</code>.
+Put this following line into <code>custom-set-faces</code> in your =~/.spacemacs~ file to set the background
+color to red, for example.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">'(translate-paragraph-highlight ((t (<span class="org-builtin">:extend</span> t <span class="org-builtin">:background</span> <span class="org-string">"red"</span>))))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-key-bindings" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">5.</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC a t T t</code></td>
+<td class="org-left">Toggle <code>translate-mode</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a t T p</code></td>
+<td class="org-left">Open a translation list buffer for current paragraph in the reference buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a t T w</code></td>
+<td class="org-left">Popup translation list for word at point, also can be used on regions</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a t T f</code></td>
+<td class="org-left">Prompt to open the reference file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a t T b</code></td>
+<td class="org-left">Prompt to select a buffer and set it as the reference buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a t T h</code></td>
+<td class="org-left">Toggle paragraph highlighting</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: root</p>
+<p class="date">Created: 2022-05-24 Tue 11:52</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
