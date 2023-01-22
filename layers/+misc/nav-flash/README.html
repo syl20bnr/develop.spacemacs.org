@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:52 -->
+<!-- 2023-01-22 Sun 17:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>nav-flash layer</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">nav-flash layer</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -245,7 +228,14 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a></li>
+<li><a href="#installation">2. Installation</a></li>
+<li><a href="#customization">3. Customization</a>
+<ul>
+<li><a href="#custom-trigger-of-nav-flash">3.1. Custom Trigger of <code>nav-flash</code></a></li>
+<li><a href="#exclusion-rules">3.2. Exclusion Rules</a></li>
+</ul>
+</li>
+<li><a href="#credit">4. Credit</a></li>
 </ul>
 </div>
 </div>
@@ -270,20 +260,95 @@ navigation command.
 </div>
 </div>
 
-<div id="outline-container-install" class="outline-2">
-<h2 id="install"><span class="section-number-2">2.</span> Install</h2>
-<div class="outline-text-2" id="text-install">
+<div id="outline-container-installation" class="outline-2">
+<h2 id="installation"><span class="section-number-2">2.</span> Installation</h2>
+<div class="outline-text-2" id="text-installation">
 <p>
-To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>nav-flash</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
-file.
+To use this configuration layer, add <code>nav-flash</code> to the existing
+<code>dotspacemacs-configuration-layers</code> list in your <code>~/.spacemacs</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span>nav-flash<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-customization" class="outline-2">
+<h2 id="customization"><span class="section-number-2">3.</span> Customization</h2>
+<div class="outline-text-2" id="text-customization">
+</div>
+
+<div id="outline-container-custom-trigger-of-nav-flash" class="outline-3">
+<h3 id="custom-trigger-of-nav-flash"><span class="section-number-3">3.1.</span> Custom Trigger of <code>nav-flash</code></h3>
+<div class="outline-text-3" id="text-custom-trigger-of-nav-flash">
+<p>
+<code>nav-flash</code> layer works around the following functions:
+</p>
+<ul class="org-ul">
+<li><code>nav-flash/blink-cursor-maybe</code> blinks the line containing the point unless
+current major mode or current command is excluded, or if <code>so-long-minor-mode</code>
+is on.</li>
+<li><code>nav-flash/delayed-blink-cursor-h</code> blinks after a short pause, which is useful
+to wait for the point moving to the correct window.</li>
+</ul>
+
+<p>
+They are added to <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Hooks.html">hooks</a> or <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Advising-Functions.html">after advices</a> of various functions. You can trigger
+<code>nav-flash</code> in more context viaa <code>dotspacemacs/user-config</code>, for example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">blink after triggering evil-window-left/right/up/down</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>advice-add #'evil-window-left  <span class="org-builtin">:after</span> #'nav-flash/blink-cursor-maybe<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>advice-add #'evil-window-right <span class="org-builtin">:after</span> #'nav-flash/blink-cursor-maybe<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>advice-add #'evil-window-up    <span class="org-builtin">:after</span> #'nav-flash/blink-cursor-maybe<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>advice-add #'evil-window-down  <span class="org-builtin">:after</span> #'nav-flash/blink-cursor-maybe<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">blink after a delay in after projectile-switch-project</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/add-to-hooks #'nav-flash/delayed-blink-cursor-h
+                        '<span class="org-rainbow-delimiters-depth-2">(</span>projectile-after-switch-project-hook<span class="org-rainbow-delimiters-depth-2">)</span>
+                        t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-exclusion-rules" class="outline-3">
+<h3 id="exclusion-rules"><span class="section-number-3">3.2.</span> Exclusion Rules</h3>
+<div class="outline-text-3" id="text-exclusion-rules">
+<p>
+<code>nav-flash/blink-cursor-maybe</code> is configured not to flash the line when either
+the command or the major mode is excluded, which can be customized via variables
+<code>nav-flash-exclude-commands</code> and <code>nav-flash-exlude-modes</code> in your
+<code>dotspacemacs/user-config</code>. For example,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">don't trigger in dired-mode</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'nav-flash-exclude-modes 'dired-mode <span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">don't trigger for spacemacs/alternate-buffer (SPC TAB)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'nav-flash-exclude-commands 'spacemacs/alternate-buffer<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-credit" class="outline-2">
+<h2 id="credit"><span class="section-number-2">4.</span> Credit</h2>
+<div class="outline-text-2" id="text-credit">
+<p>
+This layer is ported from <a href="https://github.com/doomemacs/doomemacs">Doom Emacs</a>.
 </p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:52</p>
+<p class="date">Created: 2023-01-22 Sun 17:10</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

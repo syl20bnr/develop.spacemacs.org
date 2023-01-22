@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:51 -->
+<!-- 2023-01-22 Sun 17:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Quick start</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">Quick start</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -309,7 +292,7 @@ own layer.
 The following command creates a layer in the <code>private</code> directory:
 </p>
 
-<pre class="example" id="org8d68972">
+<pre class="example" id="org59c350a">
 SPC SPC configuration-layer/create-layer RET
 </pre>
 
@@ -337,7 +320,7 @@ is also a means to customizing Spacemacs.
 The following command will create a <code>.spacemacs</code> file in your home directory:
 </p>
 
-<pre class="example" id="org9dca647">
+<pre class="example" id="orgdecb1a4">
 SPC SPC dotspacemacs/install RET
 </pre>
 
@@ -345,7 +328,7 @@ SPC SPC dotspacemacs/install RET
 To open the installed dotfile:
 </p>
 
-<pre class="example" id="org101587b">
+<pre class="example" id="org6f499e4">
 SPC f e d
 </pre>
 
@@ -356,7 +339,7 @@ To load some configuration layers using the variable
 
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">List of configuration layers to load.</span>
-dotspacemacs-configuration-layers '(auto-completion smex)
+dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-1">(</span>auto-completion smex<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -368,10 +351,10 @@ Variables can be directly set within <code>dotspacemacs-configuration-layers</co
 
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">List of configuration layers to load.</span>
-dotspacemacs-configuration-layers '(auto-completion
-                                    (git <span class="org-builtin">:variables</span>
-                                         git-magit-status-fullscreen t)
-                                    smex)
+dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-1">(</span>auto-completion
+                                    <span class="org-rainbow-delimiters-depth-2">(</span>git <span class="org-builtin">:variables</span>
+                                         git-magit-status-fullscreen t<span class="org-rainbow-delimiters-depth-2">)</span>
+                                    smex<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -509,7 +492,7 @@ a buffer appears after one second listing the possible keys for this prefix.
 It is also possible to search for specific key bindings by pressing:
 </p>
 
-<pre class="example" id="org1bec2c6">
+<pre class="example" id="orgc4def5e">
 SPC ?
 </pre>
 
@@ -518,7 +501,7 @@ To narrow the bindings list to those prefixed with <code>SPC</code>,
 type a pattern like this regular expression:
 </p>
 
-<pre class="example" id="org2650f07">
+<pre class="example" id="org11fbfc2">
 SPC\ b
 </pre>
 
@@ -594,7 +577,7 @@ Some quick <code>how-to's</code> are compiled in the <a href="FAQ.html#how-do-i"
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:51</p>
+<p class="date">Created: 2023-01-22 Sun 17:09</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

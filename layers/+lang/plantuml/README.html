@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:52 -->
+<!-- 2023-01-22 Sun 17:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>plantuml layer</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">plantuml layer</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -245,14 +228,18 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a></li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#execution-modes">2.1. Execution modes</a></li>
+</ul>
+</li>
 <li><a href="#org-babel-integration">3. Org-Babel Integration</a></li>
 <li><a href="#key-bindings">4. Key bindings</a></li>
 </ul>
 </div>
 </div>
 
-<div id="org654fe59" class="figure">
+<div id="org91d41bf" class="figure">
 <p><img src="img/logo.png" alt="logo.png" />
 </p>
 </div>
@@ -291,7 +278,7 @@ robbyoconnor-&gt;theOtherPerson : And they thinks it's funny? Yup, they definite
 </div>
 
 
-<div id="orgc0eade7" class="figure">
+<div id="orgb540717" class="figure">
 <p><img src="img/dia.png" alt="dia.png" />
 </p>
 </div>
@@ -314,39 +301,62 @@ robbyoconnor-&gt;theOtherPerson : And they thinks it's funny? Yup, they definite
 <h2 id="install"><span class="section-number-2">2.</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
-To use this contribution add it to your <code>~/.spacemacs</code>
+To use this contribution, add it to your <code>~/.spacemacs</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '(plantuml))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>plantuml<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+
+<div id="outline-container-execution-modes" class="outline-3">
+<h3 id="execution-modes"><span class="section-number-3">2.1.</span> Execution modes</h3>
+<div class="outline-text-3" id="text-execution-modes">
+<p>
+Configure plantuml-mode to either make use of a <code>Plantuml</code> library, executable or server (experimental).
+</p>
+
+<p>
+If you want to call your local Plantuml library, set <code>plantuml-jar-path</code> and <code>plantuml-default-exec-mode</code> as follows:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>plantuml <span class="org-builtin">:variables</span>
+    plantuml-jar-path <span class="org-string">"~/plantUml.jar"</span>
+    plantuml-default-exec-mode 'library<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
-To control the <code>Plantuml</code> compiler you also need to download the <a href="http://plantuml.com/download">Plantuml jar</a>
-and configure the <code>plantuml-jar-path</code> respectively:
+For this to work, you need to execute <code>plantuml-download-jar</code> to download the most recent <code>Plantuml</code> library jar to your home directory.
+</p>
+
+<p>
+If instead you want to call your local Plantuml executable (f.e. as installed to path <code>/usr/bin/plantuml</code> by your package manager), set <code>plantuml-executable-path</code> and <code>plantuml-default-exec-mode</code> as follows:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '((plantuml <span class="org-builtin">:variables</span> plantuml-jar-path <span class="org-string">"~/plantUml.jar"</span>)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>plantuml <span class="org-builtin">:variables</span>
+    plantuml-executable-path <span class="org-string">"/usr/bin/plantuml"</span>
+    plantuml-default-exec-mode 'executable<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
-To get the full range of <code>Plantuml</code> compilations working, you will also need
+If instead you don't want to compile locally, you can set <code>plantuml-exec-mode</code> to <code>server</code>.
+This will make plantuml try to use an online compile server. Be warned that this feature is experimental.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>plantuml <span class="org-builtin">:variables</span> plantuml-default-exec-mode 'server<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Either way, to get the full range of <code>Plantuml</code> compilations working, you will also need
 the native package <a href="http://graphviz.org/">graphviz</a> installed on your system.
 </p>
-
-<p>
-If you don't want to compile locally you can set <code>plantuml-exec-mode</code> to <code>server</code>.
-This will make plantuml try to use an online compile server. Be warned these resources
-change often and plantuml-mode is not always up-to-date. For a stable user experience
-we recommend using the default jar option instead.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '((plantuml <span class="org-builtin">:variables</span> plantuml-default-exec-mode 'server)))
-</pre>
 </div>
 </div>
 </div>
@@ -360,7 +370,7 @@ documents, define a value for <code>org-plantuml-jar-path</code> in your <code>~
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '((plantuml <span class="org-builtin">:variables</span> plantuml-jar-path <span class="org-string">"~/plantUml.jar"</span> org-plantuml-jar-path <span class="org-string">"~/plantUml.jar"</span>)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>plantuml <span class="org-builtin">:variables</span> plantuml-jar-path <span class="org-string">"~/plantUml.jar"</span> org-plantuml-jar-path <span class="org-string">"~/plantUml.jar"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -400,7 +410,7 @@ documents, define a value for <code>org-plantuml-jar-path</code> in your <code>~
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:52</p>
+<p class="date">Created: 2023-01-22 Sun 17:10</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

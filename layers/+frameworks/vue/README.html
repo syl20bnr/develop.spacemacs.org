@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:51 -->
+<!-- 2023-01-22 Sun 17:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Vue layer</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">Vue layer</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -252,7 +235,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 <li><a href="#lsp">3.2. lsp</a></li>
 </ul>
 </li>
-<li><a href="#optional-configuration">4. Optional Configuration</a></li>
+<li><a href="#indentation">4. Indentation</a></li>
 <li><a href="#key-bindings">5. Key bindings</a>
 <ul>
 <li><a href="#web-mode">5.1. web-mode</a></li>
@@ -265,7 +248,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </div>
 </div>
 
-<div id="org595cd15" class="figure">
+<div id="orgcdbb712" class="figure">
 <p><img src="img/vue.png" alt="vue.png" />
 </p>
 </div>
@@ -318,7 +301,7 @@ variable <code>vue-backend</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(vue <span class="org-builtin">:variables</span> vue-backend 'lsp)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>vue <span class="org-builtin">:variables</span> vue-backend 'lsp<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -346,11 +329,11 @@ To use automatic code formatting you need to install <code>prettier</code> with:
 
 <p>
 If you want to use local <code>eslint</code> and <code>prettier</code> in your project, turn on node
- layer <code>dotspacemacs-configuration-layers</code> function:
+layer <code>dotspacemacs-configuration-layers</code> function:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(node <span class="org-builtin">:variables</span> node-add-modules-path t)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>node <span class="org-builtin">:variables</span> node-add-modules-path t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -367,11 +350,11 @@ If you want to use local <code>eslint</code> and <code>prettier</code> in your p
 <p>
 dumb backend is light weight and fast. <code>dumb-jump</code> is used to handled go to
 definition (<code>gd</code> vim key binding). Because of the template nature of Vue, it
-works very well. 
+works very well.
 </p>
 
 <p>
-Company backend is set to be very eager in suggestions. 
+Company backend is set to be very eager in suggestions.
 </p>
 
 <p>
@@ -384,7 +367,8 @@ Company backend is set to be very eager in suggestions.
 <h3 id="lsp"><span class="section-number-3">3.2.</span> lsp</h3>
 <div class="outline-text-3" id="text-lsp">
 <p>
-Vue language server needs to be installed
+Vue language server needs to be installed which one depends on the version of
+Vue you are using. For vue2 use:
 </p>
 
 <div class="org-src-container">
@@ -393,41 +377,34 @@ Vue language server needs to be installed
 </div>
 
 <p>
-This backend provides all the fancy features like: jump to definition,
-references, type inference&#x2026; However, <code>eslint</code> is explicitly selected for
-linting because it works better than <code>lsp</code> linter.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-optional-configuration" class="outline-2">
-<h2 id="optional-configuration"><span class="section-number-2">4.</span> Optional Configuration</h2>
-<div class="outline-text-2" id="text-optional-configuration">
-<p>
-<code>web-mode-script-padding</code> is set to 0, so indent is zero at root level inside
-<code>script</code> tag
-</p>
-
-<p>
-Same as <code>react</code> layer, you may refer to the <code>web-mode</code> configuration for fine
-tuning the indenting behaviour.
-</p>
-
-<p>
-For example, if you wan't two space indentation, put this in your
-<code>dotspacemacs/user-config</code>
+for vue3 use:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span>
- <span class="org-comment-delimiter">;; </span><span class="org-comment">web-mode</span>
- web-mode-markup-indent-offset 2
- web-mode-css-indent-offset 2
- web-mode-code-indent-offset 2
- web-mode-attr-indent-offset 2)
+<pre class="src src-sh">$ npm install -g volar
 </pre>
 </div>
+
+<p>
+These backends provide all the fancy features like: jump to definition,
+references, type inference&#x2026;
+</p>
+
+<p>
+If you are not happy with the linting behaviour of your lsp server you can
+fallback to <code>eslint</code> by setting <code>vue-ignore-lsp-diagnostics</code> to <code>t</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-indentation" class="outline-2">
+<h2 id="indentation"><span class="section-number-2">4.</span> Indentation</h2>
+<div class="outline-text-2" id="text-indentation">
+<p>
+<code>web-mode-script-padding</code> is set to 0, so indent is zero at root level inside
+<code>script</code> tag.
+</p>
 </div>
 </div>
 
@@ -684,7 +661,7 @@ See the <a href="https://github.com/syl20bnr/spacemacs/tree/develop/layers/%2Bto
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:51</p>
+<p class="date">Created: 2023-01-22 Sun 17:09</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:51 -->
+<!-- 2023-01-22 Sun 17:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gnus layer</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">Gnus layer</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -256,7 +239,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </div>
 </div>
 
-<div id="org9718d47" class="figure">
+<div id="org753d35b" class="figure">
 <p><img src="img/gnus.gif" alt="gnus.gif" />
 </p>
 </div>
@@ -317,14 +300,14 @@ following:
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Get email, and store in nnml</span>
-(<span class="org-keyword">setq</span> gnus-secondary-select-methods
-  '(
-    (nntp <span class="org-string">"gmane"</span>
-           (nntp-address <span class="org-string">"news.gmane.org"</span>))
-    (nntp <span class="org-string">"news.eternal-september.org"</span>)
-    (nntp <span class="org-string">"nntp.aioe.org"</span>)
-    (nntp <span class="org-string">"news.gwene.org"</span>)
-    ))
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gnus-secondary-select-methods
+  '<span class="org-rainbow-delimiters-depth-2">(</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>nntp <span class="org-string">"gmane"</span>
+           <span class="org-rainbow-delimiters-depth-4">(</span>nntp-address <span class="org-string">"news.gmane.org"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>nntp <span class="org-string">"news.eternal-september.org"</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>nntp <span class="org-string">"nntp.aioe.org"</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>nntp <span class="org-string">"news.gwene.org"</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -344,33 +327,33 @@ To configure Gnus with gmail support you can add the following to your
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Get email, and store in nnml</span>
-(<span class="org-keyword">setq</span> gnus-secondary-select-methods
-'(
-  (nnimap <span class="org-string">"gmail"</span>
-           (nnimap-address
-            <span class="org-string">"imap.gmail.com"</span>)
-           (nnimap-server-port 993)
-           (nnimap-stream ssl))
-  ))
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gnus-secondary-select-methods
+'<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>nnimap <span class="org-string">"gmail"</span>
+           <span class="org-rainbow-delimiters-depth-4">(</span>nnimap-address
+            <span class="org-string">"imap.gmail.com"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+           <span class="org-rainbow-delimiters-depth-4">(</span>nnimap-server-port <span class="org-highlight-numbers-number">993</span><span class="org-rainbow-delimiters-depth-4">)</span>
+           <span class="org-rainbow-delimiters-depth-4">(</span>nnimap-stream ssl<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+  <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Send email via Gmail:</span>
-(<span class="org-keyword">setq</span> message-send-mail-function 'smtpmail-send-it
-  smtpmail-default-smtp-server <span class="org-string">"smtp.gmail.com"</span>)
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> message-send-mail-function 'smtpmail-send-it
+  smtpmail-default-smtp-server <span class="org-string">"smtp.gmail.com"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Archive outgoing email in Sent folder on imap.gmail.com:</span>
-(<span class="org-keyword">setq</span> gnus-message-archive-method '(nnimap <span class="org-string">"imap.gmail.com"</span>)
-    gnus-message-archive-group <span class="org-string">"[Gmail]/Sent Mail"</span>)
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gnus-message-archive-method '<span class="org-rainbow-delimiters-depth-2">(</span>nnimap <span class="org-string">"imap.gmail.com"</span><span class="org-rainbow-delimiters-depth-2">)</span>
+    gnus-message-archive-group <span class="org-string">"[Gmail]/Sent Mail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Set return email address based on incoming email address</span>
-(<span class="org-keyword">setq</span> gnus-posting-styles
-    '(((header <span class="org-string">"to"</span> <span class="org-string">"address@outlook.com"</span>)
-       (address <span class="org-string">"address@outlook.com"</span>))
-  ((header <span class="org-string">"to"</span> <span class="org-string">"address@gmail.com"</span>)
-     (address <span class="org-string">"address@gmail.com"</span>))))
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gnus-posting-styles
+    '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>header <span class="org-string">"to"</span> <span class="org-string">"address@outlook.com"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+       <span class="org-rainbow-delimiters-depth-4">(</span>address <span class="org-string">"address@outlook.com"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>header <span class="org-string">"to"</span> <span class="org-string">"address@gmail.com"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+     <span class="org-rainbow-delimiters-depth-4">(</span>address <span class="org-string">"address@gmail.com"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Store email in ~/gmail directory</span>
-(<span class="org-keyword">setq</span> nnml-directory <span class="org-string">"~/gmail"</span>)
-(<span class="org-keyword">setq</span> message-directory <span class="org-string">"~/gmail"</span>)
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> nnml-directory <span class="org-string">"~/gmail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> message-directory <span class="org-string">"~/gmail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -379,7 +362,7 @@ Authentication for your gmail account is best stored in an <code>authinfo</code>
 <code>authinfo.pgp</code> file. It must be of the form:
 </p>
 
-<pre class="example" id="orgbb42648">
+<pre class="example" id="org82dd71d">
 machine smtp.gmail.com login name@gmail.com password SUPER_SECRET_PASS
 machine imap.gmail.com login name@gmail.com port 993 password SUPER_SECRET_PASS
 </pre>
@@ -415,10 +398,10 @@ The Gnus layer defines the following variables like this:
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">gnus-summary-line-format <span class="org-string">"%U%R%z %(%&amp;user-date;  %-15,15f  %B (%c) %s%)\n"</span>
-gnus-user-date-format-alist '((t . <span class="org-string">"%Y-%m-%d %H:%M"</span>))
+gnus-user-date-format-alist '<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>t . <span class="org-string">"%Y-%m-%d %H:%M"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 gnus-group-line-format <span class="org-string">"%M%S%p%P%5y:%B %G\n"</span><span class="org-comment-delimiter">;;</span><span class="org-comment">"%B%(%g%)"</span>
 gnus-summary-thread-gathering-function 'gnus-gather-threads-by-references
-gnus-thread-sort-functions '(gnus-thread-sort-by-most-recent-date)
+gnus-thread-sort-functions '<span class="org-rainbow-delimiters-depth-1">(</span>gnus-thread-sort-by-most-recent-date<span class="org-rainbow-delimiters-depth-1">)</span>
 gnus-ignored-newsgroups <span class="org-string">"^to\\.</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">^[0-9. ]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string"> </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">$</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">^[</span><span class="org-string"><span class="org-warning">\</span></span><span class="org-string">&#8221;]</span><span class="org-string"><span class="org-warning">\</span></span><span class="org-string">&#8221;[#&#8217;()]"</span>
 gnus-sum-thread-tree-false-root <span class="org-string">""</span>
 gnus-sum-thread-tree-indent <span class="org-string">" "</span>
@@ -433,7 +416,7 @@ gnus-summary-display-arrow nil <span class="org-comment-delimiter">; </span><spa
 gnus-mime-display-multipart-related-as-mixed t <span class="org-comment-delimiter">; </span><span class="org-comment">Show more MIME-stuff:</span>
 gnus-auto-select-first nil <span class="org-comment-delimiter">; </span><span class="org-comment">Don't get the first article automatically:</span>
 smiley-style 'medium
-gnus-keep-backlog '0
+gnus-keep-backlog '<span class="org-highlight-numbers-number">0</span>
 </pre>
 </div>
 
@@ -532,7 +515,7 @@ Basic and Spacemacs specific key bindings can be found in the following table.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:51</p>
+<p class="date">Created: 2023-01-22 Sun 17:09</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

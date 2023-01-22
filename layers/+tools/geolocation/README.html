@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:52 -->
+<!-- 2023-01-22 Sun 17:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Geolocation layer</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">Geolocation layer</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -302,10 +285,10 @@ something like this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(geolocation <span class="org-builtin">:variables</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>geolocation <span class="org-builtin">:variables</span>
              geolocation-enable-automatic-theme-changer t
              geolocation-enable-location-service t
-             geolocation-enable-weather-forecast t)
+             geolocation-enable-weather-forecast t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -324,9 +307,9 @@ Set location manually by setting the following variables in your dotfile:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> calendar-location-name <span class="org-string">"Barcelona, Spain"</span>
-      calendar-latitude 41.23
-      calendar-longitude 1.80)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> calendar-location-name <span class="org-string">"Barcelona, Spain"</span>
+      calendar-latitude <span class="org-highlight-numbers-number">41.23</span>
+      calendar-longitude <span class="org-highlight-numbers-number">1.80</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -348,7 +331,7 @@ activated.
 </p>
 
 
-<div id="org7f87789" class="figure">
+<div id="org0af2a61" class="figure">
 <p><img src="img/emacs-location-helper.jpg" alt="emacs-location-helper.jpg" />
 </p>
 </div>
@@ -385,7 +368,7 @@ openweathermap website. You need to sign up to the website to get a API key.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> sunshine-appid <span class="org-string">"your-apikey"</span>)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> sunshine-appid <span class="org-string">"your-apikey"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -403,7 +386,7 @@ below.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> sunshine-location <span class="org-string">"90210,USA"</span>)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> sunshine-location <span class="org-string">"90210,USA"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -413,7 +396,7 @@ It will use the imperial unit system by default. To switch to metric, add
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> sunshine-units 'metric)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> sunshine-units 'metric<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -428,12 +411,12 @@ To display weather forecast icons by default ("pretty mode"), add
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> sunshine-show-icons t)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> sunshine-show-icons t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 
-<div id="org8578792" class="figure">
+<div id="org041fb94" class="figure">
 <p><img src="img/emacs-sunshine.jpg" alt="emacs-sunshine.jpg" />
 </p>
 </div>
@@ -481,7 +464,7 @@ To display weather forecast icons by default ("pretty mode"), add
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:52</p>
+<p class="date">Created: 2023-01-22 Sun 17:10</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:52 -->
+<!-- 2023-01-22 Sun 17:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lua layer</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">Lua layer</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -266,7 +249,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </div>
 </div>
 
-<div id="org524dd2d" class="figure">
+<div id="org0b0341d" class="figure">
 <p><img src="img/lua.gif" alt="lua.gif" />
 </p>
 </div>
@@ -339,8 +322,8 @@ but also provides less features. To enable it set the <code>lua-backend</code> t
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(lua <span class="org-builtin">:variables</span>
-     lua-backend 'lua-mode)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>lua <span class="org-builtin">:variables</span>
+     lua-backend 'lua-mode<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -370,8 +353,8 @@ To enable LSP set <code>lua-backend</code> to <code>lsp</code>. If <code>lua-bac
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(lua <span class="org-builtin">:variables</span>
-     lua-backend 'lsp)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>lua <span class="org-builtin">:variables</span>
+     lua-backend 'lsp<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -391,11 +374,11 @@ The java path and the path to the server executable can be configured as is show
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(lua <span class="org-builtin">:variables</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>lua <span class="org-builtin">:variables</span>
      lua-backend 'lsp
      lua-lsp-server 'emmy
      lsp-clients-emmy-lua-jar-path <span class="org-string">"~/.emacs.d/.cache/lsp/EmmyLua-LS-all.jar"</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
-     lsp-clients-emmy-lua-java-path <span class="org-string">"java"</span>) <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
+     lsp-clients-emmy-lua-java-path <span class="org-string">"java"</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
 </pre>
 </div>
 </div>
@@ -409,11 +392,11 @@ Then set the layer variables as shown below:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(lua <span class="org-builtin">:variables</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>lua <span class="org-builtin">:variables</span>
      lua-backend 'lsp
      lua-lsp-server 'lua-language-server
      lsp-clients-lua-language-server-bin <span class="org-string">"~/.emacs.d/.cache/lsp/lua-language-server/bin/Linux/lua-language-server"</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
-     lsp-clients-lua-language-server-main-location <span class="org-string">"~/.emacs.d/.cache/lsp/lua-language-server/main.lua"</span>) <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
+     lsp-clients-lua-language-server-main-location <span class="org-string">"~/.emacs.d/.cache/lsp/lua-language-server/main.lua"</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
 </pre>
 </div>
 </div>
@@ -433,10 +416,10 @@ To instruct Spacemacs to use this server set your config as shown below:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(lua <span class="org-builtin">:variables</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>lua <span class="org-builtin">:variables</span>
      lua-backend 'lsp
      lua-lsp-server 'lua-lsp
-     lsp-clients-luarocks-bin-dir <span class="org-string">"~/.luarocks/bin/"</span>) <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
+     lsp-clients-luarocks-bin-dir <span class="org-string">"~/.luarocks/bin/"</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default path</span>
 </pre>
 </div>
 </div>
@@ -516,7 +499,7 @@ the <a href="../../+tools/lsp/README.html">LSP layer</a>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:52</p>
+<p class="date">Created: 2023-01-22 Sun 17:10</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

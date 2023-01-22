@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:51 -->
+<!-- 2023-01-22 Sun 17:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Jabber layer</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">Jabber layer</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -261,7 +244,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </div>
 </div>
 
-<div id="org7ca9bae" class="figure">
+<div id="org256c11a" class="figure">
 <p><img src="img/jabber-logo.gif" alt="jabber-logo.gif" />
 </p>
 </div>
@@ -416,14 +399,14 @@ To find YOUR<sub>JABBER</sub><sub>ID</sub> visit "XMPP/Jabber info" section on y
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
-(<span class="org-keyword">setq</span> ssl-program-name <span class="org-string">"gnutls-cli"</span>
-      ssl-program-arguments '(<span class="org-string">"--insecure"</span> <span class="org-string">"-p"</span> service host)
-      ssl-certificate-verification-policy 1)
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ssl-program-name <span class="org-string">"gnutls-cli"</span>
+      ssl-program-arguments '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"--insecure"</span> <span class="org-string">"-p"</span> service host<span class="org-rainbow-delimiters-depth-2">)</span>
+      ssl-certificate-verification-policy <span class="org-highlight-numbers-number">1</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
-(<span class="org-keyword">setq</span> jabber-account-list '((<span class="org-string">"YOUR_JABBER_ID@chat.hipchat.com"</span>
-                             (<span class="org-builtin">:port</span> . 5223)
-                             (<span class="org-builtin">:password</span> . <span class="org-string">"YOUR_PASS"</span>)
-                             (<span class="org-builtin">:connection-type</span> . ssl))))
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> jabber-account-list '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"YOUR_JABBER_ID@chat.hipchat.com"</span>
+                             <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">:port</span> . <span class="org-highlight-numbers-number">5223</span><span class="org-rainbow-delimiters-depth-4">)</span>
+                             <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">:password</span> . <span class="org-string">"YOUR_PASS"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+                             <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">:connection-type</span> . ssl<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -437,22 +420,22 @@ To simplify joining rooms, you can use something like this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">hipchat-room-list</span> '(
-                            (<span class="org-string">"HIPCHAT NAME"</span> . <span class="org-string">"XMPP/JABBER NAME"</span>)
-                            ))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defvar</span> <span class="org-variable-name">hipchat-room-list</span> '<span class="org-rainbow-delimiters-depth-2">(</span>
+                            <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"HIPCHAT NAME"</span> . <span class="org-string">"XMPP/JABBER NAME"</span><span class="org-rainbow-delimiters-depth-3">)</span>
+                            <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
-(<span class="org-keyword">defvar</span> <span class="org-variable-name">hipchat-number</span> <span class="org-string">""</span>)
-(<span class="org-keyword">defvar</span> <span class="org-variable-name">hipchat-nickname</span> <span class="org-string">"YOU_NICKNAME"</span>)
-(<span class="org-keyword">defun</span> <span class="org-function-name">hipchat-join</span> ()
-  (<span class="org-keyword">interactive</span>)
-  (<span class="org-keyword">let*</span> ((room-list (sort (mapcar 'car hipchat-room-list) 'string-lessp))
-         (selected-room (completing-read <span class="org-string">"Room name: "</span> room-list))
-         (hipchat-mapping (cdr (assoc selected-room hipchat-room-list))))
-    (jabber-groupchat-join
-     (jabber-read-account)
-     (concat hipchat-number <span class="org-string">""</span> hipchat-mapping <span class="org-string">"@conf.hipchat.com"</span>)
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defvar</span> <span class="org-variable-name">hipchat-number</span> <span class="org-string">""</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defvar</span> <span class="org-variable-name">hipchat-nickname</span> <span class="org-string">"YOU_NICKNAME"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">hipchat-join</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">interactive</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let*</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>room-list <span class="org-rainbow-delimiters-depth-5">(</span>sort <span class="org-rainbow-delimiters-depth-6">(</span>mapcar 'car hipchat-room-list<span class="org-rainbow-delimiters-depth-6">)</span> 'string-lessp<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span>selected-room <span class="org-rainbow-delimiters-depth-5">(</span>completing-read <span class="org-string">"Room name: "</span> room-list<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span>hipchat-mapping <span class="org-rainbow-delimiters-depth-5">(</span>cdr <span class="org-rainbow-delimiters-depth-6">(</span>assoc selected-room hipchat-room-list<span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>jabber-groupchat-join
+     <span class="org-rainbow-delimiters-depth-4">(</span>jabber-read-account<span class="org-rainbow-delimiters-depth-4">)</span>
+     <span class="org-rainbow-delimiters-depth-4">(</span>concat hipchat-number <span class="org-string">""</span> hipchat-mapping <span class="org-string">"@conf.hipchat.com"</span><span class="org-rainbow-delimiters-depth-4">)</span>
      hipchat-nickname
-     t)))
+     t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -461,7 +444,7 @@ To simplify joining rooms, you can use something like this:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:51</p>
+<p class="date">Created: 2023-01-22 Sun 17:09</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
