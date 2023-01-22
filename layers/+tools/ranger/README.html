@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:52 -->
+<!-- 2023-01-22 Sun 17:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ranger layer</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">Ranger layer</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -280,10 +263,10 @@ example code shows how you can set both variables at once via the
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '(ranger <span class="org-builtin">:variables</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span>ranger <span class="org-builtin">:variables</span>
                        ranger-override-dired 'ranger
-                       ranger-show-preview t))
+                       ranger-show-preview t<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -321,7 +304,7 @@ The possible values are:
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span class="org-keyword">setq</span> ranger-enter-with-minus 'deer)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-enter-with-minus 'deer<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -331,7 +314,7 @@ while browsing the directories.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span class="org-keyword">setq</span> ranger-cleanup-on-disable t)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-cleanup-on-disable t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -341,7 +324,7 @@ dired buffer.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span class="org-keyword">setq</span> ranger-cleanup-eagerly t)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-cleanup-eagerly t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -350,7 +333,7 @@ You can choose to show dotfiles at ranger startup, toggled by <code>zh</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span class="org-keyword">setq</span> ranger-show-hidden t)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-show-hidden t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -360,7 +343,7 @@ return a string that is placed in the header-line.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span class="org-keyword">setq</span> ranger-header-func 'ranger-header-line)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-header-func 'ranger-header-line<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -370,7 +353,7 @@ return a string that is placed in the header-line.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span class="org-keyword">setq</span> ranger-parent-header-func 'ranger-parent-header-line)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-parent-header-func 'ranger-parent-header-line<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -384,7 +367,7 @@ You can set the number of folders to nest to the left, adjusted by <code>z-</cod
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span class="org-keyword">setq</span> ranger-parent-depth 2)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-parent-depth <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -393,7 +376,7 @@ You can set the size of the parent windows as a fraction of the frame size
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span class="org-keyword">setq</span> ranger-width-parents 0.12)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-width-parents <span class="org-highlight-numbers-number">0.12</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -403,7 +386,7 @@ frame size to prevent filling up entire frame with parents.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span class="org-keyword">setq</span> ranger-max-parent-width 0.12)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-max-parent-width <span class="org-highlight-numbers-number">0.12</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -417,7 +400,7 @@ You can choose to show previews literally, or through find-file, toggled by <cod
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span class="org-keyword">setq</span> ranger-show-literal t)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-show-literal t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -426,7 +409,7 @@ You can set the size of the preview windows as a fraction of the frame size
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span class="org-keyword">setq</span> ranger-width-preview 0.55)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-width-preview <span class="org-highlight-numbers-number">0.55</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -437,7 +420,7 @@ your liking:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span class="org-keyword">setq</span> ranger-ignored-extensions '(<span class="org-string">"mkv"</span> <span class="org-string">"iso"</span> <span class="org-string">"mp4"</span>))
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-ignored-extensions '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"mkv"</span> <span class="org-string">"iso"</span> <span class="org-string">"mp4"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -446,7 +429,7 @@ To set the max files size (in MB), set the following parameter:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span class="org-keyword">setq</span> ranger-max-preview-size 10)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-max-preview-size <span class="org-highlight-numbers-number">10</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -627,7 +610,7 @@ To set the max files size (in MB), set the following parameter:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:52</p>
+<p class="date">Created: 2023-01-22 Sun 17:10</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

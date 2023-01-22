@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:51 -->
+<!-- 2023-01-22 Sun 17:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Newsletter #01: About the 0.200 release</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">Newsletter #01: About the 0.200 release</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -354,13 +337,13 @@ We renamed <code>extensions</code> directories in layers to <code>local</code> a
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">in extensions.el</span>
-(<span class="org-keyword">setq</span> python-post-extensions
-  '(
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> python-post-extensions
+  '<span class="org-rainbow-delimiters-depth-2">(</span>
     nose
     pylookup
     python-compile
     py-yapf
-    ))
+    <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -370,13 +353,13 @@ We renamed <code>extensions</code> directories in layers to <code>local</code> a
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">in packages.el</span>
-(<span class="org-keyword">setq</span> python-packages
-  '(
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> python-packages
+  '<span class="org-rainbow-delimiters-depth-2">(</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">skipping packages before...</span>
-    (nose <span class="org-builtin">:location</span> local)
-    (pylookup <span class="org-builtin">:location</span> local)
+    <span class="org-rainbow-delimiters-depth-3">(</span>nose <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>pylookup <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-3">)</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">skipping packages after...</span>
-    ))
+    <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -390,13 +373,13 @@ replaced by the <code>:excluded</code> keyword in <code>&lt;layer&gt;-packages</
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> vim-empty-lines-packages
-      '(
-        (vim-empty-lines-mode <span class="org-builtin">:location</span> local)
-        ))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> vim-empty-lines-packages
+      '<span class="org-rainbow-delimiters-depth-2">(</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span>vim-empty-lines-mode <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
-(<span class="org-keyword">setq</span> vim-empty-lines-excluded-packages
-      '(vi-tilde-fringe))
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> vim-empty-lines-excluded-packages
+      '<span class="org-rainbow-delimiters-depth-2">(</span>vi-tilde-fringe<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -405,11 +388,11 @@ replaced by the <code>:excluded</code> keyword in <code>&lt;layer&gt;-packages</
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> vim-empty-lines-packages
-      '(
-        (vim-empty-lines-mode <span class="org-builtin">:location</span> local)
-        (vi-tilde-fringe <span class="org-builtin">:excluded</span> t)
-        ))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> vim-empty-lines-packages
+      '<span class="org-rainbow-delimiters-depth-2">(</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span>vim-empty-lines-mode <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span>vi-tilde-fringe <span class="org-builtin">:excluded</span> t<span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -627,8 +610,8 @@ packages <code>fill-column-indicator</code> and <code>golden-ratio</code> in the
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> dotspacemacs-configuration-layers
-  (spacemacs-ui-visual <span class="org-builtin">:packages</span> fill-column-indicator golden-ratio))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-configuration-layers
+  <span class="org-rainbow-delimiters-depth-2">(</span>spacemacs-ui-visual <span class="org-builtin">:packages</span> fill-column-indicator golden-ratio<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -637,8 +620,8 @@ Another example to select all the packages except <code>fancy-battery</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> dotspacemacs-configuration-layers
-  (spacemacs-ui-visual <span class="org-builtin">:packages</span> (not fancy-battery))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-configuration-layers
+  <span class="org-rainbow-delimiters-depth-2">(</span>spacemacs-ui-visual <span class="org-builtin">:packages</span> <span class="org-rainbow-delimiters-depth-3">(</span>not fancy-battery<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
 </pre>
 </div>
 </div>
@@ -728,10 +711,10 @@ To define these new variables use the <code>:variables</code> keyword. For examp
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> dotspacemacs-editing-style '(hybrid <span class="org-builtin">:variables</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-editing-style '<span class="org-rainbow-delimiters-depth-2">(</span>hybrid <span class="org-builtin">:variables</span>
                                    hybrid-mode-enable-evilified-state t
                                    hybrid-mode-enable-hjkl-bindings t
-                                   hybrid-mode-default-state 'normal))
+                                   hybrid-mode-default-state 'normal<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -901,8 +884,8 @@ of 7 items for the projects list:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> dotspacemacs-startup-lists '((recents  . 5)
-                                   (projects . 7)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-startup-lists '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>recents  . <span class="org-highlight-numbers-number">5</span><span class="org-rainbow-delimiters-depth-3">)</span>
+                                   <span class="org-rainbow-delimiters-depth-3">(</span>projects . <span class="org-highlight-numbers-number">7</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1049,7 +1032,7 @@ of <code>evil</code>.</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:51</p>
+<p class="date">Created: 2023-01-22 Sun 17:09</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

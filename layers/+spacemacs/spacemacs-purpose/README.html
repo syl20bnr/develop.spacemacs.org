@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:52 -->
+<!-- 2023-01-22 Sun 17:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spacemacs-purpose layer</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">Spacemacs-purpose layer</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -407,13 +390,13 @@ To do so copy and adjust the following code:
 <span class="org-comment-delimiter">;; </span><span class="org-comment">This code also takes care that the right loading</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">order is followed so there is no need for any</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">`with-eval-after-load` constructs.</span>
-(<span class="org-keyword">defun</span> <span class="org-function-name">shell/post-init-window-purpose</span> ()
-  (purpose-set-extension-configuration
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">shell/post-init-window-purpose</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>purpose-set-extension-configuration
    <span class="org-builtin">:shell-layer</span>
-   (purpose-conf <span class="org-builtin">:mode-purposes</span> '((vterm-mode . terminal)
-                                  (eshell-mode . terminal)
-                                  (shell-mode . terminal)
-                                  (term-mode . terminal)))))
+   <span class="org-rainbow-delimiters-depth-3">(</span>purpose-conf <span class="org-builtin">:mode-purposes</span> '<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">(</span>vterm-mode . terminal<span class="org-rainbow-delimiters-depth-5">)</span>
+                                  <span class="org-rainbow-delimiters-depth-5">(</span>eshell-mode . terminal<span class="org-rainbow-delimiters-depth-5">)</span>
+                                  <span class="org-rainbow-delimiters-depth-5">(</span>shell-mode . terminal<span class="org-rainbow-delimiters-depth-5">)</span>
+                                  <span class="org-rainbow-delimiters-depth-5">(</span>term-mode . terminal<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
    <span class="org-comment-delimiter">;; </span><span class="org-comment">This can also be a static name allocation</span>
    <span class="org-comment-delimiter">;;            </span><span class="org-comment">:name-purposes '(("*Anaconda Help*" . Help))</span>
    <span class="org-comment-delimiter">;; </span><span class="org-comment">or a dynamic one following a regexp</span>
@@ -443,8 +426,8 @@ This can easily be achieved by adding below code in
 <span class="org-comment-delimiter">;; </span><span class="org-comment">priority than the ones from the layers.</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">With this allocations can be completely</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">customised.</span>
-(purpose-add-user-purposes <span class="org-builtin">:names</span> '((<span class="org-string">"*Anaconda Help*"</span> . general))
-                           <span class="org-builtin">:regexps</span> '((<span class="org-string">"\\.hy$"</span> . python)))
+<span class="org-rainbow-delimiters-depth-1">(</span>purpose-add-user-purposes <span class="org-builtin">:names</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"*Anaconda Help*"</span> . general<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+                           <span class="org-builtin">:regexps</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"\\.hy$"</span> . python<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -534,7 +517,7 @@ with <code>window-purpose</code>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:52</p>
+<p class="date">Created: 2023-01-22 Sun 17:10</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

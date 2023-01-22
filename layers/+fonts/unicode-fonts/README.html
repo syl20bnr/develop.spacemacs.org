@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:51 -->
+<!-- 2023-01-22 Sun 17:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>unicode-fonts layer</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">unicode-fonts layer</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -246,7 +229,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </ul>
 </li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#ligature-fonts">3. Ligature Fonts</a></li>
+<li><a href="#configuration">3. Configuration</a></li>
 </ul>
 </div>
 </div>
@@ -264,10 +247,10 @@ install the fonts listed in the <a href="https://github.com/rolandwalker/unicode
 <h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Display unicode glyphs using the best available font.</li>
+<li>Display Unicode glyphs using the best available font.</li>
 <li>Easily override glyphs or sections of glyphs.</li>
-<li>Display color emoji on both the macOS port version of Emacs and emacs-plus (with
-<code>unicode-fonts-force-multi-color-on-mac</code> set to non nil).</li>
+<li>Display color emoji on both the macOS port version of Emacs and emacs-plus
+(with <code>unicode-fonts-force-multi-color-on-mac</code> set to non nil).</li>
 <li>Enable support for font ligature in Emacs 27 + via <a href="https://github.com/mickeynp/ligature.el">ligatures.el</a>.</li>
 </ul>
 </div>
@@ -279,9 +262,14 @@ install the fonts listed in the <a href="https://github.com/rolandwalker/unicode
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>unicode-fonts</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
-file.
+add <code>unicode-fonts</code> to the existing <code>dotspacemacs-configuration-layers</code> list in
+this file.
 </p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>unicode-fonts<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
 
 <p>
 If using <a href="https://github.com/d12frosted/homebrew-emacs-plus/">emacs-plus</a>, you can set <code>unicode-fonts-force-multi-color-on-mac</code> to
@@ -289,69 +277,76 @@ enable color emoji.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(unicode-fonts <span class="org-builtin">:variables</span> unicode-fonts-force-multi-color-on-mac t)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span>unicode-fonts <span class="org-builtin">:variables</span>
+                              unicode-fonts-force-multi-color-on-mac t<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
+</div>
+</div>
 
+<div id="outline-container-configuration" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">3.</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
 <p>
 If you want ligature support Emacs must be built with <code>Harfbuzz</code> and a ligature
-font must be installed and configured you can see the <a href="https://github.com/mickeynp/ligature.el#compatibility-and-version-requirements">upstream</a> docs for a full
-list of requirements. By default this is not enabled you can enable it with
+font must be installed and configured. You can see the <a href="https://github.com/mickeynp/ligature.el#compatibility-and-version-requirements">upstream</a> docs for a full
+list of requirements. By default this is not enabled, and you can enable it with
 <code>unicode-fonts-enable-ligatures</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(unicode-fonts <span class="org-builtin">:variables</span> unicode-fonts-enable-ligatures t)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span>unicode-fonts <span class="org-builtin">:variables</span>
+                              unicode-fonts-enable-ligatures t<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
-By default ligatures will be enabled in all programing modes.
-You can enable ligatures for specific modes with
-<code>unicode-fonts-ligature-modes</code> variable.
+By default ligatures will be enabled in all programming modes. You can enable
+ligatures for specific modes with <code>unicode-fonts-ligature-modes</code> variable. For
+example, to enable ligatures only in PHP and Javascript files:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(unicode-fonts <span class="org-builtin">:variables</span> unicode-fonts-ligature-modes '(php-mode js-mode))
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span>unicode-fonts <span class="org-builtin">:variables</span>
+                              unicode-fonts-enable-ligatures t
+                              unicode-fonts-ligature-modes '<span class="org-rainbow-delimiters-depth-3">(</span>php-mode js-mode<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
-To enable only for text modes you can use <code>text-mode</code>
+Or to enable ligatures only for text files:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(unicode-fonts <span class="org-builtin">:variables</span> unicode-fonts-ligature-modes '(text-mode))
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span>unicode-fonts <span class="org-builtin">:variables</span>
+                              unicode-fonts-enable-ligatures t
+                              unicode-fonts-ligature-modes '<span class="org-rainbow-delimiters-depth-3">(</span>text-mode<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
 To configure the ligature set that gets used with your font there is a
-<code>unicode-fonts-ligature-set</code> variable. To only enable the ligatures in
-<code>if</code> statements you can limit the <code>unicode-fonts-ligature-set</code>
+<code>unicode-fonts-ligature-set</code> variable. For example To only enable the ligatures
+in <code>if</code> statements you can set the <code>unicode-fonts-ligature-set</code> as:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(unicode-fonts <span class="org-builtin">:variables</span> unicode-fonts-ligature-set '(<span class="org-string">"=="</span> <span class="org-string">"==="</span> <span class="org-string">"!="</span> <span class="org-string">"!=="</span> <span class="org-string">"||"</span> <span class="org-string">"&amp;&amp;"</span>))
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span>unicode-fonts <span class="org-builtin">:variables</span>
+                              unicode-fonts-enable-ligatures t
+                              unicode-fonts-ligature-set '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"=="</span> <span class="org-string">"==="</span> <span class="org-string">"!="</span> <span class="org-string">"!=="</span> <span class="org-string">"||"</span> <span class="org-string">"&amp;&amp;"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
-</div>
-</div>
-
-<div id="outline-container-ligature-fonts" class="outline-2">
-<h2 id="ligature-fonts"><span class="section-number-2">3.</span> Ligature Fonts</h2>
-<div class="outline-text-2" id="text-ligature-fonts">
-<ul class="org-ul">
-<li><a href="https://github.com/tonsky/FiraCode">Fira Code</a></li>
-<li><a href="https://github.com/microsoft/cascadia-code">Cascadia Code</a></li>
-<li><a href="https://github.com/be5invis/Iosevka/">Iosevka</a></li>
-</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:51</p>
+<p class="date">Created: 2023-01-22 Sun 17:09</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:51 -->
+<!-- 2023-01-22 Sun 17:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Migrating from Vim</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">Migrating from Vim</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -400,7 +383,7 @@ bottom of your window. To exit a transient-state press <code>q</code>.
 </p>
 
 
-<div id="org71a427f" class="figure">
+<div id="org1c5f6bd" class="figure">
 <p><img src="img/spacemacs-scale-transient-state.png" alt="spacemacs-scale-transient-state.png" />
 </p>
 </div>
@@ -424,7 +407,7 @@ Spacemacs uses <a href="https://github.com/justbur/emacs-which-key">which-key</a
 </p>
 
 
-<div id="orgf127e8a" class="figure">
+<div id="orga99f2db" class="figure">
 <p><img src="img/which-key.png" alt="which-key.png" />
 </p>
 </div>
@@ -836,11 +819,11 @@ The syntax is simple:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> variable value) <span class="org-comment-delimiter">; </span><span class="org-comment">Syntax</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> variable value<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">Syntax</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Setting variables example</span>
-(<span class="org-keyword">setq</span> variable1 t <span class="org-comment-delimiter">; </span><span class="org-comment">True</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> variable1 t <span class="org-comment-delimiter">; </span><span class="org-comment">True</span>
       variable2 nil <span class="org-comment-delimiter">; </span><span class="org-comment">False</span>
-      variable3 '(<span class="org-string">"A"</span> <span class="org-string">"list"</span> <span class="org-string">"of"</span> <span class="org-string">"things"</span>))
+      variable3 '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"A"</span> <span class="org-string">"list"</span> <span class="org-string">"of"</span> <span class="org-string">"things"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -855,9 +838,9 @@ built-in <code>define-key</code> function is the best way to do that.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(define-key map new-keybinding function) <span class="org-comment-delimiter">; </span><span class="org-comment">Syntax</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>define-key map new-keybinding function<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">Syntax</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Map H to go to the previous buffer in normal mode</span>
-(define-key evil-normal-state-map (kbd <span class="org-string">"H"</span>) 'previous-buffer)
+<span class="org-rainbow-delimiters-depth-1">(</span>define-key evil-normal-state-map <span class="org-rainbow-delimiters-depth-2">(</span>kbd <span class="org-string">"H"</span><span class="org-rainbow-delimiters-depth-2">)</span> 'previous-buffer<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -872,12 +855,12 @@ To map <code>&lt;Leader&gt;</code> key bindings, use the <code>spacemacs/set-lea
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(spacemacs/set-leader-keys key function) <span class="org-comment-delimiter">; </span><span class="org-comment">Syntax</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/set-leader-keys key function<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">Syntax</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Map killing a buffer to &lt;Leader&gt; b c</span>
-(spacemacs/set-leader-keys <span class="org-string">"bc"</span> 'spacemacs/kill-this-buffer)
+<span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/set-leader-keys <span class="org-string">"bc"</span> 'spacemacs/kill-this-buffer<span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Map opening a link to &lt;Leader&gt; o l only in org-mode (works for any major-mode)</span>
-(spacemacs/set-leader-keys-for-major-mode 'org-mode
-  <span class="org-string">"ol"</span> 'org-open-at-point)
+<span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/set-leader-keys-for-major-mode 'org-mode
+  <span class="org-string">"ol"</span> 'org-open-at-point<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -887,7 +870,7 @@ To map <code>&lt;Leader&gt;</code> key bindings, use the <code>spacemacs/set-lea
 <div class="outline-text-5" id="text-bind-keys-to-a-macro">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">H goes to beginning of the line</span>
-(define-key evil-normal-state-map (kbd <span class="org-string">"H"</span>) (kbd <span class="org-string">"^"</span>))
+<span class="org-rainbow-delimiters-depth-1">(</span>define-key evil-normal-state-map <span class="org-rainbow-delimiters-depth-2">(</span>kbd <span class="org-string">"H"</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>kbd <span class="org-string">"^"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -918,7 +901,7 @@ The equivalent remapping in Spac/Emacs:
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">S-return adds a newline above</span>
-(define-key evil-normal-state-map (kbd <span class="org-string">"S-&lt;return&gt;"</span>) (kbd <span class="org-string">"O &lt;escape&gt; j"</span>))
+<span class="org-rainbow-delimiters-depth-1">(</span>define-key evil-normal-state-map <span class="org-rainbow-delimiters-depth-2">(</span>kbd <span class="org-string">"S-&lt;return&gt;"</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>kbd <span class="org-string">"O &lt;escape&gt; j"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -934,13 +917,13 @@ customization. The syntax is simple:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">func-name</span> (arg1 arg2)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">func-name</span> <span class="org-rainbow-delimiters-depth-2">(</span>arg1 arg2<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-doc">"docstring"</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">Body</span>
-  )
+  <span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Calling a function</span>
-(func-name arg1 arg2)
+<span class="org-rainbow-delimiters-depth-1">(</span>func-name arg1 arg2<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -952,16 +935,16 @@ Here is an example of a function that is useful in real life:
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">This snippet allows you to run clang-format before saving</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">given the current file as the correct filetype.</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">This relies on the c-c++ layer being enabled.</span>
-(<span class="org-keyword">defun</span> <span class="org-function-name">clang-format-for-filetype</span> ()
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">clang-format-for-filetype</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-doc">"Run clang-format if the current file has a file extensions</span>
 <span class="org-doc">in the filetypes list."</span>
-  (<span class="org-keyword">let</span> ((filetypes '(<span class="org-string">"c"</span> <span class="org-string">"cpp"</span>)))
-    (<span class="org-keyword">when</span> (member (file-name-extension (buffer-file-name)) filetypes)
-      (clang-format-buffer))))
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>filetypes '<span class="org-rainbow-delimiters-depth-5">(</span><span class="org-string">"c"</span> <span class="org-string">"cpp"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-4">(</span>member <span class="org-rainbow-delimiters-depth-5">(</span>file-name-extension <span class="org-rainbow-delimiters-depth-6">(</span>buffer-file-name<span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span> filetypes<span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span>clang-format-buffer<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">See http://www.gnu.org/software/emacs/manual/html_node/emacs/Hooks.html for</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">what this line means</span>
-(add-hook 'before-save-hook 'clang-format-for-filetype)
+<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'before-save-hook 'clang-format-for-filetype<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -979,10 +962,10 @@ this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/layers</span> ()
-  (<span class="org-keyword">setq-default</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq-default</span>
    <span class="org-comment-delimiter">;; </span><span class="org-comment">...</span>
-   dotspacemacs-configuration-layers '(<span class="org-comment-delimiter">;; </span><span class="org-comment">auto-completion</span>
+   dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-comment-delimiter">;; </span><span class="org-comment">auto-completion</span>
                                        <span class="org-comment-delimiter">;; </span><span class="org-comment">better-defaults</span>
                                        emacs-lisp
                                        <span class="org-comment-delimiter">;; </span><span class="org-comment">(git :variables</span>
@@ -990,7 +973,7 @@ this:
                                        <span class="org-comment-delimiter">;; </span><span class="org-comment">markdown</span>
                                        <span class="org-comment-delimiter">;; </span><span class="org-comment">org</span>
                                        <span class="org-comment-delimiter">;; </span><span class="org-comment">syntax-checking</span>
-                                       )))
+                                       <span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1014,7 +997,7 @@ builtin command to generate the layer boilerplate:
 looks like this:
 </p>
 
-<pre class="example" id="org92bd3fa">
+<pre class="example" id="orgccada6d">
 [layer-name]
   |__ [local]*
   | |__ [example-mode-1]
@@ -1041,18 +1024,18 @@ execute code before or after a package loads. It would look like this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> layer-name-packages '(example-package
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> layer-name-packages '<span class="org-rainbow-delimiters-depth-2">(</span>example-package
                             <span class="org-comment-delimiter">;; </span><span class="org-comment">This layer uninstalls example-package-2</span>
                             <span class="org-comment-delimiter">;; </span><span class="org-comment">by setting the :excluded property to true (t)</span>
-                            (example-package-2 <span class="org-builtin">:excluded</span> t)))
+                            <span class="org-rainbow-delimiters-depth-3">(</span>example-package-2 <span class="org-builtin">:excluded</span> t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">layer-name/post-init-package</span> ()
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">layer-name/post-init-package</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">Add configuration to a package in another layer here</span>
-  )
+  <span class="org-rainbow-delimiters-depth-1">)</span>
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">layer-name/init-example-package</span> ()
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">layer-name/init-example-package</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">Configuration for example-package goes here</span>
-  )
+  <span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1107,23 +1090,23 @@ to using it:
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Basic form of use-package declaration. The :defer t tells use-package to</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">try to lazy load the package.</span>
-(<span class="org-keyword">use-package</span> <span class="org-constant">package-name</span>
-  <span class="org-builtin">:defer</span> t)
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">package-name</span>
+  <span class="org-builtin">:defer</span> t<span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">The :init section is run before the package loads. The :config section is</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">run after the package loads</span>
-(<span class="org-keyword">use-package</span> <span class="org-constant">package-name</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">package-name</span>
   <span class="org-builtin">:defer</span> t
   <span class="org-builtin">:init</span>
-  (<span class="org-keyword">progn</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">progn</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">Change some variables</span>
-    (<span class="org-keyword">setq</span> variable1 t variable2 nil)
+    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">setq</span> variable1 t variable2 nil<span class="org-rainbow-delimiters-depth-3">)</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">Define a function</span>
-    (<span class="org-keyword">defun</span> <span class="org-function-name">foo</span> ()
-      (message <span class="org-string">"%s"</span> <span class="org-string">"Hello, World!"</span>)))
+    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">defun</span> <span class="org-function-name">foo</span> <span class="org-rainbow-delimiters-depth-4">()</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span>message <span class="org-string">"%s"</span> <span class="org-string">"Hello, World!"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-builtin">:config</span>
-  (<span class="org-keyword">progn</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">progn</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">Calling a function that is defined when the package loads</span>
-    (function-defined-when-package-loads)))
+    <span class="org-rainbow-delimiters-depth-3">(</span>function-defined-when-package-loads<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1164,10 +1147,10 @@ the variable in your <code>dotspacemacs/user-config</code> like this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> ()
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">...</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">Set escape keybinding to "jk"</span>
-  (<span class="org-keyword">setq-default</span> evil-escape-key-sequence <span class="org-string">"jk"</span>))
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq-default</span> evil-escape-key-sequence <span class="org-string">"jk"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1188,14 +1171,14 @@ that is loaded at startup. Here is an example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/init</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/init</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">Darktooth theme is the default theme</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">Each theme is automatically installed.</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">Note that we drop the -theme from the package name.</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">Ex. darktooth-theme -&gt; darktooth</span>
-    (<span class="org-keyword">setq-default</span> dotspacemacs-themes '(darktooth
+    <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq-default</span> dotspacemacs-themes '<span class="org-rainbow-delimiters-depth-3">(</span>darktooth
                                         soothe
-                                        gotham)))
+                                        gotham<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1242,8 +1225,8 @@ your <code>.spacemacs</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(define-key evil-normal-state-map (kbd <span class="org-string">"j"</span>) 'evil-next-visual-line)
-(define-key evil-normal-state-map (kbd <span class="org-string">"k"</span>) 'evil-previous-visual-line)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>define-key evil-normal-state-map <span class="org-rainbow-delimiters-depth-2">(</span>kbd <span class="org-string">"j"</span><span class="org-rainbow-delimiters-depth-2">)</span> 'evil-next-visual-line<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>define-key evil-normal-state-map <span class="org-rainbow-delimiters-depth-2">(</span>kbd <span class="org-string">"k"</span><span class="org-rainbow-delimiters-depth-2">)</span> 'evil-previous-visual-line<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -1270,7 +1253,7 @@ It is <code>SPC b b</code></li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:51</p>
+<p class="date">Created: 2023-01-22 Sun 17:09</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

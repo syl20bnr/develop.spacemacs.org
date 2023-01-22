@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:51 -->
+<!-- 2023-01-22 Sun 17:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mu4e layer</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">Mu4e layer</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -331,9 +314,9 @@ the layer variable <code>mu4e-installation-path</code>, for example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '((mu4e <span class="org-builtin">:variables</span>
-                      mu4e-installation-path <span class="org-string">"/usr/share/emacs/site-lisp"</span>)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>mu4e <span class="org-builtin">:variables</span>
+                      mu4e-installation-path <span class="org-string">"/usr/share/emacs/site-lisp"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -538,9 +521,9 @@ variable <code>mu4e-use-maildirs-extension</code> to a non-nil value:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '((mu4e <span class="org-builtin">:variables</span>
-                      mu4e-use-maildirs-extension t)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>mu4e <span class="org-builtin">:variables</span>
+                      mu4e-use-maildirs-extension t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -559,35 +542,35 @@ The following example is taken from the manual:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> mu4e-contexts
-  `( ,(make-mu4e-context
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-contexts
+  `<span class="org-rainbow-delimiters-depth-2">(</span> ,<span class="org-rainbow-delimiters-depth-3">(</span>make-mu4e-context
   <span class="org-builtin">:name</span> <span class="org-string">"Private"</span>
-  <span class="org-builtin">:enter-func</span> (<span class="org-keyword">lambda</span> () (mu4e-message <span class="org-string">"Switch to the Private context"</span>))
+  <span class="org-builtin">:enter-func</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-5">()</span> <span class="org-rainbow-delimiters-depth-5">(</span>mu4e-message <span class="org-string">"Switch to the Private context"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">leave-func not defined</span>
-  <span class="org-builtin">:match-func</span> (<span class="org-keyword">lambda</span> (msg)
-    (<span class="org-keyword">when</span> msg
-      (mu4e-message-contact-field-matches msg
-        <span class="org-builtin">:to</span> <span class="org-string">"aliced@home.example.com"</span>)))
-  <span class="org-builtin">:vars</span> '(  ( user-mail-address      . <span class="org-string">"aliced@home.example.com"</span>  )
-     ( user-full-name     . <span class="org-string">"Alice Derleth"</span> )
-     ( mu4e-compose-signature .
-       (concat
+  <span class="org-builtin">:match-func</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-5">(</span>msg<span class="org-rainbow-delimiters-depth-5">)</span>
+    <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-keyword">when</span> msg
+      <span class="org-rainbow-delimiters-depth-6">(</span>mu4e-message-contact-field-matches msg
+        <span class="org-builtin">:to</span> <span class="org-string">"aliced@home.example.com"</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+  <span class="org-builtin">:vars</span> '<span class="org-rainbow-delimiters-depth-4">(</span>  <span class="org-rainbow-delimiters-depth-5">(</span> user-mail-address      . <span class="org-string">"aliced@home.example.com"</span>  <span class="org-rainbow-delimiters-depth-5">)</span>
+     <span class="org-rainbow-delimiters-depth-5">(</span> user-full-name     . <span class="org-string">"Alice Derleth"</span> <span class="org-rainbow-delimiters-depth-5">)</span>
+     <span class="org-rainbow-delimiters-depth-5">(</span> mu4e-compose-signature .
+       <span class="org-rainbow-delimiters-depth-6">(</span>concat
          <span class="org-string">"Alice Derleth\n"</span>
-         <span class="org-string">"Lauttasaari, Finland\n"</span>))))
-     ,(make-mu4e-context
+         <span class="org-string">"Lauttasaari, Finland\n"</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+     ,<span class="org-rainbow-delimiters-depth-3">(</span>make-mu4e-context
   <span class="org-builtin">:name</span> <span class="org-string">"Work"</span>
-  <span class="org-builtin">:enter-func</span> (<span class="org-keyword">lambda</span> () (mu4e-message <span class="org-string">"Switch to the Work context"</span>))
+  <span class="org-builtin">:enter-func</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-5">()</span> <span class="org-rainbow-delimiters-depth-5">(</span>mu4e-message <span class="org-string">"Switch to the Work context"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">leave-fun not defined</span>
-  <span class="org-builtin">:match-func</span> (<span class="org-keyword">lambda</span> (msg)
-    (<span class="org-keyword">when</span> msg
-      (mu4e-message-contact-field-matches msg
-        <span class="org-builtin">:to</span> <span class="org-string">"aderleth@miskatonic.example.com"</span>)))
-  <span class="org-builtin">:vars</span> '(  ( user-mail-address      . <span class="org-string">"aderleth@miskatonic.example.com"</span> )
-     ( user-full-name     . <span class="org-string">"Alice Derleth"</span> )
-     ( mu4e-compose-signature .
-       (concat
+  <span class="org-builtin">:match-func</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-5">(</span>msg<span class="org-rainbow-delimiters-depth-5">)</span>
+    <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-keyword">when</span> msg
+      <span class="org-rainbow-delimiters-depth-6">(</span>mu4e-message-contact-field-matches msg
+        <span class="org-builtin">:to</span> <span class="org-string">"aderleth@miskatonic.example.com"</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+  <span class="org-builtin">:vars</span> '<span class="org-rainbow-delimiters-depth-4">(</span>  <span class="org-rainbow-delimiters-depth-5">(</span> user-mail-address      . <span class="org-string">"aderleth@miskatonic.example.com"</span> <span class="org-rainbow-delimiters-depth-5">)</span>
+     <span class="org-rainbow-delimiters-depth-5">(</span> user-full-name     . <span class="org-string">"Alice Derleth"</span> <span class="org-rainbow-delimiters-depth-5">)</span>
+     <span class="org-rainbow-delimiters-depth-5">(</span> mu4e-compose-signature .
+       <span class="org-rainbow-delimiters-depth-6">(</span>concat
          <span class="org-string">"Prof. Alice Derleth\n"</span>
-         <span class="org-string">"Miskatonic University, Dept. of Occult Sciences\n"</span>))))))
+         <span class="org-string">"Miskatonic University, Dept. of Occult Sciences\n"</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">set `mu4e-context-policy` and `mu4e-compose-policy` to tweak when mu4e should</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">guess or ask the correct context, e.g.</span>
@@ -621,9 +604,9 @@ layer.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '((mu4e <span class="org-builtin">:variables</span>
-                      mu4e-enable-async-operations t)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>mu4e <span class="org-builtin">:variables</span>
+                      mu4e-enable-async-operations t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -639,7 +622,7 @@ that to <code>$HOME/Downloads</code> if it exists. You can override this in your
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> mu4e-attachment-dir <span class="org-string">"~/files"</span>)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-attachment-dir <span class="org-string">"~/files"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -650,32 +633,32 @@ that to <code>$HOME/Downloads</code> if it exists. You can override this in your
 <div class="outline-text-3" id="text-example-configuration">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Set up some common mu4e variables</span>
-(<span class="org-keyword">setq</span> mu4e-maildir <span class="org-string">"~/.mail"</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-maildir <span class="org-string">"~/.mail"</span>
       mu4e-trash-folder <span class="org-string">"/Trash"</span>
       mu4e-refile-folder <span class="org-string">"/Archive"</span>
       mu4e-get-mail-command <span class="org-string">"mbsync -a"</span>
       mu4e-update-interval nil
       mu4e-compose-signature-auto-include nil
       mu4e-view-show-images t
-      mu4e-view-show-addresses t)
+      mu4e-view-show-addresses t<span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;;; </span><span class="org-comment">Mail directory shortcuts</span>
-(<span class="org-keyword">setq</span> mu4e-maildir-shortcuts
-      '((<span class="org-string">"/gmail/INBOX"</span> . ?g)
-        (<span class="org-string">"/college/INBOX"</span> . ?c)))
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-maildir-shortcuts
+      '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"/gmail/INBOX"</span> . ?g<span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"/college/INBOX"</span> . ?c<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;;; </span><span class="org-comment">Bookmarks</span>
-(<span class="org-keyword">setq</span> mu4e-bookmarks
-      `((<span class="org-string">"flag:unread AND NOT flag:trashed"</span> <span class="org-string">"Unread messages"</span> ?u)
-        (<span class="org-string">"date:today..now"</span> <span class="org-string">"Today's messages"</span> ?t)
-        (<span class="org-string">"date:7d..now"</span> <span class="org-string">"Last 7 days"</span> ?w)
-        (<span class="org-string">"mime:image/*"</span> <span class="org-string">"Messages with images"</span> ?p)
-        (,(mapconcat 'identity
-                     (mapcar
-                      (<span class="org-keyword">lambda</span> (maildir)
-                        (concat <span class="org-string">"maildir:"</span> (car maildir)))
-                      mu4e-maildir-shortcuts) <span class="org-string">" OR "</span>)
-         <span class="org-string">"All inboxes"</span> ?i)))
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-bookmarks
+      `<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"flag:unread AND NOT flag:trashed"</span> <span class="org-string">"Unread messages"</span> ?u<span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"date:today..now"</span> <span class="org-string">"Today's messages"</span> ?t<span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"date:7d..now"</span> <span class="org-string">"Last 7 days"</span> ?w<span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"mime:image/*"</span> <span class="org-string">"Messages with images"</span> ?p<span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span>,<span class="org-rainbow-delimiters-depth-4">(</span>mapconcat 'identity
+                     <span class="org-rainbow-delimiters-depth-5">(</span>mapcar
+                      <span class="org-rainbow-delimiters-depth-6">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-7">(</span>maildir<span class="org-rainbow-delimiters-depth-7">)</span>
+                        <span class="org-rainbow-delimiters-depth-7">(</span>concat <span class="org-string">"maildir:"</span> <span class="org-rainbow-delimiters-depth-8">(</span>car maildir<span class="org-rainbow-delimiters-depth-8">)</span><span class="org-rainbow-delimiters-depth-7">)</span><span class="org-rainbow-delimiters-depth-6">)</span>
+                      mu4e-maildir-shortcuts<span class="org-rainbow-delimiters-depth-5">)</span> <span class="org-string"><span class="org-warning">" OR "</span></span><span class="org-warning"><span class="org-rainbow-delimiters-depth-4">)</span></span>
+         <span class="org-string">"All inboxes"</span> ?i<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -690,7 +673,7 @@ count of unread messages to the modeline.
 </p>
 
 
-<div id="org795821f" class="figure">
+<div id="org8dd4124" class="figure">
 <p><img src="https://raw.githubusercontent.com/iqbalansari/mu4e-alert/master/screenshots/mu4e-alert-in-action.png" alt="mu4e-alert-in-action.png" />
 </p>
 </div>
@@ -710,7 +693,7 @@ To enable notifications about new messages, add the following line to your
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> mu4e-enable-notifications t)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-enable-notifications t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -720,7 +703,7 @@ or use layer variables when you add the layer to
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(mu4e <span class="org-builtin">:variables</span> mu4e-enable-notifications t)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>mu4e <span class="org-builtin">:variables</span> mu4e-enable-notifications t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -732,9 +715,9 @@ installed libraries:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">with-eval-after-load</span> 'mu4e-alert
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'mu4e-alert
   <span class="org-comment-delimiter">;; </span><span class="org-comment">Enable Desktop notifications</span>
-  (mu4e-alert-set-default-style 'notifications)) <span class="org-comment-delimiter">; </span><span class="org-comment">For Linux.</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>mu4e-alert-set-default-style 'notifications<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">For Linux.</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">(mu4e-alert-set-default-style 'libnotify))  ; Alternative for Linux</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">(mu4e-alert-set-default-style 'notifier))   ; For macOS (through the</span>
                                                  <span class="org-comment-delimiter">; </span><span class="org-comment">terminal notifier app).</span>
@@ -753,7 +736,7 @@ your <code>dotspacemacs/user-config</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> mu4e-enable-mode-line t)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-enable-mode-line t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -763,7 +746,7 @@ or use layer variables when you add the layer to
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(mu4e <span class="org-builtin">:variables</span> mu4e-enable-mode-line t)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>mu4e <span class="org-builtin">:variables</span> mu4e-enable-mode-line t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -789,10 +772,10 @@ By default the values are:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '((mu4e <span class="org-builtin">:variables</span> mu4e-spacemacs-layout-name <span class="org-string">"@Mu4e"</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>mu4e <span class="org-builtin">:variables</span> mu4e-spacemacs-layout-name <span class="org-string">"@Mu4e"</span>
                       mu4e-spacemacs-layout-binding <span class="org-string">"m"</span>
-                      mu4e-spacemacs-kill-layout-on-exit t)))
+                      mu4e-spacemacs-kill-layout-on-exit t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -813,9 +796,9 @@ setting the <code>mu4e-org-link-support</code> variable when including the layer
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '((mu4e <span class="org-builtin">:variables</span>
-                      mu4e-org-link-support nil)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>mu4e <span class="org-builtin">:variables</span>
+                      mu4e-org-link-support nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -831,9 +814,9 @@ when including the layer.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '((mu4e <span class="org-builtin">:variables</span>
-                      mu4e-org-compose-support t)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>mu4e <span class="org-builtin">:variables</span>
+                      mu4e-org-compose-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -862,7 +845,7 @@ Refer to the official <code>mu</code> and <code>mu4e</code> documentation for ad
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:51</p>
+<p class="date">Created: 2023-01-22 Sun 17:09</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

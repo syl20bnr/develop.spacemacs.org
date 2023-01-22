@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:52 -->
+<!-- 2023-01-22 Sun 17:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>spacemacs-editing layer</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">spacemacs-editing layer</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -243,6 +226,11 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 <li><a href="#description">1. Description</a>
 <ul>
 <li><a href="#features">1.1. Features:</a></li>
+</ul>
+</li>
+<li><a href="#customization">2. Customization</a>
+<ul>
+<li><a href="#undo-region">2.1. Undo Region</a></li>
 </ul>
 </li>
 </ul>
@@ -284,14 +272,45 @@ via <a href="https://github.com/nflath/hungry-delete"><code>hungry-delete</code>
 <li>Support for <a href="https://github.com/PythonNut/evil-easymotion"><code>evil-easymotion</code></a> if the editing style is <code>vim</code> or <code>hybrid</code>.</li>
 <li>Support for cycling between multi line block styles via <a href="https://github.com/IvanMalison/multi-line/"><code>multi-line</code></a>.</li>
 <li>Support for editing strings inplace via <a href="https://github.com/magnars/string-edit.el"><code>string-edit</code></a></li>
+<li>Presents undo history as a tree via <a href="https://gitlab.com/tsc25/undo-tree/-/blob/master/undo-tree.el"><code>undo-tree</code></a></li>
 </ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-customization" class="outline-2">
+<h2 id="customization"><span class="section-number-2">2.</span> Customization</h2>
+<div class="outline-text-2" id="text-customization">
+</div>
+
+<div id="outline-container-undo-region" class="outline-3">
+<h3 id="undo-region"><span class="section-number-3">2.1.</span> Undo Region</h3>
+<div class="outline-text-3" id="text-undo-region">
+<p>
+In normal state, <code>u</code> is bound to <code>evil-undo</code> which undo changes in the buffer.
+Emacs's builtin <code>undo</code> command in addition has the ability to undo changes in a
+selected region. But by default in visual state, <code>u</code> is bound to <code>evil-downcase</code>
+which downcases the selected text.
+</p>
+
+<p>
+You can bound <code>undo</code> to <code>u</code> in visual state, by setting the variable
+<code>vim-style-enable-undo-region</code> to <code>t</code> in your <code>~/.spacemacs</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>spacemacs-editing <span class="org-builtin">:variables</span>
+                                   vim-style-enable-undo-region t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:52</p>
+<p class="date">Created: 2023-01-22 Sun 17:10</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

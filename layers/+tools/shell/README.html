@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:52 -->
+<!-- 2023-01-22 Sun 17:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shell layer</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">Shell layer</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -277,13 +260,14 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 <li><a href="#multi-term">5.1. Multi-term</a></li>
 <li><a href="#eshell-1">5.2. Eshell</a></li>
 <li><a href="#vterm">5.3. vterm</a></li>
+<li><a href="#multi-vterm">5.4. Multi-vterm</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="orgf11696b" class="figure">
+<div id="org84213e5" class="figure">
 <p><img src="img/shell.png" alt="shell.png" />
 </p>
 </div>
@@ -465,12 +449,13 @@ to the following variables:
 <li><code>term</code></li>
 <li><code>ansi-term</code> (default on Linux/macOS)</li>
 <li><code>multi-term</code></li>
+<li><code>multi-vterm</code></li>
 <li><code>vterm</code></li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '((shell <span class="org-builtin">:variables</span> shell-default-shell 'eshell)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> shell-default-shell 'eshell<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -494,15 +479,15 @@ your shell is positioned on the left or the right.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '((shell <span class="org-builtin">:variables</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span>
            shell-default-position 'bottom
-           shell-default-height 30)))
+           shell-default-height <span class="org-highlight-numbers-number">30</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
-(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '((shell <span class="org-builtin">:variables</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span>
            shell-default-position 'right
-           shell-default-width 40)))
+           shell-default-width <span class="org-highlight-numbers-number">40</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -529,8 +514,8 @@ Default value is <code>/bin/bash</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '((shell <span class="org-builtin">:variables</span> shell-default-term-shell <span class="org-string">"/bin/bash"</span>)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> shell-default-term-shell <span class="org-string">"/bin/bash"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -545,8 +530,8 @@ Default value is <code>/bin/bash</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '((shell <span class="org-builtin">:variables</span> multi-term-program <span class="org-string">"/bin/bash"</span>)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> multi-term-program <span class="org-string">"/bin/bash"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -562,8 +547,8 @@ layer variable <code>shell-default-full-span</code> to nil.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '((shell <span class="org-builtin">:variables</span> shell-default-full-span nil)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> shell-default-full-span nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -598,8 +583,8 @@ To enable <code>em-smart</code> put the following layer variable to non-nil:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '((shell <span class="org-builtin">:variables</span> shell-enable-smart-eshell t)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> shell-enable-smart-eshell t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -623,8 +608,8 @@ to nil.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '((shell <span class="org-builtin">:variables</span> shell-protect-eshell-prompt nil)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> shell-protect-eshell-prompt nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -679,7 +664,7 @@ correctly, in the function <code>dotspacemacs/user-config</code> of your dotfile
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(add-hook 'term-mode-hook 'spacemacs/toggle-truncate-lines-on)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'term-mode-hook 'spacemacs/toggle-truncate-lines-on<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -694,8 +679,8 @@ layer variable to non-nil:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '((shell <span class="org-builtin">:variables</span> close-window-with-terminal t)))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> close-window-with-terminal t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -773,6 +758,11 @@ layer is installed)</li>
 <tr>
 <td class="org-left"><code>SPC a t s m</code></td>
 <td class="org-left">Toggle pop-shell with <code>multi-term</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a t s M</code></td>
+<td class="org-left">Toggle pop-shell with <code>multi-vterm</code></td>
 </tr>
 
 <tr>
@@ -951,17 +941,59 @@ For example with bash
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(shell <span class="org-builtin">:variables</span>
-       spacemacs-vterm-history-file-location <span class="org-string">"~/.bash_history"</span>)
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>shell <span class="org-builtin">:variables</span>
+       spacemacs-vterm-history-file-location <span class="org-string">"~/.bash_history"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
+</div>
+</div>
+
+<div id="outline-container-multi-vterm" class="outline-3">
+<h3 id="multi-vterm"><span class="section-number-3">5.4.</span> Multi-vterm</h3>
+<div class="outline-text-3" id="text-multi-vterm">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m c</code></td>
+<td class="org-left">create a new multi-vterm</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m n</code></td>
+<td class="org-left">go to next multi-vterm</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m N</code> or <code>SPC m p</code></td>
+<td class="org-left">go to previous multi-vterm</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r</code></td>
+<td class="org-left">rename vterm buffer</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:52</p>
+<p class="date">Created: 2023-01-22 Sun 17:10</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

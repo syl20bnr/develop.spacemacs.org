@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-05-24 Tue 11:51 -->
+<!-- 2023-01-22 Sun 17:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Japanese layer</title>
@@ -191,7 +191,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css"
                  href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
@@ -199,14 +199,6 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
-          // Google Analytics
-                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
-                         Date();a=s.createElement(o),
-                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
 
           // Add permalinks to the documentation headings
           $(document).ready(function() {
@@ -225,15 +217,6 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="admonition warning">
-<p class="first last">
-You are viewing the documentation for the develop branch.
-The documentation for the release version is
-<a href="https://www.spacemacs.org/doc/DOCUMENTATION.html"
-onclick="location='https://www.spacemacs.org'+location.pathname+location.search+location.hash;return false;">here</a>
-.
-</p>
-</div>
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
 <h1 class="title">Japanese layer</h1>
 <div id="table-of-contents" role="doc-toc">
@@ -265,7 +248,7 @@ onclick="location='https://www.spacemacs.org'+location.pathname+location.search+
 </div>
 </div>
 
-<div id="orgb76f89a" class="figure">
+<div id="orgaaa146a" class="figure">
 <p><img src="img/Japanese.png" alt="Japanese.png" />
 </p>
 </div>
@@ -341,8 +324,8 @@ For example, if you install <a href="https://www.kaoriya.net/software/cmigemo/">
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">with-eval-after-load</span> <span class="org-string">"migemo"</span>
-  (<span class="org-keyword">setq</span> migemo-dictionary <span class="org-string">"c:/app/cmigemo-default-win64/dict/utf-8/migemo-dict"</span>))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> <span class="org-string">"migemo"</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq</span> migemo-dictionary <span class="org-string">"c:/app/cmigemo-default-win64/dict/utf-8/migemo-dict"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -351,8 +334,8 @@ inside <code>dotspacemacs/user-config</code>, or
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(japanese <span class="org-builtin">:variables</span>
-          migemo-dictionary <span class="org-string">"c:/app/cmigemo-default-win64/dict/utf-8/migemo-dict"</span>)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>japanese <span class="org-builtin">:variables</span>
+          migemo-dictionary <span class="org-string">"c:/app/cmigemo-default-win64/dict/utf-8/migemo-dict"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -370,8 +353,8 @@ If you want to use helm with migemo, you should add:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">with-eval-after-load</span> <span class="org-string">"migemo"</span>
-  (helm-migemo-mode 1))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> <span class="org-string">"migemo"</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>helm-migemo-mode <span class="org-highlight-numbers-number">1</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -380,8 +363,8 @@ inside <code>dotspacemacs/user-config</code>, or
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(japanese <span class="org-builtin">:variables</span>
-           helm-migemo-mode 1)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>japanese <span class="org-builtin">:variables</span>
+           helm-migemo-mode <span class="org-highlight-numbers-number">1</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -406,10 +389,10 @@ By default, you can use <code>avy-migemo</code> for <code>helm-mode</code>. For 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span class="org-keyword">with-eval-after-load</span> <span class="org-string">"migemo"</span>
-  (<span class="org-keyword">require</span> '<span class="org-constant">avy-migemo-e.g.ivy</span>)
-  (<span class="org-keyword">require</span> '<span class="org-constant">avy-migemo-e.g.swiper</span>)
-  (<span class="org-keyword">require</span> '<span class="org-constant">avy-migemo-e.g.counsel</span>))
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> <span class="org-string">"migemo"</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">require</span> '<span class="org-constant">avy-migemo-e.g.ivy</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">require</span> '<span class="org-constant">avy-migemo-e.g.swiper</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">require</span> '<span class="org-constant">avy-migemo-e.g.counsel</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -438,7 +421,7 @@ mode globally, add:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(global-pangu-spacing-mode 1)
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>global-pangu-spacing-mode <span class="org-highlight-numbers-number">1</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -461,7 +444,7 @@ By default, <code>C-x j</code> toggles <code>skk-mode</code>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2022-05-24 Tue 11:51</p>
+<p class="date">Created: 2023-01-22 Sun 17:09</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
