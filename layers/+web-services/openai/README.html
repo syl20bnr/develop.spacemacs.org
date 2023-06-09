@@ -6,7 +6,7 @@
 <!-- 2023-06-09 Fri 07:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>EXWM layer</title>
+<title>OpenAI layer</title>
 <meta name="author" content="root" />
 <meta name="generator" content="Org Mode" />
 <style>
@@ -218,7 +218,7 @@
 <body>
 <div id="content" class="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">EXWM layer</h1>
+<h1 class="title">OpenAI layer</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents" role="doc-toc">
@@ -228,29 +228,18 @@
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a>
-<ul>
-<li><a href="#system-tray-integratios">2.1. System Tray Integratios</a></li>
-<li><a href="#xdg-autostart">2.2. XDG Autostart</a></li>
-</ul>
-</li>
-<li><a href="#key-bindings">3. Key bindings</a></li>
+<li><a href="#install">2. Install</a></li>
+<li><a href="#configuration">3. Configuration</a></li>
+<li><a href="#key-bindings">4. Key bindings</a></li>
 </ul>
 </div>
-</div>
-
-<div id="orgb9bd79e" class="figure">
-<p><img src="img/exwm.jpg" alt="exwm.jpg" />
-</p>
 </div>
 
 <div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1.</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-Thanks to @ch11ng and his <a href="https://github.com/ch11ng/exwm">EXWM</a> project we can now use Emacs as our window
-manager, that means that you can spawn a Browser Window, or your music player,
-or anything.
+This layer provides applications to make requests to openai via its API.
 </p>
 </div>
 
@@ -258,7 +247,11 @@ or anything.
 <h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Support for using Emacs as window manager</li>
+<li>Provides access to openai via the emacs-openai suite of packages</li>
+<li>Send visual selection or buffer and receive response in current buffer</li>
+<li>Improve, edit, and document code</li>
+<li>Chat sessions with chatgpt</li>
+<li>Obtain AI generated images</li>
 </ul>
 </div>
 </div>
@@ -268,71 +261,34 @@ or anything.
 <h2 id="install"><span class="section-number-2">2.</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
-To use <code>exwm</code> layer, add it to your <code>~/.spacemacs</code>.
-</p>
-
-<p>
-The default layer variables are:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>exwm <span class="org-builtin">:variables</span> exwm-enable-systray nil
-                                 exwm-autostart-xdg-applications nil
-                                 exwm-terminal-command <span class="org-string">"xterm"</span>
-                                 exwm-locking-command nil
-                                 exwm-hide-tiling-modeline nil
-                                 exwm-workspace-switch-wrap t
-                                 exwm-randr-command nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-Please refer to <a href="https://github.com/ch11ng/exwm/wiki">EXWM Wiki</a> for setting up display manager.
-</p>
-</div>
-
-<div id="outline-container-system-tray-integratios" class="outline-3">
-<h3 id="system-tray-integratios"><span class="section-number-3">2.1.</span> System Tray Integratios</h3>
-<div class="outline-text-3" id="text-system-tray-integratios">
-<p>
-To enable system tray integration, set <code>exwm-enable-systray</code> to <code>t</code>.
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>openai</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
 </div>
 </div>
 
-<div id="outline-container-xdg-autostart" class="outline-3">
-<h3 id="xdg-autostart"><span class="section-number-3">2.2.</span> XDG Autostart</h3>
-<div class="outline-text-3" id="text-xdg-autostart">
+<div id="outline-container-configuration" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">3.</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
 <p>
-If <code>exwm-autostart-xdg-applications</code> is non-nil, <code>.desktop</code> files in
-<code>$XDG_CONFIG_HOME/autostart</code> and <code>XDG_CONFIG_DIRS</code> will be used to run applications at
-startup. (See <a href="https://specifications.freedesktop.org/autostart-spec/autostart-spec-latest.html">Desktop Application Autostart Specification</a> for details).
+You need to set your openai key. If you have stored the key in the environment
+variable OPENAI<sub>API</sub><sub>KEY</sub>, then you need to add to your user-config:
+ <code>(setq openai-key (getenv "OPENAI_API_KEY"))</code>
+Also, most requests require setting a user, which is done via:
+ <code>(setq openai-user "user")</code>
+where "user" can be substituted by other usernames.
 </p>
-
-<p>
-For the purpose of controlling whether an entry should be run under Emacs,
-the <code>OnlyShowIn</code> and <code>NotShotIn</code> keys are checked for the string <code>EXWM</code>.
-</p>
-
-<p>
-This is disabled per default.
-</p>
-</div>
 </div>
 </div>
 
 <div id="outline-container-key-bindings" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">3.</span> Key bindings</h2>
+<h2 id="key-bindings"><span class="section-number-2">4.</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <p>
-As other window managers the <code>s</code> or <b>Super</b> key (Windows Key) is the one that
-is the prefix to every action. We'll use a lot of <code>s</code>.
-</p>
-
-<p>
-Some emacs key bindings are disabled in X Window, for example <code>C-x</code> and <code>C-c</code> are
-disabled so that they can be used for Cutting and Copying text.
+If you want to build your own OpenAI requests, you can use `openai-completion'.
+For further information, see the openai package documentation.
+For interactive requests via OpenAI, the following key bindings are available:
 </p>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -342,97 +298,172 @@ disabled so that they can be used for Cutting and Copying text.
 <col  class="org-left" />
 
 <col  class="org-left" />
+
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
 <th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
 <th scope="col" class="org-left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>M-m</code></td>
-<td class="org-left">Spacemacs Leader Key</td>
+<td class="org-left"><code>SPC $ o b</code></td>
+<td class="org-left">openai-completion-buffer-insert</td>
+<td class="org-left">Sends buffer to AI</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>C-q</code></td>
-<td class="org-left">Send next key pressed to the X window</td>
+<td class="org-left"><code>SPC $ o s</code></td>
+<td class="org-left">openai-completion-select-insert</td>
+<td class="org-left">Sends selection to AI</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>s-i</code></td>
-<td class="org-left">Toggle between line mode and char mode</td>
+<td class="org-left"><code>SPC $ o g</code></td>
+<td class="org-left">chatgpt</td>
+<td class="org-left">Opens chatgpt session</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>s-l</code></td>
-<td class="org-left">Lock Screen</td>
+<td class="org-left"><code>SPC $ o e</code></td>
+<td class="org-left">openai-edit-prompt</td>
+<td class="org-left">Asks to edit text</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>s-r</code></td>
-<td class="org-left">Reset window state</td>
+<td class="org-left"><code>SPC $ o C</code></td>
+<td class="org-left">openai-chat-say</td>
+<td class="org-left">Single request and response</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>s-w</code></td>
-<td class="org-left">Workspace Switch Menu</td>
+<td class="org-left"><code>SPC $ o m</code></td>
+<td class="org-left">openai-list-models</td>
+<td class="org-left">Lists all models</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>s-[1 2 3 ... 8 9 0]</code></td>
-<td class="org-left">Switch to workspace [1 2 3 &#x2026; 8 9 10]</td>
+<td class="org-left"><code>SPC $ o M</code></td>
+<td class="org-left">openai-retrieve-model</td>
+<td class="org-left">Details of specific model</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>s-TAB</code></td>
-<td class="org-left">Switch to last workspace</td>
+<td class="org-left"><code>SPC $ o E</code></td>
+<td class="org-left">openai-embedding-create</td>
+<td class="org-left">Makes Embedding</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+For requests to improve, edit, or document code, the following key bindings are
+available:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC $ o c c</code></td>
+<td class="org-left">codegpt</td>
+<td class="org-left">Generates code</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>s-[</code> / <code>s-]</code></td>
-<td class="org-left">Switch to prev,next workspace</td>
+<td class="org-left"><code>SPC $ o c C</code></td>
+<td class="org-left">codegpt-custom</td>
+<td class="org-left">Custom instructions</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>s-SPC</code></td>
-<td class="org-left">App Launcher</td>
+<td class="org-left"><code>SPC $ o c d</code></td>
+<td class="org-left">codegpt-doc</td>
+<td class="org-left">Documents code</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>s-RET</code></td>
-<td class="org-left">Spawn terminal</td>
+<td class="org-left"><code>SPC $ o c f</code></td>
+<td class="org-left">codegpt-fix</td>
+<td class="org-left">Fixes code</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>s-:</code> and <code>s-;</code></td>
-<td class="org-left">Helm M-x (same as <code>SPC :</code>)</td>
+<td class="org-left"><code>SPC $ o c e</code></td>
+<td class="org-left">codegpt-explain</td>
+<td class="org-left">Explains code</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>s-u,U</code></td>
-<td class="org-left">Undo, Redo window configurations</td>
+<td class="org-left"><code>SPC $ o c i</code></td>
+<td class="org-left">codegpt-improve</td>
+<td class="org-left">Improves code</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+For requests for OpenAI generated images, the following key bindings are available:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC $ o i d</code></td>
+<td class="org-left">dall-e</td>
+<td class="org-left">Dall-e requests</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>s-b</code></td>
-<td class="org-left">Show all opened buffers</td>
+<td class="org-left"><code>SPC $ o i i</code></td>
+<td class="org-left">openai-openai-image-prompt</td>
+<td class="org-left">Generates image</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>s-[h j k l]</code></td>
-<td class="org-left">Switch to window in the direction</td>
+<td class="org-left"><code>SPC $ o i e</code></td>
+<td class="org-left">openai-openai-image-edit-prompt</td>
+<td class="org-left">Edits existing image</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>s-[H J K L]</code></td>
-<td class="org-left">Move window to the direction</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>M-s-[h j k l]</code></td>
-<td class="org-left">Resize window toward the direction</td>
+<td class="org-left"><code>SPC $ o i v</code></td>
+<td class="org-left">openai-openai-image-variation-prompt</td>
+<td class="org-left">Creates variation of image</td>
 </tr>
 </tbody>
 </table>

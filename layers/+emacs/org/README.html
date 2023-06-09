@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-22 Sun 17:09 -->
+<!-- 2023-06-09 Fri 07:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Org layer</title>
@@ -262,11 +262,12 @@
 <li><a href="#epub-support">4.19. Epub support</a></li>
 <li><a href="#jira-support">4.20. Jira support</a></li>
 <li><a href="#valign-support">4.21. Valign support</a></li>
-<li><a href="#org-appear-support">4.22. Org-appear support</a></li>
-<li><a href="#transclusion-support">4.23. Transclusion support</a></li>
-<li><a href="#verb-support">4.24. Verb support</a></li>
-<li><a href="#asciidoc-support">4.25. AsciiDoc support</a></li>
-<li><a href="#spacemacs-layout-integration">4.26. Spacemacs layout integration</a></li>
+<li><a href="#org-modern-support">4.22. Org-modern support</a></li>
+<li><a href="#org-appear-support">4.23. Org-appear support</a></li>
+<li><a href="#transclusion-support">4.24. Transclusion support</a></li>
+<li><a href="#verb-support">4.25. Verb support</a></li>
+<li><a href="#asciidoc-support">4.26. AsciiDoc support</a></li>
+<li><a href="#spacemacs-layout-integration">4.27. Spacemacs layout integration</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">5. Key bindings</a>
@@ -321,7 +322,7 @@
 </div>
 </div>
 
-<div id="org0a499e0" class="figure">
+<div id="org47e8b0b" class="figure">
 <p><img src="img/org.png" alt="org.png" />
 </p>
 </div>
@@ -633,7 +634,7 @@ as it described in the <a href="https://gitlab.com/oer/org-re-reveal#set-the-loc
 Alternatively, add the following line to each <code>.org</code> file you want to process:
 </p>
 
-<pre class="example" id="org27bd833">
+<pre class="example" id="orgd42da0e">
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@3.8.0
 </pre>
 </div>
@@ -762,7 +763,7 @@ alter <code>org-journal-date-prefix</code> and <code>org-journal-date-format</co
 For example, to have new journal files created with this header:
 </p>
 
-<pre class="example" id="org9aa31f5">
+<pre class="example" id="org54d712f">
 #+TITLE: Tuesday, September 06 2016
 </pre></li>
 
@@ -1076,8 +1077,29 @@ Set the variable <code>org-enable-valign</code> to <code>t</code>:
 </div>
 </div>
 
+<div id="outline-container-org-modern-support" class="outline-3">
+<h3 id="org-modern-support"><span class="section-number-3">4.22.</span> Org-modern support</h3>
+<div class="outline-text-3" id="text-org-modern-support">
+<p>
+<a href="https://github.com/minad/org-modern">org-modern</a> beautifies org files with many visual enhancements.
+It toggles visibility of some markers, changes faces of common elements and just "modernizes" the visual appearance.
+To enable it by default, set the <code>org-enable-modern-support</code> to <code>t</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+ '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-modern-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+To toggle its features, either call <code>M-x org-modern-mode</code> or <code>ESC , T m</code>.
+</p>
+</div>
+</div>
+
 <div id="outline-container-org-appear-support" class="outline-3">
-<h3 id="org-appear-support"><span class="section-number-3">4.22.</span> Org-appear support</h3>
+<h3 id="org-appear-support"><span class="section-number-3">4.23.</span> Org-appear support</h3>
 <div class="outline-text-3" id="text-org-appear-support">
 <p>
 To install <a href="https://github.com/awth13/org-appear">org-appear</a>, which toggles visibility of emphasis markers, links, subscripts, and superscripts in org mode, set the <code>org-enable-appear-support</code> to <code>t</code>:
@@ -1097,7 +1119,7 @@ If you set <code>org-appear-trigger</code> to <code>manual</code> and your editi
 </div>
 
 <div id="outline-container-transclusion-support" class="outline-3">
-<h3 id="transclusion-support"><span class="section-number-3">4.23.</span> Transclusion support</h3>
+<h3 id="transclusion-support"><span class="section-number-3">4.24.</span> Transclusion support</h3>
 <div class="outline-text-3" id="text-transclusion-support">
 <p>
 To install <a href="https://github.com/nobiot/org-transclusion">org-transclusion</a>, which allows you to include a view of another file
@@ -1113,7 +1135,7 @@ via a file link or an ID lin, set the <code>org-enable-transclusion-support</cod
 </div>
 
 <div id="outline-container-verb-support" class="outline-3">
-<h3 id="verb-support"><span class="section-number-3">4.24.</span> Verb support</h3>
+<h3 id="verb-support"><span class="section-number-3">4.25.</span> Verb support</h3>
 <div class="outline-text-3" id="text-verb-support">
 <p>
 To install <a href="https://github.com/federicotdn/verb">Verb</a>, an HTTP client based on Org mode, set the
@@ -1129,7 +1151,7 @@ To install <a href="https://github.com/federicotdn/verb">Verb</a>, an HTTP clien
 </div>
 
 <div id="outline-container-asciidoc-support" class="outline-3">
-<h3 id="asciidoc-support"><span class="section-number-3">4.25.</span> AsciiDoc support</h3>
+<h3 id="asciidoc-support"><span class="section-number-3">4.26.</span> AsciiDoc support</h3>
 <div class="outline-text-3" id="text-asciidoc-support">
 <p>
 To install Org exporter <a href="https://github.com/yashi/org-asciidoc">ox-asciidoc</a>, that generates AsciiDoc documents, set the
@@ -1145,7 +1167,7 @@ variable <code>org-enable-asciidoc-support</code> to <code>t</code>.
 </div>
 
 <div id="outline-container-spacemacs-layout-integration" class="outline-3">
-<h3 id="spacemacs-layout-integration"><span class="section-number-3">4.26.</span> Spacemacs layout integration</h3>
+<h3 id="spacemacs-layout-integration"><span class="section-number-3">4.27.</span> Spacemacs layout integration</h3>
 <div class="outline-text-3" id="text-spacemacs-layout-integration">
 <p>
 A <a href="../../../doc/DOCUMENTATION.html#layouts-and-workspaces">Spacemacs custom layout</a> <code>@Org</code> is defined by the layer and accessible via <code>SPC l o</code>. The startup behavior can be customized with the following layer variables:
@@ -3962,7 +3984,7 @@ Key binding prefixes:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2023-01-22 Sun 17:09</p>
+<p class="date">Created: 2023-06-09 Fri 07:01</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
