@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-22 Sun 17:09 -->
+<!-- 2023-06-09 Fri 07:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Compleseus layer</title>
@@ -230,7 +230,11 @@
 </li>
 <li><a href="#install">2. Install</a>
 <ul>
-<li><a href="#configuration">2.1. Configuration</a></li>
+<li><a href="#configuration">2.1. Configuration</a>
+<ul>
+<li><a href="#completion-engine">2.1.1. Completion engine</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key bindings</a></li>
@@ -242,18 +246,18 @@
 <h2 id="description"><span class="section-number-2">1.</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds a new way of completion provided by the following core packages:
+This layer implements completion provided by combining the following packages:
 </p>
 <ul class="org-ul">
-<li><code>consult</code></li>
-<li><code>embark</code></li>
-<li><code>marginalia</code></li>
-<li><code>orderless</code></li>
-<li><code>selectrum</code> or <code>vertico</code></li>
+<li><code>selectrum</code> or <code>vertico</code>: vertical completion user interface</li>
+<li><code>consult</code>: useful commands using <code>completing-read</code></li>
+<li><code>embark</code>: provides minibuffer actions</li>
+<li><code>marginalia</code>: annotations to completion candidates</li>
+<li><code>orderless</code>: filtering enhancements</li>
 </ul>
 
 <p>
-This is an WIP and only supports emacs 27 or later. Please contribute.
+It only supports emacs 27 or later.
 </p>
 </div>
 
@@ -261,7 +265,7 @@ This is an WIP and only supports emacs 27 or later. Please contribute.
 <h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Same features as <code>ivy</code> or <code>helm</code></li>
+<li>Similar features like <code>ivy</code> or <code>helm</code></li>
 </ul>
 </div>
 </div>
@@ -271,9 +275,8 @@ This is an WIP and only supports emacs 27 or later. Please contribute.
 <h2 id="install"><span class="section-number-2">2.</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
-To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>compleseus</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
-file.
+To use this configuration layer, add it to your <code>~/.spacemacs</code>: You will need to
+add <code>compleseus</code> to the <code>dotspacemacs-configuration-layers</code> list in this file.
 </p>
 
 <p>
@@ -287,6 +290,11 @@ layer that's listed last.
 <div id="outline-container-configuration" class="outline-3">
 <h3 id="configuration"><span class="section-number-3">2.1.</span> Configuration</h3>
 <div class="outline-text-3" id="text-configuration">
+</div>
+
+<div id="outline-container-completion-engine" class="outline-4">
+<h4 id="completion-engine"><span class="section-number-4">2.1.1.</span> Completion engine</h4>
+<div class="outline-text-4" id="text-completion-engine">
 <p>
 You can configure the completion engine by setting <code>compleseus-engine</code> to either
 <code>vertico</code> (default) or <code>selectrum</code> by editing the <code>compleseus-engine</code> variable
@@ -297,6 +305,7 @@ like below to use <code>selectrum</code> as opposed to the default of <code>vert
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>compleseus <span class="org-builtin">:variables</span>
             compleseus-engine 'selectrum<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
+</div>
 </div>
 </div>
 </div>
@@ -329,6 +338,11 @@ like below to use <code>selectrum</code> as opposed to the default of <code>vert
 <td class="org-left"><code>C-r</code></td>
 <td class="org-left">history</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>M-.</code></td>
+<td class="org-left">preview selected item now</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -336,7 +350,7 @@ like below to use <code>selectrum</code> as opposed to the default of <code>vert
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2023-01-22 Sun 17:09</p>
+<p class="date">Created: 2023-06-09 Fri 07:01</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

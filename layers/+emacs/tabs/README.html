@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-22 Sun 17:09 -->
+<!-- 2023-06-09 Fri 07:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tabs layer</title>
@@ -233,6 +233,7 @@
 <ul>
 <li><a href="#selected-tab-bar">3.1. Selected tab bar</a></li>
 <li><a href="#hide-tabs-after-a-delay">3.2. Hide tabs after a delay</a></li>
+<li><a href="#tab-icons">3.3. Tab icons</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">4. Key bindings</a></li>
@@ -289,7 +290,7 @@ For example,
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span>tabs <span class="org-builtin">:variables</span> tabs-highlight-current-tab 'left<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+              '<span class="org-rainbow-delimiters-depth-2">(</span>tabs <span class="org-builtin">:variables</span> tabs-selected-tab-bar 'over<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -317,6 +318,22 @@ delay <code>tabs-auto-hide-delay</code> via the :variables keyword in your <code
               '<span class="org-rainbow-delimiters-depth-2">(</span>tabs <span class="org-builtin">:variables</span>
                      tabs-auto-hide t
                      tabs-auto-hide-delay <span class="org-highlight-numbers-number">3</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-tab-icons" class="outline-3">
+<h3 id="tab-icons"><span class="section-number-3">3.3.</span> Tab icons</h3>
+<div class="outline-text-3" id="text-tab-icons">
+<p>
+By default, tab icons are enabled, if the <code>spacemacs-visual</code> layer is enabled and the <code>all-the-icons</code> package is used.
+You can disable icons just for the tabs display by setting <code>tabs-icons</code> to <code>nil</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span>tabs <span class="org-builtin">:variables</span> tabs-icons nil<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -382,7 +399,7 @@ delay <code>tabs-auto-hide-delay</code> via the :variables keyword in your <code
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2023-01-22 Sun 17:09</p>
+<p class="date">Created: 2023-06-09 Fri 07:01</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

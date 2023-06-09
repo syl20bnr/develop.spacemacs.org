@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-22 Sun 17:10 -->
+<!-- 2023-06-09 Fri 07:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spacemacs layers list</title>
@@ -501,12 +501,13 @@
 <li><a href="#hacker-news">24.4. Hacker News</a></li>
 <li><a href="#layer-for-reddit">24.5. Layer for reddit</a></li>
 <li><a href="#lobsters">24.6. Lobsters</a></li>
-<li><a href="#pocket">24.7. Pocket</a></li>
-<li><a href="#search-engine">24.8. Search Engine</a></li>
-<li><a href="#streamlink">24.9. Streamlink</a></li>
-<li><a href="#twitch">24.10. Twitch</a></li>
-<li><a href="#twitter">24.11. Twitter</a></li>
-<li><a href="#wakatime">24.12. Wakatime</a></li>
+<li><a href="#openai">24.7. OpenAI</a></li>
+<li><a href="#pocket">24.8. Pocket</a></li>
+<li><a href="#search-engine">24.9. Search Engine</a></li>
+<li><a href="#streamlink">24.10. Streamlink</a></li>
+<li><a href="#twitch">24.11. Twitch</a></li>
+<li><a href="#twitter">24.12. Twitter</a></li>
+<li><a href="#wakatime">24.13. Wakatime</a></li>
 </ul>
 </li>
 </ul>
@@ -722,25 +723,25 @@ Features:
 </p>
 
 <p>
-This layer adds a new way of completion provided by the following core packages:
+This layer implements completion provided by combining the following packages:
 </p>
 <ul class="org-ul">
-<li><code>consult</code></li>
-<li><code>embark</code></li>
-<li><code>marginalia</code></li>
-<li><code>orderless</code></li>
-<li><code>selectrum</code> or <code>vertico</code></li>
+<li><code>selectrum</code> or <code>vertico</code>: vertical completion user interface</li>
+<li><code>consult</code>: useful commands using <code>completing-read</code></li>
+<li><code>embark</code>: provides minibuffer actions</li>
+<li><code>marginalia</code>: annotations to completion candidates</li>
+<li><code>orderless</code>: filtering enhancements</li>
 </ul>
 
 <p>
-This is an WIP and only supports emacs 27 or later. Please contribute.
+It only supports emacs 27 or later.
 </p>
 
 <p>
 Features:
 </p>
 <ul class="org-ul">
-<li>Same features as <code>ivy</code> or <code>helm</code></li>
+<li>Similar features like <code>ivy</code> or <code>helm</code></li>
 </ul>
 </div>
 </div>
@@ -2694,7 +2695,7 @@ robbyoconnor-&gt;theOtherPerson : And they thinks it's funny? Yup, they definite
 </div>
 
 
-<div id="org2fbf9f6" class="figure">
+<div id="org4681f63" class="figure">
 <p><img src="+lang/plantuml/img/dia.png" alt="dia.png" />
 </p>
 </div>
@@ -4013,7 +4014,7 @@ Features:
 <li>syntax-highlighting</li>
 <li>Auto-completion</li>
 <li>Code Navigation</li>
-<li>Python test runners (see <a href="+lang/hy/../python/README.html">python layer</a>)</li>
+<li>Python test runners (see <a href="+lang/python/README.html">python layer</a>)</li>
 <li>Virtual Environment using <a href="https://github.com/jorgenschaefer/pyvenv">pyvenv</a> and <a href="https://github.com/yyuu/pyenv">pyenv</a></li>
 <li>Org Babel support</li>
 </ul>
@@ -6671,8 +6672,32 @@ Features:
 </div>
 </div>
 
+<div id="outline-container-openai" class="outline-3">
+<h3 id="openai"><span class="section-number-3">24.7.</span> OpenAI</h3>
+<div class="outline-text-3" id="text-openai">
+<p>
+<a href="+web-services/openai/README.html">+web-services/openai/README.org</a>
+</p>
+
+<p>
+This layer provides applications to make requests to openai via its API.
+</p>
+
+<p>
+Features:
+</p>
+<ul class="org-ul">
+<li>Provides access to openai via the emacs-openai suite of packages</li>
+<li>Send visual selection or buffer and receive response in current buffer</li>
+<li>Improve, edit, and document code</li>
+<li>Chat sessions with chatgpt</li>
+<li>Obtain AI generated images</li>
+</ul>
+</div>
+</div>
+
 <div id="outline-container-pocket" class="outline-3">
-<h3 id="pocket"><span class="section-number-3">24.7.</span> Pocket</h3>
+<h3 id="pocket"><span class="section-number-3">24.8.</span> Pocket</h3>
 <div class="outline-text-3" id="text-pocket">
 <p>
 <a href="+web-services/pocket/README.html">+web-services/pocket/README.org</a>
@@ -6697,7 +6722,7 @@ status, etc.</li>
 </div>
 
 <div id="outline-container-search-engine" class="outline-3">
-<h3 id="search-engine"><span class="section-number-3">24.8.</span> Search Engine</h3>
+<h3 id="search-engine"><span class="section-number-3">24.9.</span> Search Engine</h3>
 <div class="outline-text-3" id="text-search-engine">
 <p>
 <a href="+web-services/search-engine/README.html">+web-services/search-engine/README.org</a>
@@ -6717,7 +6742,7 @@ Features:
 </div>
 
 <div id="outline-container-streamlink" class="outline-3">
-<h3 id="streamlink"><span class="section-number-3">24.9.</span> Streamlink</h3>
+<h3 id="streamlink"><span class="section-number-3">24.10.</span> Streamlink</h3>
 <div class="outline-text-3" id="text-streamlink">
 <p>
 <a href="+web-services/streamlink/README.html">+web-services/streamlink/README.org</a>
@@ -6737,7 +6762,7 @@ Features:
 </div>
 
 <div id="outline-container-twitch" class="outline-3">
-<h3 id="twitch"><span class="section-number-3">24.10.</span> Twitch</h3>
+<h3 id="twitch"><span class="section-number-3">24.11.</span> Twitch</h3>
 <div class="outline-text-3" id="text-twitch">
 <p>
 <a href="+web-services/twitch/README.html">+web-services/twitch/README.org</a>
@@ -6760,7 +6785,7 @@ Features:
 </div>
 
 <div id="outline-container-twitter" class="outline-3">
-<h3 id="twitter"><span class="section-number-3">24.11.</span> Twitter</h3>
+<h3 id="twitter"><span class="section-number-3">24.12.</span> Twitter</h3>
 <div class="outline-text-3" id="text-twitter">
 <p>
 <a href="+web-services/twitter/README.html">+web-services/twitter/README.org</a>
@@ -6804,7 +6829,7 @@ Features:
 </div>
 
 <div id="outline-container-wakatime" class="outline-3">
-<h3 id="wakatime"><span class="section-number-3">24.12.</span> Wakatime</h3>
+<h3 id="wakatime"><span class="section-number-3">24.13.</span> Wakatime</h3>
 <div class="outline-text-3" id="text-wakatime">
 <p>
 <a href="+web-services/wakatime/README.html">+web-services/wakatime/README.org</a>
@@ -6837,7 +6862,7 @@ Features:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2023-01-22 Sun 17:10</p>
+<p class="date">Created: 2023-06-09 Fri 07:02</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
