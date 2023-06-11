@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-06-09 Fri 07:02 -->
+<!-- 2023-06-11 Sun 14:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>kotlin layer</title>
@@ -248,7 +248,7 @@
 </div>
 </div>
 
-<div id="org1a5ee75" class="figure">
+<div id="orgf532437" class="figure">
 <p><img src="img/kotlin.png" alt="kotlin.png" />
 </p>
 </div>
@@ -366,6 +366,23 @@ variable <code>kotlin-lsp-jar-path</code>.
 </p>
 
 <p>
+Maybe you want to set the kotlin-language-server path in user-config, you can put the following in your dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> lsp-clients-kotlin-server-executable <span class="org-string">"path/to/kotlin/installdir/install/server/bin/kotlin-language-server"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+You can check the emacs-lsp document for more configurations at <a href="https://emacs-lsp.github.io/lsp-mode/page/lsp-kotlin/">official document page</a>
+</p>
+
+<p>
+NOTE: put <code>lsp-clients-kotlin-server-executable</code> in layer variables will also be ok, but the reverse that set <code>kotlin-lsp-jar-path</code> in user-config will not work.
+</p>
+
+<p>
 NOTE: Key bindings for LSP are defined in the
 LSP layer. Also it is advisable to have a look
 at the autocomplete layer for an optimal
@@ -378,7 +395,7 @@ intellisense config for LSP.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2023-06-09 Fri 07:02</p>
+<p class="date">Created: 2023-06-11 Sun 14:58</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
