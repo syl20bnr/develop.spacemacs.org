@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-06-09 Fri 07:02 -->
+<!-- 2023-06-11 Sun 14:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shell Scripts layer</title>
@@ -237,8 +237,8 @@
 <li><a href="#format-on-save">2.5. Format on save</a></li>
 <li><a href="#backends">2.6. Backends</a>
 <ul>
-<li><a href="#shell-script-mode">2.6.1. Shell-script-mode</a></li>
-<li><a href="#lsp">2.6.2. LSP</a></li>
+<li><a href="#lsp">2.6.1. LSP</a></li>
+<li><a href="#shell-script-mode">2.6.2. Shell-script-mode</a></li>
 </ul>
 </li>
 </ul>
@@ -248,7 +248,7 @@
 </div>
 </div>
 
-<div id="orgf88a972" class="figure">
+<div id="org0542862" class="figure">
 <p><img src="img/fish.png" alt="fish.png" />
 </p>
 </div>
@@ -360,35 +360,13 @@ with different setup instructions and different capabilities.
 </p>
 
 <p>
-The LSP backend is automatically selected when the <code>lsp</code> layer is used.
+The LSP backend is automatically selected when the <code>lsp</code> layer is used
+and is the recommended one.
 </p>
-</div>
-
-<div id="outline-container-shell-script-mode" class="outline-4">
-<h4 id="shell-script-mode"><span class="section-number-4">2.6.1.</span> Shell-script-mode</h4>
-<div class="outline-text-4" id="text-shell-script-mode">
-<p>
-This is the recommended way for working with shell scripts in emacs. It works
-by using an emacs major mode.
-</p>
-
-<p>
-It supports <code>bash</code> and <code>fish</code> shell scripts.
-</p>
-
-<p>
-Set <code>shell-scripts-backend</code> to <code>nil</code> explicitly to use this simple backend even when the <code>lsp</code> layer is loaded.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>shell-scripts <span class="org-builtin">:variables</span> shell-scripts-backend nil<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
 </div>
 
 <div id="outline-container-lsp" class="outline-4">
-<h4 id="lsp"><span class="section-number-4">2.6.2.</span> LSP</h4>
+<h4 id="lsp"><span class="section-number-4">2.6.1.</span> LSP</h4>
 <div class="outline-text-4" id="text-lsp">
 <p>
 This backend uses an external server to provide the various IDE integrations
@@ -419,6 +397,29 @@ This will result in the <code>lsp</code> layer being loaded.
 
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>shell-scripts <span class="org-builtin">:variables</span> shell-scripts-backend 'lsp<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-shell-script-mode" class="outline-4">
+<h4 id="shell-script-mode"><span class="section-number-4">2.6.2.</span> Shell-script-mode</h4>
+<div class="outline-text-4" id="text-shell-script-mode">
+<p>
+This is the more basic alternative for working with shell scripts in emacs. It works
+by using an emacs major mode and is slower and less complete than the LSP alternative.
+</p>
+
+<p>
+It supports <code>bash</code> and <code>fish</code> shell scripts.
+</p>
+
+<p>
+Set <code>shell-scripts-backend</code> to <code>nil</code> explicitly to use this simple backend.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>shell-scripts <span class="org-builtin">:variables</span> shell-scripts-backend nil<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -520,7 +521,7 @@ This will result in the <code>lsp</code> layer being loaded.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2023-06-09 Fri 07:02</p>
+<p class="date">Created: 2023-06-11 Sun 14:58</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
