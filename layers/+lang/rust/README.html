@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-06-25 Sun 10:11 -->
+<!-- 2023-08-05 Sat 13:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rust layer</title>
@@ -231,17 +231,17 @@
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
-<li><a href="#choosing-a-backend">2.2. Choosing a backend</a>
+<li><a href="#lsp">2.2. LSP</a>
 <ul>
-<li><a href="#racer">2.2.1. Racer</a></li>
-<li><a href="#lsp">2.2.2. LSP</a></li>
+<li><a href="#autocompletion">2.2.1. Autocompletion</a></li>
+<li><a href="#debugger-dap-integration">2.2.2. Debugger (dap integration)</a></li>
+<li><a href="#automatically-reload-workspace">2.2.3. Automatically Reload Workspace</a></li>
 </ul>
 </li>
 <li><a href="#cargo">2.3. Cargo</a>
 <ul>
 <li><a href="#cargo-edit">2.3.1. cargo-edit</a></li>
-<li><a href="#cargo-audit">2.3.2. cargo-audit</a></li>
-<li><a href="#cargo-outdated">2.3.3. cargo-outdated</a></li>
+<li><a href="#cargo-outdated">2.3.2. cargo-outdated</a></li>
 </ul>
 </li>
 <li><a href="#rustfmt">2.4. Rustfmt</a></li>
@@ -257,7 +257,7 @@
 </div>
 </div>
 
-<div id="org2dfff01" class="figure">
+<div id="org81ee3bc" class="figure">
 <p><img src="img/rust.png" alt="rust.png" />
 </p>
 </div>
@@ -274,7 +274,7 @@ This layer supports <a href="https://www.rust-lang.org">Rust</a> development in 
 <h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Auto-completion and navigation support through <a href="https://github.com/emacs-lsp/lsp-mode">lsp-mode</a> or <a href="https://github.com/phildawes/racer">Racer</a></li>
+<li>Auto-completion and navigation support through <a href="https://github.com/emacs-lsp/lsp-mode">lsp-mode</a></li>
 <li>Interactive debugger using <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a></li>
 <li>Support for the Rust package manager <a href="http://doc.crates.io/index.html">Cargo</a></li>
 <li>Support for <a href="https://github.com/nabero/ron-mode">Rusty Object Notation (RON)</a></li>
@@ -299,111 +299,35 @@ file.
 </div>
 </div>
 
-<div id="outline-container-choosing-a-backend" class="outline-3">
-<h3 id="choosing-a-backend"><span class="section-number-3">2.2.</span> Choosing a backend</h3>
-<div class="outline-text-3" id="text-choosing-a-backend">
+<div id="outline-container-lsp" class="outline-3">
+<h3 id="lsp"><span class="section-number-3">2.2.</span> LSP</h3>
+<div class="outline-text-3" id="text-lsp">
 <p>
-To choose a default backend set the layer variable <code>rust-backend</code>:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>rust <span class="org-builtin">:variables</span> rust-backend 'racer<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-Alternatively the <code>lsp</code> backend will be automatically chosen if the layer <code>lsp</code>
-is used and you did not specify any value for <code>rust-backend</code>.
-</p>
-
-<p>
-Backend can be chosen on a per project basis using directory local variables
-(files named <code>.dir-locals.el</code> at the root of a project), an example to use the
-<code>lsp</code> backend:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
-<span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
-
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>rust-mode <span class="org-rainbow-delimiters-depth-3">(</span>rust-backend . lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-<b>Note:</b> you can easily add a directory local variable with <code>SPC f v d</code>.
+The <code>lsp</code> backend will be automatically enabled if the layer <code>lsp</code> is used.
 </p>
 </div>
 
-<div id="outline-container-racer" class="outline-4">
-<h4 id="racer"><span class="section-number-4">2.2.1.</span> Racer</h4>
-<div class="outline-text-4" id="text-racer">
-<p>
-You must install <a href="https://github.com/phildawes/racer">Racer</a> to use this backend. Make sure the <code>racer</code> binary is available in
-your <code>PATH</code> and to set the environment variable <code>RUST_SRC_PATH</code>, as described in
-the <a href="https://github.com/phildawes/racer#installation">installation instructions</a>.
-</p>
-
+<div id="outline-container-autocompletion" class="outline-4">
+<h4 id="autocompletion"><span class="section-number-4">2.2.1.</span> Autocompletion</h4>
+<div class="outline-text-4" id="text-autocompletion">
 <p>
 To enable auto-completion, ensure that the <code>auto-completion</code> layer is enabled.
 </p>
 </div>
 </div>
 
-<div id="outline-container-lsp" class="outline-4">
-<h4 id="lsp"><span class="section-number-4">2.2.2.</span> LSP</h4>
-<div class="outline-text-4" id="text-lsp">
-<p>
-You must add <code>lsp</code> to the existing <code>dotspacemacs-configuration-layers</code> in your <code>~/.spacemacs</code>.
-</p>
-
-<p>
-Consult the installation command for the desired language server found at <a href="https://github.com/emacs-lsp/lsp-mode">lsp-mode</a> for instructions.
-</p>
-
-<p>
-The default LSP server for Rust is <a href="https://github.com/rust-lang/rls">rls</a>, i.e. rust language server.
-To choose the experimental <a href="https://github.com/rust-analyzer/rust-analyzer">rust-analyzer</a>, you need to set the layer variable <code>lsp-rust-server</code> of <code>lsp</code> layer:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-               '<span class="org-rainbow-delimiters-depth-2">(</span>lsp <span class="org-builtin">:variables</span> lsp-rust-server 'rust-analyzer<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-
-<ol class="org-ol">
-<li><a id="switch-to-another-lsp-server"></a>Switch to another LSP server<br />
-<div class="outline-text-5" id="text-switch-to-another-lsp-server">
-<p>
-If both <code>rls</code> and <code>rust-analyzer</code> server are installed, you can press <code>SPC m s s</code> to switch to another LSP server backend.
-</p>
-</div>
-</li>
-
-<li><a id="autocompletion"></a>Autocompletion<br />
-<div class="outline-text-5" id="text-autocompletion">
-<p>
-To enable auto-completion, ensure that the <code>auto-completion</code> layer is enabled.
-</p>
-
-<p>
-By default, currently <a href="https://github.com/phildawes/racer">Racer</a> is the only code completion backend of <a href="https://github.com/rust-lang/rls">rls</a>, so you also need to install it.
-</p>
-</div>
-</li>
-
-<li><a id="debugger-dap-integration"></a>Debugger (dap integration)<br />
-<div class="outline-text-5" id="text-debugger-dap-integration">
+<div id="outline-container-debugger-dap-integration" class="outline-4">
+<h4 id="debugger-dap-integration"><span class="section-number-4">2.2.2.</span> Debugger (dap integration)</h4>
+<div class="outline-text-4" id="text-debugger-dap-integration">
 <p>
 To install the debug adapter you may run <code>M-x dap-gdb-lldb-setup</code> when you are on Linux or download it manually from <a href="https://marketplace.visualstudio.com/items?itemName=webfreak.debug">Native Debug</a> and adjust <code>dap-gdb-lldb-path</code>.
 </p>
 </div>
-</li>
+</div>
 
-<li><a id="automatically-reload-workspace"></a>Automatically Reload Workspace<br />
-<div class="outline-text-5" id="text-automatically-reload-workspace">
+<div id="outline-container-automatically-reload-workspace" class="outline-4">
+<h4 id="automatically-reload-workspace"><span class="section-number-4">2.2.3.</span> Automatically Reload Workspace</h4>
+<div class="outline-text-4" id="text-automatically-reload-workspace">
 <p>
 When the LSP server is <code>rust-analyzer</code>, it may needs to reload the workspace to pickup changes made in <code>Cargo.toml</code>.
 You can call <code>spacemacs/lsp-rust-analyzer-reload-workspace</code>, which would be faster than restarting the LSP backend.
@@ -414,20 +338,17 @@ You can also set <code>cargo-process-reload-on-modify</code> to <code>t</code>, 
 one of the following is run:
 </p>
 <ul class="org-ul">
-<li><code>cargo-process-add</code></li>
-<li><code>cargo-process-rm</code></li>
-<li><code>cargo-process-upgrade</code></li>
+<li><code>rustic-cargo-add</code></li>
+<li><code>rustic-cargo-rm</code></li>
+<li><code>rustic-cargo-upgrade</code></li>
 </ul>
 
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-               '<span class="org-rainbow-delimiters-depth-2">(</span>lsp <span class="org-builtin">:variables</span> lsp-rust-server 'rust-analyzer
-                                cargo-process-reload-on-modify t<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+               '<span class="org-rainbow-delimiters-depth-2">(</span>lsp <span class="org-builtin">:variables</span> cargo-process-reload-on-modify t<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
-</li>
-</ol>
 </div>
 </div>
 
@@ -454,22 +375,8 @@ instructions can be found on the main page of <a href="http://doc.crates.io/inde
 </div>
 </div>
 
-<div id="outline-container-cargo-audit" class="outline-4">
-<h4 id="cargo-audit"><span class="section-number-4">2.3.2.</span> cargo-audit</h4>
-<div class="outline-text-4" id="text-cargo-audit">
-<p>
-<a href="https://github.com/RustSec/cargo-audit">cargo-audit</a> audits <code>Cargo.lock</code> files for crates with security vulnerabilities.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-sh">cargo install cargo-audit
-</pre>
-</div>
-</div>
-</div>
-
 <div id="outline-container-cargo-outdated" class="outline-4">
-<h4 id="cargo-outdated"><span class="section-number-4">2.3.3.</span> cargo-outdated</h4>
+<h4 id="cargo-outdated"><span class="section-number-4">2.3.2.</span> cargo-outdated</h4>
 <div class="outline-text-4" id="text-cargo-outdated">
 <p>
 <a href="https://github.com/kbknapp/cargo-outdated">cargo-outdated</a> displays dependencies that have new version available.
@@ -550,11 +457,6 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m c /</code></td>
-<td class="org-left">search for packages on crates.io with Cargo</td>
-</tr>
-
-<tr>
 <td class="org-left"><code>SPC m c =</code></td>
 <td class="org-left">format all project files with rustfmt</td>
 </tr>
@@ -562,11 +464,6 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 <tr>
 <td class="org-left"><code>SPC m c a</code></td>
 <td class="org-left">add a new dependency with cargo-edit</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c A</code></td>
-<td class="org-left">audit dependencies for known vulnerability with cargo-audit</td>
 </tr>
 
 <tr>
@@ -581,22 +478,17 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 
 <tr>
 <td class="org-left"><code>SPC m c d</code></td>
-<td class="org-left">generate documentation</td>
+<td class="org-left">generate documentation and open it in default browser</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m c D</code></td>
-<td class="org-left">generate documentation and open it in default browser</td>
+<td class="org-left"><code>SPC m c s</code></td>
+<td class="org-left">search the documentation</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m c e</code></td>
 <td class="org-left">run benchmarks</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c E</code></td>
-<td class="org-left">run a project example</td>
 </tr>
 
 <tr>
@@ -607,6 +499,11 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 <tr>
 <td class="org-left"><code>SPC m c l</code></td>
 <td class="org-left">run linter (<a href="https://github.com/arcnmx/cargo-clippy">cargo-clippy</a>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c f</code></td>
+<td class="org-left">run linter automatic fixes (<a href="https://github.com/arcnmx/cargo-clippy">cargo-clippy</a>)</td>
 </tr>
 
 <tr>
@@ -645,11 +542,6 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m c X</code></td>
-<td class="org-left">execute a specific binary</td>
-</tr>
-
-<tr>
 <td class="org-left"><code>SPC m g g</code></td>
 <td class="org-left">jump to definition</td>
 </tr>
@@ -673,11 +565,6 @@ To enable automatic buffer formatting on save, set the variable <code>rust-forma
 <td class="org-left"><code>SPC m t t</code></td>
 <td class="org-left">run the current test</td>
 </tr>
-
-<tr>
-<td class="org-left"><code>SPC m t b</code></td>
-<td class="org-left">run all tests in current buffe</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -695,7 +582,7 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2023-06-25 Sun 10:11</p>
+<p class="date">Created: 2023-08-05 Sat 13:54</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
