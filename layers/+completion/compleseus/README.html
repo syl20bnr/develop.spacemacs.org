@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-08-28 Mon 04:42 -->
+<!-- 2023-12-31 Sun 13:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Compleseus layer</title>
@@ -237,7 +237,11 @@
 </li>
 </ul>
 </li>
-<li><a href="#key-bindings">3. Key bindings</a></li>
+<li><a href="#key-bindings">3. Key bindings</a>
+<ul>
+<li><a href="#edit-consult-buffer">3.1. Edit consult buffer</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -346,11 +350,74 @@ like below to use <code>selectrum</code> as opposed to the default of <code>vert
 </tbody>
 </table>
 </div>
+
+<div id="outline-container-edit-consult-buffer" class="outline-3">
+<h3 id="edit-consult-buffer"><span class="section-number-3">3.1.</span> Edit consult buffer</h3>
+<div class="outline-text-3" id="text-edit-consult-buffer">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>C-c C-e</code></td>
+<td class="org-left">Export consult buffer to a grep buffer and make it editable right away</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-o E</code></td>
+<td class="org-left">Export consult buffer to a new buffer (usually grep)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m w</code></td>
+<td class="org-left">Toggle the exported buffer to be editable or read-only when it's a grep buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m ,</code> or <code>SPC m c</code></td>
+<td class="org-left">Apply/Commit changes made in the exported buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m a</code> or <code>SPC m k</code></td>
+<td class="org-left">Abort/Kill changes made in the exported buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m q</code></td>
+<td class="org-left">Abort/Kill changes made in the exported buffer and close the buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s</code></td>
+<td class="org-left">Apply and <code>save</code> changes made in the exported buffer and close the buffer</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Note: <code>SPC m s</code> actually saves the changes on disk when the changed lines belong
+to a buffer visiting a file. <code>SPC m ,</code> and <code>SPC m c</code> do not save the changes on
+disk.
+</p>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2023-08-28 Mon 04:42</p>
+<p class="date">Created: 2023-12-31 Sun 13:30</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
