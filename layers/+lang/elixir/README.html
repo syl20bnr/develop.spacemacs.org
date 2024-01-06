@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-12-31 Sun 13:30 -->
+<!-- 2024-01-06 Sat 18:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elixir layer</title>
@@ -281,7 +281,7 @@
 </div>
 </div>
 
-<div id="org08446e0" class="figure">
+<div id="org3c7c0d0" class="figure">
 <p><img src="img/elixir.png" alt="elixir.png" />
 </p>
 </div>
@@ -575,31 +575,31 @@ Then run in your shell:
 <div class="outline-text-3" id="text-language-server-protocol">
 <p>
 The <code>lsp</code> backend uses <a href="https://github.com/JakeBecker/elixir-ls">elixir-ls</a> as its language server implementation
-Clone the project to your system and follow the building instructions <a href="https://github.com/JakeBecker/elixir-ls#building-and-running">here</a>
-Or the lsp-elixir <a href="https://github.com/elixir-lsp/elixir-ls">fork</a>, which is actively maintained as well
+Clone the project to your system and follow the building instructions <a href="https://github.com/JakeBecker/elixir-ls#building-and-running">here</a>.
+Or the lsp-elixir <a href="https://github.com/elixir-lsp/elixir-ls">fork</a>, which is actively maintained as well.
+A third choice would be <a href="https://github.com/lexical-lsp/lexical">lexical</a> which is said to be working especially well in bigger projects.
+ For all of these some config must be applied in your dotfile.
 </p>
 
 <p>
-set the <code>elixir-ls-path</code> to the release folder of <code>elixir-ls</code> in .spacemacs <code>dotspacemacs/user-config</code>
+For <code>elixir-ls</code> this would be:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> elixir-ls-path <span class="org-string">"*path to folder*/elixir-ls/release"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>elixir <span class="org-builtin">:variables</span> elixir-backend 'lsp
+                   elixir-ls-path <span class="org-string">"*path to folder*/elixir-ls/release"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
-or in the layer definition
+For <code>lexical</code> this would be:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>elixir <span class="org-builtin">:variables</span> elixir-backend 'lsp elixir-ls-path <span class="org-string">"*path to folder*/elixir-ls/release"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>elixir <span class="org-builtin">:variables</span> elixir-backend 'lsp
+                   lsp-elixir-server-command <span class="org-string">"*path to folder*/lexical/bin/start_lexical.sh"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
-
-<p>
-by default <code>elixir-ls-path</code> is equal to <code>"~/elixir-ls/release"</code>
-</p>
 </div>
 </div>
 
@@ -1271,7 +1271,7 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2023-12-31 Sun 13:30</p>
+<p class="date">Created: 2024-01-06 Sat 18:57</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

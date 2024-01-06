@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-12-31 Sun 13:30 -->
+<!-- 2024-01-06 Sat 18:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TypeScript layer</title>
@@ -255,7 +255,7 @@
 </div>
 </div>
 
-<div id="org4545509" class="figure">
+<div id="orgb45de92" class="figure">
 <p><img src="img/TypeScript.png" alt="TypeScript.png" />
 </p>
 </div>
@@ -276,7 +276,7 @@ This layer adds support for TypeScript and TSX editing.
 <li>Eldoc-mode</li>
 <li>Documentation at point</li>
 <li>Auto complete</li>
-<li>Flycheck with either tslint or eslint</li>
+<li>Flycheck with either eslint or tslint</li>
 <li>Jump to definition, Jump to type definition</li>
 <li>Find occurrences (Imenu-mode)</li>
 <li>Rename symbol</li>
@@ -334,13 +334,13 @@ You can choose formatting tool:
 </div>
 
 <p>
-You can choose either tslint (default) or eslint for linting:
+You can choose either eslint (default) or tslint (deprecated by upstream) for linting:
 </p>
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>typescript <span class="org-builtin">:variables</span>
-              typescript-linter 'tslint<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+              typescript-linter 'eslint<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -359,20 +359,20 @@ You will need <code>node.js v0.12.0</code> or greater.
 </p>
 
 <p>
-If you want linting with tslint run:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-shell">npm install -g typescript tslint
-</pre>
-</div>
-
-<p>
 If you want linting with eslint run:
 </p>
 
 <div class="org-src-container">
 <pre class="src src-shell">npm install eslint
+</pre>
+</div>
+
+<p>
+If you want linting with tslint run:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">npm install -g typescript tslint
 </pre>
 </div>
 
@@ -652,7 +652,7 @@ then set the variable <code>typescript-lsp-linter</code> to <code>nil</code>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2023-12-31 Sun 13:30</p>
+<p class="date">Created: 2024-01-06 Sat 18:57</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
