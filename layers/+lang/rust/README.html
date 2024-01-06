@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-12-31 Sun 13:30 -->
+<!-- 2024-01-06 Sat 18:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rust layer</title>
@@ -235,7 +235,7 @@
 <ul>
 <li><a href="#autocompletion">2.2.1. Autocompletion</a></li>
 <li><a href="#debugger-dap-integration">2.2.2. Debugger (dap integration)</a></li>
-<li><a href="#automatically-reload-workspace">2.2.3. Automatically Reload Workspace</a></li>
+<li><a href="#reloading-workspace">2.2.3. Reloading Workspace</a></li>
 </ul>
 </li>
 <li><a href="#cargo">2.3. Cargo</a>
@@ -257,7 +257,7 @@
 </div>
 </div>
 
-<div id="org418945e" class="figure">
+<div id="orga711d1a" class="figure">
 <p><img src="img/rust.png" alt="rust.png" />
 </p>
 </div>
@@ -325,29 +325,20 @@ To install the debug adapter you may run <code>M-x dap-gdb-lldb-setup</code> whe
 </div>
 </div>
 
-<div id="outline-container-automatically-reload-workspace" class="outline-4">
-<h4 id="automatically-reload-workspace"><span class="section-number-4">2.2.3.</span> Automatically Reload Workspace</h4>
-<div class="outline-text-4" id="text-automatically-reload-workspace">
+<div id="outline-container-reloading-workspace" class="outline-4">
+<h4 id="reloading-workspace"><span class="section-number-4">2.2.3.</span> Reloading Workspace</h4>
+<div class="outline-text-4" id="text-reloading-workspace">
 <p>
-When the LSP server is <code>rust-analyzer</code>, it may needs to reload the workspace to pickup changes made in <code>Cargo.toml</code>.
-You can call <code>spacemacs/lsp-rust-analyzer-reload-workspace</code>, which would be faster than restarting the LSP backend.
+By default, rust-analyzer will automatically reload the workspace
+after you make changes to <code>Cargo.toml</code> (such as adding dependencies).
 </p>
 
 <p>
-You can also set <code>cargo-process-reload-on-modify</code> to <code>t</code>, then it will automatically reload the workspace after
-one of the following is run:
+However, if <code>lsp-rust-analyzer-cargo-auto-reload</code> is set to nil, you
+will need to reload the workspace manually for the LSP to notice those
+changes. You can call <code>spacemacs/lsp-rust-analyzer-reload-workspace</code>,
+which would be faster than restarting the LSP backend.
 </p>
-<ul class="org-ul">
-<li><code>rustic-cargo-add</code></li>
-<li><code>rustic-cargo-rm</code></li>
-<li><code>rustic-cargo-upgrade</code></li>
-</ul>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-               '<span class="org-rainbow-delimiters-depth-2">(</span>lsp <span class="org-builtin">:variables</span> cargo-process-reload-on-modify t<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 </div>
 </div>
 </div>
@@ -449,6 +440,11 @@ To enable automatic buffer formatting on save, set the variable <code>rustic-for
 <tr>
 <td class="org-left"><code>SPC m b R</code></td>
 <td class="org-left">reload Rust-Analyzer workspace</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c .</code></td>
+<td class="org-left">rerun the default binary with the same arguments</td>
 </tr>
 
 <tr>
@@ -577,7 +573,7 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2023-12-31 Sun 13:30</p>
+<p class="date">Created: 2024-01-06 Sat 18:57</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
