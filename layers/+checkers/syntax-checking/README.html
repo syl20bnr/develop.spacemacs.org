@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-03-22 Fri 20:48 -->
+<!-- 2024-03-27 Wed 09:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Syntax Checking layer</title>
@@ -247,7 +247,7 @@
 </div>
 </div>
 
-<div id="org8bb229c" class="figure">
+<div id="orgb91b756" class="figure">
 <p><img src="img/flycheck.png" alt="flycheck.png" />
 </p>
 </div>
@@ -366,6 +366,22 @@ hide it after 5 seconds:
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
               '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>syntax-checking <span class="org-builtin">:variables</span>
                                  syntax-checking-auto-hide-tooltips <span class="org-highlight-numbers-number">5</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Because flycheck almost immediately shows the tooltip pop-up window it can
+potentially hide code before or after the the current line you're on.
+If you prefer it to show up only after a certain amount of time has passed,
+you can set the variable <code>syntax-checking-tooltips-delay</code> to a positive value.
+Otherwise flychecks default value of 0.9 is used.
+Example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>syntax-checking <span class="org-builtin">:variables</span>
+                                 syntax-checking-tooltips-delay <span class="org-highlight-numbers-number">5</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -635,7 +651,7 @@ available:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2024-03-22 Fri 20:48</p>
+<p class="date">Created: 2024-03-27 Wed 09:35</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
