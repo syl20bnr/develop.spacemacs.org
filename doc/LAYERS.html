@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-05-17 Fri 04:17 -->
+<!-- 2024-05-30 Thu 14:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Configuration layers development</title>
@@ -677,7 +677,7 @@ path for you.
 <div class="outline-text-3" id="text-layersel">
 <p>
 This file is the first file to be loaded and this is the place where additional
-layers can be declared.
+layers can be declared as dependencies.
 </p>
 
 <p>
@@ -686,7 +686,7 @@ file <code>layers.el</code> of layer A, we can add:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>configuration-layer/declare-layer 'B<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>configuration-layer/declare-layer-dependencies '<span class="org-rainbow-delimiters-depth-2">(</span>B<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -701,7 +701,7 @@ was added to <code>dotspacemacs-configuration-layers</code> variables.
 <h3 id="packagesel"><span class="section-number-3">4.2.</span> packages.el</h3>
 <div class="outline-text-3" id="text-packagesel">
 <p>
-It contains this list of packages of the layer and the actual configuration for
+It contains the list of packages of the layer and the actual configuration for
 the packages included in the layer.
 </p>
 
@@ -1225,7 +1225,7 @@ of a package.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2024-05-17 Fri 04:17</p>
+<p class="date">Created: 2024-05-30 Thu 14:09</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

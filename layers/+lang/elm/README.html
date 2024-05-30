@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-05-17 Fri 04:17 -->
+<!-- 2024-05-30 Thu 14:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elm layer</title>
@@ -244,10 +244,10 @@
 </li>
 <li><a href="#configuration">3. Configuration</a>
 <ul>
-<li><a href="#choosing-a-backend">3.1. Choosing a backend</a>
+<li><a href="#backend">3.1. Backend</a>
 <ul>
-<li><a href="#company-elm">3.1.1. Company-elm</a></li>
-<li><a href="#lsp">3.1.2. LSP</a></li>
+<li><a href="#lsp">3.1.1. LSP</a></li>
+<li><a href="#none">3.1.2. None</a></li>
 </ul>
 </li>
 </ul>
@@ -277,16 +277,15 @@
 <li><a href="#package-list-buffer">5.5.1. package list buffer</a></li>
 </ul>
 </li>
-<li><a href="#elm-oracle-1">5.6. elm-oracle</a></li>
-<li><a href="#elm-format-1">5.7. elm-format</a></li>
-<li><a href="#refactoring">5.8. Refactoring</a></li>
+<li><a href="#elm-format-1">5.6. elm-format</a></li>
+<li><a href="#refactoring">5.7. Refactoring</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="org030f0c8" class="figure">
+<div id="org755fc61" class="figure">
 <p><img src="img/elm.png" alt="elm.png" />
 </p>
 </div>
@@ -464,64 +463,16 @@ No custom user config lines are necessary
 </p>
 </div>
 
-<div id="outline-container-choosing-a-backend" class="outline-3">
-<h3 id="choosing-a-backend"><span class="section-number-3">3.1.</span> Choosing a backend</h3>
-<div class="outline-text-3" id="text-choosing-a-backend">
-<p>
-This layer provides two alternative backends to choose from.
-</p>
-</div>
-
-<div id="outline-container-company-elm" class="outline-4">
-<h4 id="company-elm"><span class="section-number-4">3.1.1.</span> Company-elm</h4>
-<div class="outline-text-4" id="text-company-elm">
-<p>
-This is the default choice if nothing is set and no lsp layer
-is loaded in your dotfile. This mode only provides very
-limited IDE capabilities. Used best if only small programs
-are edited. To set explicitly set the following in your
-dotfile:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elm <span class="org-builtin">:variables</span> elm-backend 'company-elm<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-
-<ol class="org-ol">
-<li><a id="elm-oracle"></a>elm-oracle<br />
-<div class="outline-text-5" id="text-elm-oracle">
-<p>
-<code>elm-oracle</code> can be used to show type signatures and docs for tokens under the
-cursor and provide support for auto-completion, but it is not part of the
-standard elm-platform.
-</p>
-
-<p>
-Both the "company" and "auto-complete" backends are supported, but this layer
-is configured with company.
-</p>
-
-<p>
-To install <code>elm-oracle</code>, install <code>node.js</code> and <code>npm</code>, then
-run this command:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-sh">npm install -g elm-oracle
-</pre>
-</div>
-</div>
-</li>
-</ol>
+<div id="outline-container-backend" class="outline-3">
+<h3 id="backend"><span class="section-number-3">3.1.</span> Backend</h3>
+<div class="outline-text-3" id="text-backend">
 </div>
 
 <div id="outline-container-lsp" class="outline-4">
-<h4 id="lsp"><span class="section-number-4">3.1.2.</span> LSP</h4>
+<h4 id="lsp"><span class="section-number-4">3.1.1.</span> LSP</h4>
 <div class="outline-text-4" id="text-lsp">
 <p>
-For proper IDE support this backend should be used. It is
+For proper IDE support the <code>lsp</code> backend should be used. It is
 based on an external server which will be started automatically
 by emacs, once an elm file is opened. The key bindings are
 the same for all lsp modes so if you are already familiar with
@@ -555,6 +506,21 @@ LSP layer. Also it is advisable to have a look
 at the autocomplete layer for an optimal
 intellisense config for LSP.
 </p>
+</div>
+</div>
+
+<div id="outline-container-none" class="outline-4">
+<h4 id="none"><span class="section-number-4">3.1.2.</span> None</h4>
+<div class="outline-text-4" id="text-none">
+<p>
+If the <code>lsp</code> layer is loaded in your dotfile and nothing is set for <code>elm-backend</code>, <code>lsp</code> will be
+automatically selected. To explicitly disable the <code>lsp</code> backend set the following in your dotfile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elm <span class="org-builtin">:variables</span> elm-backend nil<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -946,40 +912,8 @@ using a <code>dir-locals.el</code> file.
 </div>
 </div>
 
-<div id="outline-container-elm-oracle-1" class="outline-3">
-<h3 id="elm-oracle-1"><span class="section-number-3">5.6.</span> elm-oracle</h3>
-<div class="outline-text-3" id="text-elm-oracle-1">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m h h</code></td>
-<td class="org-left">elm-oracle-doc-at-point</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m h t</code></td>
-<td class="org-left">elm-oracle-type-at-point</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
 <div id="outline-container-elm-format-1" class="outline-3">
-<h3 id="elm-format-1"><span class="section-number-3">5.7.</span> elm-format</h3>
+<h3 id="elm-format-1"><span class="section-number-3">5.6.</span> elm-format</h3>
 <div class="outline-text-3" id="text-elm-format-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1005,7 +939,7 @@ using a <code>dir-locals.el</code> file.
 </div>
 
 <div id="outline-container-refactoring" class="outline-3">
-<h3 id="refactoring"><span class="section-number-3">5.8.</span> Refactoring</h3>
+<h3 id="refactoring"><span class="section-number-3">5.7.</span> Refactoring</h3>
 <div class="outline-text-3" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1034,7 +968,7 @@ using a <code>dir-locals.el</code> file.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2024-05-17 Fri 04:17</p>
+<p class="date">Created: 2024-05-30 Thu 14:09</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
