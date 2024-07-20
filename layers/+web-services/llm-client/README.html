@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-07-16 Tue 04:16 -->
+<!-- 2024-07-20 Sat 12:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Large Language Model Client layer</title>
@@ -228,9 +228,33 @@
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a></li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#gptel-support">2.2. GPTel support</a></li>
+<li><a href="#ellama-support">2.3. Ellama support</a></li>
+</ul>
+</li>
 <li><a href="#configuration">3. Configuration</a></li>
-<li><a href="#key-bindings">4. Key bindings</a></li>
+<li><a href="#keybindings">4. Keybindings</a>
+<ul>
+<li><a href="#gptel">4.1. GPTel</a></li>
+<li><a href="#ellama">4.2. Ellama</a>
+<ul>
+<li><a href="#code-tasks">4.2.1. Code tasks</a></li>
+<li><a href="#summarization-tasks">4.2.2. Summarization tasks</a></li>
+<li><a href="#edit-tasks">4.2.3. Edit tasks</a></li>
+<li><a href="#question-answering-tasks">4.2.4. Question-Answering tasks</a></li>
+<li><a href="#problem-solving-tasks">4.2.5. Problem solving tasks</a></li>
+<li><a href="#translation-tasks">4.2.6. Translation tasks</a></li>
+<li><a href="#thesaurus-tasks">4.2.7. Thesaurus tasks</a></li>
+<li><a href="#context-management">4.2.8. Context management</a></li>
+<li><a href="#session-management">4.2.9. Session management</a></li>
+<li><a href="#provider-management">4.2.10. Provider management</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -239,7 +263,7 @@
 <h2 id="description"><span class="section-number-2">1.</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer enables usage of GPT Clients in Spacemacs using <a href="https://github.com/karthink/gptel">GPTel</a>.
+This layer enables usage of GPT Clients in Spacemacs using <a href="https://github.com/karthink/gptel">GPTel</a> and <a href="https://github.com/s-kostyaev/ellama">Ellama</a>.
 </p>
 </div>
 
@@ -272,6 +296,11 @@ You will have access to the following tools:
 <div id="outline-container-install" class="outline-2">
 <h2 id="install"><span class="section-number-2">2.</span> Install</h2>
 <div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-layer" class="outline-3">
+<h3 id="layer"><span class="section-number-3">2.1.</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>llm-client</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
@@ -280,24 +309,93 @@ file.
 </div>
 </div>
 
+<div id="outline-container-gptel-support" class="outline-3">
+<h3 id="gptel-support"><span class="section-number-3">2.2.</span> GPTel support</h3>
+<div class="outline-text-3" id="text-gptel-support">
+<p>
+GPTel is a Large Language Model chat client for Emacs, with support for multiple
+models and backends. GPTel allows you to interact with LLMs from anywhere in
+Emacs (any buffer, shell, minibuffer, wherever) and supports conversations and
+multiple independent sessions.
+</p>
+
+<p>
+Key features of GPTel include:
+</p>
+<ul class="org-ul">
+<li>Async and fast, streams responses.</li>
+<li>LLM responses are in Markdown or Org markup.</li>
+<li>Supports conversations and multiple independent sessions.</li>
+<li>Save chats as regular Markdown/Org/Text files and resume them later.</li>
+</ul>
+
+<p>
+To enable GPTel support in your Spacemacs configuration, add the following to
+your <code>dotspacemacs-configuration-layers</code> list:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+ '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>llm-client <span class="org-builtin">:variables</span> llm-client-enable-gptel t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-ellama-support" class="outline-3">
+<h3 id="ellama-support"><span class="section-number-3">2.3.</span> Ellama support</h3>
+<div class="outline-text-3" id="text-ellama-support">
+<p>
+Ellama is a tool for interacting with large language models from Emacs. It
+provides a suite of convenience functions that streamline common workflows.
+Ellama can perform various tasks such as translation, code review,
+summarization, enhancing grammar/spelling or wording and more through the Emacs
+interface.
+</p>
+
+<p>
+Key features of Ellama include:
+</p>
+<ul class="org-ul">
+<li>Easily translate text between different languages.</li>
+<li>Automatically review and provide feedback on code snippets.</li>
+<li>Generate concise summaries of lengthy documents or articles.</li>
+<li>Improve the quality of written content by correcting grammar and spelling
+errors.</li>
+<li>Refine and polish text to enhance clarity and readability.</li>
+</ul>
+
+<p>
+To enable Ellama support in your Spacemacs configuration, add the following to
+your <code>dotspacemacs-configuration-layers</code> list:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+ '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>llm-client <span class="org-builtin">:variables</span> llm-client-enable-ellama t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
 <div id="outline-container-configuration" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">3.</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
-Refer to the official <a href="https://github.com/karthink/gptel">GPTel</a> documentation for advanced configurations and
-additional information.
+Refer to the official <a href="https://github.com/karthink/gptel">GPTel</a> and <a href="https://github.com/s-kostyaev/ellama">ellama</a> documentation for advanced configurations
+and additional information.
 </p>
 </div>
 </div>
 
-<div id="outline-container-key-bindings" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">4.</span> Key bindings</h2>
-<div class="outline-text-2" id="text-key-bindings">
+<div id="outline-container-keybindings" class="outline-2">
+<h2 id="keybindings"><span class="section-number-2">4.</span> Keybindings</h2>
+<div class="outline-text-2" id="text-keybindings">
 <p>
-The layer provides several key bindings to interact with LLMs efficiently. Here
-are some of the key bindings available:
+The layer provides several key bindings to interact with LLMs efficiently.
 </p>
+</div>
 
+<div id="outline-container-gptel" class="outline-3">
+<h3 id="gptel"><span class="section-number-3">4.1.</span> GPTel</h3>
+<div class="outline-text-3" id="text-gptel">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -403,10 +501,483 @@ In addition, this layer adds the following key bindings to <code>org-mode</code>
 </table>
 </div>
 </div>
+
+<div id="outline-container-ellama" class="outline-3">
+<h3 id="ellama"><span class="section-number-3">4.2.</span> Ellama</h3>
+<div class="outline-text-3" id="text-ellama">
+</div>
+
+<div id="outline-container-code-tasks" class="outline-4">
+<h4 id="code-tasks"><span class="section-number-4">4.2.1.</span> Code tasks</h4>
+<div class="outline-text-4" id="text-code-tasks">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC $ ec c</code></td>
+<td class="org-left">ellama-code-complete</td>
+<td class="org-left">Complete code in current buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ec a</code></td>
+<td class="org-left">ellama-code-add</td>
+<td class="org-left">Add code according to description</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ec e</code></td>
+<td class="org-left">ellama-code-edit</td>
+<td class="org-left">Edit code according to change</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ec i</code></td>
+<td class="org-left">ellama-code-improve</td>
+<td class="org-left">Improve code</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ec r</code></td>
+<td class="org-left">ellama-code-review</td>
+<td class="org-left">Review code</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-summarization-tasks" class="outline-4">
+<h4 id="summarization-tasks"><span class="section-number-4">4.2.2.</span> Summarization tasks</h4>
+<div class="outline-text-4" id="text-summarization-tasks">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC $ es s</code></td>
+<td class="org-left">ellama-summarize</td>
+<td class="org-left">Summarize selected region or buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ es w</code></td>
+<td class="org-left">ellama-summarize-webpage</td>
+<td class="org-left">Summarize webpage</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ es c</code></td>
+<td class="org-left">ellama-summarize-killring</td>
+<td class="org-left">Summarize text from kill ring</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-edit-tasks" class="outline-4">
+<h4 id="edit-tasks"><span class="section-number-4">4.2.3.</span> Edit tasks</h4>
+<div class="outline-text-4" id="text-edit-tasks">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC $ ei c</code></td>
+<td class="org-left">ellama-complete</td>
+<td class="org-left">Complete text in current buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ei w</code></td>
+<td class="org-left">ellama-improve-wording</td>
+<td class="org-left">Improve wording</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ei g</code></td>
+<td class="org-left">ellama-improve-grammar</td>
+<td class="org-left">Improve grammar</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ei s</code></td>
+<td class="org-left">ellama-improve-conciseness</td>
+<td class="org-left">Shorten text (make concise)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ei l</code></td>
+<td class="org-left">ellama-make-list</td>
+<td class="org-left">Create markdown list</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ei t</code></td>
+<td class="org-left">ellama-make-table</td>
+<td class="org-left">Create markdown table</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ei f</code></td>
+<td class="org-left">ellama-make-format</td>
+<td class="org-left">Render text as specified format</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-question-answering-tasks" class="outline-4">
+<h4 id="question-answering-tasks"><span class="section-number-4">4.2.4.</span> Question-Answering tasks</h4>
+<div class="outline-text-4" id="text-question-answering-tasks">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC $ ea a</code></td>
+<td class="org-left">ellama-ask-about</td>
+<td class="org-left">Ask about selected region or buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ea c</code></td>
+<td class="org-left">ellama-chat</td>
+<td class="org-left">Chat with ellama</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ea i</code></td>
+<td class="org-left">ellama-instant</td>
+<td class="org-left">Prompt ellama for instant reply</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ea l</code></td>
+<td class="org-left">ellama-ask-line</td>
+<td class="org-left">Send current line to ellama</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ea s</code></td>
+<td class="org-left">ellama-ask-selection</td>
+<td class="org-left">Send selected region to ellama</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-problem-solving-tasks" class="outline-4">
+<h4 id="problem-solving-tasks"><span class="section-number-4">4.2.5.</span> Problem solving tasks</h4>
+<div class="outline-text-4" id="text-problem-solving-tasks">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC $ ep r</code></td>
+<td class="org-left">ellama-solve-reasoning-problem</td>
+<td class="org-left">Solve reasoning PROBLEM with abstraction of thought</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ep d</code></td>
+<td class="org-left">ellama-solve-domain-specific-problem</td>
+<td class="org-left">Solve domain-specific PROBLEM</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-translation-tasks" class="outline-4">
+<h4 id="translation-tasks"><span class="section-number-4">4.2.6.</span> Translation tasks</h4>
+<div class="outline-text-4" id="text-translation-tasks">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC $ et t</code></td>
+<td class="org-left">ellama-translate</td>
+<td class="org-left">Translate selected region or word at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ et b</code></td>
+<td class="org-left">ellama-translate-buffer</td>
+<td class="org-left">Translate current buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ et e</code></td>
+<td class="org-left">ellama-chat-translation-enable</td>
+<td class="org-left">Enable chat translation</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ et d</code></td>
+<td class="org-left">ellama-chat-translation-disable</td>
+<td class="org-left">Disable chat translation</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-thesaurus-tasks" class="outline-4">
+<h4 id="thesaurus-tasks"><span class="section-number-4">4.2.7.</span> Thesaurus tasks</h4>
+<div class="outline-text-4" id="text-thesaurus-tasks">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC $ ed w</code></td>
+<td class="org-left">ellama-define-word</td>
+<td class="org-left">Define current word</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-context-management" class="outline-4">
+<h4 id="context-management"><span class="section-number-4">4.2.8.</span> Context management</h4>
+<div class="outline-text-4" id="text-context-management">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC $ ex b</code></td>
+<td class="org-left">ellama-context-add-buffer</td>
+<td class="org-left">Add buffer to context</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ex f</code></td>
+<td class="org-left">ellama-context-add-file</td>
+<td class="org-left">Add file to context</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ex s</code></td>
+<td class="org-left">ellama-context-add-selection</td>
+<td class="org-left">Add selection to context</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ex i</code></td>
+<td class="org-left">ellama-context-add-info-node</td>
+<td class="org-left">Add info node to context</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-session-management" class="outline-4">
+<h4 id="session-management"><span class="section-number-4">4.2.9.</span> Session management</h4>
+<div class="outline-text-4" id="text-session-management">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC $ eS l</code></td>
+<td class="org-left">ellama-load-session</td>
+<td class="org-left">Load ellama session</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ eS r</code></td>
+<td class="org-left">ellama-session-rename</td>
+<td class="org-left">Rename ellama session</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ eS d</code></td>
+<td class="org-left">ellama-session-remove</td>
+<td class="org-left">Remove ellama session</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ eS a</code></td>
+<td class="org-left">ellama-session-switch</td>
+<td class="org-left">Switch ellama session</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-provider-management" class="outline-4">
+<h4 id="provider-management"><span class="section-number-4">4.2.10.</span> Provider management</h4>
+<div class="outline-text-4" id="text-provider-management">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC $ ep s</code></td>
+<td class="org-left">ellama-provider-select</td>
+<td class="org-left">Select ellama provider</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2024-07-16 Tue 04:16</p>
+<p class="date">Created: 2024-07-20 Sat 12:04</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
