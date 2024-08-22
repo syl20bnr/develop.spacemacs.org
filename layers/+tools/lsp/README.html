@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-07-28 Sun 16:39 -->
+<!-- 2024-08-22 Thu 17:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LSP layer</title>
@@ -301,6 +301,7 @@ search and others)</li>
 <li>Navigation using <code>imenu</code></li>
 <li>Consistent core key bindings in LSP modes</li>
 <li>Code folding (<code>lsp-origami</code>)</li>
+<li>Sonarlint integration (<code>lsp-sonarlint</code>)</li>
 </ul>
 </div>
 </div>
@@ -429,6 +430,12 @@ under the derived mode t prefix by <code>(spacemacs/lsp-bind-keys-for-mode mode)
 <td class="org-left"><code>lsp-ui-sideline-show-symbol</code></td>
 <td class="org-left">nil</td>
 <td class="org-left">When non-nil, the symbol information overlay includes symbol name (redundant for c-modes).</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lsp-sonarlint</code></td>
+<td class="org-left">nil</td>
+<td class="org-left">When non-nil, use <code>lsp-sonarlint</code> package.</td>
 </tr>
 </tbody>
 </table>
@@ -750,16 +757,6 @@ The lsp minor mode bindings are:
 <tr>
 <td class="org-left"><code>SPC m g t</code></td>
 <td class="org-left">goto type-definition (<code>lsp-mode</code>)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g k</code></td>
-<td class="org-left">goto viewport word (<code>avy</code>) (See Note 1)</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g K</code></td>
-<td class="org-left">goto viewport symbol (<code>avy</code>) (See Note 1)</td>
 </tr>
 
 <tr>
@@ -1161,13 +1158,14 @@ completion</li>
 <ul class="org-ul">
 <li><a href="https://github.com/emacs-lsp/lsp-mode">lsp-mode repo</a></li>
 <li><a href="https://github.com/emacs-lsp/lsp-ui">lsp-ui repo</a></li>
+<li><a href="https://github.com/emacs-lsp/lsp-sonarlint">lsp-sonarlint repo</a></li>
 </ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2024-07-28 Sun 16:39</p>
+<p class="date">Created: 2024-08-22 Thu 17:35</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
