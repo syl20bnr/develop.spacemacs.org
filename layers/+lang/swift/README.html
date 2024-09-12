@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-09-04 Wed 14:02 -->
+<!-- 2024-09-12 Thu 06:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Swift layer</title>
@@ -229,18 +229,29 @@
 </ul>
 </li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#usage-information">3. Usage information</a></li>
+<li><a href="#configuration">3. Configuration</a>
+<ul>
+<li><a href="#choosing-a-backend">3.1. Choosing a backend</a>
+<ul>
+<li><a href="#lsp">3.1.1. LSP</a></li>
+<li><a href="#no-lsp">3.1.2. No lsp</a></li>
+</ul>
+</li>
+<li><a href="#validation-steps">3.2. Validation steps</a></li>
+<li><a href="#repl-integration">3.3. REPL integration</a></li>
+</ul>
+</li>
 <li><a href="#key-bindings">4. Key bindings</a>
 <ul>
-<li><a href="#swift-mode">4.1. swift-mode</a></li>
-<li><a href="#swift-repl-mode">4.2. swift-repl-mode</a></li>
+<li><a href="#repl">4.1. REPL</a></li>
+<li><a href="#in-repl-mode">4.2. In REPL Mode</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="org4053013" class="figure">
+<div id="org45713dd" class="figure">
 <p><img src="img/swift.png" alt="swift.png" />
 </p>
 </div>
@@ -258,11 +269,14 @@ general purpose scripting language.
 <h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
+<li>Auto-completion (with the <code>lsp</code> layer and <a href="https://github.com/swiftlang/sourcekit-lsp">sourcekit-lsp</a>)</li>
+</ul>
+<ul class="org-ul">
+<li>Syntax checking with <code>flycheck</code> (available with the
+<code>syntax-checking</code> layer)</li>
 <li>Syntax highlighting with <a href="https://github.com/swift-emacs/swift-mode">swift-mode</a></li>
 <li>Indentation</li>
 <li>Code navigation using <code>imenu</code> (built-in)</li>
-<li>Automatic syntax checking with <code>flycheck</code> (available with the
-<code>syntax-checking</code> layer)</li>
 </ul>
 </div>
 </div>
@@ -272,35 +286,116 @@ general purpose scripting language.
 <h2 id="install"><span class="section-number-2">2.</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
-First check that you are able to run this from the command line:
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>swift</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-configuration" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">3.</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+<p>
+All layer configurations can be done by setting layer variables in your dotfile.
+No custom user config lines are necessary
+</p>
+</div>
+
+<div id="outline-container-choosing-a-backend" class="outline-3">
+<h3 id="choosing-a-backend"><span class="section-number-3">3.1.</span> Choosing a backend</h3>
+<div class="outline-text-3" id="text-choosing-a-backend">
+<p>
+This layer heavily relies on sourcekit-lsp to support proper IDE support.
+If the lsp layer is not available no auto-completion can be provided.
+</p>
+</div>
+
+<div id="outline-container-lsp" class="outline-4">
+<h4 id="lsp"><span class="section-number-4">3.1.1.</span> LSP</h4>
+<div class="outline-text-4" id="text-lsp">
+<p>
+For proper IDE support this backend should be used. It is
+based on an external server which will be started automatically
+by emacs, once a swift file is opened. The key bindings are
+the same for all lsp modes so if you are already familiar with
+one you should be able to work the same in all modes.
 </p>
 
 <p>
-On macOS:
+To set explicitly do the following in your dotfile:
 </p>
 
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>swift <span class="org-builtin">:variables</span>
+        swift-backend 'lsp
+        swift-lsp-executable-path <span class="org-string">"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+If this var is not set it will be set to <code>lsp</code> if the <code>lsp layer</code> is loaded.
+</p>
+
+<p>
+For the system to work you will also need
+the latest version of the lsp server from <a href="https://github.com/swiftlang/sourcekit-lsp">sourcekit-lsp</a> or directly from your <code>Xcode</code> installation.
+The path to the server executable must be given in the layer
+variable <code>swift-lsp-executable-path</code>.
+</p>
+
+<p>
+NOTE: Key bindings for LSP are defined in the
+LSP layer. Also it is advisable to have a look
+at the autocomplete layer for an optimal
+intellisense config for LSP.
+</p>
+</div>
+</div>
+
+<div id="outline-container-no-lsp" class="outline-4">
+<h4 id="no-lsp"><span class="section-number-4">3.1.2.</span> No lsp</h4>
+<div class="outline-text-4" id="text-no-lsp">
+<p>
+In this case no specific config is necessary, but autocompletion will not be available.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-validation-steps" class="outline-3">
+<h3 id="validation-steps"><span class="section-number-3">3.2.</span> Validation steps</h3>
+<div class="outline-text-3" id="text-validation-steps">
+<p>
+First check that you are able to run this from the command line:
+</p>
 <div class="org-src-container">
 <pre class="src src-sh">xcrun swift
 </pre>
 </div>
 
 <p>
-Then to use this configuration layer, add it to your <code>~/.spacemacs</code>. You will
-need to add <code>swift</code> to the existing <code>dotspacemacs-configuration-layers</code> list in
-this file.
+Then validate that your lsp server is available under the given path if you are using lsp.
 </p>
 </div>
 </div>
 
-<div id="outline-container-usage-information" class="outline-2">
-<h2 id="usage-information"><span class="section-number-2">3.</span> Usage information</h2>
-<div class="outline-text-2" id="text-usage-information">
+<div id="outline-container-repl-integration" class="outline-3">
+<h3 id="repl-integration"><span class="section-number-3">3.3.</span> REPL integration</h3>
+<div class="outline-text-3" id="text-repl-integration">
 <p>
-Unless configured by the user, the REPL will be invoked using the command <code>xcrun
-swift</code>.
-You can launch the REPL using the key binding <code>SPC m s s</code> (or <code>C-c C-z</code>).
+Unless configured by the user, the REPL will be invoked using the command
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">xcrun swift
+</pre>
+</div>
+
+<p>
+You can launch the REPL directly from emacs with using the key binding <code>SPC m s s</code> (or <code>C-c C-z</code>).
 The universal prefix <code>SPC u</code> (<code>C-u</code>) may be used to modify command invocation.
 </p>
+</div>
 </div>
 </div>
 
@@ -309,9 +404,9 @@ The universal prefix <code>SPC u</code> (<code>C-u</code>) may be used to modify
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-swift-mode" class="outline-3">
-<h3 id="swift-mode"><span class="section-number-3">4.1.</span> swift-mode</h3>
-<div class="outline-text-3" id="text-swift-mode">
+<div id="outline-container-repl" class="outline-3">
+<h3 id="repl"><span class="section-number-3">4.1.</span> REPL</h3>
+<div class="outline-text-3" id="text-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -328,36 +423,32 @@ The universal prefix <code>SPC u</code> (<code>C-u</code>) may be used to modify
 </thead>
 <tbody>
 <tr>
+<td class="org-left"><code>SPC m '</code></td>
+<td class="org-left"><code>swift-mode-run-repl</code> will run or switch to an existing REPL</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m s s</code></td>
-<td class="org-left">swift-mode-run-repl</td>
+<td class="org-left"><code>swift-mode-run-repl</code> will run or switch to an existing REPL</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m s b</code></td>
-<td class="org-left">swift-mode-send-buffer</td>
+<td class="org-left">Send the current buffer to the repl</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m s r</code></td>
-<td class="org-left">swift-mode-send-region</td>
+<td class="org-left">Send the current region to the repl</td>
 </tr>
 </tbody>
 </table>
-
-<p>
-Notes:
-</p>
-<ol class="org-ol">
-<li><code>swift-mode-run-repl</code> will run or switch to an existing REPL.</li>
-<li>To edit the command invocation, prefix with <code>SPC u</code> (or <code>C-u</code>).</li>
-<li>Emacs key bindings in use are the those set by the package.</li>
-</ol>
 </div>
 </div>
 
-<div id="outline-container-swift-repl-mode" class="outline-3">
-<h3 id="swift-repl-mode"><span class="section-number-3">4.2.</span> swift-repl-mode</h3>
-<div class="outline-text-3" id="text-swift-repl-mode">
+<div id="outline-container-in-repl-mode" class="outline-3">
+<h3 id="in-repl-mode"><span class="section-number-3">4.2.</span> In REPL Mode</h3>
+<div class="outline-text-3" id="text-in-repl-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -377,6 +468,11 @@ Notes:
 <td class="org-left"><code>SPC m s s</code></td>
 <td class="org-left">swift-repl-mode-switch-back</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>C-c C-z</code></td>
+<td class="org-left">swift-repl-mode-switch-back</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -385,7 +481,7 @@ Notes:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2024-09-04 Wed 14:02</p>
+<p class="date">Created: 2024-09-12 Thu 06:52</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
