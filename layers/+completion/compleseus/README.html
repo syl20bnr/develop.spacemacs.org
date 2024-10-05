@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-09-21 Sat 09:41 -->
+<!-- 2024-10-05 Sat 09:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Compleseus layer</title>
@@ -239,7 +239,9 @@
 </li>
 <li><a href="#key-bindings">3. Key bindings</a>
 <ul>
-<li><a href="#edit-consult-buffer">3.1. Edit consult buffer</a></li>
+<li><a href="#narrowing">3.1. Narrowing</a></li>
+<li><a href="#edit-consult-buffer">3.2. Edit consult buffer</a></li>
+<li><a href="#vertico-key-bindings">3.3. Vertico key bindings</a></li>
 </ul>
 </li>
 </ul>
@@ -347,12 +349,62 @@ like below to use <code>selectrum</code> as opposed to the default of <code>vert
 <td class="org-left"><code>M-.</code></td>
 <td class="org-left">preview selected item now</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>C-z</code></td>
+<td class="org-left">select embark action from list</td>
+</tr>
 </tbody>
 </table>
 </div>
 
+<div id="outline-container-narrowing" class="outline-3">
+<h3 id="narrowing"><span class="section-number-3">3.1.</span> Narrowing</h3>
+<div class="outline-text-3" id="text-narrowing">
+<p>
+Many consult commands support 'narrowing', whith allows you to type a key and narrow the list of candidates available
+Once you have discovered the narrowing keys available, you can do them directly with <code>key SPC</code>.
+e.g. in <code>compleseus/switch-to-buffer</code> type <code>* SPC</code> to see only modified buffers.
+Delete the narrowing key again to return to all selections.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>&lt;</code></td>
+<td class="org-left">View narrowing commands available</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-left</code></td>
+<td class="org-left">Cycle left through narrowing commands available</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-right</code></td>
+<td class="org-left">Cycle right through narrowing commands available</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
 <div id="outline-container-edit-consult-buffer" class="outline-3">
-<h3 id="edit-consult-buffer"><span class="section-number-3">3.1.</span> Edit consult buffer</h3>
+<h3 id="edit-consult-buffer"><span class="section-number-3">3.2.</span> Edit consult buffer</h3>
 <div class="outline-text-3" id="text-edit-consult-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -403,6 +455,21 @@ like below to use <code>selectrum</code> as opposed to the default of <code>vert
 <td class="org-left"><code>SPC m s</code></td>
 <td class="org-left">Apply and <code>save</code> changes made in the exported buffer and close the buffer</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>SPC m r</code></td>
+<td class="org-left">Toggle the read-only area (allowing you to remove lines from the wgrep buffer, won't be removed from the file)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d</code></td>
+<td class="org-left">Mark the line to be deleted from the file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m f</code></td>
+<td class="org-left">Enable next-error-follow-minor-mode which will show previews of what you have under the cursor for a grep buffer</td>
+</tr>
 </tbody>
 </table>
 
@@ -413,11 +480,78 @@ disk.
 </p>
 </div>
 </div>
+
+<div id="outline-container-vertico-key-bindings" class="outline-3">
+<h3 id="vertico-key-bindings"><span class="section-number-3">3.3.</span> Vertico key bindings</h3>
+<div class="outline-text-3" id="text-vertico-key-bindings">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>C-j</code></td>
+<td class="org-left">Go to next row down</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-k</code></td>
+<td class="org-left">Go to next row up</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-l</code></td>
+<td class="org-left">Fully selects the text under the point (completes)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-S-j</code></td>
+<td class="org-left">Move to next group of results</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-S-k</code></td>
+<td class="org-left">Move to previous group of results</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-M-j</code></td>
+<td class="org-left">Move to next candidate and preview</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-M-k</code></td>
+<td class="org-left">Move to previous candidate and preview</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-SPC</code></td>
+<td class="org-left">Preview candidate</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-P</code></td>
+<td class="org-left">Toggle previewing on for compleseus functions (requires rerunning the search)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2024-09-21 Sat 09:41</p>
+<p class="date">Created: 2024-10-05 Sat 09:20</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
