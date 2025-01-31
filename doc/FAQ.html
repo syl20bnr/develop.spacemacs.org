@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-11-15 Fri 04:05 -->
+<!-- 2025-01-31 Fri 06:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Frequently Asked Questions</title>
 <meta name="author" content="root" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -276,6 +276,7 @@
 <li><a href="#linux">3. Linux</a>
 <ul>
 <li><a href="#error-on-deleting-a-system-package">3.1. Error on deleting a system package</a></li>
+<li><a href="#speedup-the-spacemacs-with-package-quickstart">3.2. Speedup the Spacemacs with package-quickstart</a></li>
 </ul>
 </li>
 <li><a href="#windows">4. Windows</a>
@@ -284,17 +285,16 @@
 <li><a href="#why-is-there-no-spacemacs-logo-in-the-startup-buffer">4.2. Why is there no Spacemacs logo in the startup buffer?</a></li>
 <li><a href="#why-are-all-packages-unavailable">4.3. Why are all packages unavailable?</a></li>
 <li><a href="#the-powerline-isnt-shown-correctly-when-spacemacs-is-used-within-putty">4.4. The powerline isn't shown correctly when Spacemacs is used within <code>PuTTY</code></a></li>
+<li><a href="#speedup-the-spacemacs-with-load-hints-feature">4.5. Speedup the Spacemacs with load-hints feature</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
 <div id="outline-container-common" class="outline-2">
 <h2 id="common"><span class="section-number-2">1.</span> Common</h2>
 <div class="outline-text-2" id="text-common">
 </div>
-
 <div id="outline-container-which-version-of-spacemacs-am-i-running" class="outline-3">
 <h3 id="which-version-of-spacemacs-am-i-running"><span class="section-number-3">1.1.</span> Which version of Spacemacs am I running?</h3>
 <div class="outline-text-3" id="text-which-version-of-spacemacs-am-i-running">
@@ -304,7 +304,6 @@ may also just type <code>SPC f e v</code>.
 </p>
 </div>
 </div>
-
 <div id="outline-container-what-is-the-official-pronunciation-of-spacemacs" class="outline-3">
 <h3 id="what-is-the-official-pronunciation-of-spacemacs"><span class="section-number-3">1.2.</span> What is the official pronunciation of Spacemacs?</h3>
 <div class="outline-text-3" id="text-what-is-the-official-pronunciation-of-spacemacs">
@@ -313,7 +312,6 @@ It's <span class="underline">space</span> then <span class="underline">macs</spa
 </p>
 </div>
 </div>
-
 <div id="outline-container-why-do-you-call-this-a-distribution-i-dont-see-any-spacemacs-executable" class="outline-3">
 <h3 id="why-do-you-call-this-a-distribution-i-dont-see-any-spacemacs-executable"><span class="section-number-3">1.3.</span> Why do you call this a "distribution", I don't see any "Spacemacs" executable?</h3>
 <div class="outline-text-3" id="text-why-do-you-call-this-a-distribution-i-dont-see-any-spacemacs-executable">
@@ -329,7 +327,6 @@ they are unofficial packages, we will never package Emacs with Spacemacs.
 </p>
 </div>
 </div>
-
 <div id="outline-container-why-are-packages-installed-with-package-install-automatically-deleted-by-spacemacs-when-it-boots" class="outline-3">
 <h3 id="why-are-packages-installed-with-package-install-automatically-deleted-by-spacemacs-when-it-boots"><span class="section-number-3">1.4.</span> Why are packages installed with <code>package-install</code> automatically deleted by Spacemacs when it boots?</h3>
 <div class="outline-text-3" id="text-why-are-packages-installed-with-package-install-automatically-deleted-by-spacemacs-when-it-boots">
@@ -356,7 +353,6 @@ To create a new configuration layer see the <a href="QUICK_START.html">quick sta
 </p>
 </div>
 </div>
-
 <div id="outline-container-environment-variables-or-path-are-not-set-properly" class="outline-3">
 <h3 id="environment-variables-or-path-are-not-set-properly"><span class="section-number-3">1.5.</span> Environment variables or PATH are not set properly</h3>
 <div class="outline-text-3" id="text-environment-variables-or-path-are-not-set-properly">
@@ -368,7 +364,6 @@ environment variables in the <code>env</code> file. You can open this file with
 </p>
 </div>
 </div>
-
 <div id="outline-container-how-to-fix-error-package-package-build--is-unavailable" class="outline-3">
 <h3 id="how-to-fix-error-package-package-build--is-unavailable"><span class="section-number-3">1.6.</span> How to fix <code>error: Package 'package-build-' is unavailable</code>?</h3>
 <div class="outline-text-3" id="text-how-to-fix-error-package-package-build--is-unavailable">
@@ -378,7 +373,6 @@ This may occur due to heavy network traffic. You can fix it by setting the
 </p>
 </div>
 </div>
-
 <div id="outline-container-how-to-fix-warning-bytecomp-and-other-compilation-warnings" class="outline-3">
 <h3 id="how-to-fix-warning-bytecomp-and-other-compilation-warnings"><span class="section-number-3">1.7.</span> How to fix <code>Warning (bytecomp)</code> and other compilation warnings?</h3>
 <div class="outline-text-3" id="text-how-to-fix-warning-bytecomp-and-other-compilation-warnings">
@@ -388,7 +382,6 @@ They are perfectly normal. If you're curious, you can find out why these occur
 </p>
 </div>
 </div>
-
 <div id="outline-container-how-to-fix-wrong-type-argument-arrayp-nil-errors-on-startup" class="outline-3">
 <h3 id="how-to-fix-wrong-type-argument-arrayp-nil-errors-on-startup"><span class="section-number-3">1.8.</span> How to fix <code>(wrong-type-argument arrayp nil)</code> errors on startup?</h3>
 <div class="outline-text-3" id="text-how-to-fix-wrong-type-argument-arrayp-nil-errors-on-startup">
@@ -398,7 +391,6 @@ This is most likely caused by a corrupted package archive. Try deleting your
 </p>
 </div>
 </div>
-
 <div id="outline-container-the-spacemacs-banner-is-ugly-what-should-i-do" class="outline-3">
 <h3 id="the-spacemacs-banner-is-ugly-what-should-i-do"><span class="section-number-3">1.9.</span> The Spacemacs banner is ugly, what should I do?</h3>
 <div class="outline-text-3" id="text-the-spacemacs-banner-is-ugly-what-should-i-do">
@@ -408,7 +400,6 @@ More information in the font section of the <a href="DOCUMENTATION.html">documen
 </p>
 </div>
 </div>
-
 <div id="outline-container-the-powerline-separators-are-ugly-how-can-i-fix-them" class="outline-3">
 <h3 id="the-powerline-separators-are-ugly-how-can-i-fix-them"><span class="section-number-3">1.10.</span> The powerline separators are ugly, how can I fix them?</h3>
 <div class="outline-text-3" id="text-the-powerline-separators-are-ugly-how-can-i-fix-them">
@@ -419,7 +410,6 @@ more details.
 </p>
 </div>
 </div>
-
 <div id="outline-container-the-powerline-separators-have-no-anti-aliasing-what-can-i-do" class="outline-3">
 <h3 id="the-powerline-separators-have-no-anti-aliasing-what-can-i-do"><span class="section-number-3">1.11.</span> The powerline separators have no anti-aliasing, what can I do?</h3>
 <div class="outline-text-3" id="text-the-powerline-separators-have-no-anti-aliasing-what-can-i-do">
@@ -431,7 +421,6 @@ section in the font section of the <a href="DOCUMENTATION.html">documentation</a
 </p>
 </div>
 </div>
-
 <div id="outline-container-why-is-after-init-hook-not-executed" class="outline-3">
 <h3 id="why-is-after-init-hook-not-executed"><span class="section-number-3">1.12.</span> Why is after-init-hook not executed?</h3>
 <div class="outline-text-3" id="text-why-is-after-init-hook-not-executed">
@@ -442,7 +431,6 @@ the hooked functions in <code>after-init-hook</code> before the evaluation of th
 </p>
 </div>
 </div>
-
 <div id="outline-container-what-is-the-difference-between-spacemacs-base-and-spacemacs-distributions" class="outline-3">
 <h3 id="what-is-the-difference-between-spacemacs-base-and-spacemacs-distributions"><span class="section-number-3">1.13.</span> What is the difference between <code>spacemacs-base</code> and <code>spacemacs</code> distributions?</h3>
 <div class="outline-text-3" id="text-what-is-the-difference-between-spacemacs-base-and-spacemacs-distributions">
@@ -461,7 +449,6 @@ the <code>layers/</code> directory.
 </p>
 </div>
 </div>
-
 <div id="outline-container-should-i-place-my-settings-in-user-init-or-user-config" class="outline-3">
 <h3 id="should-i-place-my-settings-in-user-init-or-user-config"><span class="section-number-3">1.14.</span> Should I place my settings in <code>user-init</code> or <code>user-config</code>?</h3>
 <div class="outline-text-3" id="text-should-i-place-my-settings-in-user-init-or-user-config">
@@ -482,7 +469,6 @@ behaviour, mode hooks should be set in <code>user-init</code>.)
 </p>
 </div>
 </div>
-
 <div id="outline-container-why-do-some-of-my-org-related-settings-cause-problems" class="outline-3">
 <h3 id="why-do-some-of-my-org-related-settings-cause-problems"><span class="section-number-3">1.15.</span> Why do some of my <code>org</code>-related settings cause problems?</h3>
 <div class="outline-text-3" id="text-why-do-some-of-my-org-related-settings-cause-problems">
@@ -509,7 +495,6 @@ like this:
 </div>
 </div>
 </div>
-
 <div id="outline-container-why-is-spacemacs-hanging-on-startup" class="outline-3">
 <h3 id="why-is-spacemacs-hanging-on-startup"><span class="section-number-3">1.16.</span> Why is Spacemacs hanging on startup?</h3>
 <div class="outline-text-3" id="text-why-is-spacemacs-hanging-on-startup">
@@ -544,7 +529,6 @@ ControlPersist = no
 </div>
 </div>
 </div>
-
 <div id="outline-container-why-does-my-color-theme-not-render-correctly-in-terminal-mode" class="outline-3">
 <h3 id="why-does-my-color-theme-not-render-correctly-in-terminal-mode"><span class="section-number-3">1.17.</span> Why does my color theme not render correctly in terminal mode?</h3>
 <div class="outline-text-3" id="text-why-does-my-color-theme-not-render-correctly-in-terminal-mode">
@@ -556,7 +540,6 @@ change your terminal color palette. More explanations can be found on
 </p>
 </div>
 </div>
-
 <div id="outline-container-typing-quickly-fd-takes-me-out-of-insert-state-what-is-going-on" class="outline-3">
 <h3 id="typing-quickly-fd-takes-me-out-of-insert-state-what-is-going-on"><span class="section-number-3">1.18.</span> Typing quickly <code>fd</code> takes me out of <code>insert state</code>. What is going on?</h3>
 <div class="outline-text-3" id="text-typing-quickly-fd-takes-me-out-of-insert-state-what-is-going-on">
@@ -566,7 +549,7 @@ situations, like escaping from <code>insert state</code> to <code>normal state</
 </p>
 
 <p>
-The sequence of characters used can be customized. See the <a href="https://develop.spacemacs.org/doc/DOCUMENTATION.html#escaping">documentation</a> for
+The sequence of characters used can be customized. See the <a href="https://spacemacs.org/doc/DOCUMENTATION.html#escaping">documentation</a> for
 more information.
 </p>
 
@@ -576,7 +559,6 @@ If you don't like this feature, you can deactivate it by adding <code>evil-escap
 </p>
 </div>
 </div>
-
 <div id="outline-container-why-do-i-get-files-starting-with-" class="outline-3">
 <h3 id="why-do-i-get-files-starting-with-"><span class="section-number-3">1.19.</span> Why do I get files starting with .#?</h3>
 <div class="outline-text-3" id="text-why-do-i-get-files-starting-with-">
@@ -592,7 +574,6 @@ disable this behaviour:
 </div>
 </div>
 </div>
-
 <div id="outline-container-why-do-i-get-4m-characters-inside-ansi-term" class="outline-3">
 <h3 id="why-do-i-get-4m-characters-inside-ansi-term"><span class="section-number-3">1.20.</span> Why do I get '4m' characters inside ansi-term?</h3>
 <div class="outline-text-3" id="text-why-do-i-get-4m-characters-inside-ansi-term">
@@ -618,7 +599,6 @@ location you may try to use <code>locate</code>:
 </div>
 </div>
 </div>
-
 <div id="outline-container-why-are-my-font-settings-not-being-respected" class="outline-3">
 <h3 id="why-are-my-font-settings-not-being-respected"><span class="section-number-3">1.21.</span> Why are my font settings not being respected?</h3>
 <div class="outline-text-3" id="text-why-are-my-font-settings-not-being-respected">
@@ -630,7 +610,6 @@ warning to this effect in the <code>*Messages*</code> buffer.
 </p>
 </div>
 </div>
-
 <div id="outline-container-why-am-i-getting-a-message-about-environment-variables-on-startup" class="outline-3">
 <h3 id="why-am-i-getting-a-message-about-environment-variables-on-startup"><span class="section-number-3">1.22.</span> Why am I getting a message about environment variables on startup?</h3>
 <div class="outline-text-3" id="text-why-am-i-getting-a-message-about-environment-variables-on-startup">
@@ -658,7 +637,6 @@ yourself.
 </p>
 </div>
 </div>
-
 <div id="outline-container-i-want-to-learn-elisp-where-do-i-start-" class="outline-3">
 <h3 id="i-want-to-learn-elisp-where-do-i-start-"><span class="section-number-3">1.23.</span> I want to learn elisp, where do I start ?</h3>
 <div class="outline-text-3" id="text-i-want-to-learn-elisp-where-do-i-start-">
@@ -674,12 +652,10 @@ sections <a href="http://caiorss.github.io/Emacs-Elisp-Programming/Elisp_Program
 </div>
 </div>
 </div>
-
 <div id="outline-container-how-do-i" class="outline-2">
 <h2 id="how-do-i"><span class="section-number-2">2.</span> How do I</h2>
 <div class="outline-text-2" id="text-how-do-i">
 </div>
-
 <div id="outline-container-install-a-package-not-provided-by-a-layer" class="outline-3">
 <h3 id="install-a-package-not-provided-by-a-layer"><span class="section-number-3">2.1.</span> Install a package not provided by a layer?</h3>
 <div class="outline-text-3" id="text-install-a-package-not-provided-by-a-layer">
@@ -691,7 +667,6 @@ to the list and it will be installed when you reload your configuration with
 </p>
 </div>
 </div>
-
 <div id="outline-container-how-to-override-a-layer-package" class="outline-3">
 <h3 id="how-to-override-a-layer-package"><span class="section-number-3">2.2.</span> How to override a layer package?</h3>
 <div class="outline-text-3" id="text-how-to-override-a-layer-package">
@@ -720,12 +695,11 @@ the layer by commenting in/out the line in <code>dotspacemacs-additional-package
 
 <p>
 You could also fully replace (i.e. overwrite) the layer version of the package
-by using a Quelpa recipe with the pseudo-fetcher <code>local</code> as described <a href="https://develop.spacemacs.org/doc/LAYERS.html#packagesel">here</a> and
+by using a Quelpa recipe with the pseudo-fetcher <code>local</code> as described <a href="https://spacemacs.org/doc/LAYERS.html#packagesel">here</a> and
 <a href="https://github.com/quelpa/quelpa#file">here</a>.
 </p>
 </div>
 </div>
-
 <div id="outline-container-disable-a-package-completely" class="outline-3">
 <h3 id="disable-a-package-completely"><span class="section-number-3">2.3.</span> Disable a package completely?</h3>
 <div class="outline-text-3" id="text-disable-a-package-completely">
@@ -741,7 +715,6 @@ in your dotfile and add the package name to it:
 </div>
 </div>
 </div>
-
 <div id="outline-container-disable-a-package-only-for-a-specific-major-mode" class="outline-3">
 <h3 id="disable-a-package-only-for-a-specific-major-mode"><span class="section-number-3">2.4.</span> Disable a package only for a specific major-mode?</h3>
 <div class="outline-text-3" id="text-disable-a-package-only-for-a-specific-major-mode">
@@ -762,7 +735,6 @@ v major-mode RET</code>
 </p>
 </div>
 </div>
-
 <div id="outline-container-disable-company-for-a-specific-major-mode" class="outline-3">
 <h3 id="disable-company-for-a-specific-major-mode"><span class="section-number-3">2.5.</span> Disable company for a specific major-mode?</h3>
 <div class="outline-text-3" id="text-disable-company-for-a-specific-major-mode">
@@ -779,7 +751,6 @@ dotfile. The following snippet disables company for <code>python-mode</code>:
 </div>
 </div>
 </div>
-
 <div id="outline-container-change-special-buffer-rules" class="outline-3">
 <h3 id="change-special-buffer-rules"><span class="section-number-3">2.6.</span> Change special buffer rules?</h3>
 <div class="outline-text-3" id="text-change-special-buffer-rules">
@@ -804,7 +775,6 @@ Examples:
 </div>
 </div>
 </div>
-
 <div id="outline-container-enable-navigation-by-visual-lines" class="outline-3">
 <h3 id="enable-navigation-by-visual-lines"><span class="section-number-3">2.7.</span> Enable navigation by visual lines?</h3>
 <div class="outline-text-3" id="text-enable-navigation-by-visual-lines">
@@ -818,7 +788,6 @@ Add the following snippet to your <code>dotspacemacs/user-config</code> function
 </div>
 </div>
 </div>
-
 <div id="outline-container-disable-evilification-of-a-mode" class="outline-3">
 <h3 id="disable-evilification-of-a-mode"><span class="section-number-3">2.8.</span> Disable evilification of a mode?</h3>
 <div class="outline-text-3" id="text-disable-evilification-of-a-mode">
@@ -855,7 +824,6 @@ binding in the mode's map, e.g. for <code>magit-status-mode</code>,
 </div>
 </div>
 </div>
-
 <div id="outline-container-include-underscores-and-dashes-in-word-motions" class="outline-3">
 <h3 id="include-underscores-and-dashes-in-word-motions"><span class="section-number-3">2.9.</span> Include underscores and dashes in word motions?</h3>
 <div class="outline-text-3" id="text-include-underscores-and-dashes-in-word-motions">
@@ -889,7 +857,6 @@ For more details, see the <a href="https://evil.readthedocs.io/en/latest/faq.htm
 </p>
 </div>
 </div>
-
 <div id="outline-container-setup-path" class="outline-3">
 <h3 id="setup-path"><span class="section-number-3">2.10.</span> Setup <code>$PATH</code>?</h3>
 <div class="outline-text-3" id="text-setup-path">
@@ -961,7 +928,6 @@ In that case you have the option of updating the value of <code>exec-path</code>
 </div>
 </div>
 </div>
-
 <div id="outline-container-change-or-define-an-alias-for-a-leader-key" class="outline-3">
 <h3 id="change-or-define-an-alias-for-a-leader-key"><span class="section-number-3">2.11.</span> Change or define an alias for a leader key?</h3>
 <div class="outline-text-3" id="text-change-or-define-an-alias-for-a-leader-key">
@@ -995,7 +961,6 @@ management), you can use this:
 </div>
 </div>
 </div>
-
 <div id="outline-container-restore-the-sentence-delimiter-to-two-spaces" class="outline-3">
 <h3 id="restore-the-sentence-delimiter-to-two-spaces"><span class="section-number-3">2.12.</span> Restore the sentence delimiter to two spaces?</h3>
 <div class="outline-text-3" id="text-restore-the-sentence-delimiter-to-two-spaces">
@@ -1010,7 +975,6 @@ To restore the sentence delimiter to two spaces, add the following code to the
 </div>
 </div>
 </div>
-
 <div id="outline-container-prevent-the-visual-selection-overriding-my-system-clipboard" class="outline-3">
 <h3 id="prevent-the-visual-selection-overriding-my-system-clipboard"><span class="section-number-3">2.13.</span> Prevent the visual selection overriding my system clipboard?</h3>
 <div class="outline-text-3" id="text-prevent-the-visual-selection-overriding-my-system-clipboard">
@@ -1029,7 +993,6 @@ adding the following code to the <code>dotspacemacs/user-config</code> of your
 </div>
 </div>
 </div>
-
 <div id="outline-container-make-spell-checking-support-curly-quotes-or-any-other-character" class="outline-3">
 <h3 id="make-spell-checking-support-curly-quotes-or-any-other-character"><span class="section-number-3">2.14.</span> Make spell-checking support curly quotes (or any other character)?</h3>
 <div class="outline-text-3" id="text-make-spell-checking-support-curly-quotes-or-any-other-character">
@@ -1057,7 +1020,6 @@ to use the dictionary supporting your newly added characters.
 </p>
 </div>
 </div>
-
 <div id="outline-container-use-spacemacs-as-the-editor-for-git-commits" class="outline-3">
 <h3 id="use-spacemacs-as-the-editor-for-git-commits"><span class="section-number-3">2.15.</span> Use Spacemacs as the <code>$EDITOR</code> for git commits?</h3>
 <div class="outline-text-3" id="text-use-spacemacs-as-the-editor-for-git-commits">
@@ -1073,7 +1035,6 @@ commits messages. To enable this you have to add the following line to your
 </div>
 </div>
 </div>
-
 <div id="outline-container-try-spacemacs-without-modifying-my-existing-emacs-configuration" class="outline-3">
 <h3 id="try-spacemacs-without-modifying-my-existing-emacs-configuration"><span class="section-number-3">2.16.</span> Try Spacemacs without modifying my existing Emacs configuration?</h3>
 <div class="outline-text-3" id="text-try-spacemacs-without-modifying-my-existing-emacs-configuration">
@@ -1097,7 +1058,6 @@ If you're on Fish shell, you will need to modify the last command to:
 </p>
 </div>
 </div>
-
 <div id="outline-container-make-copypaste-working-with-the-mouse-in-x11-terminals" class="outline-3">
 <h3 id="make-copypaste-working-with-the-mouse-in-x11-terminals"><span class="section-number-3">2.17.</span> Make copy/paste working with the mouse in X11 terminals?</h3>
 <div class="outline-text-3" id="text-make-copypaste-working-with-the-mouse-in-x11-terminals">
@@ -1113,7 +1073,6 @@ enable copying/pasting with the mouse. You need to add this line to your
 </div>
 </div>
 </div>
-
 <div id="outline-container-use-helm-ag-to-search-only-in-files-of-a-certain-type" class="outline-3">
 <h3 id="use-helm-ag-to-search-only-in-files-of-a-certain-type"><span class="section-number-3">2.18.</span> Use <code>helm-ag</code> to search only in files of a certain type?</h3>
 <div class="outline-text-3" id="text-use-helm-ag-to-search-only-in-files-of-a-certain-type">
@@ -1142,7 +1101,6 @@ arguments of the <code>ag</code> program.
 </p>
 </div>
 </div>
-
 <div id="outline-container-modify-spacemacs-documentation-look-space-doc-mode" class="outline-3">
 <h3 id="modify-spacemacs-documentation-look-space-doc-mode"><span class="section-number-3">2.19.</span> Modify spacemacs documentation look (space-doc-mode)</h3>
 <div class="outline-text-3" id="text-modify-spacemacs-documentation-look-space-doc-mode">
@@ -1173,12 +1131,10 @@ with "Easy Customization Interface".
 </div>
 </div>
 </div>
-
 <div id="outline-container-linux" class="outline-2">
 <h2 id="linux"><span class="section-number-2">3.</span> Linux</h2>
 <div class="outline-text-2" id="text-linux">
 </div>
-
 <div id="outline-container-error-on-deleting-a-system-package" class="outline-3">
 <h3 id="error-on-deleting-a-system-package"><span class="section-number-3">3.1.</span> Error on deleting a system package</h3>
 <div class="outline-text-3" id="text-error-on-deleting-a-system-package">
@@ -1187,7 +1143,7 @@ If you see the an error message when either Spacemacs is trying to delete an orp
 or when you are trying to a package manually:
 </p>
 
-<pre class="example" id="org0f9759d">
+<pre class="example" id="org6d59e9d">
 Package ‘PACKAGE-NAME’ is a system package, not deleting
 </pre>
 
@@ -1203,13 +1159,33 @@ In addition, you also need to add the said package to <code>dotspacemacs-frozen-
 </p>
 </div>
 </div>
-</div>
+<div id="outline-container-speedup-the-spacemacs-with-package-quickstart" class="outline-3">
+<h3 id="speedup-the-spacemacs-with-package-quickstart"><span class="section-number-3">3.2.</span> Speedup the Spacemacs with package-quickstart</h3>
+<div class="outline-text-3" id="text-speedup-the-spacemacs-with-package-quickstart">
+<p>
+The <code>package-quickstart</code> will collect all the <code>*-autoloads.el</code> into one file
+<code>package-quickstart-file</code> to speed up the packages loading procedure. After
+Spacemacs startup, manually executing the function <code>package-quickstart-refreshe</code>
+to generate the package quickstart file, then setting the
+<code>dotspacemacs-enable-package-quickstart</code> to <code>t</code>, on the next startup, the
+Spacemacs will set up packages with loading the <code>package-quickstart-file</code>, won't
+call the <code>package-initialize</code> (which will scan <code>package-user-dir</code> and active
+packages one by one).
+</p>
 
+<p>
+<b>NOTE</b>: Please enable the <code>load-hints</code> feature first, otherwise the
+<code>package-quickstart-file</code> addes all the package directories into the <code>load-path</code>
+may lead Spacemacs startup slower than no <code>package-quickstartup</code> feature
+enabled.
+</p>
+</div>
+</div>
+</div>
 <div id="outline-container-windows" class="outline-2">
 <h2 id="windows"><span class="section-number-2">4.</span> Windows</h2>
 <div class="outline-text-2" id="text-windows">
 </div>
-
 <div id="outline-container-why-do-the-fonts-look-crappy-on-windows" class="outline-3">
 <h3 id="why-do-the-fonts-look-crappy-on-windows"><span class="section-number-3">4.1.</span> Why do the fonts look crappy on Windows?</h3>
 <div class="outline-text-3" id="text-why-do-the-fonts-look-crappy-on-windows">
@@ -1220,7 +1196,6 @@ Windows.
 </p>
 </div>
 </div>
-
 <div id="outline-container-why-is-there-no-spacemacs-logo-in-the-startup-buffer" class="outline-3">
 <h3 id="why-is-there-no-spacemacs-logo-in-the-startup-buffer"><span class="section-number-3">4.2.</span> Why is there no Spacemacs logo in the startup buffer?</h3>
 <div class="outline-text-3" id="text-why-is-there-no-spacemacs-logo-in-the-startup-buffer">
@@ -1231,7 +1206,6 @@ support included such as <a href="http://emacsbinw64.sourceforge.net/">this one<
 </p>
 </div>
 </div>
-
 <div id="outline-container-why-are-all-packages-unavailable" class="outline-3">
 <h3 id="why-are-all-packages-unavailable"><span class="section-number-3">4.3.</span> Why are all packages unavailable?</h3>
 <div class="outline-text-3" id="text-why-are-all-packages-unavailable">
@@ -1250,7 +1224,6 @@ directory as Emacs. See <a href="https://www.gnu.org/software/emacs/manual/html_
 </p>
 </div>
 </div>
-
 <div id="outline-container-the-powerline-isnt-shown-correctly-when-spacemacs-is-used-within-putty" class="outline-3">
 <h3 id="the-powerline-isnt-shown-correctly-when-spacemacs-is-used-within-putty"><span class="section-number-3">4.4.</span> The powerline isn't shown correctly when Spacemacs is used within <code>PuTTY</code></h3>
 <div class="outline-text-3" id="text-the-powerline-isnt-shown-correctly-when-spacemacs-is-used-within-putty">
@@ -1259,11 +1232,51 @@ You can follow <a href="http://mschulte.nl/posts/using-powerline-in-PuTTY.html">
 </p>
 </div>
 </div>
+<div id="outline-container-speedup-the-spacemacs-with-load-hints-feature" class="outline-3">
+<h3 id="speedup-the-spacemacs-with-load-hints-feature"><span class="section-number-3">4.5.</span> Speedup the Spacemacs with load-hints feature</h3>
+<div class="outline-text-3" id="text-speedup-the-spacemacs-with-load-hints-feature">
+<p>
+The Spacemacs user maybe feel it's slow during startup or slow to opening a
+<code>*.org</code> file on Windows system. The root cause is the package manager
+(package.el) will add the package directory paths into Emacs' <code>load-path</code>
+seperately, while a Spacemacs-base distribution maybe installes more than 100
+packages, and the <code>load-path</code> will has more than 100 entries with packages
+paths on the head, emacs builtin paths on the tail. Then a simple
+<code>src_elisp{(require 'org)}</code> will trigger the emacs walks through the <code>load-path</code>
+from the head to the tail to seach <code>org.dll</code>, <code>org.dll.gz</code>, <code>org.elc</code>,
+<code>org.elc.gz</code>, <code>org.el</code>, <code>org.el.gz</code>, that will be more than 600 (100*6)
+attemptions to open the desired files, but Windows system slow on the open-file
+API (Linux/BSD are mutch faster).
+</p>
+
+<p>
+The posible solutions are:
+</p>
+<ol class="org-ol">
+<li>reducing the <code>load-path</code> entries by collecting the packages files into one
+directory and adding this directory to the <code>load-path</code>, but it needs to
+rework the <code>package.el</code> to cover adding/updating/removing package in one
+folder.</li>
+<li>constructing a variable <code>load-hints</code> to record the files in each package
+directory <code>'((&lt;pkg1-path&gt; [files]) (&lt;pkg2-path&gt; [files]))</code> for Searching the
+file in the list insteads of calling system file API to detect the file
+existing or not.</li>
+</ol>
+
+<p>
+Spacemacs implemented the <code>load-hints</code> feature, controled by the
+<code>dotspacemacs-enable-load-hints</code>, users can set its value to <code>t</code> to enable
+<code>load-hints</code> feature, then executing the function
+<code>spacemacs//package-regenerate-autoloads</code> and restart the Spacemacs to try this
+feature to observer it speedups the Spacemacs or not on the Windows OS.
+</p>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2024-11-15 Fri 04:05</p>
+<p class="date">Created: 2025-01-31 Fri 06:51</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
