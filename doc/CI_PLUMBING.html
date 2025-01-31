@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-11-15 Fri 04:05 -->
+<!-- 2025-01-31 Fri 06:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Continuous Integration</title>
 <meta name="author" content="root" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -272,7 +272,6 @@
 </ul>
 </div>
 </div>
-
 <div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1.</span> Description</h2>
 <div class="outline-text-2" id="text-description">
@@ -281,19 +280,17 @@ This file will help you understand CI setup of <a href="https://github.com/syl20
 </p>
 </div>
 </div>
-
 <div id="outline-container-overview" class="outline-2">
 <h2 id="overview"><span class="section-number-2">2.</span> Overview</h2>
 <div class="outline-text-2" id="text-overview">
 </div>
-
 <div id="outline-container-tldr" class="outline-3">
 <h3 id="tldr"><span class="section-number-3">2.1.</span> TLDR</h3>
 <div class="outline-text-3" id="text-tldr">
 <p>
 Spacemacs is big - the active maintainers team is small. The more we can
 automate - the better. We use  <a href="https://circleci.com/">CircleCI</a>, <a href="https://github.com/features/actions">GitHub Actions</a> and <a href="https://www.docker.com/">Docker</a> to test PRs,
-update built-in files, fix documentation and export it to <a href="https://develop.spacemacs.org/">develop.spacemacs.org</a>.
+update built-in files, fix documentation and export it to <a href="https://spacemacs.org/">spacemacs.org</a>.
 Most of the code consists of bash/EmacsLisp scripts and yml files, but some of
 the documentation tools are written in Clojure.
 If you prefer reading code instead of documentation, dive into <a href="https://github.com/syl20bnr/spacemacs/tree/develop/.circleci">CircleCI</a> and
@@ -301,7 +298,6 @@ If you prefer reading code instead of documentation, dive into <a href="https://
 </p>
 </div>
 </div>
-
 <div id="outline-container-current-stack" class="outline-3">
 <h3 id="current-stack"><span class="section-number-3">2.2.</span> Current stack</h3>
 <div class="outline-text-3" id="text-current-stack">
@@ -310,7 +306,6 @@ Wait, what? Why Clojure, why 2 CI providers?
 I knew you would ask this question, dear reader, so here's my rationale:
 </p>
 </div>
-
 <div id="outline-container-circleci" class="outline-4">
 <h4 id="circleci"><span class="section-number-4">2.2.1.</span> CircleCI</h4>
 <div class="outline-text-4" id="text-circleci">
@@ -327,7 +322,6 @@ has unexpected limitations that can leave you puzzled for quite a while.
 </p>
 </div>
 </div>
-
 <div id="outline-container-github-actions" class="outline-4">
 <h4 id="github-actions"><span class="section-number-4">2.2.2.</span> GitHub Actions</h4>
 <div class="outline-text-4" id="text-github-actions">
@@ -341,7 +335,6 @@ on your own hardware with "strings attached".
 </p>
 </div>
 </div>
-
 <div id="outline-container-docker" class="outline-4">
 <h4 id="docker"><span class="section-number-4">2.2.3.</span> Docker</h4>
 <div class="outline-text-4" id="text-docker">
@@ -355,7 +348,6 @@ auto-builds for standard free accounts.
 </p>
 </div>
 </div>
-
 <div id="outline-container-clojure" class="outline-4">
 <h4 id="clojure"><span class="section-number-4">2.2.4.</span> Clojure</h4>
 <div class="outline-text-4" id="text-clojure">
@@ -380,7 +372,6 @@ image size and startup delay are mitigated.
 </div>
 </div>
 </div>
-
 <div id="outline-container-ci-files-and-directories" class="outline-2">
 <h2 id="ci-files-and-directories"><span class="section-number-2">3.</span> CI files and directories</h2>
 <div class="outline-text-2" id="text-ci-files-and-directories">
@@ -413,17 +404,14 @@ rendering <code>config_tmpl.yml</code> template file.</li>
 </ul>
 </div>
 </div>
-
 <div id="outline-container-workflows-groups-of-ci-jobs" class="outline-2">
 <h2 id="workflows-groups-of-ci-jobs"><span class="section-number-2">4.</span> Workflows (groups of CI jobs)</h2>
 <div class="outline-text-2" id="text-workflows-groups-of-ci-jobs">
 </div>
-
 <div id="outline-container-pull-request-jobs" class="outline-3">
 <h3 id="pull-request-jobs"><span class="section-number-3">4.1.</span> Pull request jobs</h3>
 <div class="outline-text-3" id="text-pull-request-jobs">
 </div>
-
 <div id="outline-container-emacs-lisp-tests" class="outline-4">
 <h4 id="emacs-lisp-tests"><span class="section-number-4">4.1.1.</span> Emacs Lisp Tests</h4>
 <div class="outline-text-4" id="text-emacs-lisp-tests">
@@ -458,7 +446,6 @@ For more details see the <a href="https://github.com/syl20bnr/spacemacs/blob/dev
 </p>
 </div>
 </div>
-
 <div id="outline-container-documentation-validation" class="outline-4">
 <h4 id="documentation-validation"><span class="section-number-4">4.1.2.</span> Documentation validation</h4>
 <div class="outline-text-4" id="text-documentation-validation">
@@ -470,7 +457,6 @@ in the <a href="#documentation-updates">Documentation updates</a> section.
 </p>
 </div>
 </div>
-
 <div id="outline-container-pr-validation" class="outline-4">
 <h4 id="pr-validation"><span class="section-number-4">4.1.3.</span> PR validation</h4>
 <div class="outline-text-4" id="text-pr-validation">
@@ -483,12 +469,10 @@ well&#x2026; Ahead, sorry).
 </div>
 </div>
 </div>
-
 <div id="outline-container-branch-updates-runs-on-merge" class="outline-3">
 <h3 id="branch-updates-runs-on-merge"><span class="section-number-3">4.2.</span> Branch updates (runs on merge)</h3>
 <div class="outline-text-3" id="text-branch-updates-runs-on-merge">
 </div>
-
 <div id="outline-container-emacs-lisp-tests-1" class="outline-4">
 <h4 id="emacs-lisp-tests-1"><span class="section-number-4">4.2.1.</span> Emacs Lisp Tests</h4>
 <div class="outline-text-4" id="text-emacs-lisp-tests-1">
@@ -497,7 +481,6 @@ Same as <a href="#emacs-lisp-tests">Emacs Lisp Tests</a> on PRs.
 </p>
 </div>
 </div>
-
 <div id="outline-container-project-files-updates" class="outline-4">
 <h4 id="project-files-updates"><span class="section-number-4">4.2.2.</span> Project files updates</h4>
 <div class="outline-text-4" id="text-project-files-updates">
@@ -522,7 +505,6 @@ environment variable that comes from environment variables page under CircleCI
 project settings.
 </p>
 </div>
-
 <div id="outline-container-how-updates-end-up-in-spacemacs-repositories" class="outline-5">
 <h5 id="how-updates-end-up-in-spacemacs-repositories"><span class="section-number-5">4.2.2.1.</span> How updates end up in Spacemacs repositories</h5>
 <div class="outline-text-5" id="text-how-updates-end-up-in-spacemacs-repositories">
@@ -539,7 +521,6 @@ The PRs are merged manually.
 </p>
 </div>
 </div>
-
 <div id="outline-container-built-in-updates" class="outline-5">
 <h5 id="built-in-updates"><span class="section-number-5">4.2.2.2.</span> Built-in updates</h5>
 <div class="outline-text-5" id="text-built-in-updates">
@@ -550,7 +531,6 @@ overriding existing ones.
 </p>
 </div>
 </div>
-
 <div id="outline-container-documentation-updates" class="outline-5">
 <h5 id="documentation-updates"><span class="section-number-5">4.2.2.3.</span> Documentation updates</h5>
 <div class="outline-text-5" id="text-documentation-updates">
@@ -575,7 +555,6 @@ The rest of configs(and their default values) are listed <a href="https://github
 </p>
 </div>
 </div>
-
 <div id="outline-container-web-site-updates" class="outline-5">
 <h5 id="web-site-updates"><span class="section-number-5">4.2.2.4.</span> Web site updates</h5>
 <div class="outline-text-5" id="text-web-site-updates">
@@ -594,7 +573,6 @@ files sequentially.
 </div>
 </div>
 </div>
-
 <div id="outline-container-scheduled-jobs" class="outline-3">
 <h3 id="scheduled-jobs"><span class="section-number-3">4.3.</span> Scheduled jobs</h3>
 <div class="outline-text-3" id="text-scheduled-jobs">
@@ -608,7 +586,6 @@ develop branch is pushed.
 </div>
 </div>
 </div>
-
 <div id="outline-container-potential-improvements-pr-ideas" class="outline-2">
 <h2 id="potential-improvements-pr-ideas"><span class="section-number-2">5.</span> Potential improvements (PR ideas)</h2>
 <div class="outline-text-2" id="text-potential-improvements-pr-ideas">
@@ -636,12 +613,10 @@ exactly went wrong would help a lot.</li>
 </ul>
 </div>
 </div>
-
 <div id="outline-container-side-notes" class="outline-2">
 <h2 id="side-notes"><span class="section-number-2">6.</span> Side notes</h2>
 <div class="outline-text-2" id="text-side-notes">
 </div>
-
 <div id="outline-container-we-used-to-have-travisci-3-ci-providers-at-the-same-time" class="outline-3">
 <h3 id="we-used-to-have-travisci-3-ci-providers-at-the-same-time"><span class="section-number-3">6.1.</span> We used to have TravisCI (3 CI providers at the same time)</h3>
 <div class="outline-text-3" id="text-we-used-to-have-travisci-3-ci-providers-at-the-same-time">
@@ -660,7 +635,7 @@ a good environment for heavy jobs(both in build time and RAM).
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2024-11-15 Fri 04:05</p>
+<p class="date">Created: 2025-01-31 Fri 06:51</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

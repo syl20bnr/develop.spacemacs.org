@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-11-15 Fri 04:05 -->
+<!-- 2025-01-31 Fri 06:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LSP layer</title>
 <meta name="author" content="root" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -236,6 +236,7 @@
 <li><a href="#code-actions-on-modeline">2.4. Code actions on modeline</a></li>
 <li><a href="#navigation-mode">2.5. Navigation mode</a></li>
 <li><a href="#breadcrumb-on-headerline">2.6. Breadcrumb on headerline</a></li>
+<li><a href="#management-of-company-backends">2.7. Management of company-backends</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key bindings</a>
@@ -257,7 +258,6 @@
 </ul>
 </div>
 </div>
-
 <div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1.</span> Description</h2>
 <div class="outline-text-2" id="text-description">
@@ -285,7 +285,6 @@ So if you want to use this layer but only part of the IDE features
 expect to do some manual configuring in your dotfile.
 </p>
 </div>
-
 <div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
@@ -306,7 +305,6 @@ search and others)</li>
 </div>
 </div>
 </div>
-
 <div id="outline-container-configuration" class="outline-2">
 <h2 id="configuration"><span class="section-number-2">2.</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
@@ -320,7 +318,6 @@ The LSP ecosystem is based on two packages: <a href="https://github.com/emacs-ls
 Please check out their documentation.
 </p>
 </div>
-
 <div id="outline-container-variables" class="outline-3">
 <h3 id="variables"><span class="section-number-3">2.1.</span> Variables</h3>
 <div class="outline-text-3" id="text-variables">
@@ -441,7 +438,6 @@ under the derived mode t prefix by <code>(spacemacs/lsp-bind-keys-for-mode mode)
 </table>
 </div>
 </div>
-
 <div id="outline-container-code-lens" class="outline-3">
 <h3 id="code-lens"><span class="section-number-3">2.2.</span> Code Lens</h3>
 <div class="outline-text-3" id="text-code-lens">
@@ -466,7 +462,6 @@ This doesn't have any effect when code lens is not supported by current language
 </p>
 </div>
 </div>
-
 <div id="outline-container-error-statistics-on-modeline" class="outline-3">
 <h3 id="error-statistics-on-modeline"><span class="section-number-3">2.3.</span> Error statistics on modeline</h3>
 <div class="outline-text-3" id="text-error-statistics-on-modeline">
@@ -496,7 +491,6 @@ Alternatively, if you want to see all errors across all projects, you can set it
 </p>
 </div>
 </div>
-
 <div id="outline-container-code-actions-on-modeline" class="outline-3">
 <h3 id="code-actions-on-modeline"><span class="section-number-3">2.4.</span> Code actions on modeline</h3>
 <div class="outline-text-3" id="text-code-actions-on-modeline">
@@ -528,7 +522,6 @@ You can also customize its appearance via <code>lsp-modeline-code-actions-segmen
 </div>
 </div>
 </div>
-
 <div id="outline-container-navigation-mode" class="outline-3">
 <h3 id="navigation-mode"><span class="section-number-3">2.5.</span> Navigation mode</h3>
 <div class="outline-text-3" id="text-navigation-mode">
@@ -540,7 +533,6 @@ the bindings under <code>SPC m G</code> and creates bindings under <code>SPC m g
 </p>
 </div>
 </div>
-
 <div id="outline-container-breadcrumb-on-headerline" class="outline-3">
 <h3 id="breadcrumb-on-headerline"><span class="section-number-3">2.6.</span> Breadcrumb on headerline</h3>
 <div class="outline-text-3" id="text-breadcrumb-on-headerline">
@@ -584,8 +576,45 @@ otherwise separators used by <code>lsp-headerline-breadcrumb-mode</code> will be
 </p>
 </div>
 </div>
+<div id="outline-container-management-of-company-backends" class="outline-3">
+<h3 id="management-of-company-backends"><span class="section-number-3">2.7.</span> Management of company-backends</h3>
+<div class="outline-text-3" id="text-management-of-company-backends">
+<p>
+<code>lsp-mode</code> aggressively inserts <code>company-capf</code> (which contains its <code>completion-at-point-function</code>)
+as the ultimate first <code>company-backend</code> whenever it is activated.
+This is fine in the majority of cases, but can be a hinderance when an LSP server doesn't provide functionality
+that could be provided by another <code>company-backend</code> like <code>company-files</code>, for example.
+</p>
+
+<p>
+To manage <code>company-backends</code> yourself you can set the layer variable <code>lsp-manage-backends-manually</code> like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>lsp <span class="org-builtin">:variables</span> lsp-manage-backends-manually '<span class="org-rainbow-delimiters-depth-4">(</span>go-mode<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 
+<p>
+The default value of <code>lsp-manage-backends-manually</code> is <code>nil</code>, which means that <code>lsp-mode</code> handles the backend
+management, but it can also be either <code>:all</code> or a list of modes for which you want to manage the backends yourself.
+</p>
+
+<p>
+To make <code>company</code> provide completion candidates from <code>company-capf</code> combined with <code>company-files</code> in our <code>go-mode</code>
+example, you can set it like this in your <code>dotspacemacs/user-config</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'go-mode-hook
+          <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span>
+           <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">setq-local</span> company-backends '<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">:separate</span> company-capf company-files company-yasnippet<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
 <div id="outline-container-key-bindings" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3.</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
@@ -594,7 +623,6 @@ A number of lsp features useful for all/most modes have been bound to the lsp mi
 available in all language layers based on the lsp layer.
 </p>
 </div>
-
 <div id="outline-container-key-binding-prefixes" class="outline-3">
 <h3 id="key-binding-prefixes"><span class="section-number-3">3.1.</span> Key binding prefixes</h3>
 <div class="outline-text-3" id="text-key-binding-prefixes">
@@ -689,7 +717,6 @@ The key bindings are grouped under the following prefixes:
 </table>
 </div>
 </div>
-
 <div id="outline-container-core-key-bindings" class="outline-3">
 <h3 id="core-key-bindings"><span class="section-number-3">3.2.</span> Core key bindings</h3>
 <div class="outline-text-3" id="text-core-key-bindings">
@@ -817,7 +844,7 @@ The lsp minor mode bindings are:
 
 <tr>
 <td class="org-left"><code>SPC m g p</code></td>
-<td class="org-left">goto previous (<code>xref-pop-marker-stack</code>)</td>
+<td class="org-left">goto previous (<code>xref-go-back</code>)</td>
 </tr>
 </tbody>
 <tbody>
@@ -980,7 +1007,6 @@ Note 2: There is a window local jump list dedicated to cross references.
 </p>
 </div>
 </div>
-
 <div id="outline-container-language-specific-key-binding-extensions" class="outline-3">
 <h3 id="language-specific-key-binding-extensions"><span class="section-number-3">3.3.</span> Language-specific key binding extensions</h3>
 <div class="outline-text-3" id="text-language-specific-key-binding-extensions">
@@ -990,7 +1016,6 @@ or <code>lsp-ui-peek-find-custom</code>. A number of additional functions have b
 in a manner consistent with the <code>lsp-navigation</code> setting.
 </p>
 </div>
-
 <div id="outline-container-spacemacslsp-define-extensions-layer-name-kind-request-optional-extra-parameters" class="outline-4">
 <h4 id="spacemacslsp-define-extensions-layer-name-kind-request-optional-extra-parameters"><span class="section-number-4">3.3.1.</span> <code>spacemacs/lsp-define-extensions layer-name kind request &amp;optional extra-parameters</code></h4>
 <div class="outline-text-4" id="text-spacemacslsp-define-extensions-layer-name-kind-request-optional-extra-parameters">
@@ -1014,7 +1039,6 @@ This defines the following interactive functions:
 </ul>
 </div>
 </div>
-
 <div id="outline-container-spacemacslsp-bind-extensions-for-mode" class="outline-4">
 <h4 id="spacemacslsp-bind-extensions-for-mode"><span class="section-number-4">3.3.2.</span> <code>spacemacs/lsp-bind-extensions-for-mode</code></h4>
 <div class="outline-text-4" id="text-spacemacslsp-bind-extensions-for-mode">
@@ -1076,7 +1100,6 @@ etc.
 </div>
 </div>
 </div>
-
 <div id="outline-container-bind-to-lsp-upstreams" class="outline-3">
 <h3 id="bind-to-lsp-upstreams"><span class="section-number-3">3.4.</span> Bind to lsp upstreams</h3>
 <div class="outline-text-3" id="text-bind-to-lsp-upstreams">
@@ -1126,7 +1149,6 @@ should pay attention to avoid any binding collision with <code>lsp-mode</code>.
 </div>
 </div>
 </div>
-
 <div id="outline-container-dap-integration" class="outline-2">
 <h2 id="dap-integration"><span class="section-number-2">4.</span> DAP integration</h2>
 <div class="outline-text-2" id="text-dap-integration">
@@ -1135,7 +1157,6 @@ should pay attention to avoid any binding collision with <code>lsp-mode</code>.
 </p>
 </div>
 </div>
-
 <div id="outline-container-diagnostics" class="outline-2">
 <h2 id="diagnostics"><span class="section-number-2">5.</span> Diagnostics</h2>
 <div class="outline-text-2" id="text-diagnostics">
@@ -1151,7 +1172,6 @@ completion</li>
 </ul>
 </div>
 </div>
-
 <div id="outline-container-references" class="outline-2">
 <h2 id="references"><span class="section-number-2">6.</span> References</h2>
 <div class="outline-text-2" id="text-references">
@@ -1165,7 +1185,7 @@ completion</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2024-11-15 Fri 04:05</p>
+<p class="date">Created: 2025-01-31 Fri 06:54</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
