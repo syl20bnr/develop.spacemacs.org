@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-02-26 Wed 04:46 -->
+<!-- 2025-03-09 Sun 18:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Eglot layer</title>
@@ -245,6 +245,7 @@ This layer adds support for basic language server protocol packages speaking
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Provide LSP support using eglot.</li>
+<li>Provide Flycheck integration using <a href="https://github.com/flycheck/flycheck-eglot">flycheck-eglot</a></li>
 </ul>
 </div>
 </div>
@@ -267,19 +268,19 @@ Here is an example on how to integrate eglot into the language backend of a laye
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">  <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">spacemacs//ruby-setup-backend</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-    <span class="org-doc">"Conditionally configure Ruby backend"</span>
-    <span class="org-rainbow-delimiters-depth-2">(</span>spacemacs//ruby-setup-version-manager<span class="org-rainbow-delimiters-depth-2">)</span>
-    <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">pcase</span> ruby-backend
-      <span class="org-rainbow-delimiters-depth-3">(</span>'eglot <span class="org-rainbow-delimiters-depth-4">(</span>spacemacs//ruby-setup-eglot<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-      <span class="org-rainbow-delimiters-depth-3">(</span>'lsp <span class="org-rainbow-delimiters-depth-4">(</span>spacemacs//ruby-setup-lsp<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-      <span class="org-rainbow-delimiters-depth-3">(</span>nil <span class="org-rainbow-delimiters-depth-4">(</span>ignore<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-      <span class="org-rainbow-delimiters-depth-3">(</span>_ <span class="org-rainbow-delimiters-depth-4">(</span>spacemacs-buffer/error <span class="org-string">"Ruby Layer - unknown language backend: %s"</span> ruby-backend<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">spacemacs//ruby-setup-backend</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+  <span class="org-doc">"Conditionally configure Ruby backend"</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>spacemacs//ruby-setup-version-manager<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">pcase</span> ruby-backend
+    <span class="org-rainbow-delimiters-depth-3">(</span>'eglot <span class="org-rainbow-delimiters-depth-4">(</span>spacemacs//ruby-setup-eglot<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>'lsp <span class="org-rainbow-delimiters-depth-4">(</span>spacemacs//ruby-setup-lsp<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>nil <span class="org-rainbow-delimiters-depth-4">(</span>ignore<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>_ <span class="org-rainbow-delimiters-depth-4">(</span>spacemacs-buffer/error <span class="org-string">"Ruby Layer - unknown language backend: %s"</span> ruby-backend<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">spacemacs//ruby-setup-eglot</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-doc">"Setup Ruby eglot."</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">if</span> <span class="org-rainbow-delimiters-depth-3">(</span>configuration-layer/layer-used-p 'eglot<span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>eglot-ensure<span class="org-rainbow-delimiters-depth-3">)</span>
+      <span class="org-rainbow-delimiters-depth-3">(</span>eglot-ensure<span class="org-rainbow-delimiters-depth-3">)</span>
     <span class="org-rainbow-delimiters-depth-3">(</span>message <span class="org-string">"`</span><span class="org-string"><span class="org-constant">eglot</span></span><span class="org-string">' layer is not installed, please add `</span><span class="org-string"><span class="org-constant">eglot</span></span><span class="org-string">' layer to your dotfile."</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -288,7 +289,7 @@ Here is an example on how to integrate eglot into the language backend of a laye
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2025-02-26 Wed 04:46</p>
+<p class="date">Created: 2025-03-09 Sun 18:34</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
