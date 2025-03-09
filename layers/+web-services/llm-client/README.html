@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-02-26 Wed 04:46 -->
+<!-- 2025-03-09 Sun 18:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Large Language Model Client layer</title>
@@ -241,16 +241,17 @@
 <li><a href="#gptel">4.1. GPTel</a></li>
 <li><a href="#ellama">4.2. Ellama</a>
 <ul>
-<li><a href="#code-tasks">4.2.1. Code tasks</a></li>
-<li><a href="#summarization-tasks">4.2.2. Summarization tasks</a></li>
-<li><a href="#edit-tasks">4.2.3. Edit tasks</a></li>
-<li><a href="#question-answering-tasks">4.2.4. Question-Answering tasks</a></li>
-<li><a href="#problem-solving-tasks">4.2.5. Problem solving tasks</a></li>
-<li><a href="#translation-tasks">4.2.6. Translation tasks</a></li>
-<li><a href="#thesaurus-tasks">4.2.7. Thesaurus tasks</a></li>
-<li><a href="#context-management">4.2.8. Context management</a></li>
-<li><a href="#session-management">4.2.9. Session management</a></li>
-<li><a href="#provider-management">4.2.10. Provider management</a></li>
+<li><a href="#general-tasks">4.2.1. General tasks</a></li>
+<li><a href="#code-tasks">4.2.2. Code tasks</a></li>
+<li><a href="#summarization-tasks">4.2.3. Summarization tasks</a></li>
+<li><a href="#edit-tasks">4.2.4. Edit tasks</a></li>
+<li><a href="#question-answering-tasks">4.2.5. Question-Answering tasks</a></li>
+<li><a href="#problem-solving-tasks">4.2.6. Problem solving tasks</a></li>
+<li><a href="#translation-tasks">4.2.7. Translation tasks</a></li>
+<li><a href="#thesaurus-tasks">4.2.8. Thesaurus tasks</a></li>
+<li><a href="#context-management">4.2.9. Context management</a></li>
+<li><a href="#session-management">4.2.10. Session management</a></li>
+<li><a href="#provider-management">4.2.11. Provider management</a></li>
 </ul>
 </li>
 </ul>
@@ -500,8 +501,94 @@ In addition, this layer adds the following key bindings to <code>org-mode</code>
 <h3 id="ellama"><span class="section-number-3">4.2.</span> Ellama</h3>
 <div class="outline-text-3" id="text-ellama">
 </div>
+<div id="outline-container-general-tasks" class="outline-4">
+<h4 id="general-tasks"><span class="section-number-4">4.2.1.</span> General tasks</h4>
+<div class="outline-text-4" id="text-general-tasks">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC $ e .</code></td>
+<td class="org-left">ellama-transient-main-menu</td>
+<td class="org-left">Show ellama transient state</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC $ ec c</code></td>
+<td class="org-left">ellama-code-complete</td>
+<td class="org-left">Complete code in current buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ec a</code></td>
+<td class="org-left">ellama-code-add</td>
+<td class="org-left">Add code according to description</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ec e</code></td>
+<td class="org-left">ellama-code-edit</td>
+<td class="org-left">Edit code according to change</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ec i</code></td>
+<td class="org-left">ellama-code-improve</td>
+<td class="org-left">Improve code</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ ec r</code></td>
+<td class="org-left">ellama-code-review</td>
+<td class="org-left">Review code</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="outline-container-code-tasks" class="outline-4">
-<h4 id="code-tasks"><span class="section-number-4">4.2.1.</span> Code tasks</h4>
+<h4 id="code-tasks"><span class="section-number-4">4.2.2.</span> Code tasks</h4>
 <div class="outline-text-4" id="text-code-tasks">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -555,7 +642,7 @@ In addition, this layer adds the following key bindings to <code>org-mode</code>
 </div>
 </div>
 <div id="outline-container-summarization-tasks" class="outline-4">
-<h4 id="summarization-tasks"><span class="section-number-4">4.2.2.</span> Summarization tasks</h4>
+<h4 id="summarization-tasks"><span class="section-number-4">4.2.3.</span> Summarization tasks</h4>
 <div class="outline-text-4" id="text-summarization-tasks">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -597,7 +684,7 @@ In addition, this layer adds the following key bindings to <code>org-mode</code>
 </div>
 </div>
 <div id="outline-container-edit-tasks" class="outline-4">
-<h4 id="edit-tasks"><span class="section-number-4">4.2.3.</span> Edit tasks</h4>
+<h4 id="edit-tasks"><span class="section-number-4">4.2.4.</span> Edit tasks</h4>
 <div class="outline-text-4" id="text-edit-tasks">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -663,7 +750,7 @@ In addition, this layer adds the following key bindings to <code>org-mode</code>
 </div>
 </div>
 <div id="outline-container-question-answering-tasks" class="outline-4">
-<h4 id="question-answering-tasks"><span class="section-number-4">4.2.4.</span> Question-Answering tasks</h4>
+<h4 id="question-answering-tasks"><span class="section-number-4">4.2.5.</span> Question-Answering tasks</h4>
 <div class="outline-text-4" id="text-question-answering-tasks">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -717,7 +804,7 @@ In addition, this layer adds the following key bindings to <code>org-mode</code>
 </div>
 </div>
 <div id="outline-container-problem-solving-tasks" class="outline-4">
-<h4 id="problem-solving-tasks"><span class="section-number-4">4.2.5.</span> Problem solving tasks</h4>
+<h4 id="problem-solving-tasks"><span class="section-number-4">4.2.6.</span> Problem solving tasks</h4>
 <div class="outline-text-4" id="text-problem-solving-tasks">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -753,7 +840,7 @@ In addition, this layer adds the following key bindings to <code>org-mode</code>
 </div>
 </div>
 <div id="outline-container-translation-tasks" class="outline-4">
-<h4 id="translation-tasks"><span class="section-number-4">4.2.6.</span> Translation tasks</h4>
+<h4 id="translation-tasks"><span class="section-number-4">4.2.7.</span> Translation tasks</h4>
 <div class="outline-text-4" id="text-translation-tasks">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -801,7 +888,7 @@ In addition, this layer adds the following key bindings to <code>org-mode</code>
 </div>
 </div>
 <div id="outline-container-thesaurus-tasks" class="outline-4">
-<h4 id="thesaurus-tasks"><span class="section-number-4">4.2.7.</span> Thesaurus tasks</h4>
+<h4 id="thesaurus-tasks"><span class="section-number-4">4.2.8.</span> Thesaurus tasks</h4>
 <div class="outline-text-4" id="text-thesaurus-tasks">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -831,7 +918,7 @@ In addition, this layer adds the following key bindings to <code>org-mode</code>
 </div>
 </div>
 <div id="outline-container-context-management" class="outline-4">
-<h4 id="context-management"><span class="section-number-4">4.2.8.</span> Context management</h4>
+<h4 id="context-management"><span class="section-number-4">4.2.9.</span> Context management</h4>
 <div class="outline-text-4" id="text-context-management">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -879,7 +966,7 @@ In addition, this layer adds the following key bindings to <code>org-mode</code>
 </div>
 </div>
 <div id="outline-container-session-management" class="outline-4">
-<h4 id="session-management"><span class="section-number-4">4.2.9.</span> Session management</h4>
+<h4 id="session-management"><span class="section-number-4">4.2.10.</span> Session management</h4>
 <div class="outline-text-4" id="text-session-management">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -927,7 +1014,7 @@ In addition, this layer adds the following key bindings to <code>org-mode</code>
 </div>
 </div>
 <div id="outline-container-provider-management" class="outline-4">
-<h4 id="provider-management"><span class="section-number-4">4.2.10.</span> Provider management</h4>
+<h4 id="provider-management"><span class="section-number-4">4.2.11.</span> Provider management</h4>
 <div class="outline-text-4" id="text-provider-management">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -961,7 +1048,7 @@ In addition, this layer adds the following key bindings to <code>org-mode</code>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2025-02-26 Wed 04:46</p>
+<p class="date">Created: 2025-03-09 Sun 18:34</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
