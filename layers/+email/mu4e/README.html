@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-04-03 Thu 01:15 -->
+<!-- 2025-04-22 Tue 21:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mu4e layer</title>
@@ -240,20 +240,19 @@
 <li><a href="#configuration">4. Configuration</a>
 <ul>
 <li><a href="#multiple-accounts">4.1. Multiple Accounts</a></li>
-<li><a href="#async-mode">4.2. Async mode</a></li>
-<li><a href="#attachment-directory">4.3. Attachment directory</a></li>
-<li><a href="#example-configuration">4.4. Example configuration</a></li>
-<li><a href="#notifications">4.5. Notifications</a>
+<li><a href="#attachment-directory">4.2. Attachment directory</a></li>
+<li><a href="#example-configuration">4.3. Example configuration</a></li>
+<li><a href="#notifications">4.4. Notifications</a>
 <ul>
-<li><a href="#os-notifications">4.5.1. OS notifications</a></li>
-<li><a href="#mode-line-notifications">4.5.2. Mode-line notifications</a></li>
+<li><a href="#os-notifications">4.4.1. OS notifications</a></li>
+<li><a href="#mode-line-notifications">4.4.2. Mode-line notifications</a></li>
 </ul>
 </li>
-<li><a href="#spacemacs-layout-integration">4.6. Spacemacs layout integration</a></li>
-<li><a href="#org-mu4e-integration">4.7. Org-mu4e integration</a>
+<li><a href="#spacemacs-layout-integration">4.5. Spacemacs layout integration</a></li>
+<li><a href="#org-mu4e-integration">4.6. Org-mu4e integration</a>
 <ul>
-<li><a href="#mu4e-link-support-in-org-mode">4.7.1. Mu4e link support in Org mode</a></li>
-<li><a href="#composing-org-mode-messages-in-mu4e">4.7.2. Composing Org mode messages in mu4e</a></li>
+<li><a href="#mu4e-link-support-in-org-mode">4.6.1. Mu4e link support in Org mode</a></li>
+<li><a href="#composing-org-mode-messages-in-mu4e">4.6.2. Composing Org mode messages in mu4e</a></li>
 </ul>
 </li>
 </ul>
@@ -558,26 +557,8 @@ new contexts feature.
 </p>
 </div>
 </div>
-<div id="outline-container-async-mode" class="outline-3">
-<h3 id="async-mode"><span class="section-number-3">4.2.</span> Async mode</h3>
-<div class="outline-text-3" id="text-async-mode">
-<p>
-<code>mu4e</code> can send mails in async mode, which speeds up sending as you do not have
-to wait for the email to be sent. This is off by default but you can enable
-it by setting the <code>mu4e-enable-async-operations</code> variable when including the
-layer.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>mu4e <span class="org-builtin">:variables</span>
-                      mu4e-enable-async-operations t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-</div>
 <div id="outline-container-attachment-directory" class="outline-3">
-<h3 id="attachment-directory"><span class="section-number-3">4.3.</span> Attachment directory</h3>
+<h3 id="attachment-directory"><span class="section-number-3">4.2.</span> Attachment directory</h3>
 <div class="outline-text-3" id="text-attachment-directory">
 <p>
 By default <code>mu4e</code> will save attachment files to <code>$HOME</code>, but this layer changes
@@ -592,7 +573,7 @@ that to <code>$HOME/Downloads</code> if it exists. You can override this in your
 </div>
 </div>
 <div id="outline-container-example-configuration" class="outline-3">
-<h3 id="example-configuration"><span class="section-number-3">4.4.</span> Example configuration</h3>
+<h3 id="example-configuration"><span class="section-number-3">4.3.</span> Example configuration</h3>
 <div class="outline-text-3" id="text-example-configuration">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Set up some common mu4e variables</span>
@@ -627,7 +608,7 @@ that to <code>$HOME/Downloads</code> if it exists. You can override this in your
 </div>
 </div>
 <div id="outline-container-notifications" class="outline-3">
-<h3 id="notifications"><span class="section-number-3">4.5.</span> Notifications</h3>
+<h3 id="notifications"><span class="section-number-3">4.4.</span> Notifications</h3>
 <div class="outline-text-3" id="text-notifications">
 <p>
 <code>mu4e-alert</code> is an extension that provides desktop notifications and adds the
@@ -635,7 +616,7 @@ count of unread messages to the modeline.
 </p>
 
 
-<div id="orgbe8cf01" class="figure">
+<div id="orgc5c3370" class="figure">
 <p><img src="https://raw.githubusercontent.com/iqbalansari/mu4e-alert/master/screenshots/mu4e-alert-in-action.png" alt="mu4e-alert-in-action.png" />
 </p>
 </div>
@@ -646,7 +627,7 @@ For an extended documentation of the available customizations please refer to
 </p>
 </div>
 <div id="outline-container-os-notifications" class="outline-4">
-<h4 id="os-notifications"><span class="section-number-4">4.5.1.</span> OS notifications</h4>
+<h4 id="os-notifications"><span class="section-number-4">4.4.1.</span> OS notifications</h4>
 <div class="outline-text-4" id="text-os-notifications">
 <p>
 To enable notifications about new messages, add the following line to your
@@ -688,7 +669,7 @@ installed libraries:
 </div>
 </div>
 <div id="outline-container-mode-line-notifications" class="outline-4">
-<h4 id="mode-line-notifications"><span class="section-number-4">4.5.2.</span> Mode-line notifications</h4>
+<h4 id="mode-line-notifications"><span class="section-number-4">4.4.2.</span> Mode-line notifications</h4>
 <div class="outline-text-4" id="text-mode-line-notifications">
 <p>
 To enable mode-line display about new messages, add the following line to
@@ -713,7 +694,7 @@ or use layer variables when you add the layer to
 </div>
 </div>
 <div id="outline-container-spacemacs-layout-integration" class="outline-3">
-<h3 id="spacemacs-layout-integration"><span class="section-number-3">4.6.</span> Spacemacs layout integration</h3>
+<h3 id="spacemacs-layout-integration"><span class="section-number-3">4.5.</span> Spacemacs layout integration</h3>
 <div class="outline-text-3" id="text-spacemacs-layout-integration">
 <p>
 A <a href="../../../doc/DOCUMENTATION.html#layouts-and-workspaces">Spacemacs custom layout</a> is defined by the layer. The name and the key binding
@@ -740,11 +721,11 @@ By default the values are:
 </div>
 </div>
 <div id="outline-container-org-mu4e-integration" class="outline-3">
-<h3 id="org-mu4e-integration"><span class="section-number-3">4.7.</span> Org-mu4e integration</h3>
+<h3 id="org-mu4e-integration"><span class="section-number-3">4.6.</span> Org-mu4e integration</h3>
 <div class="outline-text-3" id="text-org-mu4e-integration">
 </div>
 <div id="outline-container-mu4e-link-support-in-org-mode" class="outline-4">
-<h4 id="mu4e-link-support-in-org-mode"><span class="section-number-4">4.7.1.</span> Mu4e link support in Org mode</h4>
+<h4 id="mu4e-link-support-in-org-mode"><span class="section-number-4">4.6.1.</span> Mu4e link support in Org mode</h4>
 <div class="outline-text-4" id="text-mu4e-link-support-in-org-mode">
 <p>
 Feature <code>mu4e-org</code> supports links to mu4e messages in Org mode in the form of
@@ -761,7 +742,7 @@ setting the <code>mu4e-org-link-support</code> variable when including the layer
 </div>
 </div>
 <div id="outline-container-composing-org-mode-messages-in-mu4e" class="outline-4">
-<h4 id="composing-org-mode-messages-in-mu4e"><span class="section-number-4">4.7.2.</span> Composing Org mode messages in mu4e</h4>
+<h4 id="composing-org-mode-messages-in-mu4e"><span class="section-number-4">4.6.2.</span> Composing Org mode messages in mu4e</h4>
 <div class="outline-text-4" id="text-composing-org-mode-messages-in-mu4e">
 <p>
 Feature <code>org-mu4e</code> supports composing emails in Org mode format. Disabled by
@@ -800,7 +781,7 @@ Refer to the official <code>mu</code> and <code>mu4e</code> documentation for ad
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2025-04-03 Thu 01:15</p>
+<p class="date">Created: 2025-04-22 Tue 21:31</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
