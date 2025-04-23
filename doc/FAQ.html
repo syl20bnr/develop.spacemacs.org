@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-04-22 Tue 21:29 -->
+<!-- 2025-04-23 Wed 11:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Frequently Asked Questions</title>
@@ -269,9 +269,10 @@
 <li><a href="#make-spell-checking-support-curly-quotes-or-any-other-character">2.15. Make spell-checking support curly quotes (or any other character)?</a></li>
 <li><a href="#use-spacemacs-as-the-editor-for-git-commits">2.16. Use Spacemacs as the <code>$EDITOR</code> for git commits?</a></li>
 <li><a href="#try-spacemacs-without-modifying-my-existing-emacs-configuration">2.17. Try Spacemacs without modifying my existing Emacs configuration?</a></li>
-<li><a href="#make-copypaste-working-with-the-mouse-in-x11-terminals">2.18. Make copy/paste working with the mouse in X11 terminals?</a></li>
-<li><a href="#use-helm-ag-to-search-only-in-files-of-a-certain-type">2.19. Use <code>helm-ag</code> to search only in files of a certain type?</a></li>
-<li><a href="#modify-spacemacs-documentation-look-space-doc-mode">2.20. Modify spacemacs documentation look (space-doc-mode)</a></li>
+<li><a href="#try-the-default-spacemacs-config-without-modifying-my-existing-spacemacs">2.18. Try the default Spacemacs config without modifying my existing .spacemacs?</a></li>
+<li><a href="#make-copypaste-working-with-the-mouse-in-x11-terminals">2.19. Make copy/paste working with the mouse in X11 terminals?</a></li>
+<li><a href="#use-helm-ag-to-search-only-in-files-of-a-certain-type">2.20. Use <code>helm-ag</code> to search only in files of a certain type?</a></li>
+<li><a href="#modify-spacemacs-documentation-look-space-doc-mode">2.21. Modify spacemacs documentation look (space-doc-mode)</a></li>
 </ul>
 </li>
 <li><a href="#linux">3. Linux</a>
@@ -1081,8 +1082,32 @@ If you're on Fish shell, you will need to modify the last command to:
 </p>
 </div>
 </div>
+<div id="outline-container-try-the-default-spacemacs-config-without-modifying-my-existing-spacemacs" class="outline-3">
+<h3 id="try-the-default-spacemacs-config-without-modifying-my-existing-spacemacs"><span class="section-number-3">2.18.</span> Try the default Spacemacs config without modifying my existing .spacemacs?</h3>
+<div class="outline-text-3" id="text-try-the-default-spacemacs-config-without-modifying-my-existing-spacemacs">
+<p>
+You can pass either the <code>--default-dotspacemacs</code> (recommended) or
+<code>--no-dotspacemacs</code> options on the command line:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">emacs --default-dotspacemacs
+</pre>
+</div>
+
+<p>
+<code>--default-dotspacemacs</code> inhibits loading your real <code>~/.spacemacs</code>,
+loading <code>dotspacemacs-template.el</code> instead.
+</p>
+
+<p>
+<code>--no-dotspacemacs</code> does the same, but does not load
+<code>dotspacemacs-template.el</code> either..
+</p>
+</div>
+</div>
 <div id="outline-container-make-copypaste-working-with-the-mouse-in-x11-terminals" class="outline-3">
-<h3 id="make-copypaste-working-with-the-mouse-in-x11-terminals"><span class="section-number-3">2.18.</span> Make copy/paste working with the mouse in X11 terminals?</h3>
+<h3 id="make-copypaste-working-with-the-mouse-in-x11-terminals"><span class="section-number-3">2.19.</span> Make copy/paste working with the mouse in X11 terminals?</h3>
 <div class="outline-text-3" id="text-make-copypaste-working-with-the-mouse-in-x11-terminals">
 <p>
 It is possible to disable the mouse support in X11 terminals in order to
@@ -1097,7 +1122,7 @@ enable copying/pasting with the mouse. You need to add this line to your
 </div>
 </div>
 <div id="outline-container-use-helm-ag-to-search-only-in-files-of-a-certain-type" class="outline-3">
-<h3 id="use-helm-ag-to-search-only-in-files-of-a-certain-type"><span class="section-number-3">2.19.</span> Use <code>helm-ag</code> to search only in files of a certain type?</h3>
+<h3 id="use-helm-ag-to-search-only-in-files-of-a-certain-type"><span class="section-number-3">2.20.</span> Use <code>helm-ag</code> to search only in files of a certain type?</h3>
 <div class="outline-text-3" id="text-use-helm-ag-to-search-only-in-files-of-a-certain-type">
 <p>
 It is possible to restrict the scope of <code>helm-ag</code> to search only expressions in
@@ -1125,7 +1150,7 @@ arguments of the <code>ag</code> program.
 </div>
 </div>
 <div id="outline-container-modify-spacemacs-documentation-look-space-doc-mode" class="outline-3">
-<h3 id="modify-spacemacs-documentation-look-space-doc-mode"><span class="section-number-3">2.20.</span> Modify spacemacs documentation look (space-doc-mode)</h3>
+<h3 id="modify-spacemacs-documentation-look-space-doc-mode"><span class="section-number-3">2.21.</span> Modify spacemacs documentation look (space-doc-mode)</h3>
 <div class="outline-text-3" id="text-modify-spacemacs-documentation-look-space-doc-mode">
 <p>
 You can modify the list of visual enhancements applied by the <code>space-doc-mode</code>:
@@ -1166,7 +1191,7 @@ If you see the an error message when either Spacemacs is trying to delete an orp
 or when you are trying to a package manually:
 </p>
 
-<pre class="example" id="org335ad2d">
+<pre class="example" id="orge3f29be">
 Package ‘PACKAGE-NAME’ is a system package, not deleting
 </pre>
 
@@ -1299,7 +1324,7 @@ feature to observer it speedups the Spacemacs or not on the Windows OS.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2025-04-22 Tue 21:29</p>
+<p class="date">Created: 2025-04-23 Wed 11:19</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
