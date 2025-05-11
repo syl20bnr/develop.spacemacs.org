@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-04-23 Wed 11:19 -->
+<!-- 2025-05-11 Sun 05:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Frequently Asked Questions</title>
@@ -288,6 +288,7 @@
 <li><a href="#why-are-all-packages-unavailable">4.3. Why are all packages unavailable?</a></li>
 <li><a href="#the-powerline-isnt-shown-correctly-when-spacemacs-is-used-within-putty">4.4. The powerline isn't shown correctly when Spacemacs is used within <code>PuTTY</code></a></li>
 <li><a href="#speedup-the-spacemacs-with-load-hints-feature">4.5. Speedup the Spacemacs with load-hints feature</a></li>
+<li><a href="#speedup-the-spacemacs-by-optimizing-module-loading">4.6. Speedup the Spacemacs by optimizing module loading</a></li>
 </ul>
 </li>
 </ul>
@@ -1191,7 +1192,7 @@ If you see the an error message when either Spacemacs is trying to delete an orp
 or when you are trying to a package manually:
 </p>
 
-<pre class="example" id="orge3f29be">
+<pre class="example" id="org75befa4">
 Package ‘PACKAGE-NAME’ is a system package, not deleting
 </pre>
 
@@ -1320,11 +1321,49 @@ feature to observer it speedups the Spacemacs or not on the Windows OS.
 </p>
 </div>
 </div>
+<div id="outline-container-speedup-the-spacemacs-by-optimizing-module-loading" class="outline-3">
+<h3 id="speedup-the-spacemacs-by-optimizing-module-loading"><span class="section-number-3">4.6.</span> Speedup the Spacemacs by optimizing module loading</h3>
+<div class="outline-text-3" id="text-speedup-the-spacemacs-by-optimizing-module-loading">
+<p>
+The official Emacs-30.1 release for Windows was built with native module
+support. However Spacemacs rarely relies on native module, so we can let Emacs
+do NOT searching the <code>*.dll</code> or <code>*.dll.gz</code> for speed with putting follow lines
+to the <code>early-init.el</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">progn</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq</span> load-suffixes '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">".elc"</span> <span class="org-string">".el"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>message <span class="org-string">"Dismiss the \".dll\" or \".so\" from `</span><span class="org-string"><span class="org-constant">load-suffixes</span></span><span class="org-string">' for speed.\n</span>
+<span class="org-string">Which will affect Emacs loading a native module *.dll or *.so."</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+The official Emacs-30.1 for windows also did NOT ship with the compressed
+<code>*.el.gz</code> or <code>*.elc.gz</code>, so adding follow lines to the <code>early-init.el</code> can avoid
+searching <code>*.gz</code> files:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">progn</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq</span> load-file-rep-suffixes '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">""</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>message <span class="org-string">"Do NOT search \"*.gz\", it maybe lead an error like \"Symbol's value as</span>
+<span class="org-string">variable is void: \213\"."</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+These tricks can speedup the Spacemacs on Windows, try them one by one then you
+will find the best option combinations.
+</p>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2025-04-23 Wed 11:19</p>
+<p class="date">Created: 2025-05-11 Sun 05:11</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

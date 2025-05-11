@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-04-23 Wed 11:22 -->
+<!-- 2025-05-11 Sun 05:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GitHub Copilot layer</title>
@@ -228,7 +228,17 @@
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a></li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#configuratiom">2.1. Configuratiom</a></li>
+</ul>
+</li>
+<li><a href="#key-bindings">3. Key bindings</a>
+<ul>
+<li><a href="#general">3.1. General</a></li>
+<li><a href="#in-chat">3.2. In Chat</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -236,14 +246,16 @@
 <h2 id="description"><span class="section-number-2">1.</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer enables usage of <a href="https://github.com/features/copilot">GitHub Copilot</a> in Spacemacs using <a href="https://github.com/copilot-emacs/copilot.el">copilot.el</a>.
+This layer enables usage of <a href="https://github.com/features/copilot">GitHub Copilot</a> in Spacemacs.
 </p>
 </div>
 <div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Provide access to ai powered code completions powered by <a href="https://github.com/features/copilot">GitHub Copilot</a></li>
+<li>Ai powered code completions using <a href="https://github.com/copilot-emacs/copilot.el">copilot.el</a></li>
+<li>Ai chat interactions using <a href="https://github.com/chep/copilot-chat.el">copilot-chat.el</a></li>
+<li>Automatic generation of git commit messages using <a href="https://github.com/chep/copilot-chat.el">copilot-chat.el</a></li>
 </ul>
 </div>
 </div>
@@ -256,12 +268,161 @@ To use this configuration layer, add it to your <code>~/.spacemacs</code>. You w
 add <code>github-copilot</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
 file.
 </p>
+
+<p>
+In addition the github/copilot-language-server must be installed either manually with:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ npm install -g @github/copilot-language-server
+</pre>
+</div>
+
+<p>
+or via elisp by pressing:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">SPC SPC copilot-install-server
+</pre>
+</div>
+</div>
+<div id="outline-container-configuratiom" class="outline-3">
+<h3 id="configuratiom"><span class="section-number-3">2.1.</span> Configuratiom</h3>
+<div class="outline-text-3" id="text-configuratiom">
+<p>
+Per default the service will run for every mode derived from prog mode. It will do
+automatic code suggestions. Key bindings for accepting an advice are bound automatically
+but can be rebound.
+</p>
+
+<p>
+In order to work properly <code>SPC SPC copilot login</code> must be have been run once on the device
+especially if a commercial license is available.
+</p>
+
+<p>
+The mode itself tries to defer the language from the major mode however if this fails it may
+be necessary to add the new binding manually. Details for this can be found <a href="https://github.com/copilot-emacs/copilot.el?tab=readme-ov-file#programming-language-detection">here</a>.
+</p>
+
+<p>
+For the chat interface a separate login procedure will be necessary once a chat is started.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-key-bindings" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">3.</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+</div>
+<div id="outline-container-general" class="outline-3">
+<h3 id="general"><span class="section-number-3">3.1.</span> General</h3>
+<div class="outline-text-3" id="text-general">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>C-M-&lt;return&gt;</code></td>
+<td class="org-left">accept the current completion suggestion</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-M-S-&lt;return&gt;</code></td>
+<td class="org-left">accept the current completion suggestion word by word</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-M-&lt;tab&gt;</code></td>
+<td class="org-left">show the next github copilot completion (and refresh completions)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-M-&lt;iso-lefttab&gt;</code></td>
+<td class="org-left">show the previous github copilot completion (and refresh completions)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ c</code></td>
+<td class="org-left">Start a transient state to interact with Github Copilots chat interface</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-in-chat" class="outline-3">
+<h3 id="in-chat"><span class="section-number-3">3.2.</span> In Chat</h3>
+<div class="outline-text-3" id="text-in-chat">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>,,</code></td>
+<td class="org-left">sent the current text to copilot</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>,a</code></td>
+<td class="org-left">kill a chat process</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>,k</code></td>
+<td class="org-left">kill a chat process</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-c-&lt;return&gt;</code></td>
+<td class="org-left">sent the current text to copilot</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-c-C-c</code></td>
+<td class="org-left">sent the current text to copilot</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-c-C-a</code></td>
+<td class="org-left">kill a chat process</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-c-C-k</code></td>
+<td class="org-left">kill a chat process</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2025-04-23 Wed 11:22</p>
+<p class="date">Created: 2025-05-11 Sun 05:13</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
