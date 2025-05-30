@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-30 Fri 16:52 -->
+<!-- 2025-05-30 Fri 16:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>dart layer</title>
+<title>Denote layer</title>
 <meta name="author" content="root" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
@@ -218,7 +218,7 @@
 <body>
 <div id="content" class="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">dart layer</h1>
+<h1 class="title">Denote layer</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents" role="doc-toc">
@@ -228,58 +228,25 @@
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a>
-<ul>
-<li><a href="#choosing-a-backend">2.1. Choosing a backend</a></li>
-</ul>
-</li>
-<li><a href="#backends">3. Backends</a>
-<ul>
-<li><a href="#lsp">3.1. LSP</a>
-<ul>
-<li><a href="#flutter-integration">3.1.1. Flutter integration</a></li>
-<li><a href="#format-on-save">3.1.2. Format on save</a></li>
-</ul>
-</li>
-<li><a href="#dart-analyzer-deprecated">3.2. Dart analyzer (deprecated)</a>
-<ul>
-<li><a href="#flutter-integration-1">3.2.1. Flutter integration</a></li>
-<li><a href="#format-on-save-1">3.2.2. Format on save</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#key-bindings">4. Key bindings</a>
-<ul>
-<li><a href="#normal-mode">4.1. Normal mode</a></li>
-<li><a href="#insert-mode">4.2. Insert mode</a></li>
-<li><a href="#popup-screens">4.3. Popup screens</a></li>
-</ul>
-</li>
+<li><a href="#install">2. Install</a></li>
+<li><a href="#key-bindings">3. Key bindings</a></li>
 </ul>
 </div>
-</div>
-
-<div id="org4e7b700" class="figure">
-<p><img src="img/dart.png" alt="dart.png" />
-</p>
 </div>
 <div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1.</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds support for Dart language, and could be optionally used for Flutter development as well.
+Adds the <a href="https://protesilaos.com/emacs/denote">denote package</a> and related tools for note taking.
 </p>
 </div>
 <div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Syntax Highlight</li>
-<li>Error checking with <code>flycheck</code></li>
-<li>Go to Definition</li>
-<li>Dart Analyzer integration</li>
-<li>Key bindings</li>
+<li>Simple notes for Emacs with an efficient file-naming scheme</li>
+<li>List and filter notes in a tabulated view using <code>denote-menu</code></li>
+<li>Consult notes via <code>consult-denote</code> if the <code>compleseus</code> layer is active</li>
 </ul>
 </div>
 </div>
@@ -289,186 +256,94 @@ This layer adds support for Dart language, and could be optionally used for Flut
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>dart</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+add <code>denote</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
 file.
 </p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>dart<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-<div id="outline-container-choosing-a-backend" class="outline-3">
-<h3 id="choosing-a-backend"><span class="section-number-3">2.1.</span> Choosing a backend</h3>
-<div class="outline-text-3" id="text-choosing-a-backend">
-<p>
-To choose a default backend set the layer variable <code>dart-backend</code>:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>dart <span class="org-builtin">:variables</span> dart-backend 'lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-Alternatively the <code>lsp</code> backend will be automatically chosen if
-you did not specify any value for <code>dart-backend</code>.
-</p>
-
-<p>
-Backend can be chosen on a per project basis using directory local variables
-(files named <code>.dir-locals.el</code> at the root of a project), an example to use the
-<code>lsp</code> backend:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
-<span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>dart-mode <span class="org-rainbow-delimiters-depth-3">(</span>dart-backend . lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-backends" class="outline-2">
-<h2 id="backends"><span class="section-number-2">3.</span> Backends</h2>
-<div class="outline-text-2" id="text-backends">
-</div>
-<div id="outline-container-lsp" class="outline-3">
-<h3 id="lsp"><span class="section-number-3">3.1.</span> LSP</h3>
-<div class="outline-text-3" id="text-lsp">
-<p>
-This is the recommended backend it is a full IDE server using the standard
-language server protocol to communicate with emacs.
-</p>
-
-<p>
-Current versions of the dart-sdk ship with lsp support directly integrated in
-the <code>dart-server</code>. You do not need to worry about starting and stopping the
-server this will be done by spacemacs automatically.
-</p>
-
-<p>
-However to get all features make sure that you also load the
-auto-completion and syntax-checking layer in your dotfile.
-</p>
-
-<p>
-Emacs will look in the standard SDK location for the lsp server.
-If this is not working for you, please set the custom path via <code>lsp-dart-sdk-dir</code>.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>dart <span class="org-builtin">:variables</span> lsp-dart-sdk-dir <span class="org-string">"~/path/to/dart-sdk/"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-<div id="outline-container-flutter-integration" class="outline-4">
-<h4 id="flutter-integration"><span class="section-number-4">3.1.1.</span> Flutter integration</h4>
-<div class="outline-text-4" id="text-flutter-integration">
-<p>
-Flutter comes with a internal Dart SDK, which can be used to provide all the
-integration tools.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>dart <span class="org-builtin">:variables</span> lsp-dart-sdk-dir <span class="org-string">"&lt;flutter-path&gt;/bin/cache/dart-sdk/"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-format-on-save" class="outline-4">
-<h4 id="format-on-save"><span class="section-number-4">3.1.2.</span> Format on save</h4>
-<div class="outline-text-4" id="text-format-on-save">
-<p>
-Set the layer variable <code>lsp-enable-on-type-formatting</code> to <code>t</code> to activate formatting
-on save.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>dart <span class="org-builtin">:variables</span> lsp-enable-on-type-formatting t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-dart-analyzer-deprecated" class="outline-3">
-<h3 id="dart-analyzer-deprecated"><span class="section-number-3">3.2.</span> Dart analyzer (deprecated)</h3>
-<div class="outline-text-3" id="text-dart-analyzer-deprecated">
-<p>
-This backend is not longer officially supported from <a href="https://github.com/bradyt/dart-server">dart-server</a> use the LSP backend instead.
-</p>
-
-<p>
-Dart analyzer supported via <a href="https://github.com/bradyt/dart-server">dart-server</a>. You need to enable <code>dart-server-enable-analysis-server</code>
-to use analyzer features.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>dart <span class="org-builtin">:variables</span> dart-server-enable-analysis-server t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-<a href="https://github.com/bradyt/dart-server">dart-server</a> will use the <code>dart</code> executable location if available on the
-path, but it is possible to define the location manually. It should point to the folder and end with <code>/</code>.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>dart <span class="org-builtin">:variables</span> dart-server-sdk-path <span class="org-string">"~/path/to/dart-sdk/"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-<div id="outline-container-flutter-integration-1" class="outline-4">
-<h4 id="flutter-integration-1"><span class="section-number-4">3.2.1.</span> Flutter integration</h4>
-<div class="outline-text-4" id="text-flutter-integration-1">
-<p>
-Flutter comes with a internal Dart SDK, which can be used to provide all the
-integration tools.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>dart <span class="org-builtin">:variables</span> dart-server-sdk-path <span class="org-string">"&lt;flutter-path&gt;/bin/cache/dart-sdk/"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-format-on-save-1" class="outline-4">
-<h4 id="format-on-save-1"><span class="section-number-4">3.2.2.</span> Format on save</h4>
-<div class="outline-text-4" id="text-format-on-save-1">
-<p>
-Set the layer variable <code>dart-server-format-on-save</code> to <code>t</code> to activate formatting
-on save.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>dart <span class="org-builtin">:variables</span> dart-server-format-on-save t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-For additional variables check the <a href="https://github.com/bradyt/dart-server">dart-server</a> documentation.
-</p>
-</div>
-</div>
 </div>
 </div>
 <div id="outline-container-key-bindings" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">4.</span> Key bindings</h2>
+<h2 id="key-bindings"><span class="section-number-2">3.</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
-</div>
-<div id="outline-container-normal-mode" class="outline-3">
-<h3 id="normal-mode"><span class="section-number-3">4.1.</span> Normal mode</h3>
-<div class="outline-text-3" id="text-normal-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC a D n</code></td>
+<td class="org-left">Create a new note with the appropriate metadata and file name.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a D d</code></td>
+<td class="org-left">Produce Dired buffer with sorted files from variable denote-directory.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a D g</code></td>
+<td class="org-left">Search QUERY in the content of Denote files.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a D r</code></td>
+<td class="org-left">Rename file and update existing front matter if appropriate.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a D R</code></td>
+<td class="org-left">Rename FILE using its front matter as input.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a D m</code></td>
+<td class="org-left">Display list of Denote files in variable <code>denote-directory</code>.</td>
+</tr>
+</tbody>
+</table>
+
 <p>
-Some of the commands will instantiate a new Dart Analyzer server if necessary,
-while others work without using a Dart Analyzer connection.
+When the <code>compleseus</code> layer is active, the following additional key bindings are available:
 </p>
 
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC a D f</code></td>
+<td class="org-left">consult-denote-find</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a D g</code></td>
+<td class="org-left">consult-denote-grep</td>
+</tr>
+</tbody>
+</table>
+
 <p>
-When <code>dart-server-enable-analysis-server</code> is enabled, most of the commands
-become Async, and there might be a delay when executing them.
+On <code>denote-menu</code> buffers, the following mode specific key bindings are available:
 </p>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -487,110 +362,32 @@ become Async, and there might be a delay when executing them.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m h h</code>, <code>SPC m ?</code></td>
-<td class="org-left">Displays hover information for the current point.</td>
+<td class="org-left"><code>SPC m /</code></td>
+<td class="org-left">Filter tabulated list entries matching REGEXP.</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m h b</code></td>
-<td class="org-left">Displays information at point on a new buffer.</td>
+<td class="org-left"><code>SPC m k</code></td>
+<td class="org-left">Prompt for KEYWORDS and filters the list accordingly.</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>gd</code>, <code>SPC m g</code></td>
-<td class="org-left">Go to definition.</td>
+<td class="org-left"><code>SPC m c</code></td>
+<td class="org-left">Reset filters and update buffer.</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m f d</code></td>
-<td class="org-left">Find members declarations by name.</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m f r</code></td>
-<td class="org-left">Find members references by name.</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m f d</code></td>
-<td class="org-left">Find top-level declarations by name.</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m =</code></td>
-<td class="org-left">Format buffer</td>
+<td class="org-left"><code>SPC m e</code></td>
+<td class="org-left">Switch to variable denote-directory and mark filtered <b>Denotes</b> files.</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div id="outline-container-insert-mode" class="outline-3">
-<h3 id="insert-mode"><span class="section-number-3">4.2.</span> Insert mode</h3>
-<div class="outline-text-3" id="text-insert-mode">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>&lt;tab&gt;</code></td>
-<td class="org-left">Expand previous word using Analyzer if available</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>C-&lt;tab&gt;</code></td>
-<td class="org-left">Expand including parameters</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="outline-container-popup-screens" class="outline-3">
-<h3 id="popup-screens"><span class="section-number-3">4.3.</span> Popup screens</h3>
-<div class="outline-text-3" id="text-popup-screens">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>q</code></td>
-<td class="org-left">Close popup</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>gr</code></td>
-<td class="org-left">Execute last command to repopulate buffer</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2025-05-30 Fri 16:52</p>
+<p class="date">Created: 2025-05-30 Fri 16:53</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
