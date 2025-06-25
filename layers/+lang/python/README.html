@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-06-11 Wed 21:20 -->
+<!-- 2025-06-25 Wed 20:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python layer</title>
@@ -263,18 +263,24 @@
 <li><a href="#fill-column">5.1. Fill column</a></li>
 <li><a href="#sort-imports">5.2. Sort imports</a></li>
 <li><a href="#importmagic">5.3. Importmagic</a></li>
-<li><a href="#pyenv-pipenv-and-poetry">5.4. Pyenv, pipenv and poetry</a></li>
+<li><a href="#pyvenv-pyenv-pipenv-and-poetry">5.4. Pyvenv, pyenv, pipenv and poetry</a></li>
 </ul>
 </li>
 <li><a href="#management-of-python-versions-and-virtual-environments">6. Management of Python versions and virtual environments</a>
 <ul>
-<li><a href="#manage-multiple-python-versions-with-pyenv">6.1. Manage multiple Python versions with pyenv</a>
+<li><a href="#manage-virtual-environments-with-pet-mode">6.1. Manage virtual environments with pet-mode</a></li>
+<li><a href="#manage-virtual-environments-with-pyvenv-legacy-inactively-maintained">6.2. Manage virtual environments with pyvenv (legacy, inactively maintained)</a>
 <ul>
-<li><a href="#automatic-activation-of-local-pyenv-version">6.1.1. Automatic activation of local pyenv version</a></li>
+<li><a href="#automatic-activation-of-local-virtual-environment">6.2.1. Automatic activation of local virtual environment</a></li>
 </ul>
 </li>
-<li><a href="#manage-environments-and-packages-with-pipenv">6.2. Manage environments and packages with pipenv</a></li>
-<li><a href="#manage-environments-and-packages-with-poetry">6.3. Manage environments and packages with Poetry</a></li>
+<li><a href="#manage-multiple-python-versions-with-pyenv">6.3. Manage multiple Python versions with pyenv</a>
+<ul>
+<li><a href="#automatic-activation-of-local-pyenv-version">6.3.1. Automatic activation of local pyenv version</a></li>
+</ul>
+</li>
+<li><a href="#manage-environments-and-packages-with-pipenv">6.4. Manage environments and packages with pipenv</a></li>
+<li><a href="#manage-environments-and-packages-with-poetry">6.5. Manage environments and packages with Poetry</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">7. Key bindings</a>
@@ -293,7 +299,7 @@
 </div>
 </div>
 
-<div id="org2a21341" class="figure">
+<div id="org054c58a" class="figure">
 <p><img src="img/python.png" alt="python.png" />
 </p>
 </div>
@@ -431,7 +437,7 @@ it does not work and you may encounter the following message when
 opening a python buffer:
 </p>
 
-<pre class="example" id="org1d788c7">
+<pre class="example" id="org5b7a54f">
 Blocking call to accept-process-output with quit inhibited!!
 </pre>
 
@@ -824,13 +830,13 @@ layer config section:
 </div>
 </div>
 </div>
-<div id="outline-container-pyenv-pipenv-and-poetry" class="outline-3">
-<h3 id="pyenv-pipenv-and-poetry"><span class="section-number-3">5.4.</span> Pyenv, pipenv and poetry</h3>
-<div class="outline-text-3" id="text-pyenv-pipenv-and-poetry">
+<div id="outline-container-pyvenv-pyenv-pipenv-and-poetry" class="outline-3">
+<h3 id="pyvenv-pyenv-pipenv-and-poetry"><span class="section-number-3">5.4.</span> Pyvenv, pyenv, pipenv and poetry</h3>
+<div class="outline-text-3" id="text-pyvenv-pyenv-pipenv-and-poetry">
 <p>
 Sometimes, it is convenient to be able to use python virtual environments from
 other modes. For this reason, the python layer provides the variables
-<code>spacemacs--python-pyenv-modes</code>,
+<code>spacemacs--python-pyenv-modes</code>, <code>spacemacs--python-pyvenv-modes</code>,
 <code>spacemacs--python-poetry-modes</code> and <code>spacemacs--python-pipenv-modes</code>.
 If you wish to be able to access these functionalities from other modes,
 in your user config section, do:
@@ -851,9 +857,24 @@ You can add to the other two lists analogously.
 <div id="outline-container-management-of-python-versions-and-virtual-environments" class="outline-2">
 <h2 id="management-of-python-versions-and-virtual-environments"><span class="section-number-2">6.</span> Management of Python versions and virtual environments</h2>
 <div class="outline-text-2" id="text-management-of-python-versions-and-virtual-environments">
+</div>
+<div id="outline-container-manage-virtual-environments-with-pet-mode" class="outline-3">
+<h3 id="manage-virtual-environments-with-pet-mode"><span class="section-number-3">6.1.</span> Manage virtual environments with pet-mode</h3>
+<div class="outline-text-3" id="text-manage-virtual-environments-with-pet-mode">
+<p>
+To enable the <a href="https://github.com/wyuenho/emacs-pet">pet-mode</a>, set the variable <code>python-virtualenv-management</code> to
+<code>pet</code>, for example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-virtualenv-management 'pet<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
 <p>
 In general virtual environments are automatically used when active using
-<a href="https://github.com/wyuenho/emacs-pet">pet-mode</a>, following additional packages are high recommended to enable full
+<code>pet-mode</code>, following additional packages are high recommended to enable full
 <code>pet-mode</code> features:
 </p>
 
@@ -888,8 +909,85 @@ In general virtual environments are automatically used when active using
 Independent of this you can activate and switch virtual environments manually with below tools.
 </p>
 </div>
+</div>
+<div id="outline-container-manage-virtual-environments-with-pyvenv-legacy-inactively-maintained" class="outline-3">
+<h3 id="manage-virtual-environments-with-pyvenv-legacy-inactively-maintained"><span class="section-number-3">6.2.</span> Manage virtual environments with pyvenv (legacy, inactively maintained)</h3>
+<div class="outline-text-3" id="text-manage-virtual-environments-with-pyvenv-legacy-inactively-maintained">
+<p>
+A virtual environment provides isolation of your Python package versions. For a
+general overview see <a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">this site</a>. <a href="http://virtualenvwrapper.readthedocs.io/en/latest/index.html">Virtualenvwrapper</a> which is also explained in the
+previous link, is a program which manages your virtual environments in a central
+location set by the <code>WORKON_HOME</code> environment variable.
+</p>
+
+<p>
+Spacemacs integration of virtual environments and virtualenvwrapper is provided
+by the <a href="https://github.com/jorgenschaefer/pyvenv">pyvenv</a> package. It provides the following key bindings:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m v a</code></td>
+<td class="org-left">activate a virtual environment in any directory</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m v d</code></td>
+<td class="org-left">deactivate active virtual environment</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m v w</code></td>
+<td class="org-left">work on virtual environment in <code>WORKON_HOME</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="outline-container-automatic-activation-of-local-virtual-environment" class="outline-4">
+<h4 id="automatic-activation-of-local-virtual-environment"><span class="section-number-4">6.2.1.</span> Automatic activation of local virtual environment</h4>
+<div class="outline-text-4" id="text-automatic-activation-of-local-virtual-environment">
+<p>
+By default Spacemacs uses the <a href="https://github.com/jorgenschaefer/pyvenv">pyvenv</a> package to manage virtual environments.
+Additionally it uses <code>pyvenv-tracking-mode</code> to activate a buffer's local virtual
+environment on change of focus. Pyvenv determines which virtual environment to
+use from the value of the <code>pyvenv-workon</code> or the <code>pyvenv-activate</code>
+buffer-local-variable. Spacemacs scans the project directory for a pattern
+<code>.venv</code>. If the found <code>.venv</code> is a directory then it sets that directory as the
+local virtual environment path. If the <code>.venv</code> pattern is a file then it checks if
+its first line matches an existing path and if so, it sets it as the local
+virtual environment path. Finally it checks if it finds an existing directory
+with the name of the first line in the <code>pyvenv-workon-home</code> directory. By default
+Spacemacs scans for a virtual environment and sets the local <code>pyvenv-workon</code> or
+the <code>pyvenv-activate</code> variables on visiting a file, but switches virtual
+environment on every change of focus using the local variables. The buffer
+tracking behavior can be disabled by setting the value of the customizable
+variable <code>pyvenv-tracking-mode</code> to <code>nil</code>. The scanning behavior can be set via the
+variable <code>python-auto-set-local-pyvenv-virtualenv</code> to:
+</p>
+<ul class="org-ul">
+<li><code>on-visit</code> (default) set the virtualenv when you visit a python buffer,</li>
+<li><code>on-project-switch</code> set the virtualenv when you switch projects,</li>
+<li><code>nil</code> to disable.</li>
+</ul>
+</div>
+</div>
+</div>
 <div id="outline-container-manage-multiple-python-versions-with-pyenv" class="outline-3">
-<h3 id="manage-multiple-python-versions-with-pyenv"><span class="section-number-3">6.1.</span> Manage multiple Python versions with pyenv</h3>
+<h3 id="manage-multiple-python-versions-with-pyenv"><span class="section-number-3">6.3.</span> Manage multiple Python versions with pyenv</h3>
 <div class="outline-text-3" id="text-manage-multiple-python-versions-with-pyenv">
 <p>
 If you need multiple Python versions (e.g. Python 2 and Python 3) then take a
@@ -932,7 +1030,7 @@ has installed. Those will be listed alongside your Python versions.
 </p>
 </div>
 <div id="outline-container-automatic-activation-of-local-pyenv-version" class="outline-4">
-<h4 id="automatic-activation-of-local-pyenv-version"><span class="section-number-4">6.1.1.</span> Automatic activation of local pyenv version</h4>
+<h4 id="automatic-activation-of-local-pyenv-version"><span class="section-number-4">6.3.1.</span> Automatic activation of local pyenv version</h4>
 <div class="outline-text-4" id="text-automatic-activation-of-local-pyenv-version">
 <p>
 A project-specific pyenv version may be written to a file called
@@ -953,7 +1051,7 @@ the pyenv version. The behavior can be set with the variable
 </div>
 </div>
 <div id="outline-container-manage-environments-and-packages-with-pipenv" class="outline-3">
-<h3 id="manage-environments-and-packages-with-pipenv"><span class="section-number-3">6.2.</span> Manage environments and packages with pipenv</h3>
+<h3 id="manage-environments-and-packages-with-pipenv"><span class="section-number-3">6.4.</span> Manage environments and packages with pipenv</h3>
 <div class="outline-text-3" id="text-manage-environments-and-packages-with-pipenv">
 <p>
 <a href="https://pipenv.kennethreitz.org/en/latest/">Pipenv</a> is the new standard tool to manage your virtual environments. It can act as
@@ -1015,7 +1113,7 @@ It provides the following key bindings:
 </div>
 </div>
 <div id="outline-container-manage-environments-and-packages-with-poetry" class="outline-3">
-<h3 id="manage-environments-and-packages-with-poetry"><span class="section-number-3">6.3.</span> Manage environments and packages with Poetry</h3>
+<h3 id="manage-environments-and-packages-with-poetry"><span class="section-number-3">6.5.</span> Manage environments and packages with Poetry</h3>
 <div class="outline-text-3" id="text-manage-environments-and-packages-with-poetry">
 <p>
 Poetry is a tool for dependency management and packaging in Python.
@@ -1605,7 +1703,7 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2025-06-11 Wed 21:20</p>
+<p class="date">Created: 2025-06-25 Wed 20:12</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-06-25 Wed 20:12 -->
+<!-- 2025-06-25 Wed 20:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Pianobar layer</title>
+<title>Amx layer</title>
 <meta name="author" content="root" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
@@ -218,7 +218,7 @@
 <body>
 <div id="content" class="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Pianobar layer</h1>
+<h1 class="title">Amx layer</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents" role="doc-toc">
@@ -229,9 +229,7 @@
 </ul>
 </li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#configure">3. Configure</a></li>
-<li><a href="#run">4. Run</a></li>
-<li><a href="#key-bindings">5. Key bindings</a></li>
+<li><a href="#key-bindings">3. Key bindings</a></li>
 </ul>
 </div>
 </div>
@@ -239,14 +237,14 @@
 <h2 id="description"><span class="section-number-2">1.</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer integrates an online music service into Spacemacs.
+This layer provides a more traditional alternative to <code>helm-M-x</code> based on <code>ido</code>.
 </p>
 </div>
 <div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Support for listening to music from within Emacs via <a href="https://6xq.net/pianobar/">Pianobar</a>.</li>
+<li>Provides an alternative way for <code>helm-M-x</code> based on <code>ido</code> and <a href="https://github.com/DarwinAwardWinner/amx">amx</a></li>
 </ul>
 </div>
 </div>
@@ -256,61 +254,13 @@ This layer integrates an online music service into Spacemacs.
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>pianobar</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+add <code>amx</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
 file.
-</p>
-
-<p>
-For example:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-elisp">dotspacemacs-configuration-layers
-   '((pianobar :variables pianobar-config t))
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-configure" class="outline-2">
-<h2 id="configure"><span class="section-number-2">3.</span> Configure</h2>
-<div class="outline-text-2" id="text-configure">
-<p>
-Below is an example configuration from MacOS:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-bash">$ cat ~/.config/pianobar/config
-user = foobar@gmail.com
-password = <span class="org-highlight-numbers-number">295TkBbHZiKwnDnQYhJW</span>
-autostart_station = <span class="org-highlight-numbers-number">30385222902831057</span>
-</pre>
-</div>
-
-<p>
-Relevant links:
-</p>
-<ul class="org-ul">
-<li><a href="https://github.com/agrif/pianobar.el">pianobar.el</a></li>
-<li><a href="https://github.com/PromyLOPh/pianobar/blob/master/contrib/config-example">Example config file</a></li>
-<li><a href="https://wiki.archlinux.org/index.php/Pianobar">Arch Linux wiki</a></li>
-<li><a href="https://jlk.fjfi.cvut.cz/arch/manpages/man/pianobar.1">Arch man page</a></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-run" class="outline-2">
-<h2 id="run"><span class="section-number-2">4.</span> Run</h2>
-<div class="outline-text-2" id="text-run">
-<p>
-<code>M-x pianobar</code>
-</p>
-
-<p>
-With the above configuration, pianobar will login and start playing the autostart station.
 </p>
 </div>
 </div>
 <div id="outline-container-key-bindings" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">5.</span> Key bindings</h2>
+<h2 id="key-bindings"><span class="section-number-2">3.</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -328,33 +278,13 @@ With the above configuration, pianobar will login and start playing the autostar
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC a m p p</code></td>
-<td class="org-left">Play or pause Pianobar</td>
+<td class="org-left"><code>SPC SPC</code></td>
+<td class="org-left">all Emacs commands (interactive functions)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC a m p n</code></td>
-<td class="org-left">Go to the next track</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC a m p +</code></td>
-<td class="org-left">Love current song</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC a m p -</code></td>
-<td class="org-left">Ban current song</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC a m p t</code></td>
-<td class="org-left">Tired of current song</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC a m p s</code></td>
-<td class="org-left">Switch station</td>
+<td class="org-left"><code>SPC m :</code></td>
+<td class="org-left">current major mode commands</td>
 </tr>
 </tbody>
 </table>
@@ -363,7 +293,7 @@ With the above configuration, pianobar will login and start playing the autostar
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2025-06-25 Wed 20:12</p>
+<p class="date">Created: 2025-06-25 Wed 20:11</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
