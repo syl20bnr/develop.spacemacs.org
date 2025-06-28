@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-06-25 Wed 20:09 -->
+<!-- 2025-06-28 Sat 20:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Configuration layers development</title>
@@ -705,6 +705,9 @@ as follows:
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defconst</span> <span class="org-variable-name">mylayer-packages</span>
   '<span class="org-rainbow-delimiters-depth-2">(</span>
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">A built-in package</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>some-package <span class="org-builtin">:location</span> built-in<span class="org-rainbow-delimiters-depth-3">)</span>
+
     <span class="org-comment-delimiter">;; </span><span class="org-comment">Get the package from MELPA, ELPA, etc.</span>
     some-package
     <span class="org-rainbow-delimiters-depth-3">(</span>some-package <span class="org-builtin">:location</span> elpa<span class="org-rainbow-delimiters-depth-3">)</span>
@@ -728,7 +731,7 @@ as follows:
 
 <p>
 The <code>:location</code> attribute specifies where the package may be found. Spacemacs
-currently supports packages on ELPA compliant repositories, local packages,
+currently supports packages on ELPA compliant repositories, built-in packages, local packages,
 remote packages hosted on Git repositories (including specific helpers for
 GitHub, GitLab, and Bitbucket) and MELPA recipes (through the Quelpa package).
 Local packages should reside at <code>&lt;layer&gt;/local/&lt;package&gt;/</code>.
@@ -1196,7 +1199,7 @@ of a package.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2025-06-25 Wed 20:09</p>
+<p class="date">Created: 2025-06-28 Sat 20:31</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
