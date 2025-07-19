@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-06-28 Sat 20:31 -->
+<!-- 2025-07-19 Sat 16:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Frequently Asked Questions</title>
@@ -491,9 +491,9 @@ like this:
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'org
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Org config goes here</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">....</span>
-  <span class="org-rainbow-delimiters-depth-1">)</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">Org config goes here
+</span>  <span class="org-comment-delimiter">;; </span><span class="org-comment">....
+</span>  <span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -791,11 +791,11 @@ Examples:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Only mark helm buffers as useless</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> spacemacs-useless-buffers-regexp '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"\\*helm</span><span class="org-string"><span class="org-warning">\</span></span><span class="org-string">.</span><span class="org-string"><span class="org-warning">\</span></span><span class="org-string">+\\*"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Only mark helm buffers as useless
+</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> spacemacs-useless-buffers-regexp '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"\\*helm</span><span class="org-string"><span class="org-warning">\</span></span><span class="org-string">.</span><span class="org-string"><span class="org-warning">\</span></span><span class="org-string">+\\*"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">Marking the *Messages* buffer as useful</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">push</span> <span class="org-string">"\\*Messages\\*"</span> spacemacs-useful-buffers-regexp<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Marking the *Messages* buffer as useful
+</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">push</span> <span class="org-string">"\\*Messages\\*"</span> spacemacs-useful-buffers-regexp<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -864,16 +864,16 @@ by also adding the following.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">For python</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'python-mode-hook #'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>modify-syntax-entry ?_ <span class="org-string">"w"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">For ruby</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'ruby-mode-hook #'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>modify-syntax-entry ?_ <span class="org-string">"w"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">For Javascript</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'js2-mode-hook #'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>modify-syntax-entry ?_ <span class="org-string">"w"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">For all programming modes</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'prog-mode-hook #'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>modify-syntax-entry ?_ <span class="org-string">"w"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">For all modes</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'after-change-major-mode-hook #'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>modify-syntax-entry ?_ <span class="org-string">"w"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">For python
+</span><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'python-mode-hook #'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>modify-syntax-entry ?_ <span class="org-string">"w"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">For ruby
+</span><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'ruby-mode-hook #'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>modify-syntax-entry ?_ <span class="org-string">"w"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">For Javascript
+</span><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'js2-mode-hook #'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>modify-syntax-entry ?_ <span class="org-string">"w"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">For all programming modes
+</span><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'prog-mode-hook #'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>modify-syntax-entry ?_ <span class="org-string">"w"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">For all modes
+</span><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'after-change-major-mode-hook #'<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>modify-syntax-entry ?_ <span class="org-string">"w"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1192,7 +1192,7 @@ If you see the an error message when either Spacemacs is trying to delete an orp
 or when you are trying to a package manually:
 </p>
 
-<pre class="example" id="org785ed02">
+<pre class="example" id="org81b24a5">
 Package ‘PACKAGE-NAME’ is a system package, not deleting
 </pre>
 
@@ -1334,8 +1334,8 @@ to the <code>early-init.el</code>.
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">progn</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq</span> load-suffixes '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">".elc"</span> <span class="org-string">".el"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>message <span class="org-string">"Dismiss the \".dll\" or \".so\" from `</span><span class="org-string"><span class="org-constant">load-suffixes</span></span><span class="org-string">' for speed.\n</span>
-<span class="org-string">Which will affect Emacs loading a native module *.dll or *.so."</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>message <span class="org-string">"Dismiss the \".dll\" or \".so\" from `</span><span class="org-string"><span class="org-constant">load-suffixes</span></span><span class="org-string">' for speed.\n
+Which will affect Emacs loading a native module *.dll or *.so."</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1348,8 +1348,8 @@ searching <code>*.gz</code> files:
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">progn</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq</span> load-file-rep-suffixes '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">""</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>message <span class="org-string">"Do NOT search \"*.gz\", it maybe lead an error like \"Symbol's value as</span>
-<span class="org-string">variable is void: \213\"."</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>message <span class="org-string">"Do NOT search \"*.gz\", it maybe lead an error like \"Symbol's value as
+variable is void: \213\"."</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1363,7 +1363,7 @@ will find the best option combinations.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2025-06-28 Sat 20:31</p>
+<p class="date">Created: 2025-07-19 Sat 16:55</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
