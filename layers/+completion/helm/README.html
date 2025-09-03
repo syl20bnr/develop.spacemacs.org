@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-08-14 Thu 17:13 -->
+<!-- 2025-09-03 Wed 18:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Helm layer</title>
@@ -248,14 +248,15 @@
 <li><a href="#transient-state">4.2. Transient state</a></li>
 <li><a href="#files">4.3. Files</a></li>
 <li><a href="#buffers">4.4. Buffers</a></li>
-<li><a href="#bookmarks">4.5. Bookmarks</a></li>
-<li><a href="#colorsfaces">4.6. Colors/Faces</a></li>
-<li><a href="#c-z-and-tab-switch">4.7. C-z and Tab switch</a></li>
-<li><a href="#helm-focus">4.8. Helm focus</a></li>
-<li><a href="#helm-swoop">4.9. Helm-swoop</a></li>
-<li><a href="#universal-argument">4.10. Universal argument</a></li>
-<li><a href="#replacing-text-in-several-files">4.11. Replacing text in several files</a></li>
-<li><a href="#resume-last-session">4.12. Resume last session</a></li>
+<li><a href="#git-if-git-layer-is-enabled">4.5. Git (if git layer is enabled)</a></li>
+<li><a href="#bookmarks">4.6. Bookmarks</a></li>
+<li><a href="#colorsfaces">4.7. Colors/Faces</a></li>
+<li><a href="#c-z-and-tab-switch">4.8. C-z and Tab switch</a></li>
+<li><a href="#helm-focus">4.9. Helm focus</a></li>
+<li><a href="#helm-swoop">4.10. Helm-swoop</a></li>
+<li><a href="#universal-argument">4.11. Universal argument</a></li>
+<li><a href="#replacing-text-in-several-files">4.12. Replacing text in several files</a></li>
+<li><a href="#resume-last-session">4.13. Resume last session</a></li>
 </ul>
 </li>
 <li><a href="#external-resources">5. External resources</a></li>
@@ -263,7 +264,7 @@
 </div>
 </div>
 
-<div id="org69d3506" class="figure">
+<div id="org9865393" class="figure">
 <p><img src="img/helm.png" alt="helm.png" />
 </p>
 </div>
@@ -708,8 +709,39 @@ In the <code>helm-buffers</code> buffer:
 </table>
 </div>
 </div>
+<div id="outline-container-git-if-git-layer-is-enabled" class="outline-3">
+<h3 id="git-if-git-layer-is-enabled"><span class="section-number-3">4.5.</span> Git (if git layer is enabled)</h3>
+<div class="outline-text-3" id="text-git-if-git-layer-is-enabled">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC g /</code></td>
+<td class="org-left">open <code>helm-git-grep</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g *</code></td>
+<td class="org-left">open <code>helm-git-grep-at-point</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="outline-container-bookmarks" class="outline-3">
-<h3 id="bookmarks"><span class="section-number-3">4.5.</span> Bookmarks</h3>
+<h3 id="bookmarks"><span class="section-number-3">4.6.</span> Bookmarks</h3>
 <div class="outline-text-3" id="text-bookmarks">
 <p>
 In the <code>helm-bookmarks</code> buffer:
@@ -754,7 +786,7 @@ In the <code>helm-bookmarks</code> buffer:
 </div>
 </div>
 <div id="outline-container-colorsfaces" class="outline-3">
-<h3 id="colorsfaces"><span class="section-number-3">4.6.</span> Colors/Faces</h3>
+<h3 id="colorsfaces"><span class="section-number-3">4.7.</span> Colors/Faces</h3>
 <div class="outline-text-3" id="text-colorsfaces">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -785,7 +817,7 @@ In the <code>helm-bookmarks</code> buffer:
 </div>
 </div>
 <div id="outline-container-c-z-and-tab-switch" class="outline-3">
-<h3 id="c-z-and-tab-switch"><span class="section-number-3">4.7.</span> C-z and Tab switch</h3>
+<h3 id="c-z-and-tab-switch"><span class="section-number-3">4.8.</span> C-z and Tab switch</h3>
 <div class="outline-text-3" id="text-c-z-and-tab-switch">
 <p>
 The command bound to <code>C-z</code> is much more useful than the one bound to Tab, so it
@@ -794,7 +826,7 @@ makes sense to swap them. It's also recommended <a href="http://tuhdo.github.io/
 </div>
 </div>
 <div id="outline-container-helm-focus" class="outline-3">
-<h3 id="helm-focus"><span class="section-number-3">4.8.</span> Helm focus</h3>
+<h3 id="helm-focus"><span class="section-number-3">4.9.</span> Helm focus</h3>
 <div class="outline-text-3" id="text-helm-focus">
 <p>
 If you find yourself unable to return focus to Helm (after a careless
@@ -803,7 +835,7 @@ mouse-click for example), use <code>SPC w b</code> to return focus to the minibu
 </div>
 </div>
 <div id="outline-container-helm-swoop" class="outline-3">
-<h3 id="helm-swoop"><span class="section-number-3">4.9.</span> Helm-swoop</h3>
+<h3 id="helm-swoop"><span class="section-number-3">4.10.</span> Helm-swoop</h3>
 <div class="outline-text-3" id="text-helm-swoop">
 <p>
 <a href="https://github.com/ShingoFukuyama/helm-swoop">Helm-swoop</a> is very similar to <code>moccur</code>, it displays a <code>helm</code> buffer with all the
@@ -855,7 +887,7 @@ modifications to the buffer.
 </div>
 </div>
 <div id="outline-container-universal-argument" class="outline-3">
-<h3 id="universal-argument"><span class="section-number-3">4.10.</span> Universal argument</h3>
+<h3 id="universal-argument"><span class="section-number-3">4.11.</span> Universal argument</h3>
 <div class="outline-text-3" id="text-universal-argument">
 <p>
 <code>SPC u</code> is not working before <code>helm-M-x</code> (<code>SPC SPC</code>). Instead, call <code>helm-M-x</code>
@@ -865,7 +897,7 @@ first, select the command you want to run, and press <code>C-u</code> before pre
 </div>
 </div>
 <div id="outline-container-replacing-text-in-several-files" class="outline-3">
-<h3 id="replacing-text-in-several-files"><span class="section-number-3">4.11.</span> Replacing text in several files</h3>
+<h3 id="replacing-text-in-several-files"><span class="section-number-3">4.12.</span> Replacing text in several files</h3>
 <div class="outline-text-3" id="text-replacing-text-in-several-files">
 <p>
 If you have <code>rg</code>, <code>ag</code>, <code>pt</code> or <code>ack</code> installed, replacing an occurrence of text
@@ -891,7 +923,7 @@ as well (but not with <code>grep</code>).
 </div>
 </div>
 <div id="outline-container-resume-last-session" class="outline-3">
-<h3 id="resume-last-session"><span class="section-number-3">4.12.</span> Resume last session</h3>
+<h3 id="resume-last-session"><span class="section-number-3">4.13.</span> Resume last session</h3>
 <div class="outline-text-3" id="text-resume-last-session">
 <p>
 Use <code>SPC r l</code> to resume the last helm session. For instance it is handy to
@@ -912,7 +944,7 @@ quickly toggle on and off a toggle using <code>SPC h t</code>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2025-08-14 Thu 17:13</p>
+<p class="date">Created: 2025-09-03 Wed 18:57</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
