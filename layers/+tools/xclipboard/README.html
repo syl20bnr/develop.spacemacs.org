@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-08-14 Thu 17:14 -->
+<!-- 2025-09-03 Wed 18:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>xclipboard layer</title>
@@ -245,6 +245,12 @@
 <p>
 <code>xclipboard</code> integration layer.
 </p>
+
+<p>
+When running Emacs in a terminal, it will attempt to use OSC52 for copying and pasting
+automatically. This feature is intended for terminals that do not support OSC52, or for
+users who want advanced clipboard functionality in the terminal.
+</p>
 </div>
 <div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
@@ -276,6 +282,11 @@ Note that <code>xsel</code> might not be installed by default on e.g. Ubuntu sys
 <p>
 Clipboard manager integration requires <a href="http://parcellite.sourceforge.net/">Parcellite</a> or <a href="https://github.com/CristianHenzel/ClipIt">ClipIt</a> installed on Linux
 and <a href="https://github.com/TermiT/Flycut">Flycut</a> installed on macOS.
+</p>
+
+<p>
+For Emacs on a remote server over SSH, X11 forwarding must be enabled and working with a
+local X server before use.
 </p>
 </div>
 </div>
@@ -361,7 +372,7 @@ Setting <code>xclipboard-copy-command</code> for copy, <code>xclipboard-paste-co
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2025-08-14 Thu 17:14</p>
+<p class="date">Created: 2025-09-03 Wed 18:58</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
