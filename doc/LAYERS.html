@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-09-20 Sat 20:18 -->
+<!-- 2025-09-23 Tue 14:33 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Configuration layers development</title>
@@ -791,23 +791,6 @@ It contains all the defined functions used in the layer.
 <p>
 This file is loaded after <code>packages.el</code> and before <code>config.el</code>.
 </p>
-
-<p>
-It is good practice to guard the definition of functions to make sure a package
-is actually used. For instance:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-2">(</span>configuration-layer/package-used-p 'my-package<span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">defun</span> <span class="org-function-name">spacemacs/my-package-enable</span> <span class="org-rainbow-delimiters-depth-3">()</span> ...<span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">defun</span> <span class="org-function-name">spacemacs/my-package-disable</span> <span class="org-rainbow-delimiters-depth-3">()</span> ...<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-By guarding these functions we avoid defining them when the package <code>my-package</code>
-is not used.
-</p>
 </div>
 </div>
 <div id="outline-container-configel" class="outline-3">
@@ -1199,7 +1182,7 @@ of a package.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2025-09-20 Sat 20:18</p>
+<p class="date">Created: 2025-09-23 Tue 14:33</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
