@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-11-03 Mon 21:21 -->
+<!-- 2025-11-07 Fri 12:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GitHub Copilot layer</title>
@@ -230,13 +230,24 @@
 </li>
 <li><a href="#install">2. Install</a>
 <ul>
-<li><a href="#configuratiom">2.1. Configuratiom</a></li>
+<li><a href="#prerequisites">2.1. Prerequisites</a></li>
 </ul>
 </li>
-<li><a href="#key-bindings">3. Key bindings</a>
+<li><a href="#configuration">3. Configuration</a>
 <ul>
-<li><a href="#general">3.1. General</a></li>
-<li><a href="#in-chat">3.2. In Chat</a></li>
+<li><a href="#git-commit-messages">3.1. Git Commit Messages</a></li>
+<li><a href="#mcp--tool-integration-manual-setup-required">3.2. MCP / Tool Integration (Manual Setup Required)</a>
+<ul>
+<li><a href="#example-enabling-the-filesystem-server-">3.2.1. Example: Enabling the Filesystem Server <b>*</b></a></li>
+<li><a href="#finding-more-servers-">3.2.2. Finding More Servers <b>*</b></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#key-bindings">4. Key bindings</a>
+<ul>
+<li><a href="#general">4.1. General</a></li>
+<li><a href="#in-chat">4.2. In Chat</a></li>
 </ul>
 </li>
 </ul>
@@ -248,14 +259,21 @@
 <p>
 This layer enables usage of <a href="https://github.com/features/copilot">GitHub Copilot</a> in Spacemacs.
 </p>
+
+<p>
+It provides code completion, chat-based AI interaction, and a powerful
+framework for integrating external AI tools and models.
+</p>
 </div>
 <div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Ai powered code completions using <a href="https://github.com/copilot-emacs/copilot.el">copilot.el</a></li>
-<li>Ai chat interactions using <a href="https://github.com/chep/copilot-chat.el">copilot-chat.el</a></li>
-<li>Automatic generation of git commit messages using <a href="https://github.com/chep/copilot-chat.el">copilot-chat.el</a></li>
+<li>AI powered code completions using <a href="https://github.com/copilot-emacs/copilot.el">copilot.el</a>.</li>
+<li>AI chat interactions using <a href="https://github.com/chep/copilot-chat.el">copilot-chat.el</a>.</li>
+<li>AI tool integration via <a href="https://github.com/lizqwerscott/mcp.el">mcp.el</a>, allowing the chat AI to
+run commands, interact with the filesystem, and more. [EXPERIMENTAL]</li>
+<li>Automatic generation of git commit messages.</li>
 </ul>
 </div>
 </div>
@@ -264,13 +282,22 @@ This layer enables usage of <a href="https://github.com/features/copilot">GitHub
 <h2 id="install"><span class="section-number-2">2.</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
-To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>github-copilot</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+To use this configuration layer, add it to your `~/.spacemacs`. You will need to
+add `github-copilot` to the existing `dotspacemacs-configuration-layers` list in this
 file.
 </p>
-
+</div>
+<div id="outline-container-prerequisites" class="outline-3">
+<h3 id="prerequisites"><span class="section-number-3">2.1.</span> Prerequisites</h3>
+<div class="outline-text-3" id="text-prerequisites">
 <p>
-In addition the github/copilot-language-server must be installed either manually with:
+This layer requires external components to be fully functional.
+</p>
+<ol class="org-ol">
+<li><p>
+<b><b>Copilot Language Server:</b></b>
+The core `copilot.el` package requires the language server. It can be
+installed manually with:
 </p>
 
 <div class="org-src-container">
@@ -279,52 +306,147 @@ In addition the github/copilot-language-server must be installed either manually
 </div>
 
 <p>
-or via elisp by pressing:
+Or, you can install it from within Emacs:
 </p>
 
 <div class="org-src-container">
 <pre class="src src-elisp">SPC SPC copilot-install-server
 </pre>
+</div></li>
+
+<li><b><b>Python 3 (for MCP Tools):</b></b>
+While the layer itself does not require it, most useful MCP servers
+(like the filesystem or shell servers) are Python-based scripts.
+Please ensure you have a `python3` (or `python`) command
+available in your system's `PATH` to run them.</li>
+<li><p>
+<b><b>MCP Server Installation (Manual):</b></b>
+This layer <b><b>does not</b></b> install MCP servers for you. You must
+install them manually. For example, the common filesystem server
+is a Node.js package.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ npm install -g @modelcontextprotocol/server-filesystem
+</pre>
+</div></li>
+</ol>
 </div>
 </div>
-<div id="outline-container-configuratiom" class="outline-3">
-<h3 id="configuratiom"><span class="section-number-3">2.1.</span> Configuratiom</h3>
-<div class="outline-text-3" id="text-configuratiom">
+</div>
+<div id="outline-container-configuration" class="outline-2">
+<h2 id="configuration"><span class="section-number-2">3.</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
 <p>
-Per default the service will run for every mode derived from prog mode. It will do
-automatic code suggestions. Key bindings for accepting an advice are bound automatically
-but can be rebound.
+The Copilot service must be logged into.
 </p>
-
-<p>
-In order to work properly <code>SPC SPC copilot login</code> must be have been run once on the device
-especially if a commercial license is available.
-</p>
-
-<p>
-The mode itself tries to defer the language from the major mode however if this fails it may
-be necessary to add the new binding manually. Details for this can be found <a href="https://github.com/copilot-emacs/copilot.el?tab=readme-ov-file#programming-language-detection">here</a>.
-</p>
-
-<p>
-For the chat interface a separate login procedure will be necessary once a chat is started.
-</p>
-
+<ul class="org-ul">
+<li>For code completion: run `SPC SPC copilot-login`.</li>
+<li>For chat: the chat interface will prompt for a separate login the first
+time it is started.</li>
+</ul>
+</div>
+<div id="outline-container-git-commit-messages" class="outline-3">
+<h3 id="git-commit-messages"><span class="section-number-3">3.1.</span> Git Commit Messages</h3>
+<div class="outline-text-3" id="text-git-commit-messages">
 <p>
 To enable automatic generation of git commit messages using
 copilot-chat, set the layer variable
-<code>github-copilot-enable-commit-messages</code> to t. Alternatively, you can
-invoke <code>SPC SPC copilot-chat-insert-commit-message</code> manually.
+`github-copilot-enable-commit-messages` to `t` in your `~/.spacemacs`
+file.
 </p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>github-copilot <span class="org-builtin">:variables</span>
+                github-copilot-enable-commit-messages t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Alternatively, you can invoke `SPC SPC copilot-chat-insert-commit-message`
+manually within a Git commit buffer.
+</p>
+</div>
+</div>
+<div id="outline-container-mcp--tool-integration-manual-setup-required" class="outline-3">
+<h3 id="mcp--tool-integration-manual-setup-required"><span class="section-number-3">3.2.</span> MCP / Tool Integration (Manual Setup Required)</h3>
+<div class="outline-text-3" id="text-mcp--tool-integration-manual-setup-required">
+<p>
+This layer provides powerful tool-using capabilities to the AI chat
+by integrating `mcp.el` (Model Context Protocol).
+</p>
+
+<p>
+This framework <b><b>requires manual configuration</b></b>. The layer provides the
+`github-copilot-mcp-servers` variable (which is `nil` by default)
+for you to define your servers.
+</p>
+
+<p>
+You must add your server list to the `dotspacemacs/user-config`
+function in your `~/.spacemacs` file <b>after</b> the `mcp-hub` package
+is loaded.
+</p>
+</div>
+<div id="outline-container-example-enabling-the-filesystem-server-" class="outline-4">
+<h4 id="example-enabling-the-filesystem-server-"><span class="section-number-4">3.2.1.</span> Example: Enabling the Filesystem Server <b>*</b></h4>
+<div class="outline-text-4" id="text-example-enabling-the-filesystem-server-">
+<ol class="org-ol">
+<li><p>
+First, install the server (this requires Node.js / `npx`):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ npm install -g @modelcontextprotocol/server-filesystem
+</pre>
+</div></li>
+
+<li><p>
+Then, add the following code to your `dotspacemacs/user-config`:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">...
+</span>  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">with-eval-after-load</span> 'mcp-hub
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">This list is the "Single Source of Truth"
+</span>    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">setq</span> github-copilot-mcp-servers
+          '<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-comment-delimiter">;; </span><span class="org-comment">Add the filesystem server
+</span>            <span class="org-comment-delimiter">;; </span><span class="org-comment">It must be installed (e.g., via "npm install -g @modelcontextprotocol/server-filesystem")
+</span>            <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-string">"fs"</span> . <span class="org-rainbow-delimiters-depth-6">(</span><span class="org-builtin">:command</span> <span class="org-string">"npx"</span>
+                     <span class="org-builtin">:args</span> <span class="org-rainbow-delimiters-depth-7">(</span><span class="org-string">"-y"</span> <span class="org-string">"@modelcontextprotocol/server-filesystem"</span>
+                             <span class="org-comment-delimiter">;; </span><span class="org-comment">This path MUST be absolute and point to your projects
+</span>                             <span class="org-string">"/home/your-user/projects"</span><span class="org-rainbow-delimiters-depth-7">)</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">We must also tell the mcp-hub to use this new list
+</span>    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">setq</span> mcp-hub-servers github-copilot-mcp-servers<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-finding-more-servers-" class="outline-4">
+<h4 id="finding-more-servers-"><span class="section-number-4">3.2.2.</span> Finding More Servers <b>*</b></h4>
+<div class="outline-text-4" id="text-finding-more-servers-">
+<p>
+You can add any MCP-compliant server to this list (like a local
+Ollama instance). You can find more servers to install and use here:
+</p>
+<ul class="org-ul">
+<li><b><b>Official MCP Repo:</b></b> <a href="https://github.com/lizqwerscott/mcp.el">https://github.com/lizqwerscott/mcp.el</a></li>
+<li><b><b>Server Directory:</b></b> <a href="https://www.mcpserver.directory/">https://www.mcpserver.directory/</a></li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 <div id="outline-container-key-bindings" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">3.</span> Key bindings</h2>
+<h2 id="key-bindings"><span class="section-number-2">4.</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 <div id="outline-container-general" class="outline-3">
-<h3 id="general"><span class="section-number-3">3.1.</span> General</h3>
+<h3 id="general"><span class="section-number-3">4.1.</span> General</h3>
 <div class="outline-text-3" id="text-general">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -342,35 +464,40 @@ invoke <code>SPC SPC copilot-chat-insert-commit-message</code> manually.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>C-M-&lt;return&gt;</code></td>
+<td class="org-left">`C-M-&lt;return&gt;`</td>
 <td class="org-left">accept the current completion suggestion</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>C-M-S-&lt;return&gt;</code></td>
+<td class="org-left">`C-M-S-&lt;return&gt;`</td>
 <td class="org-left">accept the current completion suggestion word by word</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>C-M-&lt;tab&gt;</code></td>
-<td class="org-left">show the next github copilot completion (and refresh completions)</td>
+<td class="org-left">`C-M-&lt;tab&gt;`</td>
+<td class="org-left">show the next github copilot completion (and refresh)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>C-M-&lt;iso-lefttab&gt;</code></td>
-<td class="org-left">show the previous github copilot completion (and refresh completions)</td>
+<td class="org-left">`C-M-&lt;iso-lefttab&gt;`</td>
+<td class="org-left">show the previous github copilot completion (and refresh)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC $ c</code></td>
-<td class="org-left">Start a transient state to interact with Github Copilots chat interface</td>
+<td class="org-left">`SPC $ c`</td>
+<td class="org-left">Start a transient state for the Copilot chat interface</td>
+</tr>
+
+<tr>
+<td class="org-left">`SPC $ m`</td>
+<td class="org-left">Open the `*Mcp-Hub*` buffer to manage/view tool servers</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <div id="outline-container-in-chat" class="outline-3">
-<h3 id="in-chat"><span class="section-number-3">3.2.</span> In Chat</h3>
+<h3 id="in-chat"><span class="section-number-3">4.2.</span> In Chat</h3>
 <div class="outline-text-3" id="text-in-chat">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -388,38 +515,33 @@ invoke <code>SPC SPC copilot-chat-insert-commit-message</code> manually.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>,,</code></td>
-<td class="org-left">sent the current text to copilot</td>
+<td class="org-left">`,,`</td>
+<td class="org-left">Send the current text to Copilot (in Normal mode)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>,a</code></td>
-<td class="org-left">kill a chat process</td>
+<td class="org-left">`,a`</td>
+<td class="org-left">Kill the chat process (in Normal mode)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>,k</code></td>
-<td class="org-left">kill a chat process</td>
+<td class="org-left">`,k`</td>
+<td class="org-left">Kill the chat process (in Normal mode)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>C-c-&lt;return&gt;</code></td>
-<td class="org-left">sent the current text to copilot</td>
+<td class="org-left">`C-c C-c`</td>
+<td class="org-left">Send the current text to Copilot (in Prompt buffer)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>C-c-C-c</code></td>
-<td class="org-left">sent the current text to copilot</td>
+<td class="org-left">`C-c C-a`</td>
+<td class="org-left">Kill the chat process (in Prompt buffer)</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>C-c-C-a</code></td>
-<td class="org-left">kill a chat process</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>C-c-C-k</code></td>
-<td class="org-left">kill a chat process</td>
+<td class="org-left">`C-c C-k`</td>
+<td class="org-left">Kill the chat process (in Prompt buffer)</td>
 </tr>
 </tbody>
 </table>
@@ -429,7 +551,7 @@ invoke <code>SPC SPC copilot-chat-insert-commit-message</code> manually.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2025-11-03 Mon 21:21</p>
+<p class="date">Created: 2025-11-07 Fri 12:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
