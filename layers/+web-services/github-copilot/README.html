@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-11-07 Fri 12:44 -->
+<!-- 2025-12-08 Mon 06:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GitHub Copilot layer</title>
@@ -235,7 +235,12 @@
 </li>
 <li><a href="#configuration">3. Configuration</a>
 <ul>
-<li><a href="#git-commit-messages">3.1. Git Commit Messages</a></li>
+<li><a href="#git-commit-messages">3.1. Git Commit Messages</a>
+<ul>
+<li><a href="#the-golem-standard-preferred">3.1.1. The G.O.L.E.M. Standard (Preferred)</a></li>
+<li><a href="#standard-copilot-style">3.1.2. Standard Copilot Style</a></li>
+</ul>
+</li>
 <li><a href="#mcp--tool-integration-manual-setup-required">3.2. MCP / Tool Integration (Manual Setup Required)</a>
 <ul>
 <li><a href="#example-enabling-the-filesystem-server-">3.2.1. Example: Enabling the Filesystem Server <b>*</b></a></li>
@@ -314,11 +319,18 @@ Or, you can install it from within Emacs:
 </pre>
 </div></li>
 
-<li><b><b>Python 3 (for MCP Tools):</b></b>
-While the layer itself does not require it, most useful MCP servers
-(like the filesystem or shell servers) are Python-based scripts.
-Please ensure you have a `python3` (or `python`) command
-available in your system's `PATH` to run them.</li>
+<li><p>
+<b><b>Runtime Environments (Python &amp; Node.js):</b></b>
+This layer acts as a client. The actual tools (MCP Servers) run externally.
+</p>
+<ul class="org-ul">
+<li><b><b>Node.js:</b></b> Required for the official filesystem server and many web-based tools (install via `npm`).</li>
+<li><b><b>Python 3:</b></b> Required for many system administration and local scripting tools.</li>
+</ul>
+
+<p>
+Please ensure both `node` (and `npm`) and `python3` are available in your system's `PATH`.
+</p></li>
 <li><p>
 <b><b>MCP Server Installation (Manual):</b></b>
 This layer <b><b>does not</b></b> install MCP servers for you. You must
@@ -350,10 +362,42 @@ time it is started.</li>
 <h3 id="git-commit-messages"><span class="section-number-3">3.1.</span> Git Commit Messages</h3>
 <div class="outline-text-3" id="text-git-commit-messages">
 <p>
-To enable automatic generation of git commit messages using
-copilot-chat, set the layer variable
-`github-copilot-enable-commit-messages` to `t` in your `~/.spacemacs`
-file.
+This layer can automatically generate commit messages for you when opening
+a commit buffer (e.g., via Magit). You can choose between two styles by
+setting the `github-copilot-enable-commit-messages` variable.
+</p>
+</div>
+<div id="outline-container-the-golem-standard-preferred" class="outline-4">
+<h4 id="the-golem-standard-preferred"><span class="section-number-4">3.1.1.</span> The G.O.L.E.M. Standard (Preferred)</h4>
+<div class="outline-text-4" id="text-the-golem-standard-preferred">
+<p>
+For Spacemacs development, we strongly recommend the <b><b>G.O.L.E.M.</b></b> style.
+This invokes the "Guardian Of Legacy Elisp Manifestations" persona, which enforces
+the strict <b><b>Tim Pope</b></b> standard:
+</p>
+<ul class="org-ul">
+<li>Imperative mood ("Fix bug" not "Fixed bug").</li>
+<li>50-character subject line limit.</li>
+<li>72-character body wrap.</li>
+</ul>
+
+<p>
+Set the variable to <code>'golem</code> to enable this mode:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>github-copilot <span class="org-builtin">:variables</span>
+                github-copilot-enable-commit-messages 'golem<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-standard-copilot-style" class="outline-4">
+<h4 id="standard-copilot-style"><span class="section-number-4">3.1.2.</span> Standard Copilot Style</h4>
+<div class="outline-text-4" id="text-standard-copilot-style">
+<p>
+If you prefer the default, conversational style of GitHub Copilot, set the
+variable to <code>t</code>.
 </p>
 
 <div class="org-src-container">
@@ -366,6 +410,7 @@ file.
 Alternatively, you can invoke `SPC SPC copilot-chat-insert-commit-message`
 manually within a Git commit buffer.
 </p>
+</div>
 </div>
 </div>
 <div id="outline-container-mcp--tool-integration-manual-setup-required" class="outline-3">
@@ -415,8 +460,8 @@ Then, add the following code to your `dotspacemacs/user-config`:
 </span>            <span class="org-comment-delimiter">;; </span><span class="org-comment">It must be installed (e.g., via "npm install -g @modelcontextprotocol/server-filesystem")
 </span>            <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-string">"fs"</span> . <span class="org-rainbow-delimiters-depth-6">(</span><span class="org-builtin">:command</span> <span class="org-string">"npx"</span>
                      <span class="org-builtin">:args</span> <span class="org-rainbow-delimiters-depth-7">(</span><span class="org-string">"-y"</span> <span class="org-string">"@modelcontextprotocol/server-filesystem"</span>
-                             <span class="org-comment-delimiter">;; </span><span class="org-comment">This path MUST be absolute and point to your projects
-</span>                             <span class="org-string">"/home/your-user/projects"</span><span class="org-rainbow-delimiters-depth-7">)</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+                            <span class="org-comment-delimiter">;; </span><span class="org-comment">This path MUST be absolute and point to your projects
+</span>                            <span class="org-string">"/home/your-user/projects"</span><span class="org-rainbow-delimiters-depth-7">)</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
 
     <span class="org-comment-delimiter">;; </span><span class="org-comment">We must also tell the mcp-hub to use this new list
 </span>    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">setq</span> mcp-hub-servers github-copilot-mcp-servers<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -551,7 +596,7 @@ Ollama instance). You can find more servers to install and use here:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2025-11-07 Fri 12:44</p>
+<p class="date">Created: 2025-12-08 Mon 06:21</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
