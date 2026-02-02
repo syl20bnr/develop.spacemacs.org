@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-15 Thu 21:25 -->
+<!-- 2026-02-02 Mon 21:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ranger layer</title>
@@ -231,8 +231,9 @@
 <li><a href="#configuration">2. Configuration</a>
 <ul>
 <li><a href="#customizing">2.1. Customizing</a></li>
-<li><a href="#parent-options">2.2. Parent options</a></li>
-<li><a href="#preview-options">2.3. Preview options</a></li>
+<li><a href="#dirvish-options">2.2. Dirvish options</a></li>
+<li><a href="#parent-options">2.3. Parent options</a></li>
+<li><a href="#preview-options">2.4. Preview options</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key bindings</a></li>
@@ -243,7 +244,8 @@
 <h2 id="description"><span class="section-number-2">1.</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer brings Ranger features to spacemacs from the <code>ranger</code> package.
+This layer brings Ranger features to spacemacs from the <code>ranger</code> package, with
+optional <code>dirvish</code> integration.
 </p>
 
 <p>
@@ -255,9 +257,11 @@ file.
 <p>
 To use ranger/deer by default set <code>ranger-override-dired</code> to <code>ranger/deer</code> like
 shown in the example below (setting this via customize as explained by the
-original <a href="https://github.com/ralesi/ranger.el#installation">ranger installation instructions</a> will not work). To default with
-preview enabled when entering ranger set <code>ranger-show-preview</code> to <code>t</code>. The following
-example code shows how you can set both variables at once via the
+original <a href="https://github.com/ralesi/ranger.el#installation">ranger installation instructions</a> will not work). You can also use
+<code>dirvish</code> for a modern dired experience; dired opens a single column, while
+<code>SPC a t r r</code> opens dirvish with the full layout. To default with preview enabled
+when entering ranger set <code>ranger-show-preview</code> to <code>t</code>. The following example code
+shows how you can set both variables at once via the
 <code>dotspacemacs-configuration-layers</code> of your dotfiles as follows:
 </p>
 
@@ -354,8 +358,49 @@ return a string that is placed in the header-line.
 </div>
 </div>
 </div>
+<div id="outline-container-dirvish-options" class="outline-3">
+<h3 id="dirvish-options"><span class="section-number-3">2.2.</span> Dirvish options</h3>
+<div class="outline-text-3" id="text-dirvish-options">
+<p>
+Enable <code>dired-omit-mode</code> in dirvish buffers by default (layer variable):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span>ranger <span class="org-builtin">:variables</span>
+                       ranger-override-dired 'dirvish
+                       dirvish-enable-dired-omit t<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+You can customize <code>dirvish-attributes</code> in your <code>dotspacemacs/user-config</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dirvish-attributes
+      '<span class="org-rainbow-delimiters-depth-2">(</span>file-size file-time all-the-icons subtree-state vc-state<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+See <a href="https://github.com/alexluigit/dirvish#attributes">dirvish documentation</a> for the full list.
+</p>
+
+<p>
+A recommended mode-line format for dirvish (add to <code>dotspacemacs/user-config</code>):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dirvish-mode-line-format
+      '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">:left</span> <span class="org-rainbow-delimiters-depth-3">(</span>sort file-time <span class="org-string">" "</span> file-size <span class="org-string">" "</span> file-modes <span class="org-string">" "</span> file-link-number<span class="org-rainbow-delimiters-depth-3">)</span>
+              <span class="org-builtin">:right</span> <span class="org-rainbow-delimiters-depth-3">(</span>omit yank index<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
 <div id="outline-container-parent-options" class="outline-3">
-<h3 id="parent-options"><span class="section-number-3">2.2.</span> Parent options</h3>
+<h3 id="parent-options"><span class="section-number-3">2.3.</span> Parent options</h3>
 <div class="outline-text-3" id="text-parent-options">
 <p>
 You can set the number of folders to nest to the left, adjusted by <code>z-</code> and <code>z+</code>
@@ -387,7 +432,7 @@ frame size to prevent filling up entire frame with parents.
 </div>
 </div>
 <div id="outline-container-preview-options" class="outline-3">
-<h3 id="preview-options"><span class="section-number-3">2.3.</span> Preview options</h3>
+<h3 id="preview-options"><span class="section-number-3">2.4.</span> Preview options</h3>
 <div class="outline-text-3" id="text-preview-options">
 <p>
 You can choose to show previews literally, or through find-file, toggled by <code>zi</code>
@@ -432,6 +477,12 @@ To set the max files size (in MB), set the following parameter:
 <div id="outline-container-key-bindings" class="outline-2">
 <h2 id="key-bindings"><span class="section-number-2">3.</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
+<p>
+When <code>ranger-override-dired</code> is set to <code>dirvish</code>, the <code>SPC a t r</code> prefix is bound
+to dirvish commands (e.g., <code>SPC a t r r</code> opens the full layout, <code>SPC a t r d</code> opens
+dirvish in a single column).
+</p>
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -449,12 +500,17 @@ To set the max files size (in MB), set the following parameter:
 <tbody>
 <tr>
 <td class="org-left"><code>SPC a t r r</code></td>
-<td class="org-left">launch ranger</td>
+<td class="org-left">launch ranger / dirvish full layout</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC a t r d</code></td>
-<td class="org-left">deer (minimal ranger window in current directory)</td>
+<td class="org-left">deer / dirvish single column</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>f</code></td>
+<td class="org-left">(ranger) search for file names</td>
 </tr>
 
 <tr>
@@ -500,11 +556,6 @@ To set the max files size (in MB), set the following parameter:
 <tr>
 <td class="org-left"><code>C-k</code></td>
 <td class="org-left">(ranger) scroll preview window up</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>f</code></td>
-<td class="org-left">(ranger) search for file names</td>
 </tr>
 
 <tr>
@@ -598,12 +649,68 @@ To set the max files size (in MB), set the following parameter:
 </tr>
 </tbody>
 </table>
+
+<p>
+Dirvish key bindings (when <code>ranger-override-dired</code> is <code>dirvish</code>):
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>q</code></td>
+<td class="org-left">quit dirvish</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>/</code></td>
+<td class="org-left">narrow</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>TAB</code></td>
+<td class="org-left">toggle subtree</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>f</code> / <code>gf</code></td>
+<td class="org-left">toggle layout (dirvish only)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gt</code></td>
+<td class="org-left">switch layout</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gd</code></td>
+<td class="org-left">dispatch menu</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gl</code></td>
+<td class="org-left">ls switches menu</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-01-15 Thu 21:25</p>
+<p class="date">Created: 2026-02-02 Mon 21:50</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
