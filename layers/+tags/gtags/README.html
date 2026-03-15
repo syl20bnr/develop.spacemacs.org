@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-20 Fri 23:44 -->
+<!-- 2026-03-15 Sun 16:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Helm Gtags layer</title>
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -323,8 +324,8 @@ recommend installing from source.
 <h4 id="install-on-ubuntu"><span class="section-number-4">2.1.1.</span> Install on Ubuntu</h4>
 <div class="outline-text-4" id="text-install-on-ubuntu">
 <div class="org-src-container">
-<pre class="src src-sh">sudo apt-get install global
-</pre>
+<pre class="src src-sh"><code>sudo apt-get install global
+</code></pre>
 </div>
 </div>
 </div>
@@ -332,8 +333,8 @@ recommend installing from source.
 <h4 id="install-on-arch-linux"><span class="section-number-4">2.1.2.</span> Install on Arch Linux</h4>
 <div class="outline-text-4" id="text-install-on-arch-linux">
 <div class="org-src-container">
-<pre class="src src-sh">yay -S global
-</pre>
+<pre class="src src-sh"><code>yay -S global
+</code></pre>
 </div>
 </div>
 </div>
@@ -341,8 +342,8 @@ recommend installing from source.
 <h4 id="install-on-macos-using-homebrew"><span class="section-number-4">2.1.3.</span> Install on macOS using Homebrew</h4>
 <div class="outline-text-4" id="text-install-on-macos-using-homebrew">
 <div class="org-src-container">
-<pre class="src src-sh">brew install global
-</pre>
+<pre class="src src-sh"><code>brew install global
+</code></pre>
 </div>
 </div>
 </div>
@@ -360,8 +361,8 @@ your normal OS package manager, e.g. on Ubuntu
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">sudo apt-get install exuberant-ctags python-pygments
-</pre>
+<pre class="src src-sh"><code>sudo apt-get install exuberant-ctags python-pygments
+</code></pre>
 </div>
 
 <p>
@@ -369,8 +370,8 @@ or e.g. Archlinux:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">sudo pacman -S ctags python-pygments
-</pre>
+<pre class="src src-sh"><code>sudo pacman -S ctags python-pygments
+</code></pre>
 </div>
 </div>
 </li>
@@ -385,8 +386,8 @@ Also check which version of gcc your system is using by default as this will inf
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">gcc --version
-</pre>
+<pre class="src src-sh"><code>gcc --version
+</code></pre>
 </div>
 
 <p>
@@ -394,9 +395,9 @@ Then run these commands:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">tar xvf global-&lt;version&gt;.tar.gz
+<pre class="src src-sh"><code>tar xvf global-&lt;version&gt;.tar.gz
 <span class="org-builtin">cd</span> global-&lt;version&gt;
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -404,8 +405,8 @@ If you have gcc version 10 then you will have to force building with an earlier 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">./configure <span class="org-variable-name">CC</span>=gcc-8 --with-exuberant-ctags=/usr/bin/ctags
-</pre>
+<pre class="src src-sh"><code>./configure <span class="org-variable-name">CC</span>=gcc-8 --with-exuberant-ctags=/usr/bin/ctags
+</code></pre>
 </div>
 
 <p>
@@ -413,8 +414,8 @@ Otherwise do not need to specify a CC flag
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">./configure --with-exuberant-ctags=/usr/bin/ctags
-</pre>
+<pre class="src src-sh"><code>./configure --with-exuberant-ctags=/usr/bin/ctags
+</code></pre>
 </div>
 
 <p>
@@ -422,9 +423,9 @@ And finally:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">make
+<pre class="src src-sh"><code>make
 sudo make install
-</pre>
+</code></pre>
 </div>
 </div>
 </li>
@@ -436,8 +437,8 @@ To be able to use <code>pygments</code> and <code>ctags</code>, you need to copy
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">cp gtags.conf ~/.globalrc
-</pre>
+<pre class="src src-sh"><code>cp gtags.conf ~/.globalrc
+</code></pre>
 </div>
 
 <p>
@@ -446,8 +447,8 @@ with sh/ksh:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><span class="org-builtin">echo</span> export <span class="org-variable-name">GTAGSLABEL</span>=pygments &gt;&gt; .profile
-</pre>
+<pre class="src src-sh"><code><span class="org-builtin">echo</span> export <span class="org-variable-name">GTAGSLABEL</span>=pygments &gt;&gt; .profile
+</code></pre>
 </div>
 
 <p>
@@ -455,8 +456,8 @@ With fish:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><span class="org-builtin">echo</span> export set -x GTAGSLABEL pygments &gt;&gt; $<span class="org-rainbow-delimiters-depth-1">{</span><span class="org-variable-name">HOME</span><span class="org-rainbow-delimiters-depth-1">}</span>/.config/fish/config.fish
-</pre>
+<pre class="src src-sh"><code><span class="org-builtin">echo</span> export set -x GTAGSLABEL pygments &gt;&gt; $<span class="org-rainbow-delimiters-depth-1">{</span><span class="org-variable-name">HOME</span><span class="org-rainbow-delimiters-depth-1">}</span>/.config/fish/config.fish
+</code></pre>
 </div>
 </div>
 </li>
@@ -472,8 +473,8 @@ configure <code>emacs</code> as following before installing:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">./configure --program-transform-name=<span class="org-string">'s/^ctags$/ctags.emacs/'</span>
-</pre>
+<pre class="src src-sh"><code>./configure --program-transform-name=<span class="org-string">'s/^ctags$/ctags.emacs/'</span>
+</code></pre>
 </div>
 
 <p>
@@ -481,8 +482,8 @@ To check if you have the correct version of <code>ctags</code> execute:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">ctags --version | grep Exuberant
-</pre>
+<pre class="src src-sh"><code>ctags --version | grep Exuberant
+</code></pre>
 </div>
 
 <p>
@@ -501,12 +502,12 @@ will need to add <code>gtags</code> to the existing <code>dotspacemacs-configura
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-configuration-layers
       '<span class="org-rainbow-delimiters-depth-2">(</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">...
 </span>        gtags
          <span class="org-comment-delimiter">;; </span><span class="org-comment">...
 </span>        <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 <div id="outline-container-disabling-by-default" class="outline-4">
@@ -518,9 +519,9 @@ layer variable <code>gtags-enable-by-default</code> to <code>nil</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>gtags <span class="org-builtin">:variables</span> gtags-enable-by-default t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -547,14 +548,14 @@ a backend to generate the database.</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-sh"><span class="org-builtin">cd</span> /path/to/project/root
+<pre class="src src-sh"><code><span class="org-builtin">cd</span> /path/to/project/root
 
 <span class="org-comment-delimiter"># </span><span class="org-comment">If the language is not directly supported and GTAGSLABEL is not set
 </span>gtags --gtagslabel=pygments
 
 <span class="org-comment-delimiter"># </span><span class="org-comment">Otherwise
 </span>gtags
-</pre>
+</code></pre>
 </div>
 </div>
 <div id="outline-container-language-support" class="outline-3">
@@ -606,7 +607,7 @@ are supported:
 <div class="outline-text-4" id="text-universal-ctags-languages">
 <p>
 If you have installed <a href="https://github.com/universal-ctags/ctags">universal ctags</a> and use that as the backend
-(i.e. GTAGSLABEL=ctags or &#x2013;gtagslabel=ctags) the following additional
+(i.e. GTAGSLABEL=ctags or &ndash;gtagslabel=ctags) the following additional
 languages are supported:
 </p>
 <ul class="org-ul">
@@ -875,7 +876,7 @@ In addition <code>gtags</code> commands are also supported for symbols in the
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-02-20 Fri 23:44</p>
+<p class="date">Created: 2026-03-15 Sun 16:38</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

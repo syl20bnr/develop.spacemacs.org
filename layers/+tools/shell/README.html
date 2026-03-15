@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-20 Fri 23:44 -->
+<!-- 2026-03-15 Sun 16:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shell layer</title>
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -268,7 +269,7 @@
 </div>
 </div>
 
-<div id="orgf4bf53e" class="figure">
+<div id="org518cd3c" class="figure">
 <p><img src="img/shell.png" alt="shell.png" />
 </p>
 </div>
@@ -332,16 +333,16 @@ source supplying the <code>./configure --with-module</code> option at configure 
 <li><a id="macos"></a>macOS<br />
 <div class="outline-text-5" id="text-macos">
 <div class="org-src-container">
-<pre class="src src-shell">brew install cmake
-</pre>
+<pre class="src src-shell"><code>brew install cmake
+</code></pre>
 </div>
 </div>
 </li>
 <li><a id="ubuntu"></a>Ubuntu<br />
 <div class="outline-text-5" id="text-ubuntu">
 <div class="org-src-container">
-<pre class="src src-shell">sudo apt install cmake
-</pre>
+<pre class="src src-shell"><code>sudo apt install cmake
+</code></pre>
 </div>
 </div>
 </li>
@@ -359,8 +360,8 @@ If the <code>libtool</code> command does not exist in your system (usually in
 <li><a id="ubuntu-1"></a>Ubuntu<br />
 <div class="outline-text-5" id="text-ubuntu-1">
 <div class="org-src-container">
-<pre class="src src-shell">sudo apt install libtool-bin
-</pre>
+<pre class="src src-shell"><code>sudo apt install libtool-bin
+</code></pre>
 </div>
 </div>
 </li>
@@ -374,8 +375,8 @@ If the <code>libtool</code> command does not exist in your system (usually in
 <li><a id="macos-1"></a>macOS<br />
 <div class="outline-text-5" id="text-macos-1">
 <div class="org-src-container">
-<pre class="src src-shell">brew install libvterm
-</pre>
+<pre class="src src-shell"><code>brew install libvterm
+</code></pre>
 </div>
 </div>
 </li>
@@ -439,9 +440,9 @@ to the following variables:
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> shell-default-shell 'eshell<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -463,7 +464,7 @@ your shell is positioned on the left or the right.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span>
            shell-default-position 'bottom
            shell-default-height <span class="org-highlight-numbers-number">30</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -472,7 +473,7 @@ your shell is positioned on the left or the right.
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span>
            shell-default-position 'right
            shell-default-width <span class="org-highlight-numbers-number">40</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -496,9 +497,9 @@ Default value is <code>/bin/bash</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> shell-default-term-shell <span class="org-string">"/bin/bash"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -511,9 +512,9 @@ Default value is <code>/bin/bash</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> multi-term-program <span class="org-string">"/bin/bash"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -527,9 +528,9 @@ layer variable <code>shell-default-full-span</code> to nil.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> shell-default-full-span nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -562,9 +563,9 @@ To enable <code>em-smart</code> put the following layer variable to non-nil:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> shell-enable-smart-eshell t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -586,9 +587,9 @@ to nil.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> shell-protect-eshell-prompt nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -605,8 +606,8 @@ First be sure <code>~/.terminfo</code> is setup correctly by running:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-fish">tic -o ~/.terminfo $TERMINFO/e/eterm-color.ti
-</pre>
+<pre class="src src-fish"><code>tic -o ~/.terminfo $TERMINFO/e/eterm-color.ti
+</code></pre>
 </div>
 
 <p>
@@ -614,8 +615,8 @@ You can locate the <code>eterm-colors.ti</code> file with:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-fish">locate eterm-color.ti
-</pre>
+<pre class="src src-fish"><code>locate eterm-color.ti
+</code></pre>
 </div>
 
 <p>
@@ -623,7 +624,7 @@ Then setup your fish configuration file (usually at <code>~/.config/fish/config.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-fish"># emacs ansi-term support
+<pre class="src src-fish"><code># emacs ansi-term support
 if test -n "$EMACS"
   set -x TERM eterm-color
 end
@@ -632,7 +633,7 @@ end
 function fish_title
   true
 end
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -641,8 +642,8 @@ correctly, in the function <code>dotspacemacs/user-config</code> of your dotfile
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'term-mode-hook 'spacemacs/toggle-truncate-lines-on<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'term-mode-hook 'spacemacs/toggle-truncate-lines-on<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 </div>
 </div>
@@ -655,9 +656,9 @@ layer variable to non-nil:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell <span class="org-builtin">:variables</span> shell-close-window-with-terminal t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -937,9 +938,9 @@ For example with bash
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>shell <span class="org-builtin">:variables</span>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>shell <span class="org-builtin">:variables</span>
        spacemacs-vterm-history-file-location <span class="org-string">"~/.bash_history"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -988,7 +989,7 @@ For example with bash
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-02-20 Fri 23:44</p>
+<p class="date">Created: 2026-03-15 Sun 16:38</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

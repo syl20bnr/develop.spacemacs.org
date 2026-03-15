@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-20 Fri 23:44 -->
+<!-- 2026-03-15 Sun 16:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Theming layer</title>
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -279,21 +280,21 @@ It should be a list of the following form:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>theme1 <span class="org-rainbow-delimiters-depth-3">(</span>face1 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>theme1 <span class="org-rainbow-delimiters-depth-3">(</span>face1 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
          <span class="org-rainbow-delimiters-depth-3">(</span>face2 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
          ...<span class="org-rainbow-delimiters-depth-2">)</span>
  <span class="org-rainbow-delimiters-depth-2">(</span>theme2 <span class="org-rainbow-delimiters-depth-3">(</span>face1 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
          <span class="org-rainbow-delimiters-depth-3">(</span>face2 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
          ...<span class="org-rainbow-delimiters-depth-2">)</span>
  ...<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 <div id="outline-container-example" class="outline-3">
 <h3 id="example"><span class="section-number-3">3.1.</span> Example</h3>
 <div class="outline-text-3" id="text-example">
 <div class="org-src-container">
-<pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-init</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+<pre class="src src-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-init</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>setq theming-modifications
         '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>monokai
            <span class="org-comment-delimiter">;; </span><span class="org-comment">Font locking
@@ -305,7 +306,7 @@ It should be a list of the following form:
                                     <span class="org-builtin">:line-width</span> <span class="org-highlight-numbers-number">1</span>
                                     <span class="org-builtin">:style</span> released-button<span class="org-rainbow-delimiters-depth-6">)</span>
                               <span class="org-builtin">:background</span> <span class="org-string">"#5a5a5a"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -401,7 +402,7 @@ An example of how to set the default font colour to be black in a custom theme l
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-init</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-init</span> <span class="org-rainbow-delimiters-depth-2">()</span>
 
   <span class="org-comment-delimiter">; </span><span class="org-comment">custom theme modification - overriding default font colour
 </span>  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq-default</span>
@@ -412,14 +413,14 @@ An example of how to set the default font colour to be black in a custom theme l
   <span class="org-rainbow-delimiters-depth-2">)</span>
 
 <span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-02-20 Fri 23:44</p>
+<p class="date">Created: 2026-03-15 Sun 16:38</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

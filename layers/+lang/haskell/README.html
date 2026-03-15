@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-20 Fri 23:44 -->
+<!-- 2026-03-15 Sun 16:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Haskell layer</title>
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -292,7 +293,7 @@
 </div>
 </div>
 
-<div id="org99f14e0" class="figure">
+<div id="orgb10b50b" class="figure">
 <p><img src="img/haskell.png" alt="haskell.png" />
 </p>
 </div>
@@ -307,7 +308,7 @@ This layer adds support for the <a href="https://www.haskell.org/">Haskell</a> l
 <h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>syntax highlighting for <a href="https://github.com/haskell/haskell-mode">haskell source</a>, <a href="https://github.com/haskell/haskell-mode">cabal files</a>, <a href="https://github.com/bgamari/cmm-mode">C&#x2013; source</a></li>
+<li>syntax highlighting for <a href="https://github.com/haskell/haskell-mode">haskell source</a>, <a href="https://github.com/haskell/haskell-mode">cabal files</a>, <a href="https://github.com/bgamari/cmm-mode">C&ndash; source</a></li>
 <li>auto-completion and syntax-checking with one of the selected backends (<code>dante</code> or <code>lsp</code>).</li>
 </ul>
 </div>
@@ -367,8 +368,8 @@ To install them, use the following command (or the <code>stack</code> equivalent
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">$ cabal install apply-refact hlint stylish-haskell hasktags hoogle
-</pre>
+<pre class="src src-sh"><code>$ cabal install apply-refact hlint stylish-haskell hasktags hoogle
+</code></pre>
 </div>
 </div>
 </div>
@@ -417,8 +418,8 @@ Then, to choose a haskell backend, set the haskell layer variable <code>haskell-
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>haskell <span class="org-builtin">:variables</span> haskell-completion-backend 'dante<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>haskell <span class="org-builtin">:variables</span> haskell-completion-backend 'dante<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -438,11 +439,11 @@ Backend can be chosen on a per project basis using directory local variables
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables
+<pre class="src src-elisp"><code><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables
 </span><span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")
 </span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>haskell-mode <span class="org-rainbow-delimiters-depth-3">(</span>haskell-completion-backend . lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -584,9 +585,9 @@ See examples <a href="https://github.com/commercialhaskell/hindent/blob/master/T
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>haskell <span class="org-builtin">:variables</span> haskell-enable-hindent t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -1176,9 +1177,9 @@ bring up. But if you are experiencing problems with it, then you can help
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>haskell <span class="org-builtin">:variables</span> haskell-process-type 'stack-ghci<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -1207,11 +1208,11 @@ function:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-2">(</span>configuration-layer/layer-used-p 'haskell<span class="org-rainbow-delimiters-depth-2">)</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-2">(</span>configuration-layer/layer-used-p 'haskell<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>add-hook 'haskell-interactive-mode-hook
             <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-4">()</span>
               <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">setq-local</span> evil-move-cursor-back nil<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -1226,11 +1227,11 @@ placing the following snippet in your <code>dotspacemacs/user-config</code> func
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-2">(</span>configuration-layer/layer-used-p 'haskell<span class="org-rainbow-delimiters-depth-2">)</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-2">(</span>configuration-layer/layer-used-p 'haskell<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">define-advice</span> <span class="org-function-name">haskell-interactive-switch</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">:after</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-type">&amp;rest</span> _<span class="org-rainbow-delimiters-depth-4">)</span> spacemacs/haskell-interactive-switch-advice<span class="org-rainbow-delimiters-depth-3">)</span>
     <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-4">(</span>eq dotspacemacs-editing-style 'vim<span class="org-rainbow-delimiters-depth-4">)</span>
       <span class="org-rainbow-delimiters-depth-4">(</span>call-interactively 'evil-insert<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -1244,7 +1245,7 @@ following snippet into your <code>dotspacemacs/user-config</code> function.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">haskell-indentation-advice</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">haskell-indentation-advice</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">and</span> <span class="org-rainbow-delimiters-depth-4">(</span>&lt; <span class="org-highlight-numbers-number">1</span> <span class="org-rainbow-delimiters-depth-5">(</span>line-number-at-pos<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
              <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">save-excursion</span>
                <span class="org-rainbow-delimiters-depth-5">(</span>forward-line <span class="org-highlight-numbers-number">-1</span><span class="org-rainbow-delimiters-depth-5">)</span>
@@ -1253,7 +1254,7 @@ following snippet into your <code>dotspacemacs/user-config</code> function.
 
 <span class="org-rainbow-delimiters-depth-1">(</span>advice-add 'haskell-indentation-newline-and-indent
             <span class="org-builtin">:after</span> 'haskell-indentation-advice<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -1353,10 +1354,10 @@ with the following script:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment">
+<pre class="src src-bash"><code><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment">
 </span><span class="org-builtin">cd</span> <span class="org-sh-quoted-exec">`stack path --project-root`</span>
 stack $<span class="org-variable-name">*</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -1379,7 +1380,7 @@ using <code>SPC m s b</code>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-02-20 Fri 23:44</p>
+<p class="date">Created: 2026-03-15 Sun 16:38</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

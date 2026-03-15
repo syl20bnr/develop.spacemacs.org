@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-20 Fri 23:44 -->
+<!-- 2026-03-15 Sun 16:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GitHub Copilot layer</title>
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -306,8 +307,8 @@ installed manually with:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">$ npm install -g @github/copilot-language-server
-</pre>
+<pre class="src src-sh"><code>$ npm install -g @github/copilot-language-server
+</code></pre>
 </div>
 
 <p>
@@ -315,8 +316,8 @@ Or, you can install it from within Emacs:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">SPC SPC copilot-install-server
-</pre>
+<pre class="src src-elisp"><code>SPC SPC copilot-install-server
+</code></pre>
 </div></li>
 
 <li><p>
@@ -339,8 +340,8 @@ is a Node.js package.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">$ npm install -g @modelcontextprotocol/server-filesystem
-</pre>
+<pre class="src src-sh"><code>$ npm install -g @modelcontextprotocol/server-filesystem
+</code></pre>
 </div></li>
 </ol>
 </div>
@@ -386,9 +387,9 @@ Set the variable to <code>'golem</code> to enable this mode:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>github-copilot <span class="org-builtin">:variables</span>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>github-copilot <span class="org-builtin">:variables</span>
                 github-copilot-enable-commit-messages 'golem<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -401,9 +402,9 @@ variable to <code>t</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>github-copilot <span class="org-builtin">:variables</span>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>github-copilot <span class="org-builtin">:variables</span>
                 github-copilot-enable-commit-messages t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -442,8 +443,8 @@ First, install the server (this requires Node.js / `npx`):
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">$ npm install -g @modelcontextprotocol/server-filesystem
-</pre>
+<pre class="src src-sh"><code>$ npm install -g @modelcontextprotocol/server-filesystem
+</code></pre>
 </div></li>
 
 <li><p>
@@ -451,7 +452,7 @@ Then, add the following code to your `dotspacemacs/user-config`:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">...
 </span>  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">with-eval-after-load</span> 'mcp-hub
     <span class="org-comment-delimiter">;; </span><span class="org-comment">This list is the "Single Source of Truth"
@@ -466,7 +467,7 @@ Then, add the following code to your `dotspacemacs/user-config`:
     <span class="org-comment-delimiter">;; </span><span class="org-comment">We must also tell the mcp-hub to use this new list
 </span>    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">setq</span> mcp-hub-servers github-copilot-mcp-servers<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div></li>
 </ol>
 </div>
@@ -596,7 +597,7 @@ Ollama instance). You can find more servers to install and use here:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-02-20 Fri 23:44</p>
+<p class="date">Created: 2026-03-15 Sun 16:39</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
