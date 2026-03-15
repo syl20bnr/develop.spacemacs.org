@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-20 Fri 23:44 -->
+<!-- 2026-03-15 Sun 16:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mu4e layer</title>
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -299,8 +300,8 @@ variable, as well as passing the <code>--with-emacs</code> option:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">brew install mu --with-emacs
-</pre>
+<pre class="src src-shell"><code>brew install mu --with-emacs
+</code></pre>
 </div>
 
 <p>
@@ -309,10 +310,10 @@ the layer variable <code>mu4e-installation-path</code>, for example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
               '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>mu4e <span class="org-builtin">:variables</span>
                       mu4e-installation-path <span class="org-string">"/usr/share/emacs/site-lisp"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -507,7 +508,7 @@ The following example is taken from the manual:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-contexts
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-contexts
   `<span class="org-rainbow-delimiters-depth-2">(</span> ,<span class="org-rainbow-delimiters-depth-3">(</span>make-mu4e-context
   <span class="org-builtin">:name</span> <span class="org-string">"Private"</span>
   <span class="org-builtin">:enter-func</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-5">()</span> <span class="org-rainbow-delimiters-depth-5">(</span>mu4e-message <span class="org-string">"Switch to the Private context"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
@@ -547,7 +548,7 @@ The following example is taken from the manual:
 <span class="org-comment-delimiter">;; </span><span class="org-comment">compose with the current context is no context matches;
 </span><span class="org-comment-delimiter">;; </span><span class="org-comment">default is to ask
 </span><span class="org-comment-delimiter">;; </span><span class="org-comment">(setq mu4e-compose-context-policy nil)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -567,8 +568,8 @@ that to <code>$HOME/Downloads</code> if it exists. You can override this in your
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-attachment-dir <span class="org-string">"~/files"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-attachment-dir <span class="org-string">"~/files"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 </div>
 </div>
@@ -576,7 +577,7 @@ that to <code>$HOME/Downloads</code> if it exists. You can override this in your
 <h3 id="example-configuration"><span class="section-number-3">4.3.</span> Example configuration</h3>
 <div class="outline-text-3" id="text-example-configuration">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Set up some common mu4e variables
+<pre class="src src-emacs-lisp"><code><span class="org-comment-delimiter">;;; </span><span class="org-comment">Set up some common mu4e variables
 </span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-maildir <span class="org-string">"~/.mail"</span>
       mu4e-trash-folder <span class="org-string">"/Trash"</span>
       mu4e-refile-folder <span class="org-string">"/Archive"</span>
@@ -603,7 +604,7 @@ that to <code>$HOME/Downloads</code> if it exists. You can override this in your
                         <span class="org-rainbow-delimiters-depth-7">(</span>concat <span class="org-string">"maildir:"</span> <span class="org-rainbow-delimiters-depth-8">(</span>car maildir<span class="org-rainbow-delimiters-depth-8">)</span><span class="org-rainbow-delimiters-depth-7">)</span><span class="org-rainbow-delimiters-depth-6">)</span>
                       mu4e-maildir-shortcuts<span class="org-rainbow-delimiters-depth-5">)</span> <span class="org-string"><span class="org-warning">" OR "</span></span><span class="org-warning"><span class="org-rainbow-delimiters-depth-4">)</span></span>
          <span class="org-string">"All inboxes"</span> ?i<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -616,7 +617,7 @@ count of unread messages to the modeline.
 </p>
 
 
-<div id="org1289cca" class="figure">
+<div id="org2d6ac55" class="figure">
 <p><img src="https://raw.githubusercontent.com/iqbalansari/mu4e-alert/master/screenshots/mu4e-alert-in-action.png" alt="mu4e-alert-in-action.png" />
 </p>
 </div>
@@ -635,8 +636,8 @@ To enable notifications about new messages, add the following line to your
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-enable-notifications t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-enable-notifications t<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -645,8 +646,8 @@ or use layer variables when you add the layer to
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>mu4e <span class="org-builtin">:variables</span> mu4e-enable-notifications t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>mu4e <span class="org-builtin">:variables</span> mu4e-enable-notifications t<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -657,14 +658,14 @@ installed libraries:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'mu4e-alert
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'mu4e-alert
   <span class="org-comment-delimiter">;; </span><span class="org-comment">Enable Desktop notifications
 </span>  <span class="org-rainbow-delimiters-depth-2">(</span>mu4e-alert-set-default-style 'notifications<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">For Linux.
 </span>  <span class="org-comment-delimiter">;; </span><span class="org-comment">(mu4e-alert-set-default-style 'libnotify))  ; Alternative for Linux
 </span>  <span class="org-comment-delimiter">;; </span><span class="org-comment">(mu4e-alert-set-default-style 'notifier))   ; For macOS (through the
 </span>                                                 <span class="org-comment-delimiter">; </span><span class="org-comment">terminal notifier app).
 </span>  <span class="org-comment-delimiter">;; </span><span class="org-comment">(mu4e-alert-set-default-style 'growl))      ; Alternative for macOS.</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -677,8 +678,8 @@ your <code>dotspacemacs/user-config</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-enable-mode-line t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-enable-mode-line t<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -687,8 +688,8 @@ or use layer variables when you add the layer to
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>mu4e <span class="org-builtin">:variables</span> mu4e-enable-mode-line t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>mu4e <span class="org-builtin">:variables</span> mu4e-enable-mode-line t<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 </div>
 </div>
@@ -712,11 +713,11 @@ By default the values are:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
               '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>mu4e <span class="org-builtin">:variables</span> mu4e-spacemacs-layout-name <span class="org-string">"@Mu4e"</span>
                       mu4e-spacemacs-layout-binding <span class="org-string">"m"</span>
                       mu4e-spacemacs-kill-layout-on-exit t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -734,10 +735,10 @@ setting the <code>mu4e-org-link-support</code> variable when including the layer
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
               '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>mu4e <span class="org-builtin">:variables</span>
                       mu4e-org-link-support nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -751,10 +752,10 @@ when including the layer.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
               '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>mu4e <span class="org-builtin">:variables</span>
                       mu4e-org-compose-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -781,7 +782,7 @@ Refer to the official <code>mu</code> and <code>mu4e</code> documentation for ad
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-02-20 Fri 23:44</p>
+<p class="date">Created: 2026-03-15 Sun 16:38</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

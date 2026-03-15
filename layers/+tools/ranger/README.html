@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-20 Fri 23:44 -->
+<!-- 2026-03-15 Sun 16:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ranger layer</title>
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -266,11 +267,11 @@ shows how you can set both variables at once via the
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
               '<span class="org-rainbow-delimiters-depth-2">(</span>ranger <span class="org-builtin">:variables</span>
                        ranger-override-dired 'ranger
                        ranger-show-preview t<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 <div id="outline-container-features" class="outline-3">
@@ -304,8 +305,8 @@ The possible values are:
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-enter-with-minus 'deer<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-enter-with-minus 'deer<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -314,8 +315,8 @@ while browsing the directories.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-cleanup-on-disable t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-cleanup-on-disable t<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -324,8 +325,8 @@ dired buffer.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-cleanup-eagerly t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-cleanup-eagerly t<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -333,8 +334,8 @@ You can choose to show dotfiles at ranger startup, toggled by <code>zh</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-show-hidden t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-show-hidden t<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -343,8 +344,8 @@ return a string that is placed in the header-line.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-header-func 'ranger-header-line<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-header-func 'ranger-header-line<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -353,8 +354,8 @@ return a string that is placed in the header-line.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-parent-header-func 'ranger-parent-header-line<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-parent-header-func 'ranger-parent-header-line<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 </div>
 </div>
@@ -366,11 +367,11 @@ Enable <code>dired-omit-mode</code> in dirvish buffers by default (layer variabl
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
               '<span class="org-rainbow-delimiters-depth-2">(</span>ranger <span class="org-builtin">:variables</span>
                        ranger-override-dired 'dirvish
                        dirvish-enable-dired-omit t<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -378,9 +379,9 @@ You can customize <code>dirvish-attributes</code> in your <code>dotspacemacs/use
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dirvish-attributes
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dirvish-attributes
       '<span class="org-rainbow-delimiters-depth-2">(</span>file-size file-time all-the-icons subtree-state vc-state<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -392,10 +393,10 @@ A recommended mode-line format for dirvish (add to <code>dotspacemacs/user-confi
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dirvish-mode-line-format
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dirvish-mode-line-format
       '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">:left</span> <span class="org-rainbow-delimiters-depth-3">(</span>sort file-time <span class="org-string">" "</span> file-size <span class="org-string">" "</span> file-modes <span class="org-string">" "</span> file-link-number<span class="org-rainbow-delimiters-depth-3">)</span>
               <span class="org-builtin">:right</span> <span class="org-rainbow-delimiters-depth-3">(</span>omit yank index<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -407,8 +408,8 @@ You can set the number of folders to nest to the left, adjusted by <code>z-</cod
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-parent-depth <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-parent-depth <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -416,8 +417,8 @@ You can set the size of the parent windows as a fraction of the frame size
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-width-parents <span class="org-highlight-numbers-number">0.12</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-width-parents <span class="org-highlight-numbers-number">0.12</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -426,8 +427,8 @@ frame size to prevent filling up entire frame with parents.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-max-parent-width <span class="org-highlight-numbers-number">0.12</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-max-parent-width <span class="org-highlight-numbers-number">0.12</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 </div>
 </div>
@@ -439,8 +440,8 @@ You can choose to show previews literally, or through find-file, toggled by <cod
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-show-literal t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-show-literal t<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -448,8 +449,8 @@ You can set the size of the preview windows as a fraction of the frame size
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-width-preview <span class="org-highlight-numbers-number">0.55</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-width-preview <span class="org-highlight-numbers-number">0.55</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -459,8 +460,8 @@ your liking:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-excluded-extensions '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"mkv"</span> <span class="org-string">"iso"</span> <span class="org-string">"mp4"</span> <span class="org-string">"bin"</span> <span class="org-string">"exe"</span> <span class="org-string">"msi"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-excluded-extensions '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"mkv"</span> <span class="org-string">"iso"</span> <span class="org-string">"mp4"</span> <span class="org-string">"bin"</span> <span class="org-string">"exe"</span> <span class="org-string">"msi"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -468,8 +469,8 @@ To set the max files size (in MB), set the following parameter:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-max-preview-size <span class="org-highlight-numbers-number">10</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ranger-max-preview-size <span class="org-highlight-numbers-number">10</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 </div>
 </div>
@@ -710,7 +711,7 @@ Dirvish key bindings (when <code>ranger-override-dired</code> is <code>dirvish</
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-02-20 Fri 23:44</p>
+<p class="date">Created: 2026-03-15 Sun 16:38</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

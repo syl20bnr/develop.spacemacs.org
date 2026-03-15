@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-20 Fri 23:44 -->
+<!-- 2026-03-15 Sun 16:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Newsletter #01: About the 0.200 release</title>
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -332,7 +333,7 @@ We renamed <code>extensions</code> directories in layers to <code>local</code> a
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">in extensions.el
+<pre class="src src-emacs-lisp"><code><span class="org-comment-delimiter">;; </span><span class="org-comment">in extensions.el
 </span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> python-post-extensions
   '<span class="org-rainbow-delimiters-depth-2">(</span>
     nose
@@ -340,7 +341,7 @@ We renamed <code>extensions</code> directories in layers to <code>local</code> a
     python-compile
     py-yapf
     <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -348,7 +349,7 @@ We renamed <code>extensions</code> directories in layers to <code>local</code> a
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">in packages.el
+<pre class="src src-emacs-lisp"><code><span class="org-comment-delimiter">;; </span><span class="org-comment">in packages.el
 </span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> python-packages
   '<span class="org-rainbow-delimiters-depth-2">(</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">skipping packages before...
@@ -356,7 +357,7 @@ We renamed <code>extensions</code> directories in layers to <code>local</code> a
     <span class="org-rainbow-delimiters-depth-3">(</span>pylookup <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-3">)</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">skipping packages after...
 </span>    <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -369,14 +370,14 @@ replaced by the <code>:excluded</code> keyword in <code>&lt;layer&gt;-packages</
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> vim-empty-lines-packages
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> vim-empty-lines-packages
       '<span class="org-rainbow-delimiters-depth-2">(</span>
         <span class="org-rainbow-delimiters-depth-3">(</span>vim-empty-lines-mode <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-3">)</span>
         <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> vim-empty-lines-excluded-packages
       '<span class="org-rainbow-delimiters-depth-2">(</span>vi-tilde-fringe<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -384,12 +385,12 @@ replaced by the <code>:excluded</code> keyword in <code>&lt;layer&gt;-packages</
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> vim-empty-lines-packages
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> vim-empty-lines-packages
       '<span class="org-rainbow-delimiters-depth-2">(</span>
         <span class="org-rainbow-delimiters-depth-3">(</span>vim-empty-lines-mode <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-3">)</span>
         <span class="org-rainbow-delimiters-depth-3">(</span>vi-tilde-fringe <span class="org-builtin">:excluded</span> t<span class="org-rainbow-delimiters-depth-3">)</span>
         <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -445,7 +446,7 @@ the central sequence to execute <span class="underline">any</span> interactive f
 Where is the <code>avy</code> command then ? We reorganised from the ground up the prefix
 <code>SPC j</code> for all jump commands. In the conventions a doubled key is often used
 for the default command under a given prefix, for instance <code>SPC b b</code> is for
-buffer selection, <code>SPC f f</code> for file selection etc&#x2026; The "jump to character"
+buffer selection, <code>SPC f f</code> for file selection etc&hellip; The "jump to character"
 command of <code>avy</code> is then under <code>SPC j j</code>. Here is a detailed list of the new
 <code>SPC j</code> prefix:
 </p>
@@ -524,7 +525,7 @@ actions bound to different keys between <code>SPC g</code> and the <code>magit</
 accessible under <code>?</code>. The new available keys allowed us to move some key
 bindings directly under <code>SPC g</code> like <code>git-link</code> which is now under <code>SPC g l</code>,
 it makes more sense to have it under <code>SPC g l</code> since it is agnostic of the
-hosting platform (i.e. it works with <code>GitHub</code>, <code>GitLab</code> etc&#x2026;).
+hosting platform (i.e. it works with <code>GitHub</code>, <code>GitLab</code> etc&hellip;).
 </p>
 
 <p>
@@ -590,7 +591,7 @@ An exhaustive list of all the <code>spacemacs</code> layers:
 <p>
 For people wanting an even more bare Emacs experience try the distribution
 layer <code>spacemacs-bootstrap</code> which installs only essential packages like
-<code>use-package</code>, <code>which-key</code>, etc&#x2026;
+<code>use-package</code>, <code>which-key</code>, etc&hellip;
 </p>
 
 <p>
@@ -601,9 +602,9 @@ packages <code>display-fill-column-indicator</code> and <code>golden-ratio</code
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-configuration-layers
   <span class="org-rainbow-delimiters-depth-2">(</span>spacemacs-ui-visual <span class="org-builtin">:packages</span> display-fill-column-indicator golden-ratio<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -611,9 +612,9 @@ Another example to select all the packages except <code>fancy-battery</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-configuration-layers
   <span class="org-rainbow-delimiters-depth-2">(</span>spacemacs-ui-visual <span class="org-builtin">:packages</span> <span class="org-rainbow-delimiters-depth-3">(</span>not fancy-battery<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -699,11 +700,11 @@ To define these new variables use the <code>:variables</code> keyword. For examp
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-editing-style '<span class="org-rainbow-delimiters-depth-2">(</span>hybrid <span class="org-builtin">:variables</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-editing-style '<span class="org-rainbow-delimiters-depth-2">(</span>hybrid <span class="org-builtin">:variables</span>
                                    hybrid-mode-enable-evilified-state t
                                    hybrid-mode-enable-hjkl-bindings t
                                    hybrid-mode-default-state 'normal<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -838,7 +839,7 @@ Like text searching tools, there is now the concept of jump handlers, each mode
 can set a list of jump handlers and Spacemacs will try them in order to get you
 to a symbol definition. This new abstraction alows to merge the different
 jumping tools under the same key binding, for instance <code>dumb-jump</code>, <code>tags</code>
-etc&#x2026;
+etc&hellip;
 </p>
 
 <p>
@@ -865,9 +866,9 @@ of 7 items for the projects list:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-startup-lists '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>recents  . <span class="org-highlight-numbers-number">5</span><span class="org-rainbow-delimiters-depth-3">)</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-startup-lists '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>recents  . <span class="org-highlight-numbers-number">5</span><span class="org-rainbow-delimiters-depth-3">)</span>
                                    <span class="org-rainbow-delimiters-depth-3">(</span>projects . <span class="org-highlight-numbers-number">7</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -1005,7 +1006,7 @@ of <code>evil</code>.</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-02-20 Fri 23:44</p>
+<p class="date">Created: 2026-03-15 Sun 16:38</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

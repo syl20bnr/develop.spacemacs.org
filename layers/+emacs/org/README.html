@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-20 Fri 23:44 -->
+<!-- 2026-03-15 Sun 16:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Org layer</title>
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -323,7 +324,7 @@
 </div>
 </div>
 
-<div id="org1930e31" class="figure">
+<div id="orgdf42d46" class="figure">
 <p><img src="img/org.png" alt="org.png" />
 </p>
 </div>
@@ -379,11 +380,11 @@ like this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'org
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'org
   <span class="org-comment-delimiter">;; </span><span class="org-comment">here goes your Org config :)
 </span>  <span class="org-comment-delimiter">;; </span><span class="org-comment">....
 </span>  <span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -429,10 +430,10 @@ minimalists:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
        org-todo-dependencies-strategy 'naive-auto<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -447,10 +448,10 @@ what you need:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
        org-todo-dependencies-strategy 'naive-auto<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -470,11 +471,11 @@ To enable notifications for agenda events, set the variable
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
        org-enable-notifications t
        org-start-notification-daemon-on-startup t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -493,8 +494,8 @@ also <a href="https://github.com/jwiegley/alert/pull/94">this issue</a>). Add <a
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> alert-default-style 'notifications<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> alert-default-style 'notifications<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -532,12 +533,12 @@ syntax:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-org"><span class="org-org-level-1">* Friday, 04/02/2021</span>
+<pre class="src src-org"><code><span class="org-org-level-1">* Friday, 04/02/2021</span>
   ** Appointment 1
   <span class="org-org-date">&lt;2021-04-02 Fri 10:10&gt;</span>
   ** TODO Appointment 2
   <span class="org-org-date">&lt;2021-04-02 Fri 10:11&gt;</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -559,9 +560,9 @@ flavored markdown set the variable <code>org-enable-github-support</code> to <co
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-github-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -575,10 +576,10 @@ This would install the <a href="https://github.com/marsmining/ox-twbs">ox-twbs</
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
        org-enable-bootstrap-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -607,9 +608,9 @@ This would install the <a href="https://gitlab.com/oer/org-re-reveal/">org-re-re
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-reveal-js-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -622,7 +623,7 @@ as it described in the <a href="https://gitlab.com/oer/org-re-reveal#set-the-loc
 Alternatively, add the following line to each <code>.org</code> file you want to process:
 </p>
 
-<pre class="example" id="orgebcca93">
+<pre class="example" id="org8e4a52a">
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@3.8.0
 </pre>
 </div>
@@ -646,14 +647,14 @@ visited with the keyboard shortcut <code>SPC a o C f</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>org <span class="org-builtin">:variables</span> org-enable-org-contacts-support t
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>org <span class="org-builtin">:variables</span> org-enable-org-contacts-support t
      org-contacts-files '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"~/Org/contacts.org"</span> <span class="org-string">"~/Org/file2.org"</span><span class="org-rainbow-delimiters-depth-2">)</span>
      org-capture-templates '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"c"</span> <span class="org-string">"Contacts"</span> entry <span class="org-rainbow-delimiters-depth-4">(</span>file <span class="org-string">"~/Org/contacts.org"</span><span class="org-rainbow-delimiters-depth-4">)</span>
                               <span class="org-string">"* %(org-contacts-template-name)
 :PROPERTIES:
 :EMAIL: %(org-contacts-template-email)
 :END:"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -668,9 +669,9 @@ preceding whitespace. So probably the best way is to add
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">* Birthdays
+<pre class="src src-emacs-lisp"><code>* Birthdays
 %%<span class="org-rainbow-delimiters-depth-1">(</span>org-contacts-anniversaries<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -708,10 +709,10 @@ To install org-journal - set the variable <code>org-enable-org-journal-support</
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
        org-enable-org-journal-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -720,8 +721,8 @@ this - set <code>org-journal-dir</code> variable in the <code>dotspacemacs/user-
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-journal-dir <span class="org-string">"~/org/journal/"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-journal-dir <span class="org-string">"~/org/journal/"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -729,8 +730,8 @@ To change the journal file name format - alter <code>org-journal-file-format</co
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-journal-file-format <span class="org-string">"%Y-%m-%d"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-journal-file-format <span class="org-string">"%Y-%m-%d"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -748,7 +749,7 @@ alter <code>org-journal-date-prefix</code> and <code>org-journal-date-format</co
 For example, to have new journal files created with this header:
 </p>
 
-<pre class="example" id="org8b97c85">
+<pre class="example" id="org9c5af91">
 #+TITLE: Tuesday, September 06 2016
 </pre></li>
 
@@ -757,9 +758,9 @@ define the following in <code>dotspacemacs/user-config</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-journal-date-prefix <span class="org-string">"#+TITLE: "</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-journal-date-prefix <span class="org-string">"#+TITLE: "</span><span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-journal-date-format <span class="org-string">"%A, %B %d %Y"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div></li>
 </ul>
 
@@ -771,9 +772,9 @@ the timestamp.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-journal-time-prefix <span class="org-string">"* "</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-journal-time-prefix <span class="org-string">"* "</span><span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-journal-time-format <span class="org-string">""</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -786,7 +787,7 @@ For example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
       org-enable-org-journal-support t
       org-journal-dir <span class="org-string">"~/org/journal/"</span>
@@ -796,7 +797,7 @@ For example:
       org-journal-time-prefix <span class="org-string">"* "</span>
       org-journal-time-format <span class="org-string">""</span><span class="org-rainbow-delimiters-depth-3">)</span>
 <span class="org-rainbow-delimiters-depth-2">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -810,10 +811,10 @@ To install the Org exporter <a href="https://ox-hugo.scripter.co">ox-hugo</a> th
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
        org-enable-hugo-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -825,10 +826,10 @@ To install Trello support set the variable <code>org-enable-trello-support</code
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
        org-enable-trello-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -842,8 +843,8 @@ You can tweak the bullets displayed in the org buffer in the function
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-superstar-headline-bullets-list '<span class="org-rainbow-delimiters-depth-2">(</span>?&#9632; ?&#9670; ?&#9650; ?&#9654;<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-superstar-headline-bullets-list '<span class="org-rainbow-delimiters-depth-2">(</span>?&#9632; ?&#9670; ?&#9650; ?&#9654;<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -851,8 +852,8 @@ You can disable the fancy bullets entirely by adding <code>org-superstar</code> 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>dotspacemacs-excluded-packages '<span class="org-rainbow-delimiters-depth-2">(</span>org-superstar<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>dotspacemacs-excluded-packages '<span class="org-rainbow-delimiters-depth-2">(</span>org-superstar<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 </div>
 </div>
@@ -872,9 +873,9 @@ the build in <code>project.el</code> alternative.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-project-capture-projects-file <span class="org-string">"TODOs.org"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -883,9 +884,9 @@ set file name based on project
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-project-capture-projects-file '<span class="org-rainbow-delimiters-depth-4">(</span>lambda <span class="org-rainbow-delimiters-depth-5">(</span>arg<span class="org-rainbow-delimiters-depth-5">)</span> <span class="org-rainbow-delimiters-depth-5">(</span>concat <span class="org-rainbow-delimiters-depth-6">(</span>projectile-project-name<span class="org-rainbow-delimiters-depth-6">)</span> <span class="org-string">".org"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -894,13 +895,13 @@ the following snippet.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'org-agenda
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'org-agenda
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">require</span> '<span class="org-constant">org-project-capture</span><span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>mapcar '<span class="org-rainbow-delimiters-depth-3">(</span>lambda <span class="org-rainbow-delimiters-depth-4">(</span>file<span class="org-rainbow-delimiters-depth-4">)</span>
                  <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-5">(</span>file-exists-p file<span class="org-rainbow-delimiters-depth-5">)</span>
                    <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-keyword">push</span> file org-agenda-files<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
           <span class="org-rainbow-delimiters-depth-3">(</span>org-project-capture-projects-file<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -924,10 +925,10 @@ To install org-roam support set the variable <code>org-enable-roam-support</code
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
        org-enable-roam-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -955,10 +956,10 @@ To enable support for <a href="https://www.orgroam.com/manual.html#Org_002droam-
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
        org-enable-roam-protocol t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -980,8 +981,8 @@ To permanently enable mode line display of org clock, add this snippet to your
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> spaceline-org-clock-p t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> spaceline-org-clock-p t<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 </div>
 </div>
@@ -993,10 +994,10 @@ To install sticky header support set the variable <code>org-enable-sticky-header
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
        org-enable-sticky-header t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -1009,10 +1010,10 @@ the variable <code>org-enable-epub-support</code> to <code>t</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs--configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs--configuration-layers
               '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
                      org-enable-epub-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -1025,11 +1026,11 @@ To bring Jira and OrgMode together over <a href="https://github.com/ahungry/org-
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
        org-enable-jira-support t
        jiralib-url <span class="org-string">"https://yourcompany.atlassian.net:443"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -1039,8 +1040,8 @@ you connect, add your authentication credentials to <code>~/.authinfo.gpg</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-authinfo"><span class="org-variable-name">machine</span> <span class="org-builtin">yourcompany.atlassian.net</span> <span class="org-comment-delimiter">login</span> <span class="org-keyword">you@example.com</span> <span class="org-comment-delimiter">password</span> <span class="org-doc">yourPassword</span> <span class="org-comment-delimiter">port</span> <span class="org-type">443</span>
-</pre>
+<pre class="src src-authinfo"><code><span class="org-variable-name">machine</span> <span class="org-builtin">yourcompany.atlassian.net</span> <span class="org-comment-delimiter">login</span> <span class="org-keyword">you@example.com</span> <span class="org-comment-delimiter">password</span> <span class="org-doc">yourPassword</span> <span class="org-comment-delimiter">port</span> <span class="org-type">443</span>
+</code></pre>
 </div>
 </div>
 </div>
@@ -1054,9 +1055,9 @@ Set the variable <code>org-enable-valign</code> to <code>t</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-valign t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -1080,9 +1081,9 @@ To enable it by default, set the <code>org-enable-modern-support</code> to <code
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-modern-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -1104,9 +1105,9 @@ To install <a href="https://github.com/awth13/org-appear">org-appear</a>, which 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-appear-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -1124,9 +1125,9 @@ via a file link or an ID lin, set the <code>org-enable-transclusion-support</cod
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-transclusion-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -1139,9 +1140,9 @@ To install <a href="https://github.com/federicotdn/verb">Verb</a>, an HTTP clien
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-verb-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -1154,9 +1155,9 @@ variable <code>org-enable-asciidoc-support</code> to <code>t</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-asciidoc-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -1170,9 +1171,9 @@ the <a href="../../+lang/mermaid/README.html">Mermaid layer</a>).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-mermaid-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -1180,11 +1181,11 @@ With this feature enabled, you can use Mermaid diagrams in Org mode source block
 </p>
 
 <div class="org-src-container">
-<pre class="src src-mermaid">graph TD
+<pre class="src src-mermaid"><code>graph TD
     A[Client] --&gt; B[Load Balancer]
     B --&gt; C[Server1]
     B --&gt; D[Server2]
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -2781,8 +2782,8 @@ each binding are listed bellow.
 <tbody>
 <tr>
 <td class="org-left">Entry</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
 </tr>
 </tbody>
 <tbody>
@@ -2825,8 +2826,8 @@ each binding are listed bellow.
 <tbody>
 <tr>
 <td class="org-left">Visit entry</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
 </tr>
 </tbody>
 <tbody>
@@ -2857,8 +2858,8 @@ each binding are listed bellow.
 <tbody>
 <tr>
 <td class="org-left">Filter</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
 </tr>
 </tbody>
 <tbody>
@@ -2895,8 +2896,8 @@ each binding are listed bellow.
 <tbody>
 <tr>
 <td class="org-left">Date</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
 </tr>
 </tbody>
 <tbody>
@@ -2945,8 +2946,8 @@ each binding are listed bellow.
 <tbody>
 <tr>
 <td class="org-left">Toggle</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
 </tr>
 </tbody>
 <tbody>
@@ -2989,8 +2990,8 @@ each binding are listed bellow.
 <tbody>
 <tr>
 <td class="org-left">View</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
 </tr>
 </tbody>
 <tbody>
@@ -3045,8 +3046,8 @@ each binding are listed bellow.
 <tbody>
 <tr>
 <td class="org-left">Clock</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
 </tr>
 </tbody>
 <tbody>
@@ -3077,8 +3078,8 @@ each binding are listed bellow.
 <tbody>
 <tr>
 <td class="org-left">Other</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
 </tr>
 </tbody>
 <tbody>
@@ -3987,7 +3988,7 @@ Key binding prefixes:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-02-20 Fri 23:44</p>
+<p class="date">Created: 2026-03-15 Sun 16:38</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

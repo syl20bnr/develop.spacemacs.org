@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-20 Fri 23:44 -->
+<!-- 2026-03-15 Sun 16:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Scheme layer</title>
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -286,10 +287,10 @@ following example for guile and racket:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">dotspacemacs-configuration-layers
+<pre class="src src-elisp"><code>dotspacemacs-configuration-layers
 '<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>scheme <span class="org-builtin">:variables</span>
            scheme-implementations '<span class="org-rainbow-delimiters-depth-3">(</span>guile racket<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -320,10 +321,10 @@ For full Chicken support, the following commands should be run:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">$ chicken-install -s apropos chicken-doc
+<pre class="src src-shell"><code>$ chicken-install -s apropos chicken-doc
 $ cd <span class="org-sh-quoted-exec">`csi -p '(chicken-home)'`</span>
 $ curl https://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -332,8 +333,8 @@ so the command for changing to that directory can be accomplished with this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">$ cd <span class="org-sh-quoted-exec">`csi -b -e "(import (chicken platform))" -p "(chicken-home)"`</span>
-</pre>
+<pre class="src src-shell"><code>$ cd <span class="org-sh-quoted-exec">`csi -b -e "(import (chicken platform))" -p "(chicken-home)"`</span>
+</code></pre>
 </div>
 
 <p>
@@ -341,8 +342,8 @@ so the command for changing to that directory can be accomplished with this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">$ chicken-install -s srfi-18
-</pre>
+<pre class="src src-shell"><code>$ chicken-install -s srfi-18
+</code></pre>
 </div>
 
 <p>
@@ -350,7 +351,7 @@ Additionally, as of 2018-12-12 there is a <a href="https://git.archlinux.org/svn
 in some of the Linux package repos:
 </p>
 
-<pre class="example" id="org62f6a9f">
+<pre class="example" id="org38a05ee">
 # Chicken had csc and csi first, but then mono introduced a conflict and
 # does not seem to want to change this. OpenBSD renamed csc and csi to
 # chicken-csc and chicken-csi 2018-12-12.
@@ -362,8 +363,8 @@ REPL binary on your system is <code>chicken-csi</code>, you will also need to ad
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> geiser-chicken-binary <span class="org-string">"chicken-csi"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> geiser-chicken-binary <span class="org-string">"chicken-csi"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -391,8 +392,8 @@ function in your <code>dotspacemacs/user-config</code> function:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-scheme-mode<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-scheme-mode<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -400,8 +401,8 @@ or to enable it for all supported modes:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -897,7 +898,7 @@ When enabled the symbol <code>🆂</code> should be displayed in the mode-line.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-02-20 Fri 23:44</p>
+<p class="date">Created: 2026-03-15 Sun 16:38</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

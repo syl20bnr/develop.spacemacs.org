@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-20 Fri 23:44 -->
+<!-- 2026-03-15 Sun 16:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Contribution guidelines</title>
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -437,7 +438,7 @@ Those PRs are usually <i>cherry-picked</i>.
 <div class="outline-text-5" id="text-for-complex-prs-big-refactoring-etc">
 <ul class="org-ul">
 <li>Squash only the commits with uninteresting changes like typos, syntax fixes,
-etc&#x2026; and keep the important and <i>isolated</i> steps in different commits.</li>
+etc&hellip; and keep the important and <i>isolated</i> steps in different commits.</li>
 </ul>
 
 <p>
@@ -466,7 +467,7 @@ characters.</li>
 This is a model commit message:
 </p>
 
-<pre class="example" id="orge48a88f">
+<pre class="example" id="org62af188">
 Capitalized, short (72 chars or less) summary
 
 More detailed explanatory text, if necessary.  Wrap it to about 72
@@ -529,7 +530,7 @@ variable <code>dotspacemacs-additional-packages</code>.
 The file header for <code>elisp</code> files should look like the following template:
 </p>
 
-<pre class="example" id="orgaf0ca3c">
+<pre class="example" id="org342d116">
 
 ;;; FILENAME --- NAME Layer &lt;TYPE&gt; File for Spacemacs
 ;;
@@ -580,7 +581,7 @@ name.
 Every README.org file of a layer should have <code>#+TAGS:</code> line:
 </p>
 
-<pre class="example" id="org9ac4a4e">
+<pre class="example" id="org4c4772c">
 #+TITLE: My layer
 
 #+TAGS: layer|web service
@@ -596,13 +597,13 @@ Tags are listed in <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-clojure">:spacetools.spacedoc.config/valid-tags
+<pre class="src src-clojure"><code>:spacetools.spacedoc.config/valid-tags
 {"chat" "Chats"
 ...
  &lt;TAG&gt; &lt;LABEL&gt;
 ...
  "completion" "Completion"}
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -634,11 +635,11 @@ If you want to experiment with the tool locally:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">docker run --rm <span class="org-sh-escaped-newline">\</span>
+<pre class="src src-shell"><code>docker run --rm <span class="org-sh-escaped-newline">\</span>
   -v &lt;SPACEMACS_REPO_ROOT&gt;:/tmp/docs <span class="org-sh-escaped-newline">\</span>
   -v &lt;PATH_TO_CONFIG_FILE&gt;:/opt/spacetools/spacedoc-cfg.edn <span class="org-sh-escaped-newline">\</span>
   jare/spacetools docfmt /tmp/docs/
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -734,7 +735,7 @@ the code conventions. Copy the following line to your approving review to notify
 the collaborators:
 </p>
 
-<pre class="example" id="orgcaec553">
+<pre class="example" id="org71e18fe">
 Ready to be merged! (@syl20bnr @TheBB @d12frosted @bmag @JAremko)
 </pre>
 
@@ -816,14 +817,14 @@ See existing tests for examples.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-makefile"><span class="org-variable-name">TEST_DIR</span> := $<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">shell</span> dirname $<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-variable-name">realpath</span> $<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-variable-name">lastword</span> $<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-variable-name">MAKEFILE_LIST</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-makefile"><code><span class="org-variable-name">TEST_DIR</span> := $<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">shell</span> dirname $<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-variable-name">realpath</span> $<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-variable-name">lastword</span> $<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-variable-name">MAKEFILE_LIST</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-variable-name">LOAD_FILES</span> = ...
 <span class="org-variable-name">UNIT_TEST_FILES</span> = ...
 <span class="org-variable-name">FUNC_TEST_FILES</span> = ...
 
 <span class="org-keyword">include</span> <span class="org-variable-name">../../spacemacs.mk</span>
-</pre>
+</code></pre>
 </div></li>
 
 <li>Add the new test to list of tests in <code>travis/run_build.sh</code>.</li>
@@ -843,7 +844,7 @@ guidelines</a> and <a href="https://github.com/flycheck/flycheck/blob/master/doc
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-02-20 Fri 23:44</p>
+<p class="date">Created: 2026-03-15 Sun 16:38</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

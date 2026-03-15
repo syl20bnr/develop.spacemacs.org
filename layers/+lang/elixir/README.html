@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-20 Fri 23:44 -->
+<!-- 2026-03-15 Sun 16:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elixir layer</title>
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -281,7 +282,7 @@
 </div>
 </div>
 
-<div id="org287e505" class="figure">
+<div id="orgefdbed2" class="figure">
 <p><img src="img/elixir.png" alt="elixir.png" />
 </p>
 </div>
@@ -343,8 +344,8 @@ To choose a default backend set the layer variable <code>elixir-backend</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>elixir <span class="org-builtin">:variables</span> elixir-backend 'alchemist<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>elixir <span class="org-builtin">:variables</span> elixir-backend 'alchemist<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -359,11 +360,11 @@ Backend can be chosen on a per project basis using directory local variables
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables
+<pre class="src src-elisp"><code><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables
 </span><span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")
 </span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>elixir-mode <span class="org-rainbow-delimiters-depth-3">(</span>elixir-backend . lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -508,8 +509,8 @@ to dependencies of your project (in file <code>mix.exs</code>):
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elixir">{:credo, "~&gt; 0.5", only: [:dev, :test]}
-</pre>
+<pre class="src src-elixir"><code>{:credo, "~&gt; 0.5", only: [:dev, :test]}
+</code></pre>
 </div>
 
 <p>
@@ -517,8 +518,8 @@ Then run in your shell:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">$ mix deps.get
-</pre>
+<pre class="src src-shell"><code>$ mix deps.get
+</code></pre>
 </div>
 
 <p>
@@ -526,12 +527,12 @@ For more info about mix <a href="http://elixir-lang.org/getting-started/mix-otp/
 </p>
 
 <p>
-You can tell flycheck-credo to call credo with the '&#x2013;strict' argument.
+You can tell flycheck-credo to call credo with the '&ndash;strict' argument.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> flycheck-elixir-credo-strict t<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> flycheck-elixir-credo-strict t<span class="org-rainbow-delimiters-depth-1">)</span>
+</code></pre>
 </div>
 </div>
 </div>
@@ -544,8 +545,8 @@ For this, add the following snippet to the dependencies in your <code>mix.exs</c
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elixir">{:dogma, "~&gt; 0.1", only: [:dev]}
-</pre>
+<pre class="src src-elixir"><code>{:dogma, "~&gt; 0.1", only: [:dev]}
+</code></pre>
 </div>
 
 <p>
@@ -553,8 +554,8 @@ Then run in your shell:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">$ mix deps.get
-</pre>
+<pre class="src src-shell"><code>$ mix deps.get
+</code></pre>
 </div>
 </div>
 </div>
@@ -575,9 +576,9 @@ For <code>elixir-ls</code> this would be:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>elixir <span class="org-builtin">:variables</span> elixir-backend 'lsp
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>elixir <span class="org-builtin">:variables</span> elixir-backend 'lsp
                    elixir-ls-path <span class="org-string">"*path to folder*/elixir-ls/release"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -585,9 +586,9 @@ For <code>lexical</code> this would be:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>elixir <span class="org-builtin">:variables</span> elixir-backend 'lsp
+<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>elixir <span class="org-builtin">:variables</span> elixir-backend 'lsp
                    lsp-elixir-server-command '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"*path to folder*/lexical/bin/start_lexical.sh"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
@@ -1241,7 +1242,7 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-02-20 Fri 23:44</p>
+<p class="date">Created: 2026-03-15 Sun 16:38</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
