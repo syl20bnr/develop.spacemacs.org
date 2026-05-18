@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-07 Thu 21:24 -->
+<!-- 2026-05-18 Mon 17:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Frequently Asked Questions</title>
@@ -279,7 +279,7 @@
 <li><a href="#linux">3. Linux</a>
 <ul>
 <li><a href="#error-on-deleting-a-system-package">3.1. Error on deleting a system package</a></li>
-<li><a href="#speedup-the-spacemacs-with-package-quickstart">3.2. Speedup the Spacemacs with package-quickstart</a></li>
+<li><a href="#speed-up-spacemacs-with-package-quickstart">3.2. Speed up Spacemacs with package-quickstart</a></li>
 </ul>
 </li>
 <li><a href="#windows">4. Windows</a>
@@ -1193,7 +1193,7 @@ If you see the an error message when either Spacemacs is trying to delete an orp
 or when you are trying to a package manually:
 </p>
 
-<pre class="example" id="org9340b1b">
+<pre class="example" id="org51fd825">
 Package ‘PACKAGE-NAME’ is a system package, not deleting
 </pre>
 
@@ -1209,25 +1209,29 @@ In addition, you also need to add the said package to <code>dotspacemacs-frozen-
 </p>
 </div>
 </div>
-<div id="outline-container-speedup-the-spacemacs-with-package-quickstart" class="outline-3">
-<h3 id="speedup-the-spacemacs-with-package-quickstart"><span class="section-number-3">3.2.</span> Speedup the Spacemacs with package-quickstart</h3>
-<div class="outline-text-3" id="text-speedup-the-spacemacs-with-package-quickstart">
+<div id="outline-container-speed-up-spacemacs-with-package-quickstart" class="outline-3">
+<h3 id="speed-up-spacemacs-with-package-quickstart"><span class="section-number-3">3.2.</span> Speed up Spacemacs with package-quickstart</h3>
+<div class="outline-text-3" id="text-speed-up-spacemacs-with-package-quickstart">
 <p>
 The <code>package-quickstart</code> will collect all the <code>*-autoloads.el</code> into one file
-<code>package-quickstart-file</code> to speed up the packages loading procedure. After
-Spacemacs startup, manually executing the function <code>package-quickstart-refreshe</code>
-to generate the package quickstart file, then setting the
-<code>dotspacemacs-enable-package-quickstart</code> to <code>t</code>, on the next startup, the
-Spacemacs will set up packages with loading the <code>package-quickstart-file</code>, won't
-call the <code>package-initialize</code> (which will scan <code>package-user-dir</code> and active
+<code>package-quickstart-file</code> to speed up the packages loading procedure.
+</p>
+
+<p>
+After Spacemacs startup, manually execute the function
+<code>package-quickstart-refreshe</code> to generate the package quickstart file,
+then set the dotfile variable <code>dotspacemacs-enable-package-quickstart</code>
+to <code>t</code>. On the next startup, the Spacemacs will set up packages by
+loading the <code>package-quickstart-file</code> rather than calling
+<code>package-initialize</code> (which will scan <code>package-user-dir</code> and activate
 packages one by one).
 </p>
 
 <p>
-<b>NOTE</b>: Please enable the <code>load-hints</code> feature first, otherwise the
-<code>package-quickstart-file</code> addes all the package directories into the <code>load-path</code>
-may lead Spacemacs startup slower than no <code>package-quickstartup</code> feature
-enabled.
+<b>NOTE</b>: Consider enabling the <code>load-hints</code> feature first, otherwise
+the <code>package-quickstart-file</code> adds all the package directories to
+<code>load-path</code>, and may lead to Spacemacs starting up slower than without
+<code>package-quickstart</code> feature enabled.
 </p>
 </div>
 </div>
@@ -1364,7 +1368,7 @@ will find the best option combinations.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-05-07 Thu 21:24</p>
+<p class="date">Created: 2026-05-18 Mon 17:24</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
