@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-18 Mon 17:24 -->
+<!-- 2026-08-22 Sat 18:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SQL layer</title>
@@ -257,7 +257,7 @@
 </div>
 </div>
 
-<div id="orgbd65578" class="figure">
+<div id="orgb478d7e" class="figure">
 <p><img src="img/sql.png" alt="sql.png" />
 </p>
 </div>
@@ -327,8 +327,8 @@ Some functionality, like linting, rely on external binaries:
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-sh"><code><span class="org-comment-delimiter"># </span><span class="org-comment">Download and extract the binary 0.4.0 for linux
-</span>wget -q -O - https://github.com/mjibson/sqlfmt/releases/latest/download/sqlfmt_0.4.0_linux_amd64.tar.gz | tar -xpvzf - --directory <span class="org-string">"${installdir}/bin"</span>
+<pre class="src src-sh"><code># Download and extract the binary 0.4.0 for linux
+wget -q -O - https://github.com/mjibson/sqlfmt/releases/latest/download/sqlfmt_0.4.0_linux_amd64.tar.gz | tar -xpvzf - --directory "${installdir}/bin"
 </code></pre>
 </div>
 <ul class="org-ul">
@@ -340,10 +340,10 @@ Some functionality, like linting, rely on external binaries:
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>sql <span class="org-builtin">:variables</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers '(
+  (sql :variables
        sql-backend 'lsp
-       sql-lsp-sqls-workspace-config-path 'workspace<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+       sql-lsp-sqls-workspace-config-path 'workspace)))
 </code></pre>
 </div>
 
@@ -377,8 +377,8 @@ variable <code>sql-capitalize-keywords</code> to <code>t</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>sql <span class="org-builtin">:variables</span> sql-capitalize-keywords t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers '(
+  (sql :variables sql-capitalize-keywords t)))
 </code></pre>
 </div>
 </div>
@@ -402,10 +402,10 @@ a list with keywords to ignore, e.g.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>sql <span class="org-builtin">:variables</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers '(
+  (sql :variables
        sql-capitalize-keywords t
-       sql-capitalize-keywords-blacklist '<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">"name"</span> <span class="org-string">"varchar"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+       sql-capitalize-keywords-blacklist '("name" "varchar"))))
 </code></pre>
 </div>
 
@@ -426,8 +426,8 @@ auto-indent by setting the variable <code>sql-auto-indent</code> to <code>nil</c
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>sql <span class="org-builtin">:variables</span> sql-auto-indent nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers '(
+  (sql :variables sql-auto-indent nil)))
 </code></pre>
 </div>
 </div>
@@ -656,7 +656,7 @@ auto-indent by setting the variable <code>sql-auto-indent</code> to <code>nil</c
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-05-18 Mon 17:24</p>
+<p class="date">Created: 2026-08-22 Sat 18:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

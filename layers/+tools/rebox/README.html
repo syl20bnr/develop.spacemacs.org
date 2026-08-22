@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-18 Mon 17:24 -->
+<!-- 2026-08-22 Sat 18:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rebox layer</title>
@@ -308,7 +308,7 @@ of styles using <code>SPC x b n</code>. This list can be customized by setting t
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> rebox-style-loop '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-highlight-numbers-number">71</span> <span class="org-highlight-numbers-number">72</span> <span class="org-highlight-numbers-number">73</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq rebox-style-loop '(71 72 73))
 </code></pre>
 </div>
 </div>
@@ -323,8 +323,8 @@ need to set the layer variable <code>rebox-enable-in-text-mode</code> to <code>t
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>rebox <span class="org-builtin">:variables</span> rebox-enable-in-text-mode t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers '(
+    (rebox :variables rebox-enable-in-text-mode t)))
 </code></pre>
 </div>
 </div>
@@ -362,53 +362,53 @@ These templates are added by the Spacemacs layer.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><code><span class="org-comment-delimiter">#</span><span class="org-comment">
-</span><span class="org-comment-delimiter"># </span><span class="org-comment">box style 71
-</span><span class="org-comment-delimiter">#</span><span class="org-comment">
-</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">------------
-</span><span class="org-comment-delimiter"># </span><span class="org-comment">box style 72
-</span><span class="org-comment-delimiter"># </span><span class="org-comment">------------
-</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">============
-</span><span class="org-comment-delimiter"># </span><span class="org-comment">box style 73
-</span><span class="org-comment-delimiter"># </span><span class="org-comment">============
-</span>
-<span class="org-comment-delimiter">#</span><span class="org-comment">--------------
-</span><span class="org-comment-delimiter"># </span><span class="org-comment">box style 74
-</span><span class="org-comment-delimiter">#</span><span class="org-comment">--------------
-</span>
-<span class="org-comment-delimiter">#</span><span class="org-comment">--------------+
-</span><span class="org-comment-delimiter"># </span><span class="org-comment">box style 75
-</span><span class="org-comment-delimiter">#</span><span class="org-comment">--------------+
-</span>
-<span class="org-comment-delimiter">#</span><span class="org-comment">==============
-</span><span class="org-comment-delimiter"># </span><span class="org-comment">box style 76
-</span><span class="org-comment-delimiter">#</span><span class="org-comment">==============
-</span>
-<span class="org-comment-delimiter">##</span><span class="org-comment">
-</span><span class="org-comment-delimiter">## </span><span class="org-comment">box style 81
-</span><span class="org-comment-delimiter">##</span><span class="org-comment">
-</span>
-<span class="org-comment-delimiter">## </span><span class="org-comment">------------
-</span><span class="org-comment-delimiter">## </span><span class="org-comment">box style 82
-</span><span class="org-comment-delimiter">## </span><span class="org-comment">------------
-</span>
-<span class="org-comment-delimiter">## </span><span class="org-comment">============
-</span><span class="org-comment-delimiter">## </span><span class="org-comment">box style 83
-</span><span class="org-comment-delimiter">## </span><span class="org-comment">============
-</span>
-<span class="org-comment-delimiter">##</span><span class="org-comment">--------------
-</span><span class="org-comment-delimiter">## </span><span class="org-comment">box style 84
-</span><span class="org-comment-delimiter">##</span><span class="org-comment">--------------
-</span>
-<span class="org-comment-delimiter">##</span><span class="org-comment">--------------+
-</span><span class="org-comment-delimiter">## </span><span class="org-comment">box style 85
-</span><span class="org-comment-delimiter">##</span><span class="org-comment">--------------+
-</span>
-<span class="org-comment-delimiter">##</span><span class="org-comment">==============
-</span><span class="org-comment-delimiter">## </span><span class="org-comment">box style 86
-</span><span class="org-comment-delimiter">##</span><span class="org-comment">==============</span>
+<pre class="src src-sh"><code>#
+# box style 71
+#
+
+# ------------
+# box style 72
+# ------------
+
+# ============
+# box style 73
+# ============
+
+#--------------
+# box style 74
+#--------------
+
+#--------------+
+# box style 75
+#--------------+
+
+#==============
+# box style 76
+#==============
+
+##
+## box style 81
+##
+
+## ------------
+## box style 82
+## ------------
+
+## ============
+## box style 83
+## ============
+
+##--------------
+## box style 84
+##--------------
+
+##--------------+
+## box style 85
+##--------------+
+
+##==============
+## box style 86
+##==============
 </code></pre>
 </div>
 </div>
@@ -473,7 +473,7 @@ These templates are added by the Spacemacs layer.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-05-18 Mon 17:24</p>
+<p class="date">Created: 2026-08-22 Sat 18:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

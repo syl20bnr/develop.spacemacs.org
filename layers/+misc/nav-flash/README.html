@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-18 Mon 17:24 -->
+<!-- 2026-08-22 Sat 18:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>nav-flash layer</title>
@@ -267,8 +267,8 @@ To use this configuration layer, add <code>nav-flash</code> to the existing
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span>nav-flash<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers
+              '(nav-flash))
 </code></pre>
 </div>
 </div>
@@ -297,16 +297,16 @@ They are added to <a href="https://www.gnu.org/software/emacs/manual/html_node/e
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-comment-delimiter">;; </span><span class="org-comment">blink after triggering evil-window-left/right/up/down
-</span><span class="org-rainbow-delimiters-depth-1">(</span>advice-add #'evil-window-left  <span class="org-builtin">:after</span> #'nav-flash/blink-cursor-maybe<span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>advice-add #'evil-window-right <span class="org-builtin">:after</span> #'nav-flash/blink-cursor-maybe<span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>advice-add #'evil-window-up    <span class="org-builtin">:after</span> #'nav-flash/blink-cursor-maybe<span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>advice-add #'evil-window-down  <span class="org-builtin">:after</span> #'nav-flash/blink-cursor-maybe<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>;; blink after triggering evil-window-left/right/up/down
+(advice-add #'evil-window-left  :after #'nav-flash/blink-cursor-maybe)
+(advice-add #'evil-window-right :after #'nav-flash/blink-cursor-maybe)
+(advice-add #'evil-window-up    :after #'nav-flash/blink-cursor-maybe)
+(advice-add #'evil-window-down  :after #'nav-flash/blink-cursor-maybe)
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">blink after a delay in after projectile-switch-project
-</span><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/add-to-hooks #'nav-flash/delayed-blink-cursor-h
-                        '<span class="org-rainbow-delimiters-depth-2">(</span>projectile-after-switch-project-hook<span class="org-rainbow-delimiters-depth-2">)</span>
-                        t<span class="org-rainbow-delimiters-depth-1">)</span>
+;; blink after a delay in after projectile-switch-project
+(spacemacs/add-to-hooks #'nav-flash/delayed-blink-cursor-h
+                        '(projectile-after-switch-project-hook)
+                        t)
 </code></pre>
 </div>
 </div>
@@ -322,10 +322,10 @@ the command or the major mode is excluded, which can be customized via variables
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-comment-delimiter">;; </span><span class="org-comment">don't trigger in dired-mode
-</span><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'nav-flash-exclude-modes 'dired-mode <span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">don't trigger for spacemacs/alternate-buffer (SPC TAB)
-</span><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'nav-flash-exclude-commands 'spacemacs/alternate-buffer<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>;; don't trigger in dired-mode
+(add-to-list 'nav-flash-exclude-modes 'dired-mode )
+;; don't trigger for spacemacs/alternate-buffer (SPC TAB)
+(add-to-list 'nav-flash-exclude-commands 'spacemacs/alternate-buffer)
 </code></pre>
 </div>
 </div>
@@ -342,7 +342,7 @@ This layer is ported from <a href="https://github.com/doomemacs/doomemacs">Doom 
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-05-18 Mon 17:24</p>
+<p class="date">Created: 2026-08-22 Sat 18:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

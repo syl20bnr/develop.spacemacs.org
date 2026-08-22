@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-18 Mon 17:24 -->
+<!-- 2026-08-22 Sat 18:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Version-Control layer</title>
@@ -301,8 +301,8 @@ supported packages:
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>'<span class="org-rainbow-delimiters-depth-1">(</span>version-control <span class="org-builtin">:variables</span>
-                  version-control-diff-tool 'diff-hl<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>'(version-control :variables
+                  version-control-diff-tool 'diff-hl)
 </code></pre>
 </div>
 
@@ -311,19 +311,19 @@ You can choose the side on which the diff appears (by default it's the right sid
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>'<span class="org-rainbow-delimiters-depth-1">(</span>version-control <span class="org-builtin">:variables</span>
-                  version-control-diff-side 'left<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>'(version-control :variables
+                  version-control-diff-side 'left)
 </code></pre>
 </div>
 
 <p>
-To automatically enable diff margins in all buffers, set
-<code>version-control-margin</code>
+Diff margins are automatically enabled in all buffers, but they can be
+disabled if you only want to use other diff-hl features:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>'<span class="org-rainbow-delimiters-depth-1">(</span>version-control <span class="org-builtin">:variables</span>
-                  version-control-margin 'global<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>'(version-control :variables
+                  version-control-margin nil)
 </code></pre>
 </div>
 </div>
@@ -385,9 +385,11 @@ one over the other:
 </table>
 
 <p>
-The <code>diff-hl</code> or <code>git-gutter-fringe</code> supports GUI/Fringe, while the
-<code>diff-hl-margin</code> or <code>git-gutter</code> supports the TUI/Margin. Check the variable
-<code>version-control-margin</code> for how Spacemace selecting the margin features.
+<code>diff-hl</code> supports both the margin (TTY frames) and the fringe (GUI
+frames). <code>git-gutter-fringe</code> supports only the GUI/Fringe, while the
+<code>git-gutter</code> supports the TUI/Margin. Check the variable
+<code>version-control-margin</code> for how Spacemacs selects the margin
+features.
 </p>
 </div>
 </div>
@@ -1217,7 +1219,7 @@ Other:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-05-18 Mon 17:24</p>
+<p class="date">Created: 2026-08-22 Sat 18:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-18 Mon 17:24 -->
+<!-- 2026-08-22 Sat 18:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Helm Gtags layer</title>
@@ -396,7 +396,7 @@ Then run these commands:
 
 <div class="org-src-container">
 <pre class="src src-sh"><code>tar xvf global-&lt;version&gt;.tar.gz
-<span class="org-builtin">cd</span> global-&lt;version&gt;
+cd global-&lt;version&gt;
 </code></pre>
 </div>
 
@@ -405,7 +405,7 @@ If you have gcc version 10 then you will have to force building with an earlier 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><code>./configure <span class="org-variable-name">CC</span>=gcc-8 --with-exuberant-ctags=/usr/bin/ctags
+<pre class="src src-sh"><code>./configure CC=gcc-8 --with-exuberant-ctags=/usr/bin/ctags
 </code></pre>
 </div>
 
@@ -433,7 +433,7 @@ sudo make install
 <div class="outline-text-5" id="text-configure-your-environment-to-use-pygments-and-ctags">
 <p>
 To be able to use <code>pygments</code> and <code>ctags</code>, you need to copy the sample
-<code>gtags.conf</code> either to <code>/etc/gtags.conf</code> or <code>$HOME/.globalrc</code>. For example:
+<code>gtags.conf</code> either to <code>/etc/gtags.conf</code> or <code>"${HOME}/.globalrc"</code>. For example:
 </p>
 
 <div class="org-src-container">
@@ -447,7 +447,7 @@ with sh/ksh:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><code><span class="org-builtin">echo</span> export <span class="org-variable-name">GTAGSLABEL</span>=pygments &gt;&gt; .profile
+<pre class="src src-sh"><code>echo export GTAGSLABEL=pygments &gt;&gt; .profile
 </code></pre>
 </div>
 
@@ -456,7 +456,7 @@ With fish:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><code><span class="org-builtin">echo</span> export set -x GTAGSLABEL pygments &gt;&gt; $<span class="org-rainbow-delimiters-depth-1">{</span><span class="org-variable-name">HOME</span><span class="org-rainbow-delimiters-depth-1">}</span>/.config/fish/config.fish
+<pre class="src src-sh"><code>echo export set -x GTAGSLABEL pygments &gt;&gt; ${HOME}/.config/fish/config.fish
 </code></pre>
 </div>
 </div>
@@ -473,7 +473,7 @@ configure <code>emacs</code> as following before installing:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><code>./configure --program-transform-name=<span class="org-string">'s/^ctags$/ctags.emacs/'</span>
+<pre class="src src-sh"><code>./configure --program-transform-name='s/^ctags$/ctags.emacs/'
 </code></pre>
 </div>
 
@@ -502,11 +502,11 @@ will need to add <code>gtags</code> to the existing <code>dotspacemacs-configura
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-configuration-layers
-      '<span class="org-rainbow-delimiters-depth-2">(</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">...
-</span>        gtags
-         <span class="org-comment-delimiter">;; </span><span class="org-comment">...
-</span>        <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq dotspacemacs-configuration-layers
+      '( ;; ...
+        gtags
+         ;; ...
+        ))
 </code></pre>
 </div>
 </div>
@@ -519,8 +519,8 @@ layer variable <code>gtags-enable-by-default</code> to <code>nil</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>gtags <span class="org-builtin">:variables</span> gtags-enable-by-default t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers
+  '((gtags :variables gtags-enable-by-default t)))
 </code></pre>
 </div>
 
@@ -548,13 +548,13 @@ a backend to generate the database.</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-sh"><code><span class="org-builtin">cd</span> /path/to/project/root
+<pre class="src src-sh"><code>cd /path/to/project/root
 
-<span class="org-comment-delimiter"># </span><span class="org-comment">If the language is not directly supported and GTAGSLABEL is not set
-</span>gtags --gtagslabel=pygments
+# If the language is not directly supported and GTAGSLABEL is not set
+gtags --gtagslabel=pygments
 
-<span class="org-comment-delimiter"># </span><span class="org-comment">Otherwise
-</span>gtags
+# Otherwise
+gtags
 </code></pre>
 </div>
 </div>
@@ -876,7 +876,7 @@ In addition <code>gtags</code> commands are also supported for symbols in the
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-05-18 Mon 17:24</p>
+<p class="date">Created: 2026-08-22 Sat 18:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

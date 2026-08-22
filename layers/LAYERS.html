@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-18 Mon 17:25 -->
+<!-- 2026-08-22 Sat 18:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spacemacs layers list</title>
@@ -2464,7 +2464,7 @@ Features:
 </p>
 <ul class="org-ul">
 <li>Fountain files support via <a href="https://github.com/rnkn/fountain-mode/">fountain-mode</a></li>
-<li>Confortable writing layout via <a href="https://github.com/rnkn/olivetti/">olivetti-mode</a></li>
+<li>Comfortable writing layout via <a href="https://github.com/rnkn/olivetti/">olivetti-mode</a></li>
 </ul>
 </div>
 </li>
@@ -2672,7 +2672,7 @@ For example, the following diagram can be defined as follows:
 <pre class="src src-plantuml"><code>@startuml
 JAremko-&gt;robbyoconnor : I think the docs can benefit from some kind of illustration
 JAremko&lt;-robbyoconnor : I'm too lazy -- I have actual work to do. I link to the docs. If you can write me a diagram in plantuml, I'll gladly compile and add it.
-JAremko-&gt;robbyoconnor : *gives ths diagram*
+JAremko-&gt;robbyoconnor : *gives this diagram*
 robbyoconnor&lt;-JAremko : *robbyoconnor adds it and JAremko is happy*
 ...
 robbyoconnor-&gt;theOtherPerson : And they thinks it's funny? Yup, they definitely finds it funny. Right?
@@ -2681,7 +2681,7 @@ robbyoconnor-&gt;theOtherPerson : And they thinks it's funny? Yup, they definite
 </div>
 
 
-<div id="orgdcd1a8a" class="figure">
+<div id="orgbd6c895" class="figure">
 <p><img src="+lang/plantuml/img/dia.png" alt="dia.png" />
 </p>
 </div>
@@ -3289,7 +3289,7 @@ To use this, you need to add add a <code>.dir-locals.el</code> file with the fol
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>nil . <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>mode . ember<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>((nil . ((mode . ember))))
 </code></pre>
 </div>
 
@@ -3306,9 +3306,9 @@ Add the following to your <code>dotspacemacs/user-config</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> backup-directory-alist `<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">".*"</span> . ,temporary-file-directory<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> auto-save-file-name-transforms `<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">".*"</span> ,temporary-file-directory t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> create-lockfiles nil<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+(setq create-lockfiles nil)
 </code></pre>
 </div>
 
@@ -4198,10 +4198,11 @@ Features:
 <li>Support for the following backends:
 <ul class="org-ul">
 <li><a href="https://github.com/proofit404/anaconda-mode">anaconda</a> (default),</li>
-<li><a href="https://github.com/emacs-lsp/lsp-mode/blob/master/clients/lsp-pylsp.el">Language Server Protocol</a> (experimental - 2 implementations),
+<li><a href="https://github.com/emacs-lsp/lsp-mode">Language Server Protocol</a> (3 implementations),
 <ul class="org-ul">
 <li>python-lsp-server</li>
 <li>Microsoft pyright language server</li>
+<li>ty language server</li>
 </ul></li>
 </ul></li>
 <li>Auto-completion</li>
@@ -5938,10 +5939,10 @@ shows how you can set both variables at once via the
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span>ranger <span class="org-builtin">:variables</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers
+              '(ranger :variables
                        ranger-override-dired 'ranger
-                       ranger-show-preview t<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+                       ranger-show-preview t))
 </code></pre>
 </div>
 
@@ -6561,7 +6562,7 @@ Features:
 </p>
 
 <p>
-This layer enables usage of GPT Clients in Spacemacs using <a href="https://github.com/karthink/gptel">GPTel</a> and <a href="https://github.com/s-kostyaev/ellama">Ellama</a>.
+This layer enables usage of GPT Clients in Spacemacs using <a href="https://github.com/karthink/gptel">gptel</a> and <a href="https://github.com/s-kostyaev/ellama">Ellama</a>.
 </p>
 
 <p>
@@ -6814,7 +6815,7 @@ Features:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-05-18 Mon 17:25</p>
+<p class="date">Created: 2026-08-22 Sat 18:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

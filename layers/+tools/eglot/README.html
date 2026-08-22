@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-18 Mon 17:24 -->
+<!-- 2026-08-22 Sat 18:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Eglot layer</title>
@@ -230,6 +230,17 @@
 </ul>
 </li>
 <li><a href="#in-development">2. In Development!</a></li>
+<li><a href="#key-bindings">3. Key bindings</a>
+<ul>
+<li><a href="#format">3.1. Format</a></li>
+<li><a href="#code-actions">3.2. Code actions</a></li>
+<li><a href="#goto">3.3. Goto</a></li>
+<li><a href="#backend">3.4. Backend</a></li>
+<li><a href="#refactor">3.5. Refactor</a></li>
+<li><a href="#toggles">3.6. Toggles</a></li>
+</ul>
+</li>
+<li><a href="#language-layer-integration">4. Language layer integration</a></li>
 </ul>
 </div>
 </div>
@@ -259,30 +270,296 @@ There is not much going on with this layer right now, it only has the most basic
 of setup. Hopefully each language layer will start adopting it and completing
 the integration.
 </p>
-
+</div>
+</div>
+<div id="outline-container-key-bindings" class="outline-2">
+<h2 id="key-bindings"><span class="section-number-2">3.</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
 <p>
-The first thing it needs it key bindings&hellip;
+A number of eglot features have been bound to the <code>eglot--managed-mode</code> minor mode,
+meaning they are available in all language layers using the eglot layer under
+the major mode leader key <code>SPC m</code> / <code>,</code>:
 </p>
 
+<p>
+These key bindings are selected to match with the <a href="../lsp/">+tools/lsp</a> layer regarding
+similar functions.
+</p>
+</div>
+<div id="outline-container-format" class="outline-3">
+<h3 id="format"><span class="section-number-3">3.1.</span> Format</h3>
+<div class="outline-text-3" id="text-format">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m = b</code></td>
+<td class="org-left">Format buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m = r</code></td>
+<td class="org-left">Format region</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m = o</code></td>
+<td class="org-left">Organize imports</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-code-actions" class="outline-3">
+<h3 id="code-actions"><span class="section-number-3">3.2.</span> Code actions</h3>
+<div class="outline-text-3" id="text-code-actions">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m a a</code></td>
+<td class="org-left">Code actions</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m a f</code></td>
+<td class="org-left">Quickfix</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m a i</code></td>
+<td class="org-left">Inline</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m a e</code></td>
+<td class="org-left">Extract</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m a o</code></td>
+<td class="org-left">Organize imports</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-goto" class="outline-3">
+<h3 id="goto"><span class="section-number-3">3.3.</span> Goto</h3>
+<div class="outline-text-3" id="text-goto">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m g d</code></td>
+<td class="org-left">Find definitions</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g D</code></td>
+<td class="org-left">Find definitions other window</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g r</code></td>
+<td class="org-left">Find references</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g i</code></td>
+<td class="org-left">Find implementation</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g t</code></td>
+<td class="org-left">Find type definition</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g C</code></td>
+<td class="org-left">Find declaration</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g b</code></td>
+<td class="org-left">Go back</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-backend" class="outline-3">
+<h3 id="backend"><span class="section-number-3">3.4.</span> Backend</h3>
+<div class="outline-text-3" id="text-backend">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m b r</code></td>
+<td class="org-left">Reconnect</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m b s</code></td>
+<td class="org-left">Shutdown</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m b e</code></td>
+<td class="org-left">Events buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m b S</code></td>
+<td class="org-left">Shutdown all</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-refactor" class="outline-3">
+<h3 id="refactor"><span class="section-number-3">3.5.</span> Refactor</h3>
+<div class="outline-text-3" id="text-refactor">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m r r</code></td>
+<td class="org-left">Rename</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r i</code></td>
+<td class="org-left">Inline</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r e</code></td>
+<td class="org-left">Extract</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r o</code></td>
+<td class="org-left">Organize imports</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r f</code></td>
+<td class="org-left">Format</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-toggles" class="outline-3">
+<h3 id="toggles"><span class="section-number-3">3.6.</span> Toggles</h3>
+<div class="outline-text-3" id="text-toggles">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m T h</code></td>
+<td class="org-left">Toggle inlay hints</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-language-layer-integration" class="outline-2">
+<h2 id="language-layer-integration"><span class="section-number-2">4.</span> Language layer integration</h2>
+<div class="outline-text-2" id="text-language-layer-integration">
 <p>
 Here is an example on how to integrate eglot into the language backend of a layer:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">spacemacs//ruby-setup-backend</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-doc">"Conditionally configure Ruby backend"</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>spacemacs//ruby-setup-version-manager<span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">pcase</span> ruby-backend
-    <span class="org-rainbow-delimiters-depth-3">(</span>'eglot <span class="org-rainbow-delimiters-depth-4">(</span>spacemacs//ruby-setup-eglot<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>'lsp <span class="org-rainbow-delimiters-depth-4">(</span>spacemacs//ruby-setup-lsp<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>nil <span class="org-rainbow-delimiters-depth-4">(</span>ignore<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>_ <span class="org-rainbow-delimiters-depth-4">(</span>spacemacs-buffer/error <span class="org-string">"Ruby Layer - unknown language backend: %s"</span> ruby-backend<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(defun spacemacs//ruby-setup-backend ()
+  "Conditionally configure Ruby backend"
+  (spacemacs//ruby-setup-version-manager)
+  (pcase ruby-backend
+    ('eglot (spacemacs//ruby-setup-eglot))
+    ('lsp (spacemacs//ruby-setup-lsp))
+    (nil (ignore))
+    (_ (spacemacs-buffer/error "Ruby Layer - unknown language backend: %s" ruby-backend))))
 
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">spacemacs//ruby-setup-eglot</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-doc">"Setup Ruby eglot."</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">if</span> <span class="org-rainbow-delimiters-depth-3">(</span>configuration-layer/layer-used-p 'eglot<span class="org-rainbow-delimiters-depth-3">)</span>
-      <span class="org-rainbow-delimiters-depth-3">(</span>eglot-ensure<span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>message <span class="org-string">"`</span><span class="org-string"><span class="org-constant">eglot</span></span><span class="org-string">' layer is not installed, please add `</span><span class="org-string"><span class="org-constant">eglot</span></span><span class="org-string">' layer to your dotfile."</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+(defun spacemacs//ruby-setup-eglot ()
+  "Setup Ruby eglot."
+  (if (configuration-layer/layer-used-p 'eglot)
+      (eglot-ensure)
+    (message "`eglot' layer is not installed, please add `eglot' layer to your dotfile.")))
 </code></pre>
 </div>
 </div>
@@ -290,7 +567,7 @@ Here is an example on how to integrate eglot into the language backend of a laye
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-05-18 Mon 17:24</p>
+<p class="date">Created: 2026-08-22 Sat 18:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
