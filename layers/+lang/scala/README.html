@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-18 Mon 17:24 -->
+<!-- 2026-08-22 Sat 18:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Scala layer</title>
@@ -312,13 +312,13 @@ where <code>0.9.8</code> can be replaced with the current version of <a href="ht
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash"><code>./coursier bootstrap <span class="org-sh-escaped-newline">\</span>
-  --java-opt -Xss4m <span class="org-sh-escaped-newline">\</span>
-  --java-opt -Xms100m <span class="org-sh-escaped-newline">\</span>
-  --java-opt -Dmetals.client=emacs <span class="org-sh-escaped-newline">\</span>
-  org.scalameta:metals_2.12:0.9.8 <span class="org-sh-escaped-newline">\</span>
-  -r bintray:scalacenter/releases <span class="org-sh-escaped-newline">\</span>
-  -r sonatype:snapshots <span class="org-sh-escaped-newline">\</span>
+<pre class="src src-bash"><code>./coursier bootstrap \
+  --java-opt -Xss4m \
+  --java-opt -Xms100m \
+  --java-opt -Dmetals.client=emacs \
+  org.scalameta:metals_2.12:0.9.8 \
+  -r bintray:scalacenter/releases \
+  -r sonatype:snapshots \
   -o /usr/local/bin/metals-emacs -f
 </code></pre>
 </div>
@@ -358,8 +358,8 @@ terminal, it should output something like:
 
 <div class="org-src-container">
 <pre class="src src-bash"><code>$ scalastyle
-scalastyle <span class="org-highlight-numbers-number">0.8.0</span>
-Usage: scalastyle <span class="org-rainbow-delimiters-depth-1">[</span>options<span class="org-rainbow-delimiters-depth-1">]</span> &lt;source directory&gt;
+scalastyle 0.8.0
+Usage: scalastyle [options] &lt;source directory&gt;
 ...
 </code></pre>
 </div>
@@ -370,7 +370,7 @@ variable to a valid location.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> flycheck-scalastylerc <span class="org-string">"/usr/local/etc/scalastyle_config.xml"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default flycheck-scalastylerc "/usr/local/etc/scalastyle_config.xml")
 </code></pre>
 </div>
 
@@ -388,8 +388,8 @@ To enable <code>java-doc-style</code>, set the variable <code>scala-indent:use-j
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>scala <span class="org-builtin">:variables</span> scala-indent:use-javadoc-style t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers '(
+  (scala :variables scala-indent:use-javadoc-style t)))
 </code></pre>
 </div>
 </div>
@@ -412,8 +412,8 @@ variable <code>scala-auto-insert-asterisk-in-comments</code> to <code>t</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>scala <span class="org-builtin">:variables</span> scala-auto-insert-asterisk-in-comments t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers '(
+  (scala :variables scala-auto-insert-asterisk-in-comments t)))
 </code></pre>
 </div>
 </div>
@@ -426,8 +426,8 @@ To enable gtags when in <code>scala-mode</code> set the variable <code>scala-ena
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>scala <span class="org-builtin">:variables</span> scala-enable-gtags t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers '(
+  (scala :variables scala-enable-gtags t)))
 </code></pre>
 </div>
 </div>
@@ -499,7 +499,7 @@ Additional major mode key bindings are populated by LSP and DAP.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-05-18 Mon 17:24</p>
+<p class="date">Created: 2026-08-22 Sat 18:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

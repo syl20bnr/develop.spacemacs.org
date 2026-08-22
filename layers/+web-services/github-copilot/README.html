@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-18 Mon 17:24 -->
+<!-- 2026-08-22 Sat 18:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GitHub Copilot layer</title>
@@ -387,8 +387,8 @@ Set the variable to <code>'golem</code> to enable this mode:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>github-copilot <span class="org-builtin">:variables</span>
-                github-copilot-enable-commit-messages 'golem<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(github-copilot :variables
+                github-copilot-enable-commit-messages 'golem)
 </code></pre>
 </div>
 </div>
@@ -402,8 +402,8 @@ variable to <code>t</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>github-copilot <span class="org-builtin">:variables</span>
-                github-copilot-enable-commit-messages t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(github-copilot :variables
+                github-copilot-enable-commit-messages t)
 </code></pre>
 </div>
 
@@ -452,21 +452,21 @@ Then, add the following code to your `dotspacemacs/user-config`:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">...
-</span>  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">with-eval-after-load</span> 'mcp-hub
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">This list is the "Single Source of Truth"
-</span>    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">setq</span> github-copilot-mcp-servers
-          '<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-comment-delimiter">;; </span><span class="org-comment">Add the filesystem server
-</span>            <span class="org-comment-delimiter">;; </span><span class="org-comment">It must be installed (e.g., via "npm install -g @modelcontextprotocol/server-filesystem")
-</span>            <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-string">"fs"</span> . <span class="org-rainbow-delimiters-depth-6">(</span><span class="org-builtin">:command</span> <span class="org-string">"npx"</span>
-                     <span class="org-builtin">:args</span> <span class="org-rainbow-delimiters-depth-7">(</span><span class="org-string">"-y"</span> <span class="org-string">"@modelcontextprotocol/server-filesystem"</span>
-                            <span class="org-comment-delimiter">;; </span><span class="org-comment">This path MUST be absolute and point to your projects
-</span>                            <span class="org-string">"/home/your-user/projects"</span><span class="org-rainbow-delimiters-depth-7">)</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+<pre class="src src-elisp"><code>(defun dotspacemacs/user-config ()
+  ;; ...
+  (with-eval-after-load 'mcp-hub
+    ;; This list is the "Single Source of Truth"
+    (setq github-copilot-mcp-servers
+          '(;; Add the filesystem server
+            ;; It must be installed (e.g., via "npm install -g @modelcontextprotocol/server-filesystem")
+            ("fs" . (:command "npx"
+                     :args ("-y" "@modelcontextprotocol/server-filesystem"
+                            ;; This path MUST be absolute and point to your projects
+                            "/home/your-user/projects")))))
 
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">We must also tell the mcp-hub to use this new list
-</span>    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">setq</span> mcp-hub-servers github-copilot-mcp-servers<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-1">)</span>
+    ;; We must also tell the mcp-hub to use this new list
+    (setq mcp-hub-servers github-copilot-mcp-servers))
+  )
 </code></pre>
 </div></li>
 </ol>
@@ -597,7 +597,7 @@ Ollama instance). You can find more servers to install and use here:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-05-18 Mon 17:24</p>
+<p class="date">Created: 2026-08-22 Sat 18:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

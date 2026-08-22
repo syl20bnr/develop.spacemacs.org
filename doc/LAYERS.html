@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-18 Mon 17:24 -->
+<!-- 2026-08-22 Sat 18:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Configuration layers development</title>
@@ -349,7 +349,7 @@ The simplest way to load a file is to call <code>load-file</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>load-file <span class="org-string">"~/elisp/foo.el"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(load-file "~/elisp/foo.el")
 </code></pre>
 </div>
 
@@ -371,9 +371,9 @@ the following contents in a file called <code>my-feature.el</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-comment-delimiter">;; </span><span class="org-comment">Your code goes here ...
-</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">provide</span> '<span class="org-constant">my-feature</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>;; Your code goes here ...
+
+(provide 'my-feature)
 </code></pre>
 </div>
 
@@ -382,7 +382,7 @@ To have Emacs load this file, call <code>require</code>, as such:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> '<span class="org-constant">my-feature</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(require 'my-feature)
 </code></pre>
 </div>
 
@@ -420,7 +420,7 @@ simply add to this list, e.g.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'load-path <span class="org-string">"/some/path/"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(add-to-list 'load-path "/some/path/")
 </code></pre>
 </div>
 </div>
@@ -452,7 +452,7 @@ To register a function as auto-loadable, we call <code>autoload</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>autoload 'some-function <span class="org-string">"some-file"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(autoload 'some-function "some-file")
 </code></pre>
 </div>
 
@@ -478,10 +478,10 @@ generated from "magic" comments in the source code of Helm. They look like this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-comment-delimiter">;;;</span><span class="org-comment">###</span><span class="org-comment"><span class="org-warning">autoload</span></span><span class="org-comment">
-</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">my-function</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Source code...
-</span>  <span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>;;;###autoload
+(defun my-function ()
+  ;; Source code...
+  )
 </code></pre>
 </div>
 
@@ -504,8 +504,8 @@ your file is actually evaluated, probably not what was intended:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-comment-delimiter">;;;</span><span class="org-comment">###</span><span class="org-comment"><span class="org-warning">autoload</span></span><span class="org-comment">
-</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> '<span class="org-constant">helm</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>;;;###autoload
+(require 'helm)
 </code></pre>
 </div>
 
@@ -535,9 +535,9 @@ Emacs offers <code>with-eval-after-load</code> for this purpose. It can be used 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'helm
-     <span class="org-comment-delimiter">;; </span><span class="org-comment">Code
-</span>     <span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(with-eval-after-load 'helm
+     ;; Code
+     )
 </code></pre>
 </div>
 
@@ -569,7 +569,7 @@ The aspiring layer author is recommended to have a look at the <code>use-package
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">helm</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(use-package helm)
 </code></pre>
 </div>
 
@@ -578,8 +578,8 @@ This simply loads Helm. It is essentially equivalent to <code>(require 'helm)</c
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">helm</span>
-  <span class="org-builtin">:defer</span> t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(use-package helm
+  :defer t)
 </code></pre>
 </div>
 
@@ -589,13 +589,13 @@ commands provided by the Helm source code. It is, in fact, a no-op.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">helm</span>
-  <span class="org-builtin">:defer</span> t
-  <span class="org-builtin">:init</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Code to execute before Helm is loaded
-</span>  <span class="org-builtin">:config</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Code to execute after Helm is loaded
-</span>  <span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(use-package helm
+  :defer t
+  :init
+  ;; Code to execute before Helm is loaded
+  :config
+  ;; Code to execute after Helm is loaded
+  )
 </code></pre>
 </div>
 
@@ -608,8 +608,8 @@ block in an <code>with-eval-after-load</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">helm</span>
-  <span class="org-builtin">:commands</span> <span class="org-rainbow-delimiters-depth-2">(</span>helm-find-files helm-M-x<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(use-package helm
+  :commands (helm-find-files helm-M-x))
 </code></pre>
 </div>
 
@@ -619,8 +619,8 @@ package author has been slacking.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">ruby-mode</span>
-  <span class="org-builtin">:mode</span> <span class="org-string">"\\.rb\\'"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(use-package ruby-mode
+  :mode "\\.rb\\'")
 </code></pre>
 </div>
 
@@ -675,7 +675,7 @@ file <code>layers.el</code> of layer A, we can add:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>configuration-layer/declare-layer-dependencies '<span class="org-rainbow-delimiters-depth-2">(</span>B<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(configuration-layer/declare-layer-dependencies '(B))
 </code></pre>
 </div>
 
@@ -704,29 +704,29 @@ as follows:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defconst</span> <span class="org-variable-name">mylayer-packages</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span>
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">A built-in package
-</span>    <span class="org-rainbow-delimiters-depth-3">(</span>some-package <span class="org-builtin">:location</span> built-in<span class="org-rainbow-delimiters-depth-3">)</span>
+<pre class="src src-emacs-lisp"><code>(defconst mylayer-packages
+  '(
+    ;; A built-in package
+    (some-package :location built-in)
 
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">Get the package from MELPA, ELPA, etc.
-</span>    some-package
-    <span class="org-rainbow-delimiters-depth-3">(</span>some-package <span class="org-builtin">:location</span> elpa<span class="org-rainbow-delimiters-depth-3">)</span>
+    ;; Get the package from MELPA, ELPA, etc.
+    some-package
+    (some-package :location elpa)
 
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">A local package
-</span>    <span class="org-rainbow-delimiters-depth-3">(</span>some-package <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-3">)</span>
+    ;; A local package
+    (some-package :location local)
 
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">A local package to be built with Quelpa
-</span>    <span class="org-rainbow-delimiters-depth-3">(</span>some-package <span class="org-builtin">:location</span> <span class="org-rainbow-delimiters-depth-4">(</span>recipe <span class="org-builtin">:fetcher</span> local<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    ;; A local package to be built with Quelpa
+    (some-package :location (recipe :fetcher local))
 
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">A package recipe
-</span>    <span class="org-rainbow-delimiters-depth-3">(</span>some-package <span class="org-builtin">:location</span> <span class="org-rainbow-delimiters-depth-4">(</span>recipe
-                             <span class="org-builtin">:fetcher</span> github
-                             <span class="org-builtin">:repo</span> <span class="org-string">"some/repo"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    ;; A package recipe
+    (some-package :location (recipe
+                             :fetcher github
+                             :repo "some/repo"))
 
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">An excluded package
-</span>    <span class="org-rainbow-delimiters-depth-3">(</span>some-package <span class="org-builtin">:excluded</span> t<span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+    ;; An excluded package
+    (some-package :excluded t)
+    ))
 </code></pre>
 </div>
 
@@ -1006,11 +1006,11 @@ For instance to install both ivy and helm layer:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-configuration-layers
- '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><code>(setq dotspacemacs-configuration-layers
+ '(
    ivy
-   <span class="org-rainbow-delimiters-depth-3">(</span>helm <span class="org-builtin">:can-shadow</span> nil<span class="org-rainbow-delimiters-depth-3">)</span>
-   <span class="org-rainbow-delimiters-depth-2">)</span>
+   (helm :can-shadow nil)
+   )
 </code></pre>
 </div>
 
@@ -1021,11 +1021,11 @@ also be written like this (in this case, <code>:can-shadow</code> should be read
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-configuration-layers
-'<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>ivy <span class="org-builtin">:can-shadow</span> nil<span class="org-rainbow-delimiters-depth-3">)</span>
+<pre class="src src-emacs-lisp"><code>(setq dotspacemacs-configuration-layers
+'(
+  (ivy :can-shadow nil)
   helm
-  <span class="org-rainbow-delimiters-depth-2">)</span>
+  )
 </code></pre>
 </div>
 
@@ -1076,16 +1076,16 @@ or <code>post-init</code> functions to "inject" code into the <code>use-package<
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">spacemacs|use-package-add-hook</span> helm
-  <span class="org-builtin">:pre-init</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Code
-</span>  <span class="org-builtin">:post-init</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Code
-</span>  <span class="org-builtin">:pre-config</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Code
-</span>  <span class="org-builtin">:post-config</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Code
-</span>  <span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(spacemacs|use-package-add-hook helm
+  :pre-init
+  ;; Code
+  :post-init
+  ;; Code
+  :pre-config
+  ;; Code
+  :post-config
+  ;; Code
+  )
 </code></pre>
 </div>
 
@@ -1183,7 +1183,7 @@ of a package.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-05-18 Mon 17:24</p>
+<p class="date">Created: 2026-08-22 Sat 18:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

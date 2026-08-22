@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-18 Mon 17:24 -->
+<!-- 2026-08-22 Sat 18:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Contribution guidelines</title>
@@ -467,7 +467,7 @@ characters.</li>
 This is a model commit message:
 </p>
 
-<pre class="example" id="org84fa4a6">
+<pre class="example" id="org5ab67d9">
 Capitalized, short (72 chars or less) summary
 
 More detailed explanatory text, if necessary.  Wrap it to about 72
@@ -530,7 +530,7 @@ variable <code>dotspacemacs-additional-packages</code>.
 The file header for <code>elisp</code> files should look like the following template:
 </p>
 
-<pre class="example" id="orga2a3691">
+<pre class="example" id="orgab2d2ed">
 
 ;;; FILENAME --- NAME Layer &lt;TYPE&gt; File for Spacemacs
 ;;
@@ -581,7 +581,7 @@ name.
 Every README.org file of a layer should have <code>#+TAGS:</code> line:
 </p>
 
-<pre class="example" id="orgd0e6d46">
+<pre class="example" id="org757de4b">
 #+TITLE: My layer
 
 #+TAGS: layer|web service
@@ -635,9 +635,9 @@ If you want to experiment with the tool locally:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell"><code>docker run --rm <span class="org-sh-escaped-newline">\</span>
-  -v &lt;SPACEMACS_REPO_ROOT&gt;:/tmp/docs <span class="org-sh-escaped-newline">\</span>
-  -v &lt;PATH_TO_CONFIG_FILE&gt;:/opt/spacetools/spacedoc-cfg.edn <span class="org-sh-escaped-newline">\</span>
+<pre class="src src-shell"><code>docker run --rm \
+  -v &lt;SPACEMACS_REPO_ROOT&gt;:/tmp/docs \
+  -v &lt;PATH_TO_CONFIG_FILE&gt;:/opt/spacetools/spacedoc-cfg.edn \
   jare/spacetools docfmt /tmp/docs/
 </code></pre>
 </div>
@@ -735,7 +735,7 @@ the code conventions. Copy the following line to your approving review to notify
 the collaborators:
 </p>
 
-<pre class="example" id="org0a222cf">
+<pre class="example" id="orgf54ed93">
 Ready to be merged! (@syl20bnr @TheBB @d12frosted @bmag @JAremko)
 </pre>
 
@@ -817,13 +817,13 @@ See existing tests for examples.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-makefile"><code><span class="org-variable-name">TEST_DIR</span> := $<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">shell</span> dirname $<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-variable-name">realpath</span> $<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-variable-name">lastword</span> $<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-variable-name">MAKEFILE_LIST</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-makefile"><code>TEST_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
-<span class="org-variable-name">LOAD_FILES</span> = ...
-<span class="org-variable-name">UNIT_TEST_FILES</span> = ...
-<span class="org-variable-name">FUNC_TEST_FILES</span> = ...
+LOAD_FILES = ...
+UNIT_TEST_FILES = ...
+FUNC_TEST_FILES = ...
 
-<span class="org-keyword">include</span> <span class="org-variable-name">../../spacemacs.mk</span>
+include ../../spacemacs.mk
 </code></pre>
 </div></li>
 
@@ -844,7 +844,7 @@ guidelines</a> and <a href="https://github.com/flycheck/flycheck/blob/master/doc
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-05-18 Mon 17:24</p>
+<p class="date">Created: 2026-08-22 Sat 18:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

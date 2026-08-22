@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-18 Mon 17:24 -->
+<!-- 2026-08-22 Sat 18:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python layer</title>
@@ -242,6 +242,7 @@
 <ul>
 <li><a href="#python-lsp-server">3.2.1. python-lsp-server</a></li>
 <li><a href="#microsoft-pyright-language-server">3.2.2. Microsoft pyright language server</a></li>
+<li><a href="#ty-language-server">3.2.3. ty language server</a></li>
 </ul>
 </li>
 </ul>
@@ -307,7 +308,7 @@
 </div>
 </div>
 
-<div id="orgfc17059" class="figure">
+<div id="org125b26d" class="figure">
 <p><img src="img/python.png" alt="python.png" />
 </p>
 </div>
@@ -325,10 +326,11 @@ This layer adds support for the Python language.
 <li>Support for the following backends:
 <ul class="org-ul">
 <li><a href="https://github.com/proofit404/anaconda-mode">anaconda</a> (default),</li>
-<li><a href="https://github.com/emacs-lsp/lsp-mode/blob/master/clients/lsp-pylsp.el">Language Server Protocol</a> (experimental - 2 implementations),
+<li><a href="https://github.com/emacs-lsp/lsp-mode">Language Server Protocol</a> (3 implementations),
 <ul class="org-ul">
 <li>python-lsp-server</li>
 <li>Microsoft pyright language server</li>
+<li>ty language server</li>
 </ul></li>
 </ul></li>
 <li>Auto-completion</li>
@@ -372,7 +374,7 @@ To choose a default backend set the layer variable <code>python-backend</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>python <span class="org-builtin">:variables</span> python-backend 'anaconda<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(python :variables python-backend 'anaconda)
 </code></pre>
 </div>
 
@@ -388,10 +390,10 @@ Backend can be chosen on a per project basis using directory local variables
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables
-</span><span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")
-</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>python-mode <span class="org-rainbow-delimiters-depth-3">(</span>python-backend . lsp<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>;;; Directory Local Variables
+;;; For more information see (info "(emacs) Directory Variables")
+
+((python-mode (python-backend . lsp)))
 </code></pre>
 </div>
 
@@ -445,7 +447,7 @@ it does not work and you may encounter the following message when
 opening a python buffer:
 </p>
 
-<pre class="example" id="org1f6becf">
+<pre class="example" id="orga740ad7">
 Blocking call to accept-process-output with quit inhibited!!
 </pre>
 
@@ -454,7 +456,7 @@ To fix this, install the <code>anaconda-mode</code> <a href="https://github.com/
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><code>pip install --upgrade <span class="org-string">"jedi&gt;=0.13.0"</span> <span class="org-string">"json-rpc&gt;=1.8.1"</span> <span class="org-string">"service_factory&gt;=0.1.5"</span>
+<pre class="src src-sh"><code>pip install --upgrade "jedi&gt;=0.13.0" "json-rpc&gt;=1.8.1" "service_factory&gt;=0.1.5"
 </code></pre>
 </div>
 
@@ -505,6 +507,11 @@ The <code>lsp</code> backend can use either of the following language server imp
 <td class="org-left">'pyright</td>
 <td class="org-left"><a href="https://github.com/emacs-lsp/lsp-pyright">Microsoft pyright language server</a></td>
 </tr>
+
+<tr>
+<td class="org-left">'ty</td>
+<td class="org-left"><a href="https://docs.astral.sh/ty/">ty language server</a></td>
+</tr>
 </tbody>
 </table>
 
@@ -513,7 +520,7 @@ The <code>lsp</code> backend can use either of the following language server imp
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>python <span class="org-builtin">:variables</span> python-backend 'lsp<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(python :variables python-backend 'lsp)
 </code></pre>
 </div>
 
@@ -523,7 +530,17 @@ variable as follows:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>python <span class="org-builtin">:variables</span> python-backend 'lsp python-lsp-server 'pyright<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(python :variables python-backend 'lsp python-lsp-server 'pyright)
+</code></pre>
+</div>
+
+<p>
+To use the ty language server, set the <code>python-lsp-server</code> layer variable as
+follows:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><code>(python :variables python-backend 'lsp python-lsp-server 'ty)
 </code></pre>
 </div>
 </div>
@@ -544,7 +561,7 @@ You may also be interested in installing all optional dependencies with
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><code>pip install <span class="org-string">'python-lsp-server[all]'</span>
+<pre class="src src-sh"><code>pip install 'python-lsp-server[all]'
 </code></pre>
 </div>
 
@@ -570,12 +587,31 @@ installed via pip, yarn or npm as follows:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><code><span class="org-comment-delimiter"># </span><span class="org-comment">via pip
-</span>pip install pyright
-<span class="org-comment-delimiter"># </span><span class="org-comment">or via yarn
-</span>yarn global add pyright
-<span class="org-comment-delimiter"># </span><span class="org-comment">or via npm
-</span>npm install -g pyright
+<pre class="src src-sh"><code># via pip
+pip install pyright
+# or via yarn
+yarn global add pyright
+# or via npm
+npm install -g pyright
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-ty-language-server" class="outline-4">
+<h4 id="ty-language-server"><span class="section-number-4">3.2.3.</span> ty language server</h4>
+<div class="outline-text-4" id="text-ty-language-server">
+<p>
+<a href="https://docs.astral.sh/ty/">Ty</a> is an extremely fast Python type checker and language server written in Rust
+by Astral (the creators of Ruff and uv). See the <a href="https://docs.astral.sh/ty/installation/">official installation guide</a> for
+all methods.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code># project (recommended, also [[#manage-environments-and-packages-with-uv][enable uv support]])
+uv add --dev ty
+
+# global
+uv tool install ty@latest
 </code></pre>
 </div>
 </div>
@@ -609,8 +645,8 @@ either <code>pytest</code> or <code>nose</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-test-runner 'pytest<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers
+  '((python :variables python-test-runner 'pytest)))
 </code></pre>
 </div>
 
@@ -619,8 +655,8 @@ If you need both then you can set <code>python-test-runner</code> to a list like
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-test-runner '<span class="org-rainbow-delimiters-depth-4">(</span>pytest nose<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers
+  '((python :variables python-test-runner '(pytest nose))))
 </code></pre>
 </div>
 
@@ -650,8 +686,8 @@ One of <a href="https://github.com/google/yapf">YAPF</a>, <a href="https://githu
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-formatter 'yapf<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers '(
+  (python :variables python-formatter 'yapf)))
 </code></pre>
 </div>
 
@@ -662,8 +698,8 @@ formatter is <code>lsp</code>.
 </p>
 
 <p>
-Note that the <code>pyright</code> language server does not support formatting, but it
-can be used alongside with <code>ruff</code>, which does support it.
+Note that the <code>pyright</code> and <code>ty</code> language servers do not support formatting,
+but they can be used alongside with <code>ruff</code>, which does support it.
 </p>
 
 <p>
@@ -688,8 +724,8 @@ will be used.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-format-on-save t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers '(
+  (python :variables python-format-on-save t)))
 </code></pre>
 </div>
 </div>
@@ -703,8 +739,8 @@ you can disable this feature by setting <code>python-save-before-test</code> to 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-save-before-test nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers '(
+  (python :variables python-save-before-test nil)))
 </code></pre>
 </div>
 </div>
@@ -774,8 +810,8 @@ the <code>user-init</code> function in your <code>.spacemacs</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-fill-column <span class="org-highlight-numbers-number">99</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(setq-default dotspacemacs-configuration-layers '(
+    (python :variables python-fill-column 99)))
 </code></pre>
 </div>
 </div>
@@ -790,8 +826,8 @@ config section:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-sort-imports-on-save t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(setq-default dotspacemacs-configuration-layers
+  '((python :variables python-sort-imports-on-save t)))
 </code></pre>
 </div>
 
@@ -816,8 +852,8 @@ interpreter of ipython) will have performance benefit. Fox example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> importmagic-python-interpreter <span class="org-string">"python3"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(setq-default dotspacemacs-configuration-layers
+  '((python :variables importmagic-python-interpreter "python3")))
 </code></pre>
 </div>
 
@@ -827,8 +863,8 @@ layer config section:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-enable-importmagic nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(setq-default dotspacemacs-configuration-layers
+  '((python :variables python-enable-importmagic nil)))
 </code></pre>
 </div>
 
@@ -851,7 +887,7 @@ in your user config section, do:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'spacemacs--python-pipenv-modes 'your-mode<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(add-to-list 'spacemacs--python-pipenv-modes 'your-mode)
 </code></pre>
 </div>
 
@@ -875,8 +911,8 @@ To enable the <a href="https://github.com/wyuenho/emacs-pet">pet-mode</a>, set t
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-virtualenv-management 'pet<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers '(
+  (python :variables python-virtualenv-management 'pet)))
 </code></pre>
 </div>
 
@@ -1253,8 +1289,8 @@ To enable UV support, add <code>uv</code> to your <code>python-enable-tools</cod
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-enable-tools '<span class="org-rainbow-delimiters-depth-4">(</span>uv<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(setq-default dotspacemacs-configuration-layers
+              '((python :variables python-enable-tools '(uv))))
 </code></pre>
 </div>
 
@@ -1890,7 +1926,7 @@ complete list of key bindings on the <a href="https://github.com/syl20bnr/spacem
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-05-18 Mon 17:24</p>
+<p class="date">Created: 2026-08-22 Sat 18:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

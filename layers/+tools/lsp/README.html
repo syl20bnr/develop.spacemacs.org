@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-18 Mon 17:24 -->
+<!-- 2026-08-22 Sat 18:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LSP layer</title>
@@ -453,8 +453,8 @@ To always display code lens,
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>lsp <span class="org-builtin">:variables</span> lsp-lens-enable t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers
+              '((lsp :variables lsp-lens-enable t)))
 </code></pre>
 </div>
 
@@ -472,8 +472,8 @@ To disable this feature, set <code>lsp-modeline-diagnostics-enable</code> to <co
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>lsp <span class="org-builtin">:variables</span> lsp-modeline-diagnostics-enable nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers
+              '((lsp :variables lsp-modeline-diagnostics-enable nil)))
 </code></pre>
 </div>
 
@@ -482,8 +482,8 @@ To only display errors for the current file, you can set <code>lsp-modeline-diag
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>lsp <span class="org-builtin">:variables</span> lsp-modeline-diagnostics-scope <span class="org-builtin">:file</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers
+              '((lsp :variables lsp-modeline-diagnostics-scope :file)))
 </code></pre>
 </div>
 
@@ -500,8 +500,8 @@ By default, available code actions are displayed in modeline. To disable this fe
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>lsp <span class="org-builtin">:variables</span> lsp-modeline-code-actions-enable nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers
+              '((lsp :variables lsp-modeline-code-actions-enable nil)))
 </code></pre>
 </div>
 
@@ -515,10 +515,10 @@ You can also customize its appearance via <code>lsp-modeline-code-actions-segmen
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>lsp <span class="org-builtin">:variables</span>
-                     <span class="org-comment-delimiter">;; </span><span class="org-comment">default segments
-</span>                     lsp-modeline-code-actions-segments '<span class="org-rainbow-delimiters-depth-4">(</span>count icon<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers
+              '((lsp :variables
+                     ;; default segments
+                     lsp-modeline-code-actions-segments '(count icon))))
 </code></pre>
 </div>
 </div>
@@ -556,8 +556,8 @@ For example, to display only the symbols,
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>lsp <span class="org-builtin">:variables</span> lsp-headerline-breadcrumb-segments '<span class="org-rainbow-delimiters-depth-4">(</span>symbols<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers
+              '((lsp :variables lsp-headerline-breadcrumb-segments '(symbols))))
 </code></pre>
 </div>
 
@@ -566,8 +566,8 @@ To display the current project, current file, and document symbols,
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>lsp <span class="org-builtin">:variables</span> lsp-headerline-breadcrumb-segments '<span class="org-rainbow-delimiters-depth-4">(</span>project file symbols<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers
+              '((lsp :variables lsp-headerline-breadcrumb-segments '(project file symbols))))
 </code></pre>
 </div>
 
@@ -592,8 +592,8 @@ To manage <code>company-backends</code> yourself you can set the layer variable 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>lsp <span class="org-builtin">:variables</span> lsp-manage-backends-manually '<span class="org-rainbow-delimiters-depth-4">(</span>go-mode<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers
+              '((lsp :variables lsp-manage-backends-manually '(go-mode))))
 </code></pre>
 </div>
 
@@ -608,9 +608,9 @@ example, you can set it like this in your <code>dotspacemacs/user-config</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'go-mode-hook
-          <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span>
-           <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">setq-local</span> company-backends '<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">:separate</span> company-capf company-files company-yasnippet<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(add-hook 'go-mode-hook
+          (lambda ()
+           (setq-local company-backends '(:separate company-capf company-files company-yasnippet))))
 </code></pre>
 </div>
 </div>
@@ -1030,9 +1030,9 @@ Use this to define an extension to the lsp find functions. An example from the c
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/lsp-define-extensions <span class="org-string">"c-c++"</span> 'refs-address
-                                 <span class="org-string">"textDocument/references"</span>
-                                 '<span class="org-rainbow-delimiters-depth-2">(</span>plist-put <span class="org-rainbow-delimiters-depth-3">(</span>lsp--text-document-position-params<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-builtin">:context</span> '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">:role</span> <span class="org-highlight-numbers-number">128</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(spacemacs/lsp-define-extensions "c-c++" 'refs-address
+                                 "textDocument/references"
+                                 '(plist-put (lsp--text-document-position-params) :context '(:role 128)))
 </code></pre>
 </div>
 
@@ -1054,13 +1054,13 @@ Using another example from the c-c++ layer:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/lsp-bind-extensions-for-mode mode <span class="org-string">"c-c++"</span>
-                                        <span class="org-string">"&amp;"</span> 'refs-address
-                                        <span class="org-string">"R"</span> 'refs-read
-                                        <span class="org-string">"W"</span> 'refs-write
-                                        <span class="org-string">"c"</span> 'callers
-                                        <span class="org-string">"C"</span> 'callees
-                                        <span class="org-string">"v"</span> 'vars<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(spacemacs/lsp-bind-extensions-for-mode mode "c-c++"
+                                        "&amp;" 'refs-address
+                                        "R" 'refs-read
+                                        "W" 'refs-write
+                                        "c" 'callers
+                                        "C" 'callees
+                                        "v" 'vars)
 </code></pre>
 </div>
 
@@ -1069,19 +1069,19 @@ With <code>lsp-navigation</code> set to <code>'both</code> (the default), this i
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/set-leader-keys-for-major-mode mode
-  <span class="org-string">"g&amp;"</span> 'c-c++/find-refs-address
-  <span class="org-string">"gR"</span> 'c-c++/find-refs-read
-  <span class="org-string">"gW"</span> 'c-c++/find-refs-write
-  <span class="org-string">"gc"</span> 'c-c++/find-callers
-  <span class="org-string">"gC"</span> 'c-c++/find-callees
-  <span class="org-string">"gv"</span> 'c-c++/find-vars
-  <span class="org-string">"G&amp;"</span> 'c-c++/peek-refs-address
-  <span class="org-string">"GR"</span> 'c-c++/peek-refs-read
-  <span class="org-string">"GW"</span> 'c-c++/peek-refs-write
-  <span class="org-string">"Gc"</span> 'c-c++/peek-callers
-  <span class="org-string">"GC"</span> 'c-c++/peek-callees
-  <span class="org-string">"Gv"</span> 'c-c++/peek-vars<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(spacemacs/set-leader-keys-for-major-mode mode
+  "g&amp;" 'c-c++/find-refs-address
+  "gR" 'c-c++/find-refs-read
+  "gW" 'c-c++/find-refs-write
+  "gc" 'c-c++/find-callers
+  "gC" 'c-c++/find-callees
+  "gv" 'c-c++/find-vars
+  "G&amp;" 'c-c++/peek-refs-address
+  "GR" 'c-c++/peek-refs-read
+  "GW" 'c-c++/peek-refs-write
+  "Gc" 'c-c++/peek-callers
+  "GC" 'c-c++/peek-callees
+  "Gv" 'c-c++/peek-vars)
 </code></pre>
 </div>
 
@@ -1090,13 +1090,13 @@ whereas with <code>lsp-navigation</code> set to <code>'peek</code>, this is equi
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/set-leader-keys-for-major-mode mode
-  <span class="org-string">"g&amp;"</span> 'c-c++/peek-refs-address
-  <span class="org-string">"gR"</span> 'c-c++/peek-refs-read
-  <span class="org-string">"gW"</span> 'c-c++/peek-refs-write
-  <span class="org-string">"gc"</span> 'c-c++/peek-callers
-  <span class="org-string">"gC"</span> 'c-c++/peek-callees
-  <span class="org-string">"gv"</span> 'c-c++/peek-vars<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(spacemacs/set-leader-keys-for-major-mode mode
+  "g&amp;" 'c-c++/peek-refs-address
+  "gR" 'c-c++/peek-refs-read
+  "gW" 'c-c++/peek-refs-write
+  "gc" 'c-c++/peek-callers
+  "gC" 'c-c++/peek-callees
+  "gv" 'c-c++/peek-vars)
 </code></pre>
 </div>
 
@@ -1149,7 +1149,7 @@ should pay attention to avoid any binding collision with <code>lsp-mode</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><code><span class="org-rainbow-delimiters-depth-1">(</span>lsp <span class="org-builtin">:variables</span> lsp-use-upstream-bindings t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><code>(lsp :variables lsp-use-upstream-bindings t)
 </code></pre>
 </div>
 </div>
@@ -1191,7 +1191,7 @@ completion</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-05-18 Mon 17:24</p>
+<p class="date">Created: 2026-08-22 Sat 18:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

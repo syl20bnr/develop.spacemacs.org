@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-18 Mon 17:25 -->
+<!-- 2026-08-22 Sat 18:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Large Language Model Client layer</title>
@@ -232,17 +232,22 @@
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
-<li><a href="#gptel-support">2.2. GPTel support</a></li>
+<li><a href="#gptel-support">2.2. gptel support</a>
+<ul>
+<li><a href="#gptel-agent-support">2.2.1. gptel-agent support</a></li>
+</ul>
+</li>
 <li><a href="#ellama-support">2.3. Ellama support</a></li>
 </ul>
 </li>
 <li><a href="#configuration">3. Configuration</a></li>
 <li><a href="#key-bindings">4. Key bindings</a>
 <ul>
-<li><a href="#gptel">4.1. GPTel</a></li>
-<li><a href="#ellama">4.2. Ellama</a>
+<li><a href="#gptel">4.1. gptel</a></li>
+<li><a href="#gptel-agent">4.2. gptel-agent</a></li>
+<li><a href="#ellama">4.3. Ellama</a>
 <ul>
-<li><a href="#transient-menu">4.2.1. Transient menu</a></li>
+<li><a href="#transient-menu">4.3.1. Transient menu</a></li>
 </ul>
 </li>
 </ul>
@@ -254,7 +259,7 @@
 <h2 id="description"><span class="section-number-2">1.</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer enables usage of GPT Clients in Spacemacs using <a href="https://github.com/karthink/gptel">GPTel</a> and <a href="https://github.com/s-kostyaev/ellama">Ellama</a>.
+This layer enables usage of GPT Clients in Spacemacs using <a href="https://github.com/karthink/gptel">gptel</a> and <a href="https://github.com/s-kostyaev/ellama">Ellama</a>.
 </p>
 </div>
 <div id="outline-container-features" class="outline-3">
@@ -297,17 +302,17 @@ file.
 </div>
 </div>
 <div id="outline-container-gptel-support" class="outline-3">
-<h3 id="gptel-support"><span class="section-number-3">2.2.</span> GPTel support</h3>
+<h3 id="gptel-support"><span class="section-number-3">2.2.</span> gptel support</h3>
 <div class="outline-text-3" id="text-gptel-support">
 <p>
-GPTel is a Large Language Model chat client for Emacs, with support for multiple
-models and backends. GPTel allows you to interact with LLMs from anywhere in
+gptel is a Large Language Model chat client for Emacs, with support for multiple
+models and backends. gptel allows you to interact with LLMs from anywhere in
 Emacs (any buffer, shell, minibuffer, wherever) and supports conversations and
 multiple independent sessions.
 </p>
 
 <p>
-Key features of GPTel include:
+Key features of gptel include:
 </p>
 <ul class="org-ul">
 <li>Async and fast, streams responses.</li>
@@ -317,14 +322,35 @@ Key features of GPTel include:
 </ul>
 
 <p>
-To enable GPTel support in your Spacemacs configuration, add the following to
+To enable gptel support in your Spacemacs configuration, add the following to
 your <code>dotspacemacs-configuration-layers</code> list:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
- '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>llm-client <span class="org-builtin">:variables</span> llm-client-enable-gptel t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers
+ '((llm-client :variables llm-client-enable-gptel t)))
 </code></pre>
+</div>
+</div>
+<div id="outline-container-gptel-agent-support" class="outline-4">
+<h4 id="gptel-agent-support"><span class="section-number-4">2.2.1.</span> gptel-agent support</h4>
+<div class="outline-text-4" id="text-gptel-agent-support">
+<p>
+gptel, while capable of supporting agents, does not have out-of-the-box
+agentic capabilities. <a href="https://github.com/karthink/gptel-agent">gptel-agent</a> is an agentic preset for gptel. Accordingly,
+gptel-agent will not work without gptel enabled.
+</p>
+
+<p>
+To enable gptel-agent support in your Spacemacs configuration, add the following to
+your <code>dotspacemacs-configuration-layers</code> list:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers
+ '((llm-client :variables llm-client-enable-gptel-agent t)))
+</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -357,8 +383,8 @@ your <code>dotspacemacs-configuration-layers</code> list:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
- '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>llm-client <span class="org-builtin">:variables</span> llm-client-enable-ellama t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers
+ '((llm-client :variables llm-client-enable-ellama t)))
 </code></pre>
 </div>
 </div>
@@ -368,7 +394,7 @@ your <code>dotspacemacs-configuration-layers</code> list:
 <h2 id="configuration"><span class="section-number-2">3.</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
-Refer to the official <a href="https://github.com/karthink/gptel">GPTel</a> and <a href="https://github.com/s-kostyaev/ellama">ellama</a> documentation for advanced configurations
+Refer to the official <a href="https://github.com/karthink/gptel">gptel</a> and <a href="https://github.com/s-kostyaev/ellama">ellama</a> documentation for advanced configurations
 and additional information.
 </p>
 </div>
@@ -381,7 +407,7 @@ The layer provides several key bindings to interact with LLMs efficiently.
 </p>
 </div>
 <div id="outline-container-gptel" class="outline-3">
-<h3 id="gptel"><span class="section-number-3">4.1.</span> GPTel</h3>
+<h3 id="gptel"><span class="section-number-3">4.1.</span> gptel</h3>
 <div class="outline-text-3" id="text-gptel">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -404,25 +430,25 @@ The layer provides several key bindings to interact with LLMs efficiently.
 <tr>
 <td class="org-left"><code>SPC $ g g</code></td>
 <td class="org-left">gptel</td>
-<td class="org-left">Start a new GPTel session</td>
+<td class="org-left">Start a new gptel session</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC $ g s</code></td>
 <td class="org-left">gptel-send</td>
-<td class="org-left">Send a message to GPTel</td>
+<td class="org-left">Send a message to gptel</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC $ g q</code></td>
 <td class="org-left">gptel-abort</td>
-<td class="org-left">Abort any active GPTel process</td>
+<td class="org-left">Abort any active gptel process</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC $ g m</code></td>
 <td class="org-left">gptel-menu</td>
-<td class="org-left">Open the GPTel menu</td>
+<td class="org-left">Open the gptel menu</td>
 </tr>
 
 <tr>
@@ -494,8 +520,48 @@ In addition, this layer adds the following key bindings to <code>org-mode</code>
 </table>
 </div>
 </div>
+<div id="outline-container-gptel-agent" class="outline-3">
+<h3 id="gptel-agent"><span class="section-number-3">4.2.</span> gptel-agent</h3>
+<div class="outline-text-3" id="text-gptel-agent">
+<p>
+In addition to the bindings offered by gptel, these bindings are unique to gptel-agent.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key binding</th>
+<th scope="col" class="org-left">Command</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC $ g a</code></td>
+<td class="org-left">gptel-agent</td>
+<td class="org-left">Start a new gptel session</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC $ g u</code></td>
+<td class="org-left">gptel-agent-update</td>
+<td class="org-left">Updates the gptel-agent database</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="outline-container-ellama" class="outline-3">
-<h3 id="ellama"><span class="section-number-3">4.2.</span> Ellama</h3>
+<h3 id="ellama"><span class="section-number-3">4.3.</span> Ellama</h3>
 <div class="outline-text-3" id="text-ellama">
 <p>
 Ellama provides its own transient key binding menu, which is
@@ -529,7 +595,7 @@ self-documenting.
 </table>
 </div>
 <div id="outline-container-transient-menu" class="outline-4">
-<h4 id="transient-menu"><span class="section-number-4">4.2.1.</span> Transient menu</h4>
+<h4 id="transient-menu"><span class="section-number-4">4.3.1.</span> Transient menu</h4>
 <div class="outline-text-4" id="text-transient-menu">
 <p>
 Only a small subset of the prefixes in the transient menu are
@@ -624,7 +690,7 @@ documented here. Press <code>SPC $ e</code> to see the full menu.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-05-18 Mon 17:25</p>
+<p class="date">Created: 2026-08-22 Sat 18:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
