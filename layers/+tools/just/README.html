@@ -6,7 +6,7 @@
 <!-- 2026-09-03 Thu 04:17 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Floobits layer</title>
+<title>Just layer</title>
 <meta name="author" content="root" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
@@ -219,7 +219,7 @@
 <body>
 <div id="content" class="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Floobits layer</h1>
+<h1 class="title">Just layer</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents" role="doc-toc">
@@ -229,35 +229,24 @@
 <li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#install">2. Install</a>
-<ul>
-<li><a href="#layer">2.1. Layer</a></li>
-</ul>
-</li>
-<li><a href="#key-bindings">3. Key bindings</a></li>
+<li><a href="#install">2. Install</a></li>
+<li><a href="#shortcuts">3. Shortcuts</a></li>
 </ul>
 </div>
-</div>
-
-<div id="org7d2a2f4" class="figure">
-<p><img src="img/floobits.png" alt="floobits.png" />
-</p>
 </div>
 <div id="outline-container-description" class="outline-2">
 <h2 id="description"><span class="section-number-2">1.</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds support for the peer programming tool <a href="https://github.com/Floobits/floobits-emacs">floobits</a> to Spacemacs.
+This layer adds <a href="https://just.systems/">just</a> support.
 </p>
 </div>
 <div id="outline-container-features" class="outline-3">
 <h3 id="features"><span class="section-number-3">1.1.</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
-<li>Loading of floobits configuration files with fixed commands</li>
-<li>Creation of floobits workspaces and populating it with content</li>
-<li>Marking of the current cursor position for all users within the current workspace</li>
-<li>Follow recent changes by other users</li>
+<li>Adds <a href="https://github.com/psibi/justl.el">justl</a> and sets up <code>SPC p j/J</code>.</li>
+<li>Adds <a href="https://github.com/leon-barrett/just-ts-mode.el">just-ts-mode</a> for syntax highlighting</li>
 </ul>
 </div>
 </div>
@@ -265,21 +254,21 @@ This layer adds support for the peer programming tool <a href="https://github.co
 <div id="outline-container-install" class="outline-2">
 <h2 id="install"><span class="section-number-2">2.</span> Install</h2>
 <div class="outline-text-2" id="text-install">
-</div>
-<div id="outline-container-layer" class="outline-3">
-<h3 id="layer"><span class="section-number-3">2.1.</span> Layer</h3>
-<div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
-add <code>floobits</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
-file.
+add <code>just</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><code>(defun dotspacemacs/layers ()
+  dotspacemacs-configuration-layers '(just))
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-key-bindings" class="outline-2">
-<h2 id="key-bindings"><span class="section-number-2">3.</span> Key bindings</h2>
-<div class="outline-text-2" id="text-key-bindings">
+<div id="outline-container-shortcuts" class="outline-2">
+<h2 id="shortcuts"><span class="section-number-2">3.</span> Shortcuts</h2>
+<div class="outline-text-2" id="text-shortcuts">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -290,64 +279,30 @@ file.
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Key binding</th>
-<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Shortcut</th>
+<th scope="col" class="org-left">Binding</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC P c</code></td>
-<td class="org-left">Clears all mirrored highlights.</td>
+<td class="org-left"><code>SPC p j</code></td>
+<td class="org-left"><code>justl-exec-recipe-in-dir</code></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC p J j</code></td>
+<td class="org-left"><code>justl-exec-recipe-in-dir</code></td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC P d</code></td>
-<td class="org-left">Load the .floorc.json file for floobits configuration.</td>
+<td class="org-left"><code>SPC p J J</code></td>
+<td class="org-left"><code>justl-exec-default-recipe</code></td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC P f</code></td>
-<td class="org-left">Follow a users changes. This also toggles follow mode.</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC P j</code></td>
-<td class="org-left">Join an existing floobits workspace.</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC P l</code></td>
-<td class="org-left">Leave the current workspace.</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC P R</code></td>
-<td class="org-left">Create a workspace and populate it with the contents of the directory, DIR (or make it).</td>
-</tr>
-
-<tr>
-<td class="org-left">&nbsp;</td>
-<td class="org-left">The workspace will be shared privately.</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC P s</code></td>
-<td class="org-left">Summon everyone in the workspace to your cursor position.</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC P t</code></td>
-<td class="org-left">Toggle following of recent changes.</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC P U</code></td>
-<td class="org-left">Create a workspace and populate it with the contents of the directory, DIR (or make it).</td>
-</tr>
-
-<tr>
-<td class="org-left">&nbsp;</td>
-<td class="org-left">The workspace will be shared publicly.</td>
+<td class="org-left"><code>SPC p J l</code></td>
+<td class="org-left"><code>justl</code></td>
 </tr>
 </tbody>
 </table>
