@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-07 Wed 17:35 -->
+<!-- 2026-10-17 Sat 01:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Treemacs layer</title>
@@ -239,6 +239,7 @@
 <li><a href="#flattening-of-directories">3.5. Flattening of directories</a></li>
 <li><a href="#locking-width">3.6. Locking width</a></li>
 <li><a href="#theme">3.7. Theme</a></li>
+<li><a href="#auto-hide">3.8. Auto hide</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">4. Key bindings</a>
@@ -255,7 +256,7 @@
 </div>
 </div>
 
-<div id="org55bee1a" class="figure">
+<div id="org432059d" class="figure">
 <p><img src="img/treemacs.png" alt="treemacs.png" />
 </p>
 </div>
@@ -453,6 +454,27 @@ To use the `all-the-icons` theme rather than the default one, set the `treemacs-
   (treemacs :variables treemacs-use-all-the-icons-theme t)))
 </code></pre>
 </div>
+</div>
+</div>
+<div id="outline-container-auto-hide" class="outline-3">
+<h3 id="auto-hide"><span class="section-number-3">3.8.</span> Auto hide</h3>
+<div class="outline-text-3" id="text-auto-hide">
+<p>
+To have treemacs automatically hide when the frame is resized too narrow,
+set the layer variable <code>treemacs-auto-hide-min-width</code> to a positive integer
+representing the minimum width that the main window must have (in columns)
+before treemacs is hidden.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code>(setq-default dotspacemacs-configuration-layers '(
+  (treemacs :variables treemacs-auto-hide-min-width 80)))
+</code></pre>
+</div>
+
+<p>
+Default is <code>80</code>. Set to <code>nil</code> to disable this behaviour.
+</p>
 </div>
 </div>
 </div>
@@ -789,7 +811,7 @@ Please note that the following code changes ace mode globally.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-10-07 Wed 17:35</p>
+<p class="date">Created: 2026-10-17 Sat 01:04</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
