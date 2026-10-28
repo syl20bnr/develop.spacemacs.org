@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-17 Sat 01:04 -->
+<!-- 2026-10-28 Wed 17:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lua layer</title>
@@ -236,6 +236,7 @@
 <ul>
 <li><a href="#lua-mode">2.2.1. Lua mode</a></li>
 <li><a href="#lsp">2.2.2. LSP</a></li>
+<li><a href="#eglot">2.2.3. Eglot</a></li>
 </ul>
 </li>
 </ul>
@@ -243,14 +244,15 @@
 <li><a href="#key-bindings">3. Key bindings</a>
 <ul>
 <li><a href="#lsp-1">3.1. LSP</a></li>
-<li><a href="#commands">3.2. Commands</a></li>
+<li><a href="#eglot-1">3.2. Eglot</a></li>
+<li><a href="#commands">3.3. Commands</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="org31aa0e7" class="figure">
+<div id="org9b9ee6d" class="figure">
 <p><img src="img/lua.gif" alt="lua.gif" />
 </p>
 </div>
@@ -306,6 +308,11 @@ Supported backends are:
 <li>lua-language-server.</li>
 <li>lua-lsp.</li>
 </ul></li>
+<li><code>eglot</code> using one of below LSP servers
+<ul class="org-ul">
+<li>lua-language-server.</li>
+<li>lua-lsp.</li>
+</ul></li>
 </ul>
 </div>
 <div id="outline-container-lua-mode" class="outline-4">
@@ -343,7 +350,8 @@ consistent key bindings among different layers.
 
 <p>
 To enable LSP set <code>lua-backend</code> to <code>lsp</code>. If <code>lua-backend</code> is <code>nil</code> and the <code>LSP layer</code> is loaded
-<code>LSP</code> will be used automatically otherwise it will fallback to <code>lua-mode</code>.
+<code>LSP</code> will be used automatically, otherwise if the <code>Eglot layer</code> is loaded <code>eglot</code> will be used.
+If neither <code>LSP</code> nor <code>Eglot</code> layers are loaded, it will fallback to <code>lua-mode</code>.
 </p>
 
 <div class="org-src-container">
@@ -417,6 +425,34 @@ To instruct Spacemacs to use this server set your config as shown below:
 </li>
 </ol>
 </div>
+<div id="outline-container-eglot" class="outline-4">
+<h4 id="eglot"><span class="section-number-4">2.2.3.</span> Eglot</h4>
+<div class="outline-text-4" id="text-eglot">
+<p>
+This backend uses Emacs built-in eglot client with a configurable LSP server.
+It requires one of the following server implementations to be installed and available
+in your <code>PATH</code>:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/sumneko/lua-language-server">lua-language-server</a></li>
+<li><a href="https://github.com/Alloyed/lua-lsp">lua-lsp</a></li>
+</ul>
+
+<p>
+To enable Eglot set <code>lua-backend</code> to <code>eglot</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><code>(lua :variables
+     lua-backend 'eglot)
+</code></pre>
+</div>
+
+<p>
+Eglot will automatically select the appropriate server from your <code>PATH</code>.
+</p>
+</div>
+</div>
 </div>
 </div>
 <div id="outline-container-key-bindings" class="outline-2">
@@ -432,8 +468,17 @@ the <a href="../../+tools/lsp/README.html">LSP layer</a>.
 </p>
 </div>
 </div>
+<div id="outline-container-eglot-1" class="outline-3">
+<h3 id="eglot-1"><span class="section-number-3">3.2.</span> Eglot</h3>
+<div class="outline-text-3" id="text-eglot-1">
+<p>
+The default key bindings for the eglot implementations are defined and documented in
+the <a href="../../+tools/eglot/README.html">eglot layer</a>.
+</p>
+</div>
+</div>
 <div id="outline-container-commands" class="outline-3">
-<h3 id="commands"><span class="section-number-3">3.2.</span> Commands</h3>
+<h3 id="commands"><span class="section-number-3">3.3.</span> Commands</h3>
 <div class="outline-text-3" id="text-commands">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -487,7 +532,7 @@ the <a href="../../+tools/lsp/README.html">LSP layer</a>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: root</p>
-<p class="date">Created: 2026-10-17 Sat 01:04</p>
+<p class="date">Created: 2026-10-28 Wed 17:12</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
